@@ -1,9 +1,12 @@
 #ifndef SHAPE_HPP
 #define SHAPE_HPP
- 
+  
 #include <type_traits> 
 #include <array>
 #include <cstdint>
+#include <ostream>
+#include <algorithm>
+#include <numeric>
 
 template<typename T>
 concept Iterable = requires(T type) {
@@ -15,7 +18,7 @@ class Shape {
 public:
     using rank_type = uint8_t;
     using size_type = std::size_t;
-    static constexpr size_type limit = 6;  
+    static constexpr uint8_t limit = 6;  
 
     template<typename... Sizes>
     constexpr explicit Shape(Sizes... sizes) 
@@ -52,11 +55,11 @@ public:
         rank_ = dimension;
     }
 
-    constexpr size_type rank() const noexcept { return rank_; }
+    constexpr rank_type rank() const noexcept { return rank_; }
     constexpr size_type operator[](rank_type dimension) const noexcept { return sizes_[dimension]; }
     constexpr size_type& operator[](rank_type dimension) noexcept { return sizes_[dimension]; }
-
-
+    constexpr size_type size() const noexcept { return std::accumulate(sizes_.begin(), sizes_.begin() + rank(), 1, std::multiplies<size_type>()); }
+    
     constexpr auto begin() { return sizes_.begin(); }
     constexpr auto end() { return sizes_.begin() + rank_; }
 
@@ -65,6 +68,10 @@ public:
 
     constexpr auto cbegin() const { return sizes_.cbegin(); }
     constexpr auto cend() const { return sizes_.cbegin() + rank_; }
+
+    constexpr auto front() const {
+        return sizes_.front();
+    }
     
 private:
     std::array<size_type, limit> sizes_{};
@@ -78,5 +85,17 @@ constexpr bool operator==(const Shape& first, const Shape& second) {
     }
     return true;
 } 
+
+inline std::ostream& operator<<(std::ostream& os, const Shape& shape) {
+    os << "Shape(";
+    for (Shape::rank_type dimension = 0; dimension < shape.rank(); ++dimension) {
+        os << shape[dimension];
+        if (dimension + 1 < shape.rank()) {
+            os << ", ";
+        }
+    }
+    os << ")";
+    return os;
+}
 
 #endif // SHAPE_HPP

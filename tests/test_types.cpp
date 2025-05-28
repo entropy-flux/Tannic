@@ -38,11 +38,11 @@ TEST_F(Test, TestTypes) {
     auto retrieved_i16 = traits[integer16].retrieve(offset); offset += traits[integer16].size; 
     auto retrieved_i32 = traits[integer32].retrieve(offset);  
     
-    ASSERT_FLOAT_EQ(cast<float>(retrieved_f32), f32_val);
-    ASSERT_DOUBLE_EQ(cast<double>(retrieved_f64), f64_val);
-    ASSERT_EQ(cast<int8_t>(retrieved_i8), i8_val);
-    ASSERT_EQ(cast<int16_t>(retrieved_i16), i16_val);
-    ASSERT_EQ(cast<int32_t>(retrieved_i32), i32_val);
+    ASSERT_FLOAT_EQ(dcast<float>(retrieved_f32), f32_val);
+    ASSERT_DOUBLE_EQ(dcast<double>(retrieved_f64), f64_val);
+    ASSERT_EQ(dcast<int8_t>(retrieved_i8), i8_val);
+    ASSERT_EQ(dcast<int16_t>(retrieved_i16), i16_val);
+    ASSERT_EQ(dcast<int32_t>(retrieved_i32), i32_val);
 
     
     offset = static_cast<std::byte*>(buffer);

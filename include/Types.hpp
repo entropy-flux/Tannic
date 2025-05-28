@@ -16,11 +16,12 @@ enum type : uint8_t {
     TYPES
 };
 
-struct Trait {
+
+struct Traits {
     using size_type = size_t;
-    using retrieve_function = std::any(*)(void*);
-    using assign_function = void(*)(void*, const std::any&);
-    using compare_function = bool(*)(void*, const std::any&);
+    using retrieve_function = std::any (*)(void const*); 
+    using assign_function = void(*)(void*, std::any const&);
+    using compare_function = bool(*)(void const*, std::any const&);
     using print_function = std::ostream&(*)(std::ostream&, void*); 
 
     const char* name;
@@ -33,31 +34,36 @@ struct Trait {
 
 
 template<typename T>
-inline void assign(void* address, const std::any& value) {
+inline void assign(void* address, std::any const& value) {
     *reinterpret_cast<T*>(address) = std::any_cast<T>(value);
 }
 
-template<typename T>
-inline bool compare(void* address, const std::any& value) {
-    return *reinterpret_cast<T*>(address) == std::any_cast<T>(value);
-}
 
 template<typename T>
-inline std::any retrieve(void* address) {
-    return *reinterpret_cast<T*>(address); 
+inline bool compare(void const* address, std::any const& value) {
+    return *reinterpret_cast<T const*>(address) == std::any_cast<T>(value);
 }
+
+
+template<typename T>
+inline std::any retrieve(void const* address) {
+    return *reinterpret_cast<T const*>(address); 
+}
+
 
 template<typename T>
 inline std::ostream& print(std::ostream& os, void* address) {
     return os << *reinterpret_cast<T*>(address);
 }
 
+
 template<>
 inline std::ostream& print<int8_t>(std::ostream& os, void* address) {
     return os << +(*reinterpret_cast<int8_t*>(address));
 }
 
-static constexpr Trait traits[TYPES] = {
+
+static constexpr Traits traits[TYPES] = {
     [float32] = {
         .name = "float32",
         .size = sizeof(float),
@@ -104,10 +110,17 @@ static constexpr Trait traits[TYPES] = {
     }
 };
 
+
 template<typename T>
-inline T cast(std::any& retrieved) {
+inline T dcast(std::any& retrieved) {
     return std::any_cast<T>(retrieved);
 }
+
+
+inline constexpr size_t dsizeof(type type) {
+    return traits[type].size;
+}
+
 
 inline std::ostream& operator<<(std::ostream& os, const type type) {
     assert(type < TYPES && "Invalid type");
@@ -115,13 +128,11 @@ inline std::ostream& operator<<(std::ostream& os, const type type) {
     return os;
 }
 
+
 inline std::ostream& operator<<(std::ostream& os, uint8_t value) {
     return os << static_cast<unsigned int>(value);
 }
 
-inline constexpr size_t dsizeof(type type) {
-    return traits[type].size;
-}
 
 constexpr type promote(type first, type second) {
     assert(first < TYPES && second < TYPES && "Invalid type");
@@ -129,5 +140,6 @@ constexpr type promote(type first, type second) {
         throw std::runtime_error("Type promotion rules not implemented yet");
     return first;
 } 
+
 
 #endif // TYPES_HPP

@@ -4,7 +4,7 @@
 #include <string>
 #include "Types.hpp"
 #include "Shape.hpp"
-#include "View.hpp"
+#include "Tensor.hpp"
 
 class Parameter {
 public:
@@ -20,16 +20,10 @@ public:
         return name_;
     }
  
-    constexpr Parameter(const Shape& shape, type dtype, const char* name = "")
-        : name_(name), dtype_(dtype), shape_(shape) {}
-
-    const Parameter& forward() const {
-        return *this;
-    }
-
-    View view() const {
-        return View(shape_, dtype_);
-    }
+    consteval Parameter(const Shape& shape, type dtype, const char* name = "")
+    :   name_(name)
+    ,   dtype_(dtype)
+    ,   shape_(shape) {}
 
 private:
     const char* name_;

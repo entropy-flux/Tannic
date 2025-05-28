@@ -1,23 +1,23 @@
-#include "Operations.hpp"
-#include "Tensor.hpp"
-#include "View.hpp"
 #include <iostream>
+
+#include "Operations.hpp"
+#include "Tensor.hpp" 
 
 namespace operation {
 
-void Negation::perform(View const& operand, Tensor& result) const {
+void Negation::perform(Tensor const& operand, Tensor& result) const {
     std::cout << "Performing negation..." << std::endl;
 }
 
-void Addition::perform(View const& operand, View const& cooperand, Tensor& result) const {
+void Addition::perform(Tensor const& operand, Tensor const& cooperand, Tensor& result) const {
     std::cout << "Performing addition..." << std::endl;
 }
 
-void Subtraction::perform(View const& operand, View const& cooperand, Tensor& result) const {
+void Subtraction::perform(Tensor const& operand, Tensor const& cooperand, Tensor& result) const {
     std::cout << "Performing subtraction..." << std::endl;
 }
 
-void Multiplication::perform(View const& operand, View const& cooperand, Tensor& result) const {
+void Multiplication::perform(Tensor const& operand, Tensor const& cooperand, Tensor& result) const {
     std::cout << "Performing multiplication..." << std::endl;
 }
 
