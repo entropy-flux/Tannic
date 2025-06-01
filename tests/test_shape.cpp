@@ -55,3 +55,11 @@ TEST(Test, ConstexprStrides) {
         && (strides[1] == 4)
         && (strides[2] == 1));
 }
+
+TEST(Test, Transpose) {
+    constexpr Shape shape(2,3,4,5); 
+    constexpr Strides strides(2,3,4,5); 
+    static_assert(shape.transpose(-2, -1) == Shape(2,3,5,4));
+    static_assert(strides.transpose(-1, -2) == Strides(2, 3, 5, 4));
+    static_assert(shape.transpose(1, -2) == Shape(2,4,3,5));
+}

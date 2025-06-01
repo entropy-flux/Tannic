@@ -19,21 +19,21 @@ enum class DType : uint8_t {
 };
 
 #pragma pack(push, 1)
-struct MainHeader {
+struct Header {
     char magic[4] = {'C', 'T', 'M', 'L'};  // "CTML"
     uint32_t num_arrays = 0;
     uint32_t directory_offset = 0;
     uint32_t reserved = 0;
 };
 
-struct DirectoryEntry {
+struct Metadata {
     char name[32] = {};
     DType dtype = DType::F32;
     uint32_t size = 0;
     uint32_t ndim = 0;
     uint32_t dims[8] = {};
     uint32_t alignment = 64;
-    uint32_t data_offset = 0;
+    uint32_t offset = 0;
 };
 #pragma pack(pop)
 
@@ -52,12 +52,12 @@ uint32_t align_offset(uint32_t offset, uint32_t alignment) {
 
 class ArraySerializer {
     std::vector<uint8_t> buffer;
-    std::vector<DirectoryEntry> entries;
+    std::vector<Metadata> entries;
 
 public:
     ArraySerializer() {
         // Reserve space for MainHeader at the start
-        buffer.resize(sizeof(MainHeader), 0);
+        buffer.resize(sizeof(Header), 0);
         std::memcpy(buffer.data(), "CTML", 4);
     }
 
@@ -68,7 +68,7 @@ public:
         static_assert(std::is_same_v<T, float> || std::is_same_v<T, int32_t>,
                       "Only float/int32_t supported");
 
-        if (name.size() >= sizeof(DirectoryEntry::name))
+        if (name.size() >= sizeof(Metadata::name))
             throw std::runtime_error("Array name too long (max 31 chars)");
         if (ndim > 8) throw std::runtime_error("Tensor rank > 8 not supported");
 
@@ -84,7 +84,7 @@ public:
         buffer.insert(buffer.end(), raw_data, raw_data + size * sizeof(T));
 
         // Create directory entry
-        DirectoryEntry entry{};
+        Metadata entry{};
         std::fill(std::begin(entry.name), std::end(entry.name), 0);
         std::copy(name.begin(), name.end(), entry.name);
         entry.dtype = dtype_of<T>();
@@ -92,7 +92,7 @@ public:
         entry.ndim = ndim;
         std::copy(shape, shape + ndim, entry.dims);
         entry.alignment = alignment;
-        entry.data_offset = aligned_offset;
+        entry.offset = aligned_offset;
 
         entries.push_back(entry);
     }
@@ -103,16 +103,16 @@ public:
 
         for (const auto& entry : entries) {
             const uint8_t* entry_ptr = reinterpret_cast<const uint8_t*>(&entry);
-            buffer.insert(buffer.end(), entry_ptr, entry_ptr + sizeof(DirectoryEntry));
+            buffer.insert(buffer.end(), entry_ptr, entry_ptr + sizeof(Metadata));
         }
 
         // Write main header (overwrite beginning)
-        MainHeader header{};
+        Header header{};
         std::memcpy(header.magic, "CTML", 4);
         header.num_arrays = static_cast<uint32_t>(entries.size());
         header.directory_offset = directory_offset;
 
-        std::memcpy(buffer.data(), &header, sizeof(MainHeader));
+        std::memcpy(buffer.data(), &header, sizeof(Header));
     }
 
     // Get pointer to serialized data buffer
@@ -123,30 +123,30 @@ public:
 
 class ArrayDeserializer {
     const uint8_t* buffer = nullptr;
-    size_t buffer_size = 0;
+    size_t capacity = 0;
 
-    MainHeader header{};
-    std::vector<DirectoryEntry> entries;
+    Header header{};
+    std::vector<Metadata> entries;
 
 public:
     ArrayDeserializer(const uint8_t* data, size_t size)
-        : buffer(data), buffer_size(size) {
-        if (size < sizeof(MainHeader))
+        : buffer(data), capacity(size) {
+        if (size < sizeof(Header))
             throw std::runtime_error("Buffer too small for header");
 
-        std::memcpy(&header, buffer, sizeof(MainHeader));
+        std::memcpy(&header, buffer, sizeof(Header));
         if (std::string(header.magic, 4) != "CTML")
             throw std::runtime_error("Invalid magic header");
 
-        size_t dir_size = header.num_arrays * sizeof(DirectoryEntry);
-        if (header.directory_offset + dir_size > buffer_size)
+        size_t dir_size = header.num_arrays * sizeof(Metadata);
+        if (header.directory_offset + dir_size > capacity)
             throw std::runtime_error("Directory offset/size out of range");
 
         entries.resize(header.num_arrays);
         std::memcpy(entries.data(), buffer + header.directory_offset, dir_size);
     }
 
-    const DirectoryEntry* find_entry(const std::string& name) const {
+    const Metadata* find_entry(const std::string& name) const {
         for (const auto& e : entries) {
             std::string entry_name(e.name, strnlen(e.name, sizeof(e.name)));
             if (entry_name == name) return &e;
@@ -159,7 +159,7 @@ public:
         static_assert(std::is_same_v<T, float> || std::is_same_v<T, int32_t>,
                       "Only float/int32_t supported");
 
-        const DirectoryEntry* entry = find_entry(name);
+        const Metadata* entry = find_entry(name);
         if (!entry)
             throw std::runtime_error("Tensor not found: " + name);
 
@@ -171,9 +171,9 @@ public:
                 throw std::runtime_error("Dtype mismatch (expected int32)");
         }
 
-        size_t data_start = entry->data_offset;
+        size_t data_start = entry->offset;
         size_t data_bytes = entry->size * sizeof(T);
-        if (data_start + data_bytes > buffer_size)
+        if (data_start + data_bytes > capacity)
             throw std::runtime_error("Tensor data out of buffer range");
 
         const T* data_ptr = reinterpret_cast<const T*>(buffer + data_start);

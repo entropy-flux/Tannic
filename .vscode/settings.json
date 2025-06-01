@@ -96,6 +96,7 @@
         "filesystem": "cpp",
         "stack": "cpp",
         "locale": "cpp",
-        "__config": "cpp"
+        "__config": "cpp",
+        "*.inc": "cpp"
     }
 }

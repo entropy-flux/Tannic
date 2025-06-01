@@ -13,6 +13,8 @@
 class Storage {
 public: 
 
+    Storage() = default;
+
     Storage(std::size_t size, uint8_t dsize, Allocator allocator = Host{})
         : memory_(size * dsize) 
         , allocator_(allocator) {
@@ -68,8 +70,11 @@ public:
         return references_ ? references_->load() : 0;
     }
 
-    void* address() const {
-        return address_;
+    void* address() { return address_; }
+    void const* address() const { return address_; }
+
+    std::size_t memory() const {
+        return memory_;
     }
 
 private:
@@ -88,8 +93,8 @@ private:
         }
     }
 
-    std::size_t memory_; 
-    Allocator allocator_;
+    std::size_t memory_ = 0; 
+    Allocator allocator_ = Host{};
     void* address_ = nullptr;
     std::atomic<std::size_t>* references_ = nullptr;
 };

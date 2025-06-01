@@ -7,9 +7,9 @@
 template<class Derived>
 class Module {
     public:  
-    template<typename... Args>
-    constexpr auto operator()(Args&&... args) const -> decltype(auto) {
-        auto result = static_cast<const Derived*>(this)->forward(std::forward<Args>(args)...); 
+    template<typename... Arguments>
+    constexpr auto operator()(Arguments&&... arguments) const -> decltype(auto) {
+        auto result = static_cast<const Derived*>(this)->forward(std::forward<Arguments>(arguments)...); 
         return result;
     }
 };

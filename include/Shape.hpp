@@ -4,6 +4,7 @@
 #include <type_traits> 
 #include <array>
 #include <cstdint>
+#include <cassert>
 #include <ostream>
 #include <algorithm>
 #include <numeric>
@@ -16,9 +17,12 @@ concept Iterable = requires(T type) {
 
 class Shape {
 public:
+    using index_type = int8_t;
     using rank_type = uint8_t;
     using size_type = std::size_t;
-    static constexpr uint8_t limit = 6;  
+    static constexpr uint8_t limit = 8;  
+
+    constexpr Shape() noexcept = default;
 
     template<typename... Sizes>
     constexpr explicit Shape(Sizes... sizes) 
@@ -27,6 +31,7 @@ public:
         if (sizeof...(sizes) > limit) {
             throw "Rank limit exceeded";
         }
+        size_ = std::accumulate(sizes_.begin(), sizes_.begin() + rank_, size_type{1}, std::multiplies<size_type>()); 
     }
 
     template<Iterable Sizes>
@@ -40,6 +45,7 @@ public:
             throw "Rank limit exceeded";
         }
         rank_ = dimension;
+        size_ = std::accumulate(sizes_.begin(), sizes_.begin() + rank_, size_type{1}, std::multiplies<size_type>()); 
     } 
 
 
@@ -53,11 +59,12 @@ public:
             sizes_[dimension++] = static_cast<size_type>(*iterator);
         }
         rank_ = dimension;
+        size_ = std::accumulate(sizes_.begin(), sizes_.begin() + rank_, size_type{1}, std::multiplies<size_type>()); 
     }
 
     constexpr rank_type rank() const noexcept { return rank_; }
-    constexpr size_type operator[](rank_type dimension) const noexcept { return sizes_[dimension]; }
-    constexpr size_type& operator[](rank_type dimension) noexcept { return sizes_[dimension]; }
+    constexpr size_type operator[](index_type dimension) const noexcept { return sizes_[dimension]; }
+    constexpr size_type& operator[](index_type dimension) noexcept { return sizes_[dimension]; }
     constexpr size_type size() const noexcept { return std::accumulate(sizes_.begin(), sizes_.begin() + rank(), 1, std::multiplies<size_type>()); }
     
     constexpr auto begin() { return sizes_.begin(); }
@@ -69,11 +76,29 @@ public:
     constexpr auto cbegin() const { return sizes_.cbegin(); }
     constexpr auto cend() const { return sizes_.cbegin() + rank_; }
 
-    constexpr auto front() const {
-        return sizes_.front();
+    constexpr auto front() const { return sizes_.front(); }
+    constexpr auto back() const { 
+        assert(rank_ > 0 && "Cannot call back() on an empty Shape");
+        return sizes_[rank_ - 1];
+    }    
+        
+    constexpr rank_type normalize(index_type index, rank_type extra = 0) const { 
+        rank_type bound = rank() + extra;
+        if (index < 0) index += bound;
+        assert(index >= 0  && index < bound && "Index out of bound");
+        return static_cast<rank_type>(index);
     }
-    
+
+    constexpr Shape transpose(index_type first, index_type second) const { 
+        Shape result = *this;
+        std::swap(result.sizes_[normalize(first)], result.sizes_[normalize(second)]);
+        return result;
+    }
+
+
+        
 private:
+    size_type size_;
     std::array<size_type, limit> sizes_{};
     size_type rank_{0};
 };

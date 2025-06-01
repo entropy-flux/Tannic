@@ -8,17 +8,9 @@
 
 class Parameter {
 public:
-    constexpr type dtype() const {
-        return dtype_;
-    }
-
-    constexpr const Shape& shape() const {
-        return shape_;
-    }
-
-    constexpr const char* name() const {
-        return name_;
-    }
+    constexpr type dtype() const { return dtype_; }
+    constexpr const Shape& shape() const { return shape_; }
+    constexpr const char* name() const { return name_; }
  
     consteval Parameter(const Shape& shape, type dtype, const char* name = "")
     :   name_(name)

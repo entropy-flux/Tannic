@@ -8,21 +8,21 @@
 #include <cassert>
 
 enum type : uint8_t {
-    float32,
-    float64,
+    any,
     integer8,
     integer16,
     integer32,
+    float32,
+    float64,
     TYPES
 };
-
 
 struct Traits {
     using size_type = size_t;
     using retrieve_function = std::any (*)(void const*); 
     using assign_function = void(*)(void*, std::any const&);
     using compare_function = bool(*)(void const*, std::any const&);
-    using print_function = std::ostream&(*)(std::ostream&, void*); 
+    using print_function = std::ostream&(*)(std::ostream&, void const*); 
 
     const char* name;
     size_type size;
@@ -52,36 +52,27 @@ inline std::any retrieve(void const* address) {
 
 
 template<typename T>
-inline std::ostream& print(std::ostream& os, void* address) {
-    return os << *reinterpret_cast<T*>(address);
+inline std::ostream& print(std::ostream& os, void const* address) {
+    return os << *reinterpret_cast<T const*>(address);
 }
 
 
 template<>
-inline std::ostream& print<int8_t>(std::ostream& os, void* address) {
-    return os << +(*reinterpret_cast<int8_t*>(address));
+inline std::ostream& print<int8_t>(std::ostream& os, void const* address) {
+    return os << +(*reinterpret_cast<int8_t const*>(address));
 }
 
-
 static constexpr Traits traits[TYPES] = {
-    [float32] = {
-        .name = "float32",
-        .size = sizeof(float),
-        .retrieve = retrieve<float>,
-        .assign = assign<float>,
-        .compare = compare<float>,
-        .print = print<float>
+    [any] = {
+        .name = "any",
+        .size = 0,
+        .retrieve = nullptr,
+        .assign = nullptr,
+        .compare = nullptr,
+        .print = nullptr 
     },
 
-    [float64] = {
-        .name = "float64",
-        .size = sizeof(double),
-        .retrieve = retrieve<double>,
-        .assign = assign<double>,
-        .compare = compare<double>,
-        .print = print<double>
-    },
-
+    
     [integer8] = {
         .name = "integer8",
         .size = sizeof(int8_t),
@@ -107,7 +98,28 @@ static constexpr Traits traits[TYPES] = {
         .assign = assign<int32_t>,
         .compare = compare<int32_t>,
         .print = print<int32_t>
-    }
+    },
+
+    
+    [float32] = {
+        .name = "float32",
+        .size = sizeof(float),
+        .retrieve = retrieve<float>,
+        .assign = assign<float>,
+        .compare = compare<float>,
+        .print = print<float>
+    },
+
+    
+    [float64] = {
+        .name = "float64",
+        .size = sizeof(double),
+        .retrieve = retrieve<double>,
+        .assign = assign<double>,
+        .compare = compare<double>,
+        .print = print<double>
+    },
+
 };
 
 

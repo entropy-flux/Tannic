@@ -16,7 +16,7 @@ enum class DType : uint8_t {
 
 // --- Main Header ---
 #pragma pack(push, 1)
-struct MainHeader {
+struct Header {
     char magic[4] = {'C', 'T', 'M', 'L'};  // "CTML"
     uint32_t num_arrays = 0;
     uint32_t directory_offset = 0;
@@ -26,14 +26,14 @@ struct MainHeader {
 
 // --- Directory Entry ---
 #pragma pack(push, 1)
-struct DirectoryEntry {
+struct Metadata {
     char name[32] = {};
     DType dtype = DType::F32;
     uint32_t size = 0;           // total elements
     uint32_t ndim = 0;           // number of dims
     uint32_t dims[8] = {};       // dimensions (max rank 8)
     uint32_t alignment = 64;
-    uint32_t data_offset = 0;
+    uint32_t offset = 0;
 };
 #pragma pack(pop)
 
@@ -54,7 +54,7 @@ uint32_t align_offset(uint32_t offset, uint32_t alignment) {
 // --- Writer ---
 class MultiArrayWriter {
     std::ofstream file;
-    std::vector<DirectoryEntry> entries;
+    std::vector<Metadata> entries;
 
 public:
     MultiArrayWriter(const std::string& filename) {
@@ -62,7 +62,7 @@ public:
         if (!file) throw std::runtime_error("Failed to open file for writing");
 
         // Reserve space for MainHeader
-        MainHeader header;
+        Header header;
         file.write(reinterpret_cast<const char*>(&header), sizeof(header));
     }
 
@@ -72,7 +72,7 @@ public:
                       uint32_t alignment = 64) {
         static_assert(std::is_same_v<T, float> || std::is_same_v<T, int32_t>,
                       "Only float/int32_t supported");
-        if (name.size() >= sizeof(DirectoryEntry::name))
+        if (name.size() >= sizeof(Metadata::name))
             throw std::runtime_error("Array name too long (max 31 chars)");
         if (ndim > 8) throw std::runtime_error("Tensor rank > 8 not supported");
 
@@ -86,7 +86,7 @@ public:
 
         file.write(reinterpret_cast<const char*>(data), size * sizeof(T));
 
-        DirectoryEntry entry{};
+        Metadata entry{};
         std::fill(std::begin(entry.name), std::end(entry.name), 0);
         std::copy(name.begin(), name.end(), entry.name);
         entry.dtype = dtype_of<T>();
@@ -94,7 +94,7 @@ public:
         entry.ndim = ndim;
         std::copy(shape, shape + ndim, entry.dims);
         entry.alignment = alignment;
-        entry.data_offset = aligned_offset;
+        entry.offset = aligned_offset;
         entries.push_back(entry);
     }
 
@@ -105,7 +105,7 @@ public:
             file.write(reinterpret_cast<const char*>(&entry), sizeof(entry));
         }
 
-        MainHeader header{};
+        Header header{};
         std::copy(std::begin(header.magic), std::end(header.magic), std::begin(header.magic)); // "CTML"
         header.num_arrays = static_cast<uint32_t>(entries.size());
         header.directory_offset = directory_offset;
@@ -127,8 +127,8 @@ struct TensorInfo {
 
 class MultiArrayReader {
     std::ifstream file;
-    MainHeader header;
-    std::vector<DirectoryEntry> entries;
+    Header header;
+    std::vector<Metadata> entries;
 
 public:
     MultiArrayReader(const std::string& filename) {
@@ -141,11 +141,11 @@ public:
 
         file.seekg(header.directory_offset);
         entries.resize(header.num_arrays);
-        file.read(reinterpret_cast<char*>(entries.data()), header.num_arrays * sizeof(DirectoryEntry));
+        file.read(reinterpret_cast<char*>(entries.data()), header.num_arrays * sizeof(Metadata));
     }
 
-    const DirectoryEntry* find_entry(const std::string& name) const {
-        auto it = std::find_if(entries.begin(), entries.end(), [&](const DirectoryEntry& e) {
+    const Metadata* find_entry(const std::string& name) const {
+        auto it = std::find_if(entries.begin(), entries.end(), [&](const Metadata& e) {
             return std::string(e.name, strnlen(e.name, sizeof(e.name))) == name;
         });
         if (it == entries.end()) return nullptr;
@@ -157,7 +157,7 @@ public:
         static_assert(std::is_same_v<T, float> || std::is_same_v<T, int32_t>,
                       "Only float/int32_t supported");
 
-        const DirectoryEntry* entry = find_entry(name);
+        const Metadata* entry = find_entry(name);
         if (!entry) throw std::runtime_error("Array not found: " + name);
 
         if constexpr (std::is_same_v<T, float>) {
@@ -173,7 +173,7 @@ public:
             std::copy(std::begin(entry->dims), std::begin(entry->dims) + entry->ndim, out_info->dims);
         }
 
-        file.seekg(entry->data_offset);
+        file.seekg(entry->offset);
         std::vector<T> data(entry->size);
         file.read(reinterpret_cast<char*>(data.data()), entry->size * sizeof(T));
         return data;
