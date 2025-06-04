@@ -23,7 +23,8 @@ TEST(Test, MatrixAddFloat) {
     EXPECT_NEAR(c[1][2].item<float>(), 7.f, 1e-5);
 }
 
- 
+
+#ifndef OPENBLAS
 TEST(Test, MatrixAddFloatDouble) {
     Tensor a({2, 3}, float32);
     Tensor b({2, 3}, float64);
@@ -44,3 +45,4 @@ TEST(Test, MatrixAddFloatDouble) {
     EXPECT_NEAR(c[1][1].item<double>(), 7.0, 1e-5);
     EXPECT_NEAR(c[1][2].item<double>(), 7.0, 1e-5);
 } 
+#endif

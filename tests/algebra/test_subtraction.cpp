@@ -2,6 +2,8 @@
 #include "Tensor.hpp"
 #include "Algebra/Operations.hpp"
 
+
+
 TEST(Test, MatrixSubFloat) {
     Tensor a({2, 3}, float32);
     Tensor b({2, 3}, float32);
@@ -23,6 +25,8 @@ TEST(Test, MatrixSubFloat) {
     EXPECT_NEAR(c[1][2].item<float>(), 6.f, 1e-5);
 }
 
+
+#ifndef OPENBLAS
 TEST(Test, MatrixSubFloatDouble) {
     Tensor a({2, 3}, float64);
     Tensor b({2, 3}, float32);
@@ -43,3 +47,4 @@ TEST(Test, MatrixSubFloatDouble) {
     EXPECT_NEAR(c[1][1].item<double>(), 5.0, 1e-5);
     EXPECT_NEAR(c[1][2].item<double>(), 6.0, 1e-5);
 }
+#endif

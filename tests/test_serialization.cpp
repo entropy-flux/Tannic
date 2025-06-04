@@ -1,11 +1,12 @@
 #include <gtest/gtest.h>
 #include "IO/Serialization.hpp"
 #include "IO/Persistence.hpp"
+#include "Tensor.hpp"
 
 TEST(Test, Metadata) { 
     Shape shape(1,2,3,4);
     Strides strides(1,2,3,4);
-    Metadata metadata(float32, shape, strides); 
+    Metadata<Tensor> metadata(float32, shape, strides); 
     
     for (auto index = 0; index < metadata.rank; ++index) 
         EXPECT_EQ(metadata.shape[index], shape[index]);

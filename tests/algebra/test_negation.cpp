@@ -2,6 +2,7 @@
 #include "Tensor.hpp"
 #include "Algebra/Operations.hpp"
 
+
 TEST(Test, NegateFloat) {
     Tensor a({2, 3}, float32);
 
