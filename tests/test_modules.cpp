@@ -30,3 +30,10 @@ TEST(Test, Constructors) {
     };
     modules.add(Linear(256, 10, float32)); 
 }
+
+
+TEST(Test, Embedding) {
+    Embedding emmbeding(4, 4, float32, integer16); 
+    Tensor sequence = emmbeding(1, 3);
+    ASSERT_EQ(sequence.shape(), Shape(2, 4)); 
+}

@@ -8,7 +8,7 @@ set(CUDA_SOURCES
 )
 
 include_directories(
-    ${CMAKE_SOURCE_DIR}/../include
+    ${CMAKE_SOURCE_DIR}/../include/Tannic
     ${CMAKE_SOURCE_DIR}/../src
 )
 
@@ -21,7 +21,6 @@ find_library(OPENBLAS_LIB openblas)
 if(NOT OPENBLAS_LIB)
     message(FATAL_ERROR "OpenBLAS library not found!")
 endif()
-  
  
 add_library(algebra 
     ${CMAKE_SOURCE_DIR}/../src/algebra.cpp
@@ -56,7 +55,7 @@ add_executable(runTests_types test_types.cpp)
 add_executable(runTests_tensor test_tensor.cpp) 
 add_executable(runTests_serialization test_serialization.cpp) 
 add_executable(runTests_freelist memory/test_freelist.cpp) 
-
+add_executable(runTests_modules test_modules.cpp) 
 
 foreach(
     test_target 
@@ -73,6 +72,7 @@ foreach(
     runTests_tensor  
     runTests_serialization  
     runTests_freelist
+    runTests_modules
 )
     target_link_libraries(${test_target} 
         GTest::GTest 

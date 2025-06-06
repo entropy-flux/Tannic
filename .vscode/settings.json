@@ -97,6 +97,7 @@
         "stack": "cpp",
         "locale": "cpp",
         "__config": "cpp",
-        "*.inc": "cpp"
+        "*.inc": "cpp",
+        "complex": "cpp"
     }
 }

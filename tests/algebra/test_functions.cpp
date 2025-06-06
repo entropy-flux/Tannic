@@ -2,10 +2,6 @@
 #include <cmath>
 #include "Tensor.hpp"
 #include "Algebra/Operations.hpp"
-
-#include <gtest/gtest.h>
-#include <cmath>
-#include "Tensor.hpp" 
 #include "Algebra/Functions.hpp"
 
 constexpr float EPS_F = 1e-5f;

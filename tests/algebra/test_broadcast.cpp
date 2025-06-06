@@ -2,6 +2,8 @@
 #include "Algebra/Operations.hpp"
 #include "Algebra/Transformations.hpp"
 
+using namespace ta;
+
 TEST(Test, BroadcastSingleShapeReturnsSameShape) {
     Shape shape{2, 3, 4};
     auto result = Negation{}.broadcast(shape);

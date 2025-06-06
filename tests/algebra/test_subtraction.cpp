@@ -3,7 +3,6 @@
 #include "Algebra/Operations.hpp"
 
 
-
 TEST(Test, MatrixSubFloat) {
     Tensor a({2, 3}, float32);
     Tensor b({2, 3}, float32);
