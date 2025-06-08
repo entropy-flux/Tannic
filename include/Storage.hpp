@@ -10,9 +10,7 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// This file is part of Tannic, a C++ tensor library.
+// limitations under the License. 
 
 #ifndef STORAGE_HPP
 #define STORAGE_HPP
@@ -24,7 +22,7 @@
 #include <utility>
 
 #include "Types.hpp"
-#include "Memory/Allocators.hpp"
+#include "Allocators.hpp"
 
 class Storage {
 public: 
@@ -89,8 +87,19 @@ public:
     void* address() { return address_; }
     void const* address() const { return address_; }
     std::size_t memory() const { return memory_; }
-    Allocator const& allocator() const { return allocator_; }
+    Allocator const& allocator() const { return allocator_; } 
 
+    void copy(void* address, void const* source, std::size_t size) const {
+        std::visit([&](auto& allocator) -> void {
+            allocator.copy(address, source, size);
+        }, allocator_);
+    }
+
+    bool compare(void const* address, void const* source, std::size_t size) const {
+        return std::visit([&](auto& allocator) -> bool {
+            return allocator.compare(address, source, size);
+        }, allocator_);
+    }
 
 private:
     void release() {

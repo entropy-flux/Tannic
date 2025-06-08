@@ -10,15 +10,17 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// This file is part of Tannic, a machine learning tensor library for C++.
+// limitations under the License. 
 
 #ifndef SERIALIZATION_HPP
 #define SERIALIZATION_HPP
 
 #include "Tensor.hpp"
-#include "IO/Blobs.hpp"
+#include "Blobs.hpp"
+
+/*
+TODO: Serialization for Parameters and Modules. 
+*/
 
 Blob serialize(Tensor const& tensor, uint32_t alignment = 0, Allocator allocator = Host{}) {
     Header header(align(sizeof(Header), alignment), tensor.storage().memory());  

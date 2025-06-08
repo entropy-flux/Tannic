@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include "Memory/Freelist.hpp"
-#include "Memory/Resources.hpp"
-#include "Memory/Pool.hpp" 
+#include "Freelist.hpp"
+#include "Resources.hpp"
+#include "Pool.hpp" 
  
 class Test : public ::testing::Test {
 protected:    

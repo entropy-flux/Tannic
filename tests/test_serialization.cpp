@@ -1,8 +1,7 @@
 #include <gtest/gtest.h>
-#include "IO/Serialization.hpp"
-#include "IO/Persistence.hpp"
+#include "Serialization.hpp"
+#include "Persistence.hpp"
 #include "Tensor.hpp"
-
 
 TEST(Test, Metadata) { 
     Shape shape(1,2,3,4);
@@ -18,7 +17,7 @@ TEST(Test, Metadata) {
 
 
 TEST(Test, Serialization) {
-    Tensor tensor({2, 3}, float32);
+    Tensor tensor(float32, {2, 3});
     
     std::cout << tensor << std::endl;
 

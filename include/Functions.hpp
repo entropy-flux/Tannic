@@ -10,18 +10,15 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// This file is part of Tannic, a A C++ tensor library.
+// limitations under the License. 
 
 #ifndef FUNCTIONS_HPP
 #define FUNCTIONS_HPP
  
+#include "Types.hpp"
 #include "Expressions.hpp"
 
 class Tensor;
-
-namespace ta {
 
 template<class Functor>
 struct Function {
@@ -30,12 +27,14 @@ struct Function {
 
     template<class Tensor>
     Tensor forward(const Tensor& operand) const {
-        Tensor result(operand.shape(), operand.dtype());
+        Tensor result(operand.dtype(), operand.shape());
         static_cast<const Functor*>(this)->forward(operand, result);  
         return result;
     }
 };
- 
+
+namespace symbol {
+
 struct Log : public Function<Log> {  
     void forward(Tensor const&, Tensor&) const;
 };
@@ -76,56 +75,56 @@ struct Tanh : public Function<Tanh> {
     void forward(Tensor const&, Tensor&) const;
 }; 
  
-} //ta
+} //symbol
 
 template<class Operand>
 constexpr auto log(Operand const& operand) {
-    return Unary<ta::Function<ta::Log>, Operand>{{}, operand};
+    return Unary<Function<symbol::Log>, Operand>{{}, operand};
 }
 
 template<class Operand>
 constexpr auto exp(Operand const& operand) {
-    return Unary<ta::Function<ta::Exp>, Operand>{{}, operand};
+    return Unary<Function<symbol::Exp>, Operand>{{}, operand};
 }
 
 template<class Operand>
 constexpr auto sqrt(Operand const& operand) {
-    return Unary<ta::Function<ta::Sqrt>, Operand>{{}, operand};
+    return Unary<Function<symbol::Sqrt>, Operand>{{}, operand};
 }
 
 template<class Operand>
 constexpr auto abs(Operand const& operand) {
-    return Unary<ta::Function<ta::Abs>, Operand>{{}, operand};
+    return Unary<Function<symbol::Abs>, Operand>{{}, operand};
 }
 
 template<class Operand>
 constexpr auto sin(Operand const& operand) {
-    return Unary<ta::Function<ta::Sin>, Operand>{{}, operand};
+    return Unary<Function<symbol::Sin>, Operand>{{}, operand};
 }
 
 template<class Operand>
 constexpr auto sinh(Operand const& operand) {
-    return Unary<ta::Function<ta::Sinh>, Operand>{{}, operand};
+    return Unary<Function<symbol::Sinh>, Operand>{{}, operand};
 }
 
 template<class Operand>
 constexpr auto cos(Operand const& operand) {
-    return Unary<ta::Function<ta::Cos>, Operand>{{}, operand};
+    return Unary<Function<symbol::Cos>, Operand>{{}, operand};
 }
 
 template<class Operand>
 constexpr auto cosh(Operand const& operand) {
-    return Unary<ta::Function<ta::Cosh>, Operand>{{}, operand};
+    return Unary<Function<symbol::Cosh>, Operand>{{}, operand};
 }
 
 template<class Operand>
 constexpr auto tan(Operand const& operand) {
-    return Unary<ta::Function<ta::Tan>, Operand>{{}, operand};
+    return Unary<Function<symbol::Tan>, Operand>{{}, operand};
 }
 
 template<class Operand>
 constexpr auto tanh(Operand const& operand) {
-    return Unary<ta::Function<ta::Tanh>, Operand>{{}, operand};
+    return Unary<Function<symbol::Tanh>, Operand>{{}, operand};
 }
   
 #endif // FUNCTIONS_HPP

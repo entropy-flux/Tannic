@@ -1,11 +1,11 @@
 #include <gtest/gtest.h>
 #include "Tensor.hpp"
-#include "Algebra/Operations.hpp"
+#include "Operations.hpp"
 
 
 TEST(Test, MatrixMulFloat) {
-    Tensor a({2, 3}, float32);
-    Tensor b({2, 3}, float32);
+    Tensor a(float32, {2, 3});
+    Tensor b(float32, {2, 3});
 
     a[0][0] = 1.f;  a[0][1] = 2.f;  a[0][2] = 3.f;
     a[1][0] = 4.f;  a[1][1] = 5.f;  a[1][2] = 6.f;
@@ -26,8 +26,8 @@ TEST(Test, MatrixMulFloat) {
 
 #ifndef OPENBLAS
 TEST(Test, MatrixMulFloatDouble) {
-    Tensor a({2, 3}, float32);
-    Tensor b({2, 3}, float64);
+    Tensor a(float32, {2, 3});
+    Tensor b(float64, {2, 3});
 
     a[0][0] = 1.f;  a[0][1] = 2.f;  a[0][2] = 3.f;
     a[1][0] = 4.f;  a[1][1] = 5.f;  a[1][2] = 6.f;

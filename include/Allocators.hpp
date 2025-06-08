@@ -12,17 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// This file is part of Tannic, a A C++ tensor library.  .
 
 #ifndef ALLOCATORS_HPP
 #define ALLOCATORS_HPP
 
 #include <variant>  
+#include <cstddef>
+#include <cstring>
+#include "Resources.hpp" 
+#include "Pool.hpp"
+#include "Freelist.hpp"
 
-#include "Memory/Resources.hpp"
-#include "Memory/Freelist.hpp"
-#include "Memory/View.hpp" 
+struct View {
+    void* buffer = nullptr;
+    void* allocate(std::size_t) { return buffer; }
+    void deallocate(void*, std::size_t) { buffer = nullptr; }
+    void copy(void* address, void const* value, std::size_t size) const { std::memcpy(address, value, size); }
+    bool compare(void const* address, void const* value, std::size_t size) const { return std::memcmp(address, value, size) == 0; }
+};
 
-using Allocator = std::variant<Device, Freelist, Host, View>;
+using Allocator = std::variant<Device, Host, View>;
 
 #endif // ALLOCATORS_HPP

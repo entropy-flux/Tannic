@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// This file is part of Tannic, a A C++ tensor library.  .
 
 #ifndef SHAPE_HPP
 #define SHAPE_HPP

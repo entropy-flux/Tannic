@@ -11,17 +11,16 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
-// This file is part of Tannic, a machine learning tensor library for C++.
+// 
 
 #ifndef TRANSFORMATIONS_HPP
 #define TRANSFORMATIONS_HPP
-
-#include "Algebra/Operations.hpp" 
+ 
+#include "Operations.hpp" 
  
 class Tensor;
 
-namespace ta {
+namespace symbol {
 
 struct Linear { 
 
@@ -60,7 +59,10 @@ struct Linear {
     
     template<class Tensor, class Transform>
     Tensor forward(Tensor const& operand, Transform const& transform) const {   
-        Tensor result(broadcast(operand.shape(), transform.shape()), promote(operand.dtype(), transform.dtype()));
+        Tensor result(
+            promote(operand.dtype(), transform.dtype()),
+            broadcast(operand.shape(), transform.shape())
+        );
         forward(operand, transform.transpose(-1, -2), result);       
         return result;
     }
@@ -69,11 +71,11 @@ struct Linear {
     
 };
  
-} // ta
+} // symbol
 
 template<class Argument, class Transform>
 constexpr auto linear(Argument const& argument, Transform const& transform) {
-    return Binary<ta::Linear, Argument, Transform>{{}, argument, transform};
+    return Binary<symbol::Linear, Argument, Transform>{{}, argument, transform};
 }
  
 #endif // TRANSFORMATIONS_HPP

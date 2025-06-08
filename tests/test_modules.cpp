@@ -1,15 +1,15 @@
 #include <gtest/gtest.h>
-#include "IO/Serialization.hpp"
-#include "IO/Persistence.hpp"
+#include "Serialization.hpp"
+#include "Persistence.hpp"
 #include "Tensor.hpp" 
 #include "Modules.hpp"
-#include "Algebra/Transformations.hpp"
+#include "Transformations.hpp"
 
 struct Linear : public Module<Linear>{
     Tensor weight;
 
     Linear(int input_features, int output_features, type dtype)
-    :   weight({input_features, output_features}, dtype) {}
+    :   weight(dtype, {input_features, output_features}) {}
 
     Linear(Tensor weight) : weight(weight) {}
 
@@ -19,9 +19,9 @@ struct Linear : public Module<Linear>{
 };
 
 TEST(Test, Constructors) {
-    Tensor weight{{2,3}, float32};
+    Tensor weight{float32, {2,3}};
     Linear module{weight};
-    Tensor input({1,2,3}, float32);
+    Tensor input(float32, {1,2,3});
     auto expression = module(input);
 
     List<Linear> modules = {
@@ -33,7 +33,7 @@ TEST(Test, Constructors) {
 
 
 TEST(Test, Embedding) {
-    Embedding emmbeding(4, 4, float32, integer16); 
+    Embedding emmbeding(integer16, float32, 4, 4); 
     Tensor sequence = emmbeding(1, 3);
     ASSERT_EQ(sequence.shape(), Shape(2, 4)); 
 }

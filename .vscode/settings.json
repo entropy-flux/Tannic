@@ -98,6 +98,16 @@
         "locale": "cpp",
         "__config": "cpp",
         "*.inc": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "print": "cpp",
+        "__verbose_abort": "cpp",
+        "ccomplex": "cpp",
+        "cerrno": "cpp",
+        "cfloat": "cpp",
+        "climits": "cpp",
+        "execution": "cpp",
+        "cstdbool": "cpp",
+        "version": "cpp",
+        "text_encoding": "cpp"
     }
 }

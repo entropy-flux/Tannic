@@ -1,6 +1,22 @@
 #include <fstream>
 #include <cstddef>
-#include "Memory/Resources.hpp"
+#include "Resources.hpp"
+
+void* Host::allocate(std::size_t memory)  const { 
+    return ::operator new(memory); 
+}
+
+void Host::deallocate(void* address, std::size_t size) const { 
+    ::operator delete(address);
+}
+
+void Host::copy(void* address, void const* value, std::size_t size, Processor processor) const { 
+    std::memcpy(address, value, size); 
+}
+
+bool Host::compare(void const* address, void const* value, std::size_t size, Processor processor) const { 
+    return std::memcmp(address, value, size) == 0; 
+}
 
 unsigned long long Host::available() const {
     #ifdef __linux__

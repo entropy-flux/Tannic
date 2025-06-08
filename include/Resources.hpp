@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// This file is part of Tannic, a A C++ tensor library.  .
 
 #ifndef RESOURCES_HPP
 #define RESOURCES_HPP
@@ -20,6 +19,7 @@
 #include <cstddef>
 #include <vector>
 #include <span>
+#include <cstring>
 
 enum unit : std::size_t {
     B = 1,
@@ -29,11 +29,18 @@ enum unit : std::size_t {
     UNIT
 };
 
+enum class Processor {
+    CPU,
+    CUDA,
+};
+
 struct Resource{};
 
 struct Host : Resource {  
-    void* allocate(std::size_t memory) const { return ::operator new(memory); }
-    void deallocate(void* address, std::size_t size) const { ::operator delete(address); }
+    void* allocate(std::size_t memory) const;
+    void deallocate(void* address, std::size_t size) const;
+    void copy(void* address, void const* source, std::size_t size, Processor processor = Processor::CPU) const;
+    bool compare(void const* address, void const* source, std::size_t size, Processor processor = Processor::CPU) const;
     unsigned long long available() const;
 };
 
@@ -42,8 +49,11 @@ struct Device : Resource {
     int id;
     void* allocate(std::size_t memory);               
     void deallocate(void* address, std::size_t size); 
+    void copy(void* address, void const* source, std::size_t, Processor processor = Processor::CUDA) const;
+    bool compare(void const* address, void const* source, std::size_t size, Processor = Processor::CUDA) const;
     unsigned long long available() const;
 };
+
 
 class Resources {
 public:

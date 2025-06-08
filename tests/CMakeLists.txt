@@ -8,7 +8,7 @@ set(CUDA_SOURCES
 )
 
 include_directories(
-    ${CMAKE_SOURCE_DIR}/../include/Tannic
+    ${CMAKE_SOURCE_DIR}/../include
     ${CMAKE_SOURCE_DIR}/../src
 )
 
@@ -50,12 +50,12 @@ add_executable(runTests_addition algebra/test_addition.cpp)
 add_executable(runTests_subtraction algebra/test_subtraction.cpp) 
 add_executable(runTests_multiplication algebra/test_multiplication.cpp) 
 add_executable(runTests_linear algebra/test_linear.cpp)  
-add_executable(runTests_storage test_storage.cpp) 
-add_executable(runTests_types test_types.cpp)
+add_executable(runTests_storage test_storage.cpp)  
 add_executable(runTests_tensor test_tensor.cpp) 
 add_executable(runTests_serialization test_serialization.cpp) 
 add_executable(runTests_freelist memory/test_freelist.cpp) 
 add_executable(runTests_modules test_modules.cpp) 
+add_executable(runTests_resources test_resources.cpp) 
 
 foreach(
     test_target 
@@ -67,12 +67,12 @@ foreach(
     runTests_subtraction
     runTests_multiplication
     runTests_linear  
-    runTests_storage
-    runTests_types   
+    runTests_storage 
     runTests_tensor  
     runTests_serialization  
     runTests_freelist
     runTests_modules
+    runTests_resources
 )
     target_link_libraries(${test_target} 
         GTest::GTest 

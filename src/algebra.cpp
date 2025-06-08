@@ -2,9 +2,9 @@
 #include <cstring>
 
 #include "Tensor.hpp"
-#include "Algebra/Operations.hpp"
-#include "Algebra/Transformations.hpp"
-#include "Algebra/Functions.hpp"
+#include "Operations.hpp"
+#include "Transformations.hpp"
+#include "Functions.hpp"
 #include "Modules.hpp"
 
 #include "kernels/cpu/fun.h"
@@ -18,7 +18,7 @@
 #include "kernels/openblas/scal.h"
 #endif
 
-namespace ta {
+namespace symbol {
  
 void Negation::forward(const Tensor& operand, Tensor& result) const { 
 #ifdef OPENBLAS
@@ -203,7 +203,7 @@ void Tanh::forward(Tensor const& operand, Tensor& result) const {
     );
 }
 
-} // ta
+} // symbol
 
 void Embedding::forward(Tensor& result, Tensor const& lookup) const { 
     for(auto dimension = 0; dimension < lookup.size(); dimension++) { 

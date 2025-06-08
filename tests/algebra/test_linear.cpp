@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
 #include "Tensor.hpp" 
-#include "Algebra/Transformations.hpp"
+#include "Transformations.hpp"
 
 TEST(Test, MatrixlinearFloat) {
-    Tensor x({3,4}, float32);
-    Tensor y({5,4}, float32);
+    Tensor x(float32, {3,4});
+    Tensor y(float32, {5,4});
  
     x[0][0] = 4.f; x[0][1] = 2.f; x[0][2] = 6.f; x[0][3] = 0.f;
     x[1][0] = 1.f; x[1][1] = 3.f; x[1][2] = 5.f; x[1][3] = 7.f;
@@ -39,8 +39,8 @@ TEST(Test, MatrixlinearFloat) {
 
 
 TEST(Test, MatrixlinearTransposedMultiplier) {
-    Tensor x({3,4}, float32);
-    Tensor y({4,5}, float32);  
+    Tensor x(float32, {3,4});
+    Tensor y(float32, {4,5});  
     x[0][0] = 4.f; x[0][1] = 2.f; x[0][2] = 6.f; x[0][3] = 0.f;
     x[1][0] = 1.f; x[1][1] = 3.f; x[1][2] = 5.f; x[1][3] = 7.f;
     x[2][0] = 2.f; x[2][1] = 4.f; x[2][2] = 6.f; x[2][3] = 8.f;

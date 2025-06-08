@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// This file is part of Tannic, a A C++ tensor library.  .
 
 #ifndef TENSOR_HPP
 #define TENSOR_HPP
@@ -50,21 +49,21 @@ public:
     Tensor() = default;
  
     template<class Size>
-    Tensor(std::initializer_list<Size> sizes, type dtype, Allocator allocator = Host{})
+    Tensor(type dtype, std::initializer_list<Size> sizes, Allocator allocator = Host{})
     :   dtype_(dtype)
     ,   shape_(sizes.begin(), sizes.end()) 
     ,   strides_(shape_)
     ,   storage_(shape_.size(), dsizeof(dtype_), allocator)
     {}
      
-    Tensor(Shape const& shape, type dtype, Allocator allocator = Host{})
+    Tensor(type dtype, Shape const& shape, Allocator allocator = Host{})
     :   dtype_(dtype)
     ,   shape_(shape) 
     ,   strides_(shape_)
     ,   storage_(shape_.size(), dsizeof(dtype_), allocator)
     {}
 
-    Tensor(Shape&& shape, type dtype, Allocator allocator = Host{})
+    Tensor(type dtype, Shape&& shape, Allocator allocator = Host{})
     :   dtype_(dtype)
     ,   shape_(std::move(shape)) 
     ,   strides_(shape_)
@@ -151,19 +150,21 @@ public:
 
     template<typename T>
     void operator=(T value) {
-        assert(rank() == 0 && "Can't assign a scalar to an Array with more than one element.");
-        traits[dtype_].assign(address(), value);
+        assert(rank() == 0 && "Can't assign a scalar to a tensor with more than one element."); 
+        assert(sizeof(value) == dsizeof(dtype_)); // TODO: add dcast to avoid errors with T != dtype.
+        storage_.copy(address(), &value, sizeof(value));
     }
 
     template<typename T> 
     bool operator==(T value) const {
         assert(rank() == 0 && "Can't compare a scalar to an Array with more than one element.");
-        return traits[dtype_].compare(address(), value); 
+        assert(sizeof(value) == dsizeof(dtype_)); // TODO: add dcast to avoid errors with T != dtype.
+        return storage_.compare(address(), &value, sizeof(value));
     }
 
     template<typename T>
     T item() const {
-        return std::any_cast<T>(traits[dtype_].retrieve(address()));
+        return *reinterpret_cast<const T*>(address());
     }
  
     Tensor(const Storage& storage, Shape&& shape, Strides&& strides, type dtype, difference_type offset)
@@ -176,10 +177,10 @@ public:
 
     bool is_transposed() const {
         return strides_[-1] > strides_[-2] ? true : false;
-    }
+    } 
 
     private:
-    type dtype_ = any;
+    type dtype_;
     Shape shape_; 
     Strides strides_;
     Storage storage_;

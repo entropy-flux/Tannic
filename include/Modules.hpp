@@ -10,9 +10,7 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// This file is part of Tannic, a machine learning tensor library for C++.
+// limitations under the License. 
 
 #ifndef MODULE_HPP
 #define MODULE_HPP
@@ -55,17 +53,17 @@ private:
 class Embedding : public Module<Embedding> {
     public: 
     template<typename Lenght, typename Dimension, class Allocator = Host>
-    Embedding(Lenght lenght, Dimension dimension, type dtype, type itype = integer64, Allocator allocator = Allocator{})
-    :   dtype_(dtype)
-    ,   itype_(itype)
+    Embedding(type itype, type dtype, Lenght lenght, Dimension dimension, Allocator allocator = Allocator{})
+    :   itype_(itype)
+    ,   dtype_(dtype)
     ,   shape_(lenght, dimension)
     ,   storage_(shape_.size(), dsizeof(dtype_), allocator)
     {}
 
     template<class... Indexes>
     Tensor forward(Indexes... indexes) const {   
-        Tensor lookup(Shape(sizeof...(indexes)), itype_, storage_.allocator());
-        Tensor result(Shape(sizeof...(indexes), shape_.back()), dtype_, storage_.allocator()); 
+        Tensor lookup(itype_, Shape(sizeof...(indexes)), storage_.allocator());
+        Tensor result(dtype_, Shape(sizeof...(indexes), shape_.back()), storage_.allocator()); 
         forward(result, lookup);
         return result;
     }

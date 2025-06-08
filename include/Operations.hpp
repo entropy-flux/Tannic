@@ -12,18 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// This file is part of Tannic, a A C++ tensor library.  .
 
 #ifndef OPERATIONS_HPP
 #define OPERATIONS_HPP
  
 #include <vector>  
-#include "Algebra/Expressions.hpp"
+#include "Types.hpp"
+#include "Shape.hpp"
+#include "Expressions.hpp"
 
 class Tensor;
-
-namespace ta {
-
+  
 enum class Arity : uint8_t { Unary, Binary };
 template<class Operator, Arity arity>  struct Operation;
 
@@ -37,7 +36,7 @@ struct Operation<Operator, Arity::Unary> {
 
     template<class Tensor>
     Tensor forward(const Tensor& operand) const{
-        Tensor result(operand.shape(), operand.dtype());
+        Tensor result(operand.dtype(), operand.shape());
         static_cast<const Operator*>(this)->forward(operand, result); 
         return result;
     };
@@ -71,13 +70,14 @@ struct Operation<Operator, Arity::Binary> {
     }
     
     template<class Tensor>
-    Tensor forward(Tensor const& operand, Tensor const& cooperand) const { 
-        type dtype = promote(operand.dtype(), cooperand.dtype());  
-        Tensor result(operand.shape(), dtype);
+    Tensor forward(Tensor const& operand, Tensor const& cooperand) const {  
+        Tensor result(promote(operand.dtype(), cooperand.dtype()), broadcast(operand.shape(), cooperand.shape()));
         static_cast<const Operator*>(this)->forward(operand, cooperand, result); 
         return result;
     }
 };
+
+namespace symbol {
  
 struct Negation : public Operation<Negation, Arity::Unary> { 
     using Operation<Negation, Arity::Unary>::forward; 
@@ -99,27 +99,26 @@ struct Multiplication : Operation<Multiplication, Arity::Binary>  {
     void forward(Tensor const&, Tensor const&, Tensor&) const; 
 };
 
-} // ta
- 
+} // symbol
   
 template<class Operand>
 constexpr auto operator-(Operand const & operand) {
-    return Unary<ta::Negation, Operand>{{}, operand};
+    return Unary<symbol::Negation, Operand>{{}, operand};
 }
 
 template<class Augend, class Addend>
 constexpr auto operator+(Augend const& augend, Addend const& addend) {
-    return Binary<ta::Addition, Augend, Addend>{{}, augend, addend};
+    return Binary<symbol::Addition, Augend, Addend>{{}, augend, addend};
 } 
 
 template<class Subtrahend , class Minuend>
 constexpr auto operator-(Subtrahend const& subtrahend, Minuend const& minuend) {
-    return Binary<ta::Subtraction, Subtrahend, Minuend>{{}, subtrahend, minuend};
+    return Binary<symbol::Subtraction, Subtrahend, Minuend>{{}, subtrahend, minuend};
 } 
 
 template<class Multiplicand, class Multiplier>
 constexpr auto operator*(Multiplicand const& multiplicand, Multiplier const& multiplier) {
-    return Binary<ta::Multiplication, Multiplicand, Multiplier>{{}, multiplicand, multiplier};
+    return Binary<symbol::Multiplication, Multiplicand, Multiplier>{{}, multiplicand, multiplier};
 }  
 
 #endif // OPERATIONS_HPP

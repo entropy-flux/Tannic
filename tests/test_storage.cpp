@@ -3,7 +3,7 @@
 #include "Storage.hpp"
 
 TEST(Test, Copy) { 
-    Storage storage(10, float32);
+    Storage storage(10, dsizeof(float32));
     ASSERT_EQ(storage.references(), 1);
 
     float* stored = static_cast<float*>(storage.address()); 
@@ -26,7 +26,7 @@ TEST(Test, Copy) {
 }
 
 TEST(Test, Move) { 
-    Storage storage(10, float32);
+    Storage storage(10, dsizeof(float32));
     ASSERT_EQ(storage.references(), 1);
     float* stored = static_cast<float*>(storage.address()); 
     for (int index = 0; index < 10; ++index) {
@@ -42,13 +42,13 @@ TEST(Test, Move) {
 }
 
 TEST(Test, SelfAssignment) {
-    Storage storage(10, float32);
+    Storage storage(10, dsizeof(float32));
     storage = storage; // should be a no-op
     ASSERT_EQ(storage.references(), 1);
 }
 
 TEST(Test, MultipleCopies) {
-    Storage storage(10, float32);
+    Storage storage(10, dsizeof(float32));
     {
         Storage b = storage;
         Storage c = storage;

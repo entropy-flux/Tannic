@@ -12,14 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// This file is part of Tannic, a A C++ tensor library.  .
 
 #ifndef EXPRESSIONS_HPP
 #define EXPRESSIONS_HPP
-
-#include "Types.hpp"
-#include "Shape.hpp"   
-
+ 
 template<typename T>
 struct Trait {
     using Reference = T;

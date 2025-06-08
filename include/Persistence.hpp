@@ -10,15 +10,13 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// This file is part of Tannic, a machine learning tensor library for C++.
+// limitations under the License. 
 
 #ifndef PERSISTENCE_HPP
 #define PERSISTENCE_HPP
 
 #include <fstream>
-#include "IO/Blobs.hpp"
+#include "Blobs.hpp"
 
 inline void write(const Blob& blob, const std::string& path, uint32_t alignment = 0 ) {
     std::ofstream stream(path, std::ios::binary);

@@ -1,8 +1,8 @@
 #include <gtest/gtest.h> 
-#include "Algebra/Operations.hpp"
-#include "Algebra/Transformations.hpp"
+#include "Operations.hpp"
+#include "Transformations.hpp"
 
-using namespace ta;
+using namespace symbol;
 
 TEST(Test, BroadcastSingleShapeReturnsSameShape) {
     Shape shape{2, 3, 4};

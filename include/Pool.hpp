@@ -12,13 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// This file is part of Tannic, a A C++ tensor library.  .
 
 #ifndef POOL_HPP
 #define POOL_HPP
 #include <type_traits>
-#include "Memory/Resources.hpp"
-#include "Memory/View.hpp"
+#include "Resources.hpp" 
 
 template<typename Allocator>
 concept Source = std::is_base_of_v<Resource, Allocator>;
@@ -51,9 +49,28 @@ public:
     
     Pool(const Pool&) = delete; 
     Pool& operator=(const Pool&) = delete;
-    
-    Pool(Pool&&) = delete;
-    Pool& operator=(Pool&&) = delete;
+     
+    Pool(Pool&& other) noexcept
+        : size_(std::exchange(other.size_, 0))
+        , buffer_(std::exchange(other.buffer_, nullptr))
+        , resource_(std::move(other.resource_))
+        , allocator_(std::move(other.allocator_)) {}
+
+        
+    Pool& operator=(Pool&& other) noexcept {
+        if (this != &other) {
+            if (buffer_) {
+                resource_.deallocate(buffer_, size_);
+            }
+
+            size_ = std::exchange(other.size_, 0);
+            buffer_ = std::exchange(other.buffer_, nullptr);
+            resource_ = std::move(other.resource_);
+            allocator_ = std::move(other.allocator_);
+        }
+        return *this;
+    }
+
     
 private:
     std::size_t size_ = 0;
