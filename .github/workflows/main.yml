@@ -25,22 +25,49 @@ jobs:
         if: runner.os != 'Windows'
         run: rm -rf build
         shell: bash
+ 
+      - name: Create build directory (Windows)
+        if: runner.os == 'Windows'
+        run: New-Item -ItemType Directory -Force -Path build
+        shell: powershell
 
-      - name: Create build directory
-        run: cmake -E make_directory ${{ github.workspace }}/build
+      - name: Create build directory (Linux/macOS)
+        if: runner.os != 'Windows'
+        run: mkdir -p build
         shell: bash
+ 
+      - name: Configure (Windows)
+        if: runner.os == 'Windows'
+        working-directory: build
+        shell: powershell
+        run: cmake $Env:GITHUB_WORKSPACE
 
-      - name: Configure
+      - name: Configure (Linux/macOS)
+        if: runner.os != 'Windows'
+        working-directory: build
         shell: bash
-        working-directory: ${{ github.workspace }}/build
         run: cmake $GITHUB_WORKSPACE
-
-      - name: Build
-        shell: bash
-        working-directory: ${{ github.workspace }}/build
+ 
+      - name: Build (Windows)
+        if: runner.os == 'Windows'
+        working-directory: build
+        shell: powershell
         run: cmake --build .
 
-      - name: Test
+      - name: Build (Linux/macOS)
+        if: runner.os != 'Windows'
+        working-directory: build
         shell: bash
-        working-directory: ${{ github.workspace }}/build
+        run: cmake --build .
+ 
+      - name: Test (Windows)
+        if: runner.os == 'Windows'
+        working-directory: build
+        shell: powershell
+        run: ctest . --build-config Debug --rerun-failed --output-on-failure
+
+      - name: Test (Linux/macOS)
+        if: runner.os != 'Windows'
+        working-directory: build
+        shell: bash
         run: ctest . --build-config Debug --rerun-failed --output-on-failure
