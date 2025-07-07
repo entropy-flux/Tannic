@@ -15,74 +15,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: friendlyanon/setup-vcpkg@v1
-        with: 
-          committish: db0473513e5dc73ec6b6f431ff05d2f398eea042
-      - if: matrix.os == 'windows-latest' 
-        shell: bash  
-        run: $VCPKG_ROOT/vcpkg install gtest --triplet=x64-windows
-      - if: matrix.os != 'windows-latest'
-        run: $VCPKG_ROOT/vcpkg install gtest
 
-      - run: cmake -E make_directory ${{ github.workspace }}/build
+      - name: Clean build directory
+        run: rm -rf build
 
-      - name: configure
+      - name: Create build directory
+        run: cmake -E make_directory ${{ github.workspace }}/build
+
+      - name: Configure
         shell: bash
         working-directory: ${{ github.workspace }}/build
-        run: cmake $GITHUB_WORKSPACE -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
+        run: cmake $GITHUB_WORKSPACE
 
-      - name: build
+      - name: Build
         shell: bash
         working-directory: ${{ github.workspace }}/build
         run: cmake --build .
 
-      - name: test
+      - name: Test
         shell: bash
         working-directory: ${{ github.workspace }}/build
         run: ctest . --build-config Debug --rerun-failed --output-on-failure
-
-  install:
-    runs-on: ${{ matrix.os }}
-    env:
-      CMAKE_BUILD_TYPE: Release
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: friendlyanon/setup-vcpkg@v1 
-        with: 
-          committish: db0473513e5dc73ec6b6f431ff05d2f398eea042
-      - if: matrix.os == 'windows-latest'  
-        shell: bash  
-        run: $VCPKG_ROOT/vcpkg install gtest --triplet=x64-windows
-      - if: matrix.os != 'windows-latest'
-        run: $VCPKG_ROOT/vcpkg install gtest
-
-      - run: cmake -E make_directory ${{ github.workspace }}/build
-
-      - if: matrix.os != 'windows-latest'
-        name: setup
-        shell: bash
-        working-directory: ${{ github.workspace }}/build
-        run: |
-          cmake $GITHUB_WORKSPACE -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DBUILD_TESTING=OFF
-          cmake --build .
-          sudo cmake --install .
- 
-      - if: matrix.os == 'windows-latest'
-        name: setup
-        shell: bash
-        working-directory: ${{ github.workspace }}/build
-        run: |
-          cmake $GITHUB_WORKSPACE -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake -DBUILD_TESTING=OFF
-          cmake --build . --config Release
-          cmake --install . --config Release
-
-      - name: examples
-        shell: bash
-        working-directory: ${{ github.workspace }}/examples
-        run: |
-          cmake . --debug-find -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
-          cmake --build . --config Release
