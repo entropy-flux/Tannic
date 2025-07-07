@@ -15,12 +15,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+ 
+      - name: Clean build directory (Windows)
+        if: runner.os == 'Windows'
+        run: Remove-Item -Recurse -Force build
+        shell: powershell
 
-      - name: Clean build directory
+      - name: Clean build directory (Linux/macOS)
+        if: runner.os != 'Windows'
         run: rm -rf build
+        shell: bash
 
       - name: Create build directory
         run: cmake -E make_directory ${{ github.workspace }}/build
+        shell: bash
 
       - name: Configure
         shell: bash
