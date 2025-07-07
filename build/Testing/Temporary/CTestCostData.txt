@@ -1,0 +1,21 @@
+TestUnaryOps.Negation 1 0.00464473
+TestUnaryOps.Log 1 0.00413203
+TestUnaryOps.Exp 1 0.00432618
+TestUnaryOps.Sqrt 1 0.0042588
+TestUnaryOps.Abs 1 0.00429844
+TestUnaryOps.Sin 1 0.00440435
+TestUnaryOps.Cos 1 0.00474645
+TestUnaryOps.Tan 1 0.0044443
+TestUnaryOps.Sinh 1 0.00441919
+TestUnaryOps.Cosh 1 0.00446239
+TestUnaryOps.Tanh 1 0.00440378
+MatmulTests.Basic 1 0.00457959
+MatmulTests.FirstTransposed 1 0.00453281
+MatmulTests.SecondTransposed 1 0.00447982
+MatmulTests.BothTransposed 1 0.00473374
+MatmulTests.Batched 1 0.00485529
+MatmulTests.Rank4_SecondTransposed 1 0.00592841
+TestBinaryOps.Addition 1 0.00475069
+TestBinaryOps.Multiplication 1 0.00483997
+TestBinaryOps.Subtraction 1 0.00477671
+---

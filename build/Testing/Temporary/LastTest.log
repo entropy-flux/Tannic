@@ -1,0 +1,543 @@
+Start testing: Jul 07 01:43 -03
+----------------------------------------------------------
+1/20 Testing: TestUnaryOps.Negation
+1/20 Test: TestUnaryOps.Negation
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Negation" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Negation" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Negation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Negation
+[       OK ] TestUnaryOps.Negation (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Negation" end time: Jul 07 01:43 -03
+"TestUnaryOps.Negation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/20 Testing: TestUnaryOps.Log
+2/20 Test: TestUnaryOps.Log
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Log" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Log" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Log
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Log
+[       OK ] TestUnaryOps.Log (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Log" end time: Jul 07 01:43 -03
+"TestUnaryOps.Log" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/20 Testing: TestUnaryOps.Exp
+3/20 Test: TestUnaryOps.Exp
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Exp" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Exp" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Exp
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Exp
+[       OK ] TestUnaryOps.Exp (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Exp" end time: Jul 07 01:43 -03
+"TestUnaryOps.Exp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/20 Testing: TestUnaryOps.Sqrt
+4/20 Test: TestUnaryOps.Sqrt
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Sqrt" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Sqrt" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Sqrt
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Sqrt
+[       OK ] TestUnaryOps.Sqrt (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Sqrt" end time: Jul 07 01:43 -03
+"TestUnaryOps.Sqrt" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/20 Testing: TestUnaryOps.Abs
+5/20 Test: TestUnaryOps.Abs
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Abs" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Abs" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Abs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Abs
+[       OK ] TestUnaryOps.Abs (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Abs" end time: Jul 07 01:43 -03
+"TestUnaryOps.Abs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/20 Testing: TestUnaryOps.Sin
+6/20 Test: TestUnaryOps.Sin
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Sin" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Sin" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Sin
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Sin
+[       OK ] TestUnaryOps.Sin (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Sin" end time: Jul 07 01:43 -03
+"TestUnaryOps.Sin" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/20 Testing: TestUnaryOps.Cos
+7/20 Test: TestUnaryOps.Cos
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Cos" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Cos" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Cos
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Cos
+[       OK ] TestUnaryOps.Cos (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Cos" end time: Jul 07 01:43 -03
+"TestUnaryOps.Cos" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/20 Testing: TestUnaryOps.Tan
+8/20 Test: TestUnaryOps.Tan
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Tan" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Tan" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Tan
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Tan
+[       OK ] TestUnaryOps.Tan (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Tan" end time: Jul 07 01:43 -03
+"TestUnaryOps.Tan" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/20 Testing: TestUnaryOps.Sinh
+9/20 Test: TestUnaryOps.Sinh
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Sinh" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Sinh" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Sinh
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Sinh
+[       OK ] TestUnaryOps.Sinh (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Sinh" end time: Jul 07 01:43 -03
+"TestUnaryOps.Sinh" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/20 Testing: TestUnaryOps.Cosh
+10/20 Test: TestUnaryOps.Cosh
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Cosh" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Cosh" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Cosh
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Cosh
+[       OK ] TestUnaryOps.Cosh (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Cosh" end time: Jul 07 01:43 -03
+"TestUnaryOps.Cosh" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/20 Testing: TestUnaryOps.Tanh
+11/20 Test: TestUnaryOps.Tanh
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestUnaryOps.Tanh" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestUnaryOps.Tanh" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestUnaryOps.Tanh
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUnaryOps
+[ RUN      ] TestUnaryOps.Tanh
+[       OK ] TestUnaryOps.Tanh (0 ms)
+[----------] 1 test from TestUnaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestUnaryOps.Tanh" end time: Jul 07 01:43 -03
+"TestUnaryOps.Tanh" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/20 Testing: MatmulTests.Basic
+12/20 Test: MatmulTests.Basic
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=MatmulTests.Basic" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"MatmulTests.Basic" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = MatmulTests.Basic
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MatmulTests
+[ RUN      ] MatmulTests.Basic
+[       OK ] MatmulTests.Basic (0 ms)
+[----------] 1 test from MatmulTests (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"MatmulTests.Basic" end time: Jul 07 01:43 -03
+"MatmulTests.Basic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/20 Testing: MatmulTests.FirstTransposed
+13/20 Test: MatmulTests.FirstTransposed
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=MatmulTests.FirstTransposed" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"MatmulTests.FirstTransposed" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = MatmulTests.FirstTransposed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MatmulTests
+[ RUN      ] MatmulTests.FirstTransposed
+[       OK ] MatmulTests.FirstTransposed (0 ms)
+[----------] 1 test from MatmulTests (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"MatmulTests.FirstTransposed" end time: Jul 07 01:43 -03
+"MatmulTests.FirstTransposed" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/20 Testing: MatmulTests.SecondTransposed
+14/20 Test: MatmulTests.SecondTransposed
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=MatmulTests.SecondTransposed" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"MatmulTests.SecondTransposed" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = MatmulTests.SecondTransposed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MatmulTests
+[ RUN      ] MatmulTests.SecondTransposed
+[       OK ] MatmulTests.SecondTransposed (0 ms)
+[----------] 1 test from MatmulTests (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"MatmulTests.SecondTransposed" end time: Jul 07 01:43 -03
+"MatmulTests.SecondTransposed" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/20 Testing: MatmulTests.BothTransposed
+15/20 Test: MatmulTests.BothTransposed
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=MatmulTests.BothTransposed" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"MatmulTests.BothTransposed" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = MatmulTests.BothTransposed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MatmulTests
+[ RUN      ] MatmulTests.BothTransposed
+[       OK ] MatmulTests.BothTransposed (0 ms)
+[----------] 1 test from MatmulTests (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"MatmulTests.BothTransposed" end time: Jul 07 01:43 -03
+"MatmulTests.BothTransposed" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/20 Testing: MatmulTests.Batched
+16/20 Test: MatmulTests.Batched
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=MatmulTests.Batched" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"MatmulTests.Batched" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = MatmulTests.Batched
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MatmulTests
+[ RUN      ] MatmulTests.Batched
+[       OK ] MatmulTests.Batched (0 ms)
+[----------] 1 test from MatmulTests (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"MatmulTests.Batched" end time: Jul 07 01:43 -03
+"MatmulTests.Batched" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/20 Testing: MatmulTests.Rank4_SecondTransposed
+17/20 Test: MatmulTests.Rank4_SecondTransposed
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=MatmulTests.Rank4_SecondTransposed" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"MatmulTests.Rank4_SecondTransposed" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = MatmulTests.Rank4_SecondTransposed
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MatmulTests
+[ RUN      ] MatmulTests.Rank4_SecondTransposed
+[       OK ] MatmulTests.Rank4_SecondTransposed (0 ms)
+[----------] 1 test from MatmulTests (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"MatmulTests.Rank4_SecondTransposed" end time: Jul 07 01:43 -03
+"MatmulTests.Rank4_SecondTransposed" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/20 Testing: TestBinaryOps.Addition
+18/20 Test: TestBinaryOps.Addition
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestBinaryOps.Addition" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestBinaryOps.Addition" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestBinaryOps.Addition
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestBinaryOps
+[ RUN      ] TestBinaryOps.Addition
+[       OK ] TestBinaryOps.Addition (0 ms)
+[----------] 1 test from TestBinaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestBinaryOps.Addition" end time: Jul 07 01:43 -03
+"TestBinaryOps.Addition" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/20 Testing: TestBinaryOps.Multiplication
+19/20 Test: TestBinaryOps.Multiplication
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestBinaryOps.Multiplication" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestBinaryOps.Multiplication" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestBinaryOps.Multiplication
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestBinaryOps
+[ RUN      ] TestBinaryOps.Multiplication
+[       OK ] TestBinaryOps.Multiplication (0 ms)
+[----------] 1 test from TestBinaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestBinaryOps.Multiplication" end time: Jul 07 01:43 -03
+"TestBinaryOps.Multiplication" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/20 Testing: TestBinaryOps.Subtraction
+20/20 Test: TestBinaryOps.Subtraction
+Command: "/home/eric/tensor-library/build/tests" "--gtest_filter=TestBinaryOps.Subtraction" "--gtest_also_run_disabled_tests"
+Directory: /home/eric/tensor-library/build
+"TestBinaryOps.Subtraction" start time: Jul 07 01:43 -03
+Output:
+----------------------------------------------------------
+Running main() from ./googletest/src/gtest_main.cc
+Note: Google Test filter = TestBinaryOps.Subtraction
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestBinaryOps
+[ RUN      ] TestBinaryOps.Subtraction
+[       OK ] TestBinaryOps.Subtraction (0 ms)
+[----------] 1 test from TestBinaryOps (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestBinaryOps.Subtraction" end time: Jul 07 01:43 -03
+"TestBinaryOps.Subtraction" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jul 07 01:43 -03
