@@ -1,10 +1,10 @@
 #include <cstddef>
 #include <type_traits>
+#include <vector>
 
 #include "cpu/matmul.hpp"
-  
+
 namespace cpu {
- 
 
 template <typename TA, typename TB, typename TC>
 void gemm(
@@ -32,52 +32,11 @@ void gemm(
         }
     }
 }
-
-#ifdef OPENBLAS
-
-#include <cblas.h>
-
-void gemm(
-    const float* A, const float* B, float* C,
-    size_t M, size_t N, size_t K,
-    const size_t*, const size_t*, const size_t*,
-    bool A_transposed, bool B_transposed,
-    size_t, size_t, size_t
-) {
-    cblas_sgemm(
-        CblasRowMajor,
-        A_transposed ? CblasTrans : CblasNoTrans,
-        B_transposed ? CblasTrans : CblasNoTrans,
-        static_cast<int>(M), static_cast<int>(N), static_cast<int>(K),
-        1.0f, A,
-        A_transposed ? static_cast<int>(M) : static_cast<int>(K),
-        B,
-        B_transposed ? static_cast<int>(K) : static_cast<int>(N),
-        0.0f, C, static_cast<int>(N)
-    );
-}
-
-void gemm(
-    const double* A, const double* B, double* C,
-    size_t M, size_t N, size_t K,
-    const size_t*, const size_t*, const size_t*,
-    bool A_transposed, bool B_transposed,
-    size_t, size_t, size_t
-) {
-    cblas_dgemm(
-        CblasRowMajor,
-        A_transposed ? CblasTrans : CblasNoTrans,
-        B_transposed ? CblasTrans : CblasNoTrans,
-        static_cast<int>(M), static_cast<int>(N), static_cast<int>(K),
-        1.0, 
-        A, A_transposed ? static_cast<int>(M) : static_cast<int>(K),
-        B, B_transposed ? static_cast<int>(K) : static_cast<int>(N),
-        0.0, 
-        C, static_cast<int>(N));
-}
-
-#endif
  
+#ifdef OPENBLAS
+#include <cblas.h>
+ 
+#endif
 
 inline void unravel_index(size_t idx, const size_t* shape, size_t rank, size_t* out_indices) {
     for (int i = int(rank) - 1; i >= 0; --i) {
@@ -94,7 +53,6 @@ inline size_t compute_batch_offset(const tensor_t* t, const size_t* idx, size_t 
     }
     return offset;
 }
- 
 
 template <typename TA, typename TB, typename TC>
 void matmul_op(const tensor_t* A, const tensor_t* B, tensor_t* C, bool A_transposed, bool B_transposed) {
@@ -112,26 +70,26 @@ void matmul_op(const tensor_t* A, const tensor_t* B, tensor_t* C, bool A_transpo
     for (size_t i = 0; i < batch_rank; ++i)
         batch_size *= C->shape[i];
 
-    size_t c_batch_shape[batch_rank > 0 ? batch_rank : 1];
+    std::vector<size_t> c_batch_shape(batch_rank);
     for (size_t i = 0; i < batch_rank; ++i)
         c_batch_shape[i] = C->shape[i];
 
-    size_t a_idx[batch_rank > 0 ? batch_rank : 1] = {0};
-    size_t b_idx[batch_rank > 0 ? batch_rank : 1] = {0};
-    size_t c_idx[batch_rank > 0 ? batch_rank : 1] = {0};
+    std::vector<size_t> a_idx(batch_rank, 0);
+    std::vector<size_t> b_idx(batch_rank, 0);
+    std::vector<size_t> c_idx(batch_rank, 0);
 
     for (size_t batch_i = 0; batch_i < batch_size; ++batch_i) {
         if (batch_rank > 0)
-            unravel_index(batch_i, c_batch_shape, batch_rank, c_idx);
+            unravel_index(batch_i, c_batch_shape.data(), batch_rank, c_idx.data());
 
         for (size_t i = 0; i < batch_rank; ++i) {
             a_idx[i] = (A->rank > 2 && A->shape[i] == 1) ? 0 : c_idx[i];
             b_idx[i] = (B->rank > 2 && B->shape[i] == 1) ? 0 : c_idx[i];
         }
 
-        size_t offset_A = compute_batch_offset(A, a_idx, batch_rank);
-        size_t offset_B = compute_batch_offset(B, b_idx, batch_rank);
-        size_t offset_C = compute_batch_offset(C, c_idx, batch_rank);
+        size_t offset_A = compute_batch_offset(A, a_idx.data(), batch_rank);
+        size_t offset_B = compute_batch_offset(B, b_idx.data(), batch_rank);
+        size_t offset_C = compute_batch_offset(C, c_idx.data(), batch_rank);
 
         const TA* A_batch = A_data + offset_A;
         const TB* B_batch = B_data + offset_B;
