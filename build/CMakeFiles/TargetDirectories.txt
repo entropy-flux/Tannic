@@ -1,4 +1,4 @@
-/home/eric/tensor-library/build/CMakeFiles/tensorlib.dir
+/home/eric/tensor-library/build/CMakeFiles/tannic.dir
 /home/eric/tensor-library/build/CMakeFiles/tests.dir
 /home/eric/tensor-library/build/CMakeFiles/test.dir
 /home/eric/tensor-library/build/CMakeFiles/edit_cache.dir

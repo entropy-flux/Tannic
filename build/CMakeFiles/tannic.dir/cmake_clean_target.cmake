@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "libtensorlib.a"
+  "libtannic.a"
 )

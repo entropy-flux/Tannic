@@ -1,2 +1,0 @@
-/usr/bin/ar qc libtensorlib.a CMakeFiles/tensorlib.dir/src/cpu/binaryops.cpp.o CMakeFiles/tensorlib.dir/src/cpu/matmul.cpp.o CMakeFiles/tensorlib.dir/src/cpu/unaryops.cpp.o
-/usr/bin/ranlib libtensorlib.a

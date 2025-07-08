@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(TENSORLIB LANGUAGES CXX)
+project(TANNIC LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,15 +16,13 @@ include_directories(include src)
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
     src/*.cpp
 )
-
-# Check if CUDA compiler is available, enable if yes
+ 
 include(CheckLanguage)
 check_language(CUDA)
 if(CMAKE_CUDA_COMPILER)
     enable_language(CUDA)
     set(CUDA_ENABLED TRUE)
-    message(STATUS "CUDA enabled.")
-    # Add CUDA source files only if CUDA enabled
+    message(STATUS "CUDA enabled.") 
     file(GLOB_RECURSE CUDA_SOURCES CONFIGURE_DEPENDS
         src/*.cu
     )
@@ -33,10 +31,10 @@ else()
     message(STATUS "CUDA not found, building without CUDA.")
 endif()
 
-add_library(tensorlib STATIC ${SOURCES})
+add_library(tannic STATIC ${SOURCES})
 
 if(CUDA_ENABLED)
-    set_target_properties(tensorlib PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+    set_target_properties(tannic PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 endif()
 
 include(FetchContent)
@@ -52,10 +50,11 @@ FetchContent_MakeAvailable(googletest)
 file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS
     tests/*.cpp
     tests/cpu/*.cpp
+    tests/cuda/*.cpp
 )
 
 add_executable(tests ${TEST_SOURCES})
-target_link_libraries(tests PRIVATE tensorlib GTest::gtest_main)
+target_link_libraries(tests PRIVATE tannic GTest::gtest_main)
 
 target_include_directories(tests PRIVATE include)
 

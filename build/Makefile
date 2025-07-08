@@ -127,17 +127,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named tensorlib
+# Target rules for targets named tannic
 
 # Build rule for target.
-tensorlib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tensorlib
-.PHONY : tensorlib
+tannic: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tannic
+.PHONY : tannic
 
 # fast build rule for target.
-tensorlib/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tensorlib.dir/build.make CMakeFiles/tensorlib.dir/build
-.PHONY : tensorlib/fast
+tannic/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/build
+.PHONY : tannic/fast
 
 #=============================================================================
 # Target rules for targets named tests
@@ -152,77 +152,125 @@ tests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
 .PHONY : tests/fast
 
-src/cpu/binaryops.o: src/cpu/binaryops.cpp.o
-.PHONY : src/cpu/binaryops.o
+src/cpu/binary-ops.o: src/cpu/binary-ops.cpp.o
+.PHONY : src/cpu/binary-ops.o
 
 # target to build an object file
-src/cpu/binaryops.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tensorlib.dir/build.make CMakeFiles/tensorlib.dir/src/cpu/binaryops.cpp.o
-.PHONY : src/cpu/binaryops.cpp.o
+src/cpu/binary-ops.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cpu/binary-ops.cpp.o
+.PHONY : src/cpu/binary-ops.cpp.o
 
-src/cpu/binaryops.i: src/cpu/binaryops.cpp.i
-.PHONY : src/cpu/binaryops.i
+src/cpu/binary-ops.i: src/cpu/binary-ops.cpp.i
+.PHONY : src/cpu/binary-ops.i
 
 # target to preprocess a source file
-src/cpu/binaryops.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tensorlib.dir/build.make CMakeFiles/tensorlib.dir/src/cpu/binaryops.cpp.i
-.PHONY : src/cpu/binaryops.cpp.i
+src/cpu/binary-ops.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cpu/binary-ops.cpp.i
+.PHONY : src/cpu/binary-ops.cpp.i
 
-src/cpu/binaryops.s: src/cpu/binaryops.cpp.s
-.PHONY : src/cpu/binaryops.s
+src/cpu/binary-ops.s: src/cpu/binary-ops.cpp.s
+.PHONY : src/cpu/binary-ops.s
 
 # target to generate assembly for a file
-src/cpu/binaryops.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tensorlib.dir/build.make CMakeFiles/tensorlib.dir/src/cpu/binaryops.cpp.s
-.PHONY : src/cpu/binaryops.cpp.s
+src/cpu/binary-ops.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cpu/binary-ops.cpp.s
+.PHONY : src/cpu/binary-ops.cpp.s
 
-src/cpu/matmul.o: src/cpu/matmul.cpp.o
-.PHONY : src/cpu/matmul.o
+src/cpu/matmul-op.o: src/cpu/matmul-op.cpp.o
+.PHONY : src/cpu/matmul-op.o
 
 # target to build an object file
-src/cpu/matmul.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tensorlib.dir/build.make CMakeFiles/tensorlib.dir/src/cpu/matmul.cpp.o
-.PHONY : src/cpu/matmul.cpp.o
+src/cpu/matmul-op.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cpu/matmul-op.cpp.o
+.PHONY : src/cpu/matmul-op.cpp.o
 
-src/cpu/matmul.i: src/cpu/matmul.cpp.i
-.PHONY : src/cpu/matmul.i
+src/cpu/matmul-op.i: src/cpu/matmul-op.cpp.i
+.PHONY : src/cpu/matmul-op.i
 
 # target to preprocess a source file
-src/cpu/matmul.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tensorlib.dir/build.make CMakeFiles/tensorlib.dir/src/cpu/matmul.cpp.i
-.PHONY : src/cpu/matmul.cpp.i
+src/cpu/matmul-op.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cpu/matmul-op.cpp.i
+.PHONY : src/cpu/matmul-op.cpp.i
 
-src/cpu/matmul.s: src/cpu/matmul.cpp.s
-.PHONY : src/cpu/matmul.s
+src/cpu/matmul-op.s: src/cpu/matmul-op.cpp.s
+.PHONY : src/cpu/matmul-op.s
 
 # target to generate assembly for a file
-src/cpu/matmul.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tensorlib.dir/build.make CMakeFiles/tensorlib.dir/src/cpu/matmul.cpp.s
-.PHONY : src/cpu/matmul.cpp.s
+src/cpu/matmul-op.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cpu/matmul-op.cpp.s
+.PHONY : src/cpu/matmul-op.cpp.s
 
-src/cpu/unaryops.o: src/cpu/unaryops.cpp.o
-.PHONY : src/cpu/unaryops.o
+src/cpu/unary-ops.o: src/cpu/unary-ops.cpp.o
+.PHONY : src/cpu/unary-ops.o
 
 # target to build an object file
-src/cpu/unaryops.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tensorlib.dir/build.make CMakeFiles/tensorlib.dir/src/cpu/unaryops.cpp.o
-.PHONY : src/cpu/unaryops.cpp.o
+src/cpu/unary-ops.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cpu/unary-ops.cpp.o
+.PHONY : src/cpu/unary-ops.cpp.o
 
-src/cpu/unaryops.i: src/cpu/unaryops.cpp.i
-.PHONY : src/cpu/unaryops.i
+src/cpu/unary-ops.i: src/cpu/unary-ops.cpp.i
+.PHONY : src/cpu/unary-ops.i
 
 # target to preprocess a source file
-src/cpu/unaryops.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tensorlib.dir/build.make CMakeFiles/tensorlib.dir/src/cpu/unaryops.cpp.i
-.PHONY : src/cpu/unaryops.cpp.i
+src/cpu/unary-ops.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cpu/unary-ops.cpp.i
+.PHONY : src/cpu/unary-ops.cpp.i
 
-src/cpu/unaryops.s: src/cpu/unaryops.cpp.s
-.PHONY : src/cpu/unaryops.s
+src/cpu/unary-ops.s: src/cpu/unary-ops.cpp.s
+.PHONY : src/cpu/unary-ops.s
 
 # target to generate assembly for a file
-src/cpu/unaryops.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tensorlib.dir/build.make CMakeFiles/tensorlib.dir/src/cpu/unaryops.cpp.s
-.PHONY : src/cpu/unaryops.cpp.s
+src/cpu/unary-ops.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cpu/unary-ops.cpp.s
+.PHONY : src/cpu/unary-ops.cpp.s
+
+src/cuda/binary-ops.o: src/cuda/binary-ops.cu.o
+.PHONY : src/cuda/binary-ops.o
+
+# target to build an object file
+src/cuda/binary-ops.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.o
+.PHONY : src/cuda/binary-ops.cu.o
+
+src/cuda/binary-ops.i: src/cuda/binary-ops.cu.i
+.PHONY : src/cuda/binary-ops.i
+
+# target to preprocess a source file
+src/cuda/binary-ops.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.i
+.PHONY : src/cuda/binary-ops.cu.i
+
+src/cuda/binary-ops.s: src/cuda/binary-ops.cu.s
+.PHONY : src/cuda/binary-ops.s
+
+# target to generate assembly for a file
+src/cuda/binary-ops.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.s
+.PHONY : src/cuda/binary-ops.cu.s
+
+src/cuda/unary-ops.o: src/cuda/unary-ops.cu.o
+.PHONY : src/cuda/unary-ops.o
+
+# target to build an object file
+src/cuda/unary-ops.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o
+.PHONY : src/cuda/unary-ops.cu.o
+
+src/cuda/unary-ops.i: src/cuda/unary-ops.cu.i
+.PHONY : src/cuda/unary-ops.i
+
+# target to preprocess a source file
+src/cuda/unary-ops.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.i
+.PHONY : src/cuda/unary-ops.cu.i
+
+src/cuda/unary-ops.s: src/cuda/unary-ops.cu.s
+.PHONY : src/cuda/unary-ops.s
+
+# target to generate assembly for a file
+src/cuda/unary-ops.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.s
+.PHONY : src/cuda/unary-ops.cu.s
 
 tests/cpu/test_functions.o: tests/cpu/test_functions.cpp.o
 .PHONY : tests/cpu/test_functions.o
@@ -296,6 +344,30 @@ tests/cpu/test_ops.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.s
 .PHONY : tests/cpu/test_ops.cpp.s
 
+tests/cuda/test_ops.o: tests/cuda/test_ops.cpp.o
+.PHONY : tests/cuda/test_ops.o
+
+# target to build an object file
+tests/cuda/test_ops.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o
+.PHONY : tests/cuda/test_ops.cpp.o
+
+tests/cuda/test_ops.i: tests/cuda/test_ops.cpp.i
+.PHONY : tests/cuda/test_ops.i
+
+# target to preprocess a source file
+tests/cuda/test_ops.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.i
+.PHONY : tests/cuda/test_ops.cpp.i
+
+tests/cuda/test_ops.s: tests/cuda/test_ops.cpp.s
+.PHONY : tests/cuda/test_ops.s
+
+# target to generate assembly for a file
+tests/cuda/test_ops.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.s
+.PHONY : tests/cuda/test_ops.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -305,17 +377,23 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... tensorlib"
+	@echo "... tannic"
 	@echo "... tests"
-	@echo "... src/cpu/binaryops.o"
-	@echo "... src/cpu/binaryops.i"
-	@echo "... src/cpu/binaryops.s"
-	@echo "... src/cpu/matmul.o"
-	@echo "... src/cpu/matmul.i"
-	@echo "... src/cpu/matmul.s"
-	@echo "... src/cpu/unaryops.o"
-	@echo "... src/cpu/unaryops.i"
-	@echo "... src/cpu/unaryops.s"
+	@echo "... src/cpu/binary-ops.o"
+	@echo "... src/cpu/binary-ops.i"
+	@echo "... src/cpu/binary-ops.s"
+	@echo "... src/cpu/matmul-op.o"
+	@echo "... src/cpu/matmul-op.i"
+	@echo "... src/cpu/matmul-op.s"
+	@echo "... src/cpu/unary-ops.o"
+	@echo "... src/cpu/unary-ops.i"
+	@echo "... src/cpu/unary-ops.s"
+	@echo "... src/cuda/binary-ops.o"
+	@echo "... src/cuda/binary-ops.i"
+	@echo "... src/cuda/binary-ops.s"
+	@echo "... src/cuda/unary-ops.o"
+	@echo "... src/cuda/unary-ops.i"
+	@echo "... src/cuda/unary-ops.s"
 	@echo "... tests/cpu/test_functions.o"
 	@echo "... tests/cpu/test_functions.i"
 	@echo "... tests/cpu/test_functions.s"
@@ -325,6 +403,9 @@ help:
 	@echo "... tests/cpu/test_ops.o"
 	@echo "... tests/cpu/test_ops.i"
 	@echo "... tests/cpu/test_ops.s"
+	@echo "... tests/cuda/test_ops.o"
+	@echo "... tests/cuda/test_ops.i"
+	@echo "... tests/cuda/test_ops.s"
 .PHONY : help
 
 

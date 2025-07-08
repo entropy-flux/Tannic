@@ -2,12 +2,22 @@
 
 #include <array>
 #include <cmath>  
+#include "cpu/cpu.hpp"
 #include "core/tensor.h"
+
+
+namespace {
+
+[[noreturn]] inline void notImplemented(const tensor_t*, tensor_t*, auto) {
+    throw std::runtime_error("Kernel not implemented for this type");
+} 
+
+}
 
 namespace cpu {
 
-template<typename TA, typename TB, typename Op>
-void unary_op(const tensor_t* A, tensor_t* B, Op op);
+template<typename S, typename D, typename Op>
+void unaryOp(const tensor_t* A, tensor_t* B, Op op);
  
 } // namespace cpu
 
@@ -25,13 +35,13 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Negation);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-
-    table[int8] = unary_op<int8_t, int8_t, Negation>;
-    table[int16] = unary_op<int16_t, int16_t, Negation>;
-    table[int32] = unary_op<int32_t, int32_t, Negation>;
-    table[int64] = unary_op<int64_t, int64_t, Negation>;
-    table[float32] = unary_op<float, float, Negation>;
-    table[float64] = unary_op<double, double, Negation>;
+    table.fill(::notImplemented); 
+    table[int8] = unaryOp<int8_t, int8_t, Negation>;
+    table[int16] = unaryOp<int16_t, int16_t, Negation>;
+    table[int32] = unaryOp<int32_t, int32_t, Negation>;
+    table[int64] = unaryOp<int64_t, int64_t, Negation>;
+    table[float32] = unaryOp<float, float, Negation>;
+    table[float64] = unaryOp<double, double, Negation>;
 
     return table;
 }();
@@ -52,10 +62,10 @@ public:
 using Kernel = void(*)(const tensor_t*, tensor_t*, Log);
 
 constexpr auto kernels = []() {
-    std::array<Kernel, TYPES> table{};
-
-    table[float32] = unary_op<float, float, Log>;
-    table[float64] = unary_op<double, double, Log>;
+    std::array<Kernel, TYPES> table{}; 
+    table.fill(::notImplemented);
+    table[float32] = unaryOp<float, float, Log>;
+    table[float64] = unaryOp<double, double, Log>;
 
     return table;
 }();
@@ -78,9 +88,9 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Exp);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-
-    table[float32] = unary_op<float, float, Exp>;
-    table[float64] = unary_op<double, double, Exp>;
+    table.fill(::notImplemented); 
+    table[float32] = unaryOp<float, float, Exp>;
+    table[float64] = unaryOp<double, double, Exp>;
 
     return table;
 }();
@@ -103,9 +113,9 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Sqrt);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-
-    table[float32] = unary_op<float, float, Sqrt>;
-    table[float64] = unary_op<double, double, Sqrt>;
+    table.fill(::notImplemented); 
+    table[float32] = unaryOp<float, float, Sqrt>;
+    table[float64] = unaryOp<double, double, Sqrt>;
 
     return table;
 }();
@@ -127,13 +137,13 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Abs);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-
-    table[int8] = unary_op<int8_t, int8_t, Abs>;
-    table[int16] = unary_op<int16_t, int16_t, Abs>;
-    table[int32] = unary_op<int32_t, int32_t, Abs>;
-    table[int64] = unary_op<int64_t, int64_t, Abs>;
-    table[float32] = unary_op<float, float, Abs>;
-    table[float64] = unary_op<double, double, Abs>;
+    table.fill(::notImplemented); 
+    table[int8] = unaryOp<int8_t, int8_t, Abs>;
+    table[int16] = unaryOp<int16_t, int16_t, Abs>;
+    table[int32] = unaryOp<int32_t, int32_t, Abs>;
+    table[int64] = unaryOp<int64_t, int64_t, Abs>;
+    table[float32] = unaryOp<float, float, Abs>;
+    table[float64] = unaryOp<double, double, Abs>;
 
     return table;
 }();
@@ -155,9 +165,9 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Sin);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-
-    table[float32] = unary_op<float, float, Sin>;
-    table[float64] = unary_op<double, double, Sin>;
+    table.fill(::notImplemented);  
+    table[float32] = unaryOp<float, float, Sin>;
+    table[float64] = unaryOp<double, double, Sin>;
 
     return table;
 }();
@@ -180,9 +190,9 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Cos);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-
-    table[float32] = unary_op<float, float, Cos>;
-    table[float64] = unary_op<double, double, Cos>;
+    table.fill(::notImplemented); 
+    table[float32] = unaryOp<float, float, Cos>;
+    table[float64] = unaryOp<double, double, Cos>;
 
     return table;
 }();
@@ -204,10 +214,10 @@ public:
 using Kernel = void(*)(const tensor_t*, tensor_t*, Tan);
 
 constexpr auto kernels = []() {
-    std::array<Kernel, TYPES> table{};
-
-    table[float32] = unary_op<float, float, Tan>;
-    table[float64] = unary_op<double, double, Tan>;
+    std::array<Kernel, TYPES> table{}; 
+    table.fill(::notImplemented);
+    table[float32] = unaryOp<float, float, Tan>;
+    table[float64] = unaryOp<double, double, Tan>;
 
     return table;
 }();
@@ -229,10 +239,10 @@ public:
 using Kernel = void(*)(const tensor_t*, tensor_t*, Sinh);
 
 constexpr auto kernels = []() {
-    std::array<Kernel, TYPES> table{};
-
-    table[float32] = unary_op<float, float, Sinh>;
-    table[float64] = unary_op<double, double, Sinh>;
+    std::array<Kernel, TYPES> table{}; 
+    table.fill(::notImplemented);
+    table[float32] = unaryOp<float, float, Sinh>;
+    table[float64] = unaryOp<double, double, Sinh>;
 
     return table;
 }();
@@ -255,9 +265,9 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Cosh);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-
-    table[float32] = unary_op<float, float, Cosh>;
-    table[float64] = unary_op<double, double, Cosh>;
+    table.fill(::notImplemented);
+    table[float32] = unaryOp<float, float, Cosh>;
+    table[float64] = unaryOp<double, double, Cosh>;
 
     return table;
 }();
@@ -279,10 +289,10 @@ public:
 using Kernel = void(*)(const tensor_t*, tensor_t*, Tanh);
 
 constexpr auto kernels = []() {
-    std::array<Kernel, TYPES> table{};
-
-    table[float32] = unary_op<float, float, Tanh>;
-    table[float64] = unary_op<double, double, Tanh>;
+    std::array<Kernel, TYPES> table{}; 
+    table.fill(::notImplemented);
+    table[float32] = unaryOp<float, float, Tanh>;
+    table[float64] = unaryOp<double, double, Tanh>;
 
     return table;
 }();

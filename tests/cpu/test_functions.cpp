@@ -5,7 +5,7 @@
 
 #include "core/types.h"
 #include "core/tensor.h"
-#include "cpu/unaryops.hpp"
+#include "cpu/unary-ops.hpp"
 
 class TestUnaryOps : public ::testing::Test {
 public:

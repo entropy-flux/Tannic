@@ -23,8 +23,7 @@ extern "C" {
 #include <stdint.h>
 #include <stddef.h> 
 
-enum type {
-    any,
+enum type { 
     int8,
     int16,
     int32,

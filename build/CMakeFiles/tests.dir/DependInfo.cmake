@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/eric/tensor-library/tests/cpu/test_functions.cpp" "CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o" "gcc" "CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o.d"
   "/home/eric/tensor-library/tests/cpu/test_matmul.cpp" "CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o" "gcc" "CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o.d"
   "/home/eric/tensor-library/tests/cpu/test_ops.cpp" "CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o" "gcc" "CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o.d"
+  "/home/eric/tensor-library/tests/cuda/test_ops.cpp" "CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o" "gcc" "CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

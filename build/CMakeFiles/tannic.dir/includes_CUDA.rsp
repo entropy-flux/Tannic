@@ -1,0 +1,1 @@
+-I"/home/eric/tensor-library/include" -I"/home/eric/tensor-library/src" -I"/usr/include/x86_64-linux-gnu/openblas-pthread" -isystem "/usr/local/cuda-12.9/targets/x86_64-linux/include"

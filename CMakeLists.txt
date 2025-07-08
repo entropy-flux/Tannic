@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(TENSORLIB LANGUAGES CXX)
+project(TANNIC LANGUAGES CXX)
 
 
 include(CheckLanguage)
@@ -39,7 +39,7 @@ find_package(OpenBLAS QUIET)
 
 if(OpenBLAS_FOUND)
     message(STATUS "Found OpenBLAS: ${OpenBLAS_INCLUDE_DIRS}")
-    add_definitions(-DOPENBLAS)
+    add_definitions(-DOPENBLAS) 
     include_directories(${OpenBLAS_INCLUDE_DIRS})
 else()
     message(STATUS "OpenBLAS not found, continuing without it.")
@@ -47,19 +47,19 @@ endif()
 
 
 if(SRC_FILES)
-    add_library(tensorlib STATIC ${SRC_FILES})
-
-    target_include_directories(tensorlib PUBLIC include)
+    add_library(tannic STATIC ${SRC_FILES})
+    target_include_directories(tannic PUBLIC include)
 
     if(CUDA_ENABLED)
-        set_target_properties(tensorlib PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+        set_target_properties(tannic PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
         find_package(CUDAToolkit REQUIRED)
-        target_link_libraries(tensorlib PUBLIC CUDA::cudart)
-        target_compile_definitions(tensorlib PUBLIC CUDA)
+        target_link_libraries(tannic PUBLIC CUDA::cudart)
+        target_compile_definitions(tannic PUBLIC CUDA)
     endif()
 
     if(OpenBLAS_FOUND)
-        target_link_libraries(tensorlib PUBLIC ${OpenBLAS_LIBRARIES})
+        target_link_libraries(tannic PUBLIC ${OpenBLAS_LIBRARIES})
+        target_compile_definitions(tannic PUBLIC BLAS)
     endif()
 endif()
 
@@ -83,6 +83,7 @@ endif()
 file(GLOB TEST_FILES
     tests/*.cpp
     tests/cpu/*.cpp
+    tests/cuda/*.cpp
 )
 
 if(TEST_FILES)
@@ -90,7 +91,7 @@ if(TEST_FILES)
     add_executable(tests ${TEST_FILES})
 
     target_include_directories(tests PRIVATE include)
-    target_link_libraries(tests PRIVATE tensorlib)
+    target_link_libraries(tests PRIVATE tannic)
 
     if(CUDA_ENABLED)
         set_target_properties(tests PROPERTIES
