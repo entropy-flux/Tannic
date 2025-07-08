@@ -1,3 +1,5 @@
+#ifdef CUDA
+
 #include <gtest/gtest.h> 
 #include <cmath>
 #include <vector>
@@ -119,3 +121,5 @@ TEST_F(TestUnaryOpsCuda, Tanh) {
                                {{std::tanh(4.0f), std::tanh(5.0f), std::tanh(6.0f)}}};
     checkUnaryOp(cuda::tanh_op::kernels, cuda::tanh_op::Tanh{}, expected);
 }
+
+#endif

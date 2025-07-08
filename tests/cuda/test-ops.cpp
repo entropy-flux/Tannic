@@ -1,3 +1,5 @@
+#ifdef CUDA
+
 #include <gtest/gtest.h> 
 
 #include "core/types.h"
@@ -125,3 +127,5 @@ TEST_F(TestCUDABinaryOps, Subtraction) {
                 EXPECT_FLOAT_EQ(C_data[idx], expected[i][j][k]) << "C[" << i << "][" << j << "][" << k << "]";
             }
 }
+
+#endif
