@@ -3,11 +3,7 @@
 #include "core/tensor.h"
 #include "cuda/cuda.cuh"
 
-namespace {
-
-constexpr inline auto index(type first, type second) {
-    return static_cast<int>(first) + static_cast<int>(TYPES)*static_cast<int>(second);
-}
+namespace { 
 
 [[noreturn]] inline void notImplemented(const tensor_t*, const tensor_t*, tensor_t*, auto, cudaStream_t) {
     throw std::runtime_error("CUDA Kernel not implemented for this type");
@@ -17,7 +13,11 @@ constexpr inline auto index(type first, type second) {
 
 
 namespace cuda {
- 
+
+constexpr inline auto index(type first, type second) {
+    return static_cast<int>(first) + static_cast<int>(TYPES)*static_cast<int>(second);
+} 
+
 template<typename S0, typename S1, typename D, typename Op>
 void binaryOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, Op op, cudaStream_t stream = 0);
 

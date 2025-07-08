@@ -272,101 +272,125 @@ src/cuda/unary-ops.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.s
 .PHONY : src/cuda/unary-ops.cu.s
 
-tests/cpu/test_functions.o: tests/cpu/test_functions.cpp.o
-.PHONY : tests/cpu/test_functions.o
+tests/cpu/test-functions.o: tests/cpu/test-functions.cpp.o
+.PHONY : tests/cpu/test-functions.o
 
 # target to build an object file
-tests/cpu/test_functions.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o
-.PHONY : tests/cpu/test_functions.cpp.o
+tests/cpu/test-functions.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o
+.PHONY : tests/cpu/test-functions.cpp.o
 
-tests/cpu/test_functions.i: tests/cpu/test_functions.cpp.i
-.PHONY : tests/cpu/test_functions.i
+tests/cpu/test-functions.i: tests/cpu/test-functions.cpp.i
+.PHONY : tests/cpu/test-functions.i
 
 # target to preprocess a source file
-tests/cpu/test_functions.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.i
-.PHONY : tests/cpu/test_functions.cpp.i
+tests/cpu/test-functions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.i
+.PHONY : tests/cpu/test-functions.cpp.i
 
-tests/cpu/test_functions.s: tests/cpu/test_functions.cpp.s
-.PHONY : tests/cpu/test_functions.s
+tests/cpu/test-functions.s: tests/cpu/test-functions.cpp.s
+.PHONY : tests/cpu/test-functions.s
 
 # target to generate assembly for a file
-tests/cpu/test_functions.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.s
-.PHONY : tests/cpu/test_functions.cpp.s
+tests/cpu/test-functions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.s
+.PHONY : tests/cpu/test-functions.cpp.s
 
-tests/cpu/test_matmul.o: tests/cpu/test_matmul.cpp.o
-.PHONY : tests/cpu/test_matmul.o
+tests/cpu/test-matmul.o: tests/cpu/test-matmul.cpp.o
+.PHONY : tests/cpu/test-matmul.o
 
 # target to build an object file
-tests/cpu/test_matmul.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o
-.PHONY : tests/cpu/test_matmul.cpp.o
+tests/cpu/test-matmul.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o
+.PHONY : tests/cpu/test-matmul.cpp.o
 
-tests/cpu/test_matmul.i: tests/cpu/test_matmul.cpp.i
-.PHONY : tests/cpu/test_matmul.i
+tests/cpu/test-matmul.i: tests/cpu/test-matmul.cpp.i
+.PHONY : tests/cpu/test-matmul.i
 
 # target to preprocess a source file
-tests/cpu/test_matmul.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.i
-.PHONY : tests/cpu/test_matmul.cpp.i
+tests/cpu/test-matmul.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.i
+.PHONY : tests/cpu/test-matmul.cpp.i
 
-tests/cpu/test_matmul.s: tests/cpu/test_matmul.cpp.s
-.PHONY : tests/cpu/test_matmul.s
+tests/cpu/test-matmul.s: tests/cpu/test-matmul.cpp.s
+.PHONY : tests/cpu/test-matmul.s
 
 # target to generate assembly for a file
-tests/cpu/test_matmul.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.s
-.PHONY : tests/cpu/test_matmul.cpp.s
+tests/cpu/test-matmul.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.s
+.PHONY : tests/cpu/test-matmul.cpp.s
 
-tests/cpu/test_ops.o: tests/cpu/test_ops.cpp.o
-.PHONY : tests/cpu/test_ops.o
+tests/cpu/test-ops.o: tests/cpu/test-ops.cpp.o
+.PHONY : tests/cpu/test-ops.o
 
 # target to build an object file
-tests/cpu/test_ops.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o
-.PHONY : tests/cpu/test_ops.cpp.o
+tests/cpu/test-ops.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o
+.PHONY : tests/cpu/test-ops.cpp.o
 
-tests/cpu/test_ops.i: tests/cpu/test_ops.cpp.i
-.PHONY : tests/cpu/test_ops.i
+tests/cpu/test-ops.i: tests/cpu/test-ops.cpp.i
+.PHONY : tests/cpu/test-ops.i
 
 # target to preprocess a source file
-tests/cpu/test_ops.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.i
-.PHONY : tests/cpu/test_ops.cpp.i
+tests/cpu/test-ops.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.i
+.PHONY : tests/cpu/test-ops.cpp.i
 
-tests/cpu/test_ops.s: tests/cpu/test_ops.cpp.s
-.PHONY : tests/cpu/test_ops.s
+tests/cpu/test-ops.s: tests/cpu/test-ops.cpp.s
+.PHONY : tests/cpu/test-ops.s
 
 # target to generate assembly for a file
-tests/cpu/test_ops.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.s
-.PHONY : tests/cpu/test_ops.cpp.s
+tests/cpu/test-ops.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.s
+.PHONY : tests/cpu/test-ops.cpp.s
 
-tests/cuda/test_ops.o: tests/cuda/test_ops.cpp.o
-.PHONY : tests/cuda/test_ops.o
+tests/cuda/test-functions.o: tests/cuda/test-functions.cpp.o
+.PHONY : tests/cuda/test-functions.o
 
 # target to build an object file
-tests/cuda/test_ops.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o
-.PHONY : tests/cuda/test_ops.cpp.o
+tests/cuda/test-functions.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o
+.PHONY : tests/cuda/test-functions.cpp.o
 
-tests/cuda/test_ops.i: tests/cuda/test_ops.cpp.i
-.PHONY : tests/cuda/test_ops.i
+tests/cuda/test-functions.i: tests/cuda/test-functions.cpp.i
+.PHONY : tests/cuda/test-functions.i
 
 # target to preprocess a source file
-tests/cuda/test_ops.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.i
-.PHONY : tests/cuda/test_ops.cpp.i
+tests/cuda/test-functions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.i
+.PHONY : tests/cuda/test-functions.cpp.i
 
-tests/cuda/test_ops.s: tests/cuda/test_ops.cpp.s
-.PHONY : tests/cuda/test_ops.s
+tests/cuda/test-functions.s: tests/cuda/test-functions.cpp.s
+.PHONY : tests/cuda/test-functions.s
 
 # target to generate assembly for a file
-tests/cuda/test_ops.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.s
-.PHONY : tests/cuda/test_ops.cpp.s
+tests/cuda/test-functions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.s
+.PHONY : tests/cuda/test-functions.cpp.s
+
+tests/cuda/test-ops.o: tests/cuda/test-ops.cpp.o
+.PHONY : tests/cuda/test-ops.o
+
+# target to build an object file
+tests/cuda/test-ops.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o
+.PHONY : tests/cuda/test-ops.cpp.o
+
+tests/cuda/test-ops.i: tests/cuda/test-ops.cpp.i
+.PHONY : tests/cuda/test-ops.i
+
+# target to preprocess a source file
+tests/cuda/test-ops.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.i
+.PHONY : tests/cuda/test-ops.cpp.i
+
+tests/cuda/test-ops.s: tests/cuda/test-ops.cpp.s
+.PHONY : tests/cuda/test-ops.s
+
+# target to generate assembly for a file
+tests/cuda/test-ops.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.s
+.PHONY : tests/cuda/test-ops.cpp.s
 
 # Help Target
 help:
@@ -394,18 +418,21 @@ help:
 	@echo "... src/cuda/unary-ops.o"
 	@echo "... src/cuda/unary-ops.i"
 	@echo "... src/cuda/unary-ops.s"
-	@echo "... tests/cpu/test_functions.o"
-	@echo "... tests/cpu/test_functions.i"
-	@echo "... tests/cpu/test_functions.s"
-	@echo "... tests/cpu/test_matmul.o"
-	@echo "... tests/cpu/test_matmul.i"
-	@echo "... tests/cpu/test_matmul.s"
-	@echo "... tests/cpu/test_ops.o"
-	@echo "... tests/cpu/test_ops.i"
-	@echo "... tests/cpu/test_ops.s"
-	@echo "... tests/cuda/test_ops.o"
-	@echo "... tests/cuda/test_ops.i"
-	@echo "... tests/cuda/test_ops.s"
+	@echo "... tests/cpu/test-functions.o"
+	@echo "... tests/cpu/test-functions.i"
+	@echo "... tests/cpu/test-functions.s"
+	@echo "... tests/cpu/test-matmul.o"
+	@echo "... tests/cpu/test-matmul.i"
+	@echo "... tests/cpu/test-matmul.s"
+	@echo "... tests/cpu/test-ops.o"
+	@echo "... tests/cpu/test-ops.i"
+	@echo "... tests/cpu/test-ops.s"
+	@echo "... tests/cuda/test-functions.o"
+	@echo "... tests/cuda/test-functions.i"
+	@echo "... tests/cuda/test-functions.s"
+	@echo "... tests/cuda/test-ops.o"
+	@echo "... tests/cuda/test-ops.i"
+	@echo "... tests/cuda/test-ops.s"
 .PHONY : help
 
 

@@ -69,76 +69,92 @@ include CMakeFiles/tests.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/tests.dir/flags.make
 
-CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o: CMakeFiles/tests.dir/flags.make
-CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o: /home/eric/tensor-library/tests/cpu/test_functions.cpp
-CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o -MF CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o.d -o CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o -c /home/eric/tensor-library/tests/cpu/test_functions.cpp
+CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o: /home/eric/tensor-library/tests/cpu/test-functions.cpp
+CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o -MF CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o.d -o CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o -c /home/eric/tensor-library/tests/cpu/test-functions.cpp
 
-CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eric/tensor-library/tests/cpu/test_functions.cpp > CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.i
+CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eric/tensor-library/tests/cpu/test-functions.cpp > CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.i
 
-CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eric/tensor-library/tests/cpu/test_functions.cpp -o CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.s
+CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eric/tensor-library/tests/cpu/test-functions.cpp -o CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.s
 
-CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o: CMakeFiles/tests.dir/flags.make
-CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o: /home/eric/tensor-library/tests/cpu/test_matmul.cpp
-CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o -MF CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o.d -o CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o -c /home/eric/tensor-library/tests/cpu/test_matmul.cpp
+CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o: /home/eric/tensor-library/tests/cpu/test-matmul.cpp
+CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o -MF CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o.d -o CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o -c /home/eric/tensor-library/tests/cpu/test-matmul.cpp
 
-CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eric/tensor-library/tests/cpu/test_matmul.cpp > CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.i
+CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eric/tensor-library/tests/cpu/test-matmul.cpp > CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.i
 
-CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eric/tensor-library/tests/cpu/test_matmul.cpp -o CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.s
+CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eric/tensor-library/tests/cpu/test-matmul.cpp -o CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.s
 
-CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o: CMakeFiles/tests.dir/flags.make
-CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o: /home/eric/tensor-library/tests/cpu/test_ops.cpp
-CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o -MF CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o.d -o CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o -c /home/eric/tensor-library/tests/cpu/test_ops.cpp
+CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o: /home/eric/tensor-library/tests/cpu/test-ops.cpp
+CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o -MF CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o.d -o CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o -c /home/eric/tensor-library/tests/cpu/test-ops.cpp
 
-CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eric/tensor-library/tests/cpu/test_ops.cpp > CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.i
+CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eric/tensor-library/tests/cpu/test-ops.cpp > CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.i
 
-CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eric/tensor-library/tests/cpu/test_ops.cpp -o CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.s
+CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eric/tensor-library/tests/cpu/test-ops.cpp -o CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.s
 
-CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o: CMakeFiles/tests.dir/flags.make
-CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o: /home/eric/tensor-library/tests/cuda/test_ops.cpp
-CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o -MF CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o.d -o CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o -c /home/eric/tensor-library/tests/cuda/test_ops.cpp
+CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o: /home/eric/tensor-library/tests/cuda/test-functions.cpp
+CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o -MF CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o.d -o CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o -c /home/eric/tensor-library/tests/cuda/test-functions.cpp
 
-CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eric/tensor-library/tests/cuda/test_ops.cpp > CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.i
+CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eric/tensor-library/tests/cuda/test-functions.cpp > CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.i
 
-CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eric/tensor-library/tests/cuda/test_ops.cpp -o CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.s
+CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eric/tensor-library/tests/cuda/test-functions.cpp -o CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.s
+
+CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o: /home/eric/tensor-library/tests/cuda/test-ops.cpp
+CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o: CMakeFiles/tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o -MF CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o.d -o CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o -c /home/eric/tensor-library/tests/cuda/test-ops.cpp
+
+CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eric/tensor-library/tests/cuda/test-ops.cpp > CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.i
+
+CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eric/tensor-library/tests/cuda/test-ops.cpp -o CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.s
 
 # Object files for target tests
 tests_OBJECTS = \
-"CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o" \
-"CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o" \
-"CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o" \
-"CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o"
+"CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o" \
+"CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o" \
+"CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o" \
+"CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o" \
+"CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o"
 
 # External object files for target tests
 tests_EXTERNAL_OBJECTS =
 
-CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o
-CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o
-CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o
-CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o
+CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o
+CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o
+CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o
+CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o
+CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o
 CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/build.make
 CMakeFiles/tests.dir/cmake_device_link.o: libtannic.a
 CMakeFiles/tests.dir/cmake_device_link.o: /usr/local/cuda-12.9/targets/x86_64-linux/lib/libcudart.so
@@ -148,7 +164,7 @@ CMakeFiles/tests.dir/cmake_device_link.o: /usr/lib/x86_64-linux-gnu/libgtest.a
 CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/deviceLinkLibs.rsp
 CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/deviceObjects1.rsp
 CMakeFiles/tests.dir/cmake_device_link.o: CMakeFiles/tests.dir/dlink.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CUDA device code CMakeFiles/tests.dir/cmake_device_link.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CUDA device code CMakeFiles/tests.dir/cmake_device_link.o"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tests.dir/dlink.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -157,18 +173,20 @@ CMakeFiles/tests.dir/build: CMakeFiles/tests.dir/cmake_device_link.o
 
 # Object files for target tests
 tests_OBJECTS = \
-"CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o" \
-"CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o" \
-"CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o" \
-"CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o"
+"CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o" \
+"CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o" \
+"CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o" \
+"CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o" \
+"CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o"
 
 # External object files for target tests
 tests_EXTERNAL_OBJECTS =
 
-tests: CMakeFiles/tests.dir/tests/cpu/test_functions.cpp.o
-tests: CMakeFiles/tests.dir/tests/cpu/test_matmul.cpp.o
-tests: CMakeFiles/tests.dir/tests/cpu/test_ops.cpp.o
-tests: CMakeFiles/tests.dir/tests/cuda/test_ops.cpp.o
+tests: CMakeFiles/tests.dir/tests/cpu/test-functions.cpp.o
+tests: CMakeFiles/tests.dir/tests/cpu/test-matmul.cpp.o
+tests: CMakeFiles/tests.dir/tests/cpu/test-ops.cpp.o
+tests: CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o
+tests: CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o
 tests: CMakeFiles/tests.dir/build.make
 tests: libtannic.a
 tests: /usr/local/cuda-12.9/targets/x86_64-linux/lib/libcudart.so
@@ -177,7 +195,7 @@ tests: /usr/lib/x86_64-linux-gnu/openblas-pthread//libopenblas.so
 tests: /usr/lib/x86_64-linux-gnu/libgtest.a
 tests: CMakeFiles/tests.dir/cmake_device_link.o
 tests: CMakeFiles/tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tests.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/cmake -D TEST_TARGET=tests -D TEST_EXECUTABLE=/home/eric/tensor-library/build/tests -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/home/eric/tensor-library/build -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_FILTER= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=tests_TESTS -D CTEST_FILE=/home/eric/tensor-library/build/tests[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -D TEST_XML_OUTPUT_DIR= -P /usr/share/cmake-3.28/Modules/GoogleTestAddTests.cmake
 
