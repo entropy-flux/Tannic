@@ -1,3 +1,5 @@
+#ifdef CUDA
+
 #include <gtest/gtest.h> 
 #include <cstring>
 #include <cmath>
@@ -451,3 +453,5 @@ TEST_F(CudaMatmulTests, Rank4_SecondTransposed) {
     cudaFree(d_Y);
     cudaFree(d_Z);
 }
+
+#endif CUDA
