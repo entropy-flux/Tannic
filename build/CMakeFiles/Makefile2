@@ -83,12 +83,12 @@ clean: CMakeFiles/tests.dir/clean
 CMakeFiles/tannic.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target tannic"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target tannic"
 .PHONY : CMakeFiles/tannic.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tannic.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/tensor-library/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/tensor-library/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tannic.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/tensor-library/build/CMakeFiles 0
 .PHONY : CMakeFiles/tannic.dir/rule
@@ -109,12 +109,12 @@ CMakeFiles/tannic.dir/clean:
 CMakeFiles/tests.dir/all: CMakeFiles/tannic.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=7,8,9,10,11,12,13 "Built target tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=8,9,10,11,12,13,14,15 "Built target tests"
 .PHONY : CMakeFiles/tests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/tensor-library/build/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/tensor-library/build/CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/eric/tensor-library/build/CMakeFiles 0
 .PHONY : CMakeFiles/tests.dir/rule

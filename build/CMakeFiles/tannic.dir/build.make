@@ -126,11 +126,26 @@ CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CUDA source to assembly CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o: CMakeFiles/tannic.dir/flags.make
+CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o: CMakeFiles/tannic.dir/includes_CUDA.rsp
+CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o: /home/eric/tensor-library/src/cuda/matmul-op.cu
+CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o: CMakeFiles/tannic.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CUDA object CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o"
+	/usr/local/cuda-12.9/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o -MF CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o.d -x cu -rdc=true -c /home/eric/tensor-library/src/cuda/matmul-op.cu -o CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o
+
+CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CUDA source to assembly CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o: CMakeFiles/tannic.dir/flags.make
 CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o: CMakeFiles/tannic.dir/includes_CUDA.rsp
 CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o: /home/eric/tensor-library/src/cuda/unary-ops.cu
 CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o: CMakeFiles/tannic.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CUDA object CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CUDA object CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o"
 	/usr/local/cuda-12.9/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o -MF CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o.d -x cu -rdc=true -c /home/eric/tensor-library/src/cuda/unary-ops.cu -o CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o
 
 CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.i: cmake_force
@@ -147,6 +162,7 @@ tannic_OBJECTS = \
 "CMakeFiles/tannic.dir/src/cpu/matmul-op.cpp.o" \
 "CMakeFiles/tannic.dir/src/cpu/unary-ops.cpp.o" \
 "CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.o" \
+"CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o" \
 "CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o"
 
 # External object files for target tannic
@@ -156,10 +172,11 @@ libtannic.a: CMakeFiles/tannic.dir/src/cpu/binary-ops.cpp.o
 libtannic.a: CMakeFiles/tannic.dir/src/cpu/matmul-op.cpp.o
 libtannic.a: CMakeFiles/tannic.dir/src/cpu/unary-ops.cpp.o
 libtannic.a: CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.o
+libtannic.a: CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o
 libtannic.a: CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o
 libtannic.a: CMakeFiles/tannic.dir/build.make
 libtannic.a: CMakeFiles/tannic.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libtannic.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/eric/tensor-library/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libtannic.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/tannic.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tannic.dir/link.txt --verbose=$(VERBOSE)
 

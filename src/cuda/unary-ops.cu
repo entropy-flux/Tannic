@@ -1,50 +1,71 @@
 #include "cuda/cuda.cuh"
 #include "cuda/unary-ops.cuh"
+#include <cuda_runtime.h>
+#include <cassert>
 
 template<typename S, typename D, typename Op>
-__global__ void unaryOpKernel(tensor_t src, tensor_t dst, size_t total, Op op) {
+__global__ void unaryOpKernel(
+    const S* __restrict__ src_data,
+    D* __restrict__ dst_data,
+    size_t total,
+    uint8_t rank,
+    const size_t* __restrict__ shape,
+    const size_t* __restrict__ strides_src,
+    size_t offset_src,
+    size_t offset_dst,
+    Op op
+) {
     size_t idx = blockIdx.x * blockDim.x + threadIdx.x;
     if (idx >= total) return;
 
-    constexpr size_t MAX_RANK = 8;
-    static_assert(MAX_RANK >= 8, "MAX_RANK too small");
-
-    size_t counters[MAX_RANK] = {0};
+    size_t counters[8] = {0};  // assume max rank is 8
     size_t residual = idx;
-    for (int i = dst.rank - 1; i >= 0; --i) {
-        counters[i] = residual % dst.shape[i];
-        residual /= dst.shape[i];
+    for (int i = rank - 1; i >= 0; --i) {
+        counters[i] = residual % shape[i];
+        residual /= shape[i];
     }
 
-    size_t offset_src = 0;
-    for (uint8_t i = 0; i < dst.rank; ++i) {
-        offset_src += counters[i] * src.strides[i];
+    size_t src_offset = 0;
+    for (int i = 0; i < rank; ++i) {
+        src_offset += counters[i] * strides_src[i];
     }
 
-    const S* src_data = static_cast<const S*>(src.address);
-    D* dst_data = static_cast<D*>(dst.address);
-
-    dst_data[dst.offset + idx] = op(src_data[src.offset + offset_src]);
+    dst_data[offset_dst + idx] = op(src_data[offset_src + src_offset]);
 }
 
 template<typename S, typename D, typename Op>
-void cuda::unaryOp(const tensor_t* src, tensor_t* dst, Op op, cudaStream_t stream = 0) {
+void cuda::unaryOp(const tensor_t* src, tensor_t* dst, Op op, cudaStream_t stream) {
+    const auto rank = dst->rank;
+    assert(rank <= 8 && "Rank exceeds kernel limit");
+
+    const size_t* shape = dst->shape;
+    const size_t* strides_src = src->strides;
+
     size_t total = 1;
-    for (uint8_t i = 0; i < dst->rank; ++i) {
-        total *= dst->shape[i];
+    for (uint8_t i = 0; i < rank; ++i) {
+        total *= shape[i];
     }
 
     const int threadsPerBlock = 256;
     int blocks = (total + threadsPerBlock - 1) / threadsPerBlock;
 
-    unaryOpKernel<S, D, Op><<<blocks, threadsPerBlock, 0, stream>>>(*src, *dst, total, op);
+    unaryOpKernel<S, D, Op><<<blocks, threadsPerBlock, 0, stream>>>(
+        static_cast<const S*>(src->address),
+        static_cast<D*>(dst->address),
+        total,
+        rank,
+        shape,
+        strides_src,
+        src->offset,
+        dst->offset,
+        op
+    );
     CUDA_CHECK(cudaGetLastError());
 
-    #ifndef NDEBUG
+#ifndef NDEBUG
     CUDA_CHECK(cudaStreamSynchronize(stream));
-    #endif
-} 
-
+#endif
+}
 
 
 // NEGATION

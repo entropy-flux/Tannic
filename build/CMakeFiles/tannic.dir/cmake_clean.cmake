@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/tannic.dir/src/cpu/unary-ops.cpp.o.d"
   "CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.o"
   "CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.o.d"
+  "CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o"
+  "CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o.d"
   "CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o"
   "CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o.d"
   "libtannic.a"

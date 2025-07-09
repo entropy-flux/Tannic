@@ -35,7 +35,7 @@ void cpu::binaryOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, Bi
 }
 
 
-// Explicit template instantiations 
+
 // Addition
 template void cpu::binaryOp<int8_t,  int8_t,  int8_t,  cpu::addition::Addition>(const tensor_t*, const tensor_t*, tensor_t*, cpu::addition::Addition);
 template void cpu::binaryOp<int8_t,  int16_t, int16_t, cpu::addition::Addition>(const tensor_t*, const tensor_t*, tensor_t*, cpu::addition::Addition);

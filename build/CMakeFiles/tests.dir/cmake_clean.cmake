@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/tests.dir/tests/cuda/test-functions.cpp.o.d"
   "CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o"
   "CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.o.d"
+  "CMakeFiles/tests.dir/tests/cuda/test_matmul.cpp.o"
+  "CMakeFiles/tests.dir/tests/cuda/test_matmul.cpp.o.d"
   "tests"
   "tests.pdb"
   "tests[1]_tests.cmake"

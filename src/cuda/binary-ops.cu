@@ -6,54 +6,76 @@
 #include "cuda/binary-ops.cuh"
 
 template<typename S0, typename S1, typename D, typename Op>
-__global__ void binaryOpKernel(tensor_t src0, tensor_t src1, tensor_t dst, size_t total, Op op) {
+__global__ void binaryOpKernel(
+    const S0* __restrict__ src0_data,
+    const S1* __restrict__ src1_data,
+    D* __restrict__ dst_data,
+    size_t total,
+    uint8_t rank,
+    const size_t* __restrict__ shape,
+    const size_t* __restrict__ strides0,
+    const size_t* __restrict__ strides1,
+    size_t offset0,
+    size_t offset1,
+    size_t dst_offset,
+    Op op
+) {
     size_t idx = blockIdx.x * blockDim.x + threadIdx.x;
     if (idx >= total) return;
 
-    constexpr size_t MAX_RANK = 8;
-    static_assert(MAX_RANK >= 8, "MAX_RANK");
-
-    size_t counters[MAX_RANK] = {0};
+    size_t counters[8] = {0};  
     size_t residual = idx;
-    for (int i = dst.rank - 1; i >= 0; --i) {
-        counters[i] = residual % dst.shape[i];
-        residual /= dst.shape[i];
+    for (int i = rank - 1; i >= 0; --i) {
+        counters[i] = residual % shape[i];
+        residual /= shape[i];
     }
 
-    size_t offset0 = 0, offset1 = 0;
-    for (uint8_t i = 0; i < dst.rank; ++i) {
-        offset0 += counters[i] * src0.strides[i];
-        offset1 += counters[i] * src1.strides[i];
+    size_t ofs0 = 0, ofs1 = 0;
+    for (int i = 0; i < rank; ++i) {
+        ofs0 += counters[i] * strides0[i];
+        ofs1 += counters[i] * strides1[i];
     }
 
-    const S0* src0_data = static_cast<const S0*>(src0.address);
-    const S1* src1_data = static_cast<const S1*>(src1.address);
-    D* dst_data = static_cast<D*>(dst.address);
-
-    dst_data[dst.offset + idx] = op(
-        src0_data[src0.offset + offset0],
-        src1_data[src1.offset + offset1]
+    dst_data[dst_offset + idx] = op(
+        src0_data[offset0 + ofs0],
+        src1_data[offset1 + ofs1]
     );
 }
 
 template<typename S0, typename S1, typename D, typename Op>
 void cuda::binaryOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, Op op, cudaStream_t stream) {
+    const auto rank = dst->rank;
+    const size_t* shape = dst->shape;
+    const size_t* strides0 = src0->strides;
+    const size_t* strides1 = src1->strides;
+
     size_t total = 1;
-    for (uint8_t i = 0; i < dst->rank; ++i) {
-        total *= dst->shape[i];
+    for (uint8_t i = 0; i < rank; ++i) {
+        total *= shape[i];
     }
 
     const int threadsPerBlock = 256;
     int blocks = (total + threadsPerBlock - 1) / threadsPerBlock;
 
     binaryOpKernel<S0, S1, D, Op><<<blocks, threadsPerBlock, 0, stream>>>(
-        *src0, *src1, *dst, total, op
+        static_cast<const S0*>(src0->address),
+        static_cast<const S1*>(src1->address),
+        static_cast<D*>(dst->address),
+        total,
+        rank,
+        shape,
+        strides0,
+        strides1,
+        src0->offset,
+        src1->offset,
+        dst->offset,
+        op
     );
     CUDA_CHECK(cudaGetLastError());
 
-    #ifndef NDEBUG
+#ifndef NDEBUG
     CUDA_CHECK(cudaStreamSynchronize(stream));
-    #endif
+#endif
 }
 
 

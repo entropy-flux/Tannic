@@ -22,8 +22,7 @@
 #include "core/types.h"
 
 constexpr inline std::size_t dsizeof(type type) {
-    switch (type) {
-        case any:       return 0;
+    switch (type) { 
         case int8:      return sizeof(int8_t);
         case int16:     return sizeof(int16_t);
         case int32:     return sizeof(int32_t);
@@ -37,8 +36,7 @@ constexpr inline std::size_t dsizeof(type type) {
 }
 
 constexpr inline std::string dnameof(type type) {
-    switch (type) {
-        case any:        return "any";
+    switch (type) { 
         case int8:       return "int8";
         case int16:      return "int16";
         case int32:      return "int32";
@@ -47,7 +45,7 @@ constexpr inline std::string dnameof(type type) {
         case float64:    return "float64";
         case complex64:  return "complex64";
         case complex128: return "complex128";
-        default:         return "unknown";
+        default:         return "any";
     }
 }
  
@@ -55,7 +53,7 @@ constexpr type complex(type dtype) {
     switch (dtype) {
         case float32: return complex64;
         case float64: return complex128;
-        default:      return any;  
+        default: 
             throw std::invalid_argument("Only float32 and float64 can be converted to complex");
     }
 }

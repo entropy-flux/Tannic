@@ -1,2 +1,2 @@
-/usr/bin/ar qc libtannic.a "CMakeFiles/tannic.dir/src/cpu/binary-ops.cpp.o" "CMakeFiles/tannic.dir/src/cpu/matmul-op.cpp.o" "CMakeFiles/tannic.dir/src/cpu/unary-ops.cpp.o" "CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.o" "CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o"
+/usr/bin/ar qc libtannic.a "CMakeFiles/tannic.dir/src/cpu/binary-ops.cpp.o" "CMakeFiles/tannic.dir/src/cpu/matmul-op.cpp.o" "CMakeFiles/tannic.dir/src/cpu/unary-ops.cpp.o" "CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.o" "CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o" "CMakeFiles/tannic.dir/src/cuda/unary-ops.cu.o"
 /usr/bin/ranlib libtannic.a

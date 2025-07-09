@@ -152,22 +152,22 @@ TEST(MatmulTests, BothTransposed) {
         2.f, 5.f,
         3.f, 6.f
     };
+ 
 
     float Y_data[3 * 2] = {
-        7.f, 10.f,
-        8.f, 11.f,
-        9.f, 12.f
-    };
+        7.f, 8.f, 9.f,
+        10.f, 11.f, 12.f 
+    }; 
 
     float Z_data[2 * 2] = {0};
 
     // Shapes:
     size_t shape_X[2] = {3, 2};
-    size_t shape_Y[2] = {3, 2};
+    size_t shape_Y[2] = {2, 3};
     size_t shape_Z[2] = {2, 2};  
 
     size_t strides_X[2] = {2, 1};
-    size_t strides_Y[2] = {2, 1};
+    size_t strides_Y[2] = {3, 1};
     size_t strides_Z[2] = {2, 1};
 
     tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .address = X_data, .dtype = float32};
@@ -175,9 +175,8 @@ TEST(MatmulTests, BothTransposed) {
     tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .address = Z_data, .dtype = float32};
 
     memset(Z_data, 0, sizeof(Z_data));
-
-    // transpose first (X)
-    cpu::matmul::kernels[cpu::index(X.dtype,Y.dtype)](&X, &Y, &Z, true, false);
+ 
+    cpu::matmul::kernels[cpu::index(X.dtype,Y.dtype)](&X, &Y, &Z, true, true);
 
     float Z_expected_data[2 * 2] = {
         50.f, 68.f,
@@ -425,9 +424,8 @@ class TestTensorOps(unittest.TestCase):
         ], dtype=np.float32)
 
         Y = np.array([
-            [7., 10.],
-            [8., 11.],
-            [9., 12.]
+            [7, 8, 9],
+            [10, 11, 12]
         ], dtype=np.float32)
 
         Z_expected = np.array([

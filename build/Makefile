@@ -248,6 +248,30 @@ src/cuda/binary-ops.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/binary-ops.cu.s
 .PHONY : src/cuda/binary-ops.cu.s
 
+src/cuda/matmul-op.o: src/cuda/matmul-op.cu.o
+.PHONY : src/cuda/matmul-op.o
+
+# target to build an object file
+src/cuda/matmul-op.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.o
+.PHONY : src/cuda/matmul-op.cu.o
+
+src/cuda/matmul-op.i: src/cuda/matmul-op.cu.i
+.PHONY : src/cuda/matmul-op.i
+
+# target to preprocess a source file
+src/cuda/matmul-op.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.i
+.PHONY : src/cuda/matmul-op.cu.i
+
+src/cuda/matmul-op.s: src/cuda/matmul-op.cu.s
+.PHONY : src/cuda/matmul-op.s
+
+# target to generate assembly for a file
+src/cuda/matmul-op.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tannic.dir/build.make CMakeFiles/tannic.dir/src/cuda/matmul-op.cu.s
+.PHONY : src/cuda/matmul-op.cu.s
+
 src/cuda/unary-ops.o: src/cuda/unary-ops.cu.o
 .PHONY : src/cuda/unary-ops.o
 
@@ -392,6 +416,30 @@ tests/cuda/test-ops.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test-ops.cpp.s
 .PHONY : tests/cuda/test-ops.cpp.s
 
+tests/cuda/test_matmul.o: tests/cuda/test_matmul.cpp.o
+.PHONY : tests/cuda/test_matmul.o
+
+# target to build an object file
+tests/cuda/test_matmul.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test_matmul.cpp.o
+.PHONY : tests/cuda/test_matmul.cpp.o
+
+tests/cuda/test_matmul.i: tests/cuda/test_matmul.cpp.i
+.PHONY : tests/cuda/test_matmul.i
+
+# target to preprocess a source file
+tests/cuda/test_matmul.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test_matmul.cpp.i
+.PHONY : tests/cuda/test_matmul.cpp.i
+
+tests/cuda/test_matmul.s: tests/cuda/test_matmul.cpp.s
+.PHONY : tests/cuda/test_matmul.s
+
+# target to generate assembly for a file
+tests/cuda/test_matmul.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/tests/cuda/test_matmul.cpp.s
+.PHONY : tests/cuda/test_matmul.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -415,6 +463,9 @@ help:
 	@echo "... src/cuda/binary-ops.o"
 	@echo "... src/cuda/binary-ops.i"
 	@echo "... src/cuda/binary-ops.s"
+	@echo "... src/cuda/matmul-op.o"
+	@echo "... src/cuda/matmul-op.i"
+	@echo "... src/cuda/matmul-op.s"
 	@echo "... src/cuda/unary-ops.o"
 	@echo "... src/cuda/unary-ops.i"
 	@echo "... src/cuda/unary-ops.s"
@@ -433,6 +484,9 @@ help:
 	@echo "... tests/cuda/test-ops.o"
 	@echo "... tests/cuda/test-ops.i"
 	@echo "... tests/cuda/test-ops.s"
+	@echo "... tests/cuda/test_matmul.o"
+	@echo "... tests/cuda/test_matmul.i"
+	@echo "... tests/cuda/test_matmul.s"
 .PHONY : help
 
 

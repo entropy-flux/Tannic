@@ -3,8 +3,13 @@
 #include <cuda_runtime.h>
 #include <sstream>
 #include <stdexcept>
+#include "core/tensor.h"
 
 namespace cuda {
+
+constexpr inline auto index(type first, type second) {
+    return static_cast<int>(first) + static_cast<int>(TYPES)*static_cast<int>(second);
+}
 
 inline void checkError(cudaError_t status, const char* message, const char* file, int line) {
     if (status != cudaSuccess) {
