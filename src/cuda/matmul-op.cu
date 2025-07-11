@@ -92,9 +92,9 @@ void cuda::matmulOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, b
         }
 
         gemmKernel<S,D,TC><<<grid, block, 0, stream>>>(
-            static_cast<const S*>(src0->storage->address) + src0->offset + off0,
-            static_cast<const S*>(src1->storage->address) + src1->offset + off1,
-            reinterpret_cast<TC*>(dst->storage->address) + dst->offset + offD,
+            static_cast<const S*>(src0->storage.address) + src0->offset + off0,
+            static_cast<const S*>(src1->storage.address) + src1->offset + off1,
+            reinterpret_cast<TC*>(dst->storage.address) + dst->offset + offD,
             M, N, K,
             src0->strides[src0->rank-2],
             src0->strides[src0->rank-1],

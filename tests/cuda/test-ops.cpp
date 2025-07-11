@@ -53,9 +53,9 @@ protected:
         C_storage = {.address = C_data_d, .nbytes = sizeof(float) * 24, .resource = {0}};
 
         // Initialize tensors
-        A = {.rank = 3, .shape = shape_A, .strides = strides_A, .storage = &A_storage, .offset = 0, .dtype = dtype_float};
-        B = {.rank = 3, .shape = shape_B, .strides = strides_B, .storage = &B_storage, .offset = 0, .dtype = dtype_float};
-        C = {.rank = 3, .shape = shape_C, .strides = strides_C, .storage = &C_storage, .offset = 0, .dtype = dtype_float};
+        A = {.rank = 3, .shape = shape_A, .strides = strides_A, .storage = A_storage, .offset = 0, .dtype = dtype_float};
+        B = {.rank = 3, .shape = shape_B, .strides = strides_B, .storage = B_storage, .offset = 0, .dtype = dtype_float};
+        C = {.rank = 3, .shape = shape_C, .strides = strides_C, .storage = C_storage, .offset = 0, .dtype = dtype_float};
     }
 
     void TearDown() override {

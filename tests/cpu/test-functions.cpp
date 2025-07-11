@@ -31,7 +31,7 @@ protected:
         A.shape = shape_A;
         A.strides = strides_A;
         A.offset = 0;
-        A.storage = &storage_A;
+        A.storage = storage_A;
         A.dtype = dtype_float;
     }
 };

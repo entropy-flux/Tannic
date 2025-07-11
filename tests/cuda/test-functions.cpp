@@ -40,7 +40,7 @@ protected:
             .rank = 3,
             .shape = shape,
             .strides = strides,
-            .storage = &A_storage,
+            .storage = A_storage,
             .offset = 0,
             .dtype = dtype
         };

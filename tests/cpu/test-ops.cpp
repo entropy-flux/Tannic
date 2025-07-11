@@ -79,7 +79,7 @@ protected:
             .rank = rank,
             .shape = shape_A_arr,
             .strides = strides_A_arr,
-            .storage = &A_storage,
+            .storage = A_storage,
             .offset = 0,
             .dtype = dtype_float
         };
@@ -88,7 +88,7 @@ protected:
             .rank = rank,
             .shape = shape_B_arr,
             .strides = strides_B_arr,
-            .storage = &B_storage,
+            .storage = B_storage,
             .offset = 0,
             .dtype = dtype_float
         };
@@ -97,7 +97,7 @@ protected:
             .rank = rank,
             .shape = shape_C_arr,
             .strides = strides_C_arr,
-            .storage = &C_storage,
+            .storage = C_storage,
             .offset = 0,
             .dtype = dtype_float
         };
@@ -106,7 +106,7 @@ protected:
             .rank = rank,
             .shape = shape_D_arr,
             .strides = strides_D_arr,
-            .storage = &D_storage,
+            .storage = D_storage,
             .offset = 0,
             .dtype = dtype_float
         };
