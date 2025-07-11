@@ -21,6 +21,7 @@ public:
     size_t strides_B[3] = {12, 3, 1};
     size_t strides_C[3] = {12, 3, 1};
 
+    storage_t A_storage, B_storage, C_storage;
     tensor_t A, B, C;
 
     const type dtype_float = float32;
@@ -46,9 +47,15 @@ protected:
         cudaMemcpy(A_data_d, A_data, sizeof(float) * 6, cudaMemcpyHostToDevice);
         cudaMemcpy(B_data_d, B_data, sizeof(float) * 12, cudaMemcpyHostToDevice);
 
-        A = {3, shape_A, strides_A, 0, A_data_d, dtype_float};
-        B = {3, shape_B, strides_B, 0, B_data_d, dtype_float};
-        C = {3, shape_C, strides_C, 0, C_data_d, dtype_float};
+        // Initialize storage
+        A_storage = {.address = A_data_d, .nbytes = sizeof(float) * 6, .resource = {0}};
+        B_storage = {.address = B_data_d, .nbytes = sizeof(float) * 12, .resource = {0}};
+        C_storage = {.address = C_data_d, .nbytes = sizeof(float) * 24, .resource = {0}};
+
+        // Initialize tensors
+        A = {.rank = 3, .shape = shape_A, .strides = strides_A, .storage = &A_storage, .offset = 0, .dtype = dtype_float};
+        B = {.rank = 3, .shape = shape_B, .strides = strides_B, .storage = &B_storage, .offset = 0, .dtype = dtype_float};
+        C = {.rank = 3, .shape = shape_C, .strides = strides_C, .storage = &C_storage, .offset = 0, .dtype = dtype_float};
     }
 
     void TearDown() override {

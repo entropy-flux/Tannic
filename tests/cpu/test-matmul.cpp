@@ -6,6 +6,14 @@
 #include "core/tensor.h" 
 #include "cpu/matmul-op.hpp"  
 
+#include <gtest/gtest.h>
+#include <cstring>
+#include <cmath>
+
+#include "core/types.h"
+#include "core/tensor.h" 
+#include "cpu/matmul-op.hpp"  
+
 TEST(MatmulTests, Basic) {
     float X_data[3 * 4] = {
         4.f, 2.f, 6.f, 0.f,
@@ -36,9 +44,13 @@ TEST(MatmulTests, Basic) {
     size_t strides_Y[2] = {5, 1};
     size_t strides_Z[2] = {5, 1};
 
-    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .data = X_data, .dtype = float32};
-    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .data = Y_data, .dtype = float32};
-    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = Z_data, .dtype = float32};
+    storage_t X_storage = {.address = X_data, .nbytes = sizeof(X_data), .resource = {0}};
+    storage_t Y_storage = {.address = Y_data, .nbytes = sizeof(Y_data), .resource = {0}};
+    storage_t Z_storage = {.address = Z_data, .nbytes = sizeof(Z_data), .resource = {0}};
+
+    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .storage = &X_storage, .offset = 0, .dtype = float32};
+    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .storage = &Y_storage, .offset = 0, .dtype = float32};
+    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .storage = &Z_storage, .offset = 0, .dtype = float32};
 
     memset(Z_data, 0, sizeof(Z_data)); 
 
@@ -48,7 +60,7 @@ TEST(MatmulTests, Basic) {
     for (size_t i = 0; i < shape_Z[0]; ++i) {
         for (size_t j = 0; j < shape_Z[1]; ++j) {
             size_t idx = i * strides_Z[0] + j * strides_Z[1];
-            ASSERT_NEAR(((float*)Z.data)[idx], Z_expected_data[i * shape_Z[1] + j], epsilon)
+            ASSERT_NEAR(((float*)Z.storage->address)[idx], Z_expected_data[i * shape_Z[1] + j], epsilon)
                 << "Mismatch at (" << i << "," << j << ")";
         }
     }
@@ -75,9 +87,13 @@ TEST(MatmulTests, FirstTransposed) {
     size_t strides_Y[2] = {3, 1};
     size_t strides_Z[2] = {3, 1};
 
-    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .data = X_data, .dtype = float32};
-    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .data = Y_data_fixed, .dtype = float32};
-    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = Z_data, .dtype = float32};
+    storage_t X_storage = {.address = X_data, .nbytes = sizeof(X_data), .resource = {0}};
+    storage_t Y_storage = {.address = Y_data_fixed, .nbytes = sizeof(Y_data_fixed), .resource = {0}};
+    storage_t Z_storage = {.address = Z_data, .nbytes = sizeof(Z_data), .resource = {0}};
+
+    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .storage = &X_storage, .offset = 0, .dtype = float32};
+    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .storage = &Y_storage, .offset = 0, .dtype = float32};
+    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .storage = &Z_storage, .offset = 0, .dtype = float32};
 
     memset(Z_data, 0, sizeof(Z_data));
  
@@ -93,7 +109,7 @@ TEST(MatmulTests, FirstTransposed) {
     for (size_t i = 0; i < shape_Z[0]; ++i) {
         for (size_t j = 0; j < shape_Z[1]; ++j) {
             size_t idx = i * strides_Z[0] + j * strides_Z[1];
-            ASSERT_NEAR(((float*)Z.data)[idx], Z_expected_data[i * shape_Z[1] + j], epsilon)
+            ASSERT_NEAR(((float*)Z.storage->address)[idx], Z_expected_data[i * shape_Z[1] + j], epsilon)
                 << "Mismatch at (" << i << "," << j << ")";
         }
     }
@@ -112,23 +128,24 @@ TEST(MatmulTests, SecondTransposed) {
 
     float Z_data[2 * 2] = {0};
 
-    // Shapes:
-    size_t shape_X[2] = {2, 3}; // X shape
-    size_t shape_Y[2] = {2, 3}; // Y shape
-    size_t shape_Z[2] = {2, 2}; // Result shape: (2,3) @ (3,2) = (2,2)
+    size_t shape_X[2] = {2, 3};
+    size_t shape_Y[2] = {2, 3};
+    size_t shape_Z[2] = {2, 2};
 
-    // Strides for row-major contiguous arrays:
     size_t strides_X[2] = {3, 1};
     size_t strides_Y[2] = {3, 1};
     size_t strides_Z[2] = {2, 1};
 
-    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .data = X_data, .dtype = float32};
-    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .data = Y_data, .dtype = float32};
-    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = Z_data, .dtype = float32};
+    storage_t X_storage = {.address = X_data, .nbytes = sizeof(X_data), .resource = {0}};
+    storage_t Y_storage = {.address = Y_data, .nbytes = sizeof(Y_data), .resource = {0}};
+    storage_t Z_storage = {.address = Z_data, .nbytes = sizeof(Z_data), .resource = {0}};
+
+    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .storage = &X_storage, .offset = 0, .dtype = float32};
+    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .storage = &Y_storage, .offset = 0, .dtype = float32};
+    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .storage = &Z_storage, .offset = 0, .dtype = float32};
 
     memset(Z_data, 0, sizeof(Z_data));
 
-    // transpose second (Y)
     cpu::matmul::kernels[cpu::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true);
 
     float Z_expected_data[2 * 2] = {
@@ -140,7 +157,7 @@ TEST(MatmulTests, SecondTransposed) {
     for (size_t i = 0; i < shape_Z[0]; ++i) {
         for (size_t j = 0; j < shape_Z[1]; ++j) {
             size_t idx = i * strides_Z[0] + j * strides_Z[1];
-            ASSERT_NEAR(((float*)Z.data)[idx], Z_expected_data[i * shape_Z[1] + j], epsilon)
+            ASSERT_NEAR(((float*)Z.storage->address)[idx], Z_expected_data[i * shape_Z[1] + j], epsilon)
                 << "Mismatch at (" << i << "," << j << ")";
         }
     }
@@ -152,27 +169,29 @@ TEST(MatmulTests, BothTransposed) {
         2.f, 5.f,
         3.f, 6.f
     };
- 
 
     float Y_data[3 * 2] = {
         7.f, 8.f, 9.f,
         10.f, 11.f, 12.f 
-    }; 
+    };
 
     float Z_data[2 * 2] = {0};
 
-    // Shapes:
     size_t shape_X[2] = {3, 2};
     size_t shape_Y[2] = {2, 3};
-    size_t shape_Z[2] = {2, 2};  
+    size_t shape_Z[2] = {2, 2};
 
     size_t strides_X[2] = {2, 1};
     size_t strides_Y[2] = {3, 1};
     size_t strides_Z[2] = {2, 1};
 
-    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .data = X_data, .dtype = float32};
-    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .data = Y_data, .dtype = float32};
-    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = Z_data, .dtype = float32};
+    storage_t X_storage = {.address = X_data, .nbytes = sizeof(X_data), .resource = {0}};
+    storage_t Y_storage = {.address = Y_data, .nbytes = sizeof(Y_data), .resource = {0}};
+    storage_t Z_storage = {.address = Z_data, .nbytes = sizeof(Z_data), .resource = {0}};
+
+    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .storage = &X_storage, .offset = 0, .dtype = float32};
+    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .storage = &Y_storage, .offset = 0, .dtype = float32};
+    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .storage = &Z_storage, .offset = 0, .dtype = float32};
 
     memset(Z_data, 0, sizeof(Z_data));
  
@@ -187,60 +206,52 @@ TEST(MatmulTests, BothTransposed) {
     for (size_t i = 0; i < shape_Z[0]; ++i) {
         for (size_t j = 0; j < shape_Z[1]; ++j) {
             size_t idx = i * strides_Z[0] + j * strides_Z[1];
-            ASSERT_NEAR(((float*)Z.data)[idx], Z_expected_data[i * shape_Z[1] + j], epsilon)
+            ASSERT_NEAR(((float*)Z.storage->address)[idx], Z_expected_data[i * shape_Z[1] + j], epsilon)
                 << "Mismatch at (" << i << "," << j << ")";
         }
     }
 }
 
-TEST(MatmulTests, Batched) { 
+TEST(MatmulTests, Batched) {
     float A_data[2 * 2 * 2] = {
-        // batch 0
         1.f, 2.f,
         3.f, 4.f,
-        // batch 1
         5.f, 6.f,
         7.f, 8.f
     };
 
     float B_data[2 * 2 * 2] = {
-        // batch 0
         9.f, 8.f,
         7.f, 6.f,
-        // batch 1
         5.f, 4.f,
         3.f, 2.f
     };
 
-    float Z_data[2 * 2 * 2] = {0};  // output data
+    float Z_data[2 * 2 * 2] = {0};
 
-    // Shapes for 3D tensors: [batch, rows, cols]
     size_t shape_A[3] = {2, 2, 2};
     size_t shape_B[3] = {2, 2, 2};
     size_t shape_Z[3] = {2, 2, 2};
 
-    // Strides for row-major contiguous 3D arrays
-    // strides[0] = stride between batches = rows * cols
-    // strides[1] = stride between rows = cols
-    // strides[2] = stride between cols = 1
     size_t strides_A[3] = {4, 2, 1};
     size_t strides_B[3] = {4, 2, 1};
     size_t strides_Z[3] = {4, 2, 1};
 
-    tensor_t A = {.rank = 3, .shape = shape_A, .strides = strides_A, .offset = 0, .data = A_data, .dtype = float32};
-    tensor_t B = {.rank = 3, .shape = shape_B, .strides = strides_B, .offset = 0, .data = B_data, .dtype = float32};
-    tensor_t Z = {.rank = 3, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = Z_data, .dtype = float32};
+    storage_t A_storage = {.address = A_data, .nbytes = sizeof(A_data), .resource = {0}};
+    storage_t B_storage = {.address = B_data, .nbytes = sizeof(B_data), .resource = {0}};
+    storage_t Z_storage = {.address = Z_data, .nbytes = sizeof(Z_data), .resource = {0}};
+
+    tensor_t A = {.rank = 3, .shape = shape_A, .strides = strides_A, .storage = &A_storage, .offset = 0, .dtype = float32};
+    tensor_t B = {.rank = 3, .shape = shape_B, .strides = strides_B, .storage = &B_storage, .offset = 0, .dtype = float32};
+    tensor_t Z = {.rank = 3, .shape = shape_Z, .strides = strides_Z, .storage = &Z_storage, .offset = 0, .dtype = float32};
 
     memset(Z_data, 0, sizeof(Z_data));
  
     cpu::matmul::kernels[cpu::index(A.dtype, B.dtype)](&A, &B, &Z, false, false);
 
-    // Expected results for batch 0 and 1:
     float Z_expected_data[2 * 2 * 2] = {
-        // batch 0: A[0] @ B[0]
         1*9+2*7, 1*8+2*6,
         3*9+4*7, 3*8+4*6,
-        // batch 1: A[1] @ B[1]
         5*5+6*3, 5*4+6*2,
         7*5+8*3, 7*4+8*2
     };
@@ -250,7 +261,7 @@ TEST(MatmulTests, Batched) {
         for (size_t i = 0; i < shape_Z[1]; ++i) {
             for (size_t j = 0; j < shape_Z[2]; ++j) {
                 size_t idx = b * strides_Z[0] + i * strides_Z[1] + j * strides_Z[2];
-                ASSERT_NEAR(((float*)Z.data)[idx], Z_expected_data[b * 4 + i * 2 + j], epsilon)
+                ASSERT_NEAR(((float*)Z.storage->address)[idx], Z_expected_data[b * 4 + i * 2 + j], epsilon)
                     << "Mismatch at batch " << b << ", (" << i << "," << j << ")";
             }
         }
@@ -258,43 +269,30 @@ TEST(MatmulTests, Batched) {
 }
 
 TEST(MatmulTests, Rank4_SecondTransposed) {
-    // Shapes from numpy:
-    // X: (2, 2, 2, 4)
-    // Y: (2, 2, 3, 4) before transpose -> (2, 2, 4, 3)
-    // Result Z: (2, 2, 2, 3)
-
     const size_t batch1 = 2, batch2 = 2;
     const size_t M = 2, K = 4, N = 3;
  
     float X_data[batch1 * batch2 * M * K] = {
-        // batch1=0, batch2=0
         1, 2, 3, 4,
         5, 6, 7, 8,
-        // batch1=0, batch2=1 (same as above because you concat in numpy)
         1, 2, 3, 4,
         5, 6, 7, 8,
-        // batch1=1, batch2=0 (same)
         1, 2, 3, 4,
         5, 6, 7, 8,
-        // batch1=1, batch2=1 (same)
         1, 2, 3, 4,
         5, 6, 7, 8
     };
  
     float Y_data[batch1 * batch2 * N * K] = {
-        // batch1=0, batch2=0
         1, 2, 3, 4,
         5, 6, 7, 8,
         9,10,11,12,
-        // batch1=0, batch2=1
         13,14,15,16,
         17,18,19,20,
         21,22,23,24,
-        // batch1=1, batch2=0
         1, 0, 1, 0,
         0, 1, 0, 1,
         1, 1, 1, 1,
-        // batch1=1, batch2=1
         2, 2, 2, 2,
         3, 3, 3, 3,
         4, 4, 4, 4
@@ -310,25 +308,25 @@ TEST(MatmulTests, Rank4_SecondTransposed) {
     size_t strides_Y[4] = {batch2 * N * K, N * K, K, 1};
     size_t strides_Z[4] = {batch2 * M * N, M * N, N, 1};
 
-    tensor_t X = {.rank = 4, .shape = shape_X, .strides = strides_X, .offset = 0, .data = X_data, .dtype = float32};
-    tensor_t Y = {.rank = 4, .shape = shape_Y, .strides = strides_Y, .offset = 0, .data = Y_data, .dtype = float32};
-    tensor_t Z = {.rank = 4, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = Z_data, .dtype = float32};
+    storage_t X_storage = {.address = X_data, .nbytes = sizeof(X_data), .resource = {0}};
+    storage_t Y_storage = {.address = Y_data, .nbytes = sizeof(Y_data), .resource = {0}};
+    storage_t Z_storage = {.address = Z_data, .nbytes = sizeof(Z_data), .resource = {0}};
+
+    tensor_t X = {.rank = 4, .shape = shape_X, .strides = strides_X, .storage = &X_storage, .offset = 0, .dtype = float32};
+    tensor_t Y = {.rank = 4, .shape = shape_Y, .strides = strides_Y, .storage = &Y_storage, .offset = 0, .dtype = float32};
+    tensor_t Z = {.rank = 4, .shape = shape_Z, .strides = strides_Z, .storage = &Z_storage, .offset = 0, .dtype = float32};
 
     memset(Z_data, 0, sizeof(Z_data));
  
     cpu::matmul::kernels[cpu::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true);
  
     float Z_expected[batch1 * batch2 * M * N] = {
-        // batch1=0, batch2=0
         30.f, 70.f, 110.f,
         70.f, 174.f, 278.f,
-        // batch1=0, batch2=1
         150.f, 190.f, 230.f,
         382.f, 486.f, 590.f,
-        // batch1=1, batch2=0
         4.f, 6.f, 10.f,
         12.f, 14.f, 26.f,
-        // batch1=1, batch2=1
         20.f, 30.f, 40.f,
         52.f, 78.f, 104.f
     };

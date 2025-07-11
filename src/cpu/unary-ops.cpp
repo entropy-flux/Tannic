@@ -6,8 +6,8 @@
 
 template<typename S, typename D, typename UnaryOp>
 void cpu::unaryOp(const tensor_t* src, tensor_t* dst, UnaryOp op) {
-    const S* src_data = static_cast<const S*>(src->data) + src->offset;
-    D* dst_data = static_cast<D*>(dst->data) + dst->offset;
+    const S* src_data = static_cast<const S*>(src->storage->address) + src->offset;
+    D* dst_data = static_cast<D*>(dst->storage->address) + dst->offset;
 
     size_t counters[8] = {0};
 

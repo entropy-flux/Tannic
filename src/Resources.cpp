@@ -1,9 +1,9 @@
 #include <stdexcept>
 #include "Resources.hpp" 
-#include "cpu/cpu.hpp"
-#include "cuda/cuda.cuh"  
+#include "cpu/cpu.hpp" 
 
 #ifdef CUDA
+#include "cuda/cuda.cuh"  
 
 Host::Host(bool pinned) : pinned_(pinned) {}
 

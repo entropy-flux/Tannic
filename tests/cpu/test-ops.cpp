@@ -24,6 +24,7 @@ public:
     float C_data[2*4*3];
     float D_data[2*1*3];
 
+    storage_t A_storage, B_storage, C_storage, D_storage;
     tensor_t A, B, C, D;
 
     size_t orig_strides_A[3];
@@ -40,61 +41,75 @@ public:
     }
 
 protected:
-
     void SetUp() override {
         uint8_t rank = 3;
 
-
+        // Initialize shapes
         shape_A_arr[0] = 2; shape_A_arr[1] = 1; shape_A_arr[2] = 3;
         shape_B_arr[0] = 1; shape_B_arr[1] = 4; shape_B_arr[2] = 3;
         shape_C_arr[0] = 2; shape_C_arr[1] = 4; shape_C_arr[2] = 3;
         shape_D_arr[0] = 2; shape_D_arr[1] = 1; shape_D_arr[2] = 3;
 
-
+        // Initialize strides
         strides_A_arr[0] = 3; strides_A_arr[1] = 3; strides_A_arr[2] = 1;
         strides_B_arr[0] = 12; strides_B_arr[1] = 3; strides_B_arr[2] = 1;
         strides_C_arr[0] = 12; strides_C_arr[1] = 3; strides_C_arr[2] = 1;
         strides_D_arr[0] = 12; strides_D_arr[1] = 3; strides_D_arr[2] = 1;
 
-
+        // Save original strides
         memcpy(orig_strides_A, strides_A_arr, sizeof(strides_A_arr));
         memcpy(orig_strides_B, strides_B_arr, sizeof(strides_B_arr));
         memcpy(orig_strides_C, strides_C_arr, sizeof(strides_C_arr));
         memcpy(orig_strides_D, strides_D_arr, sizeof(strides_D_arr));
 
-        
+        // Initialize data
         for (int i = 0; i < 6; ++i) A_data[i] = static_cast<float>(i);
         for (int i = 0; i < 12; ++i) B_data[i] = static_cast<float>(i * 10);
         for (int i = 0; i < 24; ++i) C_data[i] = 0.0f;
         for (int i = 0; i < 6; ++i) D_data[i] = 0.0f;
-        
-        A.rank = rank;
-        A.shape = shape_A_arr;
-        A.strides = strides_A_arr;
-        A.offset = 0;
-        A.data = static_cast<void*>(A_data);
-        A.dtype = dtype_float;
 
-        B.rank = rank;
-        B.shape = shape_B_arr;
-        B.strides = strides_B_arr;
-        B.offset = 0;
-        B.data = static_cast<void*>(B_data);
-        B.dtype = dtype_float;
+        // Initialize storage
+        A_storage = {.address = A_data, .nbytes = sizeof(A_data), .resource = {0}};
+        B_storage = {.address = B_data, .nbytes = sizeof(B_data), .resource = {0}};
+        C_storage = {.address = C_data, .nbytes = sizeof(C_data), .resource = {0}};
+        D_storage = {.address = D_data, .nbytes = sizeof(D_data), .resource = {0}};
 
-        C.rank = rank;
-        C.shape = shape_C_arr;
-        C.strides = strides_C_arr;
-        C.offset = 0;
-        C.data = static_cast<void*>(C_data);
-        C.dtype = dtype_float;
+        // Initialize tensors
+        A = {
+            .rank = rank,
+            .shape = shape_A_arr,
+            .strides = strides_A_arr,
+            .storage = &A_storage,
+            .offset = 0,
+            .dtype = dtype_float
+        };
 
-        D.rank = rank;
-        D.shape = shape_D_arr;
-        D.strides = strides_D_arr;
-        D.offset = 0;
-        D.data = static_cast<void*>(D_data);
-        D.dtype = dtype_float;
+        B = {
+            .rank = rank,
+            .shape = shape_B_arr,
+            .strides = strides_B_arr,
+            .storage = &B_storage,
+            .offset = 0,
+            .dtype = dtype_float
+        };
+
+        C = {
+            .rank = rank,
+            .shape = shape_C_arr,
+            .strides = strides_C_arr,
+            .storage = &C_storage,
+            .offset = 0,
+            .dtype = dtype_float
+        };
+
+        D = {
+            .rank = rank,
+            .shape = shape_D_arr,
+            .strides = strides_D_arr,
+            .storage = &D_storage,
+            .offset = 0,
+            .dtype = dtype_float
+        };
     }
 
     void reset_strides() {

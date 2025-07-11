@@ -112,7 +112,7 @@ private:
     type dtype_;
     Shape shape_; 
     Strides strides_;
-    Storage storage_; 
+    Storage storage_;
     difference_type offset_;  
     bool is_contiguous_; 
 }; 

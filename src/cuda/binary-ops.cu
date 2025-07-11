@@ -58,9 +58,9 @@ void cuda::binaryOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, O
     int blocks = (total + threadsPerBlock - 1) / threadsPerBlock;
 
     binaryOpKernel<S0, S1, D, Op><<<blocks, threadsPerBlock, 0, stream>>>(
-        static_cast<const S0*>(src0->data),
-        static_cast<const S1*>(src1->data),
-        static_cast<D*>(dst->data),
+        static_cast<const S0*>(src0->storage->address),
+        static_cast<const S1*>(src1->storage->address),
+        static_cast<D*>(dst->storage->address),
         total,
         rank,
         shape,

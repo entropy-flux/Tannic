@@ -160,9 +160,9 @@ void matmulOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, bool tr
         }
 
         gemmKernel<S, D, TC>(
-            reinterpret_cast<const S*>(src0->data) + src0->offset + off0,
-            reinterpret_cast<const D*>(src1->data) + src1->offset + off1,
-            reinterpret_cast<TC*>(dst->data) + dst->offset + offD,
+            reinterpret_cast<const S*>(src0->storage->address) + src0->offset + off0,
+            reinterpret_cast<const D*>(src1->storage->address) + src1->offset + off1,
+            reinterpret_cast<TC*>(dst->storage->address) + dst->offset + offD,
             M, N, K,
             src0->strides[src0->rank - 2],
             src0->strides[src0->rank - 1],

@@ -19,19 +19,17 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
- 
+  
 typedef struct resource_t { 
     int id;
-} resource_t;
-
+} resource_t; 
  
 typedef struct storage_t {
     void* address;
     size_t nbytes;
     resource_t resource;
-} storage_t;
-
-
+} storage_t; 
+ 
 #ifdef __cplusplus
 }
 #endif

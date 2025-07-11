@@ -6,12 +6,14 @@
 
 #include "core/types.h"
 #include "core/tensor.h"
-#include "cuda/unary-ops.cuh"  // Assuming this is the header with your kernels
+#include "cuda/unary-ops.cuh"  
 
 class TestUnaryOpsCuda : public ::testing::Test {
 public:
-    float h_A_data[6];  // Host
-    float* d_A_data{};  // Device
+    float h_A_data[6];  
+    float* d_A_data{};  
+
+    storage_t A_storage;
     tensor_t A;
 
     size_t shape[3] = {2, 1, 3};
@@ -26,12 +28,22 @@ protected:
         cudaMalloc(&d_A_data, sizeof(float) * 6);
         cudaMemcpy(d_A_data, h_A_data, sizeof(float) * 6, cudaMemcpyHostToDevice);
 
-        A.rank = 3;
-        A.shape = shape;
-        A.strides = strides;
-        A.offset = 0;
-        A.data = d_A_data;
-        A.dtype = dtype;
+        // Initialize storage
+        A_storage = {
+            .address = d_A_data,
+            .nbytes = sizeof(float) * 6,
+            .resource = {0}
+        };
+
+        // Initialize tensor
+        A = {
+            .rank = 3,
+            .shape = shape,
+            .strides = strides,
+            .storage = &A_storage,
+            .offset = 0,
+            .dtype = dtype
+        };
     }
 
     void TearDown() override {

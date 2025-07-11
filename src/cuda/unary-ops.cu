@@ -50,8 +50,8 @@ void cuda::unaryOp(const tensor_t* src, tensor_t* dst, Op op, cudaStream_t strea
     int blocks = (total + threadsPerBlock - 1) / threadsPerBlock;
 
     unaryOpKernel<S, D, Op><<<blocks, threadsPerBlock, 0, stream>>>(
-        static_cast<const S*>(src->data),
-        static_cast<D*>(dst->data),
+        static_cast<const S*>(src->storage->address),
+        static_cast<D*>(dst->storage->address),
         total,
         rank,
         shape,

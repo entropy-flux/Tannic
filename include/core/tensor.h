@@ -23,9 +23,10 @@ extern "C" {
 #include <stdint.h>
 #include <stddef.h>
 #include "core/types.h" 
+#include "core/resources.h"
 
 typedef struct scalar_t {
-    void* data; 
+    storage_t storage;
     type dtype; 
 } scalar_t;
 
@@ -33,8 +34,8 @@ typedef struct tensor_t {
     uint8_t rank;
     size_t* shape;
     size_t* strides;
+    storage_t* storage;
     ptrdiff_t offset;
-    void* data; 
     type dtype; 
 } tensor_t; 
 

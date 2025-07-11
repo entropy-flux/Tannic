@@ -7,12 +7,14 @@
 #include "core/tensor.h"
 #include "cpu/unary-ops.hpp"
 
+
 class TestUnaryOps : public ::testing::Test {
 public:
     float A_data[2 * 1 * 3];
     size_t shape_A[3] = {2, 1, 3};
     size_t strides_A[3] = {3, 3, 1};
 
+    storage_t storage_A;
     tensor_t A;
     const type dtype_float = float32;
 
@@ -21,14 +23,19 @@ protected:
         for (int i = 0; i < 6; ++i)
             A_data[i] = static_cast<float>(i + 1);  // 1 to 6
 
+        storage_A.address = static_cast<void*>(A_data);
+        storage_A.nbytes = sizeof(A_data);
+        storage_A.resource = resource_t{.id = 0};  // Dummy ID
+
         A.rank = 3;
         A.shape = shape_A;
         A.strides = strides_A;
         A.offset = 0;
-        A.data = static_cast<void*>(A_data);
+        A.storage = &storage_A;
         A.dtype = dtype_float;
     }
 };
+
 
 
 TEST_F(TestUnaryOps, Negation) {
