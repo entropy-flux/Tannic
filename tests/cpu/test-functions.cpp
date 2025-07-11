@@ -25,7 +25,7 @@ protected:
         A.shape = shape_A;
         A.strides = strides_A;
         A.offset = 0;
-        A.address = static_cast<void*>(A_data);
+        A.data = static_cast<void*>(A_data);
         A.dtype = dtype_float;
     }
 };

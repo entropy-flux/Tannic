@@ -58,9 +58,9 @@ void cuda::binaryOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, O
     int blocks = (total + threadsPerBlock - 1) / threadsPerBlock;
 
     binaryOpKernel<S0, S1, D, Op><<<blocks, threadsPerBlock, 0, stream>>>(
-        static_cast<const S0*>(src0->address),
-        static_cast<const S1*>(src1->address),
-        static_cast<D*>(dst->address),
+        static_cast<const S0*>(src0->data),
+        static_cast<const S1*>(src1->data),
+        static_cast<D*>(dst->data),
         total,
         rank,
         shape,
@@ -78,8 +78,7 @@ void cuda::binaryOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, O
 #endif
 }
 
-
-// Addition
+ 
 template void cuda::binaryOp<int8_t,  int8_t,  int8_t,  cuda::addition::Addition>(const tensor_t*, const tensor_t*, tensor_t*, cuda::addition::Addition, cudaStream_t);
 template void cuda::binaryOp<int8_t,  int16_t, int16_t, cuda::addition::Addition>(const tensor_t*, const tensor_t*, tensor_t*, cuda::addition::Addition, cudaStream_t);
 template void cuda::binaryOp<int8_t,  int32_t, int32_t, cuda::addition::Addition>(const tensor_t*, const tensor_t*, tensor_t*, cuda::addition::Addition, cudaStream_t);

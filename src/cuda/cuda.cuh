@@ -1,29 +1,20 @@
 #pragma once
-
-#include <cuda_runtime.h>
 #include <sstream>
 #include <stdexcept>
-#include "core/tensor.h"
+#include <cuda_runtime.h> 
+#include "core/types.h"
 
 namespace cuda {
 
-constexpr inline auto index(type first, type second) {
-    return static_cast<int>(first) + static_cast<int>(TYPES)*static_cast<int>(second);
-}
-
-inline void checkError(cudaError_t status, const char* message, const char* file, int line) {
-    if (status != cudaSuccess) {
-        std::ostringstream error;
-        error << "CUDA Error at " << file << ":" << line << "\n"
-              << "  Code: " << static_cast<int>(status) << " (" << cudaGetErrorName(status) << ")\n"
-              << "  Message: " << cudaGetErrorString(status);
-        if (message && *message)
-            error << "\n  Context: " << message;
-        throw std::runtime_error(error.str());
-    }
-}
+constexpr inline auto index(type dtype) { return static_cast<int>(dtype); }
+constexpr inline auto index(type first, type second) { return static_cast<int>(first) + static_cast<int>(TYPES)*static_cast<int>(second); }
+  
+void checkError(cudaError_t status, const char* message, const char* file, int line);
+void* syncHostAllocate(std::size_t nbytes);
+void syncHostDeallocate(void* ptr);
+void* syncAllocate(std::size_t size, int device);
+void syncDeallocate(void* ptr, int device); 
 
 } // namespace cuda
 
 #define CUDA_CHECK(call) cuda::checkError((call), #call, __FILE__, __LINE__)
- 

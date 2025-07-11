@@ -30,7 +30,7 @@ protected:
         A.shape = shape;
         A.strides = strides;
         A.offset = 0;
-        A.address = d_A_data;
+        A.data = d_A_data;
         A.dtype = dtype;
     }
 

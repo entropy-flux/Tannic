@@ -3,10 +3,11 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/include"
+                "/usr/local/cuda-12.9/targets/x86_64-linux/include",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/**"
             ],
-            "defines": [],
+            "defines": ["CUDA"],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c23",
             "cppStandard": "gnu++23",

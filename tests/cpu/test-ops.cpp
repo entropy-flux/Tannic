@@ -72,28 +72,28 @@ protected:
         A.shape = shape_A_arr;
         A.strides = strides_A_arr;
         A.offset = 0;
-        A.address = static_cast<void*>(A_data);
+        A.data = static_cast<void*>(A_data);
         A.dtype = dtype_float;
 
         B.rank = rank;
         B.shape = shape_B_arr;
         B.strides = strides_B_arr;
         B.offset = 0;
-        B.address = static_cast<void*>(B_data);
+        B.data = static_cast<void*>(B_data);
         B.dtype = dtype_float;
 
         C.rank = rank;
         C.shape = shape_C_arr;
         C.strides = strides_C_arr;
         C.offset = 0;
-        C.address = static_cast<void*>(C_data);
+        C.data = static_cast<void*>(C_data);
         C.dtype = dtype_float;
 
         D.rank = rank;
         D.shape = shape_D_arr;
         D.strides = strides_D_arr;
         D.offset = 0;
-        D.address = static_cast<void*>(D_data);
+        D.data = static_cast<void*>(D_data);
         D.dtype = dtype_float;
     }
 

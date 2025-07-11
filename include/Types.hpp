@@ -48,7 +48,15 @@ constexpr inline std::string dnameof(type type) {
         default:         return "any";
     }
 }
- 
+
+template<class T> constexpr inline type dtypeof();
+template<> constexpr inline type dtypeof<int8_t>()   { return int8; }
+template<> constexpr inline type dtypeof<int16_t>() { return int16; }
+template<> constexpr inline type dtypeof<int32_t>() { return int32; }
+template<> constexpr inline type dtypeof<int64_t>() { return int64; }
+template<> constexpr inline type dtypeof<float>()     { return float32; }
+template<> constexpr inline type dtypeof<double>()   { return float64; } 
+
 constexpr type complex(type dtype) {
     switch (dtype) {
         case float32: return complex64;

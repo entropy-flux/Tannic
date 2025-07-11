@@ -13,33 +13,27 @@
 // limitations under the License.
 //
 
-#ifndef TENSOR_H
-#define TENSOR_H
+#ifndef RESOURCES_H
+#define RESOURCES_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+ 
+typedef struct resource_t { 
+    int id;
+} resource_t;
 
-#include <stdint.h>
-#include <stddef.h>
-#include "core/types.h" 
+ 
+typedef struct storage_t {
+    void* address;
+    size_t nbytes;
+    resource_t resource;
+} storage_t;
 
-typedef struct scalar_t {
-    void* data; 
-    type dtype; 
-} scalar_t;
-
-typedef struct tensor_t {
-    uint8_t rank;
-    size_t* shape;
-    size_t* strides;
-    ptrdiff_t offset;
-    void* data; 
-    type dtype; 
-} tensor_t; 
 
 #ifdef __cplusplus
 }
-#endif 
+#endif
 
-#endif // TENSOR_H
+#endif // RESOURCES_H

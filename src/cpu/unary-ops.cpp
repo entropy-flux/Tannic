@@ -6,8 +6,8 @@
 
 template<typename S, typename D, typename UnaryOp>
 void cpu::unaryOp(const tensor_t* src, tensor_t* dst, UnaryOp op) {
-    const S* src_data = static_cast<const S*>(src->address) + src->offset;
-    D* dst_data = static_cast<D*>(dst->address) + dst->offset;
+    const S* src_data = static_cast<const S*>(src->data) + src->offset;
+    D* dst_data = static_cast<D*>(dst->data) + dst->offset;
 
     size_t counters[8] = {0};
 
@@ -34,7 +34,7 @@ void cpu::unaryOp(const tensor_t* src, tensor_t* dst, UnaryOp op) {
 }
 
 
-// Explicit template instantiations 
+// TODO: Explicit template instatiation should be refactor with macros. 
 template void cpu::unaryOp<int8_t,  int8_t,  cpu::negation::Negation>(const tensor_t*, tensor_t*, cpu::negation::Negation);
 template void cpu::unaryOp<int16_t, int16_t, cpu::negation::Negation>(const tensor_t*, tensor_t*, cpu::negation::Negation);
 template void cpu::unaryOp<int32_t, int32_t, cpu::negation::Negation>(const tensor_t*, tensor_t*, cpu::negation::Negation);

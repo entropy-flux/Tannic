@@ -50,8 +50,8 @@ void cuda::unaryOp(const tensor_t* src, tensor_t* dst, Op op, cudaStream_t strea
     int blocks = (total + threadsPerBlock - 1) / threadsPerBlock;
 
     unaryOpKernel<S, D, Op><<<blocks, threadsPerBlock, 0, stream>>>(
-        static_cast<const S*>(src->address),
-        static_cast<D*>(dst->address),
+        static_cast<const S*>(src->data),
+        static_cast<D*>(dst->data),
         total,
         rank,
         shape,
@@ -68,6 +68,7 @@ void cuda::unaryOp(const tensor_t* src, tensor_t* dst, Op op, cudaStream_t strea
 }
 
 
+// TODO: Explicit template instatiation should be refactor with macros. 
 // NEGATION
 template void cuda::unaryOp<int8_t, int8_t, cuda::negation_op::Negation>(const tensor_t*, tensor_t*, cuda::negation_op::Negation, cudaStream_t);
 template void cuda::unaryOp<int16_t, int16_t, cuda::negation_op::Negation>(const tensor_t*, tensor_t*, cuda::negation_op::Negation, cudaStream_t);

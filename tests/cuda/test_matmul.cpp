@@ -61,9 +61,9 @@ TEST_F(CudaMatmulTests, Basic) {
     size_t strides_Y[2] = {5, 1};
     size_t strides_Z[2] = {5, 1};
 
-    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .address = d_X, .dtype = float32};
-    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .address = d_Y, .dtype = float32};
-    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .address = d_Z, .dtype = float32};
+    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .data = d_X, .dtype = float32};
+    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .data = d_Y, .dtype = float32};
+    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = d_Z, .dtype = float32};
 
     // Run CUDA matmul
     cuda::matmul::kernels[cuda::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, false, stream);
@@ -125,9 +125,9 @@ TEST_F(CudaMatmulTests, FirstTransposed) {
     size_t strides_Y[2] = {3, 1};
     size_t strides_Z[2] = {3, 1};
 
-    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .address = d_X, .dtype = float32};
-    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .address = d_Y, .dtype = float32};
-    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .address = d_Z, .dtype = float32};
+    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .data = d_X, .dtype = float32};
+    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .data = d_Y, .dtype = float32};
+    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = d_Z, .dtype = float32};
 
     // Run CUDA matmul with first transposed
     cuda::matmul::kernels[cuda::index(X.dtype,Y.dtype)](&X, &Y, &Z, true, false, stream);
@@ -188,9 +188,9 @@ TEST_F(CudaMatmulTests, SecondTransposed) {
     size_t strides_Y[2] = {3, 1};
     size_t strides_Z[2] = {2, 1};
 
-    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .address = d_X, .dtype = float32};
-    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .address = d_Y, .dtype = float32};
-    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .address = d_Z, .dtype = float32};
+    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .data = d_X, .dtype = float32};
+    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .data = d_Y, .dtype = float32};
+    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = d_Z, .dtype = float32};
 
     // Run CUDA matmul with second transposed
     cuda::matmul::kernels[cuda::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true, stream);
@@ -253,9 +253,9 @@ TEST_F(CudaMatmulTests, BothTransposed) {
     size_t strides_Y[2] = {3, 1};
     size_t strides_Z[2] = {2, 1};
 
-    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .address = d_X, .dtype = float32};
-    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .address = d_Y, .dtype = float32};
-    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .address = d_Z, .dtype = float32};
+    tensor_t X = {.rank = 2, .shape = shape_X, .strides = strides_X, .offset = 0, .data = d_X, .dtype = float32};
+    tensor_t Y = {.rank = 2, .shape = shape_Y, .strides = strides_Y, .offset = 0, .data = d_Y, .dtype = float32};
+    tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = d_Z, .dtype = float32};
 
     // Run CUDA matmul with both transposed
     cuda::matmul::kernels[cuda::index(X.dtype,Y.dtype)](&X, &Y, &Z, true, true, stream);
@@ -329,9 +329,9 @@ TEST_F(CudaMatmulTests, Batched) {
     size_t strides_B[3] = {4, 2, 1};
     size_t strides_Z[3] = {4, 2, 1};
 
-    tensor_t A = {.rank = 3, .shape = shape_A, .strides = strides_A, .offset = 0, .address = d_A, .dtype = float32};
-    tensor_t B = {.rank = 3, .shape = shape_B, .strides = strides_B, .offset = 0, .address = d_B, .dtype = float32};
-    tensor_t Z = {.rank = 3, .shape = shape_Z, .strides = strides_Z, .offset = 0, .address = d_Z, .dtype = float32};
+    tensor_t A = {.rank = 3, .shape = shape_A, .strides = strides_A, .offset = 0, .data = d_A, .dtype = float32};
+    tensor_t B = {.rank = 3, .shape = shape_B, .strides = strides_B, .offset = 0, .data = d_B, .dtype = float32};
+    tensor_t Z = {.rank = 3, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = d_Z, .dtype = float32};
 
     // Run CUDA batched matmul
     cuda::matmul::kernels[cuda::index(A.dtype, B.dtype)](&A, &B, &Z, false, false, stream);
@@ -431,9 +431,9 @@ TEST_F(CudaMatmulTests, Rank4_SecondTransposed) {
     size_t strides_Y[4] = {batch2 * N * K, N * K, K, 1};
     size_t strides_Z[4] = {batch2 * M * N, M * N, N, 1};
 
-    tensor_t X = {.rank = 4, .shape = shape_X, .strides = strides_X, .offset = 0, .address = d_X, .dtype = float32};
-    tensor_t Y = {.rank = 4, .shape = shape_Y, .strides = strides_Y, .offset = 0, .address = d_Y, .dtype = float32};
-    tensor_t Z = {.rank = 4, .shape = shape_Z, .strides = strides_Z, .offset = 0, .address = d_Z, .dtype = float32};
+    tensor_t X = {.rank = 4, .shape = shape_X, .strides = strides_X, .offset = 0, .data = d_X, .dtype = float32};
+    tensor_t Y = {.rank = 4, .shape = shape_Y, .strides = strides_Y, .offset = 0, .data = d_Y, .dtype = float32};
+    tensor_t Z = {.rank = 4, .shape = shape_Z, .strides = strides_Z, .offset = 0, .data = d_Z, .dtype = float32};
 
     // Run CUDA matmul with second transposed
     cuda::matmul::kernels[cuda::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true, stream);
@@ -454,4 +454,4 @@ TEST_F(CudaMatmulTests, Rank4_SecondTransposed) {
     cudaFree(d_Z);
 }
 
-#endif CUDA
+#endif

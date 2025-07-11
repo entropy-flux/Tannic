@@ -124,7 +124,7 @@ void gemmKernel<double, double, double>(
 #endif
 
 template <typename S, typename D, typename TC>
-void matmul_op(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, bool transA, bool transB) {
+void matmulOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, bool transA, bool transB) {
     const size_t batch_rank = (dst->rank > 2) ? dst->rank - 2 : 0;
     size_t batch_size = 1;
     for (size_t i = 0; i < batch_rank; ++i)
@@ -160,9 +160,9 @@ void matmul_op(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, bool t
         }
 
         gemmKernel<S, D, TC>(
-            reinterpret_cast<const S*>(src0->address) + src0->offset + off0,
-            reinterpret_cast<const D*>(src1->address) + src1->offset + off1,
-            reinterpret_cast<TC*>(dst->address) + dst->offset + offD,
+            reinterpret_cast<const S*>(src0->data) + src0->offset + off0,
+            reinterpret_cast<const D*>(src1->data) + src1->offset + off1,
+            reinterpret_cast<TC*>(dst->data) + dst->offset + offD,
             M, N, K,
             src0->strides[src0->rank - 2],
             src0->strides[src0->rank - 1],
@@ -177,33 +177,33 @@ void matmul_op(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, bool t
 
 } // namespace cpu
 
-// Explicit template instantiations 
-template void cpu::matmul_op<int8_t, int8_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int8_t, int16_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int8_t, int32_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int8_t, int64_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+// TODO: Explicit template instatiation should be refactor with macros. 
+template void cpu::matmulOp<int8_t, int8_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int8_t, int16_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int8_t, int32_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int8_t, int64_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
 
-template void cpu::matmul_op<int16_t, int8_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int16_t, int16_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int16_t, int32_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int16_t, int64_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int16_t, int8_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int16_t, int16_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int16_t, int32_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int16_t, int64_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
 
-template void cpu::matmul_op<int32_t, int8_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int32_t, int16_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int32_t, int32_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int32_t, int64_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int32_t, int8_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int32_t, int16_t, int32_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int32_t, int32_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int32_t, int64_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
 
-template void cpu::matmul_op<int64_t, int8_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int64_t, int16_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int64_t, int32_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int64_t, int64_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int64_t, int8_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int64_t, int16_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int64_t, int32_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int64_t, int64_t, int64_t>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
 
-template void cpu::matmul_op<float, float, float>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<float, double, double>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<double, float, double>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<double, double, double>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<float, float, float>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<float, double, double>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<double, float, double>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<double, double, double>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
 
-template void cpu::matmul_op<int32_t, float, float>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<float, int32_t, float>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<int32_t, double, double>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
-template void cpu::matmul_op<double, int32_t, double>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int32_t, float, float>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<float, int32_t, float>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<int32_t, double, double>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+template void cpu::matmulOp<double, int32_t, double>(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);

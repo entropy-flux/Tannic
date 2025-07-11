@@ -5,9 +5,9 @@
 
 template<typename S0, typename S1, typename D, typename BinaryOp>
 void cpu::binaryOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, BinaryOp op) {
-    const S0* src0_data = static_cast<const S0*>(src0->address) + src0->offset;
-    const S1* src1_data = static_cast<const S1*>(src1->address) + src1->offset;
-    D* dst_data = static_cast<D*>(dst->address) + dst->offset;
+    const S0* src0_data = static_cast<const S0*>(src0->data) + src0->offset;
+    const S1* src1_data = static_cast<const S1*>(src1->data) + src1->offset;
+    D* dst_data = static_cast<D*>(dst->data) + dst->offset;
 
     size_t counters[8] = {0};
 
@@ -35,6 +35,10 @@ void cpu::binaryOp(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, Bi
 }
 
 
+
+
+
+// TODO: Explicit template instatiation should be refactor with macros. 
 
 // Addition
 template void cpu::binaryOp<int8_t,  int8_t,  int8_t,  cpu::addition::Addition>(const tensor_t*, const tensor_t*, tensor_t*, cpu::addition::Addition);
