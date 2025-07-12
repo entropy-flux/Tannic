@@ -20,6 +20,11 @@
 extern "C" {
 #endif
   
+enum resource {
+    HOST,
+    DEVICE
+};
+
 typedef struct resource_t { 
     int id;
 } resource_t; 

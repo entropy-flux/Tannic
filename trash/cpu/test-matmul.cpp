@@ -4,7 +4,7 @@
 
 #include "core/types.h"
 #include "core/tensor.h" 
-#include "cpu/matmul-op.hpp"  
+#include "cpu/matmul-op.hpp"    
 
 TEST(MatmulTests, Basic) {
     float X_data[3 * 4] = {
@@ -63,7 +63,7 @@ TEST(MatmulTests, Basic) {
 
     memset(Z_data, 0, sizeof(Z_data)); 
 
-    cpu::matmul::kernels[cpu::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, false);
+    cpu::matmul::kernels[index(X.dtype,Y.dtype)](&X, &Y, &Z, false, false);
 
     float epsilon = 1e-5f;
     for (size_t i = 0; i < shape_Z[0]; ++i) {
@@ -123,7 +123,7 @@ TEST(MatmulTests, FirstTransposed) {
 
     memset(Z_data, 0, sizeof(Z_data));
  
-    cpu::matmul::kernels[cpu::index(X.dtype,Y.dtype)](&X, &Y, &Z, true, false);
+    cpu::matmul::kernels[index(X.dtype,Y.dtype)](&X, &Y, &Z, true, false);
 
     float Z_expected_data[3 * 3] = {
         47.f, 52.f, 57.f,
@@ -189,7 +189,7 @@ TEST(MatmulTests, SecondTransposed) {
 
     memset(Z_data, 0, sizeof(Z_data));
 
-    cpu::matmul::kernels[cpu::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true);
+    cpu::matmul::kernels[index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true);
 
     float Z_expected_data[2 * 2] = {
         50.f, 68.f,
@@ -255,7 +255,7 @@ TEST(MatmulTests, BothTransposed) {
 
     memset(Z_data, 0, sizeof(Z_data));
  
-    cpu::matmul::kernels[cpu::index(X.dtype,Y.dtype)](&X, &Y, &Z, true, true);
+    cpu::matmul::kernels[index(X.dtype,Y.dtype)](&X, &Y, &Z, true, true);
 
     float Z_expected_data[2 * 2] = {
         50.f, 68.f,
@@ -324,7 +324,7 @@ TEST(MatmulTests, Batched) {
 
     memset(Z_data, 0, sizeof(Z_data));
  
-    cpu::matmul::kernels[cpu::index(A.dtype, B.dtype)](&A, &B, &Z, false, false);
+    cpu::matmul::kernels[index(A.dtype, B.dtype)](&A, &B, &Z, false, false);
 
     float Z_expected_data[2 * 2 * 2] = {
         1*9+2*7, 1*8+2*6,
@@ -412,7 +412,7 @@ TEST(MatmulTests, Rank4_SecondTransposed) {
 
     memset(Z_data, 0, sizeof(Z_data));
  
-    cpu::matmul::kernels[cpu::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true);
+    cpu::matmul::kernels[index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true);
  
     float Z_expected[batch1 * batch2 * M * N] = {
         30.f, 70.f, 110.f,

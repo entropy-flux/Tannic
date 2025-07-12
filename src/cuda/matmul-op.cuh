@@ -2,15 +2,15 @@
 
 #include <array>
 #include "core/tensor.h"
-#include "cuda/cuda.cuh"  // Ensure this defines cuda::matmul_op
+#include "cuda/cuda.cuh"    
 
-namespace {
-
-[[noreturn]] inline void notImplemented(const tensor_t*, const tensor_t*, tensor_t*, bool, bool, cudaStream_t) {
+static inline void notImplemented(const tensor_t*, const tensor_t*, tensor_t*, bool, bool, cudaStream_t) {
     throw std::runtime_error("CUDA matmul kernel not implemented for this type combination.");
 }
 
-} // anonymous namespace
+static constexpr inline auto index(type first, type second) {
+    return static_cast<int>(first) + static_cast<int>(TYPES)*static_cast<int>(second);
+}
 
 namespace cuda {
 
@@ -26,7 +26,7 @@ using Kernel = void(*)(const tensor_t*, const tensor_t*, tensor_t*, bool, bool, 
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES * TYPES> table;
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
 
     table[index(int8, int8)]     = matmulOp<int8_t, int8_t, int32_t>;
     table[index(int8, int16)]    = matmulOp<int8_t, int16_t, int32_t>;

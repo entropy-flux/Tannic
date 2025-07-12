@@ -26,18 +26,29 @@ class Storage {
 public:
     Storage() = default;  
 
+    Storage(std::size_t nbytes, Allocator allocator = Host{})
+    :   nbytes_(nbytes), 
+        allocator_(allocator) {
+        references_ = new std::size_t(1);
+        address_ = std::visit([&](auto& variant) -> void* {
+            return variant.allocate(nbytes_);
+        }, allocator_);
+    }
+
+
     Storage(std::size_t size, uint8_t dsize, Allocator allocator = Host{})
     :   nbytes_(size * dsize), 
-        allocator_(allocator),
-        references_(new std::size_t(1)),
-        data_(std::visit([&](auto& alloc) -> void* {
-            return alloc.allocate(nbytes_);
-        }, allocator_)) {}
-
+        allocator_(allocator) {
+        references_ = new std::size_t(1);
+        address_ = std::visit([&](auto& variant) -> void* {
+            return variant.allocate(nbytes_);
+        }, allocator_);
+    }
+ 
 
     Storage(const Storage& other) 
     :   nbytes_(other.nbytes_), 
-        data_(other.data_),
+        address_(other.address_),
         allocator_(other.allocator_),
         references_(other.references_) {
         if(references_) {
@@ -50,7 +61,7 @@ public:
             release();
             nbytes_ = other.nbytes_; 
             allocator_ = other.allocator_;
-            data_ = other.data_;
+            address_ = other.address_;
             references_ = other.references_;
             if(references_) {
                 ++(*references_);
@@ -62,7 +73,7 @@ public:
     Storage(Storage&& other) noexcept 
     :   nbytes_(std::exchange(other.nbytes_, 0)), 
         allocator_(std::move(other.allocator_)),
-        data_(std::exchange(other.data_, nullptr)),
+        address_(std::exchange(other.address_, nullptr)),
         references_(std::exchange(other.references_, nullptr)) {
         if(!references_) {
             references_ = new std::size_t(1);
@@ -74,7 +85,7 @@ public:
             release(); 
             nbytes_ = std::exchange(other.nbytes_, 0);           
             allocator_ = std::move(other.allocator_);          
-            data_ = std::exchange(other.data_, nullptr); 
+            address_ = std::exchange(other.address_, nullptr); 
             references_ = std::exchange(other.references_, nullptr);  
         }
         return *this;
@@ -88,12 +99,12 @@ public:
         return references_ ? *references_ : 0;
     }
 
-    void* data() { 
-        return data_; 
+    void* address() { 
+        return address_; 
     }
 
-    const void* data() const { 
-        return data_; 
+    const void* address() const { 
+        return address_; 
     }
 
     std::size_t nbytes() const { 
@@ -102,25 +113,35 @@ public:
 
     Allocator const& allocator() const { 
         return allocator_; 
+    } 
+
+    auto resource() const { 
+        if (std::holds_alternative<Host>(allocator_)) {
+            return HOST;
+        } else if (std::holds_alternative<Device>(allocator_)) {
+            return DEVICE;
+        } else {
+            throw std::runtime_error("Unknown allocator type");
+        }
     }
 
 private:
     void release() {
         if (references_) {
             if (--(*references_) == 0) {
-                if (data_) {
+                if (address_) {
                     std::visit([&](auto& alloc) {
-                        alloc.deallocate(data_, nbytes_);
+                        alloc.deallocate(address_, nbytes_);
                     }, allocator_);
                 }
                 delete references_;
             }
             references_ = nullptr;
-            data_ = nullptr;
+            address_ = nullptr;
         }
     }
 
-    void* data_ = nullptr; 
+    void* address_ = nullptr; 
     std::size_t nbytes_ = 0;
     std::size_t* references_ = nullptr;
     Allocator allocator_ = Host{};

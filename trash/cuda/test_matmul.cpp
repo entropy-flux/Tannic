@@ -72,7 +72,7 @@ TEST_F(CudaMatmulTests, Basic) {
     tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .storage = Z_storage, .offset = 0, .dtype = float32};
 
     // Run CUDA matmul
-    cuda::matmul::kernels[cuda::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, false, stream);
+    cuda::matmul::kernels[index(X.dtype,Y.dtype)](&X, &Y, &Z, false, false, stream);
     cudaStreamSynchronize(stream);
 
     // Copy result back
@@ -141,7 +141,7 @@ TEST_F(CudaMatmulTests, FirstTransposed) {
     tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .storage = Z_storage, .offset = 0, .dtype = float32};
 
     // Run CUDA matmul with first transposed
-    cuda::matmul::kernels[cuda::index(X.dtype,Y.dtype)](&X, &Y, &Z, true, false, stream);
+    cuda::matmul::kernels[index(X.dtype,Y.dtype)](&X, &Y, &Z, true, false, stream);
     cudaStreamSynchronize(stream);
 
     // Copy result back
@@ -209,7 +209,7 @@ TEST_F(CudaMatmulTests, SecondTransposed) {
     tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .storage = Z_storage, .offset = 0, .dtype = float32};
 
     // Run CUDA matmul with second transposed
-    cuda::matmul::kernels[cuda::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true, stream);
+    cuda::matmul::kernels[index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true, stream);
     cudaStreamSynchronize(stream);
 
     // Copy result back
@@ -278,7 +278,7 @@ TEST_F(CudaMatmulTests, BothTransposed) {
     tensor_t Z = {.rank = 2, .shape = shape_Z, .strides = strides_Z, .storage = Z_storage, .offset = 0, .dtype = float32};
 
     // Run CUDA matmul with both transposed
-    cuda::matmul::kernels[cuda::index(X.dtype,Y.dtype)](&X, &Y, &Z, true, true, stream);
+    cuda::matmul::kernels[index(X.dtype,Y.dtype)](&X, &Y, &Z, true, true, stream);
     cudaStreamSynchronize(stream);
 
     // Copy result back
@@ -352,7 +352,7 @@ TEST_F(CudaMatmulTests, Batched) {
     tensor_t Z = {.rank = 3, .shape = shape_Z, .strides = strides_Z, .storage = Z_storage, .offset = 0, .dtype = float32};
 
     // Run CUDA batched matmul
-    cuda::matmul::kernels[cuda::index(A.dtype, B.dtype)](&A, &B, &Z, false, false, stream);
+    cuda::matmul::kernels[index(A.dtype, B.dtype)](&A, &B, &Z, false, false, stream);
     cudaStreamSynchronize(stream);
 
     // Copy result back
@@ -447,7 +447,7 @@ TEST_F(CudaMatmulTests, Rank4_SecondTransposed) {
     tensor_t Z = {.rank = 4, .shape = shape_Z, .strides = strides_Z, .storage = Z_storage, .offset = 0, .dtype = float32};
 
     // Run CUDA matmul with second transposed
-    cuda::matmul::kernels[cuda::index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true, stream);
+    cuda::matmul::kernels[index(X.dtype,Y.dtype)](&X, &Y, &Z, false, true, stream);
     cudaStreamSynchronize(stream);
 
     // Copy result back

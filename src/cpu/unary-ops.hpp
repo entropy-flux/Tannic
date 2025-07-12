@@ -35,7 +35,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Negation);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented); 
+    table.fill(notImplemented); 
     table[int8] = unaryOp<int8_t, int8_t, Negation>;
     table[int16] = unaryOp<int16_t, int16_t, Negation>;
     table[int32] = unaryOp<int32_t, int32_t, Negation>;
@@ -63,7 +63,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Log);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{}; 
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
     table[float32] = unaryOp<float, float, Log>;
     table[float64] = unaryOp<double, double, Log>;
 
@@ -88,7 +88,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Exp);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented); 
+    table.fill(notImplemented); 
     table[float32] = unaryOp<float, float, Exp>;
     table[float64] = unaryOp<double, double, Exp>;
 
@@ -113,7 +113,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Sqrt);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented); 
+    table.fill(notImplemented); 
     table[float32] = unaryOp<float, float, Sqrt>;
     table[float64] = unaryOp<double, double, Sqrt>;
 
@@ -137,7 +137,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Abs);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented); 
+    table.fill(notImplemented); 
     table[int8] = unaryOp<int8_t, int8_t, Abs>;
     table[int16] = unaryOp<int16_t, int16_t, Abs>;
     table[int32] = unaryOp<int32_t, int32_t, Abs>;
@@ -165,7 +165,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Sin);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented);  
+    table.fill(notImplemented);  
     table[float32] = unaryOp<float, float, Sin>;
     table[float64] = unaryOp<double, double, Sin>;
 
@@ -190,7 +190,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Cos);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented); 
+    table.fill(notImplemented); 
     table[float32] = unaryOp<float, float, Cos>;
     table[float64] = unaryOp<double, double, Cos>;
 
@@ -215,7 +215,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Tan);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{}; 
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
     table[float32] = unaryOp<float, float, Tan>;
     table[float64] = unaryOp<double, double, Tan>;
 
@@ -240,7 +240,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Sinh);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{}; 
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
     table[float32] = unaryOp<float, float, Sinh>;
     table[float64] = unaryOp<double, double, Sinh>;
 
@@ -265,7 +265,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Cosh);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
     table[float32] = unaryOp<float, float, Cosh>;
     table[float64] = unaryOp<double, double, Cosh>;
 
@@ -290,7 +290,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Tanh);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{}; 
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
     table[float32] = unaryOp<float, float, Tanh>;
     table[float64] = unaryOp<double, double, Tanh>;
 

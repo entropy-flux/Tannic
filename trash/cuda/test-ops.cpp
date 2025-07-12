@@ -74,7 +74,7 @@ TEST_F(TestCUDABinaryOps, Addition) {
     broadcasted_strides(&B, &C);
 
     // Pass null stream (0) explicitly
-    cuda::addition::kernels[cuda::index(A.dtype, B.dtype)](&A, &B, &C, cuda::addition::Addition{}, 0);
+    cuda::addition::kernels[index(A.dtype, B.dtype)](&A, &B, &C, cuda::addition::Addition{}, 0);
 
     fetch_output();
 
@@ -96,7 +96,7 @@ TEST_F(TestCUDABinaryOps, Multiplication) {
     broadcasted_strides(&B, &C);
 
     // Pass null stream (0) explicitly
-    cuda::multiplication::kernels[cuda::index(A.dtype, B.dtype)](&A, &B, &C, cuda::multiplication::Multiplication{}, 0);
+    cuda::multiplication::kernels[index(A.dtype, B.dtype)](&A, &B, &C, cuda::multiplication::Multiplication{}, 0);
 
     fetch_output();
 
@@ -118,7 +118,7 @@ TEST_F(TestCUDABinaryOps, Subtraction) {
     broadcasted_strides(&B, &C);
 
     // Pass null stream (0) explicitly
-    cuda::subtraction::kernels[cuda::index(A.dtype, B.dtype)](&A, &B, &C, cuda::subtraction::Subtraction{}, 0);
+    cuda::subtraction::kernels[index(A.dtype, B.dtype)](&A, &B, &C, cuda::subtraction::Subtraction{}, 0);
 
     fetch_output();
 

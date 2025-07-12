@@ -5,8 +5,15 @@
 #include <cuda_runtime.h>
 
 #include "core/tensor.h"
-#include "cuda/cuda.cuh" 
+#include "cuda/cuda.cuh"  
+ 
+static inline void notImplemented(const tensor_t*, tensor_t*, auto, cudaStream_t) {
+    throw std::runtime_error("Kernel not implemented for this type");
+}
 
+static constexpr inline auto index(type first, type second) {
+    return static_cast<int>(first) + static_cast<int>(TYPES)*static_cast<int>(second);
+} 
 
 namespace cuda {
 
@@ -16,14 +23,6 @@ void unaryOp(const tensor_t* A, tensor_t* B, Op op, cudaStream_t stream);
 
 } // namespace cuda
 
-
-namespace {
-
-[[noreturn]] inline void notImplemented(const tensor_t*, tensor_t*, auto, cudaStream_t) {
-    throw std::runtime_error("Kernel not implemented for this type");
-}
-
-} 
 
 namespace cuda::negation_op {
 
@@ -39,7 +38,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Negation, cudaStream_t);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
     table[int8]    = cuda::unaryOp<int8_t, int8_t, Negation>;
     table[int16]   = cuda::unaryOp<int16_t, int16_t, Negation>;
     table[int32]   = cuda::unaryOp<int32_t, int32_t, Negation>;
@@ -67,7 +66,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Log, cudaStream_t);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
     table[float32] = cuda::unaryOp<float, float, Log>;
     table[float64] = cuda::unaryOp<double, double, Log>;
     return table;
@@ -91,7 +90,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Exp, cudaStream_t);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
     table[float32] = cuda::unaryOp<float, float, Exp>;
     table[float64] = cuda::unaryOp<double, double, Exp>;
     return table;
@@ -115,7 +114,7 @@ using Kernel = void(*)(const tensor_t*, tensor_t*, Sqrt, cudaStream_t);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES> table{};
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
     table[float32] = cuda::unaryOp<float, float, Sqrt>;
     table[float64] = cuda::unaryOp<double, double, Sqrt>;
     return table;

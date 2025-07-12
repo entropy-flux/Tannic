@@ -45,17 +45,20 @@ public:
     ,   strides_(expression.strides())
     ,   offset_(expression.offset())   
     {}
-
-    std::byte* data() { 
-        return static_cast<std::byte*>(storage_.data()) + offset_; 
-    } 
-
-    std::byte const* data() const { 
-        return static_cast<std::byte const*>(storage_.data()) + offset_;   
-    }  
  
+public:
+    void initialize(Allocator allocator = Host{}) const {
+        storage_ = Storage(shape_.size(), dsizeof(dtype_), allocator);
+    }
+
+
+public: 
     type dtype() const { 
         return dtype_; 
+    }
+
+    auto resource() const {
+        return storage_.resource();
     }
 
     Shape const& shape() const { 
@@ -70,6 +73,14 @@ public:
         return offset_;
     }
 
+    std::byte* address() {
+        return static_cast<std::byte*>(storage_.address()) + offset_;
+    }
+
+    std::byte const* address() const {
+        return static_cast<std::byte*>(storage_.address()) + offset_;
+    }
+
     auto nbytes() const { 
         return shape_.size() * dsizeof(dtype_); 
     }
@@ -77,16 +88,7 @@ public:
     auto rank() const { 
         return shape_.rank(); 
     }          
-
-    template<class Index>
-    auto operator[](Index index) const {  
-        return expression::Slice<Tensor, Index>(*this, index);
-    }
-
-    auto operator[](Range index) const { 
-        return expression::Slice<Tensor, Range>(*this, index);
-    }
-
+ 
     Tensor& forward() {
         return *this;
     }
@@ -94,6 +96,26 @@ public:
     Tensor const& forward() const {
         return *this;
     }
+
+    bool is_initialized() const {
+        return !(storage_.address() == nullptr);
+    }
+
+public:
+    template<class Index>
+    auto operator[](Index index) const {   
+        return expression::Slice<Tensor, Index>(*this, index);
+    }
+
+    auto operator[](Range index) const { 
+        return expression::Slice<Tensor, Range>(*this, index);
+    }
+
+    template<class ... Indexes>
+    auto operator[](Indexes... indexes) const {
+        return expression::Slice<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
+    }
+
 
 protected:
     template <class Expression, class... Indexes>
@@ -107,12 +129,15 @@ protected:
     ,   storage_{} 
     ,   is_contiguous_(is_contiguous)
     {}
+ 
+    void assign(std::byte const* value, difference_type offset); 
+    bool compare(std::byte const* value, difference_type offset) const;
      
 private:
     type dtype_;
     Shape shape_; 
     Strides strides_;
-    Storage storage_;
+    mutable Storage storage_;
     difference_type offset_;  
     bool is_contiguous_; 
 }; 
@@ -120,18 +145,87 @@ private:
 template <class Expression, class... Indexes>
 Tensor expression::Slice<Expression, Indexes...>::forward() const { 
     return Tensor(dtype_, shape_, strides_, offset_, false);
-} 
-
+}
+ 
 template <class Expression, class... Indexes>
 template <typename T>
-void expression::Slice<Expression, Indexes...>::operator=(T value) {
+void expression::Slice<Expression, Indexes...>::operator=(T value) {  
+    auto bytes = [](auto const& reference) -> std::byte const* {
+        return reinterpret_cast<std::byte const*>(&reference);
+    };
 
+    switch (dtype_) {
+        case int8: {
+            int8_t casted = value;
+            expression.assign(bytes(casted), offset_);
+            break;
+        }
+        case int16: {
+            int16_t casted = value;
+            expression.assign(bytes(casted), offset_);
+            break;
+        }
+        case int32: {
+            int32_t casted = value;
+            expression.assign(bytes(casted), offset_);
+            break;
+        }
+        case int64: {
+            int64_t casted = value;
+            expression.assign(bytes(casted), offset_);
+            break;
+        }
+        case float32: {
+            float casted = value;
+            expression.assign(bytes(casted), offset_);
+            break;
+        }
+        case float64: {
+            double casted = value;
+            expression.assign(bytes(casted), offset_);
+            break;
+        } 
+        default:
+            break;
+    }
 }
 
 template <class Expression, class... Indexes>
 template <typename T>
-bool expression::Slice<Expression, Indexes...>::operator==(T value) {
+bool expression::Slice<Expression, Indexes...>::operator==(T value) const {  
+    assert(rank() == 0 && "Cannot compare a scalar with a non scalar tensor");
     
-}
+    auto bytes = [](auto const& reference) -> std::byte const* {
+        return reinterpret_cast<std::byte const*>(&reference);
+    };
 
+    switch (dtype_) {
+        case int8: {
+            int8_t casted = value;
+            return expression.compare(bytes(casted), offset_); 
+        }
+        case int16: {
+            int16_t casted = value;
+            return expression.compare(bytes(casted), offset_); 
+        }
+        case int32: {
+            int32_t casted = value;
+            return expression.compare(bytes(casted), offset_);
+        }
+        case int64: {
+            int64_t casted = value;
+            return expression.compare(bytes(casted), offset_);
+        }
+        case float32: {
+            float casted = value;
+            return expression.compare(bytes(casted), offset_);
+        }
+        case float64: {
+            double casted = value;
+            return expression.compare(bytes(casted), offset_);
+        } 
+        default:
+            return false;
+        }
+}
 #endif // TENSOR_HPP

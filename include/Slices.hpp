@@ -180,12 +180,12 @@ public:
         return offset_;
     }
  
-    std::byte* data() {
-        return expression.data();
+    std::byte* address() {
+        return expression.address();
     }
 
-    std::byte const* data() const {
-        return expression.data();
+    std::byte const* address() const {
+        return expression.address();
     }
 
     Tensor forward() const;
@@ -194,7 +194,15 @@ public:
     void operator=(T value);
 
     template<typename T>
-    bool operator==(T value);
+    bool operator==(T value) const;
+
+    void assign(std::byte const* value, difference_type offset) {
+        expression.assign(value, offset);
+    }
+
+    bool compare(std::byte const* value, difference_type offset) const {
+        return expression.compare(value, offset);
+    }
 
 private: 
     type dtype_;

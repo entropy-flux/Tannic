@@ -85,11 +85,11 @@ public:
         size_ = std::accumulate(sizes_.begin(), sizes_.begin() + rank_, size_type{1}, std::multiplies<size_type>()); 
     }
     
-    constexpr size_type* data() noexcept {
+    constexpr size_type* address() noexcept {
         return sizes_.data();
     }
 
-    constexpr size_type const* data() const noexcept {
+    constexpr size_type const* address() const noexcept {
         return sizes_.data();
     }
 

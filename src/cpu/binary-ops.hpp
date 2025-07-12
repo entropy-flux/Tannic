@@ -2,15 +2,15 @@
 
 #include "core/tensor.h"
 #include "cpu/cpu.hpp"
-#include <array> 
+#include <array>  
 
-namespace {
-    
-[[noreturn]] inline void notImplemented(const tensor_t*, const tensor_t*, tensor_t*, auto) {
+static inline void notImplemented(const tensor_t*, const tensor_t*, tensor_t*, auto) {
     throw std::runtime_error("Kernel not implemented for this type");
 } 
 
-}
+static constexpr inline auto index(type first, type second) {
+    return static_cast<int>(first) + static_cast<int>(TYPES)*static_cast<int>(second);
+} 
 
 namespace cpu { 
 
@@ -33,7 +33,7 @@ using Kernel = void(*)(const tensor_t*, const tensor_t*, tensor_t*, Addition);
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES * TYPES> table;
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
 
     table[index(int8, int8)]   = binaryOp<int8_t, int8_t, int8_t, Addition>;
     table[index(int8, int16)]  = binaryOp<int8_t, int16_t, int16_t, Addition>;
@@ -85,7 +85,7 @@ using Kernel = void(*)(const tensor_t*, const tensor_t*, tensor_t*, Subtraction)
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES * TYPES> table;
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
 
     table[index(int8, int8)]   = binaryOp<int8_t, int8_t, int8_t, Subtraction>;
     table[index(int8, int16)]  = binaryOp<int8_t, int16_t, int16_t, Subtraction>;
@@ -137,7 +137,7 @@ using Kernel = void(*)(const tensor_t*, const tensor_t*, tensor_t*, Multiplicati
 
 constexpr auto kernels = []() {
     std::array<Kernel, TYPES * TYPES> table;
-    table.fill(::notImplemented);
+    table.fill(notImplemented);
 
     table[index(int8, int8)]   = binaryOp<int8_t, int8_t, int8_t, Multiplication>;
     table[index(int8, int16)]  = binaryOp<int8_t, int16_t, int16_t, Multiplication>;

@@ -125,7 +125,7 @@ TEST_F(TestBinaryOps, Addition) {
     broadcasted_strides(&A, &C);
     broadcasted_strides(&B, &C);
  
-    cpu::addition::kernels[cpu::index(A.dtype,B.dtype)](&A, &B, &C, cpu::addition::Addition{});
+    cpu::addition::kernels[index(A.dtype,B.dtype)](&A, &B, &C, cpu::addition::Addition{});
 
     float expected[2][4][3] = {
         {
@@ -154,7 +154,7 @@ TEST_F(TestBinaryOps, Multiplication) {
     broadcasted_strides(&A, &C);
     broadcasted_strides(&B, &C);
 
-    cpu::multiplication::kernels[cpu::index(A.dtype, B.dtype)](&A, &B, &C, cpu::multiplication::Multiplication{});
+    cpu::multiplication::kernels[index(A.dtype, B.dtype)](&A, &B, &C, cpu::multiplication::Multiplication{});
 
     float expected[2][4][3] = {
         {
@@ -183,7 +183,7 @@ TEST_F(TestBinaryOps, Subtraction) {
     broadcasted_strides(&A, &C);
     broadcasted_strides(&B, &C);
 
-    cpu::subtraction::kernels[cpu::index(A.dtype, B.dtype)](&A, &B, &C, cpu::subtraction::Subtraction{});
+    cpu::subtraction::kernels[index(A.dtype, B.dtype)](&A, &B, &C, cpu::subtraction::Subtraction{});
 
     float expected[2][4][3] = {
         {

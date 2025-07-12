@@ -5,29 +5,22 @@
 #ifdef CUDA
 #include "cuda/cuda.cuh"  
 
-Host::Host(bool pinned) : pinned_(pinned) {}
+#include <cassert>
+Host::Host() = default;
 
-void* Host::allocate(std::size_t nbytes) const {
-    if (pinned_) 
-        return cuda::syncHostAllocate(nbytes);
-    else
-        return cpu::allocate(nbytes);
+void* Host::allocate(std::size_t nbytes) const {  
+    return cpu::allocate(nbytes);
 }
 
-void Host::deallocate(void* address, std::size_t nbytes) const {
-    if (pinned_)
-        cuda::syncHostDeallocate(address); 
-    else
-        cpu::deallocate(address);
+void Host::deallocate(void* address, std::size_t nbytes) const {  
+    cpu::deallocate(address);
 }
-
 
 Device::Device(int id) : id_(id){}
  
 void* Device::allocate(std::size_t nbytes) const { 
     return cuda::syncAllocate(nbytes, id_); 
 }
-
 
 void Device::deallocate(void* address, std::size_t nbytes) const {
     cuda::syncDeallocate(address, id_);

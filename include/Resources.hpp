@@ -25,12 +25,11 @@
 
 class Host {
 public: 
-    Host(bool pinned = false);
+    Host();
     void* allocate(std::size_t nbytes) const;
     void deallocate(void* address, std::size_t nbytes) const;
     int id() const { return -1; }
-private:
-    bool pinned_ = false;  
+    resource kind() const { return HOST; } 
 };
  
 class Device {
@@ -39,6 +38,7 @@ public:
     void* allocate(std::size_t nbytes) const;
     void deallocate(void* address, std::size_t nbytes) const; 
     int id() const;
+    resource kind() const { return DEVICE; }
 
 private:
     int id_ = 0;
