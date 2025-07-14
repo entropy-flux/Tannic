@@ -16,14 +16,152 @@
 #ifndef TRANSFORMATIONS_HPP
 #define TRANSFORMATIONS_HPP
 
+#include <tuple>
+#include <array>
+#include <vector>
+
 #include "Types.hpp"
 #include "Traits.hpp"
-#include "Shape.hpp"
-#include "Operations.hpp"
+#include "Shape.hpp" 
+#include "Tensor.hpp"
 
-namespace transformation {  
+class Tensor;
 
-} // namespace transformation
+namespace expression {    
 
+static constexpr auto index(type inner, type outer) {
+    return static_cast<int>(inner) * static_cast<int>(outer) * static_cast<int>(TYPES);
+}
+ 
+ 
+template<class Operation, class ... Operands>
+class Transformation {
+public:
+    Operation operation;
+    std::tuple<typename Trait<Operands>::Reference...> operands;
+
+    constexpr Transformation(Operation operation, typename Trait<Operands>::Reference... operands)
+    :   operation(operation)
+    ,   operands(operands...) 
+    ,   dtype_(operation.dtype(operands.dtype()...))
+    ,   shape_(operation.shape(operands.shape()...)) 
+    {}
+    
+    constexpr type dtype() const {
+        return dtype_;
+    }
+
+    constexpr Shape const& shape() const {
+        return shape_;
+    }
+
+    auto forward() const -> decltype(auto) {
+        return std::apply([&](const auto&... arguments) {
+            return operation.forward(dtype_, shape_, arguments.forward()...);
+        }, operands);
+    }
+
+private:
+    type dtype_;
+    Shape shape_; 
+};
+ 
+struct Composition { 
+    void forward(Tensor const&, Tensor const&, Tensor&) const;
+    
+    static constexpr auto promotions = []() {
+        std::array<type, index(TYPES, TYPES)> table{};  
+        table[index(int8, int8)]     = int32;
+        table[index(int8, int16)]    = int32;
+        table[index(int8, int32)]    = int32;
+        table[index(int8, int64)]    = int64;  
+
+        table[index(int16, int8)]    = int32;
+        table[index(int16, int16)]   = int32;
+        table[index(int16, int32)]   = int32;
+        table[index(int16, int64)]   = int64; 
+        
+        table[index(int32, int8)]    = int32;
+        table[index(int32, int16)]   = int32;
+        table[index(int32, int32)]   = int64;
+        table[index(int32, int64)]   = int64; 
+        
+        table[index(int64, int8)]    = int64;
+        table[index(int64, int16)]   = int64;
+        table[index(int64, int32)]   = int64;
+        table[index(int64, int64)]   = int64; 
+        
+        table[index(int32, float32)] = float32;
+        table[index(float32, int32)] = float32;
+        table[index(int32, float64)] = float64;
+        table[index(float64, int32)] = float64; 
+        
+        table[index(float32, float32)] = float32;
+        table[index(float32, float64)] = float64;
+        table[index(float64, float32)] = float64;
+        table[index(float64, float64)] = float64; 
+        return table;
+    }();  
+
+    Tensor forward(type dtype, Shape const& shape, Tensor const& outer, Tensor const& inner) const {
+        Tensor result(dtype, shape);
+        forward(outer, inner, result);
+        return result;
+    }
+
+    static constexpr type dtype(type inner, type outer) {
+        return promotions[index(inner, outer)];
+    }
+
+    static constexpr Shape shape(Shape const& first, Shape const& second) {
+        auto first_rank = first.rank();
+        auto second_rank = second.rank();
+         
+        if (first_rank == 1 && second_rank == 1) {
+            assert(first[0] == second[0] && "Vector dimensions must match for dot product");
+            return Shape{};  // scalar result
+        }
+         
+        if (first_rank == 1 && second_rank == 2) {
+            assert(first[0] == second[1] && "Matrix inner dimensions do not match");
+            return Shape{second[0]};
+        }
+         
+        if (first_rank == 2 && second_rank == 1) {
+            assert(first[1] == second[0] && "Matrix inner dimensions do not match");
+            return Shape{first[0]};
+        } 
+         
+        assert(first_rank >= 2 && second_rank >= 2 && "Inputs must have rank >= 2");
+        
+        Shape first_batches(first.begin(), first.end() - 2);
+        Shape second_batches(second.begin(), second.end() - 2);
+        Shape batches = operation::shape(first_batches, second_batches);
+        
+        auto K1 = *(first.end() - 1);
+        auto K2 = *(second.end() - 2);   
+        assert(K1 == K2 && "Inner dimensions must match for matmul");
+        
+        auto M = *(first.end() - 2);
+        auto N = *(second.end() - 1);
+        
+        std::vector<Shape::size_type> result(batches.begin(), batches.end());
+        result.push_back(M);
+        result.push_back(N);
+        return Shape(result);
+    }
+};
+
+template<class Outer, class Inner>
+constexpr auto composition(Outer const& outer, Inner const& inner) {
+    return Transformation<Composition, Outer, Inner>({}, outer, inner);
+}
+
+} // namespace expression
+
+template<class Multiplicand, class Multiplier>
+constexpr auto matmul(Multiplicand const& multiplicand, Multiplier const& multiplier) {
+    return expression::composition(multiplicand, multiplier);
+}
 
 #endif // TRANSFORMATIONS_HPP

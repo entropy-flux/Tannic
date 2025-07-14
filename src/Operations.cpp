@@ -19,8 +19,7 @@ void operation::Negation::forward(Tensor const& input, Tensor& output) const {
     bool status = cpu::unary::negation[cpu::unary::index(input.dtype())](&src, &dst);
     if (!status) {
         throw std::runtime_error(
-            "Negation operation failed for dtype: " + 
-            std::to_string(static_cast<int>(input.dtype()))
+            "Negation operation failed for dtype: " + dnameof(input.dtype())
         );
     }
 }
@@ -34,8 +33,8 @@ void operation::Addition::forward(Tensor const& first, Tensor const& second, Ten
     if (!success) {
         throw std::runtime_error(
             "Addition operation failed for dtypes: " +
-            std::to_string(static_cast<int>(first.dtype())) + " and " +
-            std::to_string(static_cast<int>(second.dtype()))
+            dnameof(first.dtype()) + " and " +
+            dnameof(second.dtype())
         );
     }
 }
@@ -49,8 +48,8 @@ void operation::Multiplication::forward(Tensor const& first, Tensor const& secon
     if (!status) {
         throw std::runtime_error(
             "Multiplication operation failed for dtypes: " +
-            std::to_string(static_cast<int>(first.dtype())) + " and " +
-            std::to_string(static_cast<int>(second.dtype()))
+            dnameof(first.dtype()) + " and " +
+            dnameof(second.dtype())
         );
     }
 }
@@ -64,8 +63,8 @@ void operation::Subtraction::forward(Tensor const& first, Tensor const& second, 
     if (!status) {
         throw std::runtime_error(
             "Subtraction operation failed for dtypes: " +
-            std::to_string(static_cast<int>(first.dtype())) + " and " +
-            std::to_string(static_cast<int>(second.dtype()))
+            dnameof(first.dtype()) + " and " +
+            dnameof(second.dtype())
         );
     }
 }

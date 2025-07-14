@@ -24,6 +24,7 @@ extern "C" {
 #include <stddef.h> 
 
 enum type { 
+    none,
     int8,
     int16,
     int32,

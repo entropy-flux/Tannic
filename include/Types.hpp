@@ -45,7 +45,7 @@ constexpr inline std::string dnameof(type type) {
         case float64:    return "float64";
         case complex64:  return "complex64";
         case complex128: return "complex128";
-        default:         return "any";
+        default:         return "none";
     }
 } 
 
