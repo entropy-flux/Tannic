@@ -109,6 +109,8 @@
         "cstdbool": "cpp",
         "version": "cpp",
         "text_encoding": "cpp",
-        "__threading_support": "cpp"
+        "__threading_support": "cpp",
+        "target": "cpp",
+        "__availability": "cpp"
     }
 }

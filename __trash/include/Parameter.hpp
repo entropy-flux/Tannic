@@ -24,8 +24,7 @@
 class Parameter {
 public: 
     using rank_type = uint8_t;
-    using size_type = std::size_t; 
-    using difference_type = std::ptrdiff_t;  
+    using size_type = std::size_t;  
 
     constexpr Parameter(type dtype, Shape shape)
     :   dtype_(dtype)
@@ -51,7 +50,7 @@ public:
         return strides_; 
     }
 
-    constexpr difference_type offset() const {
+    constexpr std::ptrdiff_t offset() const {
         return 0;
     }
 

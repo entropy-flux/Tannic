@@ -2,35 +2,33 @@
 #include <stdexcept>
 #include <string>
 #include <cstring>
-#include <vector>
-#include "core/resources.h"
-#include "cpu/cpu.hpp" 
-#include "Types.hpp"
+#include <vector> 
+#include "cpu/mem.hpp"  
 
 void* cpu::allocate(std::size_t nbytes) {  
-    void* ptr = std::malloc(nbytes);
-    if (ptr == nullptr) {
+    void* address = std::malloc(nbytes);
+    if (address == nullptr) {
         throw std::runtime_error("CPU malloc failed for " + std::to_string(nbytes) + " bytes");
     }
-    return ptr;
+    return address;
 }
 
-void cpu::deallocate(void* ptr) {
-    if (ptr != nullptr) {  
-        std::free(ptr);
+void cpu::deallocate(void* address) {
+    if (address != nullptr) {  
+        std::free(address);
     }
 }
 
-void cpu::copy(const void* src, void* dst, size_t nbytes) {
-    if (src == nullptr || dst == nullptr) {
+void cpu::copy(const std::byte* source, std::byte* target, std::size_t nbytes) {
+    if (source == nullptr || target == nullptr) {
         throw std::invalid_argument("cpu::copy - source or destination is null");
     }
-    std::memcpy(dst, src, nbytes);
+    std::memcpy(static_cast<void*>(target), static_cast<const void*>(source), nbytes);
 }
 
-bool cpu::compare(const void* a, const void* b, size_t nbytes) {
-    if (a == nullptr || b == nullptr) {
+bool cpu::compare(const std::byte* first, const std::byte* second, std::size_t nbytes) {
+    if (first == nullptr || second == nullptr) {
         throw std::invalid_argument("cpu::compare - one or both inputs are null");
     }
-    return std::memcmp(a, b, nbytes) == 0;
+    return std::memcmp(static_cast<const void*>(first), static_cast<const void*>(second), nbytes) == 0;
 }

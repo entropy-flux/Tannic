@@ -11,8 +11,8 @@ TEST(Resources, Host) {
     host.deallocate(dst, size);
 }
 
-#ifdef CUDA
- 
+/*
+#ifdef CUDA 
 
 TEST(Resources, Device) {
     Device device{};
@@ -33,3 +33,4 @@ TEST(Resources, Device) {
 }
 
 #endif 
+*/

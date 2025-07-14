@@ -19,7 +19,7 @@
 #include <iostream>
 #include <cstdint>  
 #include <string>  
-#include "ctypes/types.h"
+#include "core/types.h"
 
 constexpr inline std::size_t dsizeof(type type) {
     switch (type) { 
@@ -47,10 +47,40 @@ constexpr inline std::string dnameof(type type) {
         case complex128: return "complex128";
         default:         return "any";
     }
-} 
+}
+
+template<class T> constexpr inline type dtypeof();
+template<> constexpr inline type dtypeof<int8_t>()   { return int8; }
+template<> constexpr inline type dtypeof<int16_t>() { return int16; }
+template<> constexpr inline type dtypeof<int32_t>() { return int32; }
+template<> constexpr inline type dtypeof<int64_t>() { return int64; }
+template<> constexpr inline type dtypeof<float>()     { return float32; }
+template<> constexpr inline type dtypeof<double>()   { return float64; } 
+
+constexpr type complex(type dtype) {
+    switch (dtype) {
+        case float32: return complex64;
+        case float64: return complex128;
+        default: 
+            throw std::invalid_argument("Only float32 and float64 can be converted to complex");
+    }
+}
+
+constexpr type real(type dtype) {
+    switch (dtype) {
+        case complex64:  return float32;
+        case complex128: return float64;
+        default:         return dtype;  
+    }
+}
 
 inline std::ostream& operator<<(std::ostream& ostream, type type) {
     return ostream << dnameof(type);
-} 
+}
+
+template<typename T>
+struct Trait {
+    using Reference = T;
+}; 
 
 #endif // TYPES_HPP

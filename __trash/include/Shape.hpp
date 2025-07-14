@@ -84,8 +84,7 @@ public:
         rank_ = dimension; 
         size_ = std::accumulate(sizes_.begin(), sizes_.begin() + rank_, size_type{1}, std::multiplies<size_type>()); 
     }
-
-public:
+    
     constexpr size_type* address() noexcept {
         return sizes_.data();
     }

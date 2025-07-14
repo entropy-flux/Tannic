@@ -19,10 +19,8 @@
 #include <tuple>
 #include <utility>
 #include <cstddef>
-#include <vector>
 
-#include "Types.hpp" 
-#include "Traits.hpp"
+#include "Types.hpp"
 #include "Shape.hpp"
 #include "Strides.hpp"
  
@@ -31,10 +29,7 @@ class Tensor;
 struct Range {
     int start = 0;
     int stop = -1;  
-};   
-
-namespace view {
-
+}; 
 
 template<class Index, class Size>
 static constexpr inline Index normalize(Index index, Size size) {
@@ -109,14 +104,13 @@ static constexpr Strides strides(Expression const& expression, std::tuple<Indexe
     }
 
     return Strides(sizes.begin(), sizes.begin() + rank);
-} 
+}
 
 
 template<class Expression, class... Indexes>
 static constexpr auto offset(Expression const& expression, std::tuple<Indexes...> const& indexes) {
-    std::ptrdiff_t result = expression.offset();  
+    std::ptrdiff_t result = 0;
     std::ptrdiff_t dimension = 0; 
-    const auto dsize = dsizeof(expression.dtype()); 
     const auto& strides = expression.strides();
     const auto& shape = expression.shape();
 
@@ -124,10 +118,10 @@ static constexpr auto offset(Expression const& expression, std::tuple<Indexes...
         using Argument = std::decay_t<decltype(argument)>;
         if constexpr (std::is_same_v<Argument, Range>) {  
             auto start = normalize(argument.start, shape[dimension]); 
-            result += start * strides[dimension++] * dsize;
+            result += start * strides[dimension++];
         } else if constexpr (std::is_integral_v<Argument>) { 
             auto index = normalize(argument, shape[dimension]);
-            result += index * strides[dimension++] * dsize;
+            result += index * strides[dimension++];
         } else {
             static_assert(sizeof(Argument) == 0, "Unsupported index type in Slice offset");
         }
@@ -136,8 +130,14 @@ static constexpr auto offset(Expression const& expression, std::tuple<Indexes...
     std::apply([&](const auto&... indices) {
         (process(indices), ...);
     }, indexes);
-    return result;
+    return result * dsizeof(expression.dtype());
 } 
+
+
+
+
+
+namespace expression {
 
 template <class Expression, class... Indexes>
 class Slice {  
@@ -149,9 +149,9 @@ public:
     :   expression(expression)
     ,   indexes(indexes)
     ,   dtype_(expression.dtype())
-    ,   shape_(view::shape(expression, indexes))
-    ,   strides_(view::strides(expression, indexes))
-    ,   offset_(view::offset(expression, indexes))
+    ,   shape_(::shape(expression, indexes))
+    ,   strides_(::strides(expression, indexes))
+    ,   offset_(::offset(expression, indexes))
     {}    
 
     template<class Index>
@@ -167,10 +167,6 @@ public:
         return dtype_;
     }
 
-    constexpr auto rank() const {
-        return shape_.rank();
-    }
-
     constexpr Shape const& shape() const {
         return shape_;
     }
@@ -182,13 +178,13 @@ public:
     constexpr std::ptrdiff_t offset() const {
         return offset_;
     }
-
-    std::byte* buffer() {
-        return expression.buffer() + offset_;
+ 
+    std::byte* address() {
+        return expression.address();
     }
 
-    std::byte const* buffer() const {
-        return expression.buffer() + offset_;
+    std::byte const* address() const {
+        return expression.address();
     }
 
     Tensor forward() const;
@@ -197,7 +193,7 @@ public:
     void operator=(T value);
 
     template<typename T>
-    bool operator==(T value) const;  
+    bool operator==(T value) const;
 
     void assign(std::byte const* value, std::ptrdiff_t offset) {
         expression.assign(value, offset);
@@ -207,122 +203,14 @@ public:
         return expression.compare(value, offset);
     }
 
-protected:
-
 private: 
     type dtype_;
     Shape shape_;
     Strides strides_;
     std::ptrdiff_t offset_;
-};  
+}; 
+
+} // namespace expression
  
-
-template<typename T>
-static inline std::byte const* bytes(T const& reference) { 
-    return reinterpret_cast<std::byte const*>(&reference);
-}  
-
-template <class Expression, class... Indexes>
-template <typename T>
-void Slice<Expression, Indexes...>::operator=(T value) {   
-    auto copy = [this](std::byte const* value, std::ptrdiff_t offset) {
-        if(rank() == 0) {
-            expression.assign(value, offset);
-            return;
-        }
-
-        std::vector<std::size_t> indexes(rank(), 0);
-        bool done = false;
-        
-        while (!done) {
-            std::size_t position = offset;
-            for (auto dimension = 0; dimension < rank(); ++dimension) {
-                position += indexes[dimension] * strides_[dimension];
-            }
-            
-            expression.assign(value, position); 
-            done = true;
-            for (int dimension = rank() - 1; dimension >= 0; --dimension) {
-                if (++indexes[dimension] < shape_[dimension]) {
-                    done = false;
-                    break;
-                }
-                indexes[dimension] = 0;
-            }
-        }
-    };
-
-    switch (dtype_) {
-        case int8: {
-            int8_t casted = value;
-            copy(bytes(casted), offset_); 
-            break;
-        }
-        case int16: {
-            int16_t casted = value;
-            copy(bytes(casted), offset_); 
-            break;
-        }
-        case int32: {
-            int32_t casted = value;
-            copy(bytes(casted), offset_);
-            break;
-        }
-        case int64: {
-            int64_t casted = value;
-            copy(bytes(casted), offset_);
-            break;
-        }
-        case float32: {
-            float casted = value;
-            copy(bytes(casted), offset_);
-            break;
-        }
-        case float64: {
-            double casted = value;
-            copy(bytes(casted), offset_);
-            break;
-        } 
-        default:
-            break;
-        }
-
-}
-
-template <class Expression, class... Indexes>
-template <typename T>
-bool Slice<Expression, Indexes...>::operator==(T value) const {    
-    assert(rank() == 0 && "Cannot compare an scalar to a non scalar slice");
-    switch (dtype_) {
-        case int8: {
-            int8_t casted = value;
-            return expression.compare(bytes(casted), offset_); 
-        }
-        case int16: {
-            int16_t casted = value;
-            return expression.compare(bytes(casted), offset_); 
-        }
-        case int32: {
-            int32_t casted = value;
-            return expression.compare(bytes(casted), offset_);
-        }
-        case int64: {
-            int64_t casted = value;
-            return expression.compare(bytes(casted), offset_);
-        }
-        case float32: {
-            float casted = value;
-            return expression.compare(bytes(casted), offset_);
-        }
-        case float64: {
-            double casted = value;
-            return expression.compare(bytes(casted), offset_);
-        } 
-        default:
-            return false;
-        }
-}  
- 
-} // namespace view
 
 #endif // SLICES_HPP

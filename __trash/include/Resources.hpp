@@ -20,12 +20,12 @@
 #include <cstddef>
 #include <span>
 #include <vector>
-#include <variant> 
-#include "ctypes/resources.h"
+#include <variant>
+#include "core/resources.h"
 
 class Host {
 public: 
-    Host() = default;
+    Host();
     void* allocate(std::size_t nbytes) const;
     void deallocate(void* address, std::size_t nbytes) const;
     int id() const { return -1; }
@@ -37,7 +37,7 @@ public:
     Device(int id = 0);
     void* allocate(std::size_t nbytes) const;
     void deallocate(void* address, std::size_t nbytes) const; 
-    int id() const { return id_; }
+    int id() const;
     resource kind() const { return DEVICE; }
 
 private:

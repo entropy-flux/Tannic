@@ -19,10 +19,14 @@
 #include <cstddef>
 #include <utility>
 
-#include "Resources.hpp" 
+#include "Types.hpp"
+#include "Resources.hpp"
+
 
 class Storage {
-public:  
+public:
+    Storage() = default;
+
     Storage(std::size_t nbytes, Allocator allocator = Host{})
     :   nbytes_(nbytes)
     ,   allocator_(allocator) {
@@ -43,10 +47,8 @@ public:
     ,   address_(std::exchange(other.address_, nullptr)) {}
 
     Storage& operator=(Storage&& other) noexcept {
-        if (this != &other) { 
-            std::visit([&](auto& variant) {
-                variant.deallocate(address_, nbytes_);
-            }, allocator_);
+        if (this != &other) {
+            release();
             nbytes_ = std::exchange(other.nbytes_, 0);
             allocator_ = std::move(other.allocator_);
             address_ = std::exchange(other.address_, nullptr);
@@ -54,12 +56,8 @@ public:
         return *this;
     }
 
-    ~Storage() {  
-        std::visit([&](auto& alloc) {
-            alloc.deallocate(address_, nbytes_);
-        }, allocator_); 
-        address_ = nullptr;
-        nbytes_ = 0;
+    ~Storage() { 
+        release();
     }
  
     void* address() { 
@@ -76,19 +74,28 @@ public:
 
     Allocator const& allocator() const { 
         return allocator_; 
-    } 
- 
+    }
+     
     auto resource() const { 
-        if (std::holds_alternative<Device>(allocator_)) {
-            return DEVICE;
-        } 
-
-        else {
+        if (std::holds_alternative<Host>(allocator_)) {
             return HOST;
+        } else if (std::holds_alternative<Device>(allocator_)) {
+            return DEVICE;
+        }
+        throw std::runtime_error("Unknown allocator type");
+    }
+
+private:
+    void release() {
+        if (address_) {
+            std::visit([&](auto& alloc) {
+                alloc.deallocate(address_, nbytes_);
+            }, allocator_);
+            address_ = nullptr;
+            nbytes_ = 0;
         }
     }
 
-private:  
     void* address_ = nullptr;
     std::size_t nbytes_ = 0;
     Allocator allocator_ = Host{};

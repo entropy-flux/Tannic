@@ -1,0 +1,71 @@
+#include "Operations.hpp"
+#include "Tensor.hpp"
+#include "cpu/ops.hpp"  
+ 
+static inline tensor_t ctensor(Tensor const& tensor) {
+    return tensor_t{
+        .rank = tensor.rank(),
+        .address = reinterpret_cast<void*>(tensor.buffer()),
+        .shape = tensor.shape().address(),
+        .strides = tensor.strides().address(), 
+        .dtype = tensor.dtype()
+    };
+}
+
+void operation::Negation::forward(Tensor const& input, Tensor& output) const {
+    output.initialize();
+    tensor_t src = ctensor(input);
+    tensor_t dst = ctensor(output); 
+    bool status = cpu::unary::negation[cpu::unary::index(input.dtype())](&src, &dst);
+    if (!status) {
+        throw std::runtime_error(
+            "Negation operation failed for dtype: " + 
+            std::to_string(static_cast<int>(input.dtype()))
+        );
+    }
+}
+
+void operation::Addition::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
+    output.initialize();
+    tensor_t src1 = ctensor(first);
+    tensor_t src2 = ctensor(second);
+    tensor_t dst = ctensor(output);
+    bool success = cpu::binary::addition[cpu::binary::index(first.dtype(), second.dtype())](&src1, &src2, &dst);
+    if (!success) {
+        throw std::runtime_error(
+            "Addition operation failed for dtypes: " +
+            std::to_string(static_cast<int>(first.dtype())) + " and " +
+            std::to_string(static_cast<int>(second.dtype()))
+        );
+    }
+}
+
+void operation::Multiplication::forward(Tensor const& first, Tensor const& second, Tensor& output) const { 
+    output.initialize();
+    tensor_t src1 = ctensor(first);
+    tensor_t src2 = ctensor(second);
+    tensor_t dst = ctensor(output);
+    bool status = cpu::binary::multiplication[cpu::binary::index(first.dtype(), second.dtype())](&src1, &src2, &dst);
+    if (!status) {
+        throw std::runtime_error(
+            "Multiplication operation failed for dtypes: " +
+            std::to_string(static_cast<int>(first.dtype())) + " and " +
+            std::to_string(static_cast<int>(second.dtype()))
+        );
+    }
+}
+
+void operation::Subtraction::forward(Tensor const& first, Tensor const& second, Tensor& output) const { 
+    output.initialize();
+    tensor_t src1 = ctensor(first);
+    tensor_t src2 = ctensor(second);
+    tensor_t dst = ctensor(output); 
+    bool status = cpu::binary::subtraction[cpu::binary::index(first.dtype(), second.dtype())](&src1, &src2, &dst);
+    if (!status) {
+        throw std::runtime_error(
+            "Subtraction operation failed for dtypes: " +
+            std::to_string(static_cast<int>(first.dtype())) + " and " +
+            std::to_string(static_cast<int>(second.dtype()))
+        );
+    }
+}

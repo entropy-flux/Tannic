@@ -60,7 +60,6 @@ public:
         }
     }
 
-public:
     constexpr size_type* address() noexcept {
         return sizes_.data();
     }

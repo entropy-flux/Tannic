@@ -8,7 +8,7 @@
 #include "cpu/unary-ops.hpp"
 
 
-class TestUnaryOps : public ::testing::Test {
+class TestFunctions : public ::testing::Test {
 public:
     float A_data[2 * 1 * 3];
     size_t shape_A[3] = {2, 1, 3};
@@ -38,7 +38,7 @@ protected:
 
 
 
-TEST_F(TestUnaryOps, Negation) {
+TEST_F(TestFunctions, Negation) {
     cpu::negation::kernels[A.dtype](&A, &A, cpu::negation::Negation{});
 
     float expected[2][1][3] = {
@@ -60,7 +60,7 @@ TEST_F(TestUnaryOps, Negation) {
 }
 
 
-TEST_F(TestUnaryOps, Log) {
+TEST_F(TestFunctions, Log) {
     cpu::log::kernels[A.dtype](&A, &A, cpu::log::Log{});
     float expected[2][1][3] = {
         { { std::log(1.0f), std::log(2.0f), std::log(3.0f) } },
@@ -74,7 +74,7 @@ TEST_F(TestUnaryOps, Log) {
     }
 }
 
-TEST_F(TestUnaryOps, Exp) {
+TEST_F(TestFunctions, Exp) {
     cpu::exp::kernels[A.dtype](&A, &A, cpu::exp::Exp{});
     float expected[2][1][3] = {
         { { std::exp(1.0f), std::exp(2.0f), std::exp(3.0f) } },
@@ -88,7 +88,7 @@ TEST_F(TestUnaryOps, Exp) {
     }
 }
 
-TEST_F(TestUnaryOps, Sqrt) {
+TEST_F(TestFunctions, Sqrt) {
     cpu::sqrt::kernels[A.dtype](&A, &A, cpu::sqrt::Sqrt{});
     float expected[2][1][3] = {
         { { std::sqrt(1.0f), std::sqrt(2.0f), std::sqrt(3.0f) } },
@@ -102,7 +102,7 @@ TEST_F(TestUnaryOps, Sqrt) {
     }
 }
 
-TEST_F(TestUnaryOps, Abs) {
+TEST_F(TestFunctions, Abs) {
     for (int i = 0; i < 6; ++i)
         A_data[i] = static_cast<float>(-1 * (i + 1));  // -1 to -6
 
@@ -120,7 +120,7 @@ TEST_F(TestUnaryOps, Abs) {
     }
 }
 
-TEST_F(TestUnaryOps, Sin) {
+TEST_F(TestFunctions, Sin) {
     cpu::sin::kernels[A.dtype](&A, &A, cpu::sin::Sin{});
     float expected[2][1][3] = {
         { { std::sin(1.0f), std::sin(2.0f), std::sin(3.0f) } },
@@ -134,7 +134,7 @@ TEST_F(TestUnaryOps, Sin) {
     }
 }
 
-TEST_F(TestUnaryOps, Cos) {
+TEST_F(TestFunctions, Cos) {
     cpu::cos::kernels[A.dtype](&A, &A, cpu::cos::Cos{});
     float expected[2][1][3] = {
         { { std::cos(1.0f), std::cos(2.0f), std::cos(3.0f) } },
@@ -148,7 +148,7 @@ TEST_F(TestUnaryOps, Cos) {
     }
 }
 
-TEST_F(TestUnaryOps, Tan) {
+TEST_F(TestFunctions, Tan) {
     cpu::tan::kernels[A.dtype](&A, &A, cpu::tan::Tan{});
     float expected[2][1][3] = {
         { { std::tan(1.0f), std::tan(2.0f), std::tan(3.0f) } },
@@ -162,7 +162,7 @@ TEST_F(TestUnaryOps, Tan) {
     }
 }
 
-TEST_F(TestUnaryOps, Sinh) {
+TEST_F(TestFunctions, Sinh) {
     cpu::sinh::kernels[A.dtype](&A, &A, cpu::sinh::Sinh{});
     float expected[2][1][3] = {
         { { std::sinh(1.0f), std::sinh(2.0f), std::sinh(3.0f) } },
@@ -176,7 +176,7 @@ TEST_F(TestUnaryOps, Sinh) {
     }
 }
 
-TEST_F(TestUnaryOps, Cosh) {
+TEST_F(TestFunctions, Cosh) {
     cpu::cosh::kernels[A.dtype](&A, &A, cpu::cosh::Cosh{});
     float expected[2][1][3] = {
         { { std::cosh(1.0f), std::cosh(2.0f), std::cosh(3.0f) } },
@@ -190,7 +190,7 @@ TEST_F(TestUnaryOps, Cosh) {
     }
 }
 
-TEST_F(TestUnaryOps, Tanh) {
+TEST_F(TestFunctions, Tanh) {
     cpu::tanh::kernels[A.dtype](&A, &A, cpu::tanh::Tanh{});
     float expected[2][1][3] = {
         { { std::tanh(1.0f), std::tanh(2.0f), std::tanh(3.0f) } },
