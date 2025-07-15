@@ -19,7 +19,9 @@
 #include <iostream>
 #include <cstdint>  
 #include <string>  
-#include "ctypes/types.h"
+#include "core/types.h"
+
+namespace tannic {
 
 constexpr inline std::size_t dsizeof(type type) {
     switch (type) { 
@@ -52,5 +54,7 @@ constexpr inline std::string dnameof(type type) {
 inline std::ostream& operator<<(std::ostream& ostream, type type) {
     return ostream << dnameof(type);
 } 
+
+} // namespace tannic
 
 #endif // TYPES_HPP

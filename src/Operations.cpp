@@ -2,7 +2,9 @@
 #include "Tensor.hpp"
 #include "cpu/ops.hpp"  
  
-static inline tensor_t ctensor(Tensor const& tensor) {
+using namespace tannic;
+
+static inline tensor_t c_tensor_t(Tensor const& tensor) {
     return tensor_t{
         .rank = tensor.rank(),
         .address = reinterpret_cast<void*>(tensor.buffer()),
@@ -14,8 +16,8 @@ static inline tensor_t ctensor(Tensor const& tensor) {
 
 void operation::Negation::forward(Tensor const& input, Tensor& output) const {
     output.initialize();
-    tensor_t src = ctensor(input);
-    tensor_t dst = ctensor(output); 
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output); 
     bool status = cpu::unary::negation[cpu::unary::index(input.dtype())](&src, &dst);
     if (!status) {
         throw std::runtime_error(
@@ -26,9 +28,9 @@ void operation::Negation::forward(Tensor const& input, Tensor& output) const {
 
 void operation::Addition::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
     output.initialize();
-    tensor_t src1 = ctensor(first);
-    tensor_t src2 = ctensor(second);
-    tensor_t dst = ctensor(output);
+    tensor_t src1 = c_tensor_t(first);
+    tensor_t src2 = c_tensor_t(second);
+    tensor_t dst = c_tensor_t(output);
     bool success = cpu::binary::addition[cpu::binary::index(first.dtype(), second.dtype())](&src1, &src2, &dst);
     if (!success) {
         throw std::runtime_error(
@@ -41,9 +43,9 @@ void operation::Addition::forward(Tensor const& first, Tensor const& second, Ten
 
 void operation::Multiplication::forward(Tensor const& first, Tensor const& second, Tensor& output) const { 
     output.initialize();
-    tensor_t src1 = ctensor(first);
-    tensor_t src2 = ctensor(second);
-    tensor_t dst = ctensor(output);
+    tensor_t src1 = c_tensor_t(first);
+    tensor_t src2 = c_tensor_t(second);
+    tensor_t dst = c_tensor_t(output);
     bool status = cpu::binary::multiplication[cpu::binary::index(first.dtype(), second.dtype())](&src1, &src2, &dst);
     if (!status) {
         throw std::runtime_error(
@@ -56,9 +58,9 @@ void operation::Multiplication::forward(Tensor const& first, Tensor const& secon
 
 void operation::Subtraction::forward(Tensor const& first, Tensor const& second, Tensor& output) const { 
     output.initialize();
-    tensor_t src1 = ctensor(first);
-    tensor_t src2 = ctensor(second);
-    tensor_t dst = ctensor(output); 
+    tensor_t src1 = c_tensor_t(first);
+    tensor_t src2 = c_tensor_t(second);
+    tensor_t dst = c_tensor_t(output); 
     bool status = cpu::binary::subtraction[cpu::binary::index(first.dtype(), second.dtype())](&src1, &src2, &dst);
     if (!status) {
         throw std::runtime_error(

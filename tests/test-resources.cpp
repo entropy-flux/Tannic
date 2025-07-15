@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
-#include "Resources.hpp"
- 
+#include "Resources.hpp" 
+
+using namespace tannic;
+
 TEST(Resources, Host) { 
     Host host;
     std::size_t size = 8;

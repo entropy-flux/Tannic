@@ -25,30 +25,15 @@
 #include "Traits.hpp"
 #include "Shape.hpp"
 #include "Strides.hpp"
+#include "Views.hpp"
  
-class Tensor;
+namespace tannic {
 
-struct Range {
-    int start = 0;
-    int stop = -1;  
-};   
+class Tensor; 
+ 
+namespace view {  
 
-namespace view {
-
-
-template<class Index, class Size>
-static constexpr inline Index normalize(Index index, Size size) {
-    return index < 0 ? size + index : index;
-}  
-
-template<class Size>
-static constexpr inline Range normalize(Range range, Size size) {
-    int start = range.start < 0 ? size + range.start : range.start;
-    int stop = range.stop < 0 ? size + range.stop + 1 : range.stop;
-    return {start, stop};
-}  
-
-template<class Expression, class... Indexes> 
+template<Operable Expression, class... Indexes> 
 static constexpr Shape shape(Expression const& expression, std::tuple<Indexes...> const& indexes) { 
     std::array<Shape::size_type, Shape::limit> sizes{};
     Shape::rank_type dimension = 0;
@@ -82,7 +67,7 @@ static constexpr Shape shape(Expression const& expression, std::tuple<Indexes...
 }
 
 
-template<class Expression, class... Indexes>
+template<Operable Expression, class... Indexes>
 static constexpr Strides strides(Expression const& expression, std::tuple<Indexes...> const& indexes) {
     std::array<Strides::size_type, Strides::limit> sizes{};
     Strides::rank_type rank = 0;
@@ -112,7 +97,7 @@ static constexpr Strides strides(Expression const& expression, std::tuple<Indexe
 } 
 
 
-template<class Expression, class... Indexes>
+template<Operable Expression, class... Indexes>
 static constexpr auto offset(Expression const& expression, std::tuple<Indexes...> const& indexes) {
     std::ptrdiff_t result = expression.offset();  
     std::ptrdiff_t dimension = 0; 
@@ -139,7 +124,7 @@ static constexpr auto offset(Expression const& expression, std::tuple<Indexes...
     return result;
 } 
 
-template <class Expression, class... Indexes>
+template <Operable Expression, class... Indexes>
 class Slice {  
 public:   
     typename Trait<Expression>::Reference expression;              
@@ -154,7 +139,7 @@ public:
     ,   offset_(view::offset(expression, indexes))
     {}    
 
-    template<class Index>
+    template<Integral Index>
     constexpr auto operator[](Index index) const { 
         return Slice<Expression, Indexes..., Index>(expression, std::tuple_cat(indexes, std::make_tuple(index)));
     } 
@@ -222,7 +207,7 @@ static inline std::byte const* bytes(T const& reference) {
     return reinterpret_cast<std::byte const*>(&reference);
 }  
 
-template <class Expression, class... Indexes>
+template <Operable Expression, class... Indexes>
 template <typename T>
 void Slice<Expression, Indexes...>::operator=(T value) {   
     auto copy = [this](std::byte const* value, std::ptrdiff_t offset) {
@@ -232,7 +217,7 @@ void Slice<Expression, Indexes...>::operator=(T value) {
         }
 
         std::vector<std::size_t> indexes(rank(), 0);
-        bool done = false;
+        bool done = false;  
         
         while (!done) {
             std::size_t position = offset;
@@ -289,7 +274,7 @@ void Slice<Expression, Indexes...>::operator=(T value) {
 
 }
 
-template <class Expression, class... Indexes>
+template <Operable Expression, class... Indexes>
 template <typename T>
 bool Slice<Expression, Indexes...>::operator==(T value) const {    
     assert(rank() == 0 && "Cannot compare an scalar to a non scalar slice");
@@ -324,5 +309,9 @@ bool Slice<Expression, Indexes...>::operator==(T value) const {
 }  
  
 } // namespace view
+
+using range = view::Range;
+
+} // namespace tannic
 
 #endif // SLICES_HPP

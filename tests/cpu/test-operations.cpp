@@ -2,7 +2,9 @@
 #include <vector>
 #include <numeric>
  
-#include "Tensor.hpp"  
+#include "Tensor.hpp"   
+
+using namespace tannic;
 
 class TestBinaryOps : public ::testing::Test {
 protected:

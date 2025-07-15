@@ -24,17 +24,15 @@
 #include "Traits.hpp"
 #include "Shape.hpp" 
 #include "Tensor.hpp"
+#include "Concepts.hpp"
+
+namespace tannic {
 
 class Tensor;
 
 namespace expression {    
-
-static constexpr auto index(type inner, type outer) {
-    return static_cast<int>(inner) * static_cast<int>(outer) * static_cast<int>(TYPES);
-}
- 
- 
-template<class Operation, class ... Operands>
+  
+template<class Operation, Operable ... Operands>
 class Transformation {
 public:
     Operation operation;
@@ -43,8 +41,9 @@ public:
     constexpr Transformation(Operation operation, typename Trait<Operands>::Reference... operands)
     :   operation(operation)
     ,   operands(operands...) 
-    ,   dtype_(operation.dtype(operands.dtype()...))
-    ,   shape_(operation.shape(operands.shape()...)) 
+    ,   dtype_(operation.promote(operands.dtype()...))
+    ,   shape_(operation.broadcast(operands.shape()...)) 
+    ,   strides_(shape_)
     {}
     
     constexpr type dtype() const {
@@ -53,6 +52,14 @@ public:
 
     constexpr Shape const& shape() const {
         return shape_;
+    }
+
+    constexpr Strides const& strides() const {
+        return strides_;
+    } 
+
+    constexpr std::ptrdiff_t offset() const {
+        return 0;
     }
 
     auto forward() const -> decltype(auto) {
@@ -64,17 +71,23 @@ public:
 private:
     type dtype_;
     Shape shape_; 
-};
- 
+    Strides strides_;
+}; 
+
+static constexpr auto index(type inner, type outer) {
+    return static_cast<int>(inner) + static_cast<int>(outer) * static_cast<int>(TYPES);
+} 
+
 struct Composition { 
     void forward(Tensor const&, Tensor const&, Tensor&) const;
-    
+
+ 
     static constexpr auto promotions = []() {
         std::array<type, index(TYPES, TYPES)> table{};  
-        table[index(int8, int8)]     = int32;
-        table[index(int8, int16)]    = int32;
-        table[index(int8, int32)]    = int32;
-        table[index(int8, int64)]    = int64;  
+        table[index(int8, int8)]   = int32;
+        table[index(int8, int16)]  = int32;
+        table[index(int8, int32)]  = int32;
+        table[index(int8, int64)]  = int64;  
 
         table[index(int16, int8)]    = int32;
         table[index(int16, int16)]   = int32;
@@ -109,11 +122,11 @@ struct Composition {
         return result;
     }
 
-    static constexpr type dtype(type inner, type outer) {
+    static constexpr type promote(type inner, type outer) {
         return promotions[index(inner, outer)];
     }
 
-    static constexpr Shape shape(Shape const& first, Shape const& second) {
+    static constexpr Shape broadcast(Shape const& first, Shape const& second) {
         auto first_rank = first.rank();
         auto second_rank = second.rank();
          
@@ -136,7 +149,7 @@ struct Composition {
         
         Shape first_batches(first.begin(), first.end() - 2);
         Shape second_batches(second.begin(), second.end() - 2);
-        Shape batches = operation::shape(first_batches, second_batches);
+        Shape batches = operation::broadcast(first_batches, second_batches);
         
         auto K1 = *(first.end() - 1);
         auto K2 = *(second.end() - 2);   
@@ -152,16 +165,24 @@ struct Composition {
     }
 };
 
-template<class Outer, class Inner>
-constexpr auto composition(Outer const& outer, Inner const& inner) {
-    return Transformation<Composition, Outer, Inner>({}, outer, inner);
+
+template<Operable Outer, Operable Inner>
+constexpr auto composition(Outer&& outer, Inner&& inner) {
+    return Transformation<Composition, std::decay_t<Outer>, std::decay_t<Inner>>{
+        {}, std::forward<Outer>(outer), std::forward<Inner>(inner)
+    };
 }
 
 } // namespace expression
 
-template<class Multiplicand, class Multiplier>
-constexpr auto matmul(Multiplicand const& multiplicand, Multiplier const& multiplier) {
-    return expression::composition(multiplicand, multiplier);
+template<Operable Multiplicand, Operable Multiplier>
+constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier) {
+    return expression::composition(
+        std::forward<Multiplicand>(multiplicand),
+        std::forward<Multiplier>(multiplier)
+    );
 }
+
+} // namespace tannic
 
 #endif // TRANSFORMATIONS_HPP

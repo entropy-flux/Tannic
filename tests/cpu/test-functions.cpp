@@ -5,6 +5,8 @@
 #include "Tensor.hpp"
 #include "Functions.hpp"
 
+using namespace tannic;
+
 class TestFunctions : public ::testing::Test {
 protected:
     Tensor A;

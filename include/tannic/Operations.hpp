@@ -17,19 +17,25 @@
 #define OPERATIONS_HPP
  
 #include <vector>  
+#include <utility>      
+#include <type_traits> 
+
 #include "Types.hpp"
-#include "Shape.hpp" 
+#include "Shape.hpp"
+#include "Strides.hpp" 
 #include "Traits.hpp"
+ 
+namespace tannic {
 
 class Tensor;
 
 namespace operation {
 
-static constexpr inline type dtype(type first, type second) {
+static constexpr inline type promote(type first, type second) {
     return static_cast<int>(first) > static_cast<int>(second) ?  first : second;
 }
 
-static constexpr Shape shape(Shape const& first, Shape const& second) {
+static constexpr Shape broadcast(Shape const& first, Shape const& second) {
     auto first_rank = first.rank();
     auto second_rank = second.rank();
     auto rank = std::max(first_rank, second_rank);
@@ -47,7 +53,7 @@ static constexpr Shape shape(Shape const& first, Shape const& second) {
     return Shape(result);
 }
 
-template<class Operation, class Operand>
+template<class Operation, Operable Operand>
 class Unary { 
 public:
     Operation operation;
@@ -66,10 +72,18 @@ public:
         return operand.shape();
     }
 
+    constexpr Strides const& strides() const {
+        return operand.strides();
+    }
+
+    constexpr auto offset() const {
+        return operand.offset();
+    }
+
     Tensor forward() const;
 };
 
-template<class Operation, class Operand, class Cooperand>
+template<class Operation, Operable Operand, Operable Cooperand>
 class Binary {
 public:
     Operation operation;
@@ -80,8 +94,9 @@ public:
     :   operation(operation)
     ,   operand(operand)
     ,   cooperand(cooperand)
-    ,   dtype_(operation::dtype(operand.dtype(), cooperand.dtype()))
-    ,   shape_(operation::shape(operand.shape(), cooperand.shape()))
+    ,   dtype_(operation::promote(operand.dtype(), cooperand.dtype()))
+    ,   shape_(operation::broadcast(operand.shape(), cooperand.shape()))
+    ,   strides_(shape_)
     {} 
 
     constexpr type dtype() const {
@@ -92,11 +107,20 @@ public:
         return shape_;
     }
 
+    constexpr Strides const& strides() const {
+        return strides_;
+    } 
+
+    constexpr std::ptrdiff_t offset() const {
+        return 0;
+    }
+
     Tensor forward() const;
 
 private:
     type dtype_;
     Shape shape_;
+    Strides strides_;
 }; 
 
 struct Negation {
@@ -116,30 +140,47 @@ struct Subtraction {
 };
 
 
-template<class Operand>
-constexpr auto operator-(Operand const & operand) {
-    return Unary<Negation, Operand>{{}, operand};
+template<Operable Operand>
+constexpr auto operator-(Operand&& operand) {
+    return Unary<Negation, std::decay_t<Operand>>{
+        {},
+        std::forward<Operand>(operand)
+    };
 }
-
-template<class Augend, class Addend>
-constexpr auto operator+(Augend const& augend, Addend const& addend) {
-    return Binary<Addition, Augend, Addend>{{}, augend, addend};
-} 
-
-template<class Subtrahend , class Minuend>
-constexpr auto operator-(Subtrahend const& subtrahend, Minuend const& minuend) {
-    return Binary<Subtraction, Subtrahend, Minuend>{{}, subtrahend, minuend};
-} 
-
-template<class Multiplicand, class Multiplier>
-constexpr auto operator*(Multiplicand const& multiplicand, Multiplier const& multiplier) {
-    return Binary<Multiplication, Multiplicand, Multiplier>{{}, multiplicand, multiplier};
-}    
+ 
+template<Operable Augend, Operable Addend>
+constexpr auto operator+(Augend&& augend, Addend&& addend) {
+    return Binary<Addition, std::decay_t<Augend>, std::decay_t<Addend>>{
+        {},
+        std::forward<Augend>(augend),
+        std::forward<Addend>(addend)
+    };
+}
+ 
+template<Operable Subtrahend, Operable Minuend>
+constexpr auto operator-(Subtrahend&& subtrahend, Minuend&& minuend) {
+    return Binary<Subtraction, std::decay_t<Subtrahend>, std::decay_t<Minuend>>{
+        {},
+        std::forward<Subtrahend>(subtrahend),
+        std::forward<Minuend>(minuend)
+    };
+}
+ 
+template<Operable Multiplicand, Operable Multiplier>
+constexpr auto operator*(Multiplicand&& multiplicand, Multiplier&& multiplier) {
+    return Binary<Multiplication, std::decay_t<Multiplicand>, std::decay_t<Multiplier>>{
+        {},
+        std::forward<Multiplicand>(multiplicand),
+        std::forward<Multiplier>(multiplier)
+    };
+}
 
 } // namespace operation 
 
 using operation::operator-; 
 using operation::operator+; 
 using operation::operator*;  
+
+} // namespace tannic
 
 #endif // OPERATIONS_HPP 

@@ -1,12 +1,12 @@
 #pragma once
 
 #include <array> 
-#include "ctypes/tensor.h" 
+#include "core/tensor.h" 
       
 namespace cpu {
 
 static constexpr inline auto index(type first, type second) {
-    return static_cast<int>(first) + static_cast<int>(TYPES)*static_cast<int>(second);
+    return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 } 
 
 template<typename S1, typename S2, typename D>

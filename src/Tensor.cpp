@@ -1,6 +1,8 @@
 #include "cpu/mem.hpp"
 #include "cuda/mem.cuh"
-#include "Tensor.hpp"  
+#include "Tensor.hpp"   
+
+using namespace tannic;
 
 void Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {      
     std::byte* target = static_cast<std::byte*>(storage_->address()) + offset;  

@@ -21,7 +21,9 @@
 #include <span>
 #include <vector>
 #include <variant> 
-#include "ctypes/resources.h"
+#include "core/resources.h"
+
+namespace tannic {
 
 class Host {
 public: 
@@ -45,5 +47,7 @@ private:
 };
 
 using Allocator = std::variant<Host, Device>;
+
+} // namespace tannic
 
 #endif // RESOURCES_HPP

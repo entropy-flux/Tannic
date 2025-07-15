@@ -1,9 +1,11 @@
 #include "Tensor.hpp"
 #include "Transformations.hpp"
-#include "ctypes/tensor.h"
-#include "cpu/gemm.hpp"
+#include "core/tensor.h"
+#include "cpu/gemm.hpp" 
 
-static inline tensor_t ctensor(Tensor const& tensor) {
+using namespace tannic;
+
+static inline tensor_t c_tensor_t(Tensor const& tensor, bool is_transposed = false) {
     return tensor_t{
         .rank = tensor.rank(),
         .address = reinterpret_cast<void*>(tensor.buffer()),
@@ -21,9 +23,11 @@ static inline bool is_transposed(Tensor const& tensor) {
 
 void expression::Composition::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
     output.initialize();
-    tensor_t src1 = ctensor(first);
-    tensor_t src2 = ctensor(second);
-    tensor_t dst = ctensor(output); 
+    bool src1_transposed = is_transposed(first);
+    bool src2_transposed = is_transposed(second);
+    tensor_t src1 = c_tensor_t(first, src1_transposed);
+    tensor_t src2 = c_tensor_t(second, src1_transposed);
+    tensor_t dst = c_tensor_t(output); 
     bool success = cpu::matmul[cpu::index(first.dtype(), second.dtype())](&src1, &src2, &dst, is_transposed(first), is_transposed(second)); 
     if (!success) {
         throw std::runtime_error(

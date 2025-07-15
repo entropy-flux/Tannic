@@ -13,27 +13,16 @@
 // limitations under the License.
 //
 
-#ifndef TENSOR_H
-#define TENSOR_H
+#ifndef TRAITS_HPP
+#define TRAITS_HPP
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+namespace tannic {
 
-#include <stdint.h>
-#include <stddef.h>
-#include "ctypes/types.h"  
+template<typename T>
+struct Trait {
+    using Reference = T;
+}; 
 
-typedef struct tensor_t {
-    uint8_t rank;
-    void* address;
-    const size_t* shape;
-    const size_t* strides;  
-    type dtype; 
-} tensor_t; 
- 
-#ifdef __cplusplus
-}
-#endif 
+} // namespace tannic
 
-#endif // TENSOR_H
+#endif // TRAITS_HPP

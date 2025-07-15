@@ -1,7 +1,9 @@
 #include "Functions.hpp"
 #include "cpu/funcs.hpp"  
- 
-static inline tensor_t ctensor(Tensor const& tensor) {
+
+using namespace tannic; 
+
+static inline tensor_t c_tensor_t(Tensor const& tensor) {
     return tensor_t{
         .rank = tensor.rank(),
         .address = reinterpret_cast<void*>(tensor.buffer()),
@@ -13,8 +15,8 @@ static inline tensor_t ctensor(Tensor const& tensor) {
 
 void expression::Log::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = ctensor(input);
-    tensor_t target = ctensor(output);
+    tensor_t source = c_tensor_t(input);
+    tensor_t target = c_tensor_t(output);
     bool success = cpu::log[cpu::index(input.dtype())](&source, &target);
     if(!success) {
         throw std::runtime_error(
@@ -25,8 +27,8 @@ void expression::Log::operator()(Tensor const& input, Tensor& output) const {
 
 void expression::Exp::operator()(Tensor const& input, Tensor& output) const {
     output.initialize();
-    tensor_t source = ctensor(input);
-    tensor_t target = ctensor(output);
+    tensor_t source = c_tensor_t(input);
+    tensor_t target = c_tensor_t(output);
     bool status = cpu::exp[cpu::index(input.dtype())](&source, &target);
     if(!status) {
         throw std::runtime_error(
@@ -37,8 +39,8 @@ void expression::Exp::operator()(Tensor const& input, Tensor& output) const {
 
 void expression::Sqrt::operator()(Tensor const& input, Tensor& output) const {
     output.initialize();
-    tensor_t source = ctensor(input);
-    tensor_t target = ctensor(output);
+    tensor_t source = c_tensor_t(input);
+    tensor_t target = c_tensor_t(output);
     bool status = cpu::sqrt[cpu::index(input.dtype())](&source, &target);
     if(!status) {
         throw std::runtime_error(
@@ -49,8 +51,8 @@ void expression::Sqrt::operator()(Tensor const& input, Tensor& output) const {
 
 void expression::Abs::operator()(Tensor const& input, Tensor& output) const {
     output.initialize();
-    tensor_t source = ctensor(input);
-    tensor_t target = ctensor(output);
+    tensor_t source = c_tensor_t(input);
+    tensor_t target = c_tensor_t(output);
     bool status = cpu::abs[cpu::index(input.dtype())](&source, &target);
     if(!status) {
         throw std::runtime_error(
@@ -61,8 +63,8 @@ void expression::Abs::operator()(Tensor const& input, Tensor& output) const {
 
 void expression::Sin::operator()(Tensor const& input, Tensor& output) const {
     output.initialize();
-    tensor_t source = ctensor(input);
-    tensor_t target = ctensor(output);
+    tensor_t source = c_tensor_t(input);
+    tensor_t target = c_tensor_t(output);
     bool status = cpu::sin[cpu::index(input.dtype())](&source, &target);
     if(!status) {
         throw std::runtime_error(
@@ -73,8 +75,8 @@ void expression::Sin::operator()(Tensor const& input, Tensor& output) const {
 
 void expression::Cos::operator()(Tensor const& input, Tensor& output) const {
     output.initialize();
-    tensor_t source = ctensor(input);
-    tensor_t target = ctensor(output);
+    tensor_t source = c_tensor_t(input);
+    tensor_t target = c_tensor_t(output);
     bool status = cpu::cos[cpu::index(input.dtype())](&source, &target);
     if(!status) {
         throw std::runtime_error(
@@ -85,8 +87,8 @@ void expression::Cos::operator()(Tensor const& input, Tensor& output) const {
 
 void expression::Tan::operator()(Tensor const& input, Tensor& output) const {
     output.initialize();
-    tensor_t source = ctensor(input);
-    tensor_t target = ctensor(output);
+    tensor_t source = c_tensor_t(input);
+    tensor_t target = c_tensor_t(output);
     bool status = cpu::tan[cpu::index(input.dtype())](&source, &target);
     if(!status) {
         throw std::runtime_error(
@@ -97,8 +99,8 @@ void expression::Tan::operator()(Tensor const& input, Tensor& output) const {
 
 void expression::Sinh::operator()(Tensor const& input, Tensor& output) const {
     output.initialize();
-    tensor_t source = ctensor(input);
-    tensor_t target = ctensor(output);
+    tensor_t source = c_tensor_t(input);
+    tensor_t target = c_tensor_t(output);
     bool status = cpu::sinh[cpu::index(input.dtype())](&source, &target);
     if(!status) {
         throw std::runtime_error(
@@ -109,8 +111,8 @@ void expression::Sinh::operator()(Tensor const& input, Tensor& output) const {
 
 void expression::Cosh::operator()(Tensor const& input, Tensor& output) const {
     output.initialize();
-    tensor_t source = ctensor(input);
-    tensor_t target = ctensor(output);
+    tensor_t source = c_tensor_t(input);
+    tensor_t target = c_tensor_t(output);
     bool status = cpu::cosh[cpu::index(input.dtype())](&source, &target);
     if(!status) {
         throw std::runtime_error(
@@ -121,8 +123,8 @@ void expression::Cosh::operator()(Tensor const& input, Tensor& output) const {
 
 void expression::Tanh::operator()(Tensor const& input, Tensor& output) const {
     output.initialize();
-    tensor_t source = ctensor(input);
-    tensor_t target = ctensor(output);
+    tensor_t source = c_tensor_t(input);
+    tensor_t target = c_tensor_t(output);
     bool status = cpu::tanh[cpu::index(input.dtype())](&source, &target);
     if(!status) {
         throw std::runtime_error(

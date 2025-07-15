@@ -21,7 +21,10 @@
 #include <stdexcept>
 #include <ostream>
 
+#include "Concepts.hpp"
 #include "Shape.hpp"
+
+namespace tannic {
 
 class Strides {
 public:
@@ -100,21 +103,17 @@ public:
     constexpr auto front() const { 
         return sizes_.front(); 
     }
-
-
-    template<class Index>
-    constexpr auto operator[](Index index) const { 
-        return sizes_[normalize(index)]; 
+  
+    template<Integral Index>
+    constexpr auto const& operator[](Index index) const { 
+        return sizes_[normalize(index, rank())]; 
     }
 
-protected:
-    template<class Index>
-    constexpr auto normalize(Index index) const { 
-        auto bound = rank();
-        if (index < 0) index += bound;
-        assert(index >= 0  && index < bound && "Index out of bound");
-        return index;
-    }
+    template<Integral Index>
+    constexpr auto& operator[](Index index) {
+        return sizes_[normalize(index, rank())]; 
+    } 
+ 
     
 private:
     rank_type rank_{0};
@@ -140,5 +139,7 @@ inline std::ostream& operator<<(std::ostream& os, Strides const& strides) {
     os << ")";
     return os;
 }
+
+} // namespace tannic
 
 #endif // STRIDES_HPP

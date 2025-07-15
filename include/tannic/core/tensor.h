@@ -13,12 +13,27 @@
 // limitations under the License.
 //
 
-#ifndef TRAITS_HPP
-#define TRAITS_HPP
+#ifndef TENSOR_H
+#define TENSOR_H
 
-template<typename T>
-struct Trait {
-    using Reference = T;
-}; 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#endif // TRAITS_HPP
+#include <stdint.h>
+#include <stddef.h>
+#include "core/types.h"  
+
+typedef struct tensor_t {
+    uint8_t rank;
+    void* address;
+    const size_t* shape;
+    const size_t* strides;  
+    type dtype; 
+} tensor_t; 
+ 
+#ifdef __cplusplus
+}
+#endif 
+
+#endif // TENSOR_H

@@ -6,57 +6,82 @@
 #include "Tensor.hpp"
 #include "Transformations.hpp"
 
+using namespace tannic;
+
 class MatmulTests : public ::testing::Test {
 protected:
     void SetUp() override {}
 };
-
+ 
 TEST_F(MatmulTests, Basic) {
     Tensor X(float32, {3, 4}); X.initialize();
     Tensor Y(float32, {4, 5}); Y.initialize();
     
-    float X_data[3][4] = {
-        {4.f, 2.f, 6.f, 0.f},
-        {1.f, 3.f, 5.f, 7.f},
-        {2.f, 4.f, 6.f, 8.f}
+    float X_data[3 * 4] = {
+        4.f, 2.f, 6.f, 0.f,
+        1.f, 3.f, 5.f, 7.f,
+        2.f, 4.f, 6.f, 8.f
     };
-
-    float Y_data[4][5] = {
-        {1.f, 2.f, 3.f, 4.f, 5.f},
-        {0.f, 1.f, 0.f, 1.f, 0.f},
-        {2.f, 3.f, 4.f, 5.f, 6.f},
-        {1.f, 0.f, 1.f, 0.f, 1.f}
-    };
-
-    // Fill tensors
-    float* x_ptr = reinterpret_cast<float*>(X.buffer());
-    float* y_ptr = reinterpret_cast<float*>(Y.buffer());
     
-    for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 4; ++j)
-            x_ptr[i*4 + j] = X_data[i][j];
-            
-    for (int i = 0; i < 4; ++i)
-        for (int j = 0; j < 5; ++j)
-            y_ptr[i*5 + j] = Y_data[i][j];
+    float Y_data[4 * 5] = {
+        1.f, 2.f, 3.f, 4.f, 5.f,
+        0.f, 1.f, 0.f, 1.f, 0.f,
+        2.f, 3.f, 4.f, 5.f, 6.f,
+        1.f, 0.f, 1.f, 0.f, 1.f
+    };
+  
+    float Z_expected[3 * 5] = {
+        16.0f, 28.0f, 36.0f, 48.0f, 56.0f,
+        18.0f, 20.0f, 30.0f, 32.0f, 42.0f,
+        22.0f, 26.0f, 38.0f, 42.0f, 54.0f
+    };
+ 
+    float* x_ptr = reinterpret_cast<float*>(X.buffer()); for (int i = 0; i < 3*4; ++i) x_ptr[i] = X_data[i];
+    float* y_ptr = reinterpret_cast<float*>(Y.buffer()); for (int i = 0; i < 4*5; ++i) y_ptr[i] = Y_data[i];
 
     Tensor Z = matmul(X, Y);   
 
-    float Z_expected[3][5] = {
-        {16.0f, 28.0f, 36.0f, 48.0f, 56.0f},
-        {18.0f, 20.0f, 30.0f, 32.0f, 42.0f},
-        {22.0f, 26.0f, 38.0f, 42.0f, 54.0f}
+ 
+
+    float* z_ptr = reinterpret_cast<float*>(Z.buffer());
+    float epsilon = 1e-5f;
+    for (int i = 0; i < 3*5; ++i) { 
+        EXPECT_NEAR(z_ptr[i], Z_expected[i], epsilon);
+    }
+}
+ 
+TEST_F(MatmulTests, FirstTransposed) {
+    Tensor X(float32, {2, 3}); X.initialize();
+    Tensor Y(float32, {2, 3}); Y.initialize();
+     
+    float X_data[2 * 3] = {
+        1.f, 2.f, 3.f,
+        4.f, 5.f, 6.f
+    }; 
+
+    float Y_data[2 * 3] = {
+        7.f, 8.f, 9.f,
+        10.f, 11.f, 12.f
+    };
+ 
+    float* x_ptr = reinterpret_cast<float*>(X.buffer()); for (int i = 0; i < 2*3; ++i) x_ptr[i] = X_data[i];
+    float* y_ptr = reinterpret_cast<float*>(Y.buffer()); for (int i = 0; i < 2*3; ++i) y_ptr[i] = Y_data[i];
+             
+    Tensor Z = matmul(X.transpose(-1, -2), Y);
+
+    float Z_expected[3*3] = {
+        47.f, 52.f, 57.f,
+        64.f, 71.f, 78.f,
+        81.f, 90.f, 99.f
     };
 
     float* z_ptr = reinterpret_cast<float*>(Z.buffer());
     float epsilon = 1e-5f;
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 5; ++j) {
-            EXPECT_NEAR(z_ptr[i*5 + j], Z_expected[i][j], epsilon)
-                << "Mismatch at (" << i << "," << j << ")";
-        }
+    for (int i = 0; i < 3*3; ++i) { 
+        EXPECT_NEAR(z_ptr[i], Z_expected[i], epsilon);
     }
 }
+ 
 
 TEST_F(MatmulTests, Batched) {
     Tensor A(float32, {2, 2, 2}); A.initialize();
@@ -110,55 +135,11 @@ TEST_F(MatmulTests, Batched) {
         }
     }
 }
-
-/*
-TEST_F(MatmulTests, FirstTransposed) {
-    Tensor X(float32, {2, 3});
-    Tensor Y(float32, {2, 3});
-    
-    float X_data[2][3] = {
-        {1.f, 2.f, 3.f},
-        {4.f, 5.f, 6.f}
-    };
-
-    float Y_data[2][3] = {
-        {7.f, 8.f, 9.f},
-        {10.f, 11.f, 12.f}
-    };
-
-    // Fill tensors
-    float* x_ptr = reinterpret_cast<float*>(X.buffer());
-    float* y_ptr = reinterpret_cast<float*>(Y.buffer());
-    
-    for (int i = 0; i < 2; ++i)
-        for (int j = 0; j < 3; ++j)
-            x_ptr[i*3 + j] = X_data[i][j];
-            
-    for (int i = 0; i < 2; ++i)
-        for (int j = 0; j < 3; ++j)
-            y_ptr[i*3 + j] = Y_data[i][j];
-
-    Tensor Z = matmul(X.transpose(), Y);
-
-    float Z_expected[3][3] = {
-        {47.f, 52.f, 57.f},
-        {64.f, 71.f, 78.f},
-        {81.f, 90.f, 99.f}
-    };
-
-    float* z_ptr = reinterpret_cast<float*>(Z.buffer());
-    float epsilon = 1e-5f;
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            EXPECT_NEAR(z_ptr[i*3 + j], Z_expected[i][j], epsilon)
-                << "Mismatch at (" << i << "," << j << ")";
-        }
-    }
-}
-
+ 
+ 
 TEST_F(MatmulTests, SecondTransposed) {
-    Tensor X(float32, {2, 3});
-    Tensor Y(float32, {2, 3});
+    Tensor X(float32, {2, 3}); X.initialize();
+    Tensor Y(float32, {2, 3}); Y.initialize();
     
     float X_data[2][3] = {
         {1.f, 2.f, 3.f},
@@ -181,8 +162,9 @@ TEST_F(MatmulTests, SecondTransposed) {
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 3; ++j)
             y_ptr[i*3 + j] = Y_data[i][j];
+ 
 
-    Tensor Z = matmul(X, Y.transpose());
+    Tensor Z = matmul(X, Y.transpose(-1, -2));
 
     float Z_expected[2][2] = {
         {50.f, 68.f},
@@ -198,10 +180,11 @@ TEST_F(MatmulTests, SecondTransposed) {
         }
     }
 }
+ 
 
 TEST_F(MatmulTests, BothTransposed) {
-    Tensor X(float32, {3, 2});
-    Tensor Y(float32, {2, 3});
+    Tensor X(float32, {3, 2}); X.initialize();
+    Tensor Y(float32, {2, 3}); Y.initialize();
     
     float X_data[3][2] = {
         {1.f, 4.f},
@@ -224,9 +207,9 @@ TEST_F(MatmulTests, BothTransposed) {
             
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 3; ++j)
-            y_ptr[i*3 + j] = Y_data[i][j];
+            y_ptr[i*3 + j] = Y_data[i][j]; 
 
-    Tensor Z = matmul(X.transpose(), Y.transpose());
+    Tensor Z = matmul(X.transpose(-1, -2), Y.transpose(-1, -2));
 
     float Z_expected[2][2] = {
         {50.f, 68.f},
@@ -244,8 +227,8 @@ TEST_F(MatmulTests, BothTransposed) {
 } 
  
 TEST_F(MatmulTests, Rank4_SecondTransposed) {
-    Tensor X(float32, {2, 2, 2, 4});
-    Tensor Y(float32, {2, 2, 3, 4});
+    Tensor X(float32, {2, 2, 2, 4}); X.initialize();
+    Tensor Y(float32, {2, 2, 3, 4}); Y.initialize();
     
     float X_data[2][2][2][4] = {
         {
@@ -300,8 +283,9 @@ TEST_F(MatmulTests, Rank4_SecondTransposed) {
             for (int k = 0; k < 3; ++k)
                 for (int l = 0; l < 4; ++l)
                     y_ptr[i*24 + j*12 + k*4 + l] = Y_data[i][j][k][l];
+ 
 
-    Tensor Z = matmul(X, Y.transpose());
+    Tensor Z = matmul(X, Y.transpose(-1, -2));
 
     float Z_expected[2][2][2][3] = {
         {
@@ -327,9 +311,7 @@ TEST_F(MatmulTests, Rank4_SecondTransposed) {
             }
         }
     }
-}
-*/
-
+} 
 
 /*
 
@@ -521,3 +503,5 @@ if __name__ == "__main__":
 
 
 */
+
+ 

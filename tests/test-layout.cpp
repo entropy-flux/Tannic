@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include "Shape.hpp" 
-#include "Strides.hpp"
+#include "Strides.hpp" 
+
+using namespace tannic;
 
 TEST(Test, Constructor) {     
     constexpr Shape const_shape(1,2,3);

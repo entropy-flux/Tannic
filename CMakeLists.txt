@@ -25,7 +25,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 
-include_directories(include)
+include_directories(include/tannic)
 include_directories(src)
 
 

@@ -21,6 +21,8 @@
 
 #include "Resources.hpp" 
 
+namespace tannic {
+
 class Storage {
 public:  
     Storage(std::size_t nbytes, Allocator allocator = Host{})
@@ -93,5 +95,7 @@ private:
     std::size_t nbytes_ = 0;
     Allocator allocator_ = Host{};
 };
+
+} // namespace tannic
 
 #endif // STORAGE_HPP

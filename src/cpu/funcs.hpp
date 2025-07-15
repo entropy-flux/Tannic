@@ -2,8 +2,8 @@
 #include <array>
 #include <cmath>  
 #include <stdexcept>
-#include "ctypes/types.h"
-#include "ctypes/tensor.h" 
+#include "core/types.h"
+#include "core/tensor.h" 
 
 namespace cpu {
 

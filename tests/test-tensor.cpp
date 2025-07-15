@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
 #include "Tensor.hpp" 
-
 #include <gtest/gtest.h>
-
 #include "Tensor.hpp" 
+
+using namespace tannic;
 
 TEST(TestView, TestSlice) { 
     Tensor tensor(int32, {2,2});  tensor.initialize();

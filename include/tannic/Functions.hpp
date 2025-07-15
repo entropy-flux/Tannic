@@ -21,9 +21,10 @@
 #include "Strides.hpp"
 #include "Tensor.hpp" 
 
+namespace tannic {
 namespace expression {
 
-template<class Functor, class Operand>
+template<class Functor, Operable Operand>
 class Function {
 public:
     Functor functor;
@@ -41,6 +42,14 @@ public:
     constexpr Shape const& shape() const {
         return operand.shape();
     }  
+
+    constexpr Strides const& strides() const {
+        return operand.strides();
+    }
+
+    constexpr auto offset() const {
+        return operand.offset();
+    }
 
     Tensor forward() const {
         Tensor source = operand.forward();
@@ -89,57 +98,55 @@ struct Cosh {
 struct Tanh { 
     void operator()(Tensor const&, Tensor&) const;
 };
-
-template<class Expression> 
-constexpr auto log(Expression const& expression) {
-    return Function<Log, Expression>({}, expression);
+template<Operable Expression> 
+constexpr auto log(Expression&& expression) {
+    return Function<Log, std::decay_t<Expression>>({}, std::forward<Expression>(expression));
 }
 
-template<class Expression>
-constexpr auto exp(Expression const& expression) {
-    return Function<Exp, Expression>({}, expression);
+template<Operable Expression>
+constexpr auto exp(Expression&& expression) {
+    return Function<Exp, std::decay_t<Expression>>({}, std::forward<Expression>(expression));
 }
 
-template<class Expression>
-constexpr auto sqrt(Expression const& expression) {
-    return Function<Sqrt, Expression>({}, expression);
+template<Operable Expression>
+constexpr auto sqrt(Expression&& expression) {
+    return Function<Sqrt, std::decay_t<Expression>>({}, std::forward<Expression>(expression));
 }
 
-template<class Expression>
-constexpr auto abs(Expression const& expression) {
-    return Function<Abs, Expression>({}, expression);
+template<Operable Expression>
+constexpr auto abs(Expression&& expression) {
+    return Function<Abs, std::decay_t<Expression>>({}, std::forward<Expression>(expression));
 }
 
-template<class Expression>
-constexpr auto sin(Expression const& expression) {
-    return Function<Sin, Expression>({}, expression);
+template<Operable Expression>
+constexpr auto sin(Expression&& expression) {
+    return Function<Sin, std::decay_t<Expression>>({}, std::forward<Expression>(expression));
 }
 
-template<class Expression>
-constexpr auto cos(Expression const& expression) {
-    return Function<Cos, Expression>({}, expression);
+template<Operable Expression>
+constexpr auto cos(Expression&& expression) {
+    return Function<Cos, std::decay_t<Expression>>({}, std::forward<Expression>(expression));
 }
 
-template<class Expression>
-constexpr auto tan(Expression const& expression) {
-    return Function<Tan, Expression>({}, expression);
+template<Operable Expression>
+constexpr auto tan(Expression&& expression) {
+    return Function<Tan, std::decay_t<Expression>>({}, std::forward<Expression>(expression));
 }
 
-template<class Expression>
-constexpr auto sinh(Expression const& expression) {
-    return Function<Sinh, Expression>({}, expression);
+template<Operable Expression>
+constexpr auto sinh(Expression&& expression) {
+    return Function<Sinh, std::decay_t<Expression>>({}, std::forward<Expression>(expression));
 }
 
-template<class Expression>
-constexpr auto cosh(Expression const& expression) {
-    return Function<Cosh, Expression>({}, expression);
+template<Operable Expression>
+constexpr auto cosh(Expression&& expression) {
+    return Function<Cosh, std::decay_t<Expression>>({}, std::forward<Expression>(expression));
 }
 
-template<class Expression>
-constexpr auto tanh(Expression const& expression) {
-    return Function<Tanh, Expression>({}, expression);
+template<Operable Expression>
+constexpr auto tanh(Expression&& expression) {
+    return Function<Tanh, std::decay_t<Expression>>({}, std::forward<Expression>(expression));
 }
-
 } // namespace expression 
 
 using expression::log;
@@ -152,5 +159,7 @@ using expression::tan;
 using expression::sinh;
 using expression::cosh;
 using expression::tanh;
+
+} //namespace tannic
 
 #endif // FUNCTIONS_HPP

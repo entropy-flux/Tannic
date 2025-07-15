@@ -25,17 +25,16 @@
 #include <numeric>
 #include <initializer_list>
 
+#include "Concepts.hpp"
 
-template<typename T>
-concept Iterable = requires(T type) {
-    std::begin(type);
-    std::end(type);
-}; 
-
-
-template <typename T>
-concept Iterator = std::input_iterator<T>;
-
+namespace tannic { 
+   
+template<Integral Index, Integral Size>
+constexpr inline Index normalize(Index index, Size bound) {
+    if (index < 0) index += bound;
+    assert(index >= 0 && index < bound && "Index out of bounds");
+    return index;
+}
 
 class Shape {
 public:
@@ -135,24 +134,15 @@ public:
         return sizes_[rank_ - 1];
     }       
 
-    template<class Index>
+    template<Integral Index>
     constexpr auto const& operator[](Index index) const { 
-        return sizes_[normalize(index)]; 
+        return sizes_[normalize(index, rank())]; 
     }
 
-    template<class Index>
+    template<Integral Index>
     constexpr auto& operator[](Index index) {
-        return sizes_[normalize(index)]; 
-    }
-
-protected:
-    template<class Index>
-    constexpr auto normalize(Index index) const { 
-        auto bound = rank();
-        if (index < 0) index += bound;
-        assert(index >= 0  && index < bound && "Index out of bound");
-        return index;
-    }
+        return sizes_[normalize(index, rank())]; 
+    } 
 
 
 private:
@@ -180,5 +170,7 @@ inline std::ostream& operator<<(std::ostream& os, Shape const& shape) {
     os << ")";
     return os;
 }
+
+} // namespace tannic
 
 #endif // SHAPE_HPP

@@ -17,7 +17,8 @@
 
 #include <iostream>  
 #include <memory>
-#include <cassert>
+#include <cassert> 
+#include <utility> 
 
 #include "Types.hpp"
 #include "Shape.hpp" 
@@ -25,6 +26,9 @@
 #include "Slices.hpp"
 #include "Storage.hpp"
 #include "Operations.hpp"
+#include "Views.hpp"
+
+namespace tannic {
 
 class Tensor {
 public: 
@@ -35,26 +39,30 @@ public:
     :   dtype_(dtype)
     ,   shape_(shape) 
     ,   strides_(shape_) 
-    ,   offset_(0) { 
-    }  
+    ,   offset_(0) {}  
 
-    template <class Expression, typename = std::enable_if_t<!std::is_arithmetic_v<Expression>>>
+    Tensor(type dtype, Shape shape, Strides strides)
+    :   dtype_(dtype)
+    ,   shape_(shape) 
+    ,   strides_(strides) 
+    ,   offset_(0) {}  
+
+    template <Operable Expression, typename = std::enable_if_t<!std::is_arithmetic_v<Expression>>>
     Tensor(const Expression& expression) {
         *this = expression.forward(); 
     }
 
 
-    template <class Expression, typename = std::enable_if_t<!std::is_arithmetic_v<Expression>>>
+    template <Operable Expression, typename = std::enable_if_t<!std::is_arithmetic_v<Expression>>>
     Tensor& operator=(const Expression& expression) {
         *this = expression.forward(); 
         return *this;
     }
-
+ 
 public:
     void initialize(Allocator allocator = Host{}) {
         storage_ = std::make_shared<Storage>(nbytes(), allocator);
     }
-
 
 public: 
     type dtype() const { 
@@ -87,11 +95,13 @@ public:
 
     Tensor const& forward() const{
         return *this;
-    } 
-  
+    }  
+
     std::byte* buffer() const {
         return static_cast<std::byte*>(storage_->address()) + offset_;
     } 
+    
+ 
 
 public:
     bool is_initialized() const {
@@ -110,23 +120,30 @@ public:
  
 
 public:
-    template<class Index>
+    template<Integral Index>
     auto operator[](Index index) {   
         return view::Slice<Tensor, Index>(*this, std::make_tuple(index));
     }
 
-    auto operator[](Range index) { 
-        return view::Slice<Tensor, Range>(*this, std::make_tuple(index));
+    auto operator[](view::Range range) { 
+        return view::Slice<Tensor, view::Range>(*this, std::make_tuple(range));
     }
 
     template<class ... Indexes>
     auto operator[](Indexes... indexes) {
         return view::Slice<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
     }
+ 
+    auto transpose(int first, int second) const {
+        return view::Transpose<Tensor>(*this, std::make_pair<int, int>(std::move(first), std::move(second)));
+    }
 
 protected:   
-    template <class Expression, class... Indexes> 
+    template <Operable Expression, class... Indexes> 
     friend class view::Slice;
+
+    template <Operable Expression> 
+    friend class view::Transpose;
     
     Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset, std::shared_ptr<Storage> storage)
     :   dtype_(dtype)
@@ -148,25 +165,33 @@ private:
     std::shared_ptr<Storage> storage_ = nullptr;
 };  
 
-template <class Expression, class... Indexes>
+template<Operable Expression, class... Indexes>
 Tensor view::Slice<Expression, Indexes...>::forward() const {   
     Tensor source = expression.forward();
-    return Tensor(dtype_, shape_, strides_, offset_, source.storage_);
+    return Tensor(dtype(), shape(), strides(), offset(), source.storage_);
 }  
 
-template<class Operation, class Operand>
+template<Operable Expression>
+Tensor view::Transpose<Expression>::forward() const { 
+    Tensor source = expression.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.storage_);
+}
+
+template<class Operation, Operable Operand>
 Tensor operation::Unary<Operation, Operand>::forward() const { 
-    Tensor result(dtype(), shape());  
+    Tensor result(dtype(), shape(), strides());  
     operation.forward(operand, result);
     return result;
 }
 
-template<class Operation, class Operand, class Cooperand>
+template<class Operation, Operable Operand, Operable Cooperand>
 Tensor operation::Binary<Operation, Operand, Cooperand>::forward() const {
-    Tensor result(dtype(), shape());
+    Tensor result(dtype(), shape(), strides());
     operation.forward(operand, cooperand, result);
     return result;
-} 
+}  
+
+} // namespace tannic
   
 
 #endif // TENSOR_HPP
