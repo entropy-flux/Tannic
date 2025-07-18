@@ -13,26 +13,42 @@ namespace tannic {
 
 class Tensor;
 
-namespace view {  
+namespace expression {   
 
-struct Range {
-    int start;
-    int stop;
-};
+template<Expression Source>
+class View {
+public: 
+    template<Integral... Indexes>
+    constexpr View(Trait<Source>::Reference source, Indexes... indexes)
+    :   shape_(indexes...) 
+    ,   strides_(shape_)
+    ,   source_(source) {
+        assert(source_.shape().size() == shape().size() && "Shape mismatch: view must preserve total number of elements");
+    }
 
-template<Integral Index, Integral Size>
-static constexpr inline Index normalize(Index index, Size bound) {
-    if (index < 0) index += bound;
-    assert(index >= 0 && index < bound && "Index out of bounds");
-    return index;
-}  
+    constexpr type dtype() const {
+        return source_.dtype();
+    }
 
-template<Integral Size>
-static constexpr inline Range normalize(Range range, Size size) {
-    int start = range.start < 0 ? size + range.start : range.start;
-    int stop = range.stop < 0 ? size + range.stop + 1 : range.stop;
-    return {start, stop};
-}  
+    constexpr Shape const& shape() const {
+        return shape_;
+    }
+
+    constexpr Strides const& strides() const {
+        return strides_;
+    }
+
+    constexpr auto offset() const {
+        return source_.offset();
+    } 
+
+    Tensor forward() const;
+
+private:
+    Shape shape_;
+    Strides strides_;
+    typename Trait<Source>::Reference source_;                
+}; 
  
 constexpr Shape transpose(Shape const& layout, std::pair<int, int> const& dimensions) { 
     auto rank = layout.rank();  
@@ -41,7 +57,7 @@ constexpr Shape transpose(Shape const& layout, std::pair<int, int> const& dimens
         sizes[dimension] = layout[dimension];
     }
 
-    std::swap(sizes[normalize(dimensions.first, rank)], sizes[normalize(dimensions.second, rank)]); 
+    std::swap(sizes[indexing::normalize(dimensions.first, rank)], sizes[indexing::normalize(dimensions.second, rank)]); 
     return Shape(sizes.begin(), sizes.begin() + rank);
 }   
  
@@ -52,25 +68,25 @@ constexpr Strides transpose(Strides const& layout, std::pair<int, int> const& di
         sizes[dimension] = layout[dimension];
     }
 
-    std::swap(sizes[normalize(dimensions.first, rank)], sizes[normalize(dimensions.second, rank)]); 
+    std::swap(sizes[indexing::normalize(dimensions.first, rank)], sizes[indexing::normalize(dimensions.second, rank)]); 
     return Strides(sizes.begin(), sizes.begin() + rank);
 }  
 
-template<Operable Expression>
-class Transpose {
-public:
-    typename Trait<Expression>::Reference expression; 
-    std::pair<int, int> dimensions;
 
-    constexpr Transpose(typename Trait<Expression>::Reference expression, std::pair<int, int> dimensions)
-    :   expression(expression)
-    ,   dimensions(dimensions)
-    ,   shape_(transpose(expression.shape(), dimensions)) 
-    ,   strides_(transpose(expression.strides(), dimensions))
+/*----------------------------------------------------------------*/
+/*TODO: This is an special case of Permutation and may get it's own file. */
+template<Expression Source>
+class Transpose {
+public: 
+    constexpr Transpose(typename Trait<Source>::Reference source, std::pair<int, int> dimensions)
+    :   shape_(transpose(source.shape(), dimensions)) 
+    ,   strides_(transpose(source.strides(), dimensions))
+    ,   source_(source)
+    ,   dimensions_(dimensions)
     {}
 
     constexpr type dtype() const {
-        return expression.dtype();
+        return source_.dtype();
     }
 
     constexpr Shape const& shape() const {
@@ -82,7 +98,7 @@ public:
     }
 
     constexpr std::ptrdiff_t offset() const {
-        return expression.offset();
+        return source_.offset();
     }
 
     Tensor forward() const;
@@ -90,19 +106,31 @@ public:
 private:
     Shape shape_; 
     Strides strides_;
+    typename Trait<Source>::Reference source_; 
+    std::pair<int, int> dimensions_;
 };
 
-template<Operable Expression>
-constexpr auto transpose(Expression&& expression, int first, int second) {
-    return Transpose<std::decay_t<Expression>>(
-        std::forward<Expression>(expression),
-        std::make_pair(first, second)
+template<Expression Source, Integral ... Indexes>
+constexpr auto view(Source&& source, Indexes ... indexes) {
+    return View<Source>(
+        std::forward<Source>(source), indexes...
     );
 }
 
-} // namespace view
+template<Expression Source>
+constexpr auto transpose(Source&& source, int first, int second) {
+    return Transpose<Source>(
+        std::forward<Source>(source),
+        std::make_pair(first, second)
+    );
+} 
 
-using view::transpose;
+/*----------------------------------------------------------------*/ 
+
+} // namespace expression
+
+using expression::view;
+using expression::transpose;
 
 } // namespace tannic
 

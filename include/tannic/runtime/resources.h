@@ -1,5 +1,7 @@
 // Copyright 2025 Eric Cardozo
 //
+// This file is part of the Tannic Tensor Library.
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -13,8 +15,8 @@
 // limitations under the License.
 //
 
-#ifndef TYPES_H
-#define TYPES_H
+#ifndef RESOURCES_H
+#define RESOURCES_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -23,21 +25,32 @@ extern "C" {
 #include <stdint.h>
 #include <stddef.h> 
 
-enum type { 
-    none,
-    int8,
-    int16,
-    int32,
-    int64,
-    float32,
-    float64,
-    complex64,   
-    complex128,  
-    TYPES
+enum environment {
+    HOST,
+    DEVICE
 };
+
+struct host_t {
+    unsigned int flags;
+};
+
+struct device_t {
+    int id;
+};
+
+struct allocator_t { 
+    enum environment environment;
+    union {
+        struct host_t host;
+        struct device_t device;
+    } resource;
+};   
+
+void* allocate(size_t nbytes, allocator_t allocator);
+void dealloce(void* address, allocator_t allocator);
 
 #ifdef __cplusplus
 }
-#endif
- 
-#endif
+#endif 
+
+#endif // RESOURCES_H

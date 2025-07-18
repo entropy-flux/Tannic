@@ -2,8 +2,8 @@
 #include <array>
 #include <cmath>  
 #include <stdexcept>
-#include "core/types.h"
-#include "core/tensor.h" 
+#include "runtime/types.h"
+#include "runtime/tensor.h" 
 
 namespace cpu {
 
@@ -20,8 +20,8 @@ enum class Function {
     TANH
 };
 
-static constexpr inline int index(type t) {
-    return static_cast<int>(t);
+static constexpr inline int index(type type) {
+    return static_cast<int>(type);
 }
 
 template<typename S, typename T, Function F>

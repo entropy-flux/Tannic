@@ -20,6 +20,7 @@
 #include <array>
 #include <vector>
 
+#include "Concepts.hpp"
 #include "Types.hpp"
 #include "Traits.hpp"
 #include "Shape.hpp" 
@@ -32,7 +33,7 @@ class Tensor;
 
 namespace expression {    
   
-template<class Operation, Operable ... Operands>
+template<class Operation, Expression ... Operands>
 class Transformation {
 public:
     Operation operation;
@@ -166,16 +167,16 @@ struct Composition {
 };
 
 
-template<Operable Outer, Operable Inner>
+template<Expression Outer, Expression Inner>
 constexpr auto composition(Outer&& outer, Inner&& inner) {
-    return Transformation<Composition, std::decay_t<Outer>, std::decay_t<Inner>>{
+    return Transformation<Composition, Outer, Inner>{
         {}, std::forward<Outer>(outer), std::forward<Inner>(inner)
     };
 }
 
 } // namespace expression
 
-template<Operable Multiplicand, Operable Multiplier>
+template<Expression Multiplicand, Expression Multiplier>
 constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier) {
     return expression::composition(
         std::forward<Multiplicand>(multiplicand),

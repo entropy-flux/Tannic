@@ -48,8 +48,7 @@ TEST(Test, ConstructorAndComparison) {
     ASSERT_EQ(iter_strides[2], 1);
 }
 
-TEST(Test, ConstexprStrides) { 
-
+TEST(Test, ConstexprStrides) {  
     constexpr Shape shape(2, 3, 4); 
     constexpr Strides strides(shape);
     static_assert((strides.rank() == 3)

@@ -41,8 +41,6 @@ TEST_F(MatmulTests, Basic) {
 
     Tensor Z = matmul(X, Y);   
 
- 
-
     float* z_ptr = reinterpret_cast<float*>(Z.buffer());
     float epsilon = 1e-5f;
     for (int i = 0; i < 3*5; ++i) { 

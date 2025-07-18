@@ -1,13 +1,12 @@
-#include "cpu/mem.hpp"
-#include "cuda/mem.cuh"
 #include "Tensor.hpp"   
+#include <cstring>
 
 using namespace tannic;
 
 void Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {      
     std::byte* target = static_cast<std::byte*>(storage_->address()) + offset;  
-    if (resource() == HOST) {
-        cpu::copy(value, target, dsizeof(dtype_));
+    if (environment() == HOST) {
+        std::memcpy(target, value, dsizeof(dtype_));
     } 
     
     else {
@@ -17,8 +16,8 @@ void Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {
 
 bool Tensor::compare(std::byte const* value, std::ptrdiff_t offset) const {  
     std::byte const* target = static_cast<std::byte const*>(storage_->address()) + offset; 
-    if (resource() == HOST) {
-        return cpu::compare(value, target, dsizeof(dtype_));
+    if (environment() == HOST) {
+        return std::memcmp(value, target, dsizeof(dtype_)) == 0;
     } 
     
     else {

@@ -19,7 +19,8 @@
 #include <vector>  
 #include <utility>      
 #include <type_traits> 
-
+ 
+#include "Concepts.hpp"
 #include "Types.hpp"
 #include "Shape.hpp"
 #include "Strides.hpp" 
@@ -53,7 +54,7 @@ static constexpr Shape broadcast(Shape const& first, Shape const& second) {
     return Shape(result);
 }
 
-template<class Operation, Operable Operand>
+template<class Operation, Expression Operand>
 class Unary { 
 public:
     Operation operation;
@@ -83,7 +84,7 @@ public:
     Tensor forward() const;
 };
 
-template<class Operation, Operable Operand, Operable Cooperand>
+template<class Operation, Expression Operand, Expression Cooperand>
 class Binary {
 public:
     Operation operation;
@@ -140,39 +141,24 @@ struct Subtraction {
 };
 
 
-template<Operable Operand>
+template<Expression Operand>
 constexpr auto operator-(Operand&& operand) {
-    return Unary<Negation, std::decay_t<Operand>>{
-        {},
-        std::forward<Operand>(operand)
-    };
+    return Unary<Negation, Operand>{{}, std::forward<Operand>(operand)};
 }
  
-template<Operable Augend, Operable Addend>
+template<Expression Augend, Expression Addend>
 constexpr auto operator+(Augend&& augend, Addend&& addend) {
-    return Binary<Addition, std::decay_t<Augend>, std::decay_t<Addend>>{
-        {},
-        std::forward<Augend>(augend),
-        std::forward<Addend>(addend)
-    };
+    return Binary<Addition, Augend, Addend>{{}, std::forward<Augend>(augend), std::forward<Addend>(addend)};
 }
  
-template<Operable Subtrahend, Operable Minuend>
+template<Expression Subtrahend, Expression Minuend>
 constexpr auto operator-(Subtrahend&& subtrahend, Minuend&& minuend) {
-    return Binary<Subtraction, std::decay_t<Subtrahend>, std::decay_t<Minuend>>{
-        {},
-        std::forward<Subtrahend>(subtrahend),
-        std::forward<Minuend>(minuend)
-    };
+    return Binary<Subtraction, Subtrahend, Minuend>{{}, std::forward<Subtrahend>(subtrahend), std::forward<Minuend>(minuend)};
 }
  
-template<Operable Multiplicand, Operable Multiplier>
+template<Expression Multiplicand, Expression Multiplier>
 constexpr auto operator*(Multiplicand&& multiplicand, Multiplier&& multiplier) {
-    return Binary<Multiplication, std::decay_t<Multiplicand>, std::decay_t<Multiplier>>{
-        {},
-        std::forward<Multiplicand>(multiplicand),
-        std::forward<Multiplier>(multiplier)
-    };
+    return Binary<Multiplication, Multiplicand, Multiplier>{{}, std::forward<Multiplicand>(multiplicand), std::forward<Multiplier>(multiplier)};
 }
 
 } // namespace operation 

@@ -1,7 +1,5 @@
 #include <gtest/gtest.h>
-#include "Tensor.hpp" 
-#include <gtest/gtest.h>
-#include "Tensor.hpp" 
+#include "Tensor.hpp"  
 
 using namespace tannic;
 
@@ -28,4 +26,4 @@ TEST(TestView, TestSlice) {
     ASSERT_EQ(view.offset(), 8); 
 
     ASSERT_EQ((slice[0] == 3), true);
-}   
+}    

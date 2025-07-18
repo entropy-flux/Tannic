@@ -1,17 +1,16 @@
 #include <stdexcept>
 #include <cassert>
-#include "Resources.hpp" 
-#include "cpu/mem.hpp"  
-#include "cuda/mem.cuh"    
+#include "Resources.hpp"  
+#include <cstring>
 
 using namespace tannic;  
 
 void* Host::allocate(std::size_t nbytes) const {  
-    return cpu::allocate(nbytes);
+    return std::malloc(nbytes);
 }
 
 void Host::deallocate(void* address, std::size_t nbytes) const {  
-    cpu::deallocate(address);
+    std::free(address);
 }  
 
 Device::Device(int id) : id_(id) {}

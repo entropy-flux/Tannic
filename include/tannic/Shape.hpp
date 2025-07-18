@@ -1,5 +1,7 @@
 // Copyright 2025 Eric Cardozo
 //
+// This file is part of the Tannic Tensor Library.
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -13,6 +15,7 @@
 // limitations under the License.
 //
 
+
 #ifndef SHAPE_HPP
 #define SHAPE_HPP
   
@@ -24,18 +27,12 @@
 #include <algorithm>
 #include <numeric>
 #include <initializer_list>
+ 
+#include "Concepts.hpp" 
+#include "Indexing.hpp"
 
-#include "Concepts.hpp"
-
-namespace tannic { 
-   
-template<Integral Index, Integral Size>
-constexpr inline Index normalize(Index index, Size bound) {
-    if (index < 0) index += bound;
-    assert(index >= 0 && index < bound && "Index out of bounds");
-    return index;
-}
-
+namespace tannic {
+    
 class Shape {
 public:
     static constexpr uint8_t limit = 8;  
@@ -136,18 +133,18 @@ public:
 
     template<Integral Index>
     constexpr auto const& operator[](Index index) const { 
-        return sizes_[normalize(index, rank())]; 
+        return sizes_[indexing::normalize(index, rank())]; 
     }
 
     template<Integral Index>
     constexpr auto& operator[](Index index) {
-        return sizes_[normalize(index, rank())]; 
+        return sizes_[indexing::normalize(index, rank())]; 
     } 
 
 
 private:
-    size_type size_{1};
-    size_type rank_{0};
+    rank_type rank_{0};
+    size_type size_{1}; 
     std::array<size_type, limit> sizes_{}; 
 };
  
@@ -169,7 +166,7 @@ inline std::ostream& operator<<(std::ostream& os, Shape const& shape) {
     }
     os << ")";
     return os;
-}
+} 
 
 } // namespace tannic
 

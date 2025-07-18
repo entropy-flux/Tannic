@@ -1,5 +1,7 @@
 // Copyright 2025 Eric Cardozo
 //
+// This file is part of the Tannic Tensor Library.
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -20,9 +22,10 @@
 #include <cstddef>
 #include <stdexcept>
 #include <ostream>
-
+ 
 #include "Concepts.hpp"
-#include "Shape.hpp"
+#include "Shape.hpp" 
+#include "Indexing.hpp"
 
 namespace tannic {
 
@@ -106,14 +109,13 @@ public:
   
     template<Integral Index>
     constexpr auto const& operator[](Index index) const { 
-        return sizes_[normalize(index, rank())]; 
+        return sizes_[indexing::normalize(index, rank())]; 
     }
 
     template<Integral Index>
     constexpr auto& operator[](Index index) {
-        return sizes_[normalize(index, rank())]; 
-    } 
- 
+        return sizes_[indexing::normalize(index, rank())]; 
+    }  
     
 private:
     rank_type rank_{0};

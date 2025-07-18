@@ -1,5 +1,6 @@
 #include "Operations.hpp"
 #include "Tensor.hpp"
+#include "runtime/tensor.h"
 #include "cpu/ops.hpp"  
  
 using namespace tannic;

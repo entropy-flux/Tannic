@@ -1,6 +1,6 @@
 #include "Tensor.hpp"
 #include "Transformations.hpp"
-#include "core/tensor.h"
+#include "runtime/tensor.h"
 #include "cpu/gemm.hpp" 
 
 using namespace tannic;

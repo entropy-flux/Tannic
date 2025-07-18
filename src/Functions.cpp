@@ -1,4 +1,5 @@
 #include "Functions.hpp"
+#include "runtime/tensor.h"
 #include "cpu/funcs.hpp"  
 
 using namespace tannic; 
@@ -6,7 +7,7 @@ using namespace tannic;
 static inline tensor_t c_tensor_t(Tensor const& tensor) {
     return tensor_t{
         .rank = tensor.rank(),
-        .address = reinterpret_cast<void*>(tensor.buffer()),
+        .address = static_cast<void*>(tensor.buffer()),
         .shape = tensor.shape().address(),
         .strides = tensor.strides().address(), 
         .dtype = tensor.dtype()

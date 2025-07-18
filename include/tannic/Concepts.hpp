@@ -1,5 +1,7 @@
 // Copyright 2025 Eric Cardozo
 //
+// This file is part of the Tannic Tensor Library.
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -17,8 +19,8 @@
 #define CONCEPTS_HPP
 
 #include <concepts>
-#include <iterator>  
-#include "Types.hpp"
+#include <iterator>   
+#include "runtime/types.h"
 
 namespace tannic {
 
@@ -36,7 +38,7 @@ template<typename T>
 concept Integral = std::is_integral_v<T>;
 
 template<typename T>
-concept Operable = requires(const T expression) {
+concept Expression = requires(const T expression) {
     { expression.dtype()   } -> std::same_as<type>;
     { expression.shape()   } -> std::same_as<Shape const&>;
     { expression.strides() } -> std::same_as<Strides const&>;

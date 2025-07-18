@@ -1,5 +1,7 @@
 // Copyright 2025 Eric Cardozo
 //
+// This file is part of the Tannic Tensor Library.
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -11,6 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+// 
 
 #ifndef STORAGE_HPP
 #define STORAGE_HPP
@@ -80,7 +83,7 @@ public:
         return allocator_; 
     } 
  
-    auto resource() const { 
+    auto environment() const { 
         if (std::holds_alternative<Device>(allocator_)) {
             return DEVICE;
         } 
@@ -96,6 +99,6 @@ private:
     Allocator allocator_ = Host{};
 };
 
-} // namespace tannic
+} // namespace TANNIC
 
 #endif // STORAGE_HPP

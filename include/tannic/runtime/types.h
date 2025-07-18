@@ -1,5 +1,7 @@
 // Copyright 2025 Eric Cardozo
 //
+// This file is part of the Tannic Tensor Library.
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -13,30 +15,31 @@
 // limitations under the License.
 //
 
-#ifndef RESOURCES_H
-#define RESOURCES_H
+#ifndef TYPES_H
+#define TYPES_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-  
-enum resource {
-    HOST,
-    DEVICE
+
+#include <stdint.h>
+#include <stddef.h> 
+
+enum type { 
+    none,
+    int8,
+    int16,
+    int32,
+    int64,
+    float32,
+    float64,
+    complex64,   
+    complex128,  
+    TYPES
 };
 
-typedef struct resource_t { 
-    int id;
-} resource_t; 
- 
-typedef struct storage_t {
-    void* address;
-    size_t nbytes;
-    resource_t resource;
-} storage_t; 
- 
 #ifdef __cplusplus
 }
 #endif
-
-#endif // RESOURCES_H
+ 
+#endif // TYPES_H

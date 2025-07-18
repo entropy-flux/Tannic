@@ -1,7 +1,8 @@
 #pragma once
 
 #include <array> 
-#include "core/tensor.h" 
+#include "runtime/types.h"
+#include "runtime/tensor.h" 
       
 namespace cpu {
 
@@ -45,7 +46,7 @@ extern template bool gemm<double, double, double>(const tensor_t*, const tensor_
 using Kernel = bool(*)(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
 
 constexpr auto matmul = []() {
-    std::array<Kernel, index(TYPES,TYPES)> table {[](const tensor_t*, const tensor_t*, tensor_t*, bool, bool) { return false; }};  
+    std::array<Kernel, index(TYPES, TYPES)> table {[](const tensor_t*, const tensor_t*, tensor_t*, bool, bool) { return false; }};  
     table[index(int8, int8)]     = gemm<int8_t, int8_t, int32_t>;
     table[index(int8, int16)]    = gemm<int8_t, int16_t, int32_t>;
     table[index(int8, int32)]    = gemm<int8_t, int32_t, int32_t>;
