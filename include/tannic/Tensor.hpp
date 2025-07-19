@@ -143,6 +143,9 @@ protected:
 
     template <Expression Source> 
     friend class expression::Transpose;
+
+    template <Expression Source>
+    friend class expression::Reshape;
     
     Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset, std::shared_ptr<Storage> storage)
     :   dtype_(dtype)
