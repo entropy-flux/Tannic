@@ -45,4 +45,8 @@ constexpr inline Range normalize(Range range, Size size) {
  
 } // namespace TANNIC::indexing
 
+namespace tannic {
+    using range = indexing::Range;
+}
+
 #endif // INDEXING_H
