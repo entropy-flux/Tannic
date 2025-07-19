@@ -28,7 +28,7 @@
 #include "Storage.hpp" 
 #include "Slices.hpp" 
 #include "Views.hpp"
-#include "Operations.hpp"
+#include "Operations.hpp" 
 
 namespace tannic { 
 
@@ -90,10 +90,10 @@ public:
         return *this;
     } 
 
-    Tensor const& forward() const{ 
-        assert(is_initialized() && "Cannot perform computations with uninitialized tensors.");
+    Tensor const& forward() const {
+        assert(is_initialized() && "Cannot perform computations with uninitialized tensors."); 
         return *this;
-    }  
+    }
  
 public: 
     void initialize(Allocator allocator = Host{}) {
@@ -120,20 +120,20 @@ public:
    
 public:
     template<Integral Index>
-    auto operator[](Index index) {   
+    auto operator[](Index index) const {   
         return expression::Slice<Tensor, Index>(*this, std::make_tuple(index));
     }
 
-    auto operator[](indexing::Range range) { 
+    auto operator[](indexing::Range range) const { 
         return expression::Slice<Tensor, indexing::Range>(*this, std::make_tuple(range));
     }
 
     template<class ... Indexes>
-    auto operator[](Indexes... indexes) {
+    auto operator[](Indexes... indexes) const {
         return expression::Slice<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
     }
  
-    auto transpose(int first, int second) const {
+    auto transpose(int first = -1, int second = -2) const {
         return expression::Transpose<Tensor>(*this, std::make_pair<int, int>(std::move(first), std::move(second)));
     }
 
@@ -161,8 +161,16 @@ private:
     Strides strides_; 
     std::ptrdiff_t offset_;   
     std::shared_ptr<Storage> storage_ = nullptr;
-};   
+};    
+
+std::ostream& operator<<(std::ostream& ostream, Tensor tensor);  
  
+template<Expression Source> 
+inline std::ostream& operator<<(std::ostream& ostream, Source source) {
+    Tensor tensor = source.forward();  
+    ostream << tensor;
+    return ostream;
+} 
 
 template<class Operation, Expression Operand>
 Tensor operation::Unary<Operation, Operand>::forward() const { 
@@ -179,7 +187,7 @@ Tensor operation::Binary<Operation, Operand, Cooperand>::forward() const {
 }  
 
 template<Expression Source>
-Tensor expression::View<Source>::forward() const { 
+Tensor expression::Reshape<Source>::forward() const { 
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.storage_);
 }
@@ -194,8 +202,7 @@ template<Expression Source, class... Indexes>
 Tensor expression::Slice<Source, Indexes...>::forward() const {   
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source_.storage_);
-}      
-
+}       
 
 } // namespace tannic
 

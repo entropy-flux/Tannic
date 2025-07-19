@@ -22,11 +22,11 @@
 #include <type_traits> 
 #include <array>
 #include <cstdint>
-#include <cassert>
-#include <ostream>
+#include <cassert> 
 #include <algorithm>
 #include <numeric>
 #include <initializer_list>
+#include <ostream>
  
 #include "Concepts.hpp" 
 #include "Indexing.hpp"
@@ -155,6 +155,7 @@ constexpr bool operator==(Shape const& first, Shape const& second) {
     }
     return true;
 } 
+
 
 inline std::ostream& operator<<(std::ostream& os, Shape const& shape) {
     os << "Shape(";

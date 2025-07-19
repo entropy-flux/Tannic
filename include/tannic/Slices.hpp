@@ -136,7 +136,8 @@ public:
     ,   offset_(expression::offset(source, indexes))
     ,   source_(source)
     ,   indexes_(indexes)
-    {}    
+    { 
+    }    
 
     template<Integral Index>
     constexpr auto operator[](Index index) const { 
@@ -183,8 +184,8 @@ public:
     template<typename T>
     bool operator==(T value) const;  
 
-    void assign(std::byte const* value, std::ptrdiff_t offset) {
-        source_.assign(value, offset);
+    void assign(std::byte const* value, std::ptrdiff_t offset) { 
+        source_.assign(value, offset); 
     }
 
     bool compare(std::byte const* value, std::ptrdiff_t offset) const {
@@ -207,23 +208,24 @@ static inline std::byte const* bytes(T const& reference) {
 
 template <Expression Source, class... Indexes>
 template <typename T>
-void Slice<Source, Indexes...>::operator=(T value) {   
+void Slice<Source, Indexes...>::operator=(T value) {    
     auto copy = [this](std::byte const* value, std::ptrdiff_t offset) {
-        if(rank() == 0) {
-            source_.assign(value, offset);
+        if(rank() == 0) { 
+            assign(value, offset);
             return;
         }
 
+ 
         std::vector<std::size_t> indexes(rank(), 0);
         bool done = false;  
         
         while (!done) {
             std::size_t position = offset;
             for (auto dimension = 0; dimension < rank(); ++dimension) {
-                position += indexes[dimension] * strides_[dimension];
-            }
-            
-            source_.assign(value, position); 
+                position += indexes[dimension] * strides_[dimension] * dsizeof(dtype_);
+            } 
+  
+            assign(value, position); 
             done = true;
             for (int dimension = rank() - 1; dimension >= 0; --dimension) {
                 if (++indexes[dimension] < shape_[dimension]) {
@@ -278,27 +280,27 @@ bool Slice<Source, Indexes...>::operator==(T value) const {
     switch (dtype_) {
         case int8: {
             int8_t casted = value;
-            return source_.compare(bytes(casted), offset_); 
+            return compare(bytes(casted), offset_); 
         }
         case int16: {
             int16_t casted = value;
-            return source_.compare(bytes(casted), offset_); 
+            return compare(bytes(casted), offset_); 
         }
         case int32: {
             int32_t casted = value;
-            return source_.compare(bytes(casted), offset_);
+            return compare(bytes(casted), offset_);
         }
         case int64: {
             int64_t casted = value;
-            return source_.compare(bytes(casted), offset_);
+            return compare(bytes(casted), offset_);
         }
         case float32: {
             float casted = value;
-            return source_.compare(bytes(casted), offset_);
+            return compare(bytes(casted), offset_);
         }
         case float64: {
             double casted = value;
-            return source_.compare(bytes(casted), offset_);
+            return compare(bytes(casted), offset_);
         } 
         default:
             return false;

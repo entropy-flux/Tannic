@@ -16,10 +16,10 @@ class Tensor;
 namespace expression {   
 
 template<Expression Source>
-class View {
+class Reshape {
 public: 
     template<Integral... Indexes>
-    constexpr View(Trait<Source>::Reference source, Indexes... indexes)
+    constexpr Reshape(Trait<Source>::Reference source, Indexes... indexes)
     :   shape_(indexes...) 
     ,   strides_(shape_)
     ,   source_(source) {
@@ -112,7 +112,7 @@ private:
 
 template<Expression Source, Integral ... Indexes>
 constexpr auto view(Source&& source, Indexes ... indexes) {
-    return View<Source>(
+    return Reshape<Source>(
         std::forward<Source>(source), indexes...
     );
 }

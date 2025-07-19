@@ -1,11 +1,16 @@
+#include <iostream>
 #include <tannic/Tensor.hpp>
+#include <tannic/Transformations.hpp>
 
-using tannic::Tensor;
+using namespace tannic;
 
 int main() { 
-    Tensor tensor(float32, {2,2});  tensor.initialize();
-    tensor[0,0] = 1;
-    tensor[0,1] = 2;
-    tensor[1,0] = 3;
-    tensor[1,1] = 4; 
+    Tensor X(float32, {2,2});  X.initialize();
+    X[0][{0,2}] = 1; 
+    X[1,0] = 3;
+    X[1,1] = 4;   
+    Tensor Y(float32, {1,2});  Y.initialize();
+    Y[0,0] = 4;
+    Y[0,1] = 6;   
+    std::cout << X + Y * Y - X + matmul(X, Y.transpose());
 }
