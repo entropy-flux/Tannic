@@ -2,7 +2,7 @@
 #include "runtime/tensor.h"
 #include "cpu/funcs.hpp"  
 
-using namespace tannic; 
+namespace tannic { 
 
 static inline tensor_t c_tensor_t(Tensor const& tensor) {
     return tensor_t{
@@ -133,3 +133,5 @@ void expression::Tanh::operator()(Tensor const& input, Tensor& output) const {
         );
     }
 }
+ 
+} // namespace tannic

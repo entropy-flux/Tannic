@@ -30,7 +30,7 @@
 #include "Views.hpp"
 #include "Operations.hpp" 
 
-namespace tannic { 
+namespace tannic {  
 
 class Tensor {
 public: 
@@ -96,7 +96,7 @@ public:
     }
  
 public: 
-    void initialize(Allocator allocator = Host{}) {
+    void initialize(Allocator allocator = Host{}) const {
         storage_ = std::make_shared<Storage>(nbytes(), allocator);
     }  
 
@@ -135,9 +135,18 @@ public:
  
     auto transpose(int first = -1, int second = -2) const {
         return expression::Transpose<Tensor>(*this, std::make_pair<int, int>(std::move(first), std::move(second)));
-    }
+    } 
 
-protected:   
+public:
+    Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset, std::shared_ptr<Storage> storage)
+    :   dtype_(dtype)
+    ,   shape_(shape) 
+    ,   strides_(strides)
+    ,   offset_(offset)   
+    ,   storage_(std::move(storage))
+    {}
+
+protected:    
     template <Expression Source, class... Indexes> 
     friend class expression::Slice;
 
@@ -146,14 +155,6 @@ protected:
 
     template <Expression Source>
     friend class expression::Reshape;
-    
-    Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset, std::shared_ptr<Storage> storage)
-    :   dtype_(dtype)
-    ,   shape_(shape) 
-    ,   strides_(strides)
-    ,   offset_(offset)   
-    ,   storage_(std::move(storage))
-    {}
 
     void assign(std::byte const*, std::ptrdiff_t); 
     bool compare(std::byte const*, std::ptrdiff_t) const; 
@@ -163,7 +164,7 @@ private:
     Shape shape_; 
     Strides strides_; 
     std::ptrdiff_t offset_;   
-    std::shared_ptr<Storage> storage_ = nullptr;
+    mutable std::shared_ptr<Storage> storage_ = nullptr;
 };    
 
 std::ostream& operator<<(std::ostream& ostream, Tensor tensor);  

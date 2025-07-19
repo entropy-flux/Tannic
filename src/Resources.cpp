@@ -3,7 +3,7 @@
 #include "Resources.hpp"  
 #include <cstring>
 
-using namespace tannic;  
+namespace tannic { 
 
 void* Host::allocate(std::size_t nbytes) const {  
     return std::malloc(nbytes);
@@ -21,3 +21,5 @@ void* Device::allocate(std::size_t nbytes) const {
 
 void Device::deallocate(void* address, std::size_t nbytes) const {
 } 
+
+} // namespace tannic

@@ -3,7 +3,7 @@
 #include "runtime/tensor.h"
 #include "cpu/ops.hpp"  
  
-using namespace tannic;
+namespace tannic { 
 
 static inline tensor_t c_tensor_t(Tensor const& tensor) {
     return tensor_t{
@@ -71,3 +71,5 @@ void operation::Subtraction::forward(Tensor const& first, Tensor const& second, 
         );
     }
 }
+
+} // namespace tannic

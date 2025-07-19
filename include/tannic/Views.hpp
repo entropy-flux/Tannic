@@ -74,7 +74,7 @@ constexpr Strides transpose(Strides const& layout, std::pair<int, int> const& di
 
 
 /*----------------------------------------------------------------*/
-/*TODO: This is an special case of Permutation and may get it's own file. */
+/*TODO: This is an special case of Permutation and may get it's own file. however the api will remain the same. */
 template<Expression Source>
 class Transpose {
 public: 

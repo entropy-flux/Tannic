@@ -2,6 +2,10 @@
 #include <tannic.hpp> 
 
 using namespace tannic;
+  
+/*
+Copy and paste this file into main.cpp and then run ``bash main.sh``
+*/
 
 int main() { 
     Tensor X(float32, {2,2});  X.initialize();

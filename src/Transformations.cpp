@@ -3,7 +3,7 @@
 #include "runtime/tensor.h"
 #include "cpu/gemm.hpp" 
 
-using namespace tannic;
+namespace tannic { 
 
 static inline tensor_t c_tensor_t(Tensor const& tensor, bool is_transposed = false) {
     return tensor_t{
@@ -37,3 +37,5 @@ void expression::Composition::forward(Tensor const& first, Tensor const& second,
         );
     }
 }
+
+} //namespace tannic
