@@ -43,7 +43,7 @@ concept Expression = requires(const T expression) {
     { expression.shape()   } -> std::same_as<Shape const&>;
     { expression.strides() } -> std::same_as<Strides const&>;
     { expression.offset()  } -> std::same_as<std::ptrdiff_t>;
-    { expression.forward() } -> std::convertible_to<Tensor>;
+//    { expression.forward() } -> std::convertible_to<Tensor>; bug on maccos.
 };
 
 } // namespace tannic
