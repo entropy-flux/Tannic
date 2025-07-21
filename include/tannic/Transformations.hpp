@@ -59,11 +59,11 @@ public:
         return strides_;
     } 
 
-    constexpr std::ptrdiff_t offset() const {
+    std::ptrdiff_t offset() const {
         return 0;
     }
 
-    auto forward() const -> decltype(auto) {
+    Tensor forward() const {
         return std::apply([&](const auto&... arguments) {
             return operation.forward(dtype_, shape_, arguments.forward()...);
         }, operands);

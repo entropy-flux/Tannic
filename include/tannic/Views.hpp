@@ -38,10 +38,10 @@ public:
         return strides_;
     }
 
-    constexpr auto offset() const {
+    std::ptrdiff_t offset() const {
         return source_.offset();
-    } 
-
+    }
+ 
     Tensor forward() const;
 
 private:
@@ -95,9 +95,9 @@ public:
 
     constexpr Strides const& strides() const {
         return strides_;
-    }
+    } 
 
-    constexpr std::ptrdiff_t offset() const {
+    std::ptrdiff_t offset() const {
         return source_.offset();
     }
 

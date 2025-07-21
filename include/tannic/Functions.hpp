@@ -48,7 +48,7 @@ public:
         return operand.strides();
     }
 
-    constexpr auto offset() const {
+    auto offset() const {
         return operand.offset();
     }
 
