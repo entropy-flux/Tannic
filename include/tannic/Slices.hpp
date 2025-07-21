@@ -164,12 +164,12 @@ public:
         return strides_;
     } 
 
-    std::byte* buffer() {
-        return source_.buffer() + offset_;
+    std::byte* bytes() {
+        return source_.bytes() + offset_;
     }
 
-    std::byte const* buffer() const {
-        return source_.buffer() + offset_;
+    std::byte const* bytes() const {
+        return source_.bytes() + offset_;
     }
 
     std::ptrdiff_t offset() const {
@@ -202,7 +202,7 @@ private:
 };   
 
 template<typename T>
-static inline std::byte const* bytes(T const& reference) { 
+static inline std::byte const* tobytes(T const& reference) { 
     return reinterpret_cast<std::byte const*>(&reference);
 }  
 
@@ -240,32 +240,32 @@ void Slice<Source, Indexes...>::operator=(T value) {
     switch (dtype_) {
         case int8: {
             int8_t casted = value;
-            copy(bytes(casted), offset()); 
+            copy(tobytes(casted), offset()); 
             break;
         }
         case int16: {
             int16_t casted = value;
-            copy(bytes(casted), offset()); 
+            copy(tobytes(casted), offset()); 
             break;
         }
         case int32: {
             int32_t casted = value;
-            copy(bytes(casted), offset());
+            copy(tobytes(casted), offset());
             break;
         }
         case int64: {
             int64_t casted = value;
-            copy(bytes(casted), offset());
+            copy(tobytes(casted), offset());
             break;
         }
         case float32: {
             float casted = value;
-            copy(bytes(casted), offset());
+            copy(tobytes(casted), offset());
             break;
         }
         case float64: {
             double casted = value;
-            copy(bytes(casted), offset());
+            copy(tobytes(casted), offset());
             break;
         } 
         default:
@@ -280,27 +280,27 @@ bool Slice<Source, Indexes...>::operator==(T value) const {
     switch (dtype_) {
         case int8: {
             int8_t casted = value;
-            return compare(bytes(casted), offset()); 
+            return compare(tobytes(casted), offset()); 
         }
         case int16: {
             int16_t casted = value;
-            return compare(bytes(casted), offset()); 
+            return compare(tobytes(casted), offset()); 
         }
         case int32: {
             int32_t casted = value;
-            return compare(bytes(casted), offset());
+            return compare(tobytes(casted), offset());
         }
         case int64: {
             int64_t casted = value;
-            return compare(bytes(casted), offset());
+            return compare(tobytes(casted), offset());
         }
         case float32: {
             float casted = value;
-            return compare(bytes(casted), offset());
+            return compare(tobytes(casted), offset());
         }
         case float64: {
             double casted = value;
-            return compare(bytes(casted), offset());
+            return compare(tobytes(casted), offset());
         } 
         default:
             return false;

@@ -20,8 +20,8 @@ protected:
     }
 
     void SetUp() override {    
-        float* A_data = reinterpret_cast<float*>(A.buffer());
-        float* B_data = reinterpret_cast<float*>(B.buffer());
+        float* A_data = reinterpret_cast<float*>(A.bytes());
+        float* B_data = reinterpret_cast<float*>(B.bytes());
 
         const float A_init[2][1][3] = {
             {{0.0f, 1.0f, 2.0f}}, 
@@ -57,13 +57,13 @@ protected:
 
 TEST(TestUnaryOp, Negation) {
     Tensor A(float32, {3, 3, 3}); A.initialize(); 
-    float* A_data = reinterpret_cast<float*>(A.buffer());
+    float* A_data = reinterpret_cast<float*>(A.bytes());
     for(int i = 0; i < 3*3*3; i++) {
         A_data[i] = 1. * i;
     }
 
     Tensor B = -A[1];
-    float* B_data = reinterpret_cast<float*>(B.buffer());
+    float* B_data = reinterpret_cast<float*>(B.bytes());
 
     float expected[] = {
         -9.0, -10.0, -11.0,                
@@ -94,7 +94,7 @@ TEST_F(TestBinaryOps, Addition) {
         }
     };
 
-    float* C_data = reinterpret_cast<float*>(C.buffer());
+    float* C_data = reinterpret_cast<float*>(C.bytes());
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 4; ++j)
             for (int k = 0; k < 3; ++k) {
@@ -121,7 +121,7 @@ TEST_F(TestBinaryOps, Multiplication) {
         }
     };
 
-    float* C_data = reinterpret_cast<float*>(C.buffer());
+    float* C_data = reinterpret_cast<float*>(C.bytes());
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 4; ++j)
             for (int k = 0; k < 3; ++k) {
@@ -148,7 +148,7 @@ TEST_F(TestBinaryOps, Subtraction) {
         }
     };
 
-    float* C_data = reinterpret_cast<float*>(C.buffer());
+    float* C_data = reinterpret_cast<float*>(C.bytes());
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 4; ++j)
             for (int k = 0; k < 3; ++k) {

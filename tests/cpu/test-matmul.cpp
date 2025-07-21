@@ -36,12 +36,12 @@ TEST_F(MatmulTests, Basic) {
         22.0f, 26.0f, 38.0f, 42.0f, 54.0f
     };
  
-    float* x_ptr = reinterpret_cast<float*>(X.buffer()); for (int i = 0; i < 3*4; ++i) x_ptr[i] = X_data[i];
-    float* y_ptr = reinterpret_cast<float*>(Y.buffer()); for (int i = 0; i < 4*5; ++i) y_ptr[i] = Y_data[i];
+    float* x_ptr = reinterpret_cast<float*>(X.bytes()); for (int i = 0; i < 3*4; ++i) x_ptr[i] = X_data[i];
+    float* y_ptr = reinterpret_cast<float*>(Y.bytes()); for (int i = 0; i < 4*5; ++i) y_ptr[i] = Y_data[i];
 
     Tensor Z = matmul(X, Y);   
 
-    float* z_ptr = reinterpret_cast<float*>(Z.buffer());
+    float* z_ptr = reinterpret_cast<float*>(Z.bytes());
     float epsilon = 1e-5f;
     for (int i = 0; i < 3*5; ++i) { 
         EXPECT_NEAR(z_ptr[i], Z_expected[i], epsilon);
@@ -62,8 +62,8 @@ TEST_F(MatmulTests, FirstTransposed) {
         10.f, 11.f, 12.f
     };
  
-    float* x_ptr = reinterpret_cast<float*>(X.buffer()); for (int i = 0; i < 2*3; ++i) x_ptr[i] = X_data[i];
-    float* y_ptr = reinterpret_cast<float*>(Y.buffer()); for (int i = 0; i < 2*3; ++i) y_ptr[i] = Y_data[i];
+    float* x_ptr = reinterpret_cast<float*>(X.bytes()); for (int i = 0; i < 2*3; ++i) x_ptr[i] = X_data[i];
+    float* y_ptr = reinterpret_cast<float*>(Y.bytes()); for (int i = 0; i < 2*3; ++i) y_ptr[i] = Y_data[i];
              
     Tensor Z = matmul(X.transpose(-1, -2), Y);
 
@@ -73,7 +73,7 @@ TEST_F(MatmulTests, FirstTransposed) {
         81.f, 90.f, 99.f
     };
 
-    float* z_ptr = reinterpret_cast<float*>(Z.buffer());
+    float* z_ptr = reinterpret_cast<float*>(Z.bytes());
     float epsilon = 1e-5f;
     for (int i = 0; i < 3*3; ++i) { 
         EXPECT_NEAR(z_ptr[i], Z_expected[i], epsilon);
@@ -96,8 +96,8 @@ TEST_F(MatmulTests, Batched) {
     };
 
     // Fill tensors
-    float* a_ptr = reinterpret_cast<float*>(A.buffer());
-    float* b_ptr = reinterpret_cast<float*>(B.buffer());
+    float* a_ptr = reinterpret_cast<float*>(A.bytes());
+    float* b_ptr = reinterpret_cast<float*>(B.bytes());
     
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 2; ++j)
@@ -122,7 +122,7 @@ TEST_F(MatmulTests, Batched) {
         }
     };
 
-    float* z_ptr = reinterpret_cast<float*>(Z.buffer());
+    float* z_ptr = reinterpret_cast<float*>(Z.bytes());
     float epsilon = 1e-5f;
     for (int i = 0; i < 2; ++i) {
         for (int j = 0; j < 2; ++j) {
@@ -150,8 +150,8 @@ TEST_F(MatmulTests, SecondTransposed) {
     };
 
     // Fill tensors
-    float* x_ptr = reinterpret_cast<float*>(X.buffer());
-    float* y_ptr = reinterpret_cast<float*>(Y.buffer());
+    float* x_ptr = reinterpret_cast<float*>(X.bytes());
+    float* y_ptr = reinterpret_cast<float*>(Y.bytes());
     
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 3; ++j)
@@ -169,7 +169,7 @@ TEST_F(MatmulTests, SecondTransposed) {
         {122.f, 167.f}
     };
 
-    float* z_ptr = reinterpret_cast<float*>(Z.buffer());
+    float* z_ptr = reinterpret_cast<float*>(Z.bytes());
     float epsilon = 1e-5f;
     for (int i = 0; i < 2; ++i) {
         for (int j = 0; j < 2; ++j) {
@@ -196,8 +196,8 @@ TEST_F(MatmulTests, BothTransposed) {
     };
 
     // Fill tensors
-    float* x_ptr = reinterpret_cast<float*>(X.buffer());
-    float* y_ptr = reinterpret_cast<float*>(Y.buffer());
+    float* x_ptr = reinterpret_cast<float*>(X.bytes());
+    float* y_ptr = reinterpret_cast<float*>(Y.bytes());
     
     for (int i = 0; i < 3; ++i)
         for (int j = 0; j < 2; ++j)
@@ -214,7 +214,7 @@ TEST_F(MatmulTests, BothTransposed) {
         {122.f, 167.f}
     };
 
-    float* z_ptr = reinterpret_cast<float*>(Z.buffer());
+    float* z_ptr = reinterpret_cast<float*>(Z.bytes());
     float epsilon = 1e-5f;
     for (int i = 0; i < 2; ++i) {
         for (int j = 0; j < 2; ++j) {
@@ -267,8 +267,8 @@ TEST_F(MatmulTests, Rank4_SecondTransposed) {
     };
 
     // Fill tensors
-    float* x_ptr = reinterpret_cast<float*>(X.buffer());
-    float* y_ptr = reinterpret_cast<float*>(Y.buffer());
+    float* x_ptr = reinterpret_cast<float*>(X.bytes());
+    float* y_ptr = reinterpret_cast<float*>(Y.bytes());
     
     for (int i = 0; i < 2; ++i)
         for (int j = 0; j < 2; ++j)
@@ -296,7 +296,7 @@ TEST_F(MatmulTests, Rank4_SecondTransposed) {
         }
     };
 
-    float* z_ptr = reinterpret_cast<float*>(Z.buffer());
+    float* z_ptr = reinterpret_cast<float*>(Z.bytes());
     float epsilon = 1e-5f;
     for (int i = 0; i < 2; ++i) {
         for (int j = 0; j < 2; ++j) {

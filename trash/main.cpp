@@ -143,7 +143,7 @@ private:
     ~Parameters() = default;
     Parameters(const Parameters&) = delete;
     Parameters& operator=(const Parameters&) = delete; 
-    std::shared_ptr<Storage> storage_ = nullptr;
+    std::shared_ptr<Buffer> storage_ = nullptr;
     std::unordered_map<std::string, std::ptrdiff_t> offsets_;
 };   
 

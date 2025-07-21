@@ -8,8 +8,8 @@
 namespace tannic {
 
 void tannic::Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {      
-    std::byte* target = static_cast<std::byte*>(storage_->address()) + offset;  
-    if (environment() == HOST) {
+    std::byte* target = static_cast<std::byte*>(buffer_->address()) + offset;  
+    if (source() == HOST) {
         std::memcpy(target, value, dsizeof(dtype_));
     } 
     
@@ -19,8 +19,8 @@ void tannic::Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {
 } 
 
 bool tannic::Tensor::compare(std::byte const* value, std::ptrdiff_t offset) const {  
-    std::byte const* target = static_cast<std::byte const*>(storage_->address()) + offset; 
-    if (environment() == HOST) {
+    std::byte const* target = static_cast<std::byte const*>(buffer_->address()) + offset; 
+    if (source() == HOST) {
         return std::memcmp(value, target, dsizeof(dtype_)) == 0;
     } 
     
@@ -134,7 +134,7 @@ void print(const tensor_t* tensor) {
 static inline tensor_t c_tensor_t(Tensor const& tensor) {
     return tensor_t{
         .rank = tensor.rank(),
-        .address = reinterpret_cast<void*>(tensor.buffer()),
+        .address = reinterpret_cast<void*>(tensor.bytes()),
         .shape = tensor.shape().address(),
         .strides = tensor.strides().address(), 
         .dtype = tensor.dtype()

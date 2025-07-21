@@ -27,7 +27,7 @@ public:
     }
 
     void initialize(Allocator allocator) const {
-        storage_ = make_shared<Storage>(nbytes(), allocator);
+        storage_ = make_shared<Buffer>(nbytes(), allocator);
     }
 
     Tensor forward() const {
@@ -40,7 +40,7 @@ private:
     type dtype_;
     Shape shape_;
     Strides strides_;
-    mutable shared_ptr<Storage> storage_ = nullptr;
+    mutable shared_ptr<Buffer> storage_ = nullptr;
 
     size_t nbytes() const {
         return shape_.size() * sizeof(float); // Assuming float for float32

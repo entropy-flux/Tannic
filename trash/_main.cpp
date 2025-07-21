@@ -55,13 +55,13 @@ public:
         return instance;
     }
 
-    std::size_t push(std::shared_ptr<Storage> storage) {
+    std::size_t push(std::shared_ptr<Buffer> storage) {
 
         parameters_.push_back(storage);
         return parameters_.size() - 1;
     }
 
-    std::shared_ptr<Storage> get(std::size_t key) const {
+    std::shared_ptr<Buffer> get(std::size_t key) const {
         return parameters_[key];
     }
 
@@ -70,12 +70,12 @@ private:
     ~Parameters() = default;
     Parameters(const Parameters&) = delete;
     Parameters& operator=(const Parameters&) = delete; 
-    std::vector<std::shared_ptr<Storage>> parameters_;
+    std::vector<std::shared_ptr<Buffer>> parameters_;
 };  
 
 void Parameter::initialize(Allocator allocator) const { 
     Parameters& parameters = Parameters::instance();
-    key_ = parameters.push(std::make_shared<Storage>(nbytes(), allocator));
+    key_ = parameters.push(std::make_shared<Buffer>(nbytes(), allocator));
 }
 
 Tensor Parameter::forward() const {

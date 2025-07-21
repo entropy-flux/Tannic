@@ -25,7 +25,7 @@
 #include "Types.hpp"
 #include "Shape.hpp" 
 #include "Strides.hpp" 
-#include "Storage.hpp" 
+#include "Buffer.hpp"
 #include "Slices.hpp" 
 #include "Views.hpp"
 #include "Operations.hpp" 
@@ -97,25 +97,25 @@ public:
  
 public: 
     void initialize(Allocator allocator = Host{}) const {
-        storage_ = std::make_shared<Storage>(nbytes(), allocator);
+        buffer_ = std::make_shared<Buffer>(nbytes(), allocator);
     }  
 
-    std::byte* buffer() const {
-        return static_cast<std::byte*>(storage_->address()) + offset_;
+    std::byte* bytes() const {
+        return static_cast<std::byte*>(buffer_->address()) + offset_;
     } 
     
     bool is_initialized() const {
-        return storage_ ? true : false;
+        return buffer_ ? true : false;
     }
   
-    auto environment() const {
-        assert(storage_ && "Cannot get resource of an initializer tensor.");
-        return storage_->environment();
+    auto source() const {
+        assert(buffer_ && "Cannot get resource of an initializer tensor.");
+        return buffer_->source();
     }
 
     Allocator const& allocator() const {
-        assert(storage_ && "Cannot get resource of an initializer tensor.");
-        return storage_->allocator();
+        assert(buffer_ && "Cannot get resource of an initializer tensor.");
+        return buffer_->allocator();
     }  
    
 public:
@@ -138,12 +138,12 @@ public:
     } 
 
 public:
-    Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset, std::shared_ptr<Storage> storage)
+    Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset, std::shared_ptr<Buffer> storage)
     :   dtype_(dtype)
     ,   shape_(shape) 
     ,   strides_(strides)
     ,   offset_(offset)   
-    ,   storage_(std::move(storage))
+    ,   buffer_(std::move(storage))
     {}
 
 protected:    
@@ -164,7 +164,7 @@ private:
     Shape shape_; 
     Strides strides_; 
     std::ptrdiff_t offset_;   
-    mutable std::shared_ptr<Storage> storage_ = nullptr;
+    mutable std::shared_ptr<Buffer> buffer_ = nullptr;
 };    
 
 std::ostream& operator<<(std::ostream& ostream, Tensor tensor);  
@@ -193,19 +193,19 @@ Tensor operation::Binary<Operation, Operand, Cooperand>::forward() const {
 template<Expression Source>
 Tensor expression::Reshape<Source>::forward() const { 
     Tensor source = source_.forward();
-    return Tensor(dtype(), shape(), strides(), offset(), source.storage_);
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
  
 template<Expression Source>
 Tensor expression::Transpose<Source>::forward() const { 
     Tensor source = source_.forward();
-    return Tensor(dtype(), shape(), strides(), offset(), source.storage_);
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }   
 
 template<Expression Source, class... Indexes>
 Tensor expression::Slice<Source, Indexes...>::forward() const {   
     Tensor source = source_.forward();
-    return Tensor(dtype(), shape(), strides(), offset(), source_.storage_);
+    return Tensor(dtype(), shape(), strides(), offset(), source_.buffer_);
 }       
 
 } // namespace tannic
