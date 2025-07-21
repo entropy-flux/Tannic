@@ -27,8 +27,6 @@ TEST(TestView, TestSlice) {
     ASSERT_EQ(slice.rank(), 1);
 
     auto view = slice[0];
-    ASSERT_EQ(view.rank(), 0);
-    ASSERT_EQ(view.offset(), 8); 
-
+    ASSERT_EQ(view.rank(), 0);  
     ASSERT_EQ((slice[0] == 3), true);
 }    

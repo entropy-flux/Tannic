@@ -53,6 +53,20 @@ constexpr inline std::string dnameof(type type) {
     }
 } 
 
+constexpr inline uint8_t decodeof(type type) {
+    switch (type) { 
+        case int8:      return 12;
+        case int16:     return 13;
+        case int32:     return 14;
+        case int64:     return 15;
+        case float32:   return 24;
+        case float64:   return 25;
+        case complex64: return 35;     
+        case complex128:return 36;  
+        default:        return 0;
+    }
+}
+ 
 inline std::ostream& operator<<(std::ostream& ostream, type type) {
     return ostream << dnameof(type);
 } 

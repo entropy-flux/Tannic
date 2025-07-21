@@ -1,9 +1,7 @@
-#include <iostream>  
-#include <iomanip>    
+#include <iostream>   
 #include <cstddef> 
 #include <memory>
-#include <cstdint>
-#include <cstring>
+#include <cstdint> 
 
 #include "Types.hpp" 
 #include "Resources.hpp"
@@ -29,6 +27,8 @@ private:
 
 std::ostream& operator<<(std::ostream& os, const Blob& blob); 
 Blob serialize(Tensor const& tensor);
-Tensor deserialize(Blob const& blob, Allocator allocator = Host{});
- 
+Tensor deserialize(Blob const& blob, Allocator allocator = Host{}); 
+void write(const Blob& blob, const std::string& path, uint32_t alignment = 0 );
+Blob read(const std::string& path, Allocator allocator = Host{});
+
 } // namespace tannic

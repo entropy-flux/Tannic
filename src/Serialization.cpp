@@ -1,5 +1,9 @@
 #include "Serialization.hpp"
 
+#include <iomanip>    
+#include <fstream>
+#include <cstring>
+
 // TODO:
 // - Support non contiguous tensors
 // - Cuda support 
@@ -116,6 +120,30 @@ Tensor deserialize(Blob const& blob, Allocator allocator) {
     Tensor deserialized(metadata.dtype, shape, strides); deserialized.initialize(allocator);
     std::memcpy(deserialized.buffer(), blob.buffer() + sizeof(header.magic) + sizeof(size_t), header.tail - sizeof(header.magic) - sizeof(size_t));
     return deserialized;
+}
+
+void write(const Blob& blob, const std::string& path, uint32_t alignment) {
+    std::ofstream stream(path, std::ios::binary);
+    if (!stream) 
+        throw std::runtime_error("Failed to open file for writing: " + path);
+    
+        stream.write(reinterpret_cast<const char*>(blob.buffer()), blob.nbytes());
+}
+
+Blob read(const std::string& path, Allocator allocator) {
+    std::ifstream stream(path, std::ios::binary | std::ios::ate);
+    if (!stream) 
+        throw std::runtime_error("Failed to open file for reading: " + path);
+    
+    std::streamsize size = stream.tellg();
+    stream.seekg(0, std::ios::beg);
+
+    Blob blob(size, allocator); 
+    stream.read(reinterpret_cast<char*>(blob.buffer()), size);
+    if (!stream) 
+        throw std::runtime_error("Failed to read from file: " + path);
+
+    return blob;
 }
 
 } // namespace tannic

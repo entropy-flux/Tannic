@@ -101,7 +101,7 @@ static constexpr Strides strides(Source const& source, std::tuple<Indexes...> co
 
 template<Expression Source, class... Indexes>
 static constexpr auto offset(Source const& source, std::tuple<Indexes...> const& indexes) {
-    std::ptrdiff_t result = source.offset();  
+    std::ptrdiff_t result = 0;  
     std::ptrdiff_t dimension = 0; 
     const auto dsize = dsizeof(source.dtype()); 
     const auto& strides = source.strides();
@@ -240,32 +240,32 @@ void Slice<Source, Indexes...>::operator=(T value) {
     switch (dtype_) {
         case int8: {
             int8_t casted = value;
-            copy(bytes(casted), offset_); 
+            copy(bytes(casted), offset_ + source_.offset_); 
             break;
         }
         case int16: {
             int16_t casted = value;
-            copy(bytes(casted), offset_); 
+            copy(bytes(casted), offset_ + source_.offset_); 
             break;
         }
         case int32: {
             int32_t casted = value;
-            copy(bytes(casted), offset_);
+            copy(bytes(casted), offset_ + source_.offset_);
             break;
         }
         case int64: {
             int64_t casted = value;
-            copy(bytes(casted), offset_);
+            copy(bytes(casted), offset_ + source_.offset_);
             break;
         }
         case float32: {
             float casted = value;
-            copy(bytes(casted), offset_);
+            copy(bytes(casted), offset_ + source_.offset_);
             break;
         }
         case float64: {
             double casted = value;
-            copy(bytes(casted), offset_);
+            copy(bytes(casted), offset_ + source_.offset_);
             break;
         } 
         default:
@@ -280,27 +280,27 @@ bool Slice<Source, Indexes...>::operator==(T value) const {
     switch (dtype_) {
         case int8: {
             int8_t casted = value;
-            return compare(bytes(casted), offset_); 
+            return compare(bytes(casted), offset_ + source_.offset_); 
         }
         case int16: {
             int16_t casted = value;
-            return compare(bytes(casted), offset_); 
+            return compare(bytes(casted), offset_ + source_.offset_); 
         }
         case int32: {
             int32_t casted = value;
-            return compare(bytes(casted), offset_);
+            return compare(bytes(casted), offset_ + source_.offset_);
         }
         case int64: {
             int64_t casted = value;
-            return compare(bytes(casted), offset_);
+            return compare(bytes(casted), offset_ + source_.offset_);
         }
         case float32: {
             float casted = value;
-            return compare(bytes(casted), offset_);
+            return compare(bytes(casted), offset_ + source_.offset_);
         }
         case float64: {
             double casted = value;
-            return compare(bytes(casted), offset_);
+            return compare(bytes(casted), offset_ + source_.offset_);
         } 
         default:
             return false;
