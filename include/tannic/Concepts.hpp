@@ -42,8 +42,7 @@ concept Expression = requires(const T expression) {
     { expression.dtype()   } -> std::same_as<type>;
     { expression.shape()   } -> std::same_as<Shape const&>;
     { expression.strides() } -> std::same_as<Strides const&>;
-    { expression.offset()  } -> std::same_as<std::ptrdiff_t>;
-//    { expression.forward() } -> std::convertible_to<Tensor>; bug on clang compiler.
+    { expression.offset()  } -> std::same_as<std::ptrdiff_t>; 
 };
 
 } // namespace tannic
