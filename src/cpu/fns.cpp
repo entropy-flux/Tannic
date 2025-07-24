@@ -38,7 +38,15 @@ void fnKernel(
         }
     }
 }     
- 
+
+void defaultKernel(
+    const void* src, const size_t* src_sz, const size_t* src_ne,
+    void* dst, const size_t* dst_sz, const size_t* dst_ne,
+    uint8_t rank, size_t* cnt
+) {
+    throw std::runtime_error("Not supported dtype");
+}; 
+
 struct Log { 
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::log(a))) {
@@ -120,14 +128,7 @@ using Kernel = void(*)(
     void* dst, const size_t* dst_sz, const size_t* dst_ne,
     uint8_t rank, size_t* cnt
 );      
-
-constexpr void defaultKernel(
-    const void* src, const size_t* src_sz, const size_t* src_ne,
-    void* dst, const size_t* dst_sz, const size_t* dst_ne,
-    uint8_t rank, size_t* cnt
-) {
-    throw std::runtime_error("Not supported dtype");
-}; 
+  
 
 constexpr auto log = []() {
     std::array<Kernel, index(TYPES)> table{}; table.fill(defaultKernel);
