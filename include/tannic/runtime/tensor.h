@@ -16,16 +16,20 @@
 //
 
 #ifndef TENSOR_H
-#define TENSOR_H
+#define TENSOR_H 
+ 
+#include "types.h"   
 
 #ifdef __cplusplus
+#include <cstdint>
+#include <cstddef>
+namespace tannic {
 extern "C" {
-#endif
-
+#else
 #include <stdint.h>
 #include <stddef.h>
-#include "types.h"  
-
+#endif
+ 
 struct tensor_t {
     uint8_t rank;
     void* address;
@@ -36,6 +40,7 @@ struct tensor_t {
  
 #ifdef __cplusplus
 }
+} // namespace tannic
 #endif 
 
 #endif // TENSOR_H

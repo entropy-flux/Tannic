@@ -65,8 +65,7 @@ TEST_F(TestFunctions, Sqrt) {
     }
 }
 
-TEST_F(TestFunctions, Abs) {
-    // First set negative values
+TEST_F(TestFunctions, Abs) { 
     float* original_data = reinterpret_cast<float*>(A.bytes());
     for (int i = 0; i < 6; ++i) {
         original_data[i] = -original_data[i];

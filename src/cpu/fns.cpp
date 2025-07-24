@@ -113,7 +113,7 @@ constexpr static inline int index(type type) {
     return static_cast<int>(type);
 }  
 
-namespace kernel {
+namespace fn {
  
 using Kernel = void(*)(
     const void* src, const size_t* src_sz, const size_t* src_ne,
@@ -205,7 +205,7 @@ constexpr auto tanh = []() {
 
 void log(tensor_t const* src, tensor_t* dst) {
     std::vector<size_t> cnt(src->rank, 0);
-    kernel::log[index(src->dtype)](
+    fn::log[index(src->dtype)](
         src->address, src->shape, src->strides,
         dst->address, dst->shape, dst->strides,
         src->rank, cnt.data()
@@ -214,7 +214,7 @@ void log(tensor_t const* src, tensor_t* dst) {
 
 void exp(tensor_t const* src, tensor_t* dst) {
     std::vector<size_t> cnt(src->rank, 0);
-    kernel::exp[index(src->dtype)](
+    fn::exp[index(src->dtype)](
         src->address, src->shape, src->strides,
         dst->address, dst->shape, dst->strides,
         src->rank, cnt.data()
@@ -223,7 +223,7 @@ void exp(tensor_t const* src, tensor_t* dst) {
 
 void sqrt(tensor_t const* src, tensor_t* dst) {
     std::vector<size_t> cnt(src->rank, 0);
-    kernel::sqrt[index(src->dtype)](
+    fn::sqrt[index(src->dtype)](
         src->address, src->shape, src->strides,
         dst->address, dst->shape, dst->strides,
         src->rank, cnt.data()
@@ -232,7 +232,7 @@ void sqrt(tensor_t const* src, tensor_t* dst) {
 
 void abs(tensor_t const* src, tensor_t* dst) {
     std::vector<size_t> cnt(src->rank, 0);
-    kernel::abs[index(src->dtype)](
+    fn::abs[index(src->dtype)](
         src->address, src->shape, src->strides,
         dst->address, dst->shape, dst->strides,
         src->rank, cnt.data()
@@ -241,7 +241,7 @@ void abs(tensor_t const* src, tensor_t* dst) {
 
 void sin(tensor_t const* src, tensor_t* dst) {
     std::vector<size_t> cnt(src->rank, 0);
-    kernel::sin[index(src->dtype)](
+    fn::sin[index(src->dtype)](
         src->address, src->shape, src->strides,
         dst->address, dst->shape, dst->strides,
         src->rank, cnt.data()
@@ -250,7 +250,7 @@ void sin(tensor_t const* src, tensor_t* dst) {
 
 void cos(tensor_t const* src, tensor_t* dst) {
     std::vector<size_t> cnt(src->rank, 0);
-    kernel::cos[index(src->dtype)](
+    fn::cos[index(src->dtype)](
         src->address, src->shape, src->strides,
         dst->address, dst->shape, dst->strides,
         src->rank, cnt.data()
@@ -259,7 +259,7 @@ void cos(tensor_t const* src, tensor_t* dst) {
 
 void tan(tensor_t const* src, tensor_t* dst) {
     std::vector<size_t> cnt(src->rank, 0);
-    kernel::tan[index(src->dtype)](
+    fn::tan[index(src->dtype)](
         src->address, src->shape, src->strides,
         dst->address, dst->shape, dst->strides,
         src->rank, cnt.data()
@@ -268,7 +268,7 @@ void tan(tensor_t const* src, tensor_t* dst) {
 
 void sinh(tensor_t const* src, tensor_t* dst) {
     std::vector<size_t> cnt(src->rank, 0);
-    kernel::sinh[index(src->dtype)](
+    fn::sinh[index(src->dtype)](
         src->address, src->shape, src->strides,
         dst->address, dst->shape, dst->strides,
         src->rank, cnt.data()
@@ -277,7 +277,7 @@ void sinh(tensor_t const* src, tensor_t* dst) {
 
 void cosh(tensor_t const* src, tensor_t* dst) {
     std::vector<size_t> cnt(src->rank, 0);
-    kernel::cosh[index(src->dtype)](
+    fn::cosh[index(src->dtype)](
         src->address, src->shape, src->strides,
         dst->address, dst->shape, dst->strides,
         src->rank, cnt.data()
@@ -286,7 +286,7 @@ void cosh(tensor_t const* src, tensor_t* dst) {
 
 void tanh(tensor_t const* src, tensor_t* dst) {
     std::vector<size_t> cnt(src->rank, 0);
-    kernel::tanh[index(src->dtype)](
+    fn::tanh[index(src->dtype)](
         src->address, src->shape, src->strides,
         dst->address, dst->shape, dst->strides,
         src->rank, cnt.data()

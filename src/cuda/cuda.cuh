@@ -4,7 +4,7 @@
 
 using namespace tannic;
 
-namespace cpu { 
+namespace cuda { 
  
 void log(tensor_t const*, tensor_t*); 
 void exp(tensor_t const*, tensor_t*); 
@@ -27,4 +27,4 @@ void gemm(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
 void argmax(tensor_t const*, tensor_t*, int axis = -1);
 void argmin(tensor_t const*, tensor_t*, int axis = -1);
 
-} // namespace cpu
+} // namespace cuda

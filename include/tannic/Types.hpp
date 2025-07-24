@@ -66,6 +66,20 @@ constexpr inline uint8_t decodeof(type type) {
         default:        return 0;
     }
 }
+
+constexpr inline type dtypeof(uint8_t code) {
+    switch (code) {
+        case 12: return int8;
+        case 13: return int16;
+        case 14: return int32;
+        case 15: return int64;
+        case 24: return float32;
+        case 25: return float64;
+        case 35: return complex64;
+        case 36: return complex128;
+        default: return none;
+    }
+}
  
 inline std::ostream& operator<<(std::ostream& ostream, type type) {
     return ostream << dnameof(type);

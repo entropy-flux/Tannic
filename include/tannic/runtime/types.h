@@ -19,11 +19,9 @@
 #define TYPES_H
 
 #ifdef __cplusplus
+namespace tannic {
 extern "C" {
-#endif
-
-#include <stdint.h>
-#include <stddef.h> 
+#endif 
 
 enum type { 
     none,
@@ -40,6 +38,7 @@ enum type {
 
 #ifdef __cplusplus
 }
+} // namespace tannic
 #endif
  
 #endif // TYPES_H

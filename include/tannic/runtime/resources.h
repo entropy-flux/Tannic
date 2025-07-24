@@ -16,14 +16,17 @@
 //
 
 #ifndef RESOURCES_H
-#define RESOURCES_H
+#define RESOURCES_H 
 
 #ifdef __cplusplus
+#include <cstdint>
+#include <cstddef>
+namespace tannic {
 extern "C" {
-#endif
-
+#else
 #include <stdint.h>
-#include <stddef.h> 
+#include <stddef.h>
+#endif
 
 enum environment {
     HOST,
@@ -46,11 +49,12 @@ struct allocator_t {
     } resource;
 };   
 
-void* allocate(size_t nbytes, allocator_t allocator);
-void dealloce(void* address, allocator_t allocator);
+//void* allocate(size_t nbytes, allocator_t allocator);
+//void deallocate(void* address, allocator_t allocator);
 
 #ifdef __cplusplus
 }
+} //namesmpace tannic
 #endif 
 
 #endif // RESOURCES_H
