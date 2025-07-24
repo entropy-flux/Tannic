@@ -121,19 +121,23 @@ public:
 public:
     template<Integral Index>
     auto operator[](Index index) const {   
+        assert(is_initialized() && "Cannot slice uninitialized tensors."); 
         return expression::Slice<Tensor, Index>(*this, std::make_tuple(index));
     }
 
     auto operator[](indexing::Range range) const { 
+        assert(is_initialized() && "Cannot slice uninitialized tensors."); 
         return expression::Slice<Tensor, indexing::Range>(*this, std::make_tuple(range));
     }
 
     template<class ... Indexes>
     auto operator[](Indexes... indexes) const {
+        assert(is_initialized() && "Cannot slice uninitialized tensors."); 
         return expression::Slice<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
     }
  
     auto transpose(int first = -1, int second = -2) const {
+        assert(is_initialized() && "Cannot transpose uninitialized tensors."); 
         return expression::Transpose<Tensor>(*this, std::make_pair<int, int>(std::move(first), std::move(second)));
     } 
 

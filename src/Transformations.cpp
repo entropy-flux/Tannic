@@ -1,11 +1,11 @@
 #include "Tensor.hpp"
 #include "Transformations.hpp"
 #include "runtime/tensor.h"
-#include "cpu/gemm.hpp" 
+#include "cpu/cpu.hpp"  
 
 namespace tannic { 
 
-static inline tensor_t c_tensor_t(Tensor const& tensor, bool is_transposed = false) {
+static inline tensor_t c_tensor_t(Tensor const& tensor) {
     return tensor_t{
         .rank = tensor.rank(),
         .address = reinterpret_cast<void*>(tensor.bytes()),
@@ -22,20 +22,19 @@ static inline bool is_transposed(Tensor const& tensor) {
 }
 
 void expression::Composition::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
-    output.initialize();
-    bool src1_transposed = is_transposed(first);
-    bool src2_transposed = is_transposed(second);
-    tensor_t src1 = c_tensor_t(first, src1_transposed);
-    tensor_t src2 = c_tensor_t(second, src1_transposed);
+    output.initialize(); 
+    tensor_t src1 = c_tensor_t(first);
+    tensor_t src2 = c_tensor_t(second);
     tensor_t dst = c_tensor_t(output); 
-    bool success = cpu::matmul[cpu::index(first.dtype(), second.dtype())](&src1, &src2, &dst, is_transposed(first), is_transposed(second)); 
-    if (!success) {
-        throw std::runtime_error(
-            "Matrix multiplication failed for dtypes: " +
-            dnameof(first.dtype()) + " and " +
-            dnameof(second.dtype())
-        );
-    }
+    cpu::gemm(&src1, &src2, &dst, is_transposed(first), is_transposed(second));
+}
+
+void expression::Argmax::forward(Tensor const& source, Tensor& target) const {  
+
+}
+
+void expression::Argmin::forward(Tensor const& source, Tensor& target) const {  
+
 }
 
 } //namespace tannic

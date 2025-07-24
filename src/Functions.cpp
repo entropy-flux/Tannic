@@ -1,6 +1,6 @@
 #include "Functions.hpp"
 #include "runtime/tensor.h"
-#include "cpu/funcs.hpp"  
+#include "cpu/cpu.hpp"  
 
 namespace tannic { 
 
@@ -13,125 +13,75 @@ static inline tensor_t c_tensor_t(Tensor const& tensor) {
         .dtype = tensor.dtype()
     };
 }
-
+ 
 void expression::Log::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = c_tensor_t(input);
-    tensor_t target = c_tensor_t(output);
-    bool success = cpu::log[cpu::index(input.dtype())](&source, &target);
-    if(!success) {
-        throw std::runtime_error(
-            "Log operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output);
+    cpu::log(&src, &dst);
 }
 
-void expression::Exp::operator()(Tensor const& input, Tensor& output) const {
+void expression::Exp::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = c_tensor_t(input);
-    tensor_t target = c_tensor_t(output);
-    bool status = cpu::exp[cpu::index(input.dtype())](&source, &target);
-    if(!status) {
-        throw std::runtime_error(
-            "Exp operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output);
+    cpu::exp(&src, &dst);
 }
 
-void expression::Sqrt::operator()(Tensor const& input, Tensor& output) const {
+void expression::Sqrt::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = c_tensor_t(input);
-    tensor_t target = c_tensor_t(output);
-    bool status = cpu::sqrt[cpu::index(input.dtype())](&source, &target);
-    if(!status) {
-        throw std::runtime_error(
-            "Sqrt operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output);
+    cpu::sqrt(&src, &dst);
 }
 
-void expression::Abs::operator()(Tensor const& input, Tensor& output) const {
+void expression::Abs::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = c_tensor_t(input);
-    tensor_t target = c_tensor_t(output);
-    bool status = cpu::abs[cpu::index(input.dtype())](&source, &target);
-    if(!status) {
-        throw std::runtime_error(
-            "Abs operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output);
+    cpu::abs(&src, &dst);
 }
 
-void expression::Sin::operator()(Tensor const& input, Tensor& output) const {
+void expression::Sin::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = c_tensor_t(input);
-    tensor_t target = c_tensor_t(output);
-    bool status = cpu::sin[cpu::index(input.dtype())](&source, &target);
-    if(!status) {
-        throw std::runtime_error(
-            "Sin operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output);
+    cpu::sin(&src, &dst);
 }
 
-void expression::Cos::operator()(Tensor const& input, Tensor& output) const {
+void expression::Cos::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = c_tensor_t(input);
-    tensor_t target = c_tensor_t(output);
-    bool status = cpu::cos[cpu::index(input.dtype())](&source, &target);
-    if(!status) {
-        throw std::runtime_error(
-            "Cos operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output);
+    cpu::cos(&src, &dst);
 }
 
-void expression::Tan::operator()(Tensor const& input, Tensor& output) const {
+void expression::Tan::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = c_tensor_t(input);
-    tensor_t target = c_tensor_t(output);
-    bool status = cpu::tan[cpu::index(input.dtype())](&source, &target);
-    if(!status) {
-        throw std::runtime_error(
-            "Tan operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output);
+    cpu::tan(&src, &dst);
 }
 
-void expression::Sinh::operator()(Tensor const& input, Tensor& output) const {
+void expression::Sinh::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = c_tensor_t(input);
-    tensor_t target = c_tensor_t(output);
-    bool status = cpu::sinh[cpu::index(input.dtype())](&source, &target);
-    if(!status) {
-        throw std::runtime_error(
-            "Sinh operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output);
+    cpu::sinh(&src, &dst);
 }
 
-void expression::Cosh::operator()(Tensor const& input, Tensor& output) const {
+void expression::Cosh::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = c_tensor_t(input);
-    tensor_t target = c_tensor_t(output);
-    bool status = cpu::cosh[cpu::index(input.dtype())](&source, &target);
-    if(!status) {
-        throw std::runtime_error(
-            "Cosh operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output);
+    cpu::cosh(&src, &dst);
 }
 
-void expression::Tanh::operator()(Tensor const& input, Tensor& output) const {
+void expression::Tanh::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
-    tensor_t source = c_tensor_t(input);
-    tensor_t target = c_tensor_t(output);
-    bool status = cpu::tanh[cpu::index(input.dtype())](&source, &target);
-    if(!status) {
-        throw std::runtime_error(
-            "Tanh operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t src = c_tensor_t(input);
+    tensor_t dst = c_tensor_t(output);
+    cpu::tanh(&src, &dst);
 }
  
 } // namespace tannic

@@ -64,9 +64,11 @@ public:
     }
 
     Tensor forward() const {
-        return std::apply([&](const auto&... arguments) {
-            return operation.forward(dtype_, shape_, arguments.forward()...);
+        Tensor result(dtype_, shape_);
+        std::apply([&](const auto&... arguments) {
+            return operation.forward(arguments.forward()..., result);
         }, operands);
+        return result;
     }
 
 private:
@@ -78,6 +80,36 @@ private:
 static constexpr auto index(type inner, type outer) {
     return static_cast<int>(inner) + static_cast<int>(outer) * static_cast<int>(TYPES);
 } 
+
+struct Argmax {
+    size_t dim;
+    bool keepdim;
+    void forward(Tensor const&, Tensor&) const;
+    
+    static constexpr type promote(type dtype) {
+        return int64;
+    }
+
+    static constexpr Shape broadcast(Shape const& shape) {
+        assert(shape.rank() >= 1 && "Argmax requires at least 1D tensor");
+        return Shape(shape.begin(), shape.end()-1);
+    }
+};
+
+struct Argmin {
+    size_t dim;
+    bool keepdim;
+    void forward(Tensor const&, Tensor&) const;
+    
+    static constexpr type promote(type dtype) {
+        return int64;
+    }
+
+    static constexpr Shape broadcast(Shape const& shape) {
+        assert(shape.rank() >= 1 && "Argmax requires at least 1D tensor");
+        return Shape(shape.begin(), shape.end()-1);
+    }
+};
 
 struct Composition { 
     void forward(Tensor const&, Tensor const&, Tensor&) const;
@@ -116,13 +148,7 @@ struct Composition {
         table[index(float64, float64)] = float64; 
         return table;
     }();  
-
-    Tensor forward(type dtype, Shape const& shape, Tensor const& outer, Tensor const& inner) const {
-        Tensor result(dtype, shape);
-        forward(outer, inner, result);
-        return result;
-    }
-
+ 
     static constexpr type promote(type inner, type outer) {
         return promotions[index(inner, outer)];
     }
@@ -174,6 +200,20 @@ constexpr auto composition(Outer&& outer, Inner&& inner) {
     };
 }
 
+template<Expression Operand>
+constexpr auto argmax(Operand&& operand, int dimension = -1, bool keepdim = false) {
+    return Transformation<Argmax, Operand> {
+        {}, std::forward<Operand>(operand)
+    };
+}
+
+template<Expression Operand>
+constexpr auto argmin(Operand&& operand, int dimension = -1, bool keepdim = false) {
+    return Transformation<Argmin, Operand> {
+        {}, std::forward<Operand>(operand)
+    };
+}
+
 } // namespace expression
 
 template<Expression Multiplicand, Expression Multiplier>
@@ -183,6 +223,9 @@ constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier) {
         std::forward<Multiplier>(multiplier)
     );
 }
+
+using expression::argmax;
+using expression::argmin;
 
 } // namespace tannic
 

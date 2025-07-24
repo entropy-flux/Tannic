@@ -32,9 +32,7 @@ struct tensor_t {
     const size_t* shape;
     const size_t* strides;  
     enum type dtype; 
-}; 
-
-void print(const tensor_t);
+};  
  
 #ifdef __cplusplus
 }

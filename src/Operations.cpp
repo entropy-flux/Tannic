@@ -1,7 +1,7 @@
 #include "Operations.hpp"
 #include "Tensor.hpp"
 #include "runtime/tensor.h"
-#include "cpu/ops.hpp"  
+#include "cpu/cpu.hpp"  
  
 namespace tannic { 
 
@@ -18,43 +18,24 @@ static inline tensor_t c_tensor_t(Tensor const& tensor) {
 void operation::Negation::forward(Tensor const& input, Tensor& output) const {
     output.initialize();
     tensor_t src = c_tensor_t(input);
-    tensor_t dst = c_tensor_t(output); 
-    bool status = cpu::unary::negation[cpu::unary::index(input.dtype())](&src, &dst);
-    if (!status) {
-        throw std::runtime_error(
-            "Negation operation failed for dtype: " + dnameof(input.dtype())
-        );
-    }
+    tensor_t dst = c_tensor_t(output);  
+    cpu::neg(&src, &dst);
 }
 
 void operation::Addition::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
     output.initialize();
     tensor_t src1 = c_tensor_t(first);
     tensor_t src2 = c_tensor_t(second);
-    tensor_t dst = c_tensor_t(output);
-    bool success = cpu::binary::addition[cpu::binary::index(first.dtype(), second.dtype())](&src1, &src2, &dst);
-    if (!success) {
-        throw std::runtime_error(
-            "Addition operation failed for dtypes: " +
-            dnameof(first.dtype()) + " and " +
-            dnameof(second.dtype())
-        );
-    }
+    tensor_t dst = c_tensor_t(output); 
+    cpu::add(&src1, &src2, &dst); 
 }
 
 void operation::Multiplication::forward(Tensor const& first, Tensor const& second, Tensor& output) const { 
     output.initialize();
     tensor_t src1 = c_tensor_t(first);
     tensor_t src2 = c_tensor_t(second);
-    tensor_t dst = c_tensor_t(output);
-    bool status = cpu::binary::multiplication[cpu::binary::index(first.dtype(), second.dtype())](&src1, &src2, &dst);
-    if (!status) {
-        throw std::runtime_error(
-            "Multiplication operation failed for dtypes: " +
-            dnameof(first.dtype()) + " and " +
-            dnameof(second.dtype())
-        );
-    }
+    tensor_t dst = c_tensor_t(output); 
+    cpu::mul(&src1, &src2, &dst); 
 }
 
 void operation::Subtraction::forward(Tensor const& first, Tensor const& second, Tensor& output) const { 
@@ -62,14 +43,7 @@ void operation::Subtraction::forward(Tensor const& first, Tensor const& second, 
     tensor_t src1 = c_tensor_t(first);
     tensor_t src2 = c_tensor_t(second);
     tensor_t dst = c_tensor_t(output); 
-    bool status = cpu::binary::subtraction[cpu::binary::index(first.dtype(), second.dtype())](&src1, &src2, &dst);
-    if (!status) {
-        throw std::runtime_error(
-            "Subtraction operation failed for dtypes: " +
-            dnameof(first.dtype()) + " and " +
-            dnameof(second.dtype())
-        );
-    }
+    cpu::sub(&src1, &src2, &dst); 
 }
 
 } // namespace tannic
