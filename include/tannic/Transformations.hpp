@@ -79,37 +79,7 @@ private:
 
 static constexpr auto index(type inner, type outer) {
     return static_cast<int>(inner) + static_cast<int>(outer) * static_cast<int>(TYPES);
-} 
-
-struct Argmax {
-    size_t dim;
-    bool keepdim;
-    void forward(Tensor const&, Tensor&) const;
-    
-    static constexpr type promote(type dtype) {
-        return int64;
-    }
-
-    static constexpr Shape broadcast(Shape const& shape) {
-        assert(shape.rank() >= 1 && "Argmax requires at least 1D tensor");
-        return Shape(shape.begin(), shape.end()-1);
-    }
-};
-
-struct Argmin {
-    size_t dim;
-    bool keepdim;
-    void forward(Tensor const&, Tensor&) const;
-    
-    static constexpr type promote(type dtype) {
-        return int64;
-    }
-
-    static constexpr Shape broadcast(Shape const& shape) {
-        assert(shape.rank() >= 1 && "Argmax requires at least 1D tensor");
-        return Shape(shape.begin(), shape.end()-1);
-    }
-};
+}  
 
 struct Composition { 
     void forward(Tensor const&, Tensor const&, Tensor&) const;
@@ -199,21 +169,7 @@ constexpr auto composition(Outer&& outer, Inner&& inner) {
         {}, std::forward<Outer>(outer), std::forward<Inner>(inner)
     };
 }
-
-template<Expression Operand>
-constexpr auto argmax(Operand&& operand, int dimension = -1, bool keepdim = false) {
-    return Transformation<Argmax, Operand> {
-        {}, std::forward<Operand>(operand)
-    };
-}
-
-template<Expression Operand>
-constexpr auto argmin(Operand&& operand, int dimension = -1, bool keepdim = false) {
-    return Transformation<Argmin, Operand> {
-        {}, std::forward<Operand>(operand)
-    };
-}
-
+ 
 } // namespace expression
 
 template<Expression Multiplicand, Expression Multiplier>
@@ -222,10 +178,7 @@ constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier) {
         std::forward<Multiplicand>(multiplicand),
         std::forward<Multiplier>(multiplier)
     );
-}
-
-using expression::argmax;
-using expression::argmin;
+}  
 
 } // namespace tannic
 

@@ -111,16 +111,15 @@ bool argcmp(
     return true;
 }
   
-template<>
-struct Cmp<Argcmp::ARGMAX> {
+struct GE {
     template<class A, class B>
     bool operator()(A&& a, B&& b) const noexcept {
         return a > b;
     }
 };
 
-template<>
-struct Cmp<Argcmp::ARGMIN> {
+
+struct LE {
     template<class A, class B>
     bool operator()(A&& a, B&& b) const noexcept {
         return a < b;

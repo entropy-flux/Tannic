@@ -89,7 +89,7 @@ using Kernel = void(*)(
     int lda, int ldb, int ldc
 );       
 
-void defaultKernel(
+constexpr void defaultKernel(
     bool transA, bool transB,
     const void* A_ptr,
     const void* B_ptr,
@@ -100,7 +100,7 @@ void defaultKernel(
     throw std::runtime_error("Not supported dtype");
 };
  
-static constexpr inline auto index(type first, type second) {
+constexpr static inline auto index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 } 
 

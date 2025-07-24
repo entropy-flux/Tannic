@@ -106,6 +106,10 @@ public:
     constexpr auto front() const { 
         return sizes_.front(); 
     }
+
+    constexpr auto back() const {
+        return sizes_[rank_];
+    }
   
     template<Integral Index>
     constexpr auto const& operator[](Index index) const { 

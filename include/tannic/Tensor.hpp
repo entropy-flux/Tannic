@@ -49,6 +49,12 @@ public:
     ,   strides_(strides) 
     ,   offset_(0) {}  
 
+    Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset)
+    :   dtype_(dtype)
+    ,   shape_(shape) 
+    ,   strides_(strides) 
+    ,   offset_(offset) {}  
+
     template <Expression Expression>
     Tensor(const Expression& expression) {
         *this = expression.forward(); 

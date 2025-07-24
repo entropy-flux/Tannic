@@ -109,7 +109,7 @@ struct Tanh {
     }
 };    
 
-static constexpr inline int index(type type) {
+constexpr static inline int index(type type) {
     return static_cast<int>(type);
 }  
 
@@ -121,7 +121,7 @@ using Kernel = void(*)(
     uint8_t rank, size_t* cnt
 );      
 
-void defaultKernel(
+constexpr void defaultKernel(
     const void* src, const size_t* src_sz, const size_t* src_ne,
     void* dst, const size_t* dst_sz, const size_t* dst_ne,
     uint8_t rank, size_t* cnt

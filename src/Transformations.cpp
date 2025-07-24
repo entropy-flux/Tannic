@@ -29,12 +29,4 @@ void expression::Composition::forward(Tensor const& first, Tensor const& second,
     cpu::gemm(&src1, &src2, &dst, is_transposed(first), is_transposed(second));
 }
 
-void expression::Argmax::forward(Tensor const& source, Tensor& target) const {  
-
-}
-
-void expression::Argmin::forward(Tensor const& source, Tensor& target) const {  
-
-}
-
 } //namespace tannic

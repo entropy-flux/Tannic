@@ -104,13 +104,20 @@ struct Mul {
     }
 }; 
 
+constexpr static inline int index(type type) {
+    return static_cast<int>(type);
+}
+
+
+constexpr static inline int index(type first, type second) {
+    return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
+}  
 
 using UnaryKernel = void(*)( 
     const void* src_ptr, const size_t* src_sz, const size_t* src_ne,
     void* dst_ptr, const size_t* dst_sz, const size_t* dst_ne,
     uint8_t rank, size_t* cnt
 );    
-
 
 using BinaryKernel = void(*)(
     const void* src1_ptr, const size_t* src1_sz, const size_t* src1_ne,
@@ -119,7 +126,7 @@ using BinaryKernel = void(*)(
     uint8_t rank, size_t* cnt
 );  
 
-void defaultUnaryKernel(
+constexpr void defaultUnaryKernel(
     const void* src_ptr, const size_t* src_sz, const size_t* src_ne,
     void* dst_ptr, const size_t* dst_sz, const size_t* dst_ne,
     uint8_t rank, size_t* cnt
@@ -127,7 +134,7 @@ void defaultUnaryKernel(
     throw std::runtime_error("Not supported dtype");
 };
 
-void defaultBinaryKernel( 
+constexpr void defaultBinaryKernel( 
     const void* src1_ptr, const size_t* src1_sz, const size_t* src1_ne,
     const void* src2_ptr, const size_t* src2_sz, const size_t* src2_ne,
     void* dst_ptr, const size_t* dst_sz, const size_t* dst_ne,
@@ -135,15 +142,6 @@ void defaultBinaryKernel(
 ) {
     throw std::runtime_error("Not supported dtype");
 }; 
-
-static constexpr inline int index(type type) {
-    return static_cast<int>(type);
-}
-
-
-static constexpr inline int index(type first, type second) {
-    return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
-}  
 
 constexpr auto neg = []() {  
     std::array<UnaryKernel, index(TYPES)> table; table.fill(defaultUnaryKernel);
