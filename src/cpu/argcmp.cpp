@@ -4,6 +4,7 @@
 #include <array>
 #include <cmath> 
 
+
 template<typename S, typename D, typename Cmp>
 void argReducerKernel(
     const void* src_ptr, const size_t* src_sz, const size_t* src_strides,
@@ -13,7 +14,7 @@ void argReducerKernel(
     const S* src = static_cast<const S*>(src_ptr);
     D* dst = static_cast<D*>(dst_ptr);
     Cmp cmp;
- 
+
     S initial_value = *static_cast<const S*>(init_val);
 
     if (rank == 0) {
@@ -22,36 +23,37 @@ void argReducerKernel(
     }
 
     size_t total = 1;
-    for (uint8_t i = 0; i < rank; ++i) {
+    for (int i = 0; i < rank; ++i)
         if (i != dim) total *= dst_sz[i];
-    }
 
     for (size_t idx = 0; idx < total; ++idx) {
         size_t best_idx = 0;
         S best_val = initial_value;
 
         for (size_t i = 0; i < src_sz[dim]; ++i) {
-            size_t offs = 0;
-            for (uint8_t d = 0; d < rank; ++d) {
-                offs += (d == dim ? i : cnt[d]) * src_strides[d];
+            size_t offset = 0;
+            for (int d = 0; d < rank; ++d) {
+                size_t idx_val = (d == dim) ? i : cnt[d];
+                offset += idx_val * src_strides[d];
             }
 
-            const S current_val = src[offs];
-            if (cmp(current_val, best_val) || (current_val == best_val && i < best_idx)) {
-                best_val = current_val;
+            const S val = src[offset];
+            if (cmp(val, best_val) || (val == best_val && i < best_idx)) {
+                best_val = val;
                 best_idx = i;
             }
         }
-        
-        *dst = static_cast<D>(best_idx);
+
+        *dst++ = static_cast<D>(best_idx);
+ 
         for (int d = rank - 1; d >= 0; --d) {
             if (d == dim) continue;
             if (++cnt[d] < dst_sz[d]) break;
             cnt[d] = 0;
         }
-        dst++;
     }
 }
+
 
 struct GE {
     template<class A, class B>
@@ -67,12 +69,13 @@ struct LE {
     }
 };
  
-namespace cpu {
 
-void argmax(tensor_t const* src, tensor_t* dst, int axis) {
-    std::vector<size_t> cnt(src->rank, 0);
-    uint8_t dim = axis < 0 ? src->rank + axis : axis;
-    
+#include <iostream>
+
+namespace cpu { 
+
+void argmax(tensor_t const* src, tensor_t* dst, uint8_t dim) {  
+    std::vector<size_t> cnt(src->rank, 0);  
     switch (src->dtype) { 
         case int8: {
             static const int8_t init = std::numeric_limits<int8_t>::lowest();
@@ -127,10 +130,8 @@ void argmax(tensor_t const* src, tensor_t* dst, int axis) {
     }  
 }
 
-void argmin(tensor_t const* src, tensor_t* dst, int axis) {
-    std::vector<size_t> cnt(src->rank, 0);
-    uint8_t dim = axis < 0 ? src->rank + axis : axis;
-
+void argmin(tensor_t const* src, tensor_t* dst, uint8_t dim) {  
+    std::vector<size_t> cnt(src->rank, 0);  
     switch (src->dtype) { 
         case int8: {
             static const int8_t init = std::numeric_limits<int8_t>::max();

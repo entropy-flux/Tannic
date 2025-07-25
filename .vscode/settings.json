@@ -111,6 +111,7 @@
         "text_encoding": "cpp",
         "__threading_support": "cpp",
         "target": "cpp",
-        "__availability": "cpp"
+        "__availability": "cpp",
+        "source_location": "cpp"
     }
 }

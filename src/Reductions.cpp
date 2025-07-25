@@ -1,5 +1,7 @@
 #include "Reductions.hpp"
+#include "Indexing.hpp"
 #include "cpu/cpu.hpp"
+
  
 namespace tannic {
 
@@ -17,14 +19,14 @@ void expression::Argmax::forward(Tensor const& input, Tensor& output) const {
     output.initialize();
     tensor_t src = c_tensor_t(input);
     tensor_t dst = c_tensor_t(output);  
-    cpu::argmax(&src, &dst);
+    cpu::argmax(&src, &dst, axis);
 }
 
 void expression::Argmin::forward(Tensor const& input, Tensor& output) const {   
     output.initialize();
     tensor_t src = c_tensor_t(input);
     tensor_t dst = c_tensor_t(output);  
-    cpu::argmin(&src, &dst);
+    cpu::argmin(&src, &dst, axis);
 }
 
 } // namespace tannic

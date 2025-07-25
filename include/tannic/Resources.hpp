@@ -34,6 +34,13 @@ public:
     void* allocate(std::size_t nbytes) const;
     void deallocate(void* address, std::size_t nbytes) const;
     int id() const { return -1; } 
+
+    bool pinned() const {
+        return pinned_;
+    }
+
+private:
+    bool pinned_ = false;
 };
  
 class Device {

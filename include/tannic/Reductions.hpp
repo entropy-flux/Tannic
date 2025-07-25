@@ -25,6 +25,7 @@
 #include "Traits.hpp"
 #include "Shape.hpp" 
 #include "Tensor.hpp" 
+#include "Indexing.hpp"
 
 namespace tannic {
     
@@ -74,6 +75,7 @@ private:
 }; 
 
 struct Argmax {   
+    int axis;
     void forward(Tensor const&, Tensor&) const;
     
     constexpr type reduce(type dtype) const {
@@ -101,6 +103,7 @@ struct Argmax {
 };
 
 struct Argmin {   
+    int axis;
     void forward(Tensor const&, Tensor&) const; 
 
     constexpr type reduce(type dtype) const {
@@ -128,16 +131,18 @@ struct Argmin {
 }; 
  
 template<Expression Source>
-constexpr auto argmax(Source&& source) {
+constexpr auto argmax(Source&& source, int axis = -1) { 
+    assert(axis == -1 && "Axis different from last one not supported yet.");
     return Reduction<Argmax, Source>{
-        {}, std::forward<Source>(source) 
+        {indexing::normalize(axis, source.shape().rank())}, std::forward<Source>(source) 
     };
 }
 
 template<Expression Source>
-constexpr auto argmin(Source&& source) {
-    return Reduction<Argmin, Source>{
-        {}, std::forward<Source>(source) 
+constexpr auto argmin(Source&& source, int axis = -1) { 
+    assert(axis == -1 && "Axis different from last one not supported yet.");
+    return Reduction<Argmin, Source>{ 
+        {indexing::normalize(axis, source.shape().rank())}, std::forward<Source>(source) 
     };
 }
  

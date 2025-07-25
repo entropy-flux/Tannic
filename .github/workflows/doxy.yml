@@ -19,10 +19,10 @@ jobs:
           doxygen Doxyfile
 
       - name: Move to /docs
-        run: |
+        run: | 
           rm -rf docs
           mkdir -p docs
-          mv docs/html/* docs/
+          mv html/* docs/    
           touch docs/.nojekyll
 
       - name: Deploy to GitHub Pages

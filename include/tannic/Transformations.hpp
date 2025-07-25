@@ -24,8 +24,7 @@
 #include "Types.hpp"
 #include "Traits.hpp"
 #include "Shape.hpp" 
-#include "Tensor.hpp"
-#include "Concepts.hpp"
+#include "Tensor.hpp" 
 
 namespace tannic {
 

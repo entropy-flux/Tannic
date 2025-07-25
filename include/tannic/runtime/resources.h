@@ -32,13 +32,22 @@ enum environment {
     HOST,
     DEVICE
 };
-
+ 
 struct host_t {
-    unsigned int flags;
+    enum flags { 
+        PAGEABLE = 1 << 0,
+        PINNED = 1 << 1
+    };
+    flags flag;
 };
 
 struct device_t {
     int id;
+    enum flags {
+        SYNC = 1 << 0,
+        ASYNC = 1 << 1, 
+    };
+    flags flag;
 };
 
 struct allocator_t { 
@@ -47,10 +56,7 @@ struct allocator_t {
         struct host_t host;
         struct device_t device;
     } resource;
-};   
-
-//void* allocate(size_t nbytes, allocator_t allocator);
-//void deallocate(void* address, allocator_t allocator);
+};    
 
 #ifdef __cplusplus
 }
