@@ -132,7 +132,7 @@ struct Argmin {
  
 template<Expression Source>
 constexpr auto argmax(Source&& source, int axis = -1) { 
-    assert(axis == -1 && "Axis different from last one not supported yet.");
+    assert(axis == -1 && "Axis different from default not working in argmax. Open a PR if you find the issue.");
     return Reduction<Argmax, Source>{
         {indexing::normalize(axis, source.shape().rank())}, std::forward<Source>(source) 
     };
@@ -140,7 +140,7 @@ constexpr auto argmax(Source&& source, int axis = -1) {
 
 template<Expression Source>
 constexpr auto argmin(Source&& source, int axis = -1) { 
-    assert(axis == -1 && "Axis different from last one not supported yet.");
+    assert(axis == -1 && "Axis different from default not working in argmin. Open a PR if you find the issue.");
     return Reduction<Argmin, Source>{ 
         {indexing::normalize(axis, source.shape().rank())}, std::forward<Source>(source) 
     };

@@ -112,12 +112,7 @@ public:
     
     bool is_initialized() const {
         return buffer_ ? true : false;
-    }
-  
-    auto source() const {
-        assert(buffer_ && "Cannot get resource of an initializer tensor.");
-        return buffer_->source();
-    }
+    } 
 
     Allocator const& allocator() const {
         assert(buffer_ && "Cannot get resource of an initializer tensor.");

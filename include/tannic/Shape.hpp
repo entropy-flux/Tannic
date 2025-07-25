@@ -154,8 +154,7 @@ constexpr bool operator==(Shape const& first, Shape const& second) {
         if (first[dimension] != second[dimension]) return false;
     }
     return true;
-} 
-
+}  
 
 inline std::ostream& operator<<(std::ostream& os, Shape const& shape) {
     os << "Shape(";

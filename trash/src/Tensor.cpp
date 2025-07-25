@@ -131,7 +131,7 @@ void print(const tensor_t* tensor) {
     std::cout << tensor;
 } 
 
-static inline tensor_t c_tensor_t(Tensor const& tensor) {
+static inline tensor_t structure(Tensor const& tensor) {
     return tensor_t{
         .rank = tensor.rank(),
         .address = reinterpret_cast<void*>(tensor.bytes()),
@@ -142,7 +142,7 @@ static inline tensor_t c_tensor_t(Tensor const& tensor) {
 }
 
 std::ostream& operator<<(std::ostream& ostream, Tensor tensor) {
-    tensor_t ctensor = c_tensor_t(tensor);
+    tensor_t ctensor = structure(tensor);
     ostream << &ctensor;
     return ostream;
 }

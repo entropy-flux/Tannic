@@ -5,7 +5,7 @@
 
 namespace tannic { 
 
-static inline tensor_t c_tensor_t(Tensor const& tensor) {
+static inline tensor_t structure(Tensor const& tensor) {
     return tensor_t{
         .rank = tensor.rank(),
         .address = reinterpret_cast<void*>(tensor.bytes()),
@@ -23,9 +23,9 @@ static inline bool is_transposed(Tensor const& tensor) {
 
 void expression::Composition::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
     output.initialize(); 
-    tensor_t src1 = c_tensor_t(first);
-    tensor_t src2 = c_tensor_t(second);
-    tensor_t dst = c_tensor_t(output); 
+    tensor_t src1 = structure(first);
+    tensor_t src2 = structure(second);
+    tensor_t dst = structure(output); 
     cpu::gemm(&src1, &src2, &dst, is_transposed(first), is_transposed(second));
 }
 

@@ -23,8 +23,10 @@
 #ifdef __cplusplus
 #include <cstdint>
 #include <cstddef>
+
 namespace tannic {
 extern "C" {
+
 #else
 #include <stdint.h>
 #include <stddef.h>

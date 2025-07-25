@@ -1,12 +1,12 @@
 #include <stdio.h>
 
 struct host_t {
-    enum flags { 
+    enum traits { 
         PAGGED = 1 << 0,
         PINNED = 1 << 1,
         MAPPED = 1 << 2
     };
-    flags flag;
+    traits flag;
 };
 
 struct device_t {
@@ -34,10 +34,10 @@ void print_device_flags(struct device_t d) {
 }
 
 int main() {
-    host_t h = { static_cast<host_t::flags>(host_t::PAGGED | host_t::MAPPED) };
+    host_t h = { static_cast<host_t::traits>(host_t::PAGGED | host_t::MAPPED) };
     print_host_flags(h);
 
-    h.flag = static_cast<host_t::flags>(h.flag | host_t::PINNED);  
+    h.flag = static_cast<host_t::traits>(h.flag | host_t::PINNED);  
     print_host_flags(h);  
 
     if (h.flag & host_t::MAPPED) {

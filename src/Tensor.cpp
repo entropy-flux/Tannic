@@ -8,25 +8,13 @@
 namespace tannic {
 
 void tannic::Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {      
-    std::byte* target = static_cast<std::byte*>(buffer_->address()) + offset;  
-    if (source() == HOST) {
-        std::memcpy(target, value, dsizeof(dtype_));
-    } 
-    
-    else {
-        throw std::runtime_error("copy not implemented for this resource");
-    }
+    std::byte* target = static_cast<std::byte*>(buffer_->address()) + offset;   
+    std::memcpy(target, value, dsizeof(dtype_)); 
 } 
 
 bool tannic::Tensor::compare(std::byte const* value, std::ptrdiff_t offset) const {  
-    std::byte const* target = static_cast<std::byte const*>(buffer_->address()) + offset; 
-    if (source() == HOST) {
-        return std::memcmp(value, target, dsizeof(dtype_)) == 0;
-    } 
-    
-    else {
-        throw std::runtime_error("copy not implemented for this resource");
-    }
+    std::byte const* target = static_cast<std::byte const*>(buffer_->address()) + offset;  
+    return std::memcmp(value, target, dsizeof(dtype_)) == 0;  
 } 
  
 static void print(std::ostream& ostream, void* address, type type) {
@@ -131,7 +119,7 @@ void print(const tensor_t* tensor) {
     std::cout << tensor;
 } 
 
-static inline tensor_t c_tensor_t(Tensor const& tensor) {
+static inline tensor_t structure(Tensor const& tensor) {
     return tensor_t{
         .rank = tensor.rank(),
         .address = reinterpret_cast<void*>(tensor.bytes()),
@@ -142,7 +130,7 @@ static inline tensor_t c_tensor_t(Tensor const& tensor) {
 }
 
 std::ostream& operator<<(std::ostream& ostream, Tensor tensor) {
-    tensor_t ctensor = c_tensor_t(tensor);
+    tensor_t ctensor = structure(tensor);
     ostream << &ctensor;
     return ostream;
 }

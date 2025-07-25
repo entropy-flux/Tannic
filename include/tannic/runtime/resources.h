@@ -21,34 +21,39 @@
 #ifdef __cplusplus
 #include <cstdint>
 #include <cstddef>
+
 namespace tannic {
 extern "C" {
+
 #else
 #include <stdint.h>
 #include <stddef.h>
-#endif
+#endif 
 
 enum environment {
     HOST,
     DEVICE
 };
+
+enum host {
+    PAGEABLE = 1 << 0, 
+    PINNED   = 1 << 1, 
+    MAPPED   = 1 << 2      
+};
+
+enum device {
+    SYNC  = 1 << 0,  
+    ASYNC = 1 << 1,  
+};
  
 struct host_t {
-    enum flags { 
-        PAGEABLE = 1 << 0,
-        PINNED = 1 << 1
-    };
-    flags flag;
+    enum host traits;
 };
 
 struct device_t {
     int id;
-    enum flags {
-        SYNC = 1 << 0,
-        ASYNC = 1 << 1, 
-    };
-    flags flag;
-};
+    enum device traits;
+}; 
 
 struct allocator_t { 
     enum environment environment;
@@ -56,7 +61,7 @@ struct allocator_t {
         struct host_t host;
         struct device_t device;
     } resource;
-};    
+};
 
 #ifdef __cplusplus
 }

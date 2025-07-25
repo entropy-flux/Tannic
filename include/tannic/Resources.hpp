@@ -23,8 +23,7 @@
 #include <cstddef>
 #include <span>
 #include <vector>
-#include <variant>  
-#include "runtime/resources.h"
+#include <variant>   
 
 namespace tannic {
 
@@ -35,14 +34,42 @@ public:
     void deallocate(void* address, std::size_t nbytes) const;
     int id() const { return -1; } 
 
+    bool pageable() const {
+        return pageable_;
+    }
+
     bool pinned() const {
         return pinned_;
     }
 
 private:
+    bool pageable_ = true;
     bool pinned_ = false;
-};
- 
+};  
+
+class Devices {
+private:
+    int count_ = 0; 
+    Devices();
+
+public: 
+    Devices(const Devices&) = delete;
+    Devices& operator=(const Devices&) = delete;
+    Devices(Devices&&) = delete;
+    Devices& operator=(Devices&&) = delete; 
+    ~Devices() = default;
+
+    static Devices& instance() {
+        static Devices instance;
+        return instance;
+    }
+
+    static int count() {
+        Devices& devices = instance();
+        return devices.count_;
+    } 
+}; 
+
 class Device {
 public: 
     Device(int id = 0);

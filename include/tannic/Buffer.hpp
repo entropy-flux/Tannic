@@ -18,8 +18,7 @@
 #ifndef BUFFER_HPP
 #define BUFFER_HPP
  
-#include <cstddef>  
-#include "runtime/resources.h"
+#include <cstddef>   
 #include "Resources.hpp" 
 
 namespace tannic {
@@ -35,8 +34,7 @@ public:
     void* address();
     const void* address() const;
     std::size_t nbytes() const;
-    Allocator const& allocator() const;
-    environment source() const;
+    Allocator const& allocator() const; 
 
 private:  
     void* address_ = nullptr;

@@ -6,7 +6,7 @@
 
 namespace tannic { 
 
-static inline tensor_t c_tensor_t(Tensor const& tensor, bool is_transposed = false) {
+static inline tensor_t structure(Tensor const& tensor, bool is_transposed = false) {
     return tensor_t{
         .rank = tensor.rank(),
         .address = reinterpret_cast<void*>(tensor.bytes()),
@@ -26,9 +26,9 @@ void expression::Composition::forward(Tensor const& first, Tensor const& second,
     output.initialize();
     bool src1_transposed = is_transposed(first);
     bool src2_transposed = is_transposed(second);
-    tensor_t src1 = c_tensor_t(first, src1_transposed);
-    tensor_t src2 = c_tensor_t(second, src1_transposed);
-    tensor_t dst = c_tensor_t(output); 
+    tensor_t src1 = structure(first, src1_transposed);
+    tensor_t src2 = structure(second, src1_transposed);
+    tensor_t dst = structure(output); 
     bool success = cpu::matmul[cpu::index(first.dtype(), second.dtype())](&src1, &src2, &dst, is_transposed(first), is_transposed(second)); 
     if (!success) {
         throw std::runtime_error(
@@ -41,8 +41,8 @@ void expression::Composition::forward(Tensor const& first, Tensor const& second,
 
 void expression::Argmax::forward(Tensor const& source, Tensor& target) const { 
     target.initialize();
-    tensor_t src = c_tensor_t(source); 
-    tensor_t dst = c_tensor_t(target); 
+    tensor_t src = structure(source); 
+    tensor_t dst = structure(target); 
     bool success = cpu::argmax[cpu::index(source.dtype())](&src, &dst, dim, keepdim);
         if (!success) {
         throw std::runtime_error(
@@ -53,8 +53,8 @@ void expression::Argmax::forward(Tensor const& source, Tensor& target) const {
 }
 
 void expression::Argmin::forward(Tensor const& source, Tensor& target) const { 
-    tensor_t src = c_tensor_t(source); 
-    tensor_t dst = c_tensor_t(target); 
+    tensor_t src = structure(source); 
+    tensor_t dst = structure(target); 
     bool success = cpu::argmin[cpu::index(source.dtype())](&src, &dst, dim, keepdim);
         if (!success) {
         throw std::runtime_error(

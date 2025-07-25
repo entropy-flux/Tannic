@@ -53,7 +53,7 @@ constexpr inline std::string dnameof(type type) {
     }
 } 
 
-constexpr inline uint8_t decodeof(type type) {
+constexpr inline uint8_t dcodeof(type type) {
     switch (type) { 
         case int8:      return 12;
         case int16:     return 13;
