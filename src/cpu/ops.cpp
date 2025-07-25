@@ -76,6 +76,23 @@ void binaryOpKernel(
     }
 }  
 
+void defaultUnaryKernel(
+    const void* src_ptr, const size_t* src_sz, const size_t* src_ne,
+    void* dst_ptr, const size_t* dst_sz, const size_t* dst_ne,
+    uint8_t rank, size_t* cnt
+) {
+    throw std::runtime_error("Not supported dtype");
+};
+
+void defaultBinaryKernel( 
+    const void* src1_ptr, const size_t* src1_sz, const size_t* src1_ne,
+    const void* src2_ptr, const size_t* src2_sz, const size_t* src2_ne,
+    void* dst_ptr, const size_t* dst_sz, const size_t* dst_ne,
+    uint8_t rank, size_t* cnt
+) {
+    throw std::runtime_error("Not supported dtype");
+}; 
+
 struct Neg { 
     template<class A>
     constexpr auto operator()(A&& a) const noexcept(noexcept(-a)) {
@@ -124,24 +141,7 @@ using BinaryKernel = void(*)(
     const void* src2_ptr, const size_t* src2_sz, const size_t* src2_ne,
     void* dst_ptr, const size_t* dst_sz, const size_t* dst_ne,
     uint8_t rank, size_t* cnt
-);  
-
-constexpr void defaultUnaryKernel(
-    const void* src_ptr, const size_t* src_sz, const size_t* src_ne,
-    void* dst_ptr, const size_t* dst_sz, const size_t* dst_ne,
-    uint8_t rank, size_t* cnt
-) {
-    throw std::runtime_error("Not supported dtype");
-};
-
-constexpr void defaultBinaryKernel( 
-    const void* src1_ptr, const size_t* src1_sz, const size_t* src1_ne,
-    const void* src2_ptr, const size_t* src2_sz, const size_t* src2_ne,
-    void* dst_ptr, const size_t* dst_sz, const size_t* dst_ne,
-    uint8_t rank, size_t* cnt
-) {
-    throw std::runtime_error("Not supported dtype");
-}; 
+);   
 
 constexpr auto neg = []() {  
     std::array<UnaryKernel, index(TYPES)> table; table.fill(defaultUnaryKernel);
@@ -152,8 +152,7 @@ constexpr auto neg = []() {
     table[index(float32)] = unaryOpKernel<float, float, Neg>;
     table[index(float64)] = unaryOpKernel<double, double, Neg>;
     return table;
-}();
-
+}(); 
 
 constexpr auto add = []() {
     std::array<BinaryKernel, index(TYPES, TYPES)> table; table.fill(defaultBinaryKernel);
@@ -187,8 +186,7 @@ constexpr auto add = []() {
     table[index(float64, float32)] = binaryOpKernel<double, float, double, Add>;
     table[index(float64, float64)] = binaryOpKernel<double, double, double, Add>;
     return table;
-}(); 
-
+}();  
 
 constexpr auto sub = []() {
     std::array<BinaryKernel, index(TYPES, TYPES)> table; table.fill(defaultBinaryKernel);
@@ -222,8 +220,7 @@ constexpr auto sub = []() {
     table[index(float64, float32)] = binaryOpKernel<double, float, double, Sub>;
     table[index(float64, float64)] = binaryOpKernel<double, double, double, Sub>;
     return table;
-}();
-
+}(); 
 
 constexpr auto mul = []() {
     std::array<BinaryKernel, index(TYPES, TYPES)> table; table.fill(defaultBinaryKernel);

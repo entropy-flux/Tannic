@@ -17,6 +17,7 @@ static inline tensor_t c_tensor_t(Tensor const& tensor) {
 void expression::Log::operator()(Tensor const& input, Tensor& output) const {  
     output.initialize();
     tensor_t src = c_tensor_t(input);
+    
     tensor_t dst = c_tensor_t(output);
     cpu::log(&src, &dst);
 }

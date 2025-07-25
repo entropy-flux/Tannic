@@ -76,8 +76,7 @@ Allocator const& Buffer::allocator() const {
 environment Buffer::source() const { 
     if (std::holds_alternative<Device>(allocator_)) {
         return DEVICE;
-    } 
-
+    }  
     else {
         return HOST;
     }

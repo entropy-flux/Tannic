@@ -80,16 +80,7 @@ void gemmKernel<double, double, double>(
 } 
 #endif
   
-using Kernel = void(*)(
-    bool transA, bool transB,
-    const void* A_ptr,
-    const void* B_ptr,
-    void* C_ptr,
-    int M, int N, int K,
-    int lda, int ldb, int ldc
-);       
-
-constexpr void defaultKernel(
+void defaultKernel(
     bool transA, bool transB,
     const void* A_ptr,
     const void* B_ptr,
@@ -99,6 +90,15 @@ constexpr void defaultKernel(
 ) {
     throw std::runtime_error("Not supported dtype");
 };
+
+using Kernel = void(*)(
+    bool transA, bool transB,
+    const void* A_ptr,
+    const void* B_ptr,
+    void* C_ptr,
+    int M, int N, int K,
+    int lda, int ldb, int ldc
+);        
  
 constexpr static inline auto index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
