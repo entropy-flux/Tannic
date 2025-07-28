@@ -13,8 +13,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
-
+// 
 
 #ifndef RESOURCES_HPP
 #define RESOURCES_HPP
@@ -72,13 +71,20 @@ public:
 
 class Device {
 public: 
-    Device(int id = 0);
+    Device(int id = 0, bool blocking = false);
     void* allocate(std::size_t nbytes) const;
     void deallocate(void* address, std::size_t nbytes) const; 
-    int id() const noexcept { return id_; }
+    int id() const noexcept { 
+        return id_; 
+    }
+    
+    bool blocking() const {
+        return blocking_;
+    }
 
 private:
     int id_ = 0;
+    bool blocking_ = false;
 };
  
 using Allocator = std::variant<Host, Device>;

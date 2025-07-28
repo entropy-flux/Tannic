@@ -1,0 +1,162 @@
+\doxysection{Reductions.\+hpp}
+\hypertarget{Reductions_8hpp_source}{}\label{Reductions_8hpp_source}\index{include/tannic/Reductions.hpp@{include/tannic/Reductions.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2025\ Eric\ Cardozo}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ REDUCTIONS\_HPP}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ REDUCTIONS\_HPP\ }}
+\DoxyCodeLine{00018\ \ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Concepts_8hpp}{Concepts.hpp}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Types_8hpp}{Types.hpp}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}Traits.hpp"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Shape_8hpp}{Shape.hpp}}"{}}\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Tensor_8hpp}{Tensor.hpp}}"{}}\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}Indexing.hpp"{}}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{namespace\ }tannic\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{namespace\ }expression\ \{}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Reducer,\ Expression\ Operand>}
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction}}\ \{}
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ Reducer\ reducer;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{typename}\ Trait<Operand>::Reference\ operand;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction}}(Reducer\ reducer,\ \textcolor{keyword}{typename}\ Trait<Operand>::Reference\ operand)}
+\DoxyCodeLine{00041\ \ \ \ \ :\ \ \ reducer(reducer)}
+\DoxyCodeLine{00042\ \ \ \ \ ,\ \ \ operand(operand)}
+\DoxyCodeLine{00043\ \ \ \ \ ,\ \ \ dtype\_(reducer.reduce(operand.dtype()))}
+\DoxyCodeLine{00044\ \ \ \ \ ,\ \ \ shape\_(reducer.reduce(operand.shape()))}
+\DoxyCodeLine{00045\ \ \ \ \ ,\ \ \ strides\_(reducer.reduce(operand.strides()))\ \{\}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ dtype()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ strides()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ std::ptrdiff\_t\ offset()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ forward()\textcolor{keyword}{\ const\ }\{\ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(dtype\_,\ shape\_,\ strides\_,\ offset());\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ reducer.forward(source,\ result);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00071\ \ \ \ \ type\ dtype\_;}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \};\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax}{Argmax}}\ \{\ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ axis;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ reduce(type\ dtype)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int64;}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ reduce(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ assert(shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}()\ >=\ 1\ \&\&\ \textcolor{stringliteral}{"{}Argmax\ requires\ at\ least\ 1D\ tensor"{}});}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}(shape.begin(),\ shape.end()-\/1);}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ reduce(\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ strides)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strides.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}()\ ==\ 1)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}();}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ uint8\_t\ rank\ =\ strides.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}()\ -\/\ 1;\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ std::vector<std::size\_t>\ sizes(rank);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(uint8\_t\ dimension\ =\ 0;\ dimension\ <\ rank\ -\/\ 2;\ ++dimension)\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ sizes[dimension]\ =\ strides[dimension];}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ sizes[rank\ -\/\ 1]\ =\ strides.\mbox{\hyperlink{classtannic_1_1Strides_ae12a35e163505895661333ff7f694162}{back}}();}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}(sizes.begin(),\ sizes.end());}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin}{Argmin}}\ \{\ \ \ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{int}\ axis;}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ reduce(type\ dtype)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ int64;}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ reduce(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ assert(shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}()\ >=\ 1\ \&\&\ \textcolor{stringliteral}{"{}Argmax\ requires\ at\ least\ 1D\ tensor"{}});}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}(shape.begin(),\ shape.end()-\/1);}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ reduce(\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ strides)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strides.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}()\ ==\ 1)\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}();}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ uint8\_t\ rank\ =\ strides.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}()\ -\/\ 1;\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ std::vector<std::size\_t>\ sizes(rank);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(uint8\_t\ dimension\ =\ 0;\ dimension\ <\ rank\ -\/\ 2;\ ++dimension)\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ sizes[dimension]\ =\ strides[dimension];}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ sizes[rank\ -\/\ 1]\ =\ strides.\mbox{\hyperlink{classtannic_1_1Strides_ae12a35e163505895661333ff7f694162}{back}}();}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}(sizes.begin(),\ sizes.end());}
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \};\ }
+\DoxyCodeLine{00132\ \ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{template}<Expression\ Source>}
+\DoxyCodeLine{00134\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ argmax(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1)\ \{\ }
+\DoxyCodeLine{00135\ \ \ \ \ assert(axis\ ==\ -\/1\ \&\&\ \textcolor{stringliteral}{"{}Axis\ different\ from\ default\ not\ working\ in\ argmax.\ Open\ a\ PR\ if\ you\ find\ the\ issue."{}});}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmax,\ Source>}}\{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \{indexing::normalize(axis,\ source.shape().rank())\},\ std::forward<Source>(source)\ }
+\DoxyCodeLine{00138\ \ \ \ \ \};}
+\DoxyCodeLine{00139\ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{template}<Expression\ Source>}
+\DoxyCodeLine{00142\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ argmin(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1)\ \{\ }
+\DoxyCodeLine{00143\ \ \ \ \ assert(axis\ ==\ -\/1\ \&\&\ \textcolor{stringliteral}{"{}Axis\ different\ from\ default\ not\ working\ in\ argmin.\ Open\ a\ PR\ if\ you\ find\ the\ issue."{}});}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{return}\ Reduction<Argmin,\ Source>\{\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \{indexing::normalize(axis,\ source.shape().rank())\},\ std::forward<Source>(source)\ }
+\DoxyCodeLine{00146\ \ \ \ \ \};}
+\DoxyCodeLine{00147\ \}}
+\DoxyCodeLine{00148\ \ }
+\DoxyCodeLine{00149\ \}\ \textcolor{comment}{//\ namespace\ expression}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{keyword}{using\ }expression::argmax;}
+\DoxyCodeLine{00152\ \textcolor{keyword}{using\ }expression::argmin;}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

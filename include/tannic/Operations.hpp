@@ -95,8 +95,8 @@ public:
     :   operation(operation)
     ,   operand(operand)
     ,   cooperand(cooperand)
-    ,   dtype_(operation::promote(operand.dtype(), cooperand.dtype()))
-    ,   shape_(operation::broadcast(operand.shape(), cooperand.shape()))
+    ,   dtype_(promote(operand.dtype(), cooperand.dtype()))
+    ,   shape_(broadcast(operand.shape(), cooperand.shape()))
     ,   strides_(shape_)
     {} 
 

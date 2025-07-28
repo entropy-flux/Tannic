@@ -1,0 +1,100 @@
+\doxysection{Resources.\+hpp}
+\hypertarget{Resources_8hpp_source}{}\label{Resources_8hpp_source}\index{include/tannic/Resources.hpp@{include/tannic/Resources.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2025\ Eric\ Cardozo}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ This\ file\ is\ part\ of\ the\ Tannic\ Tensor\ Library.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ RESOURCES\_HPP}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ RESOURCES\_HPP}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <span>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <variant>}\ \ \ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }tannic\ \{}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Host}{Host}}\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Host}{Host}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}*\ allocate(std::size\_t\ nbytes)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ deallocate(\textcolor{keywordtype}{void}*\ address,\ std::size\_t\ nbytes)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ id()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ -\/1;\ \}\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ pageable()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pageable\_;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{bool}\ pinned()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pinned\_;}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ pageable\_\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ pinned\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00047\ \};\ \ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\ \{}
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ count\_\ =\ 0;\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}(\mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\ operator=(\mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\&)\ =\ \textcolor{keyword}{delete};\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{\string~Devices}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\ instance()\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\ instance;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ count()\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\ devices\ =\ instance();}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ devices.count\_;}
+\DoxyCodeLine{00069\ \ \ \ \ \}\ }
+\DoxyCodeLine{00070\ \};\ }
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Device}{Device}}\ \{}
+\DoxyCodeLine{00073\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Device}{Device}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ =\ 0,\ \textcolor{keywordtype}{bool}\ blocking\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}*\ allocate(std::size\_t\ nbytes)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ deallocate(\textcolor{keywordtype}{void}*\ address,\ std::size\_t\ nbytes)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ id()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ id\_;\ }
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ blocking()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ blocking\_;}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ id\_\ =\ 0;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ blocking\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ \ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{using\ }Allocator\ =\ std::variant<Host,\ Device>;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RESOURCES\_HPP}}
+
+\end{DoxyCode}

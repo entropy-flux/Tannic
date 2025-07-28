@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 project(TANNIC LANGUAGES CXX)
-
-
+ 
 include(CheckLanguage)
 check_language(CUDA)
 if(CMAKE_CUDA_COMPILER)
@@ -28,12 +27,13 @@ endif()
 include_directories(include/tannic)
 include_directories(src)
 
+file(GLOB_RECURSE SRC_CPP_FILES src/*.cpp)
+set(SRC_FILES ${SRC_CPP_FILES})
 
-file(GLOB_RECURSE SRC_FILES
-    src/*.cpp
-    src/*.cu
-)
-
+if(CUDA_ENABLED)
+    file(GLOB_RECURSE SRC_CU_FILES src/*.cu)
+    list(APPEND SRC_FILES ${SRC_CU_FILES})
+endif() 
 
 find_package(OpenBLAS QUIET)
 
@@ -43,16 +43,29 @@ if(OpenBLAS_FOUND)
     include_directories(${OpenBLAS_INCLUDE_DIRS})
 else()
     message(STATUS "OpenBLAS not found, continuing without it.")
-endif()
-
+endif() 
 
 if(SRC_FILES)
     add_library(tannic STATIC ${SRC_FILES})
     target_include_directories(tannic PUBLIC include)
 
     if(CUDA_ENABLED)
-        set_target_properties(tannic PROPERTIES CUDA_SEPARABLE_COMPILATION ON) 
-        target_link_libraries(tannic PUBLIC CUDA::cudart)
+        set(CMAKE_CUDA_STANDARD 20)
+        set(CMAKE_CUDA_ARCHITECTURES 86)
+
+        set_target_properties(tannic PROPERTIES
+            CUDA_SEPARABLE_COMPILATION ON
+            POSITION_INDEPENDENT_CODE ON
+        )
+ 
+        target_link_libraries(tannic
+            PUBLIC
+                CUDA::cudart_static
+                dl
+                pthread
+                rt
+        )
+
         target_compile_definitions(tannic PUBLIC CUDA)
     endif()
 

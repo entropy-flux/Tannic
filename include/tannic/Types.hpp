@@ -17,6 +17,51 @@
  
 #ifndef TYPES_HPP
 #define TYPES_HPP
+ 
+/**
+ * @file Types.hpp
+ * @author Eric Cardozo
+ * @date 2025
+ * @brief Core type system for the Tannic Tensor Library.
+ *
+ * Defines the fundamental data types supported by tensors and provides utilities for: 
+ * 
+ * ### Supported Data Types
+ * 
+ * The `type` enum defines all supported numeric types:
+ * ```cpp
+ * enum type {
+ *     none,       // Invalid type
+ *     int8,       // 8-bit integer
+ *     int16,      // 16-bit integer
+ *     int32,      // 32-bit integer
+ *     int64,      // 64-bit integer
+ *     float32,    // 32-bit float
+ *     float64,    // 64-bit float (double)
+ *     complex64,  // 64-bit complex (two float32)
+ *     complex128, // 128-bit complex (two float64)
+ *     TYPES       // Count of types
+ * };
+ * ```
+ *
+ * ### Key Functions
+ * 
+ * - `dsizeof(type)`: Returns byte size of a type
+ * 
+ * - `dnameof(type)`: Returns string name of a type
+ * 
+ * - `dcodeof(type)`: Returns numeric code for serialization
+ * 
+ * - `dtypeof(code)`: Converts code back to type enum
+ * 
+ * - `operator<<`: Stream output support
+ *  
+ * ### Example
+ * 
+ * std::cout << dnameof(float32); // "float32"
+ * std::cout << dsizeof(complex128); // 16
+ */
+
 
 #include <iostream>
 #include <cstdint>  
@@ -25,6 +70,21 @@
 
 namespace tannic {
 
+/**
+ * @brief Returns the size in bytes of a given tensor data type.
+ * @param type The data type to query
+ * @return Size of the type in bytes (0 for `none`)
+ * 
+ * @note For complex types:
+ * - `complex64` returns 8 (2 × float32)
+ * - `complex128` returns 16 (2 × float64)
+ * 
+ * #### Example:
+ * ```cpp
+ * dsizeof(float32);  // returns 4
+ * dsizeof(complex64); // returns 8
+ * ```
+ */
 constexpr inline std::size_t dsizeof(type type) {
     switch (type) { 
         case int8:      return sizeof(int8_t);
@@ -39,6 +99,18 @@ constexpr inline std::size_t dsizeof(type type) {
     }
 }
 
+
+/**
+ * @brief Returns the string name of a given tensor data type.
+ * @param type The data type to query
+ * @return Human-readable type name ("none" for invalid types)
+ * 
+ * #### Example:
+ * ```cpp
+ * std::cout << dnameof(int32) << std::endl   // prints "int32"
+ * std::cout << dnameof(complex128); // prints "complex128"
+ * ```
+ */
 constexpr inline std::string dnameof(type type) {
     switch (type) { 
         case int8:       return "int8";
@@ -53,6 +125,27 @@ constexpr inline std::string dnameof(type type) {
     }
 } 
 
+/**
+ * @brief Returns the numeric code used for serialization of a data type.
+ * @param type The data type to query
+ * @return Unique numeric code (0 for `none`)
+ * 
+ * @note Code values follow simple pattern:
+ * 
+ * - Integers: 10-19 (integer dtypes)
+ * 
+ * - Floats: 20-29 (floating point dtypes)
+ * 
+ * - Complex: 30-39 (complex) 
+ * 
+ * While this grouping is intentional, it's not strictly enforced. When adding new types:
+ * 
+ * 1. Maintain this pattern where possible
+ * 
+ * 2. Document any deviations
+ * 
+ * 3. Keep codes unique across all types
+ */
 constexpr inline uint8_t dcodeof(type type) {
     switch (type) { 
         case int8:      return 12;
@@ -67,6 +160,17 @@ constexpr inline uint8_t dcodeof(type type) {
     }
 }
 
+/**
+ * @brief Converts a numeric type code back to its corresponding type enum. Used for
+ * deserialization.
+ * @param code The numeric type code to convert (as returned by dcodeof())
+ * @return Corresponding type enum value (none for invalid codes)
+ * 
+ * @note This is the inverse operation of dcodeof(). The code values follow the same pattern.
+ *  
+ * @see dcodeof() for the reverse conversion
+ * 
+ */
 constexpr inline type dtypeof(uint8_t code) {
     switch (code) {
         case 12: return int8;

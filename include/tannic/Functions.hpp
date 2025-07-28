@@ -23,7 +23,7 @@
 #include "Tensor.hpp" 
 
 namespace tannic {
-namespace expression {
+namespace function {
 
 template<class Functor, Expression Operand>
 class Function {
@@ -150,18 +150,18 @@ template<Expression Operand>
 constexpr auto tanh(Operand&& operand) {
     return Function<Tanh, Operand>({}, std::forward<Operand>(operand));
 }
-} // namespace expression 
+} // namespace functions 
 
-using expression::log;
-using expression::exp;
-using expression::sqrt;
-using expression::abs;
-using expression::sin;
-using expression::cos;
-using expression::tan;
-using expression::sinh;
-using expression::cosh;
-using expression::tanh;
+using function::log;
+using function::exp;
+using function::sqrt;
+using function::abs;
+using function::sin;
+using function::cos;
+using function::tan;
+using function::sinh;
+using function::cosh;
+using function::tanh;
 
 } //namespace tannic
 

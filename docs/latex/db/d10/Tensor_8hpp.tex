@@ -1,0 +1,73 @@
+\doxysection{include/tannic/\+Tensor.hpp File Reference}
+\hypertarget{Tensor_8hpp}{}\label{Tensor_8hpp}\index{include/tannic/Tensor.hpp@{include/tannic/Tensor.hpp}}
+
+
+Core multidimensional tensor class for the Tannic Tensor Library.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include "{}Types.\+hpp"{}}\newline
+{\ttfamily \#include "{}Shape.\+hpp"{}}\newline
+{\ttfamily \#include "{}Strides.\+hpp"{}}\newline
+{\ttfamily \#include "{}Buffer.\+hpp"{}}\newline
+{\ttfamily \#include "{}Slices.\+hpp"{}}\newline
+{\ttfamily \#include "{}Views.\+hpp"{}}\newline
+{\ttfamily \#include "{}Operations.\+hpp"{}}\newline
+Include dependency graph for Tensor.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d4c/Tensor_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/db8/Tensor_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtannic_1_1Tensor}{tannic\+::\+Tensor}}
+\begin{DoxyCompactList}\small\item\em A multidimensional, strided tensor data structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{Tensor_8hpp_a1a847102d1be0f3bdc61821df66844c0}\label{Tensor_8hpp_a1a847102d1be0f3bdc61821df66844c0} 
+std\+::ostream \& {\bfseries tannic\+::operator$<$$<$} (std\+::ostream \&ostream, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&tensor)
+\item 
+\Hypertarget{Tensor_8hpp_abd01ed73f7e0facffaec36ce3e22cfd9}\label{Tensor_8hpp_abd01ed73f7e0facffaec36ce3e22cfd9} 
+{\footnotesize template$<$Expression Source$>$ }\\std\+::ostream \& {\bfseries tannic\+::operator$<$$<$} (std\+::ostream \&ostream, Source source)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core multidimensional tensor class for the Tannic Tensor Library. 
+
+\begin{DoxyAuthor}{Author}
+Eric Cardozo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+Defines {\ttfamily \doxylink{classtannic_1_1Tensor}{tannic\+::\+Tensor}}, the primary data structure of the library, supporting\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Dynamic dtypes}}\+: No need for templates, data types can be passed to tensors as arguments to simplify serialization and IO operations.
+\item {\bfseries{Memory management}}\+: Host(\+CPU)/\+Device(eg. CUDA) allocation support.
+\item {\bfseries{Math operators and functions}}\+: Math operators like +,\texorpdfstring{$\ast$}{*},-\/ and matmul supported, for both CPU and CUDA tensors.
+\item {\bfseries{Slicing/views}}\+: Python-\/like indexing ({\ttfamily operator\mbox{[}\mbox{]}}, {\ttfamily range}, {\ttfamily transpose}) with negative index.
+\item {\bfseries{Eager evaluation}}\+: Eager execution but allowing compile time optimizations like expression fusion using templates.
+\item {\bfseries{Strided storage}}\+: Non-\/contiguous layouts via {\ttfamily Shape} and {\ttfamily Strides}. ~\newline
+
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See also}
+Types.\+hpp(data types), \doxylink{Resources_8hpp_source}{Resources.\+hpp} (Memory Managment), \doxylink{Functions_8hpp_source}{Functions.\+hpp} (Supported functions) 
+\end{DoxySeeAlso}

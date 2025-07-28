@@ -1,3 +1,4 @@
-g++ -std=c++23 -Iinclude -Ibuild main.cpp -Lbuild -ltannic -lopenblas -o main
+mkdir -p build && cd build 
+cmake -DTANNIC_BUILD_MAIN=ON ..
+cmake --build . 
 ./main
-rm main

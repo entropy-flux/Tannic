@@ -1,0 +1,195 @@
+\doxysection{include/tannic/\+Types.hpp File Reference}
+\hypertarget{Types_8hpp}{}\label{Types_8hpp}\index{include/tannic/Types.hpp@{include/tannic/Types.hpp}}
+
+
+Core type system for the Tannic Tensor Library.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include "{}runtime/types.\+h"{}}\newline
+Include dependency graph for Types.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/dd0/Types_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d7d/Types_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{Types_8hpp_aee5ef48cb75e37f65cc11ef67fbb9d25}{tannic\+::dsizeof}} (type type)
+\begin{DoxyCompactList}\small\item\em Returns the size in bytes of a given tensor data type. \end{DoxyCompactList}\item 
+constexpr std\+::string \mbox{\hyperlink{Types_8hpp_a1f6a29013277d9209efa113453cf0b2e}{tannic\+::dnameof}} (type type)
+\begin{DoxyCompactList}\small\item\em Returns the string name of a given tensor data type. \end{DoxyCompactList}\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{Types_8hpp_a7cc5a20569f733cb88c508ebb9119363}{tannic\+::dcodeof}} (type type)
+\begin{DoxyCompactList}\small\item\em Returns the numeric code used for serialization of a data type. \end{DoxyCompactList}\item 
+constexpr type \mbox{\hyperlink{Types_8hpp_a6e357abf60406726c8b595658e93e110}{tannic\+::dtypeof}} (uint8\+\_\+t code)
+\begin{DoxyCompactList}\small\item\em Converts a numeric type code back to its corresponding type enum. \end{DoxyCompactList}\item 
+\Hypertarget{Types_8hpp_a1c1a48f353ac51e8ae5affa4dccd2e4a}\label{Types_8hpp_a1c1a48f353ac51e8ae5affa4dccd2e4a} 
+std\+::ostream \& {\bfseries tannic\+::operator$<$$<$} (std\+::ostream \&ostream, type type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core type system for the Tannic Tensor Library. 
+
+\begin{DoxyAuthor}{Author}
+Eric Cardozo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+Defines the fundamental data types supported by tensors and provides utilities for\+:\hypertarget{Types_8hpp_autotoc_md17}{}\doxysubsubsubsection{\texorpdfstring{Supported Data Types}{Supported Data Types}}\label{Types_8hpp_autotoc_md17}
+The {\ttfamily type} enum defines all supported numeric types\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{enum}\ type\ \{}
+\DoxyCodeLine{\ \ \ \ none,\ \ \ \ \ \ \ \textcolor{comment}{//\ Invalid\ type}}
+\DoxyCodeLine{\ \ \ \ int8,\ \ \ \ \ \ \ \textcolor{comment}{//\ 8-\/bit\ integer}}
+\DoxyCodeLine{\ \ \ \ int16,\ \ \ \ \ \ \textcolor{comment}{//\ 16-\/bit\ integer}}
+\DoxyCodeLine{\ \ \ \ int32,\ \ \ \ \ \ \textcolor{comment}{//\ 32-\/bit\ integer}}
+\DoxyCodeLine{\ \ \ \ int64,\ \ \ \ \ \ \textcolor{comment}{//\ 64-\/bit\ integer}}
+\DoxyCodeLine{\ \ \ \ float32,\ \ \ \ \textcolor{comment}{//\ 32-\/bit\ float}}
+\DoxyCodeLine{\ \ \ \ float64,\ \ \ \ \textcolor{comment}{//\ 64-\/bit\ float\ (double)}}
+\DoxyCodeLine{\ \ \ \ complex64,\ \ \textcolor{comment}{//\ 64-\/bit\ complex\ (two\ float32)}}
+\DoxyCodeLine{\ \ \ \ complex128,\ \textcolor{comment}{//\ 128-\/bit\ complex\ (two\ float64)}}
+\DoxyCodeLine{\ \ \ \ TYPES\ \ \ \ \ \ \ \textcolor{comment}{//\ Count\ of\ types}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{Types_8hpp_autotoc_md18}{}\doxysubsubsubsection{\texorpdfstring{Key Functions}{Key Functions}}\label{Types_8hpp_autotoc_md18}
+
+\begin{DoxyItemize}
+\item {\ttfamily dsizeof(type)}\+: Returns byte size of a type
+\item {\ttfamily dnameof(type)}\+: Returns string name of a type
+\item {\ttfamily dcodeof(type)}\+: Returns numeric code for serialization
+\item {\ttfamily dtypeof(code)}\+: Converts code back to type enum
+\item {\ttfamily operator\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}\+: Stream output support
+\end{DoxyItemize}\hypertarget{Types_8hpp_autotoc_md19}{}\doxysubsubsubsection{\texorpdfstring{Example}{Example}}\label{Types_8hpp_autotoc_md19}
+std\+::cout \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} dnameof(float32); // "{}float32"{} std\+::cout \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} dsizeof(complex128); // 16 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Types_8hpp_a7cc5a20569f733cb88c508ebb9119363}\label{Types_8hpp_a7cc5a20569f733cb88c508ebb9119363} 
+\index{Types.hpp@{Types.hpp}!dcodeof@{dcodeof}}
+\index{dcodeof@{dcodeof}!Types.hpp@{Types.hpp}}
+\doxysubsubsection{\texorpdfstring{dcodeof()}{dcodeof()}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t tannic\+::dcodeof (\begin{DoxyParamCaption}\item[{type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the numeric code used for serialization of a data type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The data type to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unique numeric code (0 for {\ttfamily none})
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Code values follow simple pattern\+:
+\end{DoxyNote}
+
+\begin{DoxyItemize}
+\item Integers\+: 10-\/19 (integer dtypes)
+\item Floats\+: 20-\/29 (floating point dtypes)
+\item Complex\+: 30-\/39 (complex)
+\end{DoxyItemize}
+
+While this grouping is intentional, it\textquotesingle{}s not strictly enforced. When adding new types\+:
+
+
+\begin{DoxyEnumerate}
+\item Maintain this pattern where possible
+\item Document any deviations
+\item Keep codes unique across all types 
+\end{DoxyEnumerate}\Hypertarget{Types_8hpp_a1f6a29013277d9209efa113453cf0b2e}\label{Types_8hpp_a1f6a29013277d9209efa113453cf0b2e} 
+\index{Types.hpp@{Types.hpp}!dnameof@{dnameof}}
+\index{dnameof@{dnameof}!Types.hpp@{Types.hpp}}
+\doxysubsubsection{\texorpdfstring{dnameof()}{dnameof()}}
+{\footnotesize\ttfamily constexpr std\+::string tannic\+::dnameof (\begin{DoxyParamCaption}\item[{type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the string name of a given tensor data type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The data type to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Human-\/readable type name ("{}none"{} for invalid types)
+\end{DoxyReturn}
+\hypertarget{Types_8hpp_autotoc_md21}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{Types_8hpp_autotoc_md21}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{Types_8hpp_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(int32)\ <<\ std::endl\ \ \ \textcolor{comment}{//\ prints\ "{}int32"{}}}
+\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{Types_8hpp_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(complex128);\ \textcolor{comment}{//\ prints\ "{}complex128"{}}}
+
+\end{DoxyCode}
+ \Hypertarget{Types_8hpp_aee5ef48cb75e37f65cc11ef67fbb9d25}\label{Types_8hpp_aee5ef48cb75e37f65cc11ef67fbb9d25} 
+\index{Types.hpp@{Types.hpp}!dsizeof@{dsizeof}}
+\index{dsizeof@{dsizeof}!Types.hpp@{Types.hpp}}
+\doxysubsubsection{\texorpdfstring{dsizeof()}{dsizeof()}}
+{\footnotesize\ttfamily constexpr std\+::size\+\_\+t tannic\+::dsizeof (\begin{DoxyParamCaption}\item[{type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the size in bytes of a given tensor data type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The data type to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size of the type in bytes (0 for {\ttfamily none})
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+For complex types\+:
+\begin{DoxyItemize}
+\item {\ttfamily complex64} returns 8 (2 × float32)
+\item {\ttfamily complex128} returns 16 (2 × float64)
+\end{DoxyItemize}
+\end{DoxyNote}
+\hypertarget{Types_8hpp_autotoc_md20}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{Types_8hpp_autotoc_md20}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{Types_8hpp_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(float32);\ \ \textcolor{comment}{//\ returns\ 4}}
+\DoxyCodeLine{\mbox{\hyperlink{Types_8hpp_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(complex64);\ \textcolor{comment}{//\ returns\ 8}}
+
+\end{DoxyCode}
+ \Hypertarget{Types_8hpp_a6e357abf60406726c8b595658e93e110}\label{Types_8hpp_a6e357abf60406726c8b595658e93e110} 
+\index{Types.hpp@{Types.hpp}!dtypeof@{dtypeof}}
+\index{dtypeof@{dtypeof}!Types.hpp@{Types.hpp}}
+\doxysubsubsection{\texorpdfstring{dtypeof()}{dtypeof()}}
+{\footnotesize\ttfamily constexpr type tannic\+::dtypeof (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Converts a numeric type code back to its corresponding type enum. 
+
+Used for deserialization. 
+\begin{DoxyParams}{Parameters}
+{\em code} & The numeric type code to convert (as returned by dcodeof()) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Corresponding type enum value (none for invalid codes)
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This is the inverse operation of dcodeof(). The code values follow the same pattern.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+dcodeof() for the reverse conversion 
+\end{DoxySeeAlso}

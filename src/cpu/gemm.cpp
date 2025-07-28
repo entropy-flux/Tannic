@@ -7,134 +7,197 @@
  
 template<typename S0, typename S1, typename D>
 void gemmKernel( 
-    bool transA, bool transB,
-    const void* A_ptr,
-    const void* B_ptr,
-    void* C_ptr,
-    int M, int N, int K,
-    int lda, int ldb, int ldc
-) { 
-    const S0* A = static_cast<const S0*>(A_ptr);
-    const S1* B = static_cast<const S1*>(B_ptr);
-    D* C = static_cast<D*>(C_ptr);
-
+    bool A_trans, bool B_trans,
+    const S0* A_ptr,
+    const S1* B_ptr,
+    D* C_ptr,
+    size_t M, size_t N, size_t K,
+    size_t A_ld, size_t B_ld, size_t C_ld 
+) {   
     for (int i = 0; i < M; ++i) {
         for (int j = 0; j < N; ++j) {
             D sum = D(0);
             for (int k = 0; k < K; ++k) {
-                size_t a_idx = transA ? k * lda + i : i * lda + k;
-                size_t b_idx = transB ? j * ldb + k : k * ldb + j;
-                sum += static_cast<D>(A[a_idx]) * static_cast<D>(B[b_idx]);
+                size_t A_idx = A_trans ? k * A_ld + i : i * A_ld + k;
+                size_t B_idx = B_trans ? j * B_ld + k : k * B_ld + j;
+                sum += static_cast<D>(A_ptr[A_idx]) * static_cast<D>(B_ptr[B_idx]);
             }
-            C[i * ldc + j] = sum;
+            C_ptr[i * C_ld + j] = sum;
         }
     }
 }
- 
+
 #ifdef BLAS
-#include <cblas.h> 
+#include <cblas.h>  
 
 template <>
 void gemmKernel<float, float, float>(
-    bool transA, bool transB, 
-    const void* A_ptr,
-    const void* B_ptr,
-    void* C_ptr,
-    int M, int N, int K,
-    int lda, int ldb, int ldc
-) {  
-    const float* A = static_cast<const float*>(A_ptr);
-    const float* B = static_cast<const float*>(B_ptr);
-    float* C = static_cast<float*>(C_ptr);
-
+    bool A_trans, bool B_trans,
+    const float* A_ptr,
+    const float* B_ptr,
+    float* C_ptr,
+    size_t M, size_t N, size_t K,
+    size_t A_ld, size_t B_ld, size_t C_ld 
+) {   
     cblas_sgemm(
         CblasRowMajor, 
-        transA ? CblasTrans : CblasNoTrans, 
-        transB ? CblasTrans : CblasNoTrans,
+        A_trans ? CblasTrans : CblasNoTrans, 
+        B_trans ? CblasTrans : CblasNoTrans,
         M, N, K,
-        1.0, A, lda, B, ldb,
-        0.0, C, ldc
+        1.0, A_ptr, A_ld, B_ptr, B_ld,
+        0.0, C_ptr, C_ld
     );
 }
 
+
 template <>
 void gemmKernel<double, double, double>(
-    bool transA, bool transB,
-    const void* A_ptr,
-    const void* B_ptr,
-    void* C_ptr,
-    int M, int N, int K,
-    int lda, int ldb, int ldc
-) { 
-    const double* A = static_cast<const double*>(A_ptr);
-    const double* B = static_cast<const double*>(B_ptr);
-    double* C = static_cast<double*>(C_ptr);
+    bool A_trans, bool B_trans,
+    const double* A_ptr,
+    const double* B_ptr,
+    double* C_ptr,
+    size_t M, size_t N, size_t K,
+    size_t A_ld, size_t B_ld, size_t C_ld 
+) {   
     cblas_dgemm(
         CblasRowMajor, 
-        transA ? CblasTrans : CblasNoTrans, 
-        transB ? CblasTrans : CblasNoTrans,
+        A_trans ? CblasTrans : CblasNoTrans, 
+        B_trans ? CblasTrans : CblasNoTrans,
         M, N, K,
-        1.0, A, lda, B, ldb,
-        0.0, C, ldc
+        1.0, A_ptr, A_ld, B_ptr, B_ld,
+        0.0, C_ptr, C_ld
     );
-} 
-#endif
-  
-void defaultKernel(
-    bool transA, bool transB,
-    const void* A_ptr,
-    const void* B_ptr,
-    void* C_ptr,
-    int M, int N, int K,
-    int lda, int ldb, int ldc
+}
+
+#endif  
+
+ 
+static bool isTransposed(const tensor_t* tensor) {
+    if(tensor->rank < 2) {
+        return false;
+    }
+    else {
+        return tensor->strides[tensor->rank-1] > tensor->strides[tensor->rank-2];
+    }
+}  
+
+template<typename S0, typename S1, typename D>
+void computeOffsets(
+    const tensor_t* src0, const tensor_t* src1, const tensor_t* dst,
+    size_t* dst_idx,
+    size_t& offs_src0, size_t& offs_src1, size_t& offs_dst,
+    uint8_t batch, uint8_t batch_rank
 ) {
+ 
+    size_t b = batch;
+    for (int dim = batch_rank - 1; dim >= 0; --dim) {
+        dst_idx[dim] = b % dst->shape[dim];
+        b /= dst->shape[dim];
+    } 
+
+    for (size_t dim = 0; dim < batch_rank; ++dim) {
+        size_t s0_idx = (src0->rank > 2 && src0->shape[dim] == 1) ? 0 : dst_idx[dim];
+        size_t s1_idx = (src1->rank > 2 && src1->shape[dim] == 1) ? 0 : dst_idx[dim];
+
+        offs_src0 += s0_idx * src0->strides[dim];
+        offs_src1 += s1_idx * src1->strides[dim];
+        offs_dst  += dst_idx[dim] * dst->strides[dim];
+    }
+}
+  
+
+template<typename S0, typename S1, typename D>
+void launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {  
+    size_t M = dst->shape[dst->rank - 2];
+    size_t N = dst->shape[dst->rank - 1];
+    size_t K = src0->shape[src0->rank - 1];
+
+    bool A_trans = isTransposed(src0);
+    bool B_trans = isTransposed(src1);
+
+    int A_ld = A_trans ? src0->strides[src0->rank - 1] : src0->strides[src0->rank - 2];
+    int B_ld = B_trans ? src1->strides[src1->rank - 1] : src1->strides[src1->rank - 2];
+    int C_ld = dst->strides[dst->rank - 2];
+  
+    if (dst->rank > 2) { 
+        size_t dst_idx[6] = {0};
+        uint8_t batch_rank = dst->rank - 2;  
+        size_t batch_size = 1;
+        for (int dim = 0; dim < batch_rank; ++dim)
+            batch_size *= dst->shape[dim];
+
+        for (size_t batch = 0; batch < batch_size; ++batch) {
+            size_t offs_src0 = 0, offs_src1 = 0, offs_dst = 0;
+            computeOffsets<S0, S1, D>(src0, src1, dst, dst_idx, offs_src0, offs_src1, offs_dst, batch, batch_rank);
+
+            const S0* A_ptr = static_cast<const S0*>(src0->address) + offs_src0;
+            const S1* B_ptr = static_cast<const S1*>(src1->address) + offs_src1;
+            D* C_ptr = static_cast<D*>(dst->address) + offs_dst;
+
+            gemmKernel<S0, S1, D>(
+                A_trans, B_trans,
+                A_ptr, B_ptr, C_ptr,
+                M, N, K,
+                A_ld, B_ld, C_ld
+            );
+        } 
+    }
+
+    else {
+        const S0* A_ptr = static_cast<const S0*>(src0->address);
+        const S1* B_ptr = static_cast<const S1*>(src1->address);
+        D* C_ptr = static_cast<D*>(dst->address);
+        gemmKernel<S0, S1, D>(
+            A_trans, B_trans,
+            A_ptr, B_ptr, C_ptr,
+            M, N, K,
+            A_ld, B_ld, C_ld
+        );
+    }
+}
+
+
+void defaultKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
     throw std::runtime_error("Not supported dtype");
 };
 
-using Kernel = void(*)(
-    bool transA, bool transB,
-    const void* A_ptr,
-    const void* B_ptr,
-    void* C_ptr,
-    int M, int N, int K,
-    int lda, int ldb, int ldc
-);        
+using Kernel = void(*)(const tensor_t* src0, const tensor_t* src1, tensor_t* dst);        
  
 constexpr static inline auto index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 } 
 
-constexpr auto gemm = []() {
+constexpr auto dispatchGemm = []() {
     std::array<Kernel, index(TYPES, TYPES)> table; table.fill(defaultKernel); 
-    table[index(int8, int8)]     = gemmKernel<int8_t, int8_t, int32_t>;
-    table[index(int8, int16)]    = gemmKernel<int8_t, int16_t, int32_t>;
-    table[index(int8, int32)]    = gemmKernel<int8_t, int32_t, int32_t>;
-    table[index(int8, int64)]    = gemmKernel<int8_t, int64_t, int64_t>;
+    table[index(int8, int8)]     = launchGemmKernel<int8_t, int8_t, int32_t>;
+    table[index(int8, int16)]    = launchGemmKernel<int8_t, int16_t, int32_t>;
+    table[index(int8, int32)]    = launchGemmKernel<int8_t, int32_t, int32_t>;
+    table[index(int8, int64)]    = launchGemmKernel<int8_t, int64_t, int64_t>;
 
-    table[index(int16, int8)]    = gemmKernel<int16_t, int8_t, int32_t>;
-    table[index(int16, int16)]   = gemmKernel<int16_t, int16_t, int32_t>;
-    table[index(int16, int32)]   = gemmKernel<int16_t, int32_t, int32_t>;
-    table[index(int16, int64)]   = gemmKernel<int16_t, int64_t, int64_t>;
+    table[index(int16, int8)]    = launchGemmKernel<int16_t, int8_t, int32_t>;
+    table[index(int16, int16)]   = launchGemmKernel<int16_t, int16_t, int32_t>;
+    table[index(int16, int32)]   = launchGemmKernel<int16_t, int32_t, int32_t>;
+    table[index(int16, int64)]   = launchGemmKernel<int16_t, int64_t, int64_t>;
 
-    table[index(int32, int8)]    = gemmKernel<int32_t, int8_t, int32_t>;
-    table[index(int32, int16)]   = gemmKernel<int32_t, int16_t, int32_t>;
-    table[index(int32, int32)]   = gemmKernel<int32_t, int32_t, int64_t>;
-    table[index(int32, int64)]   = gemmKernel<int32_t, int64_t, int64_t>;
+    table[index(int32, int8)]    = launchGemmKernel<int32_t, int8_t, int32_t>;
+    table[index(int32, int16)]   = launchGemmKernel<int32_t, int16_t, int32_t>;
+    table[index(int32, int32)]   = launchGemmKernel<int32_t, int32_t, int64_t>;
+    table[index(int32, int64)]   = launchGemmKernel<int32_t, int64_t, int64_t>;
 
-    table[index(int64, int8)]    = gemmKernel<int64_t, int8_t, int64_t>;
-    table[index(int64, int16)]   = gemmKernel<int64_t, int16_t, int64_t>;
-    table[index(int64, int32)]   = gemmKernel<int64_t, int32_t, int64_t>;
-    table[index(int64, int64)]   = gemmKernel<int64_t, int64_t, int64_t>;
+    table[index(int64, int8)]    = launchGemmKernel<int64_t, int8_t, int64_t>;
+    table[index(int64, int16)]   = launchGemmKernel<int64_t, int16_t, int64_t>;
+    table[index(int64, int32)]   = launchGemmKernel<int64_t, int32_t, int64_t>;
+    table[index(int64, int64)]   = launchGemmKernel<int64_t, int64_t, int64_t>;
 
-    table[index(int32, float32)] = gemmKernel<int32_t, float, float>;
-    table[index(float32, int32)] = gemmKernel<float, int32_t, float>;
-    table[index(int32, float64)] = gemmKernel<int32_t, double, double>;
-    table[index(float64, int32)] = gemmKernel<double, int32_t, double>;
+    table[index(int32, float32)] = launchGemmKernel<int32_t, float, float>;
+    table[index(float32, int32)] = launchGemmKernel<float, int32_t, float>;
+    table[index(int32, float64)] = launchGemmKernel<int32_t, double, double>;
+    table[index(float64, int32)] = launchGemmKernel<double, int32_t, double>;
 
-    table[index(float32, float32)] = gemmKernel<float, float, float>;
-    table[index(float32, float64)] = gemmKernel<float, double, double>;
-    table[index(float64, float32)] = gemmKernel<double, float, double>;
-    table[index(float64, float64)] = gemmKernel<double, double, double>;
+    table[index(float32, float32)] = launchGemmKernel<float, float, float>;
+    table[index(float32, float64)] = launchGemmKernel<float, double, double>;
+    table[index(float64, float32)] = launchGemmKernel<double, float, double>;
+    table[index(float64, float64)] = launchGemmKernel<double, double, double>;
     return table;
 }();
 
@@ -142,61 +205,8 @@ namespace cpu {
 
 using tannic::dsizeof;
 
-void gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, bool src0_transposed, bool src1_transposed) { 
-    size_t batch_rank = dst->rank > 2 ? dst->rank - 2 : 0;
-    size_t batch_size = 1;
-    for (size_t dim = 0; dim < batch_rank; ++dim) {
-        batch_size *= dst->shape[dim];
-    }
-
-    size_t M = dst->shape[dst->rank - 2];
-    size_t N = dst->shape[dst->rank - 1];
-    size_t K = src0->shape[src0->rank-1];
- 
-    auto unravel = [&](size_t b, size_t* idxs){
-        for (int i = batch_rank-1, r=b; i >= 0; --i) {
-            idxs[i] = r % dst->shape[i];
-            r /= dst->shape[i];
-        }
-    }; 
-    
-    std::vector<size_t> dst_idx(batch_rank), s0_idx(batch_rank), s1_idx(batch_rank); 
-
-    for (size_t batch = 0; batch < batch_size; ++batch) {
-        if (batch_rank)
-            unravel(batch, dst_idx.data());
-
-
-        for (size_t dim = 0; dim < batch_rank; ++dim) {
-            s0_idx[dim] = (src0->rank > 2 && src0->shape[dim] == 1) ? 0 : dst_idx[dim];
-            s1_idx[dim] = (src1->rank > 2 && src1->shape[dim] == 1) ? 0 : dst_idx[dim];
-        } 
-
-        size_t offs_src0 = 0, offs_src1 = 0, offs_dst = 0;
-
-        for (size_t dim = 0; dim < batch_rank; ++dim) {
-            offs_src0 += s0_idx[dim] * src0->strides[dim];
-            offs_src1 += s1_idx[dim] * src1->strides[dim];
-            offs_dst += dst_idx[dim] * dst->strides[dim];
-        }  
-
-        int lda = src0_transposed ? src0->strides[src0->rank-1] : src0->strides[src0->rank-2];
-        int ldb = src1_transposed ? src1->strides[src1->rank-1] : src1->strides[src1->rank-2];
-        int ldc = dst->strides[dst->rank-2];
-
-        const void* A = static_cast<const char*>(src0->address) + offs_src0 * dsizeof(src0->dtype); 
-        const void* B = static_cast<const char*>(src1->address) + offs_src1 * dsizeof(src0->dtype); 
-        void* C = static_cast<char*>(dst->address) + offs_dst * dsizeof(src0->dtype);
- 
-        ::gemm[index(src0->dtype, src1->dtype)](
-            src0_transposed, src1_transposed,
-            A, B, C,
-            M, N, K,
-            lda,
-            ldb, 
-            ldc
-        );
-    }  
+void gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {   
+    dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst); 
 } 
 
-} // namespace cpu
+} 

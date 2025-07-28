@@ -1,0 +1,17 @@
+<map id="include/tannic/Concepts.hpp" name="include/tannic/Concepts.hpp">
+<area shape="rect" id="Node000001" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="43,5,248,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,85,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,33,74,73,71,68,128,29"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="110,79,181,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="148,31,148,65,143,65,143,31"/>
+<area shape="rect" id="Node000004" href="$d5/d34/Types_8hpp.html" title="Core type system for the Tannic Tensor Library." alt="" coords="205,79,291,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="163,28,221,68,218,73,160,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="67,152,147,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="226,106,143,148,141,143,224,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="171,152,237,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="243,106,221,142,216,139,238,103"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="261,152,320,177"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="257,103,279,139,275,142,253,106"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="344,152,469,177"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="275,102,369,144,367,149,272,106"/>
+</map>

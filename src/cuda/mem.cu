@@ -1,51 +1,75 @@
-#include <stdexcept>
-#include "cuda/mem.cuh"
 #include "cuda/exc.cuh"
+#include "cuda/mem.cuh"
+#include "cuda/streams.cuh"
 
-namespace cuda {   
-
+namespace cuda { 
+  
 int getDeviceCount() {
     int count;
     cudaError_t err = cudaGetDeviceCount(&count); CUDA_CHECK(err);
     return count;
 }
 
-void* allocate(host_t const* resource, size_t nbytes) { 
-    cudaError_t err;  
-    if (resource->traits & PINNED) {
-        void* ptr = nullptr; 
-        err = cudaHostAlloc(&ptr, nbytes, cudaHostAllocDefault); CUDA_CHECK(err);
-        return ptr;
-    }
-    else {
-        throw std::runtime_error("Allocation not supported by CUDA allocator.");
-    }      
+void setDevice(int id) {
+    CUDA_CHECK(cudaSetDevice(id));
 }
 
-void deallocate(host_t const* resource, void* address, size_t nbytes) {  
-    cudaError_t err;   
-    if (resource->traits & PINNED) {
-        err = cudaFreeHost(address); CUDA_CHECK(err);
-    }
-
-    else {
-        throw std::runtime_error("Dellocation not supported by CUDA allocator.");
-    }
- 
-}
-
-void* allocate(device_t const* resource, size_t nbytes) { 
-    cudaError_t err;  
+void* allocate(const device_t* resource, size_t nbytes) {
+    setDevice(resource->id); 
     void* ptr = nullptr;
-    err = cudaSetDevice(resource->id);  CUDA_CHECK(err);
-    err = cudaMalloc(&ptr, nbytes); CUDA_CHECK(err); 
-    return ptr; 
+    if (resource->traits & SYNC) { 
+        CUDA_CHECK(cudaMalloc(&ptr, nbytes));
+    } else {
+        Streams& streams = Streams::instance();
+        cudaStream_t stream = streams.pop(resource->id);
+        CUDA_CHECK(cudaMallocAsync(&ptr, nbytes, stream));
+        streams.put(resource->id, stream);
+    }
+    return ptr;
+} 
+
+void* deallocate(const device_t* resource, void* ptr) {
+    setDevice(resource->id);
+    if (resource->traits & SYNC) {
+        CUDA_CHECK(cudaFree(ptr));
+    } else {
+        Streams& streams = Streams::instance();
+        cudaStream_t stream = streams.pop(resource->id);
+        CUDA_CHECK(cudaFreeAsync(ptr, stream));
+        streams.put(resource->id, stream);
+    }
+    return nullptr;
 }
 
-void deallocate(device_t const* resource, void* address, size_t nbytes) {  
-    cudaError_t err;  
-    err = cudaSetDevice(resource->id); CUDA_CHECK(err);
-    err = cudaFree(address); CUDA_CHECK(err); 
+void copyFromHost(const device_t* resource, const void* src , void* dst, size_t nbytes) {
+    setDevice(resource->id);
+    if (resource->traits & SYNC) {
+        cudaMemcpy(dst, src, nbytes, cudaMemcpyHostToDevice);
+    } 
+    else {
+        Streams& streams = Streams::instance();
+        cudaStream_t stream = streams.pop(resource->id);
+        cudaMemcpyAsync(dst, src, nbytes, cudaMemcpyHostToDevice, stream);
+        streams.put(resource->id, stream);
+
+    }
+} 
+
+bool compareFromHost(const device_t* resource, const void* hst_ptr, const void* dvc_ptr, size_t nbytes) {  
+    void* buffer = malloc(nbytes); 
+    if (resource->traits & SYNC) {
+        CUDA_CHECK(cudaMemcpy(buffer, dvc_ptr, nbytes, cudaMemcpyDeviceToHost));
+    } else {
+        Streams& streams = Streams::instance();
+        cudaStream_t stream = streams.pop(resource->id);
+        CUDA_CHECK(cudaMemcpyAsync(buffer, dvc_ptr, nbytes, cudaMemcpyDeviceToHost, stream));
+        CUDA_CHECK(cudaStreamSynchronize(stream));
+        streams.put(resource->id, stream);
+    }
+
+    bool result = (memcmp(hst_ptr, buffer, nbytes) != 0); 
+    free(buffer);   
+    return result;
 }
 
-} // namespace cuda 
+} // namespace cuda  

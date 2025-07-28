@@ -1,0 +1,12 @@
+#pragma once 
+#include "runtime/types.h"
+#include "runtime/tensor.h" 
+#include "runtime/resources.h"
+
+using namespace tannic;
+
+namespace cuda { 
+    
+void gemm(const device_t*, const tensor_t*, const tensor_t*, tensor_t*);  
+
+} // namespace cpu

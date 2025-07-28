@@ -1,0 +1,28 @@
+<map id="include/tannic/Shape.hpp" name="include/tannic/Shape.hpp">
+<area shape="rect" id="Node000001" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="400,5,585,31"/>
+<area shape="rect" id="Node000002" href="$dc/d66/Functions_8hpp_source.html" title=" " alt="" coords="5,79,212,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="418,36,171,81,170,76,417,31"/>
+<area shape="rect" id="Node000003" href="$d1/d00/Operations_8hpp_source.html" title=" " alt="" coords="805,152,1021,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="549,32,694,76,886,149,884,154,692,81,547,37"/>
+<area shape="rect" id="Node000004" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="466,225,653,251"/>
+<area shape="poly" id="edge15_Node000001_Node000004" title=" " alt="" coords="451,38,399,64,349,97,331,116,320,135,318,155,328,176,349,191,383,204,470,223,469,228,382,209,347,196,324,179,313,156,315,134,327,113,346,93,396,59,449,34"/>
+<area shape="rect" id="Node000005" href="$db/db8/Reductions_8hpp_source.html" title=" " alt="" coords="308,299,525,324"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="414,37,373,54,337,81,325,97,319,113,314,152,314,175,319,197,342,239,373,273,402,296,399,301,370,276,338,242,314,199,308,176,309,152,314,111,320,95,333,77,370,50,412,32"/>
+<area shape="rect" id="Node000006" href="$df/d25/Transformations_8hpp_source.html" title=" " alt="" coords="575,299,826,324"/>
+<area shape="poly" id="edge16_Node000001_Node000006" title=" " alt="" coords="599,27,720,44,850,69,911,86,964,104,1006,126,1035,150,1045,167,1050,182,1050,197,1045,211,1023,234,990,254,948,270,900,283,804,301,803,296,899,278,946,265,988,249,1020,230,1040,208,1044,196,1045,183,1040,169,1031,154,1003,130,962,109,909,91,849,75,719,49,599,33"/>
+<area shape="rect" id="Node000007" href="$d2/d6a/Slices_8hpp_source.html" title=" " alt="" coords="339,152,521,177"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="477,43,455,80,442,119,434,153,429,151,437,118,450,78,473,40"/>
+<area shape="rect" id="Node000008" href="$d8/d85/Strides_8hpp.html" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="464,79,655,104"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="515,39,550,77,547,80,511,43"/>
+<area shape="rect" id="Node000009" href="$d8/dea/Views_8hpp_source.html" title=" " alt="" coords="597,152,781,177"/>
+<area shape="poly" id="edge17_Node000001_Node000009" title=" " alt="" coords="592,32,634,49,669,77,681,95,688,116,692,152,686,152,683,117,676,97,665,80,631,54,590,37"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="843,183,617,228,616,223,842,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="526,259,441,301,439,296,523,254"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="595,254,679,296,676,301,593,259"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="464,182,539,223,537,227,462,186"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="630,104,856,149,855,155,629,109"/>
+<area shape="poly" id="edge12_Node000008_Node000004" title=" " alt="" coords="562,118,562,225,557,225,557,118"/>
+<area shape="poly" id="edge11_Node000008_Node000007" title=" " alt="" coords="528,113,452,154,450,149,525,108"/>
+<area shape="poly" id="edge13_Node000008_Node000009" title=" " alt="" coords="594,108,669,149,666,154,591,113"/>
+<area shape="poly" id="edge14_Node000009_Node000004" title=" " alt="" coords="657,186,582,227,579,223,654,182"/>
+</map>

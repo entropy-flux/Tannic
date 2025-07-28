@@ -1,23 +1,40 @@
-#include "runtime/tensor.h"
+#include "Bindings.hpp" 
 #include "Types.hpp"
 #include "Tensor.hpp"   
 #include <ostream>
 #include <cstring>
 #include <functional>
- 
+#include "cuda/mem.cuh"
+
 namespace tannic {
 
-void tannic::Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {      
-    std::byte* target = static_cast<std::byte*>(buffer_->address()) + offset;   
-    std::memcpy(target, value, dsizeof(dtype_)); 
+void Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {      
+    std::byte* target = static_cast<std::byte*>(buffer_->address()) + offset;    
+    if (std::holds_alternative<Host>(this->allocator())) {
+        std::memcpy(target, value, dsizeof(dtype_)); 
+    } 
+    
+    else {
+        device_t device = structure(std::get<Device>(this->allocator()));
+        cuda::copyFromHost(&device, value, target, dsizeof(dtype_));
+    }
 } 
 
-bool tannic::Tensor::compare(std::byte const* value, std::ptrdiff_t offset) const {  
-    std::byte const* target = static_cast<std::byte const*>(buffer_->address()) + offset;  
-    return std::memcmp(value, target, dsizeof(dtype_)) == 0;  
+bool Tensor::compare(std::byte const* hst_ptr, std::ptrdiff_t offset) const {  
+    std::byte const* dvc_ptr = static_cast<std::byte const*>(buffer_->address()) + offset;  
+    allocator_t allocator = structure(this->allocator()); 
+    if (std::holds_alternative<Host>(this->allocator())) {
+        return std::memcmp(hst_ptr, dvc_ptr, dsizeof(dtype_)) == 0;  
+    } 
+
+    else {
+        device_t device = structure(std::get<Device>(this->allocator()));
+        return cuda::compareFromHost(&device, hst_ptr, dvc_ptr, dsizeof(dtype_));
+    }
 } 
  
 static void print(std::ostream& ostream, void* address, type type) {
+
     switch (type) {
         case int8: {
             int8_t value = *static_cast<int8_t*>(address);
@@ -64,8 +81,8 @@ static void print(std::ostream& ostream, void* address, type type) {
 }
 
 std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {  
+
     os << "Tensor(";
-    
     auto get_element = [&](const std::vector<size_t>& indices) -> void* {
         size_t offset = 0;
         for (size_t i = 0; i < tensor->rank; ++i) {
@@ -117,19 +134,10 @@ std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
 
 void print(const tensor_t* tensor) {
     std::cout << tensor;
-} 
+}  
 
-static inline tensor_t structure(Tensor const& tensor) {
-    return tensor_t{
-        .rank = tensor.rank(),
-        .address = reinterpret_cast<void*>(tensor.bytes()),
-        .shape = tensor.shape().address(),
-        .strides = tensor.strides().address(), 
-        .dtype = tensor.dtype()
-    };
-}
 
-std::ostream& operator<<(std::ostream& ostream, Tensor tensor) {
+std::ostream& operator<<(std::ostream& ostream, Tensor const& tensor) {
     tensor_t ctensor = structure(tensor);
     ostream << &ctensor;
     return ostream;

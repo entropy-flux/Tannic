@@ -20,9 +20,7 @@ void tanh(tensor_t const*, tensor_t*);
 void neg(tensor_t const*, tensor_t*);
 void add(tensor_t const*, tensor_t const*, tensor_t*);
 void sub(tensor_t const*, tensor_t const*, tensor_t*); 
-void mul(tensor_t const*, tensor_t const*, tensor_t*);  
-
-void gemm(const tensor_t*, const tensor_t*, tensor_t*, bool, bool);
+void mul(tensor_t const*, tensor_t const*, tensor_t*);   
 
 void argmax(tensor_t const*, tensor_t*, uint8_t axis);
 void argmin(tensor_t const*, tensor_t*, uint8_t axis);

@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream> 
 #include <stdexcept>
 #include <cuda_runtime.h>

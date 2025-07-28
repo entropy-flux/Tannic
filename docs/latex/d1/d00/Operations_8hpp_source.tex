@@ -1,0 +1,178 @@
+\doxysection{Operations.\+hpp}
+\hypertarget{Operations_8hpp_source}{}\label{Operations_8hpp_source}\index{include/tannic/Operations.hpp@{include/tannic/Operations.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2025\ Eric\ Cardozo}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ OPERATIONS\_HPP}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ OPERATIONS\_HPP}}
+\DoxyCodeLine{00018\ \ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}\ \ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <utility>}\ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <type\_traits>}\ }
+\DoxyCodeLine{00022\ \ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Concepts_8hpp}{Concepts.hpp}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Types_8hpp}{Types.hpp}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Shape_8hpp}{Shape.hpp}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Strides_8hpp}{Strides.hpp}}"{}}\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}Traits.hpp"{}}}
+\DoxyCodeLine{00028\ \ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }tannic\ \{}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }Tensor;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{namespace\ }operation\ \{}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ type\ promote(type\ first,\ type\ second)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(first)\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(second)\ ?\ \ first\ :\ second;}
+\DoxyCodeLine{00037\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Shape\ broadcast(Shape\ \textcolor{keyword}{const}\&\ first,\ Shape\ \textcolor{keyword}{const}\&\ second)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{auto}\ first\_rank\ =\ first.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{auto}\ second\_rank\ =\ second.rank();}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{auto}\ rank\ =\ std::max(first\_rank,\ second\_rank);}
+\DoxyCodeLine{00043\ \ \ \ \ std::vector<std::size\_t>\ result(rank,\ 1);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ dimension\ =\ 0;\ dimension\ <\ rank;\ ++dimension)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ first\_dimension\ =\ (dimension\ <\ rank\ -\/\ first\_rank)\ ?\ 1\ :\ first[dimension\ -\/\ (rank\ -\/\ first\_rank)];}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ second\_dimension\ =\ (dimension\ <\ rank\ -\/\ second\_rank)\ ?\ 1\ :\ second[dimension\ -\/\ (rank\ -\/\ second\_rank)];}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(first\_dimension\ ==\ second\_dimension\ ||\ first\_dimension\ ==\ 1\ ||\ second\_dimension\ ==\ 1))\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Shapes\ are\ not\ broadcast-\/compatible."{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ result[dimension]\ =\ std::max(first\_dimension,\ second\_dimension);}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{return}\ Shape(result);}
+\DoxyCodeLine{00055\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Operation,\ Expression\ Operand>}
+\DoxyCodeLine{00058\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{Unary}}\ \{\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00060\ \ \ \ \ Operation\ operation;}
+\DoxyCodeLine{00061\ \ \ \ \ Trait<Operand>::Reference\ operand;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{Unary}}(Operation\ operation,\ Trait<Operand>::Reference\ operand)}
+\DoxyCodeLine{00064\ \ \ \ \ :\ \ \ operation(operation)}
+\DoxyCodeLine{00065\ \ \ \ \ ,\ \ \ operand(operand)}
+\DoxyCodeLine{00066\ \ \ \ \ \{\}\ \ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ dtype()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ operand.dtype();}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ operand.shape();}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ strides()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ operand.strides();}
+\DoxyCodeLine{00078\ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ std::ptrdiff\_t\ offset()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ forward()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ \};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Operation,\ Expression\ Operand,\ Expression\ Cooperand>}
+\DoxyCodeLine{00088\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1operation_1_1Binary}{Binary}}\ \{}
+\DoxyCodeLine{00089\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00090\ \ \ \ \ Operation\ operation;}
+\DoxyCodeLine{00091\ \ \ \ \ Trait<Operand>::Reference\ operand;}
+\DoxyCodeLine{00092\ \ \ \ \ Trait<Cooperand>::Reference\ cooperand;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1operation_1_1Binary}{Binary}}(Operation\ operation,\ Trait<Operand>::Reference\ operand,\ Trait<Cooperand>::Reference\ cooperand)}
+\DoxyCodeLine{00095\ \ \ \ \ :\ \ \ operation(operation)}
+\DoxyCodeLine{00096\ \ \ \ \ ,\ \ \ operand(operand)}
+\DoxyCodeLine{00097\ \ \ \ \ ,\ \ \ cooperand(cooperand)}
+\DoxyCodeLine{00098\ \ \ \ \ ,\ \ \ dtype\_(promote(operand.dtype(),\ cooperand.dtype()))}
+\DoxyCodeLine{00099\ \ \ \ \ ,\ \ \ shape\_(broadcast(operand.shape(),\ cooperand.shape()))}
+\DoxyCodeLine{00100\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
+\DoxyCodeLine{00101\ \ \ \ \ \{\}\ }
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ dtype()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ strides()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
+\DoxyCodeLine{00113\ \ \ \ \ \}\ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ std::ptrdiff\_t\ offset()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ forward()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00122\ \ \ \ \ type\ dtype\_;}
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
+\DoxyCodeLine{00125\ \};\ }
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1operation_1_1Negation}{Negation}}\ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};\ \ }
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1operation_1_1Addition}{Addition}}\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00133\ \};}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication}{Multiplication}}\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00137\ \};}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction}{Subtraction}}\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00141\ \};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00145\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator-\/(Operand\&\&\ operand)\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{Unary<Negation,\ Operand>}}\{\{\},\ std::forward<Operand>(operand)\};}
+\DoxyCodeLine{00147\ \}}
+\DoxyCodeLine{00148\ \ }
+\DoxyCodeLine{00149\ \textcolor{keyword}{template}<Expression\ Augend,\ Expression\ Addend>}
+\DoxyCodeLine{00150\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator+(Augend\&\&\ augend,\ Addend\&\&\ addend)\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{return}\ Binary<Addition,\ Augend,\ Addend>\{\{\},\ std::forward<Augend>(augend),\ std::forward<Addend>(addend)\};}
+\DoxyCodeLine{00152\ \}}
+\DoxyCodeLine{00153\ \ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{template}<Expression\ Subtrahend,\ Expression\ Minuend>}
+\DoxyCodeLine{00155\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator-\/(Subtrahend\&\&\ subtrahend,\ Minuend\&\&\ minuend)\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordflow}{return}\ Binary<Subtraction,\ Subtrahend,\ Minuend>\{\{\},\ std::forward<Subtrahend>(subtrahend),\ std::forward<Minuend>(minuend)\};}
+\DoxyCodeLine{00157\ \}}
+\DoxyCodeLine{00158\ \ }
+\DoxyCodeLine{00159\ \textcolor{keyword}{template}<Expression\ Multiplicand,\ Expression\ Multiplier>}
+\DoxyCodeLine{00160\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator*(Multiplicand\&\&\ multiplicand,\ Multiplier\&\&\ multiplier)\ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{return}\ Binary<Multiplication,\ Multiplicand,\ Multiplier>\{\{\},\ std::forward<Multiplicand>(multiplicand),\ std::forward<Multiplier>(multiplier)\};}
+\DoxyCodeLine{00162\ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \}\ \textcolor{comment}{//\ namespace\ operation\ }}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \textcolor{keyword}{using\ }operation::operator-\/;\ }
+\DoxyCodeLine{00167\ \textcolor{keyword}{using\ }operation::operator+;\ }
+\DoxyCodeLine{00168\ \textcolor{keyword}{using\ }operation::operator*;\ \ }
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ OPERATIONS\_HPP\ }}
+
+\end{DoxyCode}

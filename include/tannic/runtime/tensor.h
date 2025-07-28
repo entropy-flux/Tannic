@@ -23,6 +23,7 @@
 #ifdef __cplusplus
 #include <cstdint>
 #include <cstddef>
+#include "runtime/resources.h"
 
 namespace tannic {
 extern "C" {
@@ -30,7 +31,8 @@ extern "C" {
 #else
 #include <stdint.h>
 #include <stddef.h>
-#endif
+#include "runtime/resources.h"
+#endif 
  
 struct tensor_t {
     uint8_t rank;
@@ -40,6 +42,8 @@ struct tensor_t {
     enum type dtype; 
 };  
  
+//void print(const allocator_t* allocator, const tensor_t* tensor);
+
 #ifdef __cplusplus
 }
 } // namespace tannic

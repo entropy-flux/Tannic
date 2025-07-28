@@ -1,0 +1,56 @@
+\doxysection{tannic\+::expression\+::Slice\texorpdfstring{$<$}{<} Source, Indexes \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1expression_1_1Slice}{}\label{classtannic_1_1expression_1_1Slice}\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_a0c907b6d34d55ff79e61061e839cda11}\label{classtannic_1_1expression_1_1Slice_a0c907b6d34d55ff79e61061e839cda11} 
+constexpr {\bfseries Slice} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, std\+::tuple$<$ Indexes... $>$ indexes)
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_aaf1d76bb5095e8708b0e4beffc051b97}\label{classtannic_1_1expression_1_1Slice_aaf1d76bb5095e8708b0e4beffc051b97} 
+{\footnotesize template$<$Integral Index$>$ }\\constexpr auto {\bfseries operator\mbox{[}$\,$\mbox{]}} (Index index) const
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_a4fbfd61857c6b31365fc5875e834899c}\label{classtannic_1_1expression_1_1Slice_a4fbfd61857c6b31365fc5875e834899c} 
+constexpr auto {\bfseries operator\mbox{[}$\,$\mbox{]}} (\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}} \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}) const
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_afa2df373f05dc00ef730ba208f118cf0}\label{classtannic_1_1expression_1_1Slice_afa2df373f05dc00ef730ba208f118cf0} 
+constexpr auto {\bfseries dtype} () const
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_a9bb289f510cb0da3d400293a265bd800}\label{classtannic_1_1expression_1_1Slice_a9bb289f510cb0da3d400293a265bd800} 
+constexpr auto {\bfseries rank} () const
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_a22354e0b8625915115eb4e25a6521773}\label{classtannic_1_1expression_1_1Slice_a22354e0b8625915115eb4e25a6521773} 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& {\bfseries shape} () const
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_ae404ecb0e0b72a642499a387ec2e708b}\label{classtannic_1_1expression_1_1Slice_ae404ecb0e0b72a642499a387ec2e708b} 
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& {\bfseries strides} () const
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_a5d11cdc8bf08fd7cbfa7784dec7dadaa}\label{classtannic_1_1expression_1_1Slice_a5d11cdc8bf08fd7cbfa7784dec7dadaa} 
+std\+::byte \texorpdfstring{$\ast$}{*} {\bfseries bytes} ()
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_aa7d760dcd1a9f9e401308400f360427f}\label{classtannic_1_1expression_1_1Slice_aa7d760dcd1a9f9e401308400f360427f} 
+std\+::byte const \texorpdfstring{$\ast$}{*} {\bfseries bytes} () const
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}\label{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251} 
+std\+::ptrdiff\+\_\+t {\bfseries offset} () const
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}\label{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0} 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} {\bfseries forward} () const
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_a1363daf8cf6b563ec0f640ee58e1a6dc}\label{classtannic_1_1expression_1_1Slice_a1363daf8cf6b563ec0f640ee58e1a6dc} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries operator=} (T value)
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_a9e653d07b5d7008251b318f05552911a}\label{classtannic_1_1expression_1_1Slice_a9e653d07b5d7008251b318f05552911a} 
+{\footnotesize template$<$typename T $>$ }\\bool {\bfseries operator==} (T value) const
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff}\label{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff} 
+void {\bfseries assign} (std\+::byte const \texorpdfstring{$\ast$}{*}value, std\+::ptrdiff\+\_\+t offset)
+\item 
+\Hypertarget{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a}\label{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a} 
+bool {\bfseries compare} (std\+::byte const \texorpdfstring{$\ast$}{*}value, std\+::ptrdiff\+\_\+t offset) const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/Slices.\+hpp\item 
+include/tannic/\mbox{\hyperlink{Tensor_8hpp}{Tensor.\+hpp}}\end{DoxyCompactItemize}
