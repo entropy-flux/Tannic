@@ -44,9 +44,7 @@
 #include <type_traits> 
 #include <array>
 #include <cstdint>
-#include <cassert> 
-#include <algorithm>
-#include <numeric>
+#include <cassert>  
 #include <initializer_list>
 #include <ostream>
  
@@ -110,8 +108,7 @@ public:
         size_type dimension = 0;
         for (auto size : shape) {
             sizes_[dimension++] = size;
-        }
-        size_ = std::accumulate(sizes_.begin(), sizes_.begin() + rank_, size_type{1}, std::multiplies<size_type>());
+        } 
     } 
 
 
@@ -135,8 +132,7 @@ public:
     constexpr explicit Shape(Sizes... sizes) 
     :   sizes_{static_cast<size_type>(sizes)...}
     ,   rank_(sizeof...(sizes)) {      
-        assert(rank_ < limit && "Rank limit exceeded");
-        size_ = std::accumulate(sizes_.begin(), sizes_.begin() + rank_, size_type{1}, std::multiplies<size_type>()); 
+        assert(rank_ < limit && "Rank limit exceeded"); 
     }
 
 
@@ -151,8 +147,7 @@ public:
         for (auto size : sizes) {
             sizes_[dimension++] = static_cast<size_type>(size);
         }
-        rank_ = dimension;
-        size_ = std::accumulate(sizes_.begin(), sizes_.begin() + rank_, size_type{1}, std::multiplies<size_type>()); 
+        rank_ = dimension; 
     } 
 
  
@@ -180,8 +175,7 @@ public:
         for (Iterator iterator = begin; iterator != end; ++iterator) { 
             sizes_[dimension++] = static_cast<size_type>(*iterator);
         }
-        rank_ = dimension; 
-        size_ = std::accumulate(sizes_.begin(), sizes_.begin() + rank_, size_type{1}, std::multiplies<size_type>()); 
+        rank_ = dimension;  
     }
 
 public:    
@@ -208,14 +202,7 @@ public:
     constexpr rank_type rank() const noexcept { 
         return rank_; 
     }
-    
-    /**
-     * @brief Returns the total number of elements represented by the shape.
-     * @return Product of all dimension sizes.
-     */
-    constexpr size_type size() const noexcept { 
-        return size_; 
-    }
+     
 
     /// @name Iterators
     /// @{
@@ -287,8 +274,7 @@ public:
 
 
 private:
-    rank_type rank_{0};     
-    size_type size_{1}; 
+    rank_type rank_{0};      
     std::array<size_type, limit> sizes_{}; 
 };
  
@@ -317,6 +303,7 @@ inline std::ostream& operator<<(std::ostream& os, Shape const& shape) {
     os << ")";
     return os;
 } 
+
 
 } // namespace tannic
 

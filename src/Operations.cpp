@@ -1,7 +1,7 @@
 #include "Bindings.hpp"
 #include "Operations.hpp"
 #include "Tensor.hpp" 
-#include "cpu/cpu.hpp"  
+#include "cpu/ops.hpp"  
  
 namespace tannic::operation { 
  

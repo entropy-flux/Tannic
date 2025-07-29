@@ -1,7 +1,7 @@
-#include "cpu.hpp"  
 #include <stdexcept>
 #include <vector>
 #include <array>
+#include "cpu/ops.hpp"
 
 template<typename S, typename D, class Op>
 void unaryOpKernel(

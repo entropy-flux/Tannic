@@ -1,7 +1,7 @@
 #include "Bindings.hpp"
 #include "Functions.hpp"
 #include "runtime/tensor.h"
-#include "cpu/cpu.hpp"  
+#include "cpu/fns.hpp"  
 
 namespace tannic::function { 
  

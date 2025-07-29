@@ -33,109 +33,56 @@ namespace tannic {
 class Tensor;
 }
 
-namespace tannic::expression { 
-
-template<Expression Source, class... Indexes> 
-static constexpr Shape shape(Source const& source, std::tuple<Indexes...> const& indexes) { 
-    std::array<Shape::size_type, Shape::limit> sizes{};
-    Shape::rank_type dimension = 0;
-    Shape::rank_type rank = 0;
-    const auto& shape = source.shape();
-
-    auto process = [&](const auto& argument) {
-        using Argument = std::decay_t<decltype(argument)>;
-        if constexpr (std::is_same_v<Argument, indexing::Range>) { 
-            auto range = normalize(argument, shape[dimension]);
-            auto size = range.stop - range.start;
-            assert(size >= 0);
-            sizes[rank++] = size;
-            dimension++;
-        } else if constexpr (std::is_integral_v<Argument>) {
-            dimension++;
-        } else {
-            static_assert(sizeof(Argument) == 0, "Unsupported index type in Slice");
-        }
-    };
-
-    std::apply([&](const auto&... arguments) {
-        (process(arguments), ...);
-    }, indexes);
-
-    while (dimension < shape.rank()) {
-        sizes[rank++] = shape[dimension++];
-    } 
-    return Shape(sizes.begin(), sizes.begin() + rank);
-}
-
-
-template<Expression Source, class... Indexes>
-static constexpr Strides strides(Source const& source, std::tuple<Indexes...> const& indexes) {
-    std::array<Strides::size_type, Strides::limit> sizes{};
-    Strides::rank_type rank = 0;
-    Strides::rank_type dimension = 0;
-    const auto& strides = source.strides();
-
-    auto process = [&](const auto& index) {
-        using Argument = std::decay_t<decltype(index)>;
-        if constexpr (std::is_same_v<Argument, indexing::Range>) { 
-            sizes[rank++] = strides[dimension++];
-        } else if constexpr (std::is_integral_v<Argument>) { 
-            ++dimension;
-        } else {
-            static_assert(sizeof(Argument) == 0, "Unsupported index type in Slice strides");
-        }
-    };
-
-    std::apply([&](const auto&... indices) {
-        (process(indices), ...);
-    }, indexes);
-
-    while (dimension < source.rank()) {
-        sizes[rank++] = strides[dimension++];
-    }
-
-    return Strides(sizes.begin(), sizes.begin() + rank);
-} 
-
-
-template<Expression Source, class... Indexes>
-static constexpr auto offset(Source const& source, std::tuple<Indexes...> const& indexes) {
-    std::ptrdiff_t result = 0;  
-    std::ptrdiff_t dimension = 0; 
-    const auto dsize = dsizeof(source.dtype()); 
-    const auto& strides = source.strides();
-    const auto& shape = source.shape();
-
-    auto process = [&](const auto& argument) {
-        using Argument = std::decay_t<decltype(argument)>;
-        if constexpr (std::is_same_v<Argument, indexing::Range>) {  
-            auto start = indexing::normalize(argument.start, shape[dimension]); 
-            result += start * strides[dimension++] * dsize;
-        } else if constexpr (std::is_integral_v<Argument>) { 
-            auto index = indexing::normalize(argument, shape[dimension]);
-            result += index * strides[dimension++] * dsize;
-        } else {
-            static_assert(sizeof(Argument) == 0, "Unsupported index type in Slice offset");
-        }
-    };
-
-    std::apply([&](const auto&... indices) {
-        (process(indices), ...);
-    }, indexes);
-    return result;
-} 
+namespace tannic::expression {   
 
 template <Expression Source, class... Indexes>
 class Slice {  
 public:    
     constexpr Slice(typename Trait<Source>::Reference source, std::tuple<Indexes...> indexes)
-    :   dtype_(source.dtype())
-    ,   shape_(expression::shape(source, indexes))
-    ,   strides_(expression::strides(source, indexes))
-    ,   offset_(expression::offset(source, indexes))
+    :   dtype_(source.dtype())  
     ,   source_(source)
     ,   indexes_(indexes)
-    { 
+    {   
+        std::array<Shape::size_type, Shape::limit> shape{};
+        std::array<Strides::size_type, Strides::limit> strides{};
+        Shape::rank_type dimension = 0;
+        Shape::rank_type rank = 0;   
+        offset_ = 0;
+        auto process = [&](const auto& argument) {
+            using Argument = std::decay_t<decltype(argument)>;
+            if constexpr (std::is_same_v<Argument, indexing::Range>) { 
+                auto range = normalize(argument, source.shape()[dimension]);
+                auto size = range.stop - range.start;
+                assert(size >= 0);
+                shape[rank] = size;
+                strides[rank] = source.strides()[dimension]; 
+                offset_ += range.start * source.strides()[dimension] * dsizeof(dtype_); 
+                rank++; dimension++;
+            } 
+            
+            else if constexpr (std::is_integral_v<Argument>) { 
+                auto index = indexing::normalize(argument, source.shape()[dimension]);
+                offset_ += index * source.strides()[dimension] * dsizeof(dtype_);
+                dimension++;
+            } 
+            
+            else {
+                static_assert(sizeof(Argument) == 0, "Unsupported index type in Slice");
+            } 
+        };
+
+        std::apply([&](const auto&... arguments) {
+            (process(arguments), ...);
+        }, indexes);
+
+        while (dimension < source.rank()) {
+            shape[rank] = source.shape()[dimension];
+            strides[rank] = source.strides()[dimension];
+            rank++; dimension++;
+        } 
+
+        shape_ = Shape(shape.begin(), shape.begin() + rank);
+        strides_ = Strides(strides.begin(), strides.begin() + rank);
     }    
 
     template<Integral Index>

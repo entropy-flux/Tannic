@@ -281,7 +281,7 @@ inline std::ostream& operator<<(std::ostream& os, Strides const& strides) {
     }
     os << ")";
     return os;
-}  
+} 
 
 } // namespace tannic
 

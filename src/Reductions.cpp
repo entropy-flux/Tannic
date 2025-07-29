@@ -1,7 +1,7 @@
 #include "Bindings.hpp"
 #include "Reductions.hpp"
 #include "Indexing.hpp"
-#include "cpu/cpu.hpp" 
+#include "cpu/argcmp.hpp" 
  
 namespace tannic {
  

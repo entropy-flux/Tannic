@@ -2,7 +2,7 @@
 #include <vector> 
 #include <stdexcept>
 #include <array>
-#include "cpu/cpu.hpp" 
+#include "cpu/gemm.hpp" 
 #include "Types.hpp"
  
 template<typename S0, typename S1, typename D>

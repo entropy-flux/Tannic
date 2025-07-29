@@ -44,7 +44,7 @@
 #include <iostream>  
 #include <memory>
 #include <cassert> 
-#include <utility> 
+#include <utility>  
  
 #include "Types.hpp"
 #include "Shape.hpp" 
@@ -113,19 +113,9 @@ public:
     :   dtype_(dtype)
     ,   shape_(shape) 
     ,   strides_(shape_) 
-    ,   offset_(0) {}  
-
-    /**
-     * @brief Constructs an uninitialized tensor with custom strides.
-     * @param dtype Data type of the tensor.
-     * @param shape Shape of the tensor.
-     * @param strides Strides per dimension.
-     */
-    Tensor(type dtype, Shape shape, Strides strides)
-    :   dtype_(dtype)
-    ,   shape_(shape) 
-    ,   strides_(strides) 
-    ,   offset_(0) {}  
+    ,   offset_(0) {
+        nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
+    }   
 
     /**
      * @brief Constructs an uninitialized tensor with custom strides and offset.
@@ -134,11 +124,22 @@ public:
      * @param strides Strides per dimension.
      * @param offset Byte offset from start of underlying memory buffer.
      */
-    Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset)
+    Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset = 0)
     :   dtype_(dtype)
     ,   shape_(shape) 
     ,   strides_(strides) 
-    ,   offset_(offset) {}  
+    ,   offset_(offset) {  
+        if (rank() == 0) {
+            nbytes_ = dsizeof(dtype_);
+        }
+        else {
+            std::size_t nbytes = 0;
+            for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
+                nbytes += strides_[dimension] * (shape_[dimension] - 1);
+            } 
+            nbytes_ = (nbytes + 1) * dsizeof(dtype_);
+        }
+    }  
 
     /**
      * @brief Constructs a tensor by forwarding an `Expression`-like object.
@@ -163,7 +164,7 @@ public:
     }
   
 public:  
-    /// @name Metadata Access
+    /// @name Metadata Access (May be constexpr in the future.)
     /// @{
 
     /// Returns the tensor's data type.
@@ -181,12 +182,18 @@ public:
         return strides_; 
     } 
  
+    /// Returns the offset of the tensor in the current buffer. 
     std::ptrdiff_t offset() const {
         return offset_;
-    }  
+    }   
+
+    /// Returns the total number of bytes occupied by the tensor's elements.
+    std::size_t nbytes() const { 
+        return nbytes_;
+    } 
     
     /// Returns the number of dimensions (rank) of the tensor.
-    auto rank() const { 
+    rank_type rank() const { 
         return shape_.rank(); 
     }          
 
@@ -204,22 +211,17 @@ public:
     /// @}
 
 public:   
-    /// @name Memory Management
+    /// @name Memory Management (Always runtime.)
     /// @{
 
     /**
      * @brief Allocates the memory buffer for the tensor.
      * @param allocator Memory allocator (defaults to `Host{}`).
      */
-    void initialize(Allocator allocator = Host{}) const {
-        buffer_ = std::make_shared<Buffer>(nbytes(), allocator);
-    }  
-
-    /// Returns the total number of bytes occupied by the tensor's elements.
-    std::size_t nbytes() const { // TODO, calculate for non contiguous.
-        return shape_.size() * dsizeof(dtype_); 
-    }
-
+    void initialize(Allocator allocator = Host{}) const {  
+        buffer_ = std::make_shared<Buffer>(nbytes_, allocator); 
+    }    
+   
     /**
      * @brief Returns a pointer to the beginning of the tensor's data (accounting for offset).
      * @return Pointer to the tensor's data in bytes.
@@ -362,7 +364,8 @@ private:
     type dtype_;
     Shape shape_; 
     Strides strides_; 
-    std::ptrdiff_t offset_;   
+    std::size_t nbytes_ = 0;
+    std::ptrdiff_t offset_ = 0;    
     mutable std::shared_ptr<Buffer> buffer_ = nullptr;
 };    
 

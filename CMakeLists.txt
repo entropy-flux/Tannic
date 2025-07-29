@@ -12,7 +12,7 @@ endif()
 
 option(TANNIC_ENABLE_CUDA "Enable CUDA support" ON)
 option(TANNIC_ENABLE_TESTS "Build tests" ON)
-option(TANNIC_BUILD_MAIN "Build the main executable" ON)  # <-- Added option
+option(TANNIC_BUILD_MAIN "Build the main executable" ON)  
 
 include(cmake/CMakeLists.txt) 
 

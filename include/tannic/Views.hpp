@@ -2,7 +2,10 @@
 #define VIEWS_HPP
 
 #include <utility> 
- 
+#include <algorithm>
+#include <numeric>
+#include <vector>
+
 #include "Types.hpp"
 #include "Traits.hpp"
 #include "Shape.hpp"
@@ -14,16 +17,22 @@ namespace tannic {
 class Tensor;
 
 namespace expression {   
-
+   
 template<Expression Source>
 class Reshape {
 public: 
-    template<Integral... Indexes>
+    template<Integral... Indexes>  
     constexpr Reshape(Trait<Source>::Reference source, Indexes... indexes)
     :   shape_(indexes...) 
     ,   strides_(shape_)
     ,   source_(source) {
-        assert(source_.shape().size() == shape().size() && "Shape mismatch: view must preserve total number of elements");
+        std::size_t elements = 0;
+        for (std::size_t dimension = 0; dimension < sizeof...(indexes); ++dimension) {
+            elements += strides_[dimension] * (shape_[dimension] - 1);
+        } 
+        elements += 1;  
+        assert(elements == std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{})
+        && "Shape mismatch: view must preserve total number of elements");
     }
 
     constexpr type dtype() const {
@@ -50,40 +59,19 @@ private:
     typename Trait<Source>::Reference source_;                
 }; 
  
-constexpr Shape transpose(Shape const& layout, std::pair<int, int> const& dimensions) { 
-    auto rank = layout.rank();  
-    std::array<Shape::size_type, Shape::limit> sizes{};
-    for (Shape::rank_type dimension = 0; dimension < rank; ++dimension) {
-        sizes[dimension] = layout[dimension];
-    }
-
-    std::swap(sizes[indexing::normalize(dimensions.first, rank)], sizes[indexing::normalize(dimensions.second, rank)]); 
-    return Shape(sizes.begin(), sizes.begin() + rank);
-}   
  
-constexpr Strides transpose(Strides const& layout, std::pair<int, int> const& dimensions) { 
-    auto rank = layout.rank();  
-    std::array<Strides::size_type, Strides::limit> sizes{};
-    for (Strides::rank_type dimension = 0; dimension < rank; ++dimension) {
-        sizes[dimension] = layout[dimension];
-    }
-
-    std::swap(sizes[indexing::normalize(dimensions.first, rank)], sizes[indexing::normalize(dimensions.second, rank)]); 
-    return Strides(sizes.begin(), sizes.begin() + rank);
-}  
-
-
-/*----------------------------------------------------------------*/
-/*TODO: This is an special case of Permutation and may get it's own file. The api will remain the same but may be removed from here. */
 template<Expression Source>
 class Transpose {
 public: 
     constexpr Transpose(typename Trait<Source>::Reference source, std::pair<int, int> dimensions)
-    :   shape_(transpose(source.shape(), dimensions)) 
-    ,   strides_(transpose(source.strides(), dimensions))
+    :   shape_(source.shape()) 
+    ,   strides_(source.strides())
     ,   source_(source)
-    ,   dimensions_(dimensions)
-    {}
+    ,   dimensions_(dimensions) {  
+        auto rank = source.shape().rank();    
+        std::swap(shape_[indexing::normalize(dimensions.first, rank)], shape_[indexing::normalize(dimensions.second, rank)]); 
+        std::swap(strides_[indexing::normalize(dimensions.first, rank)], strides_[indexing::normalize(dimensions.second, rank)]);   
+    }
 
     constexpr type dtype() const {
         return source_.dtype();

@@ -1,9 +1,8 @@
-#include "cpu.hpp"  
 #include <stdexcept>
 #include <vector>
 #include <array>
 #include <cmath> 
-
+#include "argcmp.hpp"  
 
 template<typename S, typename D, typename Cmp>
 void argReducerKernel(

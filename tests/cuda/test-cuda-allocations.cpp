@@ -1,10 +1,9 @@
 #include <gtest/gtest.h> 
 #include "Resources.hpp"
-
-/*
+ 
 #ifdef CUDA
 using namespace tannic; 
-TEST(TestDevice, TestAlloc) {
+TEST(TestCUDADevice, TestCUDAAlloc) {
     Device device(0, false);
     ASSERT_EQ(device.id(), 0);
     ASSERT_EQ(device.blocking(), false);
@@ -20,4 +19,4 @@ TEST(TestDevice, TestAlloc) {
     device.deallocate(ptr5, 256);
 }
 
-#endif*/
+#endif

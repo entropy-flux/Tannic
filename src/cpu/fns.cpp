@@ -1,8 +1,8 @@
-#include "cpu.hpp"  
 #include <stdexcept>
 #include <vector>
 #include <array>
 #include <cmath>  
+#include "cpu/fns.hpp"  
  
 template<typename S, typename D, class Fn>
 void scalarFnKernel(

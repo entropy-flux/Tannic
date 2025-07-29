@@ -54,7 +54,6 @@ std::size_t Buffer::nbytes() const {
 
 Allocator const& Buffer::allocator() const { 
     return allocator_; 
-} 
- 
+}  
 
 } // namespace TANNIC 

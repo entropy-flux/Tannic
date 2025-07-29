@@ -5,7 +5,6 @@ using namespace tannic;
 
 // run this file with ``bash main.sh``
 
-
 int main() { 
     // WARNING:
     // Explicit inialization required for now but maybe removed in the future.

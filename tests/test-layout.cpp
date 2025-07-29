@@ -5,17 +5,15 @@
 using namespace tannic;
 
 TEST(Test, Constructor) {     
-    constexpr Shape const_shape(1,2,3);
-    static_assert(const_shape.size() == 6);
+    constexpr Shape const_shape(1,2,3); 
     static_assert(const_shape.rank() == 3);
     Shape iterable_shape(const_shape);
     ASSERT_EQ(iterable_shape[0], 1);
     ASSERT_EQ(iterable_shape[1], 2);
     ASSERT_EQ(iterable_shape[2], 3); 
     ASSERT_EQ(iterable_shape, const_shape); 
-    constexpr Shape shape1(1,2,3,4,5);;
-    static_assert(shape1.size() == 1*2*3*4*5);
-    constexpr Shape shape2(1,2,3,4,5);;
+    constexpr Shape shape1(1,2,3,4,5);
+    constexpr Shape shape2(1,2,3,4,5);
     static_assert(shape1.rank() == 5);
     static_assert(shape2[0] == 1);
     static_assert(shape1 == shape2); 
