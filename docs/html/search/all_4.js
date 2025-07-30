@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['data_20types_0',['Supported Data Types',['../d5/d34/Types_8hpp.html#autotoc_md17',1,'']]],
-  ['dcodeof_1',['dcodeof',['../d5/d34/Types_8hpp.html#a7cc5a20569f733cb88c508ebb9119363',1,'tannic']]],
-  ['device_2',['Device',['../d3/d46/classtannic_1_1Device.html',1,'tannic']]],
-  ['devices_3',['Devices',['../d9/dd4/classtannic_1_1Devices.html',1,'tannic']]],
-  ['dnameof_4',['dnameof',['../d5/d34/Types_8hpp.html#a1f6a29013277d9209efa113453cf0b2e',1,'tannic']]],
-  ['dsizeof_5',['dsizeof',['../d5/d34/Types_8hpp.html#aee5ef48cb75e37f65cc11ef67fbb9d25',1,'tannic']]],
-  ['dtype_6',['dtype',['../da/d93/classtannic_1_1Tensor.html#ae2ed5e8543bccbf5a65a6a38f9b0aaea',1,'tannic::Tensor']]],
-  ['dtypeof_7',['dtypeof',['../d5/d34/Types_8hpp.html#a6e357abf60406726c8b595658e93e110',1,'tannic']]]
+  ['data_20types_0',['Supported Data Types',['../d5/d34/Types_8hpp.html#autotoc_md22',1,'']]],
+  ['dcodeof_1',['dcodeof',['../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363',1,'tannic']]],
+  ['deallocate_2',['deallocate',['../df/da7/classtannic_1_1Host.html#a4d32bc66b1bc6f2cfa91448ee7ac1af8',1,'tannic::Host::deallocate()'],['../d3/d46/classtannic_1_1Device.html#a8f0b1404caa8e124f7aec4ee1b5c3048',1,'tannic::Device::deallocate()']]],
+  ['device_3',['device',['../d3/d46/classtannic_1_1Device.html',1,'tannic::Device'],['../d3/d46/classtannic_1_1Device.html#a5374d28b26368e2cefff11e0ba7c5ea8',1,'tannic::Device::Device()']]],
+  ['devices_4',['devices',['../d9/dd4/classtannic_1_1Devices.html',1,'tannic::Devices'],['../d9/dd4/classtannic_1_1Devices.html#a664aa3b09953063a4ded7c4c6eea91fc',1,'tannic::Devices::Devices(Devices &amp;&amp;)=delete'],['../d9/dd4/classtannic_1_1Devices.html#a3dc88507dd999c24aed489873abc14a7',1,'tannic::Devices::Devices(const Devices &amp;)=delete']]],
+  ['dnameof_5',['dnameof',['../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e',1,'tannic']]],
+  ['dsizeof_6',['dsizeof',['../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25',1,'tannic']]],
+  ['dtype_7',['dtype',['../d4/db5/classtannic_1_1expression_1_1Function.html#a87a2da4547c1e308c17e09aa0bb895fa',1,'tannic::expression::Function::dtype()'],['../d3/d73/classtannic_1_1expression_1_1Unary.html#a4edd1787286c9ae3cd14b5ed82fa2211',1,'tannic::expression::Unary::dtype()'],['../d6/d5f/classtannic_1_1expression_1_1Binary.html#ab5c976ef9f8c2d18320b8489b831b141',1,'tannic::expression::Binary::dtype()'],['../da/dc5/classtannic_1_1expression_1_1Reduction.html#a490b9f5f332ad6df24ab82792af7e486',1,'tannic::expression::Reduction::dtype()'],['../dd/d0f/classtannic_1_1expression_1_1Slice.html#afa2df373f05dc00ef730ba208f118cf0',1,'tannic::expression::Slice::dtype()'],['../da/d93/classtannic_1_1Tensor.html#ae2ed5e8543bccbf5a65a6a38f9b0aaea',1,'tannic::Tensor::dtype()'],['../dc/dd5/classtannic_1_1expression_1_1Transformation.html#ab4c9559dd3fd276a86737c0ac8b9bed5',1,'tannic::expression::Transformation::dtype()'],['../d2/dd8/classtannic_1_1expression_1_1Reshape.html#af5867677de585169871d47f3b2d4e6bf',1,'tannic::expression::Reshape::dtype()'],['../d0/dd9/classtannic_1_1expression_1_1Transpose.html#a9cb47b2a9524225c53a91827422b0f10',1,'tannic::expression::Transpose::dtype()']]],
+  ['dtypeof_8',['dtypeof',['../d0/d1a/namespacetannic.html#a6e357abf60406726c8b595658e93e110',1,'tannic']]]
 ];

@@ -110,7 +110,7 @@ public:
      * ```
      */
     template<typename... Sizes>
-    constexpr explicit Strides(Sizes... sizes)
+    constexpr Strides(Sizes... sizes)
     :   sizes_{static_cast<size_type>(sizes)...}
     ,   rank_(sizeof...(sizes)) {
         assert(rank_ < limit && "Strides rank limit exceeded");
@@ -154,7 +154,7 @@ public:
      * std::cout << s;  // Output: Strides(12, 4, 1)
      * ```
      */
-    constexpr explicit Strides(const Shape& shape) { 
+    constexpr Strides(const Shape& shape) { 
         rank_ = shape.rank();
         if (rank_ == 0) return;
         

@@ -23,6 +23,7 @@
 #include "Tensor.hpp" 
 
 namespace tannic {
+
 namespace function {
 
 template<class Functor, Expression Operand>
@@ -59,7 +60,7 @@ public:
         return target;
     } 
 };
- 
+  
 struct Log {
     void operator()(Tensor const&, Tensor&) const;
 };
@@ -150,7 +151,8 @@ template<Expression Operand>
 constexpr auto tanh(Operand&& operand) {
     return Function<Tanh, Operand>({}, std::forward<Operand>(operand));
 }
-} // namespace functions 
+
+} // namespace function
 
 using function::log;
 using function::exp;

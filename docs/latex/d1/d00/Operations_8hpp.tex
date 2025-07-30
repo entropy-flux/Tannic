@@ -1,0 +1,70 @@
+\doxysection{include/tannic/\+Operations.hpp File Reference}
+\hypertarget{Operations_8hpp}{}\label{Operations_8hpp}\index{include/tannic/Operations.hpp@{include/tannic/Operations.hpp}}
+
+
+Defines expression templates tensor operations.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \#include "{}Concepts.\+hpp"{}}\newline
+{\ttfamily \#include "{}Types.\+hpp"{}}\newline
+{\ttfamily \#include "{}Shape.\+hpp"{}}\newline
+{\ttfamily \#include "{}Strides.\+hpp"{}}\newline
+{\ttfamily \#include "{}Traits.\+hpp"{}}\newline
+Include dependency graph for Operations.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d0f/Operations_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d8e/Operations_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Unary}{tannic\+::expression\+::\+Unary$<$ Operation, Operand $>$}}
+\begin{DoxyCompactList}\small\item\em Expression template for a unary tensor operation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary$<$ Operation, Operand, Cooperand $>$}}
+\begin{DoxyCompactList}\small\item\em Expression template for a binary tensor operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1operation}{tannic\+::operation}}
+\begin{DoxyCompactList}\small\item\em Defines tensor operation functors and operator overloads. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines expression templates tensor operations. 
+
+\begin{DoxyAuthor}{Author}
+Eric Cardozo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+This header defines expression templates used to represent lazy evaluation of unary and binary tensor operations. The system enables composable arithmetic on tensor-\/like objects while deferring actual computation until evaluation (via {\ttfamily forward()}).
+
+Includes\+:
+\begin{DoxyItemize}
+\item Type promotion utility ({\ttfamily promote})
+\item Shape broadcasting logic ({\ttfamily broadcast})
+\item Unary and binary operation templates ({\ttfamily Unary}, {\ttfamily Binary})
+\item Arithmetic operation structs ({\ttfamily Addition}, {\ttfamily Subtraction}, etc.)
+\item Overloaded operators ({\ttfamily +}, {\ttfamily -\/}, {\ttfamily \texorpdfstring{$\ast$}{*}})
+\end{DoxyItemize}
+
+Part of the Tannic Tensor Library. 

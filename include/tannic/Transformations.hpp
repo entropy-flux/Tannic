@@ -30,7 +30,7 @@ namespace tannic {
 
 class Tensor;
 
-namespace expression {    
+namespace transformation {    
   
 template<class Operation, Expression ... Operands>
 class Transformation {
@@ -74,15 +74,14 @@ private:
     type dtype_;
     Shape shape_; 
     Strides strides_;
-}; 
-
+};   
+ 
 static constexpr auto index(type inner, type outer) {
     return static_cast<int>(inner) + static_cast<int>(outer) * static_cast<int>(TYPES);
 }  
 
 struct Composition { 
-    void forward(Tensor const&, Tensor const&, Tensor&) const;
-
+    void forward(Tensor const&, Tensor const&, Tensor&) const; 
  
     static constexpr auto promotions = []() {
         std::array<type, index(TYPES, TYPES)> table{};  
@@ -169,11 +168,11 @@ constexpr auto composition(Outer&& outer, Inner&& inner) {
     };
 }
  
-} // namespace expression
+} // namespace transformation
 
 template<Expression Multiplicand, Expression Multiplier>
 constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier) {
-    return expression::composition(
+    return transformation::composition(
         std::forward<Multiplicand>(multiplicand),
         std::forward<Multiplier>(multiplier)
     );

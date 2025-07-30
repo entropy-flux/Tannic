@@ -83,7 +83,7 @@ $(document).ready(function() { init_codefold(1); });
   <div class="headertitle"><div class="title">Indexing.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright 2025 Eric Cardozo</span></div>
+<a href="../../d3/da7/Indexing_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright 2025 Eric Cardozo</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// This file is part of the Tannic Tensor Library.</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">//</span></div>
@@ -103,42 +103,52 @@ $(document).ready(function() { init_codefold(1); });
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef INDEXING_HPP</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define INDEXING_HPP</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="../../d3/d84/Concepts_8hpp.html">Concepts.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">namespace </span>tannic::indexing {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  </div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">   27</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">Range</a> {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">int</span> start;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">int</span> stop;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;cassert&gt;</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="../../d3/d84/Concepts_8hpp.html">Concepts.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="../../d1/d17/namespacetannic_1_1indexing.html">   24</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d1/d17/namespacetannic_1_1indexing.html">tannic::indexing</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  </div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">   26</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">Range</a> {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80">   27</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80">start</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872">   28</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872">stop</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">template</span>&lt;Integral Index, Integral Size&gt;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">constexpr</span> <span class="keyword">inline</span> Index normalize(Index index, Size bound) {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">if</span> (index &lt; 0) index += bound;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    assert(index &gt;= 0 &amp;&amp; index &lt; bound &amp;&amp; <span class="stringliteral">&quot;Index out of bounds&quot;</span>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">return</span> index;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}  </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">template</span>&lt;Integral Size&gt;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">constexpr</span> <span class="keyword">inline</span> Range normalize(Range <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>, Size size) {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">int</span> start = <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.start &lt; 0 ? size + <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.start : <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.start;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">int</span> stop = <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.stop &lt; 0 ? size + <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.stop + 1 : <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.stop;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> {start, stop};</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}  </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} <span class="comment">// namespace TANNIC::indexing</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">namespace </span>tannic {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">using </span>range = indexing::Range;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif </span><span class="comment">// INDEXING_H</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">template</span>&lt;Integral Index, Integral Size&gt;</div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">   32</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> Index <a class="code hl_function" href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">normalize</a>(Index index, Size bound) {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">if</span> (index &lt; 0) index += bound;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    assert(index &gt;= 0 &amp;&amp; index &lt; bound &amp;&amp; <span class="stringliteral">&quot;Index out of bounds&quot;</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">return</span> index;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}  </div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">template</span>&lt;Integral Size&gt;</div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../d1/d17/namespacetannic_1_1indexing.html#aa32d55359b2e4a8162a3859edd089e0a">   39</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">Range</a> <a class="code hl_function" href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">normalize</a>(<a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">Range</a> <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>, Size size) {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">int</span> start = <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.<a class="code hl_variable" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80">start</a> &lt; 0 ? size + <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.<a class="code hl_variable" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80">start</a> : <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.<a class="code hl_variable" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80">start</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">int</span> stop = <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.<a class="code hl_variable" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872">stop</a> &lt; 0 ? size + <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.<a class="code hl_variable" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872">stop</a> + 1 : <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>.<a class="code hl_variable" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872">stop</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">return</span> {start, stop};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}  </div>
+</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>} <span class="comment">// namespace TANNIC::indexing</span></div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a> {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a9468873460db4ea12f41458b87c63975">   48</a></span>    <span class="keyword">using </span><a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a> = <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">indexing::Range</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif </span><span class="comment">// INDEXING_H</span></div>
 <div class="ttc" id="aConcepts_8hpp_html"><div class="ttname"><a href="../../d3/d84/Concepts_8hpp.html">Concepts.hpp</a></div><div class="ttdoc">Defines core C++20 concepts used throughout the Tannic Tensor Library.</div></div>
-<div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="../../de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdef"><b>Definition</b> Indexing.hpp:27</div></div>
+<div class="ttc" id="anamespacetannic_1_1indexing_html"><div class="ttname"><a href="../../d1/d17/namespacetannic_1_1indexing.html">tannic::indexing</a></div><div class="ttdef"><b>Definition</b> Indexing.hpp:24</div></div>
+<div class="ttc" id="anamespacetannic_1_1indexing_html_ace9349c1e3b97c3df8283cde013aee85"><div class="ttname"><a href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">tannic::indexing::normalize</a></div><div class="ttdeci">constexpr Index normalize(Index index, Size bound)</div><div class="ttdef"><b>Definition</b> Indexing.hpp:32</div></div>
+<div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition</b> Buffer.hpp:24</div></div>
+<div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="../../de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdef"><b>Definition</b> Indexing.hpp:26</div></div>
+<div class="ttc" id="astructtannic_1_1indexing_1_1Range_html_aa31ebd72934a95f17531758183f6ce80"><div class="ttname"><a href="../../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80">tannic::indexing::Range::start</a></div><div class="ttdeci">int start</div><div class="ttdef"><b>Definition</b> Indexing.hpp:27</div></div>
+<div class="ttc" id="astructtannic_1_1indexing_1_1Range_html_ab25842dedc9b4f9987153cd0b4750872"><div class="ttname"><a href="../../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872">tannic::indexing::Range::stop</a></div><div class="ttdeci">int stop</div><div class="ttdef"><b>Definition</b> Indexing.hpp:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

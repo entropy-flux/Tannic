@@ -1,0 +1,67 @@
+\doxysection{tannic\+::expression Namespace Reference}
+\hypertarget{namespacetannic_1_1expression}{}\label{namespacetannic_1_1expression}\index{tannic::expression@{tannic::expression}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax}{Argmax}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin}{Argmin}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{Binary}}
+\begin{DoxyCompactList}\small\item\em Expression template for a binary tensor operation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Function}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{Reshape}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{Slice}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{Transformation}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{Transpose}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Unary}{Unary}}
+\begin{DoxyCompactList}\small\item\em Expression template for a unary tensor operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Expression Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a674c22c100877e7a9fd931291ebb3765}{argmax}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}} axis=-\/1)
+\item 
+{\footnotesize template$<$Expression Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a7a31ff65859bcf18d2862ccfc6232ef4}{argmin}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}} axis=-\/1)
+\item 
+{\footnotesize template$<$Expression Source, Integral ... Indexes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}{view}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} ... \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{indexes}})
+\item 
+{\footnotesize template$<$Expression Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}{transpose}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{first}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{second}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetannic_1_1expression_a674c22c100877e7a9fd931291ebb3765}\label{namespacetannic_1_1expression_a674c22c100877e7a9fd931291ebb3765} 
+\index{tannic::expression@{tannic::expression}!argmax@{argmax}}
+\index{argmax@{argmax}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{argmax()}{argmax()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} tannic\+::expression\+::argmax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}}}]{axis = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_1_1expression_a7a31ff65859bcf18d2862ccfc6232ef4}\label{namespacetannic_1_1expression_a7a31ff65859bcf18d2862ccfc6232ef4} 
+\index{tannic::expression@{tannic::expression}!argmin@{argmin}}
+\index{argmin@{argmin}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{argmin()}{argmin()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} tannic\+::expression\+::argmin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}}}]{axis = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}\label{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00} 
+\index{tannic::expression@{tannic::expression}!transpose@{transpose}}
+\index{transpose@{transpose}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{transpose()}{transpose()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} tannic\+::expression\+::transpose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}}}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}}}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}\label{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe} 
+\index{tannic::expression@{tannic::expression}!view@{view}}
+\index{view@{view}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{view()}{view()}}
+{\footnotesize\ttfamily template$<$Expression Source, Integral ... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} tannic\+::expression\+::view (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} ...}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+

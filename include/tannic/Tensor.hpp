@@ -113,7 +113,7 @@ public:
     :   dtype_(dtype)
     ,   shape_(shape) 
     ,   strides_(shape_) 
-    ,   offset_(0) {
+    ,   offset_(0)  {
         nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
     }   
 
@@ -128,12 +128,13 @@ public:
     :   dtype_(dtype)
     ,   shape_(shape) 
     ,   strides_(strides) 
-    ,   offset_(offset) {  
+    ,   offset_(offset)  {  
         if (rank() == 0) {
             nbytes_ = dsizeof(dtype_);
         }
         else {
             std::size_t nbytes = 0;
+            std::size_t expected = 0;
             for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
                 nbytes += strides_[dimension] * (shape_[dimension] - 1);
             } 
@@ -364,7 +365,7 @@ private:
     type dtype_;
     Shape shape_; 
     Strides strides_; 
-    std::size_t nbytes_ = 0;
+    std::size_t nbytes_ = 0; 
     std::ptrdiff_t offset_ = 0;    
     mutable std::shared_ptr<Buffer> buffer_ = nullptr;
 };    

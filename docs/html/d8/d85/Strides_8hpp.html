@@ -77,6 +77,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Strides.hpp File Reference</div></div>
 </div><!--header-->
@@ -90,58 +91,54 @@ $(function() {
 <code>#include &lt;ostream&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d3/d84/Concepts_8hpp_source.html">Concepts.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/df8/Shape_8hpp_source.html">Shape.hpp</a>&quot;</code><br />
-<code>#include &quot;Indexing.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/da7/Indexing_8hpp_source.html">Indexing.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Strides.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d54/Strides_8hpp__incl.png" border="0" usemap="#ainclude_2tannic_2Strides_8hpp" alt=""/></div>
 <map name="ainclude_2tannic_2Strides_8hpp" id="ainclude_2tannic_2Strides_8hpp">
-<area shape="rect" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="757,5,947,31"/>
-<area shape="rect" title=" " alt="" coords="5,152,61,177"/>
-<area shape="poly" title=" " alt="" coords="757,28,560,47,446,62,333,81,190,117,75,152,73,147,189,111,331,76,445,57,560,42,756,23"/>
-<area shape="rect" title=" " alt="" coords="981,79,1051,104"/>
-<area shape="poly" title=" " alt="" coords="879,28,978,71,976,76,877,33"/>
-<area shape="rect" title=" " alt="" coords="1075,79,1162,104"/>
-<area shape="poly" title=" " alt="" coords="896,28,1063,72,1061,78,894,33"/>
-<area shape="rect" title=" " alt="" coords="86,152,162,177"/>
-<area shape="poly" title=" " alt="" coords="757,33,609,53,443,81,297,116,175,151,174,145,295,111,442,76,608,47,756,27"/>
-<area shape="rect" href="../../d3/d84/Concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="790,225,901,251"/>
-<area shape="poly" title=" " alt="" coords="866,29,888,56,912,93,926,135,926,157,920,179,903,202,881,220,877,216,899,199,915,176,921,156,920,136,907,95,884,59,862,33"/>
-<area shape="rect" href="../../d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="455,79,545,104"/>
-<area shape="poly" title=" " alt="" coords="796,33,560,81,559,76,795,28"/>
-<area shape="rect" href="../../d3/da7/Indexing_8hpp_source.html" title=" " alt="" coords="799,152,905,177"/>
-<area shape="poly" title=" " alt="" coords="855,31,855,138,849,138,849,31"/>
-<area shape="rect" title=" " alt="" coords="859,299,939,324"/>
-<area shape="poly" title=" " alt="" coords="856,249,884,286,880,289,852,253"/>
-<area shape="rect" title=" " alt="" coords="653,299,723,324"/>
-<area shape="poly" title=" " alt="" coords="821,253,727,295,725,291,819,248"/>
-<area shape="rect" href="../../d5/d34/Types_8hpp.html" title="Core type system for the Tannic Tensor Library." alt="" coords="747,299,834,324"/>
-<area shape="poly" title=" " alt="" coords="838,253,810,289,806,286,834,249"/>
-<area shape="rect" title=" " alt="" coords="877,372,957,397"/>
-<area shape="poly" title=" " alt="" coords="812,322,886,363,883,367,810,326"/>
-<area shape="rect" title=" " alt="" coords="511,372,577,397"/>
-<area shape="poly" title=" " alt="" coords="752,327,591,373,590,367,750,321"/>
-<area shape="rect" title=" " alt="" coords="645,372,704,397"/>
-<area shape="poly" title=" " alt="" coords="773,326,707,367,704,362,771,322"/>
-<area shape="rect" title=" " alt="" coords="728,372,853,397"/>
-<area shape="poly" title=" " alt="" coords="793,324,793,358,788,358,788,324"/>
-<area shape="poly" title=" " alt="" coords="454,100,291,119,185,134,75,155,74,149,184,129,290,113,454,94"/>
-<area shape="poly" title=" " alt="" coords="455,103,176,154,175,149,454,98"/>
-<area shape="poly" title=" " alt="" coords="546,99,625,118,713,150,773,182,821,215,818,219,770,186,711,154,624,124,545,104"/>
-<area shape="poly" title=" " alt="" coords="488,106,469,126,453,153,451,165,453,177,469,229,490,280,532,359,527,361,485,282,464,231,448,178,446,165,448,151,464,123,484,102"/>
-<area shape="rect" title=" " alt="" coords="186,152,278,177"/>
-<area shape="poly" title=" " alt="" coords="458,107,289,151,288,146,456,101"/>
-<area shape="rect" title=" " alt="" coords="683,225,752,251"/>
-<area shape="poly" title=" " alt="" coords="546,94,580,100,617,111,653,127,686,150,706,179,716,211,711,212,701,182,682,154,651,131,615,116,579,105,545,99"/>
-<area shape="rect" title=" " alt="" coords="303,152,388,177"/>
-<area shape="poly" title=" " alt="" coords="476,106,384,149,382,144,474,102"/>
-<area shape="rect" title=" " alt="" coords="463,152,537,177"/>
-<area shape="poly" title=" " alt="" coords="503,104,503,138,497,138,497,104"/>
-<area shape="rect" title=" " alt="" coords="562,152,673,177"/>
-<area shape="poly" title=" " alt="" coords="520,102,588,142,585,147,517,106"/>
-<area shape="poly" title=" " alt="" coords="546,99,785,147,784,152,545,104"/>
-<area shape="poly" title=" " alt="" coords="854,178,850,212,845,212,848,177"/>
-<area shape="poly" title=" " alt="" coords="832,180,753,221,750,216,829,175"/>
+<area shape="rect" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="249,5,439,31"/>
+<area shape="rect" title=" " alt="" coords="111,152,167,177"/>
+<area shape="poly" title=" " alt="" coords="329,33,168,146,165,142,326,29"/>
+<area shape="rect" title=" " alt="" coords="465,79,535,104"/>
+<area shape="poly" title=" " alt="" coords="370,28,463,70,461,75,368,33"/>
+<area shape="rect" title=" " alt="" coords="559,79,646,104"/>
+<area shape="poly" title=" " alt="" coords="386,28,548,72,547,78,385,33"/>
+<area shape="rect" title=" " alt="" coords="191,152,267,177"/>
+<area shape="poly" title=" " alt="" coords="333,33,289,80,245,142,241,139,285,77,330,29"/>
+<area shape="rect" href="../../d3/d84/Concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="147,225,258,251"/>
+<area shape="poly" title=" " alt="" coords="292,33,242,49,189,73,139,108,118,129,101,153,97,163,98,173,109,190,130,205,155,218,153,223,127,210,105,194,93,174,92,163,96,151,114,126,136,104,186,69,241,44,290,28"/>
+<area shape="rect" href="../../d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="299,79,389,104"/>
+<area shape="poly" title=" " alt="" coords="347,31,347,65,341,65,341,31"/>
+<area shape="rect" href="../../d3/da7/Indexing_8hpp.html" title=" " alt="" coords="645,152,752,177"/>
+<area shape="poly" title=" " alt="" coords="357,29,398,65,425,85,454,102,532,126,633,148,631,153,531,131,452,106,422,89,395,69,354,33"/>
+<area shape="rect" title=" " alt="" coords="12,299,92,324"/>
+<area shape="poly" title=" " alt="" coords="180,253,90,295,88,290,177,248"/>
+<area shape="rect" title=" " alt="" coords="117,299,187,324"/>
+<area shape="poly" title=" " alt="" coords="196,253,170,289,166,286,192,249"/>
+<area shape="rect" href="../../d5/d34/Types_8hpp.html" title="Core type system for the Tannic Tensor Library." alt="" coords="211,299,298,324"/>
+<area shape="poly" title=" " alt="" coords="213,249,240,286,236,289,209,253"/>
+<area shape="rect" title=" " alt="" coords="5,372,85,397"/>
+<area shape="poly" title=" " alt="" coords="222,327,93,370,92,365,220,321"/>
+<area shape="rect" title=" " alt="" coords="341,372,408,397"/>
+<area shape="poly" title=" " alt="" coords="275,322,344,362,342,367,273,326"/>
+<area shape="rect" title=" " alt="" coords="109,372,168,397"/>
+<area shape="poly" title=" " alt="" coords="237,326,171,367,168,362,235,322"/>
+<area shape="rect" title=" " alt="" coords="192,372,317,397"/>
+<area shape="poly" title=" " alt="" coords="257,324,257,358,252,358,252,324"/>
+<area shape="poly" title=" " alt="" coords="312,107,181,152,179,147,310,101"/>
+<area shape="poly" title=" " alt="" coords="327,106,261,147,258,142,324,102"/>
+<area shape="poly" title=" " alt="" coords="339,106,314,140,281,179,233,219,229,215,277,175,310,137,334,103"/>
+<area shape="poly" title=" " alt="" coords="348,104,375,358,369,358,343,104"/>
+<area shape="rect" title=" " alt="" coords="529,152,621,177"/>
+<area shape="poly" title=" " alt="" coords="382,101,525,145,524,151,380,107"/>
+<area shape="rect" title=" " alt="" coords="709,225,779,251"/>
+<area shape="poly" title=" " alt="" coords="390,95,612,121,716,137,766,150,774,166,774,183,762,215,757,213,768,182,768,167,762,154,715,142,612,126,389,100"/>
+<area shape="rect" title=" " alt="" coords="394,152,505,177"/>
+<area shape="poly" title=" " alt="" coords="362,102,422,142,420,147,359,106"/>
+<area shape="poly" title=" " alt="" coords="390,99,632,147,631,153,389,104"/>
+<area shape="poly" title=" " alt="" coords="646,178,634,180,272,231,271,225,633,175,645,173"/>
+<area shape="poly" title=" " alt="" coords="708,176,732,212,727,215,704,179"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -150,18 +147,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="../../d7/d5f/Strides_8hpp__dep__incl.png" border="0" usemap="#ainclude_2tannic_2Strides_8hppdep" alt=""/></div>
 <map name="ainclude_2tannic_2Strides_8hppdep" id="ainclude_2tannic_2Strides_8hppdep">
 <area shape="rect" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="227,5,418,31"/>
-<area shape="rect" href="../../d1/d00/Operations_8hpp_source.html" title=" " alt="" coords="5,79,221,104"/>
+<area shape="rect" href="../../d1/d00/Operations_8hpp.html" title="Defines expression templates tensor operations." alt="" coords="5,79,221,104"/>
 <area shape="poly" title=" " alt="" coords="277,38,148,81,146,76,275,33"/>
 <area shape="rect" href="../../db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="229,152,416,177"/>
 <area shape="poly" title=" " alt="" coords="306,43,295,60,287,79,286,99,292,118,314,150,309,153,287,121,280,100,281,78,290,58,301,40"/>
-<area shape="rect" href="../../d2/d6a/Slices_8hpp_source.html" title=" " alt="" coords="297,79,479,104"/>
+<area shape="rect" href="../../d2/d6a/Slices_8hpp.html" title=" " alt="" coords="297,79,479,104"/>
 <area shape="poly" title=" " alt="" coords="345,39,379,77,375,80,341,43"/>
-<area shape="rect" href="../../d8/dea/Views_8hpp_source.html" title=" " alt="" coords="504,79,688,104"/>
+<area shape="rect" href="../../d8/dea/Views_8hpp.html" title=" " alt="" coords="504,79,688,104"/>
 <area shape="poly" title=" " alt="" coords="380,32,552,76,551,81,379,37"/>
 <area shape="poly" title=" " alt="" coords="161,106,290,149,288,154,159,111"/>
-<area shape="rect" href="../../db/db8/Reductions_8hpp_source.html" title=" " alt="" coords="85,225,302,251"/>
+<area shape="rect" href="../../db/db8/Reductions_8hpp.html" title=" " alt="" coords="85,225,302,251"/>
 <area shape="poly" title=" " alt="" coords="291,186,216,227,213,223,288,182"/>
-<area shape="rect" href="../../df/d25/Transformations_8hpp_source.html" title=" " alt="" coords="327,225,577,251"/>
+<area shape="rect" href="../../df/d25/Transformations_8hpp.html" title=" " alt="" coords="327,225,577,251"/>
 <area shape="poly" title=" " alt="" coords="357,182,432,223,430,227,354,186"/>
 <area shape="poly" title=" " alt="" coords="370,116,335,154,331,150,366,113"/>
 <area shape="poly" title=" " alt="" coords="540,110,368,154,366,149,538,105"/>
@@ -176,13 +173,17 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the memory strides associated with a tensor shape.  <a href="../../dc/deb/classtannic_1_1Strides.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:d0/d1a/namespacetannic" id="r_d0/d1a/namespacetannic"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1c8ec7747a2d4ba830533d01fdeb35b2" id="r_a1c8ec7747a2d4ba830533d01fdeb35b2"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d85/Strides_8hpp.html#a1c8ec7747a2d4ba830533d01fdeb35b2">tannic::operator==</a> (<a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;first, <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;second)</td></tr>
+<tr class="memitem:a1c8ec7747a2d4ba830533d01fdeb35b2" id="r_a1c8ec7747a2d4ba830533d01fdeb35b2"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a1c8ec7747a2d4ba830533d01fdeb35b2">tannic::operator==</a> (<a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;first, <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;second)</td></tr>
 <tr class="memdesc:a1c8ec7747a2d4ba830533d01fdeb35b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality comparison for strides.  <br /></td></tr>
 <tr class="separator:a1c8ec7747a2d4ba830533d01fdeb35b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78e6118242dbf100a05da89b391dedb4" id="r_a78e6118242dbf100a05da89b391dedb4"><td class="memItemLeft" align="right" valign="top"><a id="a78e6118242dbf100a05da89b391dedb4" name="a78e6118242dbf100a05da89b391dedb4"></a>
-std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>tannic::operator&lt;&lt;</b> (std::ostream &amp;os, <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;strides)</td></tr>
+<tr class="memitem:a78e6118242dbf100a05da89b391dedb4" id="r_a78e6118242dbf100a05da89b391dedb4"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a78e6118242dbf100a05da89b391dedb4">tannic::operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;strides)</td></tr>
 <tr class="separator:a78e6118242dbf100a05da89b391dedb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -198,48 +199,8 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>tannic:
 </li>
 </ul>
 <p>All expression-like objects in the library expose an <code>Strides</code> as part of their interface, making this file central to the Tannic design.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions.">Shape.hpp</a> (tensor dimensions), <a class="el" href="../../d3/da7/Indexing_8hpp_source.html">Indexing.hpp</a> (negative index handling) </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a1c8ec7747a2d4ba830533d01fdeb35b2" name="a1c8ec7747a2d4ba830533d01fdeb35b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c8ec7747a2d4ba830533d01fdeb35b2">&#9670;&#160;</a></span>operator==()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr bool tannic::operator== </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;&#160;</td>
-          <td class="paramname"><em>first</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;&#160;</td>
-          <td class="paramname"><em>second</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Equality comparison for strides. </p>
-<dl class="section return"><dt>Returns</dt><dd>True if all stride sizes are equal for each dimension. </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions.">Shape.hpp</a> (tensor dimensions), <a class="el" href="../../d3/da7/Indexing_8hpp.html">Indexing.hpp</a> (negative index handling) </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

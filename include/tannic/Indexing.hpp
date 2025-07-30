@@ -18,8 +18,7 @@
 #ifndef INDEXING_HPP
 #define INDEXING_HPP
 
-#include <cassert>
- 
+#include <cassert> 
 #include "Concepts.hpp"
 
 namespace tannic::indexing {

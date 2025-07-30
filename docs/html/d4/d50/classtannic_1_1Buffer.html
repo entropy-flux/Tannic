@@ -71,7 +71,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>tannic</b></li><li class="navelem"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></li><li class="navelem"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -81,37 +81,251 @@ $(function() {
   <div class="headertitle"><div class="title">tannic::Buffer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a983886240f76aa8492bd45ca81593c7e" id="r_a983886240f76aa8492bd45ca81593c7e"><td class="memItemLeft" align="right" valign="top"><a id="a983886240f76aa8492bd45ca81593c7e" name="a983886240f76aa8492bd45ca81593c7e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Buffer</b> (std::size_t nbytes, Allocator allocator=<a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>{})</td></tr>
+<tr class="memitem:a983886240f76aa8492bd45ca81593c7e" id="r_a983886240f76aa8492bd45ca81593c7e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#a983886240f76aa8492bd45ca81593c7e">Buffer</a> (std::size_t <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#aa987fe955f172709b13a5a07b6abca61">nbytes</a>, <a class="el" href="../../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112">Allocator</a> <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#ae8279b96d25510e6c4be7c5dd37d2528">allocator</a>=<a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>{})</td></tr>
 <tr class="separator:a983886240f76aa8492bd45ca81593c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1d2f3b93cace356b84eeb19171f4cf4" id="r_aa1d2f3b93cace356b84eeb19171f4cf4"><td class="memItemLeft" align="right" valign="top"><a id="aa1d2f3b93cace356b84eeb19171f4cf4" name="aa1d2f3b93cace356b84eeb19171f4cf4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Buffer</b> (const <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;)=delete</td></tr>
+<tr class="memitem:aa1d2f3b93cace356b84eeb19171f4cf4" id="r_aa1d2f3b93cace356b84eeb19171f4cf4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#aa1d2f3b93cace356b84eeb19171f4cf4">Buffer</a> (const <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;)=delete</td></tr>
 <tr class="separator:aa1d2f3b93cace356b84eeb19171f4cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafa3f5ab9e76af7621cd2457c8da2b86" id="r_aafa3f5ab9e76af7621cd2457c8da2b86"><td class="memItemLeft" align="right" valign="top"><a id="aafa3f5ab9e76af7621cd2457c8da2b86" name="aafa3f5ab9e76af7621cd2457c8da2b86"></a>
-<a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;)=delete</td></tr>
+<tr class="memitem:aafa3f5ab9e76af7621cd2457c8da2b86" id="r_aafa3f5ab9e76af7621cd2457c8da2b86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#aafa3f5ab9e76af7621cd2457c8da2b86">operator=</a> (const <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;)=delete</td></tr>
 <tr class="separator:aafa3f5ab9e76af7621cd2457c8da2b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47e35c6f4d86bc2124dc547723439541" id="r_a47e35c6f4d86bc2124dc547723439541"><td class="memItemLeft" align="right" valign="top"><a id="a47e35c6f4d86bc2124dc547723439541" name="a47e35c6f4d86bc2124dc547723439541"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Buffer</b> (<a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="memitem:a47e35c6f4d86bc2124dc547723439541" id="r_a47e35c6f4d86bc2124dc547723439541"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#a47e35c6f4d86bc2124dc547723439541">Buffer</a> (<a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&amp;other) noexcept</td></tr>
 <tr class="separator:a47e35c6f4d86bc2124dc547723439541"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1a9b423b277aa1d226e30dad2ba31e1" id="r_af1a9b423b277aa1d226e30dad2ba31e1"><td class="memItemLeft" align="right" valign="top"><a id="af1a9b423b277aa1d226e30dad2ba31e1" name="af1a9b423b277aa1d226e30dad2ba31e1"></a>
-<a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="memitem:af1a9b423b277aa1d226e30dad2ba31e1" id="r_af1a9b423b277aa1d226e30dad2ba31e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#af1a9b423b277aa1d226e30dad2ba31e1">operator=</a> (<a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&amp;other) noexcept</td></tr>
 <tr class="separator:af1a9b423b277aa1d226e30dad2ba31e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedfd20d2580033d4d397c909f0172588" id="r_aedfd20d2580033d4d397c909f0172588"><td class="memItemLeft" align="right" valign="top"><a id="aedfd20d2580033d4d397c909f0172588" name="aedfd20d2580033d4d397c909f0172588"></a>
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>address</b> ()</td></tr>
+<tr class="memitem:a7c75111cb4c087e0a37c7bc6a30c27cd" id="r_a7c75111cb4c087e0a37c7bc6a30c27cd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#a7c75111cb4c087e0a37c7bc6a30c27cd">~Buffer</a> ()</td></tr>
+<tr class="separator:a7c75111cb4c087e0a37c7bc6a30c27cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedfd20d2580033d4d397c909f0172588" id="r_aedfd20d2580033d4d397c909f0172588"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#aedfd20d2580033d4d397c909f0172588">address</a> ()</td></tr>
 <tr class="separator:aedfd20d2580033d4d397c909f0172588"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88ceb08e4ebc5855d0776201b6eab63d" id="r_a88ceb08e4ebc5855d0776201b6eab63d"><td class="memItemLeft" align="right" valign="top"><a id="a88ceb08e4ebc5855d0776201b6eab63d" name="a88ceb08e4ebc5855d0776201b6eab63d"></a>
-const void *&#160;</td><td class="memItemRight" valign="bottom"><b>address</b> () const</td></tr>
+<tr class="memitem:a88ceb08e4ebc5855d0776201b6eab63d" id="r_a88ceb08e4ebc5855d0776201b6eab63d"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#a88ceb08e4ebc5855d0776201b6eab63d">address</a> () const</td></tr>
 <tr class="separator:a88ceb08e4ebc5855d0776201b6eab63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa987fe955f172709b13a5a07b6abca61" id="r_aa987fe955f172709b13a5a07b6abca61"><td class="memItemLeft" align="right" valign="top"><a id="aa987fe955f172709b13a5a07b6abca61" name="aa987fe955f172709b13a5a07b6abca61"></a>
-std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>nbytes</b> () const</td></tr>
+<tr class="memitem:aa987fe955f172709b13a5a07b6abca61" id="r_aa987fe955f172709b13a5a07b6abca61"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#aa987fe955f172709b13a5a07b6abca61">nbytes</a> () const</td></tr>
 <tr class="separator:aa987fe955f172709b13a5a07b6abca61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8279b96d25510e6c4be7c5dd37d2528" id="r_ae8279b96d25510e6c4be7c5dd37d2528"><td class="memItemLeft" align="right" valign="top"><a id="ae8279b96d25510e6c4be7c5dd37d2528" name="ae8279b96d25510e6c4be7c5dd37d2528"></a>
-Allocator const &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>allocator</b> () const</td></tr>
+<tr class="memitem:ae8279b96d25510e6c4be7c5dd37d2528" id="r_ae8279b96d25510e6c4be7c5dd37d2528"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112">Allocator</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html#ae8279b96d25510e6c4be7c5dd37d2528">allocator</a> () const</td></tr>
 <tr class="separator:ae8279b96d25510e6c4be7c5dd37d2528"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a983886240f76aa8492bd45ca81593c7e" name="a983886240f76aa8492bd45ca81593c7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a983886240f76aa8492bd45ca81593c7e">&#9670;&#160;</a></span>Buffer() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tannic::Buffer::Buffer </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>nbytes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112">Allocator</a>&#160;</td>
+          <td class="paramname"><em>allocator</em> = <code><a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1d2f3b93cace356b84eeb19171f4cf4" name="aa1d2f3b93cace356b84eeb19171f4cf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1d2f3b93cace356b84eeb19171f4cf4">&#9670;&#160;</a></span>Buffer() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">tannic::Buffer::Buffer </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47e35c6f4d86bc2124dc547723439541" name="a47e35c6f4d86bc2124dc547723439541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47e35c6f4d86bc2124dc547723439541">&#9670;&#160;</a></span>Buffer() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">tannic::Buffer::Buffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7c75111cb4c087e0a37c7bc6a30c27cd" name="a7c75111cb4c087e0a37c7bc6a30c27cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c75111cb4c087e0a37c7bc6a30c27cd">&#9670;&#160;</a></span>~Buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tannic::Buffer::~Buffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aedfd20d2580033d4d397c909f0172588" name="aedfd20d2580033d4d397c909f0172588"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedfd20d2580033d4d397c909f0172588">&#9670;&#160;</a></span>address() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * tannic::Buffer::address </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88ceb08e4ebc5855d0776201b6eab63d" name="a88ceb08e4ebc5855d0776201b6eab63d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88ceb08e4ebc5855d0776201b6eab63d">&#9670;&#160;</a></span>address() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void * tannic::Buffer::address </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae8279b96d25510e6c4be7c5dd37d2528" name="ae8279b96d25510e6c4be7c5dd37d2528"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8279b96d25510e6c4be7c5dd37d2528">&#9670;&#160;</a></span>allocator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112">Allocator</a> const  &amp; tannic::Buffer::allocator </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa987fe955f172709b13a5a07b6abca61" name="aa987fe955f172709b13a5a07b6abca61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa987fe955f172709b13a5a07b6abca61">&#9670;&#160;</a></span>nbytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t tannic::Buffer::nbytes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af1a9b423b277aa1d226e30dad2ba31e1" name="af1a9b423b277aa1d226e30dad2ba31e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1a9b423b277aa1d226e30dad2ba31e1">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp; tannic::Buffer::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aafa3f5ab9e76af7621cd2457c8da2b86" name="aafa3f5ab9e76af7621cd2457c8da2b86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafa3f5ab9e76af7621cd2457c8da2b86">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp; tannic::Buffer::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/tannic/<a class="el" href="../../d8/d36/Buffer_8hpp_source.html">Buffer.hpp</a></li>
 </ul>

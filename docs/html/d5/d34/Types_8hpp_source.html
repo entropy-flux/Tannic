@@ -108,10 +108,10 @@ $(document).ready(function() { init_codefold(1); });
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#include &lt;string&gt;</span>   </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#include &quot;runtime/types.h&quot;</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">namespace </span>tannic {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a> {</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="../../d5/d34/Types_8hpp.html#aee5ef48cb75e37f65cc11ef67fbb9d25">   88</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> std::size_t <a class="code hl_function" href="../../d5/d34/Types_8hpp.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a>(type type) {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">   88</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> std::size_t <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a>(type type) {</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">switch</span> (type) { </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">case</span> int8:      <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(int8_t);</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">case</span> int16:     <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(int16_t);</div>
@@ -128,7 +128,7 @@ $(document).ready(function() { init_codefold(1); });
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
 <div class="foldopen" id="foldopen00114" data-start="{" data-end="}">
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="../../d5/d34/Types_8hpp.html#a1f6a29013277d9209efa113453cf0b2e">  114</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> std::string <a class="code hl_function" href="../../d5/d34/Types_8hpp.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(type type) {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">  114</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> std::string <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(type type) {</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordflow">switch</span> (type) { </div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">case</span> int8:       <span class="keywordflow">return</span> <span class="stringliteral">&quot;int8&quot;</span>;</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">case</span> int16:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;int16&quot;</span>;</div>
@@ -144,7 +144,7 @@ $(document).ready(function() { init_codefold(1); });
 </div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
 <div class="foldopen" id="foldopen00149" data-start="{" data-end="}">
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="../../d5/d34/Types_8hpp.html#a7cc5a20569f733cb88c508ebb9119363">  149</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="../../d5/d34/Types_8hpp.html#a7cc5a20569f733cb88c508ebb9119363">dcodeof</a>(type type) {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363">  149</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363">dcodeof</a>(type type) {</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">switch</span> (type) { </div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">case</span> int8:      <span class="keywordflow">return</span> 12;</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">case</span> int16:     <span class="keywordflow">return</span> 13;</div>
@@ -160,7 +160,7 @@ $(document).ready(function() { init_codefold(1); });
 </div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
 <div class="foldopen" id="foldopen00174" data-start="{" data-end="}">
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="../../d5/d34/Types_8hpp.html#a6e357abf60406726c8b595658e93e110">  174</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> type <a class="code hl_function" href="../../d5/d34/Types_8hpp.html#a6e357abf60406726c8b595658e93e110">dtypeof</a>(uint8_t code) {</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a6e357abf60406726c8b595658e93e110">  174</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> type <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a6e357abf60406726c8b595658e93e110">dtypeof</a>(uint8_t code) {</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordflow">switch</span> (code) {</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        <span class="keywordflow">case</span> 12: <span class="keywordflow">return</span> int8;</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="keywordflow">case</span> 13: <span class="keywordflow">return</span> int16;</div>
@@ -175,17 +175,21 @@ $(document).ready(function() { init_codefold(1); });
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>}</div>
 </div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="keyword">inline</span> std::ostream&amp; operator&lt;&lt;(std::ostream&amp; ostream, type type) {</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordflow">return</span> ostream &lt;&lt; dnameof(type);</div>
+<div class="foldopen" id="foldopen00188" data-start="{" data-end="}">
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a1c1a48f353ac51e8ae5affa4dccd2e4a">  188</a></span><span class="keyword">inline</span> std::ostream&amp; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a8b7066a546d8d6a8605b695788c479f0">operator&lt;&lt;</a>(std::ostream&amp; ostream, type type) {</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordflow">return</span> ostream &lt;&lt; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(type);</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>} </div>
+</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>} <span class="comment">// namespace tannic</span></div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="preprocessor">#endif </span><span class="comment">// TYPES_HPP</span></div>
-<div class="ttc" id="aTypes_8hpp_html_a1f6a29013277d9209efa113453cf0b2e"><div class="ttname"><a href="../../d5/d34/Types_8hpp.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a></div><div class="ttdeci">constexpr std::string dnameof(type type)</div><div class="ttdoc">Returns the string name of a given tensor data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:114</div></div>
-<div class="ttc" id="aTypes_8hpp_html_a6e357abf60406726c8b595658e93e110"><div class="ttname"><a href="../../d5/d34/Types_8hpp.html#a6e357abf60406726c8b595658e93e110">tannic::dtypeof</a></div><div class="ttdeci">constexpr type dtypeof(uint8_t code)</div><div class="ttdoc">Converts a numeric type code back to its corresponding type enum.</div><div class="ttdef"><b>Definition</b> Types.hpp:174</div></div>
-<div class="ttc" id="aTypes_8hpp_html_a7cc5a20569f733cb88c508ebb9119363"><div class="ttname"><a href="../../d5/d34/Types_8hpp.html#a7cc5a20569f733cb88c508ebb9119363">tannic::dcodeof</a></div><div class="ttdeci">constexpr uint8_t dcodeof(type type)</div><div class="ttdoc">Returns the numeric code used for serialization of a data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:149</div></div>
-<div class="ttc" id="aTypes_8hpp_html_aee5ef48cb75e37f65cc11ef67fbb9d25"><div class="ttname"><a href="../../d5/d34/Types_8hpp.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a></div><div class="ttdeci">constexpr std::size_t dsizeof(type type)</div><div class="ttdoc">Returns the size in bytes of a given tensor data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:88</div></div>
+<div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition</b> Buffer.hpp:24</div></div>
+<div class="ttc" id="anamespacetannic_html_a1f6a29013277d9209efa113453cf0b2e"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a></div><div class="ttdeci">constexpr std::string dnameof(type type)</div><div class="ttdoc">Returns the string name of a given tensor data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:114</div></div>
+<div class="ttc" id="anamespacetannic_html_a6e357abf60406726c8b595658e93e110"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a6e357abf60406726c8b595658e93e110">tannic::dtypeof</a></div><div class="ttdeci">constexpr type dtypeof(uint8_t code)</div><div class="ttdoc">Converts a numeric type code back to its corresponding type enum.</div><div class="ttdef"><b>Definition</b> Types.hpp:174</div></div>
+<div class="ttc" id="anamespacetannic_html_a7cc5a20569f733cb88c508ebb9119363"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363">tannic::dcodeof</a></div><div class="ttdeci">constexpr uint8_t dcodeof(type type)</div><div class="ttdoc">Returns the numeric code used for serialization of a data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:149</div></div>
+<div class="ttc" id="anamespacetannic_html_a8b7066a546d8d6a8605b695788c479f0"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a8b7066a546d8d6a8605b695788c479f0">tannic::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, Shape const &amp;shape)</div><div class="ttdef"><b>Definition</b> Shape.hpp:295</div></div>
+<div class="ttc" id="anamespacetannic_html_aee5ef48cb75e37f65cc11ef67fbb9d25"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a></div><div class="ttdeci">constexpr std::size_t dsizeof(type type)</div><div class="ttdoc">Returns the size in bytes of a given tensor data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:88</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

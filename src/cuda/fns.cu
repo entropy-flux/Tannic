@@ -6,32 +6,38 @@
 #include "cuda/fns.cuh"
 #include "cuda/streams.cuh"
 
+
 template<typename S, typename D, class Fn>
 __global__ void scalarFnKernel(const S* src, D* dst) {
     Fn fn;
     *dst = fn(*src);
 }
 
+
 template<typename S, typename D, class Fn>
 __global__ void batchedFnKernel(
-    const S* src, const size_t* src_sz, const size_t* src_ne,           
-    D* dst, const size_t* dst_sz, const size_t* dst_ne, 
+    const S* src, const size_t* src_sz, const size_t* src_ne,
+    D* dst, const size_t* dst_sz, const size_t* dst_ne,
     uint8_t rank, size_t ne
 ) {
-    Fn fn;
-    size_t idx = blockIdx.x * blockDim.x + threadIdx.x;
-    if (idx >= ne) return;
+    Fn fn{};
 
-    size_t offs = 0;
-    size_t rmn = idx;
-    for (int dim = rank - 1; dim >= 0; --dim) {
-        size_t dim_idx = rmn % dst_sz[dim];
-        offs += dim_idx * src_ne[dim];
-        rmn /= dst_sz[dim];
+    for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) { 
+        size_t offs = 0;
+        size_t remaining = idx;
+
+        for (int dim = rank - 1; dim >= 0; --dim) {
+            size_t dim_idx = remaining % dst_sz[dim];
+            remaining /= dst_sz[dim];
+ 
+            size_t src_idx = (src_sz[dim] == 1) ? 0 : dim_idx;
+            offs += src_idx * src_ne[dim];
+        }
+
+        dst[idx] = fn(src[offs]);
     }
-
-    dst[idx] = fn(src[offs]);
 }
+
 
 template<typename S, typename D, class Fn>
 void launchFnKernel(const tensor_t* src, tensor_t* dst, cudaStream_t stream = 0) { 
@@ -59,9 +65,11 @@ void launchFnKernel(const tensor_t* src, tensor_t* dst, cudaStream_t stream = 0)
     } 
 }
 
+
 void launchDefaultKernel(const tensor_t* src, tensor_t* dst, cudaStream_t) {
     exit(EXIT_FAILURE);
 };  
+
 
 struct Log { 
     template<class A>

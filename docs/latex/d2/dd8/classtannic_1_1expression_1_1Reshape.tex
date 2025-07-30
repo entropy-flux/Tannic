@@ -1,29 +1,76 @@
 \doxysection{tannic\+::expression\+::Reshape\texorpdfstring{$<$}{<} Source \texorpdfstring{$>$}{>} Class Template Reference}
 \hypertarget{classtannic_1_1expression_1_1Reshape}{}\label{classtannic_1_1expression_1_1Reshape}\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+
+
+{\ttfamily \#include $<$Views.\+hpp$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classtannic_1_1expression_1_1Reshape_abab1d866ae98f6110ccf0c2a562ee1a8}\label{classtannic_1_1expression_1_1Reshape_abab1d866ae98f6110ccf0c2a562ee1a8} 
-{\footnotesize template$<$Integral... Indexes$>$ }\\constexpr {\bfseries Reshape} (\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, Indexes... indexes)
+{\footnotesize template$<$Integral... Indexes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_abab1d866ae98f6110ccf0c2a562ee1a8}{Reshape}} (\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}, Indexes... \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{indexes}})
 \item 
-\Hypertarget{classtannic_1_1expression_1_1Reshape_af5867677de585169871d47f3b2d4e6bf}\label{classtannic_1_1expression_1_1Reshape_af5867677de585169871d47f3b2d4e6bf} 
-constexpr type {\bfseries dtype} () const
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_af5867677de585169871d47f3b2d4e6bf}{dtype}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
 \item 
-\Hypertarget{classtannic_1_1expression_1_1Reshape_a1f095a0d68ebf341b4276621f8ce851d}\label{classtannic_1_1expression_1_1Reshape_a1f095a0d68ebf341b4276621f8ce851d} 
-constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& {\bfseries shape} () const
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_a1f095a0d68ebf341b4276621f8ce851d}{shape}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
 \item 
-\Hypertarget{classtannic_1_1expression_1_1Reshape_af5e3b7a267434e03678ecb62ae952b85}\label{classtannic_1_1expression_1_1Reshape_af5e3b7a267434e03678ecb62ae952b85} 
-constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& {\bfseries strides} () const
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_af5e3b7a267434e03678ecb62ae952b85}{strides}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
 \item 
-\Hypertarget{classtannic_1_1expression_1_1Reshape_a2154865dd157974dd85746b1a1b6d0c4}\label{classtannic_1_1expression_1_1Reshape_a2154865dd157974dd85746b1a1b6d0c4} 
-std\+::ptrdiff\+\_\+t {\bfseries offset} () const
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_a2154865dd157974dd85746b1a1b6d0c4}{offset}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
 \item 
-\Hypertarget{classtannic_1_1expression_1_1Reshape_a890d0b5bf3b5da73b3ef0fe743675a72}\label{classtannic_1_1expression_1_1Reshape_a890d0b5bf3b5da73b3ef0fe743675a72} 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} {\bfseries forward} () const
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_a890d0b5bf3b5da73b3ef0fe743675a72}{forward}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Reshape_abab1d866ae98f6110ccf0c2a562ee1a8}\label{classtannic_1_1expression_1_1Reshape_abab1d866ae98f6110ccf0c2a562ee1a8} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!Reshape@{Reshape}}
+\index{Reshape@{Reshape}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{Reshape()}{Reshape()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+template$<$Integral... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::\+Reshape (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::\+Reference}]{source,  }\item[{Indexes...}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Reshape_af5867677de585169871d47f3b2d4e6bf}\label{classtannic_1_1expression_1_1Reshape_af5867677de585169871d47f3b2d4e6bf} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Reshape_a890d0b5bf3b5da73b3ef0fe743675a72}\label{classtannic_1_1expression_1_1Reshape_a890d0b5bf3b5da73b3ef0fe743675a72} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classtannic_1_1expression_1_1Reshape_a2154865dd157974dd85746b1a1b6d0c4}\label{classtannic_1_1expression_1_1Reshape_a2154865dd157974dd85746b1a1b6d0c4} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Reshape_a1f095a0d68ebf341b4276621f8ce851d}\label{classtannic_1_1expression_1_1Reshape_a1f095a0d68ebf341b4276621f8ce851d} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Reshape_af5e3b7a267434e03678ecb62ae952b85}\label{classtannic_1_1expression_1_1Reshape_af5e3b7a267434e03678ecb62ae952b85} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/tannic/Views.\+hpp\item 
+include/tannic/\mbox{\hyperlink{Views_8hpp}{Views.\+hpp}}\item 
 include/tannic/\mbox{\hyperlink{Tensor_8hpp}{Tensor.\+hpp}}\end{DoxyCompactItemize}

@@ -83,7 +83,7 @@ $(document).ready(function() { init_codefold(1); });
   <div class="headertitle"><div class="title">Operations.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright 2025 Eric Cardozo</span></div>
+<a href="../../d1/d00/Operations_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright 2025 Eric Cardozo</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// you may not use this file except in compliance with the License.</span></div>
@@ -101,186 +101,252 @@ $(document).ready(function() { init_codefold(1); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#ifndef OPERATIONS_HPP</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define OPERATIONS_HPP</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;vector&gt;</span>  </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;utility&gt;</span>      </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;type_traits&gt;</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="../../d3/d84/Concepts_8hpp.html">Concepts.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="../../d5/d34/Types_8hpp.html">Types.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="../../d2/df8/Shape_8hpp.html">Shape.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="../../d8/d85/Strides_8hpp.html">Strides.hpp</a>&quot;</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;Traits.hpp&quot;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">namespace </span>tannic {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">class </span>Tensor;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span>operation {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> type promote(type first, type second) {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(first) &gt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(second) ?  first : second;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">static</span> <span class="keyword">constexpr</span> Shape broadcast(Shape <span class="keyword">const</span>&amp; first, Shape <span class="keyword">const</span>&amp; second) {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">auto</span> first_rank = first.<a class="code hl_function" href="../../db/da7/classtannic_1_1Shape.html#a35f7ff956c2e5dcb77b0165bb4e21522">rank</a>();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">auto</span> second_rank = second.rank();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">auto</span> rank = std::max(first_rank, second_rank);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::vector&lt;std::size_t&gt; result(rank, 1);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> dimension = 0; dimension &lt; rank; ++dimension) {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">auto</span> first_dimension = (dimension &lt; rank - first_rank) ? 1 : first[dimension - (rank - first_rank)];</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">auto</span> second_dimension = (dimension &lt; rank - second_rank) ? 1 : second[dimension - (rank - second_rank)];</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &lt;vector&gt;</span>  </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &lt;utility&gt;</span>      </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &lt;type_traits&gt;</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#include &quot;<a class="code" href="../../d3/d84/Concepts_8hpp.html">Concepts.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#include &quot;<a class="code" href="../../d5/d34/Types_8hpp.html">Types.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#include &quot;<a class="code" href="../../d2/df8/Shape_8hpp.html">Shape.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#include &quot;<a class="code" href="../../d8/d85/Strides_8hpp.html">Strides.hpp</a>&quot;</span>   </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#include &quot;<a class="code" href="../../d8/d38/Traits_8hpp.html">Traits.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">if</span> (!(first_dimension == second_dimension || first_dimension == 1 || second_dimension == 1)) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Shapes are not broadcast-compatible.&quot;</span>);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        result[dimension] = std::max(first_dimension, second_dimension);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">return</span> Shape(result);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Operation, Expression Operand&gt;</div>
-<div class="foldopen" id="foldopen00058" data-start="{" data-end="};">
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html">   58</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html">Unary</a> { </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    Operation operation;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    Trait&lt;Operand&gt;::Reference operand;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html">Unary</a>(Operation operation, Trait&lt;Operand&gt;::Reference operand)</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    :   operation(operation)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    ,   operand(operand)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    {}  </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">constexpr</span> type dtype()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">return</span> operand.dtype();</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> <span class="keyword">const</span>&amp; shape()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">return</span> operand.shape();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> <span class="keyword">const</span>&amp; strides()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">return</span> operand.strides();</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }  </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a> {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">class </span>Tensor;   </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">namespace </span>expression {   </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Operation, Expression Operand&gt;</div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="};">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html">   65</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html">Unary</a> { </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a1214a34c638402bd72e04e75abc557f0">   67</a></span>    <a class="code hl_class" href="../../d4/db5/classtannic_1_1expression_1_1Function.html">Operation</a> <a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a1214a34c638402bd72e04e75abc557f0">operation</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a18b4d70911027f8e891ee6e21c1099b6">   68</a></span>    <a class="code hl_typedef" href="../../d1/d96/structtannic_1_1Trait.html#a9129038f382bd1ddae5bc8d9d4c255d5">Trait&lt;Operand&gt;::Reference</a> <a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a18b4d70911027f8e891ee6e21c1099b6">operand</a>; </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a9893391af811a4fa38d1dca12b49640c">   75</a></span>    <span class="keyword">constexpr</span> <a class="code hl_function" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a9893391af811a4fa38d1dca12b49640c">Unary</a>(<a class="code hl_class" href="../../d4/db5/classtannic_1_1expression_1_1Function.html">Operation</a> <a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a1214a34c638402bd72e04e75abc557f0">operation</a>, <a class="code hl_typedef" href="../../d1/d96/structtannic_1_1Trait.html#a9129038f382bd1ddae5bc8d9d4c255d5">Trait&lt;Operand&gt;::Reference</a> <a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a18b4d70911027f8e891ee6e21c1099b6">operand</a>)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    :   <a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a1214a34c638402bd72e04e75abc557f0">operation</a>(<a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a1214a34c638402bd72e04e75abc557f0">operation</a>)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    ,   <a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a18b4d70911027f8e891ee6e21c1099b6">operand</a>(<a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a18b4d70911027f8e891ee6e21c1099b6">operand</a>)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    {}  </div>
+</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    std::ptrdiff_t offset()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> forward() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>};</div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a4edd1787286c9ae3cd14b5ed82fa2211">   88</a></span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../d4/db5/classtannic_1_1expression_1_1Function.html">type</a> <a class="code hl_function" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a4edd1787286c9ae3cd14b5ed82fa2211">dtype</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a18b4d70911027f8e891ee6e21c1099b6">operand</a>.dtype();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    } </div>
 </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Operation, Expression Operand, Expression Cooperand&gt;</div>
-<div class="foldopen" id="foldopen00088" data-start="{" data-end="};">
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html">   88</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html">Binary</a> {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    Operation operation;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    Trait&lt;Operand&gt;::Reference operand;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    Trait&lt;Cooperand&gt;::Reference cooperand;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html">Binary</a>(Operation operation, Trait&lt;Operand&gt;::Reference operand, Trait&lt;Cooperand&gt;::Reference cooperand)</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    :   operation(operation)</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    ,   operand(operand)</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    ,   cooperand(cooperand)</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    ,   dtype_(promote(operand.dtype(), cooperand.dtype()))</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    ,   shape_(broadcast(operand.shape(), cooperand.shape()))</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    ,   strides_(shape_)</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    {} </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a63051a1591b037983de89f0153118317">   99</a></span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> <span class="keyword">const</span>&amp; <a class="code hl_function" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a63051a1591b037983de89f0153118317">shape</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a18b4d70911027f8e891ee6e21c1099b6">operand</a>.shape();</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    } </div>
+</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keyword">constexpr</span> type dtype()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">return</span> dtype_;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> <span class="keyword">const</span>&amp; shape()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordflow">return</span> shape_;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    }</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> <span class="keyword">const</span>&amp; strides()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">return</span> strides_;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    } </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    std::ptrdiff_t offset()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> forward() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    type dtype_;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_class" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> shape_;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <a class="code hl_class" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> strides_;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>}; </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="foldopen" id="foldopen00112" data-start="{" data-end="}">
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#ad9daaa825a3fcc17d83b1485cb49057d">  112</a></span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> <span class="keyword">const</span>&amp; <a class="code hl_function" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#ad9daaa825a3fcc17d83b1485cb49057d">strides</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a18b4d70911027f8e891ee6e21c1099b6">operand</a>.strides();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    }  </div>
 </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="foldopen" id="foldopen00127" data-start="{" data-end="};">
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="../../d6/deb/structtannic_1_1operation_1_1Negation.html">  127</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d6/deb/structtannic_1_1operation_1_1Negation.html">Negation</a> {</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordtype">void</span> forward(<a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <span class="keyword">const</span>&amp;, <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&amp;) <span class="keyword">const</span>;  </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>};</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="foldopen" id="foldopen00125" data-start="{" data-end="}">
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a4e0c64cba6ef2ba3ee8485baa2667896">  125</a></span>    std::ptrdiff_t <a class="code hl_function" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a4e0c64cba6ef2ba3ee8485baa2667896">offset</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    }</div>
 </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="foldopen" id="foldopen00131" data-start="{" data-end="};">
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="../../d9/da3/structtannic_1_1operation_1_1Addition.html">  131</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d9/da3/structtannic_1_1operation_1_1Addition.html">Addition</a> {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordtype">void</span> forward(<a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <span class="keyword">const</span>&amp;, <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <span class="keyword">const</span>&amp;, <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&amp;) <span class="keyword">const</span>; </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>};</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <a class="code hl_function" href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a8e353e45bb09a8c5f02323afd88c14f2">forward</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>};</div>
 </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="foldopen" id="foldopen00135" data-start="{" data-end="};">
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="../../d0/dcf/structtannic_1_1operation_1_1Multiplication.html">  135</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d0/dcf/structtannic_1_1operation_1_1Multiplication.html">Multiplication</a> {</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordtype">void</span> forward(<a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <span class="keyword">const</span>&amp;, <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <span class="keyword">const</span>&amp;, <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&amp;) <span class="keyword">const</span>; </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>};</div>
-</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="foldopen" id="foldopen00139" data-start="{" data-end="};">
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html">  139</a></span><span class="keyword">struct </span><a class="code hl_struct" href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html">Subtraction</a> {</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordtype">void</span> forward(<a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <span class="keyword">const</span>&amp;, <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <span class="keyword">const</span>&amp;, <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&amp;) <span class="keyword">const</span>; </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>};</div>
-</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="keyword">template</span>&lt;Expression Operand&gt;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> operator-(Operand&amp;&amp; operand) {</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordflow">return</span> <a class="code hl_class" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html">Unary&lt;Negation, Operand&gt;</a>{{}, std::forward&lt;Operand&gt;(operand)};</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>}</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword">template</span>&lt;Expression Augend, Expression Addend&gt;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> operator+(Augend&amp;&amp; augend, Addend&amp;&amp; addend) {</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keywordflow">return</span> Binary&lt;Addition, Augend, Addend&gt;{{}, std::forward&lt;Augend&gt;(augend), std::forward&lt;Addend&gt;(addend)};</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>}</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Operation, Expression Operand, Expression Cooperand&gt;</div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="};">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html">  148</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html">Binary</a> {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ac573fa663d04a09485c2162ea525c7f5">  150</a></span>    <a class="code hl_class" href="../../d4/db5/classtannic_1_1expression_1_1Function.html">Operation</a> <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ac573fa663d04a09485c2162ea525c7f5">operation</a>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#aae93286d759d60e0b6008e4dfde98631">  151</a></span>    <a class="code hl_typedef" href="../../d1/d96/structtannic_1_1Trait.html#a9129038f382bd1ddae5bc8d9d4c255d5">Trait&lt;Operand&gt;::Reference</a> <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#aae93286d759d60e0b6008e4dfde98631">operand</a>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a0bc22fac1b3596a06904fadcc563163d">  152</a></span>    <a class="code hl_typedef" href="../../d1/d96/structtannic_1_1Trait.html#a9129038f382bd1ddae5bc8d9d4c255d5">Trait&lt;Cooperand&gt;::Reference</a> <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a0bc22fac1b3596a06904fadcc563163d">cooperand</a>;</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="keyword">template</span>&lt;Expression Subtrahend, Expression Minuend&gt;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> operator-(Subtrahend&amp;&amp; subtrahend, Minuend&amp;&amp; minuend) {</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordflow">return</span> Binary&lt;Subtraction, Subtrahend, Minuend&gt;{{}, std::forward&lt;Subtrahend&gt;(subtrahend), std::forward&lt;Minuend&gt;(minuend)};</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="keyword">template</span>&lt;Expression Multiplicand, Expression Multiplier&gt;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> operator*(Multiplicand&amp;&amp; multiplicand, Multiplier&amp;&amp; multiplier) {</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordflow">return</span> Binary&lt;Multiplication, Multiplicand, Multiplier&gt;{{}, std::forward&lt;Multiplicand&gt;(multiplicand), std::forward&lt;Multiplier&gt;(multiplier)};</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>}</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>} <span class="comment">// namespace operation </span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keyword">using </span>operation::operator-; </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="keyword">using </span>operation::operator+; </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keyword">using </span>operation::operator*;  </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>} <span class="comment">// namespace tannic</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="preprocessor">#endif </span><span class="comment">// OPERATIONS_HPP </span></div>
+<div class="foldopen" id="foldopen00165" data-start="{" data-end="}">
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a8fa9c1fe8f6cf694a58642f13196f795">  165</a></span>    <span class="keyword">constexpr</span> <a class="code hl_function" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a8fa9c1fe8f6cf694a58642f13196f795">Binary</a>(<a class="code hl_class" href="../../d4/db5/classtannic_1_1expression_1_1Function.html">Operation</a> <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ac573fa663d04a09485c2162ea525c7f5">operation</a>, <a class="code hl_typedef" href="../../d1/d96/structtannic_1_1Trait.html#a9129038f382bd1ddae5bc8d9d4c255d5">Trait&lt;Operand&gt;::Reference</a> <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#aae93286d759d60e0b6008e4dfde98631">operand</a>, <a class="code hl_typedef" href="../../d1/d96/structtannic_1_1Trait.html#a9129038f382bd1ddae5bc8d9d4c255d5">Trait&lt;Cooperand&gt;::Reference</a> <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a0bc22fac1b3596a06904fadcc563163d">cooperand</a>)</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    :   <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ac573fa663d04a09485c2162ea525c7f5">operation</a>(<a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ac573fa663d04a09485c2162ea525c7f5">operation</a>)</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    ,   <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#aae93286d759d60e0b6008e4dfde98631">operand</a>(<a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#aae93286d759d60e0b6008e4dfde98631">operand</a>)</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    ,   <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a0bc22fac1b3596a06904fadcc563163d">cooperand</a>(<a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a0bc22fac1b3596a06904fadcc563163d">cooperand</a>)</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    ,   dtype_(<a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ac573fa663d04a09485c2162ea525c7f5">operation</a>.promote(<a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#aae93286d759d60e0b6008e4dfde98631">operand</a>.<a class="code hl_function" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ab5c976ef9f8c2d18320b8489b831b141">dtype</a>(), <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a0bc22fac1b3596a06904fadcc563163d">cooperand</a>.<a class="code hl_function" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ab5c976ef9f8c2d18320b8489b831b141">dtype</a>()))</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    ,   shape_(<a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ac573fa663d04a09485c2162ea525c7f5">operation</a>.broadcast(<a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#aae93286d759d60e0b6008e4dfde98631">operand</a>.<a class="code hl_function" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ae914aa31be0834ee7a18218f39243cfc">shape</a>(), <a class="code hl_variable" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a0bc22fac1b3596a06904fadcc563163d">cooperand</a>.<a class="code hl_function" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ae914aa31be0834ee7a18218f39243cfc">shape</a>()))</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    ,   strides_(shape_)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    {} </div>
+</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="foldopen" id="foldopen00183" data-start="{" data-end="}">
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ab5c976ef9f8c2d18320b8489b831b141">  183</a></span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../d4/db5/classtannic_1_1expression_1_1Function.html">type</a> <a class="code hl_function" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ab5c976ef9f8c2d18320b8489b831b141">dtype</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keywordflow">return</span> dtype_;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    } </div>
+</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="foldopen" id="foldopen00195" data-start="{" data-end="}">
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ae914aa31be0834ee7a18218f39243cfc">  195</a></span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> <span class="keyword">const</span>&amp; <a class="code hl_function" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ae914aa31be0834ee7a18218f39243cfc">shape</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">return</span> shape_;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
+</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="foldopen" id="foldopen00207" data-start="{" data-end="}">
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a4b9925ea17dbf66aae8ce53bb2322f64">  207</a></span>    <span class="keyword">constexpr</span> <a class="code hl_class" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> <span class="keyword">const</span>&amp; <a class="code hl_function" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a4b9925ea17dbf66aae8ce53bb2322f64">strides</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="keywordflow">return</span> strides_;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    } </div>
+</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="foldopen" id="foldopen00219" data-start="{" data-end="}">
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ad538b474e963268753595c5d04c8f108">  219</a></span>    std::ptrdiff_t <a class="code hl_function" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ad538b474e963268753595c5d04c8f108">offset</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    }</div>
+</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <a class="code hl_function" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a25f79a1644fbe89f707d28578dfb97b0">forward</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <a class="code hl_class" href="../../d4/db5/classtannic_1_1expression_1_1Function.html">type</a> dtype_;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <a class="code hl_class" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> shape_;</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    <a class="code hl_class" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> strides_;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>};       </div>
+</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>} <span class="comment">// namespace expression</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="keyword">namespace </span>operation { </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">inline</span> type promote(type first, type second) {</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(first) &gt; <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(second) ?  first : second;</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>} </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span><span class="keyword">static</span> <span class="keyword">constexpr</span> Shape broadcast(Shape <span class="keyword">const</span>&amp; first, Shape <span class="keyword">const</span>&amp; second) {</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keyword">auto</span> first_rank = first.<a class="code hl_function" href="../../db/da7/classtannic_1_1Shape.html#a35f7ff956c2e5dcb77b0165bb4e21522">rank</a>();</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    <span class="keyword">auto</span> second_rank = second.rank();</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    <span class="keyword">auto</span> rank = std::max(first_rank, second_rank);</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    std::vector&lt;std::size_t&gt; result(rank, 1);</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span> </div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> dimension = 0; dimension &lt; rank; ++dimension) {</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <span class="keyword">auto</span> first_dimension = (dimension &lt; rank - first_rank) ? 1 : first[dimension - (rank - first_rank)];</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="keyword">auto</span> second_dimension = (dimension &lt; rank - second_rank) ? 1 : second[dimension - (rank - second_rank)];</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    <span class="keywordflow">if</span> (!(first_dimension == second_dimension || first_dimension == 1 || second_dimension == 1)) {</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;Shapes are not broadcast-compatible.&quot;</span>);</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    }</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        result[dimension] = std::max(first_dimension, second_dimension);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    }</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    <span class="keywordflow">return</span> Shape(result);</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>} </div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="keyword">class </span>Negation {</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    <span class="keywordtype">void</span> forward(Tensor <span class="keyword">const</span>&amp;, Tensor&amp;) <span class="keyword">const</span>;   </div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>}; </div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span><span class="keyword">class </span>Addition {</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    <span class="keywordtype">void</span> forward(Tensor <span class="keyword">const</span>&amp;, Tensor <span class="keyword">const</span>&amp;, Tensor&amp;) <span class="keyword">const</span>; </div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span> </div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    <span class="keyword">constexpr</span> <span class="keyword">static</span> type promote(type first, type second) {</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        <span class="keywordflow">return</span> operation::promote(first, second);</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    }</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    <span class="keyword">constexpr</span> <span class="keyword">static</span> Shape broadcast(Shape <span class="keyword">const</span>&amp; first, Shape <span class="keyword">const</span>&amp; second) {</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        <span class="keywordflow">return</span> operation::broadcast(first, second);</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    }</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>}; </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span><span class="keyword">struct </span>Multiplication {</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>    <span class="keywordtype">void</span> forward(Tensor <span class="keyword">const</span>&amp;, Tensor <span class="keyword">const</span>&amp;, Tensor&amp;) <span class="keyword">const</span>; </div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span> </div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    <span class="keyword">constexpr</span> <span class="keyword">static</span> type promote(type first, type second) {</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>        <span class="keywordflow">return</span> operation::promote(first, second);</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>    }</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span> </div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>    <span class="keyword">constexpr</span> <span class="keyword">static</span> Shape broadcast(Shape <span class="keyword">const</span>&amp; first, Shape <span class="keyword">const</span>&amp; second) {</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>        <span class="keywordflow">return</span> operation::broadcast(first, second);</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>    }</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>}; </div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span> </div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span><span class="keyword">struct </span>Subtraction {</div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>    <span class="keywordtype">void</span> forward(Tensor <span class="keyword">const</span>&amp;, Tensor <span class="keyword">const</span>&amp;, Tensor&amp;) <span class="keyword">const</span>; </div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span> </div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>    <span class="keyword">constexpr</span> <span class="keyword">static</span> type promote(type first, type second) {</div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>        <span class="keywordflow">return</span> operation::promote(first, second);</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>    }</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span> </div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>    <span class="keyword">constexpr</span> <span class="keyword">static</span> Shape broadcast(Shape <span class="keyword">const</span>&amp; first, Shape <span class="keyword">const</span>&amp; second) {</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>        <span class="keywordflow">return</span> operation::broadcast(first, second);</div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>    }</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>};  </div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span> </div>
+<div class="line"><a id="l00446" name="l00446"></a><span class="lineno">  446</span><span class="keyword">template</span>&lt;Expression Operand&gt;</div>
+<div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> operator-(Operand&amp;&amp; operand) {</div>
+<div class="line"><a id="l00448" name="l00448"></a><span class="lineno">  448</span>    <span class="keywordflow">return</span> expression::Unary&lt;Negation, Operand&gt;{{}, std::forward&lt;Operand&gt;(operand)};</div>
+<div class="line"><a id="l00449" name="l00449"></a><span class="lineno">  449</span>}  </div>
+<div class="line"><a id="l00450" name="l00450"></a><span class="lineno">  450</span> </div>
+<div class="line"><a id="l00467" name="l00467"></a><span class="lineno">  467</span><span class="keyword">template</span>&lt;Expression Augend, Expression Addend&gt;</div>
+<div class="line"><a id="l00468" name="l00468"></a><span class="lineno">  468</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> operator+(Augend&amp;&amp; augend, Addend&amp;&amp; addend) {</div>
+<div class="line"><a id="l00469" name="l00469"></a><span class="lineno">  469</span>    <span class="keywordflow">return</span> expression::Binary&lt;Addition, Augend, Addend&gt;{{}, std::forward&lt;Augend&gt;(augend), std::forward&lt;Addend&gt;(addend)};</div>
+<div class="line"><a id="l00470" name="l00470"></a><span class="lineno">  470</span>} </div>
+<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span> </div>
+<div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span><span class="keyword">template</span>&lt;Expression Subtrahend, Expression Minuend&gt;</div>
+<div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> operator-(Subtrahend&amp;&amp; subtrahend, Minuend&amp;&amp; minuend) {</div>
+<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span>    <span class="keywordflow">return</span> expression::Binary&lt;Subtraction, Subtrahend, Minuend&gt;{{}, std::forward&lt;Subtrahend&gt;(subtrahend), std::forward&lt;Minuend&gt;(minuend)};</div>
+<div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span>} </div>
+<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span> </div>
+<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span><span class="keyword">template</span>&lt;Expression Multiplicand, Expression Multiplier&gt;</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span><span class="keyword">constexpr</span> <span class="keyword">auto</span> operator*(Multiplicand&amp;&amp; multiplicand, Multiplier&amp;&amp; multiplier) {</div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>    <span class="keywordflow">return</span> expression::Binary&lt;Multiplication, Multiplicand, Multiplier&gt;{{}, std::forward&lt;Multiplicand&gt;(multiplicand), std::forward&lt;Multiplier&gt;(multiplier)};</div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>} </div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span> </div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>} <span class="comment">// namespace operation</span></div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span> </div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span> </div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span><span class="keyword">using </span>operation::operator-; </div>
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span><span class="keyword">using </span>operation::operator+; </div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span><span class="keyword">using </span>operation::operator*;  </div>
+<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span> </div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span> </div>
+<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>} <span class="comment">// namespace tannic</span></div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span> </div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span><span class="preprocessor">#endif </span><span class="comment">// OPERATIONS_HPP </span></div>
 <div class="ttc" id="aConcepts_8hpp_html"><div class="ttname"><a href="../../d3/d84/Concepts_8hpp.html">Concepts.hpp</a></div><div class="ttdoc">Defines core C++20 concepts used throughout the Tannic Tensor Library.</div></div>
 <div class="ttc" id="aShape_8hpp_html"><div class="ttname"><a href="../../d2/df8/Shape_8hpp.html">Shape.hpp</a></div><div class="ttdoc">Defines the tannic::Shape class for representing tensor dimensions.</div></div>
 <div class="ttc" id="aStrides_8hpp_html"><div class="ttname"><a href="../../d8/d85/Strides_8hpp.html">Strides.hpp</a></div><div class="ttdoc">Memory layout specification for tensor dimensions in the Tannic Tensor Library.</div></div>
+<div class="ttc" id="aTraits_8hpp_html"><div class="ttname"><a href="../../d8/d38/Traits_8hpp.html">Traits.hpp</a></div></div>
 <div class="ttc" id="aTypes_8hpp_html"><div class="ttname"><a href="../../d5/d34/Types_8hpp.html">Types.hpp</a></div><div class="ttdoc">Core type system for the Tannic Tensor Library.</div></div>
-<div class="ttc" id="aclasstannic_1_1Shape_html"><div class="ttname"><a href="../../db/da7/classtannic_1_1Shape.html">tannic::Shape</a></div><div class="ttdoc">Represents the shape (dimensions) of an tensor-like expression.</div><div class="ttdef"><b>Definition</b> Shape.hpp:80</div></div>
-<div class="ttc" id="aclasstannic_1_1Shape_html_a35f7ff956c2e5dcb77b0165bb4e21522"><div class="ttname"><a href="../../db/da7/classtannic_1_1Shape.html#a35f7ff956c2e5dcb77b0165bb4e21522">tannic::Shape::rank</a></div><div class="ttdeci">constexpr rank_type rank() const noexcept</div><div class="ttdoc">Returns the number of dimensions (rank).</div><div class="ttdef"><b>Definition</b> Shape.hpp:208</div></div>
+<div class="ttc" id="aclasstannic_1_1Shape_html"><div class="ttname"><a href="../../db/da7/classtannic_1_1Shape.html">tannic::Shape</a></div><div class="ttdoc">Represents the shape (dimensions) of an tensor-like expression.</div><div class="ttdef"><b>Definition</b> Shape.hpp:78</div></div>
+<div class="ttc" id="aclasstannic_1_1Shape_html_a35f7ff956c2e5dcb77b0165bb4e21522"><div class="ttname"><a href="../../db/da7/classtannic_1_1Shape.html#a35f7ff956c2e5dcb77b0165bb4e21522">tannic::Shape::rank</a></div><div class="ttdeci">constexpr rank_type rank() const noexcept</div><div class="ttdoc">Returns the number of dimensions (rank).</div><div class="ttdef"><b>Definition</b> Shape.hpp:202</div></div>
 <div class="ttc" id="aclasstannic_1_1Strides_html"><div class="ttname"><a href="../../dc/deb/classtannic_1_1Strides.html">tannic::Strides</a></div><div class="ttdoc">Represents the memory strides associated with a tensor shape.</div><div class="ttdef"><b>Definition</b> Strides.hpp:86</div></div>
 <div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition</b> Tensor.hpp:102</div></div>
-<div class="ttc" id="aclasstannic_1_1operation_1_1Binary_html"><div class="ttname"><a href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html">tannic::operation::Binary</a></div><div class="ttdef"><b>Definition</b> Operations.hpp:88</div></div>
-<div class="ttc" id="aclasstannic_1_1operation_1_1Unary_html"><div class="ttname"><a href="../../d7/d26/classtannic_1_1operation_1_1Unary.html">tannic::operation::Unary</a></div><div class="ttdef"><b>Definition</b> Operations.hpp:58</div></div>
-<div class="ttc" id="astructtannic_1_1operation_1_1Addition_html"><div class="ttname"><a href="../../d9/da3/structtannic_1_1operation_1_1Addition.html">tannic::operation::Addition</a></div><div class="ttdef"><b>Definition</b> Operations.hpp:131</div></div>
-<div class="ttc" id="astructtannic_1_1operation_1_1Multiplication_html"><div class="ttname"><a href="../../d0/dcf/structtannic_1_1operation_1_1Multiplication.html">tannic::operation::Multiplication</a></div><div class="ttdef"><b>Definition</b> Operations.hpp:135</div></div>
-<div class="ttc" id="astructtannic_1_1operation_1_1Negation_html"><div class="ttname"><a href="../../d6/deb/structtannic_1_1operation_1_1Negation.html">tannic::operation::Negation</a></div><div class="ttdef"><b>Definition</b> Operations.hpp:127</div></div>
-<div class="ttc" id="astructtannic_1_1operation_1_1Subtraction_html"><div class="ttname"><a href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html">tannic::operation::Subtraction</a></div><div class="ttdef"><b>Definition</b> Operations.hpp:139</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Binary_html"><div class="ttname"><a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html">tannic::expression::Binary</a></div><div class="ttdoc">Expression template for a binary tensor operation.</div><div class="ttdef"><b>Definition</b> Operations.hpp:148</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Binary_html_a0bc22fac1b3596a06904fadcc563163d"><div class="ttname"><a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a0bc22fac1b3596a06904fadcc563163d">tannic::expression::Binary::cooperand</a></div><div class="ttdeci">Trait&lt; Cooperand &gt;::Reference cooperand</div><div class="ttdef"><b>Definition</b> Operations.hpp:152</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Binary_html_a25f79a1644fbe89f707d28578dfb97b0"><div class="ttname"><a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a25f79a1644fbe89f707d28578dfb97b0">tannic::expression::Binary::forward</a></div><div class="ttdeci">Tensor forward() const</div><div class="ttdef"><b>Definition</b> Tensor.hpp:389</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Binary_html_a4b9925ea17dbf66aae8ce53bb2322f64"><div class="ttname"><a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a4b9925ea17dbf66aae8ce53bb2322f64">tannic::expression::Binary::strides</a></div><div class="ttdeci">constexpr Strides const &amp; strides() const</div><div class="ttdoc">Returns the output strides for the result tensor.</div><div class="ttdef"><b>Definition</b> Operations.hpp:207</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Binary_html_a8fa9c1fe8f6cf694a58642f13196f795"><div class="ttname"><a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#a8fa9c1fe8f6cf694a58642f13196f795">tannic::expression::Binary::Binary</a></div><div class="ttdeci">constexpr Binary(Operation operation, Trait&lt; Operand &gt;::Reference operand, Trait&lt; Cooperand &gt;::Reference cooperand)</div><div class="ttdoc">Constructs a Binary expression.</div><div class="ttdef"><b>Definition</b> Operations.hpp:165</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Binary_html_aae93286d759d60e0b6008e4dfde98631"><div class="ttname"><a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#aae93286d759d60e0b6008e4dfde98631">tannic::expression::Binary::operand</a></div><div class="ttdeci">Trait&lt; Operand &gt;::Reference operand</div><div class="ttdef"><b>Definition</b> Operations.hpp:151</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Binary_html_ab5c976ef9f8c2d18320b8489b831b141"><div class="ttname"><a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ab5c976ef9f8c2d18320b8489b831b141">tannic::expression::Binary::dtype</a></div><div class="ttdeci">constexpr type dtype() const</div><div class="ttdoc">Returns the promoted data type of the result.</div><div class="ttdef"><b>Definition</b> Operations.hpp:183</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Binary_html_ac573fa663d04a09485c2162ea525c7f5"><div class="ttname"><a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ac573fa663d04a09485c2162ea525c7f5">tannic::expression::Binary::operation</a></div><div class="ttdeci">Operation operation</div><div class="ttdef"><b>Definition</b> Operations.hpp:150</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Binary_html_ad538b474e963268753595c5d04c8f108"><div class="ttname"><a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ad538b474e963268753595c5d04c8f108">tannic::expression::Binary::offset</a></div><div class="ttdeci">std::ptrdiff_t offset() const</div><div class="ttdoc">Returns the offset of the expression.</div><div class="ttdef"><b>Definition</b> Operations.hpp:219</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Binary_html_ae914aa31be0834ee7a18218f39243cfc"><div class="ttname"><a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#ae914aa31be0834ee7a18218f39243cfc">tannic::expression::Binary::shape</a></div><div class="ttdeci">constexpr Shape const &amp; shape() const</div><div class="ttdoc">Returns the shape of the result.</div><div class="ttdef"><b>Definition</b> Operations.hpp:195</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Function_html"><div class="ttname"><a href="../../d4/db5/classtannic_1_1expression_1_1Function.html">tannic::expression::Function</a></div><div class="ttdef"><b>Definition</b> Functions.hpp:29</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Unary_html"><div class="ttname"><a href="../../d3/d73/classtannic_1_1expression_1_1Unary.html">tannic::expression::Unary</a></div><div class="ttdoc">Expression template for a unary tensor operation.</div><div class="ttdef"><b>Definition</b> Operations.hpp:65</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Unary_html_a1214a34c638402bd72e04e75abc557f0"><div class="ttname"><a href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a1214a34c638402bd72e04e75abc557f0">tannic::expression::Unary::operation</a></div><div class="ttdeci">Operation operation</div><div class="ttdef"><b>Definition</b> Operations.hpp:67</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Unary_html_a18b4d70911027f8e891ee6e21c1099b6"><div class="ttname"><a href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a18b4d70911027f8e891ee6e21c1099b6">tannic::expression::Unary::operand</a></div><div class="ttdeci">Trait&lt; Operand &gt;::Reference operand</div><div class="ttdef"><b>Definition</b> Operations.hpp:68</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Unary_html_a4e0c64cba6ef2ba3ee8485baa2667896"><div class="ttname"><a href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a4e0c64cba6ef2ba3ee8485baa2667896">tannic::expression::Unary::offset</a></div><div class="ttdeci">std::ptrdiff_t offset() const</div><div class="ttdoc">Returns the offset of the expression.</div><div class="ttdef"><b>Definition</b> Operations.hpp:125</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Unary_html_a4edd1787286c9ae3cd14b5ed82fa2211"><div class="ttname"><a href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a4edd1787286c9ae3cd14b5ed82fa2211">tannic::expression::Unary::dtype</a></div><div class="ttdeci">constexpr type dtype() const</div><div class="ttdoc">Returns the data type of the result.</div><div class="ttdef"><b>Definition</b> Operations.hpp:88</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Unary_html_a63051a1591b037983de89f0153118317"><div class="ttname"><a href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a63051a1591b037983de89f0153118317">tannic::expression::Unary::shape</a></div><div class="ttdeci">constexpr Shape const &amp; shape() const</div><div class="ttdoc">Returns the shape of the result.</div><div class="ttdef"><b>Definition</b> Operations.hpp:99</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Unary_html_a8e353e45bb09a8c5f02323afd88c14f2"><div class="ttname"><a href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a8e353e45bb09a8c5f02323afd88c14f2">tannic::expression::Unary::forward</a></div><div class="ttdeci">Tensor forward() const</div><div class="ttdoc">Evaluates the unary expression and returns a Tensor.</div><div class="ttdef"><b>Definition</b> Tensor.hpp:382</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Unary_html_a9893391af811a4fa38d1dca12b49640c"><div class="ttname"><a href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#a9893391af811a4fa38d1dca12b49640c">tannic::expression::Unary::Unary</a></div><div class="ttdeci">constexpr Unary(Operation operation, Trait&lt; Operand &gt;::Reference operand)</div><div class="ttdoc">Constructs a Unary expression.</div><div class="ttdef"><b>Definition</b> Operations.hpp:75</div></div>
+<div class="ttc" id="aclasstannic_1_1expression_1_1Unary_html_ad9daaa825a3fcc17d83b1485cb49057d"><div class="ttname"><a href="../../d3/d73/classtannic_1_1expression_1_1Unary.html#ad9daaa825a3fcc17d83b1485cb49057d">tannic::expression::Unary::strides</a></div><div class="ttdeci">constexpr Strides const &amp; strides() const</div><div class="ttdoc">Returns the strides of the result.</div><div class="ttdef"><b>Definition</b> Operations.hpp:112</div></div>
+<div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition</b> Buffer.hpp:24</div></div>
+<div class="ttc" id="astructtannic_1_1Trait_html_a9129038f382bd1ddae5bc8d9d4c255d5"><div class="ttname"><a href="../../d1/d96/structtannic_1_1Trait.html#a9129038f382bd1ddae5bc8d9d4c255d5">tannic::Trait::Reference</a></div><div class="ttdeci">std::decay_t&lt; T &gt; Reference</div><div class="ttdef"><b>Definition</b> Traits.hpp:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

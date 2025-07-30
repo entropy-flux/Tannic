@@ -129,7 +129,7 @@ public:
     * ```
     */
     template<typename... Sizes>
-    constexpr explicit Shape(Sizes... sizes) 
+    constexpr Shape(Sizes... sizes) 
     :   sizes_{static_cast<size_type>(sizes)...}
     ,   rank_(sizeof...(sizes)) {      
         assert(rank_ < limit && "Rank limit exceeded"); 
@@ -142,7 +142,7 @@ public:
      * @param sizes Container of dimension sizes.
      */
     template<Iterable Sizes>
-    constexpr explicit Shape(Sizes&& sizes) {
+    constexpr Shape(Sizes&& sizes) {
         size_type dimension = 0;
         for (auto size : sizes) {
             sizes_[dimension++] = static_cast<size_type>(size);

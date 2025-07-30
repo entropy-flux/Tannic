@@ -10,20 +10,20 @@ Defines the {\ttfamily \doxylink{classtannic_1_1Shape}{tannic\+::\+Shape}} class
 {\ttfamily \#include $<$array$>$}\newline
 {\ttfamily \#include $<$cstdint$>$}\newline
 {\ttfamily \#include $<$cassert$>$}\newline
-{\ttfamily \#include $<$algorithm$>$}\newline
-{\ttfamily \#include $<$numeric$>$}\newline
 {\ttfamily \#include $<$initializer\+\_\+list$>$}\newline
 {\ttfamily \#include $<$ostream$>$}\newline
 {\ttfamily \#include "{}Concepts.\+hpp"{}}\newline
 {\ttfamily \#include "{}Indexing.\+hpp"{}}\newline
-Include dependency graph for Shape.\+hpp\+:\nopagebreak
+Include dependency graph for Shape.\+hpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{da/d88/Shape_8hpp__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -35,13 +35,17 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 class \mbox{\hyperlink{classtannic_1_1Shape}{tannic\+::\+Shape}}
 \begin{DoxyCompactList}\small\item\em Represents the shape (dimensions) of an tensor-\/like expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-constexpr bool \mbox{\hyperlink{Shape_8hpp_ab9024d05a23081306cb9f03929bd96d9}{tannic\+::operator==}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&first, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&second)
+constexpr bool \mbox{\hyperlink{namespacetannic_ab9024d05a23081306cb9f03929bd96d9}{tannic\+::operator==}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&first, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&second)
 \begin{DoxyCompactList}\small\item\em Equality comparison operator for shapes. \end{DoxyCompactList}\item 
-\Hypertarget{Shape_8hpp_a8b7066a546d8d6a8605b695788c479f0}\label{Shape_8hpp_a8b7066a546d8d6a8605b695788c479f0} 
-std\+::ostream \& {\bfseries tannic\+::operator$<$$<$} (std\+::ostream \&os, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&shape)
+std\+::ostream \& \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{tannic\+::operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&shape)
 \end{DoxyCompactItemize}
 
 
@@ -67,25 +71,3 @@ The shape supports\+:
 \end{DoxyItemize}
 
 All expression-\/like objects in the library expose a {\ttfamily Shape} as part of their interface, making this file central to the Tannic design. 
-
-\doxysubsection{Function Documentation}
-\Hypertarget{Shape_8hpp_ab9024d05a23081306cb9f03929bd96d9}\label{Shape_8hpp_ab9024d05a23081306cb9f03929bd96d9} 
-\index{Shape.hpp@{Shape.hpp}!operator==@{operator==}}
-\index{operator==@{operator==}!Shape.hpp@{Shape.hpp}}
-\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
-{\footnotesize\ttfamily constexpr bool tannic\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
-
-
-
-Equality comparison operator for shapes. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em first} & First shape. \\
-\hline
-{\em second} & Second shape. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-True if both shapes have the same rank and sizes, false otherwise. 
-\end{DoxyReturn}

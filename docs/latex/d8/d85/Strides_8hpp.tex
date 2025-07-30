@@ -12,14 +12,16 @@ Memory layout specification for tensor dimensions in the Tannic Tensor Library.
 {\ttfamily \#include "{}Concepts.\+hpp"{}}\newline
 {\ttfamily \#include "{}Shape.\+hpp"{}}\newline
 {\ttfamily \#include "{}Indexing.\+hpp"{}}\newline
-Include dependency graph for Strides.\+hpp\+:\nopagebreak
+Include dependency graph for Strides.\+hpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d1/d54/Strides_8hpp__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -31,13 +33,17 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \item 
 class \mbox{\hyperlink{classtannic_1_1Strides}{tannic\+::\+Strides}}
 \begin{DoxyCompactList}\small\item\em Represents the memory strides associated with a tensor shape. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-constexpr bool \mbox{\hyperlink{Strides_8hpp_a1c8ec7747a2d4ba830533d01fdeb35b2}{tannic\+::operator==}} (\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&first, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&second)
+constexpr bool \mbox{\hyperlink{namespacetannic_a1c8ec7747a2d4ba830533d01fdeb35b2}{tannic\+::operator==}} (\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&first, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&second)
 \begin{DoxyCompactList}\small\item\em Equality comparison for strides. \end{DoxyCompactList}\item 
-\Hypertarget{Strides_8hpp_a78e6118242dbf100a05da89b391dedb4}\label{Strides_8hpp_a78e6118242dbf100a05da89b391dedb4} 
-std\+::ostream \& {\bfseries tannic\+::operator$<$$<$} (std\+::ostream \&os, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&strides)
+std\+::ostream \& \mbox{\hyperlink{namespacetannic_a78e6118242dbf100a05da89b391dedb4}{tannic\+::operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&strides)
 \end{DoxyCompactItemize}
 
 
@@ -64,21 +70,5 @@ Defines {\ttfamily \doxylink{classtannic_1_1Strides}{tannic\+::\+Strides}}, whic
 All expression-\/like objects in the library expose an {\ttfamily Strides} as part of their interface, making this file central to the Tannic design.
 
 \begin{DoxySeeAlso}{See also}
-\doxylink{Shape_8hpp}{Shape.\+hpp} (tensor dimensions), \doxylink{Indexing_8hpp_source}{Indexing.\+hpp} (negative index handling) 
+\doxylink{Shape_8hpp}{Shape.\+hpp} (tensor dimensions), \doxylink{Indexing_8hpp}{Indexing.\+hpp} (negative index handling) 
 \end{DoxySeeAlso}
-
-
-\doxysubsection{Function Documentation}
-\Hypertarget{Strides_8hpp_a1c8ec7747a2d4ba830533d01fdeb35b2}\label{Strides_8hpp_a1c8ec7747a2d4ba830533d01fdeb35b2} 
-\index{Strides.hpp@{Strides.hpp}!operator==@{operator==}}
-\index{operator==@{operator==}!Strides.hpp@{Strides.hpp}}
-\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
-{\footnotesize\ttfamily constexpr bool tannic\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
-
-
-
-Equality comparison for strides. 
-
-\begin{DoxyReturn}{Returns}
-True if all stride sizes are equal for each dimension. 
-\end{DoxyReturn}

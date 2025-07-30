@@ -12,21 +12,18 @@ Represents the memory strides associated with a tensor shape.
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}\label{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c} 
-using {\bfseries rank\+\_\+type} = uint8\+\_\+t
+using \mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{rank\+\_\+type}} = uint8\+\_\+t
 \begin{DoxyCompactList}\small\item\em Type used for rank (number of dimensions). \end{DoxyCompactList}\item 
-\Hypertarget{classtannic_1_1Strides_a4ca6ad10d79c665180d6c87365c1fc6c}\label{classtannic_1_1Strides_a4ca6ad10d79c665180d6c87365c1fc6c} 
-using {\bfseries size\+\_\+type} = std\+::size\+\_\+t
+using \mbox{\hyperlink{classtannic_1_1Strides_a4ca6ad10d79c665180d6c87365c1fc6c}{size\+\_\+type}} = std\+::size\+\_\+t
 \begin{DoxyCompactList}\small\item\em Type used for size and shape dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classtannic_1_1Strides_afe6a18768bd5261a71d0ebb8060d2bb0}\label{classtannic_1_1Strides_afe6a18768bd5261a71d0ebb8060d2bb0} 
-constexpr {\bfseries Strides} () noexcept=default
+constexpr \mbox{\hyperlink{classtannic_1_1Strides_afe6a18768bd5261a71d0ebb8060d2bb0}{Strides}} () noexcept=default
 \begin{DoxyCompactList}\small\item\em Default constructor (rank 0). \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename... Sizes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1Strides_ab949231dd8bb6ada516f5053c8ebaf68}{Strides}} (Sizes... sizes)
 \begin{DoxyCompactList}\small\item\em Constructs strides from variadic size arguments. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Iterator Iterator$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1Strides_a9cd1cf946883b39ae2abac208d895cd1}{Strides}} (Iterator begin, Iterator end)
+{\footnotesize template$<$Iterator Iterator$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1Strides_a9cd1cf946883b39ae2abac208d895cd1}{Strides}} (Iterator \mbox{\hyperlink{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60}{begin}}, Iterator \mbox{\hyperlink{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc}{end}})
 \begin{DoxyCompactList}\small\item\em Constructs strides from a pair of iterators. \end{DoxyCompactList}\item 
 constexpr \mbox{\hyperlink{classtannic_1_1Strides_a6c0207e7af3aa12a5cb9f9bb166d86a9}{Strides}} (const \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \&shape)
 \begin{DoxyCompactList}\small\item\em Constructs strides from a shape assuming row-\/major layout. \end{DoxyCompactList}\item 
@@ -48,30 +45,23 @@ constexpr auto \mbox{\hyperlink{classtannic_1_1Strides_ae12a35e163505895661333ff
 {\em ~\newline
  }\begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60}\label{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60} 
-constexpr auto {\bfseries begin} ()
+constexpr auto \mbox{\hyperlink{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60}{begin}} ()
 \item 
-\Hypertarget{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc}\label{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc} 
-constexpr auto {\bfseries end} ()
+constexpr auto \mbox{\hyperlink{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc}{end}} ()
 \item 
-\Hypertarget{classtannic_1_1Strides_ac175384bf933484f90557ac7f7e79084}\label{classtannic_1_1Strides_ac175384bf933484f90557ac7f7e79084} 
-constexpr auto {\bfseries begin} () const
+constexpr auto \mbox{\hyperlink{classtannic_1_1Strides_ac175384bf933484f90557ac7f7e79084}{begin}} () const
 \item 
-\Hypertarget{classtannic_1_1Strides_a3106697e9953c618f56ca6eef9e6e955}\label{classtannic_1_1Strides_a3106697e9953c618f56ca6eef9e6e955} 
-constexpr auto {\bfseries end} () const
+constexpr auto \mbox{\hyperlink{classtannic_1_1Strides_a3106697e9953c618f56ca6eef9e6e955}{end}} () const
 \item 
-\Hypertarget{classtannic_1_1Strides_a3eb190825f87d2ef0a30aa62459187e7}\label{classtannic_1_1Strides_a3eb190825f87d2ef0a30aa62459187e7} 
-constexpr auto {\bfseries cbegin} () const
+constexpr auto \mbox{\hyperlink{classtannic_1_1Strides_a3eb190825f87d2ef0a30aa62459187e7}{cbegin}} () const
 \item 
-\Hypertarget{classtannic_1_1Strides_a11e2dc7323bb92b3ba8b19d9edd1eabc}\label{classtannic_1_1Strides_a11e2dc7323bb92b3ba8b19d9edd1eabc} 
-constexpr auto {\bfseries cend} () const
+constexpr auto \mbox{\hyperlink{classtannic_1_1Strides_a11e2dc7323bb92b3ba8b19d9edd1eabc}{cend}} () const
 \end{DoxyCompactItemize}
 \end{Indent}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}\label{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f} 
-static constexpr uint8\+\_\+t {\bfseries limit} = 8
+static constexpr uint8\+\_\+t \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}} = 8
 \end{DoxyCompactItemize}
 
 
@@ -82,10 +72,10 @@ Represents the memory strides associated with a tensor shape.
 
 A {\ttfamily \doxylink{classtannic_1_1Strides}{Strides}} object can be constructed manually (via variadic arguments or iterators), or automatically from a {\ttfamily \doxylink{classtannic_1_1Shape}{Shape}} (default row-\/major/contiguous layout).
 
-Maximum rank is limited to {\ttfamily Strides\+::limit = 8} for constexpr compatibility and static layout. This limit may be removed in C++26 when std\+::vector become constexpr friendly.\hypertarget{classtannic_1_1Strides_autotoc_md6}{}\doxyparagraph{\texorpdfstring{Example (\+Contiguous Layout)\+:}{Example (Contiguous Layout):}}\label{classtannic_1_1Strides_autotoc_md6}
+Maximum rank is limited to {\ttfamily \doxylink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{Strides\+::limit} = 8} for constexpr compatibility and static layout. This limit may be removed in C++26 when std\+::vector become constexpr friendly.\hypertarget{classtannic_1_1Strides_autotoc_md11}{}\doxyparagraph{\texorpdfstring{Example (\+Contiguous Layout)\+:}{Example (Contiguous Layout):}}\label{classtannic_1_1Strides_autotoc_md11}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }tannic;}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape(\{2,\ 3,\ 4\});}
 \DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides(shape);}
@@ -93,7 +83,7 @@ Maximum rank is limited to {\ttfamily Strides\+::limit = 8} for constexpr compat
 \DoxyCodeLine{std::cout\ <<\ strides;\ \ \ \ \textcolor{comment}{//\ Output:\ Strides(12,\ 4,\ 1)}}
 
 \end{DoxyCode}
-\hypertarget{classtannic_1_1Strides_autotoc_md7}{}\doxyparagraph{\texorpdfstring{Example (\+Custom Strides)\+:}{Example (Custom Strides):}}\label{classtannic_1_1Strides_autotoc_md7}
+\hypertarget{classtannic_1_1Strides_autotoc_md12}{}\doxyparagraph{\texorpdfstring{Example (\+Custom Strides)\+:}{Example (Custom Strides):}}\label{classtannic_1_1Strides_autotoc_md12}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides(6,\ 2,\ 1);\ \textcolor{comment}{//\ Custom\ strides\ for\ a\ specific\ memory\ layout}}
@@ -101,13 +91,46 @@ Maximum rank is limited to {\ttfamily Strides\+::limit = 8} for constexpr compat
 \end{DoxyCode}
  
 
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}\label{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c} 
+\index{tannic::Strides@{tannic::Strides}!rank\_type@{rank\_type}}
+\index{rank\_type@{rank\_type}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{rank\_type}{rank\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{tannic\+::\+Strides\+::rank\+\_\+type}} =  uint8\+\_\+t}
+
+
+
+Type used for rank (number of dimensions). 
+
+\Hypertarget{classtannic_1_1Strides_a4ca6ad10d79c665180d6c87365c1fc6c}\label{classtannic_1_1Strides_a4ca6ad10d79c665180d6c87365c1fc6c} 
+\index{tannic::Strides@{tannic::Strides}!size\_type@{size\_type}}
+\index{size\_type@{size\_type}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{size\_type}{size\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classtannic_1_1Strides_a4ca6ad10d79c665180d6c87365c1fc6c}{tannic\+::\+Strides\+::size\+\_\+type}} =  std\+::size\+\_\+t}
+
+
+
+Type used for size and shape dimensions. 
+
+
+
 \doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1Strides_afe6a18768bd5261a71d0ebb8060d2bb0}\label{classtannic_1_1Strides_afe6a18768bd5261a71d0ebb8060d2bb0} 
+\index{tannic::Strides@{tannic::Strides}!Strides@{Strides}}
+\index{Strides@{Strides}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{Strides()}{Strides()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily constexpr tannic\+::\+Strides\+::\+Strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}, {\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+
+
+Default constructor (rank 0). 
+
 \Hypertarget{classtannic_1_1Strides_ab949231dd8bb6ada516f5053c8ebaf68}\label{classtannic_1_1Strides_ab949231dd8bb6ada516f5053c8ebaf68} 
 \index{tannic::Strides@{tannic::Strides}!Strides@{Strides}}
 \index{Strides@{Strides}!tannic::Strides@{tannic::Strides}}
-\doxysubsubsection{\texorpdfstring{Strides()}{Strides()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+\doxysubsubsection{\texorpdfstring{Strides()}{Strides()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
 {\footnotesize\ttfamily template$<$typename... Sizes$>$ \\
-constexpr tannic\+::\+Strides\+::\+Strides (\begin{DoxyParamCaption}\item[{Sizes...}]{sizes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [constexpr]}}
+constexpr tannic\+::\+Strides\+::\+Strides (\begin{DoxyParamCaption}\item[{Sizes...}]{sizes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -126,7 +149,7 @@ Constructs strides from variadic size arguments.
 \begin{DoxyNote}{Note}
 Asserts if the number of dimensions (rank) exceeds {\ttfamily limit}.
 \end{DoxyNote}
-\hypertarget{classtannic_1_1Strides_autotoc_md8}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md8}
+\hypertarget{classtannic_1_1Strides_autotoc_md13}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md13}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{tannic::Strides}}\ s(6,\ 2,\ 1);}
@@ -136,7 +159,7 @@ Asserts if the number of dimensions (rank) exceeds {\ttfamily limit}.
  \Hypertarget{classtannic_1_1Strides_a9cd1cf946883b39ae2abac208d895cd1}\label{classtannic_1_1Strides_a9cd1cf946883b39ae2abac208d895cd1} 
 \index{tannic::Strides@{tannic::Strides}!Strides@{Strides}}
 \index{Strides@{Strides}!tannic::Strides@{tannic::Strides}}
-\doxysubsubsection{\texorpdfstring{Strides()}{Strides()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+\doxysubsubsection{\texorpdfstring{Strides()}{Strides()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
 {\footnotesize\ttfamily template$<$Iterator Iterator$>$ \\
 constexpr tannic\+::\+Strides\+::\+Strides (\begin{DoxyParamCaption}\item[{Iterator}]{begin,  }\item[{Iterator}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
@@ -159,7 +182,7 @@ Constructs strides from a pair of iterators.
 \begin{DoxyNote}{Note}
 Asserts if the number of dimensions exceeds {\ttfamily limit}.
 \end{DoxyNote}
-\hypertarget{classtannic_1_1Strides_autotoc_md9}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md9}
+\hypertarget{classtannic_1_1Strides_autotoc_md14}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md14}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{std::vector<std::size\_t>\ values\ =\ \{12,\ 4,\ 1\};}
@@ -169,8 +192,8 @@ Asserts if the number of dimensions exceeds {\ttfamily limit}.
  \Hypertarget{classtannic_1_1Strides_a6c0207e7af3aa12a5cb9f9bb166d86a9}\label{classtannic_1_1Strides_a6c0207e7af3aa12a5cb9f9bb166d86a9} 
 \index{tannic::Strides@{tannic::Strides}!Strides@{Strides}}
 \index{Strides@{Strides}!tannic::Strides@{tannic::Strides}}
-\doxysubsubsection{\texorpdfstring{Strides()}{Strides()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily constexpr tannic\+::\+Strides\+::\+Strides (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \&}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [constexpr]}}
+\doxysubsubsection{\texorpdfstring{Strides()}{Strides()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily constexpr tannic\+::\+Strides\+::\+Strides (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \&}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -181,7 +204,7 @@ Constructs strides from a shape assuming row-\/major layout.
 {\em shape} & \doxylink{classtannic_1_1Shape}{Shape} from which to compute contiguous strides.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classtannic_1_1Strides_autotoc_md10}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md10}
+\hypertarget{classtannic_1_1Strides_autotoc_md15}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md15}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{tannic::Shape}}\ shape(2,\ 3,\ 4);}
@@ -231,6 +254,42 @@ Returns the last stride value.
 \begin{DoxyReturn}{Returns}
 Stride of the last dimension. 
 \end{DoxyReturn}
+\Hypertarget{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60}\label{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60} 
+\index{tannic::Strides@{tannic::Strides}!begin@{begin}}
+\index{begin@{begin}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Strides\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Strides_ac175384bf933484f90557ac7f7e79084}\label{classtannic_1_1Strides_ac175384bf933484f90557ac7f7e79084} 
+\index{tannic::Strides@{tannic::Strides}!begin@{begin}}
+\index{begin@{begin}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Strides\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Strides_a3eb190825f87d2ef0a30aa62459187e7}\label{classtannic_1_1Strides_a3eb190825f87d2ef0a30aa62459187e7} 
+\index{tannic::Strides@{tannic::Strides}!cbegin@{cbegin}}
+\index{cbegin@{cbegin}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{cbegin()}{cbegin()}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Strides\+::cbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Strides_a11e2dc7323bb92b3ba8b19d9edd1eabc}\label{classtannic_1_1Strides_a11e2dc7323bb92b3ba8b19d9edd1eabc} 
+\index{tannic::Strides@{tannic::Strides}!cend@{cend}}
+\index{cend@{cend}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{cend()}{cend()}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Strides\+::cend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc}\label{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc} 
+\index{tannic::Strides@{tannic::Strides}!end@{end}}
+\index{end@{end}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Strides\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Strides_a3106697e9953c618f56ca6eef9e6e955}\label{classtannic_1_1Strides_a3106697e9953c618f56ca6eef9e6e955} 
+\index{tannic::Strides@{tannic::Strides}!end@{end}}
+\index{end@{end}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Strides\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
 \Hypertarget{classtannic_1_1Strides_a6c6000fcf947fde44193535e9edff445}\label{classtannic_1_1Strides_a6c6000fcf947fde44193535e9edff445} 
 \index{tannic::Strides@{tannic::Strides}!front@{front}}
 \index{front@{front}!tannic::Strides@{tannic::Strides}}
@@ -305,6 +364,15 @@ Returns the number of dimensions (rank).
 \begin{DoxyReturn}{Returns}
 Rank of the strides. 
 \end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}\label{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f} 
+\index{tannic::Strides@{tannic::Strides}!limit@{limit}}
+\index{limit@{limit}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{limit}{limit}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t tannic\+::\+Strides\+::limit = 8\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

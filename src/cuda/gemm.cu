@@ -113,7 +113,6 @@ void launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst,
         );
     }
 }
- 
 
 void defaultKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, cudaStream_t) {
     throw std::runtime_error("Not supported dtype");

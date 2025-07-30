@@ -27,9 +27,9 @@
 \DoxyCodeLine{00068\ \textcolor{preprocessor}{\#include\ <string>}\ \ \ }
 \DoxyCodeLine{00069\ \textcolor{preprocessor}{\#include\ "{}runtime/types.h"{}}}
 \DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \textcolor{keyword}{namespace\ }tannic\ \{}
+\DoxyCodeLine{00071\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00088\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{Types_8hpp_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(type\ type)\ \{}
+\DoxyCodeLine{00088\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(type\ type)\ \{}
 \DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{\ }
 \DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int8\_t);}
 \DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int16\_t);}
@@ -44,7 +44,7 @@
 \DoxyCodeLine{00100\ \}}
 \DoxyCodeLine{00101\ }
 \DoxyCodeLine{00102\ }
-\DoxyCodeLine{00114\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{Types_8hpp_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(type\ type)\ \{}
+\DoxyCodeLine{00114\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(type\ type)\ \{}
 \DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{\ }
 \DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}int8"{}};}
 \DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}int16"{}};}
@@ -58,7 +58,7 @@
 \DoxyCodeLine{00125\ \ \ \ \ \}}
 \DoxyCodeLine{00126\ \}\ }
 \DoxyCodeLine{00127\ }
-\DoxyCodeLine{00149\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ uint8\_t\ \mbox{\hyperlink{Types_8hpp_a7cc5a20569f733cb88c508ebb9119363}{dcodeof}}(type\ type)\ \{}
+\DoxyCodeLine{00149\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ uint8\_t\ \mbox{\hyperlink{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}{dcodeof}}(type\ type)\ \{}
 \DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{\ }
 \DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ 12;}
 \DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ \ \ \textcolor{keywordflow}{return}\ 13;}
@@ -72,7 +72,7 @@
 \DoxyCodeLine{00160\ \ \ \ \ \}}
 \DoxyCodeLine{00161\ \}}
 \DoxyCodeLine{00162\ }
-\DoxyCodeLine{00174\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ type\ \mbox{\hyperlink{Types_8hpp_a6e357abf60406726c8b595658e93e110}{dtypeof}}(uint8\_t\ code)\ \{}
+\DoxyCodeLine{00174\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ type\ \mbox{\hyperlink{namespacetannic_a6e357abf60406726c8b595658e93e110}{dtypeof}}(uint8\_t\ code)\ \{}
 \DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordflow}{switch}\ (code)\ \{}
 \DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 12:\ \textcolor{keywordflow}{return}\ int8;}
 \DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 13:\ \textcolor{keywordflow}{return}\ int16;}
@@ -86,8 +86,8 @@
 \DoxyCodeLine{00185\ \ \ \ \ \}}
 \DoxyCodeLine{00186\ \}}
 \DoxyCodeLine{00187\ \ }
-\DoxyCodeLine{00188\ \textcolor{keyword}{inline}\ std::ostream\&\ operator<<(std::ostream\&\ ostream,\ type\ type)\ \{}
-\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{return}\ ostream\ <<\ dnameof(type);}
+\DoxyCodeLine{00188\ \textcolor{keyword}{inline}\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ ostream,\ type\ type)\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{return}\ ostream\ <<\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(type);}
 \DoxyCodeLine{00190\ \}\ }
 \DoxyCodeLine{00191\ }
 \DoxyCodeLine{00192\ \}\ \textcolor{comment}{//\ namespace\ tannic}}

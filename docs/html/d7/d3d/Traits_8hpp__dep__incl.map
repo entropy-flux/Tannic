@@ -1,0 +1,21 @@
+<map id="include/tannic/Traits.hpp" name="include/tannic/Traits.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="417,5,597,31"/>
+<area shape="rect" id="Node000002" href="$dc/d66/Functions_8hpp.html" title=" " alt="" coords="5,79,212,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="430,36,174,81,173,76,429,30"/>
+<area shape="rect" id="Node000003" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor operations." alt="" coords="287,79,503,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="479,40,415,81,412,76,476,36"/>
+<area shape="rect" id="Node000005" href="$db/db8/Reductions_8hpp.html" title=" " alt="" coords="353,225,571,251"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="406,36,327,54,296,66,277,80,267,103,271,125,285,146,308,165,369,199,428,223,426,228,366,204,305,170,281,149,266,127,262,102,273,77,294,62,325,49,405,30"/>
+<area shape="rect" id="Node000006" href="$df/d25/Transformations_8hpp.html" title=" " alt="" coords="650,225,901,251"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="611,16,703,20,798,29,881,47,912,60,933,77,945,100,943,123,930,145,909,166,855,202,804,228,801,223,852,197,905,162,926,142,938,122,940,101,929,80,909,65,879,52,797,35,702,25,611,22"/>
+<area shape="rect" id="Node000007" href="$d2/d6a/Slices_8hpp.html" title=" " alt="" coords="528,79,711,104"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="539,36,602,76,600,81,536,40"/>
+<area shape="rect" id="Node000008" href="$d8/dea/Views_8hpp.html" title=" " alt="" coords="735,79,919,104"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="572,31,776,76,775,81,571,36"/>
+<area shape="rect" id="Node000004" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="526,152,713,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="445,106,584,149,582,154,443,111"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="583,185,489,228,487,223,580,181"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="658,181,751,223,749,228,656,185"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="622,118,622,152,617,152,617,118"/>
+<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="782,111,654,154,652,149,780,106"/>
+</map>

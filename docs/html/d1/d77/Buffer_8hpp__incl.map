@@ -1,0 +1,16 @@
+<map id="include/tannic/Buffer.hpp" name="include/tannic/Buffer.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="37,5,220,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,152,76,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,33,57,142,52,139,119,30"/>
+<area shape="rect" id="Node000003" href="$d6/ddc/Resources_8hpp.html" title=" " alt="" coords="138,79,255,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,29,178,67,174,70,138,33"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="173,106,80,149,78,144,171,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="101,152,167,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="188,106,155,143,151,140,184,103"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="191,152,245,177"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="203,104,213,138,208,140,198,105"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="269,152,332,177"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="215,102,274,142,271,146,212,106"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="356,152,424,177"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="229,102,347,145,345,150,227,107"/>
+</map>

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../da/d93/classtannic_1_1Tensor.html#aa74c128ad7859e3e48d431e2a6dfeecf',1,'tannic::Tensor']]],
-  ['operator_3d_3d_1',['operator==',['../d2/df8/Shape_8hpp.html#ab9024d05a23081306cb9f03929bd96d9',1,'tannic::operator==(Shape const &amp;first, Shape const &amp;second)'],['../d8/d85/Strides_8hpp.html#a1c8ec7747a2d4ba830533d01fdeb35b2',1,'tannic::operator==(Strides const &amp;first, Strides const &amp;second)']]],
-  ['operator_5b_5d_2',['operator[]',['../db/da7/classtannic_1_1Shape.html#a75f342d708afeb26912871a6ec1dd5b4',1,'tannic::Shape::operator[](Index index) const'],['../db/da7/classtannic_1_1Shape.html#ad18791f179ce8634d8254f955b066887',1,'tannic::Shape::operator[](Index index)'],['../dc/deb/classtannic_1_1Strides.html#a18797dc00a0dadb4a0600ec408fd4409',1,'tannic::Strides::operator[](Index index) const'],['../dc/deb/classtannic_1_1Strides.html#a729f3f25f2eb716b76bdea706e2bd9d3',1,'tannic::Strides::operator[](Index index)'],['../da/d93/classtannic_1_1Tensor.html#addd20f7c75af9c8bdc7f6e87e4b5785b',1,'tannic::Tensor::operator[](Index index) const'],['../da/d93/classtannic_1_1Tensor.html#a45f09412a47ac74d30ac11968583afa7',1,'tannic::Tensor::operator[](indexing::Range range) const'],['../da/d93/classtannic_1_1Tensor.html#a02fcaeee20dea90506e7afde810f9132',1,'tannic::Tensor::operator[](Indexes... indexes) const']]]
+  ['host_0',['Host',['../df/da7/classtannic_1_1Host.html#a1830de43bc0b0ca2dfef20ffad434596',1,'tannic::Host']]]
 ];

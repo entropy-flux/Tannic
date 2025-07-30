@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['dcodeof_0',['dcodeof',['../d5/d34/Types_8hpp.html#a7cc5a20569f733cb88c508ebb9119363',1,'tannic']]],
-  ['dnameof_1',['dnameof',['../d5/d34/Types_8hpp.html#a1f6a29013277d9209efa113453cf0b2e',1,'tannic']]],
-  ['dsizeof_2',['dsizeof',['../d5/d34/Types_8hpp.html#aee5ef48cb75e37f65cc11ef67fbb9d25',1,'tannic']]],
-  ['dtype_3',['dtype',['../da/d93/classtannic_1_1Tensor.html#ae2ed5e8543bccbf5a65a6a38f9b0aaea',1,'tannic::Tensor']]],
-  ['dtypeof_4',['dtypeof',['../d5/d34/Types_8hpp.html#a6e357abf60406726c8b595658e93e110',1,'tannic']]]
+  ['cbegin_0',['cbegin',['../db/da7/classtannic_1_1Shape.html#a4d8a4fa2c7447a56b051bcb122449bb6',1,'tannic::Shape::cbegin()'],['../dc/deb/classtannic_1_1Strides.html#a3eb190825f87d2ef0a30aa62459187e7',1,'tannic::Strides::cbegin()']]],
+  ['cend_1',['cend',['../db/da7/classtannic_1_1Shape.html#a503031effa03b129773a9ca011890784',1,'tannic::Shape::cend()'],['../dc/deb/classtannic_1_1Strides.html#a11e2dc7323bb92b3ba8b19d9edd1eabc',1,'tannic::Strides::cend()']]],
+  ['compare_2',['compare',['../dd/d0f/classtannic_1_1expression_1_1Slice.html#abd2d3e77db09d40e48aa8420aae1d84a',1,'tannic::expression::Slice::compare()'],['../da/d93/classtannic_1_1Tensor.html#ae5d53f0606904d652ef67b1d99909e55',1,'tannic::Tensor::compare()']]],
+  ['cos_3',['cos',['../dd/d74/namespacetannic_1_1function.html#a4ee4a5baeff864c9605cc1c088ef9895',1,'tannic::function']]],
+  ['cosh_4',['cosh',['../dd/d74/namespacetannic_1_1function.html#a8419d8c9fe7bcb9ac418842fb3d726bd',1,'tannic::function']]],
+  ['count_5',['count',['../d9/dd4/classtannic_1_1Devices.html#a5f0a34f7a26f78f7328c3af3a188528e',1,'tannic::Devices']]]
 ];

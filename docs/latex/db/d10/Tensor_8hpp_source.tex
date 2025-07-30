@@ -25,17 +25,17 @@
 \DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ <iostream>}\ \ }
 \DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ <memory>}}
 \DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ <cassert>}\ }
-\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ <utility>}\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ <utility>}\ \ }
 \DoxyCodeLine{00048\ \ }
 \DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Types_8hpp}{Types.hpp}}"{}}}
 \DoxyCodeLine{00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Shape_8hpp}{Shape.hpp}}"{}}\ }
 \DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Strides_8hpp}{Strides.hpp}}"{}}\ }
-\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ "{}Buffer.hpp"{}}}
-\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#include\ "{}Slices.hpp"{}}\ }
-\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#include\ "{}Views.hpp"{}}}
-\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}Operations.hpp"{}}\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Buffer_8hpp}{Buffer.hpp}}"{}}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Slices_8hpp}{Slices.hpp}}"{}}\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Views_8hpp}{Views.hpp}}"{}}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Operations_8hpp}{Operations.hpp}}"{}}\ }
 \DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \textcolor{keyword}{namespace\ }tannic\ \{\ \ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{\ \ }
 \DoxyCodeLine{00058\ }
 \DoxyCodeLine{00102\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \{}
 \DoxyCodeLine{00103\ \textcolor{keyword}{public}:\ }
@@ -46,184 +46,192 @@
 \DoxyCodeLine{00113\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
 \DoxyCodeLine{00114\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
 \DoxyCodeLine{00115\ \ \ \ \ ,\ \ \ strides\_(shape\_)\ }
-\DoxyCodeLine{00116\ \ \ \ \ ,\ \ \ offset\_(0)\ \{\}\ \ }
-\DoxyCodeLine{00117\ }
-\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a2dbecb8300b499975572262f562cb041}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}})}
-\DoxyCodeLine{00125\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
-\DoxyCodeLine{00126\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
-\DoxyCodeLine{00127\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}})\ }
-\DoxyCodeLine{00128\ \ \ \ \ ,\ \ \ offset\_(0)\ \{\}\ \ }
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a2bdd51e14fc679fd11fe2b903f2be8eb}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}},\ std::ptrdiff\_t\ offset)}
-\DoxyCodeLine{00138\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
-\DoxyCodeLine{00139\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
-\DoxyCodeLine{00140\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}})\ }
-\DoxyCodeLine{00141\ \ \ \ \ ,\ \ \ offset\_(offset)\ \{\}\ \ }
-\DoxyCodeLine{00142\ }
-\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{template}\ <Expression\ Expression>}
-\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ad7d3de73d311b6f56db0f177b55f816c}{Tensor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\&\ expression)\ \{}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ *\textcolor{keyword}{this}\ =\ expression.forward();\ }
-\DoxyCodeLine{00151\ \ \ \ \ \}\ }
-\DoxyCodeLine{00152\ }
-\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keyword}{template}\ <Expression\ Expression>}
-\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_aa74c128ad7859e3e48d431e2a6dfeecf}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\&\ expression)\ \{}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ *\textcolor{keyword}{this}\ =\ expression.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();\ }
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00163\ \ \ \ \ \}}
-\DoxyCodeLine{00164\ \ \ }
-\DoxyCodeLine{00165\ \textcolor{keyword}{public}:\ \ }
-\DoxyCodeLine{00168\ }
-\DoxyCodeLine{00170\ \ \ \ \ type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;\ }
-\DoxyCodeLine{00172\ \ \ \ \ \}\ }
-\DoxyCodeLine{00173\ }
-\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}}()\textcolor{keyword}{\ const\ }\{\ \ }
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;\ }
-\DoxyCodeLine{00177\ \ \ \ \ \}}
-\DoxyCodeLine{00178\ }
-\DoxyCodeLine{00180\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;\ }
-\DoxyCodeLine{00182\ \ \ \ \ \}\ }
-\DoxyCodeLine{00183\ \ }
-\DoxyCodeLine{00184\ \ \ \ \ std::ptrdiff\_t\ offset()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ offset\_;}
-\DoxyCodeLine{00186\ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00187\ \ \ \ \ }
-\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_aa2b8e0279b1d30d2b34c75a52814ffa3}{rank}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ }
-\DoxyCodeLine{00191\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00192\ }
-\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}()\ \{\ }
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ perform\ computations\ with\ uninitialized\ tensors."{}});}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00197\ \ \ \ \ \}\ }
-\DoxyCodeLine{00198\ }
-\DoxyCodeLine{00200\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_afa045be0c377ee3127a5a9d97c5b1fcb}{forward}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ perform\ computations\ with\ uninitialized\ tensors."{}});\ }
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00203\ \ \ \ \ \}\ }
+\DoxyCodeLine{00116\ \ \ \ \ ,\ \ \ offset\_(0)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ nbytes\_\ =\ std::accumulate(shape\_.\mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}}(),\ shape\_.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}(),\ 1ULL,\ std::multiplies<>\{\})\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_);}
+\DoxyCodeLine{00118\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3410eb0c4a1e751e40a7df2153be804c}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}},\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}}\ =\ 0)}
+\DoxyCodeLine{00128\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
+\DoxyCodeLine{00129\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
+\DoxyCodeLine{00130\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}})\ }
+\DoxyCodeLine{00131\ \ \ \ \ ,\ \ \ offset\_(\mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}})\ \{\ \ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ ==\ 0)\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ nbytes\_\ =\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}}\ =\ 0;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ dimension\ =\ 0;\ dimension\ <\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}();\ ++dimension)\ \{\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}}\ +=\ strides\_[dimension]\ *\ (shape\_[dimension]\ -\/\ 1);}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ nbytes\_\ =\ (\mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}}\ +\ 1)\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{template}\ <Expression\ Expression>}
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ad7d3de73d311b6f56db0f177b55f816c}{Tensor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\&\ expression)\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ *\textcolor{keyword}{this}\ =\ expression.forward();\ }
+\DoxyCodeLine{00152\ \ \ \ \ \}\ }
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{template}\ <Expression\ Expression>}
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_aa74c128ad7859e3e48d431e2a6dfeecf}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\&\ expression)\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ *\textcolor{keyword}{this}\ =\ expression.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ }
+\DoxyCodeLine{00166\ \textcolor{keyword}{public}:\ \ }
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00171\ \ \ \ \ type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;\ }
+\DoxyCodeLine{00173\ \ \ \ \ \}\ }
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}}()\textcolor{keyword}{\ const\ }\{\ \ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;\ }
+\DoxyCodeLine{00178\ \ \ \ \ \}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00181\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;\ }
+\DoxyCodeLine{00183\ \ \ \ \ \}\ }
+\DoxyCodeLine{00184\ \ }
+\DoxyCodeLine{00186\ \ \ \ \ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ offset\_;}
+\DoxyCodeLine{00188\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00191\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nbytes\_;}
+\DoxyCodeLine{00193\ \ \ \ \ \}\ }
+\DoxyCodeLine{00194\ \ \ \ \ }
+\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ab57635886a913849763fd6f8a3681239}{rank\_type}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ }
+\DoxyCodeLine{00198\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00201\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}()\ \{\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ perform\ computations\ with\ uninitialized\ tensors."{}});}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00204\ \ \ \ \ \}\ }
 \DoxyCodeLine{00205\ }
-\DoxyCodeLine{00206\ \textcolor{keyword}{public}:\ \ \ }
-\DoxyCodeLine{00209\ }
-\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}{initialize}}(Allocator\ \mbox{\hyperlink{classtannic_1_1Tensor_afc696fcdc106333ce6410d5863201d25}{allocator}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \textcolor{keyword}{const}\ \{}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ buffer\_\ =\ std::make\_shared<Buffer>(\mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}}(),\ \mbox{\hyperlink{classtannic_1_1Tensor_afc696fcdc106333ce6410d5863201d25}{allocator}});}
-\DoxyCodeLine{00216\ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00217\ }
-\DoxyCodeLine{00219\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{comment}{//\ TODO,\ calculate\ for\ non\ contiguous.}}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_.\mbox{\hyperlink{classtannic_1_1Shape_a3b811cee92b311a4910f3e86449f125a}{size}}()\ *\ \mbox{\hyperlink{Types_8hpp_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_);\ }
-\DoxyCodeLine{00221\ \ \ \ \ \}}
-\DoxyCodeLine{00222\ }
-\DoxyCodeLine{00227\ \ \ \ \ std::byte*\ \mbox{\hyperlink{classtannic_1_1Tensor_a104cf81bd4da1b3e8e96e2ad2644f941}{bytes}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}std::byte*\textcolor{keyword}{>}(buffer\_-\/>address())\ +\ offset\_;}
-\DoxyCodeLine{00229\ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00230\ }
-\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer\_\ ?\ true\ :\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00237\ \ \ \ \ \}\ }
-\DoxyCodeLine{00238\ }
-\DoxyCodeLine{00244\ \ \ \ \ Allocator\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_afc696fcdc106333ce6410d5863201d25}{allocator}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ assert(buffer\_\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ get\ resource\ of\ an\ initializer\ tensor."{}});}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer\_-\/>allocator();}
-\DoxyCodeLine{00247\ \ \ \ \ \}\ \ \ }
-\DoxyCodeLine{00249\ \ \ \ }
-\DoxyCodeLine{00250\ \textcolor{keyword}{public}:\ }
-\DoxyCodeLine{00253\ }
-\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keyword}{template}<Integral\ Index>}
-\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_addd20f7c75af9c8bdc7f6e87e4b5785b}{operator[]}}(Index\ index)\textcolor{keyword}{\ const\ }\{\ \ \ }
-\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ slice\ uninitialized\ tensors."{}});\ }
-\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice<Tensor,\ Index>}}(*\textcolor{keyword}{this},\ std::make\_tuple(index));}
-\DoxyCodeLine{00281\ \ \ \ \ \}}
-\DoxyCodeLine{00282\ }
-\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a45f09412a47ac74d30ac11968583afa7}{operator[]}}(\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing::Range}}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}})\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ slice\ uninitialized\ tensors."{}});\ }
-\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice<Tensor,\ indexing::Range>}}(*\textcolor{keyword}{this},\ std::make\_tuple(\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}));}
-\DoxyCodeLine{00300\ \ \ \ \ \}\ }
-\DoxyCodeLine{00301\ }
-\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }...\ Indexes>}
-\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a02fcaeee20dea90506e7afde810f9132}{operator[]}}(Indexes...\ indexes)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ slice\ uninitialized\ tensors."{}});\ }
-\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice}}<\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}},\ Indexes...>(*\textcolor{keyword}{this},\ std::make\_tuple(indexes...));}
-\DoxyCodeLine{00323\ \ \ \ \ \}\ }
-\DoxyCodeLine{00324\ }
-\DoxyCodeLine{00332\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a2970d79712c97bca7c781c3d7987fb0b}{transpose}}(\textcolor{keywordtype}{int}\ first\ =\ -\/1,\ \textcolor{keywordtype}{int}\ second\ =\ -\/2)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ transpose\ uninitialized\ tensors."{}});\ }
-\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{expression::Transpose<Tensor>}}(*\textcolor{keyword}{this},\ std::make\_pair<int,\ int>(std::move(first),\ std::move(second)));}
-\DoxyCodeLine{00335\ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00207\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_afa045be0c377ee3127a5a9d97c5b1fcb}{forward}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ perform\ computations\ with\ uninitialized\ tensors."{}});\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00210\ \ \ \ \ \}\ }
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \textcolor{keyword}{public}:\ \ \ }
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}{initialize}}(\mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}}\ \mbox{\hyperlink{classtannic_1_1Tensor_afc696fcdc106333ce6410d5863201d25}{allocator}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \textcolor{keyword}{const}\ \{\ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ buffer\_\ =\ std::make\_shared<Buffer>(nbytes\_,\ \mbox{\hyperlink{classtannic_1_1Tensor_afc696fcdc106333ce6410d5863201d25}{allocator}});\ }
+\DoxyCodeLine{00223\ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00224\ \ \ \ }
+\DoxyCodeLine{00229\ \ \ \ \ std::byte*\ \mbox{\hyperlink{classtannic_1_1Tensor_a104cf81bd4da1b3e8e96e2ad2644f941}{bytes}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}std::byte*\textcolor{keyword}{>}(buffer\_-\/>address())\ +\ offset\_;}
+\DoxyCodeLine{00231\ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer\_\ ?\ true\ :\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00239\ \ \ \ \ \}\ }
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00246\ \ \ \ \ \mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_afc696fcdc106333ce6410d5863201d25}{allocator}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ assert(buffer\_\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ get\ resource\ of\ an\ initializer\ tensor."{}});}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer\_-\/>allocator();}
+\DoxyCodeLine{00249\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00251\ \ \ \ }
+\DoxyCodeLine{00252\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keyword}{template}<Integral\ Index>}
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_addd20f7c75af9c8bdc7f6e87e4b5785b}{operator[]}}(Index\ index)\textcolor{keyword}{\ const\ }\{\ \ \ }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ slice\ uninitialized\ tensors."{}});\ }
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Slice<Tensor,\ Index>}}(*\textcolor{keyword}{this},\ std::make\_tuple(index));}
+\DoxyCodeLine{00283\ \ \ \ \ \}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a45f09412a47ac74d30ac11968583afa7}{operator[]}}(\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing::Range}}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}})\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ slice\ uninitialized\ tensors."{}});\ }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Slice<Tensor,\ indexing::Range>}}(*\textcolor{keyword}{this},\ std::make\_tuple(\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}));}
+\DoxyCodeLine{00302\ \ \ \ \ \}\ }
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }...\ Indexes>}
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a02fcaeee20dea90506e7afde810f9132}{operator[]}}(Indexes...\ indexes)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ slice\ uninitialized\ tensors."{}});\ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice}}<\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}},\ Indexes...>(*\textcolor{keyword}{this},\ std::make\_tuple(indexes...));}
+\DoxyCodeLine{00325\ \ \ \ \ \}\ }
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00334\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a2970d79712c97bca7c781c3d7987fb0b}{transpose}}(\textcolor{keywordtype}{int}\ first\ =\ -\/1,\ \textcolor{keywordtype}{int}\ second\ =\ -\/2)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\ \&\&\ \textcolor{stringliteral}{"{}Cannot\ transpose\ uninitialized\ tensors."{}});\ }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Transpose<Tensor>}}(*\textcolor{keyword}{this},\ std::make\_pair<int,\ int>(std::move(first),\ std::move(second)));}
+\DoxyCodeLine{00337\ \ \ \ \ \}\ \ }
 \DoxyCodeLine{00338\ }
-\DoxyCodeLine{00339\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00340\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}},\ std::ptrdiff\_t\ offset,\ std::shared\_ptr<Buffer>\ storage)}
-\DoxyCodeLine{00341\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
-\DoxyCodeLine{00342\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
-\DoxyCodeLine{00343\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}})}
-\DoxyCodeLine{00344\ \ \ \ \ ,\ \ \ offset\_(offset)\ \ \ }
-\DoxyCodeLine{00345\ \ \ \ \ ,\ \ \ buffer\_(std::move(storage))}
-\DoxyCodeLine{00346\ \ \ \ \ \{\}}
-\DoxyCodeLine{00347\ }
-\DoxyCodeLine{00348\ \textcolor{keyword}{protected}:\ \ \ \ }
-\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keyword}{template}\ <Expression\ Source,\ \textcolor{keyword}{class}...\ Indexes>\ }
-\DoxyCodeLine{00350\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }expression::Slice;}
-\DoxyCodeLine{00351\ }
-\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keyword}{template}\ <Expression\ Source>\ }
-\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }expression::Transpose;}
-\DoxyCodeLine{00354\ }
-\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keyword}{template}\ <Expression\ Source>}
-\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }expression::Reshape;}
-\DoxyCodeLine{00357\ }
-\DoxyCodeLine{00358\ \ \ \ \ \textcolor{keywordtype}{void}\ assign(std::byte\ \textcolor{keyword}{const}*,\ std::ptrdiff\_t);\ }
-\DoxyCodeLine{00359\ \ \ \ \ \textcolor{keywordtype}{bool}\ compare(std::byte\ \textcolor{keyword}{const}*,\ std::ptrdiff\_t)\ \textcolor{keyword}{const};\ }
-\DoxyCodeLine{00360\ \ \ \ \ \ }
-\DoxyCodeLine{00361\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00362\ \ \ \ \ type\ dtype\_;}
-\DoxyCodeLine{00363\ \ \ \ \ Shape\ shape\_;\ }
-\DoxyCodeLine{00364\ \ \ \ \ Strides\ strides\_;\ }
-\DoxyCodeLine{00365\ \ \ \ \ std::ptrdiff\_t\ offset\_;\ \ \ }
-\DoxyCodeLine{00366\ \ \ \ \ \textcolor{keyword}{mutable}\ std::shared\_ptr<Buffer>\ buffer\_\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{00367\ \};\ \ \ \ }
-\DoxyCodeLine{00368\ }
-\DoxyCodeLine{00369\ std::ostream\&\ operator<<(std::ostream\&\ ostream,\ Tensor\ \textcolor{keyword}{const}\&\ tensor);\ \ }
-\DoxyCodeLine{00370\ \ }
-\DoxyCodeLine{00371\ \textcolor{keyword}{template}<Expression\ Source>\ }
-\DoxyCodeLine{00372\ \textcolor{keyword}{inline}\ std::ostream\&\ operator<<(std::ostream\&\ ostream,\ Source\ source)\ \{}
-\DoxyCodeLine{00373\ \ \ \ \ Tensor\ tensor\ =\ source.forward();\ \ }
-\DoxyCodeLine{00374\ \ \ \ \ ostream\ <<\ tensor;}
-\DoxyCodeLine{00375\ \ \ \ \ \textcolor{keywordflow}{return}\ ostream;}
-\DoxyCodeLine{00376\ \}\ }
-\DoxyCodeLine{00377\ }
-\DoxyCodeLine{00378\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Operation,\ Expression\ Operand>}
-\DoxyCodeLine{00379\ Tensor\ operation::Unary<Operation,\ Operand>::forward()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00380\ \ \ \ \ Tensor\ result(dtype(),\ shape(),\ strides());\ \ }
-\DoxyCodeLine{00381\ \ \ \ \ operation.forward(operand,\ result);}
-\DoxyCodeLine{00382\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
-\DoxyCodeLine{00383\ \}}
-\DoxyCodeLine{00384\ }
-\DoxyCodeLine{00385\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Operation,\ Expression\ Operand,\ Expression\ Cooperand>}
-\DoxyCodeLine{00386\ Tensor\ operation::Binary<Operation,\ Operand,\ Cooperand>::forward()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00387\ \ \ \ \ Tensor\ result(dtype(),\ shape(),\ strides());}
-\DoxyCodeLine{00388\ \ \ \ \ operation.forward(operand,\ cooperand,\ result);}
-\DoxyCodeLine{00389\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
-\DoxyCodeLine{00390\ \}\ \ }
-\DoxyCodeLine{00391\ }
-\DoxyCodeLine{00392\ \textcolor{keyword}{template}<Expression\ Source>}
-\DoxyCodeLine{00393\ Tensor\ expression::Reshape<Source>::forward()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00394\ \ \ \ \ Tensor\ source\ =\ source\_.forward();}
-\DoxyCodeLine{00395\ \ \ \ \ \textcolor{keywordflow}{return}\ Tensor(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
-\DoxyCodeLine{00396\ \}}
-\DoxyCodeLine{00397\ \ }
-\DoxyCodeLine{00398\ \textcolor{keyword}{template}<Expression\ Source>}
-\DoxyCodeLine{00399\ Tensor\ expression::Transpose<Source>::forward()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00400\ \ \ \ \ Tensor\ source\ =\ source\_.forward();}
-\DoxyCodeLine{00401\ \ \ \ \ \textcolor{keywordflow}{return}\ Tensor(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
-\DoxyCodeLine{00402\ \}\ \ \ }
-\DoxyCodeLine{00403\ }
-\DoxyCodeLine{00404\ \textcolor{keyword}{template}<Expression\ Source,\ \textcolor{keyword}{class}...\ Indexes>}
-\DoxyCodeLine{00405\ Tensor\ expression::Slice<Source,\ Indexes...>::forward()\textcolor{keyword}{\ const\ }\{\ \ \ }
-\DoxyCodeLine{00406\ \ \ \ \ Tensor\ source\ =\ source\_.forward();}
-\DoxyCodeLine{00407\ \ \ \ \ \textcolor{keywordflow}{return}\ Tensor(dtype(),\ shape(),\ strides(),\ offset(),\ source\_.buffer\_);}
-\DoxyCodeLine{00408\ \}\ \ \ \ \ \ \ }
-\DoxyCodeLine{00409\ }
-\DoxyCodeLine{00410\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00411\ }
-\DoxyCodeLine{00412\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TENSOR\_HPP}}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00342\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ace47b4a9fcb1068b6a5084b2816e4e7f}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}},\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}},\ std::shared\_ptr<Buffer>\ storage)}
+\DoxyCodeLine{00343\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
+\DoxyCodeLine{00344\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
+\DoxyCodeLine{00345\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}})}
+\DoxyCodeLine{00346\ \ \ \ \ ,\ \ \ offset\_(\mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}})\ \ \ }
+\DoxyCodeLine{00347\ \ \ \ \ ,\ \ \ buffer\_(std::move(storage))}
+\DoxyCodeLine{00348\ \ \ \ \ \{\}}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \textcolor{keyword}{protected}:\ \ \ \ }
+\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keyword}{template}\ <\mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\ Source,\ \textcolor{keyword}{class}...\ Indexes>\ }
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice}};}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00354\ \ \ \ \ \textcolor{keyword}{template}\ <Expression\ Source>\ }
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{expression::Transpose}};}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \ \ \ \ \textcolor{keyword}{template}\ <Expression\ Source>}
+\DoxyCodeLine{00358\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{expression::Reshape}};}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(std::byte\ \textcolor{keyword}{const}*,\ std::ptrdiff\_t);\ }
+\DoxyCodeLine{00361\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_ae5d53f0606904d652ef67b1d99909e55}{compare}}(std::byte\ \textcolor{keyword}{const}*,\ std::ptrdiff\_t)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00362\ \ \ \ \ \ }
+\DoxyCodeLine{00363\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00364\ \ \ \ \ type\ dtype\_;}
+\DoxyCodeLine{00365\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;\ }
+\DoxyCodeLine{00366\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;\ }
+\DoxyCodeLine{00367\ \ \ \ \ std::size\_t\ nbytes\_\ =\ 0;}
+\DoxyCodeLine{00368\ \ \ \ \ std::ptrdiff\_t\ offset\_\ =\ 0;\ \ \ \ }
+\DoxyCodeLine{00369\ \ \ \ \ \textcolor{keyword}{mutable}\ std::shared\_ptr<Buffer>\ buffer\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00370\ \};\ \ \ \ }
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ ostream,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ tensor);\ \ }
+\DoxyCodeLine{00373\ \ }
+\DoxyCodeLine{00374\ \textcolor{keyword}{template}<Expression\ Source>\ }
+\DoxyCodeLine{00375\ \textcolor{keyword}{inline}\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ ostream,\ Source\ source)\ \{}
+\DoxyCodeLine{00376\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ tensor\ =\ source.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();\ \ }
+\DoxyCodeLine{00377\ \ \ \ \ ostream\ <<\ tensor;}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keywordflow}{return}\ ostream;}
+\DoxyCodeLine{00379\ \}\ }
+\DoxyCodeLine{00380\ }
+\DoxyCodeLine{00381\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Operation,\ Expression\ Operand>}
+\DoxyCodeLine{00382\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Unary_a8e353e45bb09a8c5f02323afd88c14f2}{expression::Unary<Operation,\ Operand>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00383\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{result}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Function_a87a2da4547c1e308c17e09aa0bb895fa}{dtype}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a5805cbf974abb5cb9f6542551dd5a903}{shape}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_adc1fcac4a4909fb411cb860ed79e7196}{strides}}());\ \ }
+\DoxyCodeLine{00384\ \ \ \ \ operation.forward(\mbox{\hyperlink{classtannic_1_1expression_1_1Function_ad3d52195c2ca523241ee2df453aa520e}{operand}},\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{result}});}
+\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{result}};}
+\DoxyCodeLine{00386\ \}}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Operation,\ Expression\ Operand,\ Expression\ Cooperand>}
+\DoxyCodeLine{00389\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_a25f79a1644fbe89f707d28578dfb97b0}{expression::Binary<Operation,\ Operand,\ Cooperand>::forward}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00390\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{result}}(dtype(),\ shape(),\ strides());}
+\DoxyCodeLine{00391\ \ \ \ \ operation.forward(operand,\ cooperand,\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{result}});}
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{result}};}
+\DoxyCodeLine{00393\ \}\ \ }
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \textcolor{keyword}{template}<Expression\ Source>}
+\DoxyCodeLine{00396\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_a890d0b5bf3b5da73b3ef0fe743675a72}{expression::Reshape<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00397\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}\ =\ source\_.\mbox{\hyperlink{classtannic_1_1expression_1_1Function_abfb09740eb09262fddfb6f6249955045}{forward}}();}
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}.buffer\_);}
+\DoxyCodeLine{00399\ \}}
+\DoxyCodeLine{00400\ \ }
+\DoxyCodeLine{00401\ \textcolor{keyword}{template}<Expression\ Source>}
+\DoxyCodeLine{00402\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936}{expression::Transpose<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00403\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}\ =\ source\_.\mbox{\hyperlink{classtannic_1_1expression_1_1Function_abfb09740eb09262fddfb6f6249955045}{forward}}();}
+\DoxyCodeLine{00404\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}.buffer\_);}
+\DoxyCodeLine{00405\ \}\ \ \ }
+\DoxyCodeLine{00406\ }
+\DoxyCodeLine{00407\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}}>}
+\DoxyCodeLine{00408\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{expression::Slice<Source,\ Indexes...>::forward}}()\textcolor{keyword}{\ const\ }\{\ \ \ }
+\DoxyCodeLine{00409\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}\ =\ source\_.\mbox{\hyperlink{classtannic_1_1expression_1_1Function_abfb09740eb09262fddfb6f6249955045}{forward}}();}
+\DoxyCodeLine{00410\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source\_.buffer\_);}
+\DoxyCodeLine{00411\ \}\ \ \ \ \ \ \ }
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00413\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TENSOR\_HPP}}
 
 \end{DoxyCode}

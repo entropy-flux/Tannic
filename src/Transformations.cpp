@@ -3,9 +3,9 @@
 #include "Transformations.hpp" 
 #include "cpu/gemm.hpp"   
 
-namespace tannic {  
+namespace tannic::transformation { 
 
-void expression::Composition::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
+void Composition::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
     output.initialize(); 
     tensor_t src1 = structure(first);
     tensor_t src2 = structure(second);
@@ -13,4 +13,4 @@ void expression::Composition::forward(Tensor const& first, Tensor const& second,
     cpu::gemm(&src1, &src2, &dst);
 }
 
-} //namespace tannic
+} //namespace tannic::transformation
