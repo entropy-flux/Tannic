@@ -15,38 +15,27 @@
 // limitations under the License.
 //
 
-#ifndef TENSOR_H
-#define TENSOR_H 
- 
-#include "types.h"   
+#ifndef STREAMS_H
+#define STREAMS_H  
 
 #ifdef __cplusplus
-#include <cstdint>
-#include <cstddef>
-#include "runtime/resources.h"
+#include <cstdint>  
 
 namespace tannic {
 extern "C" {
 
 #else
-#include <stdint.h>
-#include <stddef.h>
-#include "runtime/resources.h"
+#include <stdint.h>  
 #endif 
  
-struct tensor_t {
-    uint8_t rank;
-    void* address;
-    const uint32_t* shape;
-    const int64_t* strides;  
-    enum type dtype; 
+struct stream_t { 
+    uintptr_t address;
 };  
- 
-//void print(const allocator_t* allocator, const tensor_t* tensor);
+  
 
 #ifdef __cplusplus
 }
 } // namespace tannic
 #endif 
 
-#endif // TENSOR_H
+#endif // STREAMS_H 

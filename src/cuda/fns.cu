@@ -16,8 +16,8 @@ __global__ void scalarFnKernel(const S* src, D* dst) {
 
 template<typename S, typename D, class Fn>
 __global__ void batchedFnKernel(
-    const S* src, const size_t* src_sz, const size_t* src_ne,
-    D* dst, const size_t* dst_sz, const size_t* dst_ne,
+    const S* src, const uint32_t* src_sz, const int64_t* src_ne,
+    D* dst, const uint32_t* dst_sz, const int64_t* dst_ne,
     uint8_t rank, size_t ne
 ) {
     Fn fn{};

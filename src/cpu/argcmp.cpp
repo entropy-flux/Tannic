@@ -6,8 +6,8 @@
 
 template<typename S, typename D, typename Cmp>
 void argReducerKernel(
-    const S* src_ptr, const size_t* src_sz, const size_t* src_strides,
-    D* dst_ptr, const size_t* dst_sz, const size_t* dst_strides,
+    const S* src_ptr, const uint32_t* src_sz, const int64_t* src_ne,
+    D* dst_ptr, const uint32_t* dst_sz, const int64_t* dst_ne,
     uint8_t rank, size_t* cnt, uint8_t dim, const void* init_val
 ) { 
     Cmp cmp; 
@@ -30,7 +30,7 @@ void argReducerKernel(
             size_t offset = 0;
             for (int d = 0; d < rank; ++d) {
                 size_t idx_val = (d == dim) ? i : cnt[d];
-                offset += idx_val * src_strides[d];
+                offset += idx_val * src_ne[d];
             }
 
             const S val = src_ptr[offset];

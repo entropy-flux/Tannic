@@ -14,8 +14,8 @@ __global__ void scalarUnaryOpKernel(const S* src, D* dst) {
 
 template<typename S, typename D, class Op>
 __global__ void batchedUnaryOpKernel(
-    const S* src, const size_t* src_sz, const size_t* src_ne,           
-    D* dst, const size_t* dst_sz, const size_t* dst_ne, 
+    const S* src, const uint32_t* src_sz, const int64_t* src_ne,           
+    D* dst, const uint32_t* dst_sz, const int64_t* dst_ne, 
     uint8_t rank, size_t ne
 ) {
     Op op{};
@@ -70,9 +70,9 @@ __global__ void scalarBinaryOpKernel(const S0* src0, const S1* src1, D* dst) {
 
 template<typename S0, typename S1, typename D, class Op>
 __global__ void batchedBinaryOpKernel(
-    const S0* src0_ptr, const size_t* src0_sz, const size_t* src0_ne,
-    const S1* src1_ptr, const size_t* src1_sz, const size_t* src1_ne,
-    D* dst_ptr, const size_t* dst_sz, const size_t* dst_ne,
+    const S0* src0_ptr, const uint32_t* src0_sz, const int64_t* src0_ne,
+    const S1* src1_ptr, const uint32_t* src1_sz, const int64_t* src1_ne,
+    D* dst_ptr, const uint32_t* dst_sz, const int64_t* dst_ne,
     uint8_t rank, size_t ne
 ) {
     Op op{};  

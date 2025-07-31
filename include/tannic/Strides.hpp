@@ -89,7 +89,7 @@ public:
 
 public:
     using rank_type = uint8_t;      ///< Type used for rank (number of dimensions).
-    using size_type = std::size_t;  ///< Type used for size and shape dimensions.
+    using size_type = int64_t;  ///< Type used for size and shape dimensions.
  
  
     /// @brief Default constructor (rank 0).

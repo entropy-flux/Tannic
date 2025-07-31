@@ -14,8 +14,8 @@ void scalarFnKernel(
 
 template<typename S, typename D, class Fn>
 void batchedFnKernel( 
-    const S* src_ptr, const size_t* src_sz, const size_t* src_ne,           
-    D* dst_ptr, const size_t* dst_sz, const size_t* dst_ne, 
+    const S* src_ptr, const uint32_t* src_sz, const int64_t* src_ne,           
+    D* dst_ptr, const uint32_t* dst_sz, const int64_t* dst_ne, 
     uint8_t rank, size_t ne
 ) { 
     Fn fn;  
