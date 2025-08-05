@@ -161,29 +161,27 @@
 \DoxyCodeLine{00277\ \};}
 \DoxyCodeLine{00278\ }
 \DoxyCodeLine{00287\ \textcolor{keyword}{template}<Expression\ Source>}
-\DoxyCodeLine{00288\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a674c22c100877e7a9fd931291ebb3765}{argmax}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1)\ \{\ }
-\DoxyCodeLine{00289\ \ \ \ \ assert(axis\ ==\ -\/1\ \&\&\ \textcolor{stringliteral}{"{}Axis\ different\ from\ default\ not\ working\ in\ argmax.\ Open\ a\ PR\ if\ you\ find\ the\ issue."{}});}
-\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmax,\ Source>}}\{}
-\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank())\},\ std::forward<Source>(source)\ }
-\DoxyCodeLine{00292\ \ \ \ \ \};}
-\DoxyCodeLine{00293\ \}}
-\DoxyCodeLine{00294\ }
-\DoxyCodeLine{00303\ \textcolor{keyword}{template}<Expression\ Source>}
-\DoxyCodeLine{00304\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a7a31ff65859bcf18d2862ccfc6232ef4}{argmin}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1)\ \{\ }
-\DoxyCodeLine{00305\ \ \ \ \ assert(axis\ ==\ -\/1\ \&\&\ \textcolor{stringliteral}{"{}Axis\ different\ from\ default\ not\ working\ in\ argmin.\ Open\ a\ PR\ if\ you\ find\ the\ issue."{}});}
-\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmin,\ Source>}}\{\ }
-\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank())\},\ std::forward<Source>(source)\ }
-\DoxyCodeLine{00308\ \ \ \ \ \};}
-\DoxyCodeLine{00309\ \}}
-\DoxyCodeLine{00310\ \ }
-\DoxyCodeLine{00311\ \}\ \textcolor{comment}{//\ namespace\ expression}}
-\DoxyCodeLine{00312\ }
-\DoxyCodeLine{00313\ \textcolor{comment}{//\ Bring\ reduction\ functions\ into\ tannic\ namespace}}
-\DoxyCodeLine{00314\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_a674c22c100877e7a9fd931291ebb3765}{expression::argmax}};}
-\DoxyCodeLine{00315\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_a7a31ff65859bcf18d2862ccfc6232ef4}{expression::argmin}};}
+\DoxyCodeLine{00288\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a674c22c100877e7a9fd931291ebb3765}{argmax}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1)\ \{\ \ }
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmax,\ Source>}}\{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank())\},\ std::forward<Source>(source)\ }
+\DoxyCodeLine{00291\ \ \ \ \ \};}
+\DoxyCodeLine{00292\ \}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00302\ \textcolor{keyword}{template}<Expression\ Source>}
+\DoxyCodeLine{00303\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a7a31ff65859bcf18d2862ccfc6232ef4}{argmin}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1)\ \{\ \ }
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmin,\ Source>}}\{\ }
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank())\},\ std::forward<Source>(source)\ }
+\DoxyCodeLine{00306\ \ \ \ \ \};}
+\DoxyCodeLine{00307\ \}}
+\DoxyCodeLine{00308\ \ }
+\DoxyCodeLine{00309\ \}\ \textcolor{comment}{//\ namespace\ expression}}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \textcolor{comment}{//\ Bring\ reduction\ functions\ into\ tannic\ namespace}}
+\DoxyCodeLine{00312\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_a674c22c100877e7a9fd931291ebb3765}{expression::argmax}};}
+\DoxyCodeLine{00313\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_a7a31ff65859bcf18d2862ccfc6232ef4}{expression::argmin}};}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
 \DoxyCodeLine{00316\ }
-\DoxyCodeLine{00317\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00318\ }
-\DoxyCodeLine{00319\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REDUCTIONS\_HPP}}
+\DoxyCodeLine{00317\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REDUCTIONS\_HPP}}
 
 \end{DoxyCode}
