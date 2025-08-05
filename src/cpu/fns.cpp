@@ -14,8 +14,8 @@ void scalarFnKernel(
 
 template<typename S, typename D, class Fn>
 void batchedFnKernel( 
-    const S* src_ptr, const uint32_t* src_sz, const int64_t* src_ne,           
-    D* dst_ptr, const uint32_t* dst_sz, const int64_t* dst_ne, 
+    const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,           
+    D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides, 
     uint8_t rank, size_t ne
 ) { 
     Fn fn;  
@@ -23,13 +23,13 @@ void batchedFnKernel(
     for (size_t idx = 0; idx < ne; ++idx) {
         size_t offs = 0;
         for (int dim = 0; dim < rank; ++dim) {
-            offs += cnt[dim] * src_ne[dim];
+            offs += cnt[dim] * src_strides.sizes[dim];
         }
 
         dst_ptr[idx] = fn(src_ptr[offs]);
 
         for (int dim = rank - 1; dim >= 0; --dim) {
-            if (++cnt[dim] < dst_sz[dim])
+            if (++cnt[dim] < dst_shape.sizes[dim])
                 break;
             cnt[dim] = 0;
         }
@@ -48,7 +48,7 @@ void launchFnKernel(const tensor_t* src, tensor_t* dst) {
     else {    
         size_t ne = 1;
         for (uint8_t dim = 0; dim < src->rank; ++dim) {
-            ne *= dst->shape[dim];
+            ne *= dst->shape.sizes[dim];
         }
 
         batchedFnKernel<S, D, Fn>(
@@ -138,7 +138,7 @@ constexpr static inline int index(type type) {
     return static_cast<int>(type);
 }  
  
-using Kernel = void(*)(const tensor_t* src, tensor_t* dst);       
+using Kernel = void(*)(const tensor_t*, tensor_t*);       
 
 constexpr auto dispatchLog = []() {
     std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);

@@ -61,8 +61,7 @@ namespace tannic {
  * provides constructors and accessors for tensor shapes, including support for
  * initializer lists, iterators, and iterable containers.
  * 
- * Shapes are limited to a maximum rank of `Shape::limit = 8` dimensions. But this limit
- * may be removed in C++26 when std::vector become constexpr friendly.
+ * Shapes are limited to a maximum rank of 8 dimensions. 
  *
  *
  * #### Example:

@@ -57,7 +57,7 @@ std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
     auto get_element = [&](const std::vector<size_t>& indices) -> void* {
         size_t offset = 0;
         for (size_t dim = 0; dim < tensor->rank; ++dim) {
-            offset += indices[dim] * tensor->strides[dim];
+            offset += indices[dim] * tensor->strides.sizes[dim];
         }
         return (char*)(tensor->address) + offset * dsizeof(tensor->dtype);
     };
@@ -72,14 +72,14 @@ std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
             os << "[";
         }
         
-        for (size_t sz = 0; sz < tensor->shape[dim]; ++sz) {
+        for (size_t sz = 0; sz < tensor->shape.sizes[dim]; ++sz) {
             indices[dim] = sz;
             self(dim + 1, indices, self);
             
-            if (sz != tensor->shape[dim] - 1) {
+            if (sz != tensor->shape.sizes[dim] - 1) {
                 os << ", ";
             } 
-            if (dim == 0 && sz != tensor->shape[dim] - 1) {
+            if (dim == 0 && sz != tensor->shape.sizes[dim] - 1) {
                 os << "\n       ";
             }
         }
@@ -95,7 +95,7 @@ std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
     os << " dtype=" << tensor->dtype << ", shape=(";
     
     for (size_t dim = 0; dim < tensor->rank; ++dim) {
-        os << tensor->shape[dim];
+        os << tensor->shape.sizes[dim];
         if (dim != tensor->rank - 1) {
             os << ", ";
         }
@@ -111,7 +111,7 @@ std::ostream& operator<<(std::ostream& ostream, Tensor const& tensor) {
     } 
 
     else {
-        std::cout << "WTF?????";
+        throw std::runtime_error("IO not implemented for cuda tensor");
     } 
     return ostream;
 }

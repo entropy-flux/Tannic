@@ -33,16 +33,31 @@ extern "C" {
 #include <stddef.h>
 #include "runtime/resources.h"
 #endif 
- 
+
+#define DIMENSIONS 8
+
+struct shape_t {
+    union {
+        const uint32_t* address;
+        uint32_t sizes[DIMENSIONS];
+    };
+};
+
+struct strides_t {
+    union {
+        const uint64_t* address;
+        uint64_t sizes[DIMENSIONS];
+    };
+};
+
 struct tensor_t {
-    uint8_t rank;
     void* address;
-    const uint32_t* shape;
-    const int64_t* strides;  
+    uint8_t rank;
+    struct shape_t shape;
+    struct strides_t strides;  
     enum type dtype; 
-};  
- 
-//void print(const allocator_t* allocator, const tensor_t* tensor);
+    struct allocator_t allocator;
+};    
 
 #ifdef __cplusplus
 }

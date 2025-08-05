@@ -7,6 +7,6 @@ using namespace tannic;
 
 namespace cuda { 
     
-void gemm(const device_t*, const tensor_t*, const tensor_t*, tensor_t*);  
+void gemm(const tensor_t*, const tensor_t*, tensor_t*);  
 
 } // namespace cpu

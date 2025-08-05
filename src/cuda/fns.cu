@@ -3,21 +3,19 @@
 #include <array>
 #include <stdexcept>
 #include "cuda/exc.cuh"
-#include "cuda/fns.cuh"
-#include "cuda/streams.cuh"
+#include "cuda/fns.cuh" 
 
 
 template<typename S, typename D, class Fn>
 __global__ void scalarFnKernel(const S* src, D* dst) {
     Fn fn;
     *dst = fn(*src);
-}
-
+}  
 
 template<typename S, typename D, class Fn>
 __global__ void batchedFnKernel(
-    const S* src, const uint32_t* src_sz, const int64_t* src_ne,
-    D* dst, const uint32_t* dst_sz, const int64_t* dst_ne,
+    const S* src, shape_t src_shape, strides_t src_strides,
+    D* dst, shape_t dst_shape, strides_t dst_strides,
     uint8_t rank, size_t ne
 ) {
     Fn fn{};
@@ -27,22 +25,21 @@ __global__ void batchedFnKernel(
         size_t remaining = idx;
 
         for (int dim = rank - 1; dim >= 0; --dim) {
-            size_t dim_idx = remaining % dst_sz[dim];
-            remaining /= dst_sz[dim];
+            size_t dim_idx = remaining % dst_shape.sizes[dim];
+            remaining /= dst_shape.sizes[dim];
  
-            size_t src_idx = (src_sz[dim] == 1) ? 0 : dim_idx;
-            offs += src_idx * src_ne[dim];
+            size_t src_idx = (src_shape.sizes[dim] == 1) ? 0 : dim_idx;
+            offs += src_idx * src_strides.sizes[dim];
         }
 
         dst[idx] = fn(src[offs]);
     }
-}
-
+}  
 
 template<typename S, typename D, class Fn>
-void launchFnKernel(const tensor_t* src, tensor_t* dst, cudaStream_t stream = 0) { 
+void launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream) { 
     if (src->rank == 0) {
-        scalarFnKernel<S, D, Fn><<<1, 1, 0,stream>>>(
+        scalarFnKernel<S, D, Fn><<<1, 1, 0, reinterpret_cast<cudaStream_t>(stream.address)>>>(
             (const S*)(src->address),
             (D*)(dst->address)
         ); 
@@ -51,25 +48,23 @@ void launchFnKernel(const tensor_t* src, tensor_t* dst, cudaStream_t stream = 0)
     else {
         size_t ne = 1;
         for (uint8_t dim = 0; dim < src->rank; ++dim) {
-            ne *= dst->shape[dim];
+            ne *= dst->shape.sizes[dim];
         }
 
         size_t blockSize = 256;
         size_t gridSize = (ne + blockSize - 1) / blockSize;
 
-        batchedFnKernel<S, D, Fn><<<gridSize, blockSize, 0, stream>>>(
+        batchedFnKernel<S, D, Fn><<<gridSize, blockSize, 0, reinterpret_cast<cudaStream_t>(stream.address)>>>(
             (const S*)(src->address), src->shape, src->strides,
             (D*)(dst->address), dst->shape, dst->strides,
             src->rank, ne
         ); 
     } 
-}
+} 
 
-
-void launchDefaultKernel(const tensor_t* src, tensor_t* dst, cudaStream_t) {
+void launchDefaultKernel(const tensor_t* src, tensor_t* dst, stream_t) {
     exit(EXIT_FAILURE);
-};  
-
+};   
 
 struct Log { 
     template<class A>
@@ -145,7 +140,7 @@ constexpr static inline int index(type type) {
     return static_cast<int>(type);
 }  
  
-using Kernel = void(*)(const tensor_t*, tensor_t*, cudaStream_t);       
+using Kernel = void(*)(const tensor_t*, tensor_t*, stream_t);       
 
 constexpr auto dispatchLog = []() {
     std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
@@ -221,74 +216,44 @@ constexpr auto dispatchTanh = []() {
 
 namespace cuda {
  
-void log(device_t const* dvc, tensor_t const* src, tensor_t* dst) { 
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchLog[index(src->dtype)](src, dst, stream);
-    streams.put(dvc->id, stream);
+void log(tensor_t const* src, tensor_t* dst, stream_t stream) {   
+    dispatchLog[index(src->dtype)](src, dst, stream); 
 }
 
-void exp(device_t const* dvc, tensor_t const* src, tensor_t* dst) { 
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchExp[index(src->dtype)](src, dst, stream);
-    streams.put(dvc->id, stream);
+void exp(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    dispatchExp[index(src->dtype)](src, dst, stream); 
 }
 
-void sqrt(device_t const* dvc, tensor_t const* src, tensor_t* dst) { 
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchSqrt[index(src->dtype)](src, dst, stream);
-    streams.put(dvc->id, stream);
+void sqrt(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    dispatchSqrt[index(src->dtype)](src, dst, stream); 
 }
 
-void abs(device_t const* dvc, tensor_t const* src, tensor_t* dst) { 
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchAbs[index(src->dtype)](src, dst, stream);
-    streams.put(dvc->id, stream);
+void abs(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    dispatchAbs[index(src->dtype)](src, dst, stream); 
 }
 
-void sin(device_t const* dvc, tensor_t const* src, tensor_t* dst) { 
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchSin[index(src->dtype)](src, dst, stream);
-    streams.put(dvc->id, stream);
+void sin(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    dispatchSin[index(src->dtype)](src, dst, stream); 
 }
 
-void cos(device_t const* dvc, tensor_t const* src, tensor_t* dst) { 
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchCos[index(src->dtype)](src, dst, stream);
-    streams.put(dvc->id, stream);
+void cos(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    dispatchCos[index(src->dtype)](src, dst, stream); 
 }
 
-void tan(device_t const* dvc, tensor_t const* src, tensor_t* dst) { 
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchTan[index(src->dtype)](src, dst, stream);
-    streams.put(dvc->id, stream);
+void tan(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    dispatchTan[index(src->dtype)](src, dst, stream); 
 }
 
-void sinh(device_t const* dvc, tensor_t const* src, tensor_t* dst) { 
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchSinh[index(src->dtype)](src, dst, stream);
-    streams.put(dvc->id, stream);
+void sinh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    dispatchSinh[index(src->dtype)](src, dst, stream); 
 }
 
-void cosh(device_t const* dvc, tensor_t const* src, tensor_t* dst) { 
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchCosh[index(src->dtype)](src, dst, stream);
-    streams.put(dvc->id, stream);
+void cosh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    dispatchCosh[index(src->dtype)](src, dst, stream); 
 }
 
-void tanh(device_t const* dvc, tensor_t const* src, tensor_t* dst) { 
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchTanh[index(src->dtype)](src, dst, stream);
-    streams.put(dvc->id, stream);
+void tanh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    dispatchTanh[index(src->dtype)](src, dst, stream); 
 }
 
 } // namespace cuda

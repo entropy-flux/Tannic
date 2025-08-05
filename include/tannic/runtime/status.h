@@ -15,26 +15,22 @@
 // limitations under the License.
 //
 
-#ifndef STREAMS_H
-#define STREAMS_H  
+#ifndef STATUS_H
+#define STATUS_H
 
 #ifdef __cplusplus
-#include <cstdint>  
-
 namespace tannic {
 extern "C" {
-
-#else
-#include <stdint.h>  
 #endif 
- 
-struct stream_t { 
-    uintptr_t address;
-};  
+
+enum status { 
+    SUCCESS = 0, 
+    ERROR = 100
+};
 
 #ifdef __cplusplus
 }
 } // namespace tannic
-#endif 
-
-#endif // STREAMS_H 
+#endif
+ 
+#endif // STATUS_H

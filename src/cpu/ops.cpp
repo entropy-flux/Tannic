@@ -23,8 +23,8 @@ void scalarBinaryOpKernel(
   
 template<typename S, typename D, class Op>
 void batchedUnaryOpKernel( 
-    const S* src_ptr, const uint32_t* src_sz, const int64_t* src_ne,           
-    D* dst_ptr, const uint32_t* dst_sz, const int64_t* dst_ne, 
+    const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,           
+    D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides, 
     uint8_t rank, size_t ne
 ) { 
     Op op;  
@@ -32,13 +32,13 @@ void batchedUnaryOpKernel(
     for (size_t idx = 0; idx < ne; ++idx) {
         size_t offs = 0;
         for (int dim = 0; dim < rank; ++dim) {
-            offs += cnt[dim] * src_ne[dim];
+            offs += cnt[dim] * src_strides.sizes[dim];
         }
 
         dst_ptr[idx] = op(src_ptr[offs]);
 
         for (int dim = rank - 1; dim >= 0; --dim) {
-            if (++cnt[dim] < dst_sz[dim])
+            if (++cnt[dim] < dst_shape.sizes[dim])
                 break;
             cnt[dim] = 0;
         }
@@ -47,9 +47,9 @@ void batchedUnaryOpKernel(
 
 template<typename S0, typename S1, typename D, class Op>
 void batchedBinaryOpKernel(
-    const S0* src0_ptr, const uint32_t* src0_sz, const int64_t* src0_ne,
-    const S1* src1_ptr, const uint32_t* src1_sz, const int64_t* src1_ne,
-    D* dst_ptr, const uint32_t* dst_sz, const int64_t* dst_ne,
+    const S0* src0_ptr, const shape_t&  src0_shape, const strides_t& src0_ne,
+    const S1* src1_ptr, const shape_t&  src1_shape, const strides_t& src1_ne,
+    D* dst_ptr, const shape_t&  dst_shape, const strides_t& dst_strides,
     uint8_t rank
 ) { 
     Op op{};
@@ -58,18 +58,18 @@ void batchedBinaryOpKernel(
         size_t offs0 = 0, offs1 = 0;
 
         for (uint8_t i = 0; i < rank; ++i) { 
-            size_t idx0 = (src0_sz[i] == 1) ? 0 : cnt[i];
-            size_t idx1 = (src1_sz[i] == 1) ? 0 : cnt[i];
+            size_t idx0 = (src0_shape.sizes[i] == 1) ? 0 : cnt[i];
+            size_t idx1 = (src1_shape.sizes[i] == 1) ? 0 : cnt[i];
             
-            offs0 += idx0 * src0_ne[i];
-            offs1 += idx1 * src1_ne[i];
+            offs0 += idx0 * src0_ne.sizes[i];
+            offs1 += idx1 * src1_ne.sizes[i];
         }
 
         dst_ptr[idx] = op(src0_ptr[offs0], src1_ptr[offs1]);
 
         bool done = false;
         for (int i = rank - 1; i >= 0; --i) {
-            if (++cnt[i] < dst_sz[i])
+            if (++cnt[i] < dst_shape.sizes[i])
                 break;
             if (i == 0)
                 done = true;
@@ -92,7 +92,7 @@ void launchUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
     else {    
         size_t ne = 1;
         for (uint8_t dim = 0; dim < src->rank; ++dim) {
-            ne *= dst->shape[dim];
+            ne *= dst->shape.sizes[dim];
         }
 
         batchedUnaryOpKernel<S, D, Op>(
@@ -172,7 +172,7 @@ constexpr static inline int index(type first, type second) {
 }  
 
 
-using UnaryOpKernel = void(*)( const tensor_t* src, tensor_t* dst);      
+using UnaryOpKernel = void(*)( const tensor_t*, tensor_t*);      
 using BinaryOpKernel = void(*)( const tensor_t*, const tensor_t*, tensor_t*);      
 
 constexpr auto dispatchNeg = []() {  

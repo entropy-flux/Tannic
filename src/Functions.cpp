@@ -7,23 +7,34 @@
 namespace tannic::function {   
 
 using H = void (*)(const tensor_t*, tensor_t*);
-using D = void (*)(const device_t*, const tensor_t*, tensor_t*); 
+using D = void (*)(const tensor_t*, tensor_t*, stream_t); 
+
+struct layout_t {
+    uint8_t rank;
+    uint32_t shape;
+    int64_t strides;
+};
 
 template <H hcall, D dcall>
-inline void apply(Tensor const& input, Tensor& output) {
-    output.initialize(); 
-    tensor_t src = structure(input);
-    tensor_t dst = structure(output);
+inline void apply(Tensor const& input, Tensor& output) {  
     allocator_t allocator = structure(input.allocator()); 
     switch (allocator.environment) {
         case HOST: {
+            output.initialize(); 
+            tensor_t src = structure(input);
+            tensor_t dst = structure(output);
             hcall(&src, &dst);    
             break; 
         } 
 
-        case DEVICE: {
-            device_t dvc = allocator.resource.device;
-            dcall(&dvc, &src, &dst);
+        case DEVICE: { 
+            device_t dvc = allocator.resource.device; 
+            output.initialize(Device(dvc.id));
+            tensor_t src = structure(input);
+            tensor_t dst = structure(output);
+            stream_t stream = pop_stream(&dvc);
+            dcall(&src, &dst, stream);
+            put_stream(&dvc, stream);
             break; 
         } 
         

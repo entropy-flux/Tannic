@@ -77,7 +77,7 @@ static bool isTransposed(const tensor_t* tensor) {
         return false;
     }
     else {
-        return tensor->strides[tensor->rank-1] > tensor->strides[tensor->rank-2];
+        return tensor->strides.sizes[tensor->rank-1] > tensor->strides.sizes[tensor->rank-2];
     }
 }  
 
@@ -91,40 +91,40 @@ void computeOffsets(
  
     size_t b = batch;
     for (int dim = batch_rank - 1; dim >= 0; --dim) {
-        dst_idx[dim] = b % dst->shape[dim];
-        b /= dst->shape[dim];
+        dst_idx[dim] = b % dst->shape.sizes[dim];
+        b /= dst->shape.sizes[dim];
     } 
 
     for (size_t dim = 0; dim < batch_rank; ++dim) {
-        size_t s0_idx = (src0->rank > 2 && src0->shape[dim] == 1) ? 0 : dst_idx[dim];
-        size_t s1_idx = (src1->rank > 2 && src1->shape[dim] == 1) ? 0 : dst_idx[dim];
+        size_t s0_idx = (src0->rank > 2 && src0->shape.sizes[dim] == 1) ? 0 : dst_idx[dim];
+        size_t s1_idx = (src1->rank > 2 && src1->shape.sizes[dim] == 1) ? 0 : dst_idx[dim];
 
-        offs_src0 += s0_idx * src0->strides[dim];
-        offs_src1 += s1_idx * src1->strides[dim];
-        offs_dst  += dst_idx[dim] * dst->strides[dim];
+        offs_src0 += s0_idx * src0->strides.sizes[dim];
+        offs_src1 += s1_idx * src1->strides.sizes[dim];
+        offs_dst  += dst_idx[dim] * dst->strides.sizes[dim];
     }
 }
   
 
 template<typename S0, typename S1, typename D>
 void launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {  
-    size_t M = dst->shape[dst->rank - 2];
-    size_t N = dst->shape[dst->rank - 1];
-    size_t K = src0->shape[src0->rank - 1];
+    size_t M = dst->shape.sizes[dst->rank - 2];
+    size_t N = dst->shape.sizes[dst->rank - 1];
+    size_t K = src0->shape.sizes[src0->rank - 1];
 
     bool A_trans = isTransposed(src0);
     bool B_trans = isTransposed(src1);
 
-    int A_ld = A_trans ? src0->strides[src0->rank - 1] : src0->strides[src0->rank - 2];
-    int B_ld = B_trans ? src1->strides[src1->rank - 1] : src1->strides[src1->rank - 2];
-    int C_ld = dst->strides[dst->rank - 2];
+    int A_ld = A_trans ? src0->strides.sizes[src0->rank - 1] : src0->strides.sizes[src0->rank - 2];
+    int B_ld = B_trans ? src1->strides.sizes[src1->rank - 1] : src1->strides.sizes[src1->rank - 2];
+    int C_ld = dst->strides.sizes[dst->rank - 2];
   
     if (dst->rank > 2) { 
         size_t dst_idx[6] = {0};
         uint8_t batch_rank = dst->rank - 2;  
         size_t batch_size = 1;
         for (int dim = 0; dim < batch_rank; ++dim)
-            batch_size *= dst->shape[dim];
+            batch_size *= dst->shape.sizes[dim];
 
         for (size_t batch = 0; batch < batch_size; ++batch) {
             size_t offs_src0 = 0, offs_src1 = 0, offs_dst = 0;

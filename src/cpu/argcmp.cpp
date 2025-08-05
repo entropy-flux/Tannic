@@ -6,8 +6,8 @@
 
 template<typename S, typename D, typename Cmp>
 void argReducerKernel(
-    const S* src_ptr, const uint32_t* src_sz, const int64_t* src_ne,
-    D* dst_ptr, const uint32_t* dst_sz, const int64_t* dst_ne,
+    const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,
+    D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides,
     uint8_t rank, size_t* cnt, uint8_t dim, const void* init_val
 ) { 
     Cmp cmp; 
@@ -20,17 +20,17 @@ void argReducerKernel(
 
     size_t total = 1;
     for (int i = 0; i < rank; ++i)
-        if (i != dim) total *= dst_sz[i];
+        if (i != dim) total *= dst_shape.sizes[i];
 
     for (size_t idx = 0; idx < total; ++idx) {
         size_t best_idx = 0;
         S best_val = initial_value;
 
-        for (size_t i = 0; i < src_sz[dim]; ++i) {
+        for (size_t i = 0; i < src_shape.sizes[dim]; ++i) {
             size_t offset = 0;
             for (int d = 0; d < rank; ++d) {
                 size_t idx_val = (d == dim) ? i : cnt[d];
-                offset += idx_val * src_ne[d];
+                offset += idx_val * src_strides.sizes[d];
             }
 
             const S val = src_ptr[offset];
@@ -44,7 +44,7 @@ void argReducerKernel(
  
         for (int d = rank - 1; d >= 0; --d) {
             if (d == dim) continue;
-            if (++cnt[d] < dst_sz[d]) break;
+            if (++cnt[d] < dst_shape.sizes[d]) break;
             cnt[d] = 0;
         }
     }
