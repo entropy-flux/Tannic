@@ -124,7 +124,7 @@ public:
      * @return New Tensor containing the reduced result
      */
     Tensor forward() const {   
-        Tensor source = source.forward();
+        Tensor source = operand.forward();
         Tensor result(dtype_, shape_, strides_, offset());          
         reducer.forward(source, result);
         return result;
