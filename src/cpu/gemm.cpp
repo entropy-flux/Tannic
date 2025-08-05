@@ -160,7 +160,7 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
 
 
 status defaultKernel(const tensor_t*, const tensor_t*, tensor_t*) {
-    return UNSUPORTED_DTYPE;
+    return UNSUPPORTED_DTYPE;
 };
 
 using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*);        

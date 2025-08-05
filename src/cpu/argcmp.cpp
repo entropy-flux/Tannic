@@ -122,7 +122,7 @@ status argmax(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             return SUCCESS;
         }
         default:
-            return UNSUPORTED_DTYPE;
+            return UNSUPPORTED_DTYPE;
     }  
 }
 
@@ -177,7 +177,7 @@ status argmin(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             return SUCCESS;
         }
         default:
-            return UNSUPORTED_DTYPE;
+            return UNSUPPORTED_DTYPE;
     }
 }
 

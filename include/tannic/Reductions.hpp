@@ -285,8 +285,7 @@ struct Argmin {
  * @note Currently only supports axis=-1 (last dimension)
  */
 template<Expression Source>
-constexpr auto argmax(Source&& source, int axis = -1) { 
-    assert(axis == -1 && "Axis different from default not working in argmax. Open a PR if you find the issue.");
+constexpr auto argmax(Source&& source, int axis = -1) {  
     return Reduction<Argmax, Source>{
         {indexing::normalize(axis, source.shape().rank())}, std::forward<Source>(source) 
     };
@@ -301,8 +300,7 @@ constexpr auto argmax(Source&& source, int axis = -1) {
  * @note Currently only supports axis=-1 (last dimension)
  */
 template<Expression Source>
-constexpr auto argmin(Source&& source, int axis = -1) { 
-    assert(axis == -1 && "Axis different from default not working in argmin. Open a PR if you find the issue.");
+constexpr auto argmin(Source&& source, int axis = -1) {  
     return Reduction<Argmin, Source>{ 
         {indexing::normalize(axis, source.shape().rank())}, std::forward<Source>(source) 
     };

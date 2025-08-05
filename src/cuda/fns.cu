@@ -65,7 +65,7 @@ status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream) {
 } 
 
 status launchDefaultKernel(const tensor_t* src, tensor_t* dst, stream_t) {
-    return UNSUPORTED_DTYPE;
+    return UNSUPPORTED_DTYPE;
 };   
 
 struct Log { 

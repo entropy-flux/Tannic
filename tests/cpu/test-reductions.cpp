@@ -43,8 +43,7 @@ TEST(TestReductions, Test2D) {
 }
 
 
-
-/* FAILING MISERABLY
+ 
 TEST(TestReductions, Test2D_Axis0) {
     Tensor X(float32, {3, 4}); X.initialize();
     X[0][0] = 3; X[0][1] = 5; X[0][2] = 4; X[0][3] = 1;
@@ -69,5 +68,4 @@ TEST(TestReductions, Test2D_Axis0) {
     ASSERT_EQ(zmindat[1], 2);    
     ASSERT_EQ(zmindat[2], 1);   
     ASSERT_EQ(zmindat[3], 0); 
-}
-*/
+} 

@@ -26,7 +26,7 @@ extern "C" {
 enum status { 
     SUCCESS, 
     ERROR,
-    UNSUPORTED_DTYPE,
+    UNSUPPORTED_DTYPE,
     NULL_ALLOCATOR,
     INCOMPATIBLE_DEVICES,  
 };
