@@ -7,35 +7,35 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a0c907b6d34d55ff79e61061e839cda11}{Slice}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}, std\+::tuple$<$ Indexes... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{indexes}})
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a0c907b6d34d55ff79e61061e839cda11}{Slice}} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, std\+::tuple$<$ Indexes... $>$ indexes)
 \item 
-{\footnotesize template$<$Integral Index$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_aaf1d76bb5095e8708b0e4beffc051b97}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Index}} index) \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+{\footnotesize template$<$Integral Index$>$ }\\constexpr auto \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_aaf1d76bb5095e8708b0e4beffc051b97}{operator\mbox{[}$\,$\mbox{]}}} (Index index) const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a4fbfd61857c6b31365fc5875e834899c}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}} \mbox{\hyperlink{namespacetannic_a9468873460db4ea12f41458b87c63975}{range}}) \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+constexpr auto \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a4fbfd61857c6b31365fc5875e834899c}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}} \mbox{\hyperlink{namespacetannic_a9468873460db4ea12f41458b87c63975}{range}}) const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_afa2df373f05dc00ef730ba208f118cf0}{dtype}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+constexpr auto \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_afa2df373f05dc00ef730ba208f118cf0}{dtype}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a9bb289f510cb0da3d400293a265bd800}{rank}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+constexpr auto \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a9bb289f510cb0da3d400293a265bd800}{rank}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a22354e0b8625915115eb4e25a6521773}{shape}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a22354e0b8625915115eb4e25a6521773}{shape}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_ae404ecb0e0b72a642499a387ec2e708b}{strides}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_ae404ecb0e0b72a642499a387ec2e708b}{strides}} () const
 \item 
 std\+::byte \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a5d11cdc8bf08fd7cbfa7784dec7dadaa}{bytes}} ()
 \item 
-std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_aa7d760dcd1a9f9e401308400f360427f}{bytes}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+std\+::byte const \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_aa7d760dcd1a9f9e401308400f360427f}{bytes}} () const
 \item 
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}{offset}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{forward}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{forward}} () const
 \item 
-{\footnotesize template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{typename}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{T}} $>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{void}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1363daf8cf6b563ec0f640ee58e1a6dc}{operator=}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{T}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{value}})
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1363daf8cf6b563ec0f640ee58e1a6dc}{operator=}} (T value)
 \item 
-{\footnotesize template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{typename}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{T}} $>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{bool}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a9e653d07b5d7008251b318f05552911a}{operator==}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{T}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{value}}) \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a9e653d07b5d7008251b318f05552911a}{operator==}} (T value) const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{void}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff}{assign}} (std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{value}}, std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}{offset}})
+void \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff}{assign}} (std\+::byte const \texorpdfstring{$\ast$}{*}value, std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}{offset}})
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{bool}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a}{compare}} (std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{value}}, std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}{offset}}) \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+bool \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a}{compare}} (std\+::byte const \texorpdfstring{$\ast$}{*}value, std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}{offset}}) const
 \end{DoxyCompactItemize}
 
 
@@ -45,7 +45,7 @@ std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb49
 \index{Slice@{Slice}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{Slice()}{Slice()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::\+Slice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::\+Reference}]{source,  }\item[{std\+::tuple$<$ Indexes... $>$}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::\+Slice (\begin{DoxyParamCaption}\item[{typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference}]{source,  }\item[{std\+::tuple$<$ Indexes... $>$}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -55,65 +55,65 @@ std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb49
 \index{assign@{assign}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{assign()}{assign()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{void}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::assign (\begin{DoxyParamCaption}\item[{std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \texorpdfstring{$\ast$}{*}}]{value,  }\item[{std\+::ptrdiff\+\_\+t}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+void \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::assign (\begin{DoxyParamCaption}\item[{std\+::byte const \texorpdfstring{$\ast$}{*}}]{value,  }\item[{std\+::ptrdiff\+\_\+t}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_a5d11cdc8bf08fd7cbfa7784dec7dadaa}\label{classtannic_1_1expression_1_1Slice_a5d11cdc8bf08fd7cbfa7784dec7dadaa} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!bytes@{bytes}}
 \index{bytes@{bytes}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{bytes()}{bytes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-std\+::byte \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::bytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+std\+::byte \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::bytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_aa7d760dcd1a9f9e401308400f360427f}\label{classtannic_1_1expression_1_1Slice_aa7d760dcd1a9f9e401308400f360427f} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!bytes@{bytes}}
 \index{bytes@{bytes}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{bytes()}{bytes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}  \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::bytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+std\+::byte const  \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::bytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a}\label{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!compare@{compare}}
 \index{compare@{compare}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{compare()}{compare()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{bool}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::compare (\begin{DoxyParamCaption}\item[{std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \texorpdfstring{$\ast$}{*}}]{value,  }\item[{std\+::ptrdiff\+\_\+t}]{offset }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+bool \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::compare (\begin{DoxyParamCaption}\item[{std\+::byte const \texorpdfstring{$\ast$}{*}}]{value,  }\item[{std\+::ptrdiff\+\_\+t}]{offset }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_afa2df373f05dc00ef730ba208f118cf0}\label{classtannic_1_1expression_1_1Slice_afa2df373f05dc00ef730ba208f118cf0} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!dtype@{dtype}}
 \index{dtype@{dtype}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr auto \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}\label{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}\label{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!offset@{offset}}
 \index{offset@{offset}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{offset()}{offset()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_a1363daf8cf6b563ec0f640ee58e1a6dc}\label{classtannic_1_1expression_1_1Slice_a1363daf8cf6b563ec0f640ee58e1a6dc} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!operator=@{operator=}}
 \index{operator=@{operator=}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{typename}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{T}} $>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{void}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{T}}}]{value }\end{DoxyParamCaption})}
+template$<$typename T $>$ \\
+void \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::operator= (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_a9e653d07b5d7008251b318f05552911a}\label{classtannic_1_1expression_1_1Slice_a9e653d07b5d7008251b318f05552911a} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!operator==@{operator==}}
 \index{operator==@{operator==}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{typename}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{T}} $>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{bool}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{T}}}]{value }\end{DoxyParamCaption}) const}
+template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::operator== (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_aaf1d76bb5095e8708b0e4beffc051b97}\label{classtannic_1_1expression_1_1Slice_aaf1d76bb5095e8708b0e4beffc051b97} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
@@ -121,35 +121,35 @@ template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{typename}} \m
 \doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
 template$<$Integral Index$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Index}}}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr auto \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{Index}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_a4fbfd61857c6b31365fc5875e834899c}\label{classtannic_1_1expression_1_1Slice_a4fbfd61857c6b31365fc5875e834899c} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
 \index{operator\mbox{[}\mbox{]}@{operator[]}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}}]{range }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr auto \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}}]{range }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_a9bb289f510cb0da3d400293a265bd800}\label{classtannic_1_1expression_1_1Slice_a9bb289f510cb0da3d400293a265bd800} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!rank@{rank}}
 \index{rank@{rank}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{rank()}{rank()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::rank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr auto \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::rank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_a22354e0b8625915115eb4e25a6521773}\label{classtannic_1_1expression_1_1Slice_a22354e0b8625915115eb4e25a6521773} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Slice_ae404ecb0e0b72a642499a387ec2e708b}\label{classtannic_1_1expression_1_1Slice_ae404ecb0e0b72a642499a387ec2e708b} 
 \index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
 {\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Indexes}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 

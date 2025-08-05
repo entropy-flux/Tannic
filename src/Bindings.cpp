@@ -91,4 +91,40 @@ tensor_t structure(Tensor const& tensor) {
             }
         };
     }
-} 
+}  
+
+status resolve(const allocator_t* a, const allocator_t* b, allocator_t* result_out) { 
+    if (!a || !b || !result_out) {
+        return NULL_ALLOCATOR;
+    }
+ 
+    result_out->environment = HOST;
+    result_out->resource.host.traits = PAGEABLE;
+
+    if (a->environment == DEVICE && b->environment == DEVICE) {
+        if (a->resource.device.id != b->resource.device.id) {
+            return INCOMPATIBLE_DEVICES;
+        }
+
+        result_out->environment = DEVICE;
+        result_out->resource.device.id = a->resource.device.id;
+        result_out->resource.device.traits = 
+            (a->resource.device.traits == ASYNC || b->resource.device.traits == ASYNC) 
+            ? ASYNC : SYNC;
+    }
+    else if (a->environment == DEVICE) {
+        return INCOMPATIBLE_DEVICES;
+    }
+    else if (b->environment == DEVICE) {
+        return INCOMPATIBLE_DEVICES;
+    }
+    else { 
+        if ((a->resource.host.traits & MAPPED) || (b->resource.host.traits & MAPPED)) {
+            result_out->resource.host.traits = MAPPED;
+        }
+        else if ((a->resource.host.traits & PINNED) || (b->resource.host.traits & PINNED)) {
+            result_out->resource.host.traits = PINNED;
+        } 
+    } 
+    return SUCCESS;
+}

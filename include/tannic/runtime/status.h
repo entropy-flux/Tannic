@@ -24,8 +24,11 @@ extern "C" {
 #endif 
 
 enum status { 
-    SUCCESS = 0, 
-    ERROR = 100
+    SUCCESS, 
+    ERROR,
+    UNSUPORTED_DTYPE,
+    NULL_ALLOCATOR,
+    INCOMPATIBLE_DEVICES,  
 };
 
 #ifdef __cplusplus

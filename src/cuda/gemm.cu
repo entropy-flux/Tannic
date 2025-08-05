@@ -61,7 +61,8 @@ void computeOffsets(
 
 
 template<typename S0, typename S1, typename D>
-void launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, cudaStream_t stream) {  
+status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream) {  
+    cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
     size_t M = dst->shape.sizes[dst->rank - 2];
     size_t N = dst->shape.sizes[dst->rank - 1];
     size_t K = src0->shape.sizes[src0->rank - 1];
@@ -90,7 +91,7 @@ void launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst,
 
             dim3 blockDim(16, 16);
             dim3 gridDim((N + blockDim.x - 1) / blockDim.x, (M + blockDim.y - 1) / blockDim.y);
-            gemmKernel<S0, S1, D><<<gridDim, blockDim, 0, stream>>>(
+            gemmKernel<S0, S1, D><<<gridDim, blockDim, 0, cudaStream>>>(
                 A_trans, B_trans,
                 A_ptr, B_ptr, C_ptr,
                 M, N, K,
@@ -105,20 +106,22 @@ void launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst,
         D* C_ptr = static_cast<D*>(dst->address);
         dim3 blockDim(16, 16);
         dim3 gridDim((N + blockDim.x - 1) / blockDim.x, (M + blockDim.y - 1) / blockDim.y);
-        gemmKernel<S0, S1, D><<<gridDim, blockDim, 0, stream>>>(
+        gemmKernel<S0, S1, D><<<gridDim, blockDim, 0, cudaStream>>>(
             A_trans, B_trans,
             A_ptr, B_ptr, C_ptr,
             M, N, K,
             A_ld, B_ld, C_ld
         );
     }
+
+    return SUCCESS;
 }
 
-void defaultKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, cudaStream_t) {
-    throw std::runtime_error("Not supported dtype");
+status defaultKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t) {
+    return UNSUPORTED_DTYPE;
 };
 
-using Kernel = void(*)(const tensor_t*, const tensor_t*, tensor_t*, cudaStream_t);        
+using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*, stream_t);        
  
 constexpr static inline auto index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
@@ -160,11 +163,8 @@ constexpr auto dispatchGemm = []() {
 
 namespace cuda { 
 
-void gemm(const device_t* dvc, const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {   
-    Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(dvc->id);
-    dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst, stream); 
-    streams.put(dvc->id, stream);
+status gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream) {    
+    return dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst, stream);  
 } 
 
 } 

@@ -9,11 +9,16 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -49,6 +54,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('functions_func.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -84,8 +105,9 @@ $(function() {
 <h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
 <li>back()&#160;:&#160;<a class="el" href="db/da7/classtannic_1_1Shape.html#ad237b86bacac91ea72dfbac85930e190">tannic::Shape</a>, <a class="el" href="dc/deb/classtannic_1_1Strides.html#ae12a35e163505895661333ff7f694162">tannic::Strides</a></li>
 <li>begin()&#160;:&#160;<a class="el" href="db/da7/classtannic_1_1Shape.html#a40e88392c8869e2ed911019eef8aad26">tannic::Shape</a>, <a class="el" href="dc/deb/classtannic_1_1Strides.html#a2cf3a00885beb9093058aa45904f9d60">tannic::Strides</a></li>
-<li>Binary()&#160;:&#160;<a class="el" href="d6/d5f/classtannic_1_1expression_1_1Binary.html#a8fa9c1fe8f6cf694a58642f13196f795">tannic::expression::Binary&lt; Operation, Operand, Cooperand &gt;</a></li>
+<li>Binary()&#160;:&#160;<a class="el" href="d7/d6b/classtannic_1_1operation_1_1Binary.html#aad65c359416d2af39094f6f15548fbb8">tannic::operation::Binary&lt; Operation, Operand, Cooperand &gt;</a></li>
 <li>blocking()&#160;:&#160;<a class="el" href="d3/d46/classtannic_1_1Device.html#a0b7fbf3b87b59800b7f6689070aa92cc">tannic::Device</a></li>
+<li>broadcast()&#160;:&#160;<a class="el" href="d9/da3/structtannic_1_1operation_1_1Addition.html#a7359d4d440448d0e9a1cc9c07acb897c">tannic::operation::Addition</a>, <a class="el" href="d0/dcf/structtannic_1_1operation_1_1Multiplication.html#ae6c71ff9099ce111774a171651975354">tannic::operation::Multiplication</a>, <a class="el" href="d6/de5/structtannic_1_1operation_1_1Subtraction.html#ab5950a49b85a9e14ae7a2387fbf970b9">tannic::operation::Subtraction</a>, <a class="el" href="d4/d53/structtannic_1_1transformation_1_1Composition.html#a54ffedb4a5ca7827e9df3ae371bae4c2">tannic::transformation::Composition</a></li>
 <li>Buffer()&#160;:&#160;<a class="el" href="d4/d50/classtannic_1_1Buffer.html#a983886240f76aa8492bd45ca81593c7e">tannic::Buffer</a></li>
 <li>bytes()&#160;:&#160;<a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#a5d11cdc8bf08fd7cbfa7784dec7dadaa">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="da/d93/classtannic_1_1Tensor.html#a104cf81bd4da1b3e8e96e2ad2644f941">tannic::Tensor</a></li>
 </ul>
@@ -103,7 +125,7 @@ $(function() {
 <li>deallocate()&#160;:&#160;<a class="el" href="d3/d46/classtannic_1_1Device.html#a8f0b1404caa8e124f7aec4ee1b5c3048">tannic::Device</a>, <a class="el" href="df/da7/classtannic_1_1Host.html#a4d32bc66b1bc6f2cfa91448ee7ac1af8">tannic::Host</a></li>
 <li>Device()&#160;:&#160;<a class="el" href="d3/d46/classtannic_1_1Device.html#a5374d28b26368e2cefff11e0ba7c5ea8">tannic::Device</a></li>
 <li>Devices()&#160;:&#160;<a class="el" href="d9/dd4/classtannic_1_1Devices.html#a3dc88507dd999c24aed489873abc14a7">tannic::Devices</a></li>
-<li>dtype()&#160;:&#160;<a class="el" href="d6/d5f/classtannic_1_1expression_1_1Binary.html#ab5c976ef9f8c2d18320b8489b831b141">tannic::expression::Binary&lt; Operation, Operand, Cooperand &gt;</a>, <a class="el" href="d4/db5/classtannic_1_1expression_1_1Function.html#a87a2da4547c1e308c17e09aa0bb895fa">tannic::expression::Function&lt; Functor, Operand &gt;</a>, <a class="el" href="da/dc5/classtannic_1_1expression_1_1Reduction.html#a490b9f5f332ad6df24ab82792af7e486">tannic::expression::Reduction&lt; Reducer, Operand &gt;</a>, <a class="el" href="d2/dd8/classtannic_1_1expression_1_1Reshape.html#af5867677de585169871d47f3b2d4e6bf">tannic::expression::Reshape&lt; Source &gt;</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#afa2df373f05dc00ef730ba208f118cf0">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="dc/dd5/classtannic_1_1expression_1_1Transformation.html#ab4c9559dd3fd276a86737c0ac8b9bed5">tannic::expression::Transformation&lt; Operation, Operands &gt;</a>, <a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a9cb47b2a9524225c53a91827422b0f10">tannic::expression::Transpose&lt; Source &gt;</a>, <a class="el" href="d3/d73/classtannic_1_1expression_1_1Unary.html#a4edd1787286c9ae3cd14b5ed82fa2211">tannic::expression::Unary&lt; Operation, Operand &gt;</a>, <a class="el" href="da/d93/classtannic_1_1Tensor.html#ae2ed5e8543bccbf5a65a6a38f9b0aaea">tannic::Tensor</a></li>
+<li>dtype()&#160;:&#160;<a class="el" href="da/dc5/classtannic_1_1expression_1_1Reduction.html#a490b9f5f332ad6df24ab82792af7e486">tannic::expression::Reduction&lt; Reducer, Operand &gt;</a>, <a class="el" href="d2/dd8/classtannic_1_1expression_1_1Reshape.html#af5867677de585169871d47f3b2d4e6bf">tannic::expression::Reshape&lt; Source &gt;</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#afa2df373f05dc00ef730ba208f118cf0">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a9cb47b2a9524225c53a91827422b0f10">tannic::expression::Transpose&lt; Source &gt;</a>, <a class="el" href="db/d37/classtannic_1_1function_1_1Function.html#a0078c7638603140cfd364776351ff329">tannic::function::Function&lt; Functor, Operand &gt;</a>, <a class="el" href="d7/d6b/classtannic_1_1operation_1_1Binary.html#afb57760bdcaa664b38819216fbad64ce">tannic::operation::Binary&lt; Operation, Operand, Cooperand &gt;</a>, <a class="el" href="d7/d26/classtannic_1_1operation_1_1Unary.html#a2c3dfdc2be0d9ef45e8a1b1aa7142d83">tannic::operation::Unary&lt; Operation, Operand &gt;</a>, <a class="el" href="da/d93/classtannic_1_1Tensor.html#ae2ed5e8543bccbf5a65a6a38f9b0aaea">tannic::Tensor</a>, <a class="el" href="d9/d4d/classtannic_1_1transformation_1_1Transformation.html#a2bcf28b6dd2d820780960d645d9559d6">tannic::transformation::Transformation&lt; Operation, Operands &gt;</a></li>
 </ul>
 
 
@@ -113,9 +135,9 @@ $(function() {
 
 
 <h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
-<li>forward()&#160;:&#160;<a class="el" href="dc/d3e/structtannic_1_1expression_1_1Argmax.html#a78adde0e750ad2264a7595d61310673f">tannic::expression::Argmax</a>, <a class="el" href="d7/d32/structtannic_1_1expression_1_1Argmin.html#a4f7a8964a2fa07e164e3170024bc1819">tannic::expression::Argmin</a>, <a class="el" href="d6/d5f/classtannic_1_1expression_1_1Binary.html#a25f79a1644fbe89f707d28578dfb97b0">tannic::expression::Binary&lt; Operation, Operand, Cooperand &gt;</a>, <a class="el" href="d4/db5/classtannic_1_1expression_1_1Function.html#abfb09740eb09262fddfb6f6249955045">tannic::expression::Function&lt; Functor, Operand &gt;</a>, <a class="el" href="da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">tannic::expression::Reduction&lt; Reducer, Operand &gt;</a>, <a class="el" href="d2/dd8/classtannic_1_1expression_1_1Reshape.html#a890d0b5bf3b5da73b3ef0fe743675a72">tannic::expression::Reshape&lt; Source &gt;</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#a89d4dcdc63309ba723807d78f2e650d0">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="dc/dd5/classtannic_1_1expression_1_1Transformation.html#a0be87ad59e08daf3d55207cc84796004">tannic::expression::Transformation&lt; Operation, Operands &gt;</a>, <a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a120a795cc81e1cf1be4e728d7f4c5936">tannic::expression::Transpose&lt; Source &gt;</a>, <a class="el" href="d3/d73/classtannic_1_1expression_1_1Unary.html#a8e353e45bb09a8c5f02323afd88c14f2">tannic::expression::Unary&lt; Operation, Operand &gt;</a>, <a class="el" href="da/d93/classtannic_1_1Tensor.html#a24efaf36c2ec793288c470e5e92ad397">tannic::Tensor</a></li>
+<li>forward()&#160;:&#160;<a class="el" href="dc/d3e/structtannic_1_1expression_1_1Argmax.html#a78adde0e750ad2264a7595d61310673f">tannic::expression::Argmax</a>, <a class="el" href="d7/d32/structtannic_1_1expression_1_1Argmin.html#a4f7a8964a2fa07e164e3170024bc1819">tannic::expression::Argmin</a>, <a class="el" href="da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">tannic::expression::Reduction&lt; Reducer, Operand &gt;</a>, <a class="el" href="d2/dd8/classtannic_1_1expression_1_1Reshape.html#a890d0b5bf3b5da73b3ef0fe743675a72">tannic::expression::Reshape&lt; Source &gt;</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#a89d4dcdc63309ba723807d78f2e650d0">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a120a795cc81e1cf1be4e728d7f4c5936">tannic::expression::Transpose&lt; Source &gt;</a>, <a class="el" href="db/d37/classtannic_1_1function_1_1Function.html#a6297b8a576fdf49f9e2220e81e22f78d">tannic::function::Function&lt; Functor, Operand &gt;</a>, <a class="el" href="d9/da3/structtannic_1_1operation_1_1Addition.html#aaf1e81033a9b9907db9f9c3c94b458f9">tannic::operation::Addition</a>, <a class="el" href="d7/d6b/classtannic_1_1operation_1_1Binary.html#ad480dbcbf1dfb703f3bf6ef232cebe61">tannic::operation::Binary&lt; Operation, Operand, Cooperand &gt;</a>, <a class="el" href="d0/dcf/structtannic_1_1operation_1_1Multiplication.html#ae6c7d6f38e5d3d418daf127962a4c0f6">tannic::operation::Multiplication</a>, <a class="el" href="d6/deb/structtannic_1_1operation_1_1Negation.html#a5c904a0547f2f3929be04ea2ce761dd3">tannic::operation::Negation</a>, <a class="el" href="d6/de5/structtannic_1_1operation_1_1Subtraction.html#afc988b4e53299042435409e149f961d3">tannic::operation::Subtraction</a>, <a class="el" href="d7/d26/classtannic_1_1operation_1_1Unary.html#a642a2cd62b03ec15def11b5fb59a4e5a">tannic::operation::Unary&lt; Operation, Operand &gt;</a>, <a class="el" href="da/d93/classtannic_1_1Tensor.html#afa045be0c377ee3127a5a9d97c5b1fcb">tannic::Tensor</a>, <a class="el" href="d4/d53/structtannic_1_1transformation_1_1Composition.html#a89b2a04b101570a452be4bbfd5d2f11e">tannic::transformation::Composition</a>, <a class="el" href="d9/d4d/classtannic_1_1transformation_1_1Transformation.html#aa7ce3925268c4b20658c6c9c926d8fab">tannic::transformation::Transformation&lt; Operation, Operands &gt;</a></li>
 <li>front()&#160;:&#160;<a class="el" href="db/da7/classtannic_1_1Shape.html#ab838e93c0984f4f0d1ddfac4d20fd12e">tannic::Shape</a>, <a class="el" href="dc/deb/classtannic_1_1Strides.html#a6c6000fcf947fde44193535e9edff445">tannic::Strides</a></li>
-<li>Function()&#160;:&#160;<a class="el" href="d4/db5/classtannic_1_1expression_1_1Function.html#adeeedfd105dfc3fff2488f66ed348d44">tannic::expression::Function&lt; Functor, Operand &gt;</a></li>
+<li>Function()&#160;:&#160;<a class="el" href="db/d37/classtannic_1_1function_1_1Function.html#a3a9ffe9ad15fcc5dbe9ce9e88e925067">tannic::function::Function&lt; Functor, Operand &gt;</a></li>
 </ul>
 
 
@@ -138,7 +160,7 @@ $(function() {
 
 
 <h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
-<li>offset()&#160;:&#160;<a class="el" href="d6/d5f/classtannic_1_1expression_1_1Binary.html#ad538b474e963268753595c5d04c8f108">tannic::expression::Binary&lt; Operation, Operand, Cooperand &gt;</a>, <a class="el" href="d4/db5/classtannic_1_1expression_1_1Function.html#aad6864c46beec9856300ddc79d32de0e">tannic::expression::Function&lt; Functor, Operand &gt;</a>, <a class="el" href="da/dc5/classtannic_1_1expression_1_1Reduction.html#a5fccaa5f3c597ec6caab4ec846c2a84a">tannic::expression::Reduction&lt; Reducer, Operand &gt;</a>, <a class="el" href="d2/dd8/classtannic_1_1expression_1_1Reshape.html#a2154865dd157974dd85746b1a1b6d0c4">tannic::expression::Reshape&lt; Source &gt;</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#a1fb492ca0fdc06c3730561a30c66e251">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="dc/dd5/classtannic_1_1expression_1_1Transformation.html#a413f66e43823590b0423c5be9fc6fc1d">tannic::expression::Transformation&lt; Operation, Operands &gt;</a>, <a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a3784e6c4f79e9fcc21b9941aaac6cd79">tannic::expression::Transpose&lt; Source &gt;</a>, <a class="el" href="d3/d73/classtannic_1_1expression_1_1Unary.html#a4e0c64cba6ef2ba3ee8485baa2667896">tannic::expression::Unary&lt; Operation, Operand &gt;</a>, <a class="el" href="da/d93/classtannic_1_1Tensor.html#a64e1ab26b63bda193b0252b840aacc5a">tannic::Tensor</a></li>
+<li>offset()&#160;:&#160;<a class="el" href="da/dc5/classtannic_1_1expression_1_1Reduction.html#a5fccaa5f3c597ec6caab4ec846c2a84a">tannic::expression::Reduction&lt; Reducer, Operand &gt;</a>, <a class="el" href="d2/dd8/classtannic_1_1expression_1_1Reshape.html#a2154865dd157974dd85746b1a1b6d0c4">tannic::expression::Reshape&lt; Source &gt;</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#a1fb492ca0fdc06c3730561a30c66e251">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a3784e6c4f79e9fcc21b9941aaac6cd79">tannic::expression::Transpose&lt; Source &gt;</a>, <a class="el" href="db/d37/classtannic_1_1function_1_1Function.html#a5a6faf95e62f442885a146fa9109945b">tannic::function::Function&lt; Functor, Operand &gt;</a>, <a class="el" href="d7/d6b/classtannic_1_1operation_1_1Binary.html#ac8473dc59540887c1b8d85a2ba440656">tannic::operation::Binary&lt; Operation, Operand, Cooperand &gt;</a>, <a class="el" href="d7/d26/classtannic_1_1operation_1_1Unary.html#ab0fe9d6edb45a459ecc2f0ca410f4377">tannic::operation::Unary&lt; Operation, Operand &gt;</a>, <a class="el" href="da/d93/classtannic_1_1Tensor.html#a64e1ab26b63bda193b0252b840aacc5a">tannic::Tensor</a>, <a class="el" href="d9/d4d/classtannic_1_1transformation_1_1Transformation.html#ad473aa1af5b9d6c44ffab2b42baa7566">tannic::transformation::Transformation&lt; Operation, Operands &gt;</a></li>
 <li>operator()()&#160;:&#160;<a class="el" href="da/de6/structtannic_1_1function_1_1Abs.html#af76e638509f021c600e96bf020735424">tannic::function::Abs</a>, <a class="el" href="d1/dd6/structtannic_1_1function_1_1Cos.html#a06f4063d7bbffc5f52167afacc9e5e2d">tannic::function::Cos</a>, <a class="el" href="df/dc5/structtannic_1_1function_1_1Cosh.html#ae0a76306026dac893d5ae050c85fc894">tannic::function::Cosh</a>, <a class="el" href="dc/da3/structtannic_1_1function_1_1Exp.html#a04570bc86e39f900924546adf685b1fb">tannic::function::Exp</a>, <a class="el" href="d9/d67/structtannic_1_1function_1_1Log.html#a517a50bdc84a859884469e1dae99454a">tannic::function::Log</a>, <a class="el" href="d5/d31/structtannic_1_1function_1_1Sin.html#a695d33eb4dafcc6cff1c60b503c01b25">tannic::function::Sin</a>, <a class="el" href="de/d64/structtannic_1_1function_1_1Sinh.html#ac2d1225ba0253612c17849c3b700c4ce">tannic::function::Sinh</a>, <a class="el" href="d7/df8/structtannic_1_1function_1_1Sqrt.html#a9921eb136242ca19ca881ea521f85d85">tannic::function::Sqrt</a>, <a class="el" href="d2/d15/structtannic_1_1function_1_1Tan.html#adbbcbcba4902e8660239f75a60425476">tannic::function::Tan</a>, <a class="el" href="d6/d39/structtannic_1_1function_1_1Tanh.html#acbfb5b916d582aa7a144fdb4c2d2a39f">tannic::function::Tanh</a></li>
 <li>operator=()&#160;:&#160;<a class="el" href="d4/d50/classtannic_1_1Buffer.html#aafa3f5ab9e76af7621cd2457c8da2b86">tannic::Buffer</a>, <a class="el" href="d9/dd4/classtannic_1_1Devices.html#a91648e0b5043f0367b4515cb6d7db610">tannic::Devices</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#a1363daf8cf6b563ec0f640ee58e1a6dc">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="da/d93/classtannic_1_1Tensor.html#aa74c128ad7859e3e48d431e2a6dfeecf">tannic::Tensor</a></li>
 <li>operator==()&#160;:&#160;<a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#a9e653d07b5d7008251b318f05552911a">tannic::expression::Slice&lt; Source, Indexes &gt;</a></li>
@@ -149,6 +171,7 @@ $(function() {
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
 <li>pageable()&#160;:&#160;<a class="el" href="df/da7/classtannic_1_1Host.html#a38d315c3ea9734e1e75bba2bea97a7ba">tannic::Host</a></li>
 <li>pinned()&#160;:&#160;<a class="el" href="df/da7/classtannic_1_1Host.html#a239efbb9b09c9fa5a9b75643e2c7fa14">tannic::Host</a></li>
+<li>promote()&#160;:&#160;<a class="el" href="d9/da3/structtannic_1_1operation_1_1Addition.html#a956cbedac79481902ec984cb4b39f8b4">tannic::operation::Addition</a>, <a class="el" href="d0/dcf/structtannic_1_1operation_1_1Multiplication.html#a56241feabefc53d7ab7af1d9f7dabf9e">tannic::operation::Multiplication</a>, <a class="el" href="d6/de5/structtannic_1_1operation_1_1Subtraction.html#a69625f3aac4b5506ddf327c2c234fe91">tannic::operation::Subtraction</a>, <a class="el" href="d4/d53/structtannic_1_1transformation_1_1Composition.html#a9eb38435828870a1ad2c1eadddea0c82">tannic::transformation::Composition</a></li>
 </ul>
 
 
@@ -161,26 +184,26 @@ $(function() {
 
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
-<li>shape()&#160;:&#160;<a class="el" href="d6/d5f/classtannic_1_1expression_1_1Binary.html#ae914aa31be0834ee7a18218f39243cfc">tannic::expression::Binary&lt; Operation, Operand, Cooperand &gt;</a>, <a class="el" href="d4/db5/classtannic_1_1expression_1_1Function.html#a5805cbf974abb5cb9f6542551dd5a903">tannic::expression::Function&lt; Functor, Operand &gt;</a>, <a class="el" href="da/dc5/classtannic_1_1expression_1_1Reduction.html#ad3ad6ef60474446a9df10985717c1af2">tannic::expression::Reduction&lt; Reducer, Operand &gt;</a>, <a class="el" href="d2/dd8/classtannic_1_1expression_1_1Reshape.html#a1f095a0d68ebf341b4276621f8ce851d">tannic::expression::Reshape&lt; Source &gt;</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#a22354e0b8625915115eb4e25a6521773">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="dc/dd5/classtannic_1_1expression_1_1Transformation.html#af1e5153f405dc74e74aacfc5f324b487">tannic::expression::Transformation&lt; Operation, Operands &gt;</a>, <a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a34917975841840765cba6f0904888202">tannic::expression::Transpose&lt; Source &gt;</a>, <a class="el" href="d3/d73/classtannic_1_1expression_1_1Unary.html#a63051a1591b037983de89f0153118317">tannic::expression::Unary&lt; Operation, Operand &gt;</a></li>
+<li>shape()&#160;:&#160;<a class="el" href="da/dc5/classtannic_1_1expression_1_1Reduction.html#ad3ad6ef60474446a9df10985717c1af2">tannic::expression::Reduction&lt; Reducer, Operand &gt;</a>, <a class="el" href="d2/dd8/classtannic_1_1expression_1_1Reshape.html#a1f095a0d68ebf341b4276621f8ce851d">tannic::expression::Reshape&lt; Source &gt;</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#a22354e0b8625915115eb4e25a6521773">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a34917975841840765cba6f0904888202">tannic::expression::Transpose&lt; Source &gt;</a>, <a class="el" href="db/d37/classtannic_1_1function_1_1Function.html#a81e2d16f5f52d741724554a523f55cf5">tannic::function::Function&lt; Functor, Operand &gt;</a>, <a class="el" href="d7/d6b/classtannic_1_1operation_1_1Binary.html#a6fb31e5cc126c7c3d66c7c9d5a4d47aa">tannic::operation::Binary&lt; Operation, Operand, Cooperand &gt;</a>, <a class="el" href="d7/d26/classtannic_1_1operation_1_1Unary.html#ad544c6e95f46946ee7220818ccd16232">tannic::operation::Unary&lt; Operation, Operand &gt;</a></li>
 <li>Shape()&#160;:&#160;<a class="el" href="db/da7/classtannic_1_1Shape.html#aa4ee03251e1c92a230b060290086a0ac">tannic::Shape</a></li>
-<li>shape()&#160;:&#160;<a class="el" href="da/d93/classtannic_1_1Tensor.html#a81394f7df9e3334bad0cad7a890d090e">tannic::Tensor</a></li>
+<li>shape()&#160;:&#160;<a class="el" href="da/d93/classtannic_1_1Tensor.html#a81394f7df9e3334bad0cad7a890d090e">tannic::Tensor</a>, <a class="el" href="d9/d4d/classtannic_1_1transformation_1_1Transformation.html#af98b88d10c88e966c6f3d25a2498939a">tannic::transformation::Transformation&lt; Operation, Operands &gt;</a></li>
 <li>Slice()&#160;:&#160;<a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#a0c907b6d34d55ff79e61061e839cda11">tannic::expression::Slice&lt; Source, Indexes &gt;</a></li>
-<li>strides()&#160;:&#160;<a class="el" href="d6/d5f/classtannic_1_1expression_1_1Binary.html#a4b9925ea17dbf66aae8ce53bb2322f64">tannic::expression::Binary&lt; Operation, Operand, Cooperand &gt;</a>, <a class="el" href="d4/db5/classtannic_1_1expression_1_1Function.html#adc1fcac4a4909fb411cb860ed79e7196">tannic::expression::Function&lt; Functor, Operand &gt;</a>, <a class="el" href="da/dc5/classtannic_1_1expression_1_1Reduction.html#adc8cbfb029055ea3a770e65e41efa48b">tannic::expression::Reduction&lt; Reducer, Operand &gt;</a>, <a class="el" href="d2/dd8/classtannic_1_1expression_1_1Reshape.html#af5e3b7a267434e03678ecb62ae952b85">tannic::expression::Reshape&lt; Source &gt;</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#ae404ecb0e0b72a642499a387ec2e708b">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="dc/dd5/classtannic_1_1expression_1_1Transformation.html#a2731d73ca71a62d397936d649173aac8">tannic::expression::Transformation&lt; Operation, Operands &gt;</a>, <a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a956cad9ae69fd7e7a4147565d5f3e712">tannic::expression::Transpose&lt; Source &gt;</a>, <a class="el" href="d3/d73/classtannic_1_1expression_1_1Unary.html#ad9daaa825a3fcc17d83b1485cb49057d">tannic::expression::Unary&lt; Operation, Operand &gt;</a></li>
+<li>strides()&#160;:&#160;<a class="el" href="da/dc5/classtannic_1_1expression_1_1Reduction.html#adc8cbfb029055ea3a770e65e41efa48b">tannic::expression::Reduction&lt; Reducer, Operand &gt;</a>, <a class="el" href="d2/dd8/classtannic_1_1expression_1_1Reshape.html#af5e3b7a267434e03678ecb62ae952b85">tannic::expression::Reshape&lt; Source &gt;</a>, <a class="el" href="dd/d0f/classtannic_1_1expression_1_1Slice.html#ae404ecb0e0b72a642499a387ec2e708b">tannic::expression::Slice&lt; Source, Indexes &gt;</a>, <a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a956cad9ae69fd7e7a4147565d5f3e712">tannic::expression::Transpose&lt; Source &gt;</a>, <a class="el" href="db/d37/classtannic_1_1function_1_1Function.html#afb0bb05b989cdc2fbdce58f5d05a21b0">tannic::function::Function&lt; Functor, Operand &gt;</a>, <a class="el" href="d7/d6b/classtannic_1_1operation_1_1Binary.html#a42e7fe0411d255ec8069bef7845ec0a4">tannic::operation::Binary&lt; Operation, Operand, Cooperand &gt;</a>, <a class="el" href="d7/d26/classtannic_1_1operation_1_1Unary.html#a486cbdbfcc58767ac1690239ef58251f">tannic::operation::Unary&lt; Operation, Operand &gt;</a></li>
 <li>Strides()&#160;:&#160;<a class="el" href="dc/deb/classtannic_1_1Strides.html#afe6a18768bd5261a71d0ebb8060d2bb0">tannic::Strides</a></li>
-<li>strides()&#160;:&#160;<a class="el" href="da/d93/classtannic_1_1Tensor.html#a9ddcd9641feaa0640993c593a184f302">tannic::Tensor</a></li>
+<li>strides()&#160;:&#160;<a class="el" href="da/d93/classtannic_1_1Tensor.html#a9ddcd9641feaa0640993c593a184f302">tannic::Tensor</a>, <a class="el" href="d9/d4d/classtannic_1_1transformation_1_1Transformation.html#a34ff066350d57fd9f759b2395b949d40">tannic::transformation::Transformation&lt; Operation, Operands &gt;</a></li>
 </ul>
 
 
 <h3><a id="index_t" name="index_t"></a>- t -</h3><ul>
 <li>Tensor()&#160;:&#160;<a class="el" href="da/d93/classtannic_1_1Tensor.html#a432bc6e8f152fe13c47fc7a7c97a7f67">tannic::Tensor</a></li>
-<li>Transformation()&#160;:&#160;<a class="el" href="dc/dd5/classtannic_1_1expression_1_1Transformation.html#a81567154e44e3efc412e606343e8769c">tannic::expression::Transformation&lt; Operation, Operands &gt;</a></li>
+<li>Transformation()&#160;:&#160;<a class="el" href="d9/d4d/classtannic_1_1transformation_1_1Transformation.html#a9204f338e3bdfd0d018e77b363e73d18">tannic::transformation::Transformation&lt; Operation, Operands &gt;</a></li>
 <li>Transpose()&#160;:&#160;<a class="el" href="d0/dd9/classtannic_1_1expression_1_1Transpose.html#a8a249c8137fb87b17025731e6315e17a">tannic::expression::Transpose&lt; Source &gt;</a></li>
 <li>transpose()&#160;:&#160;<a class="el" href="da/d93/classtannic_1_1Tensor.html#a2970d79712c97bca7c781c3d7987fb0b">tannic::Tensor</a></li>
 </ul>
 
 
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
-<li>Unary()&#160;:&#160;<a class="el" href="d3/d73/classtannic_1_1expression_1_1Unary.html#a9893391af811a4fa38d1dca12b49640c">tannic::expression::Unary&lt; Operation, Operand &gt;</a></li>
+<li>Unary()&#160;:&#160;<a class="el" href="d7/d26/classtannic_1_1operation_1_1Unary.html#ace5f518adcde5db1bfe65444a5e687b6">tannic::operation::Unary&lt; Operation, Operand &gt;</a></li>
 </ul>
 
 
@@ -189,9 +212,12 @@ $(function() {
 <li>~Devices()&#160;:&#160;<a class="el" href="d9/dd4/classtannic_1_1Devices.html#a513783c8846b32def70425c651f08c1d">tannic::Devices</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

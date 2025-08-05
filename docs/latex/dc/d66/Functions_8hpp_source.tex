@@ -27,151 +27,150 @@
 \DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Tensor_8hpp}{Tensor.hpp}}"{}}\ }
 \DoxyCodeLine{00024\ }
 \DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
-\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }expression\ \{}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Functor,\ Expression\ Operand>}
-\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Function}}\ \{}
-\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00031\ \ \ \ \ Functor\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a861f518af248b716d21eb57104fc7d22}{functor}};}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operand>::Reference}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_ad3d52195c2ca523241ee2df453aa520e}{operand}};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_adeeedfd105dfc3fff2488f66ed348d44}{Function}}(Functor\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a861f518af248b716d21eb57104fc7d22}{functor}},\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operand>::Reference}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_ad3d52195c2ca523241ee2df453aa520e}{operand}})}
-\DoxyCodeLine{00035\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a861f518af248b716d21eb57104fc7d22}{functor}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Function_a861f518af248b716d21eb57104fc7d22}{functor}})}
-\DoxyCodeLine{00036\ \ \ \ \ ,\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_ad3d52195c2ca523241ee2df453aa520e}{operand}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Function_ad3d52195c2ca523241ee2df453aa520e}{operand}})}
-\DoxyCodeLine{00037\ \ \ \ \ \{\}}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a87a2da4547c1e308c17e09aa0bb895fa}{dtype}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_ad3d52195c2ca523241ee2df453aa520e}{operand}}.dtype();}
-\DoxyCodeLine{00041\ \ \ \ \ \}}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a5805cbf974abb5cb9f6542551dd5a903}{shape}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_ad3d52195c2ca523241ee2df453aa520e}{operand}}.shape();}
-\DoxyCodeLine{00045\ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_adc1fcac4a4909fb411cb860ed79e7196}{strides}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_ad3d52195c2ca523241ee2df453aa520e}{operand}}.strides();}
-\DoxyCodeLine{00049\ \ \ \ \ \}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_aad6864c46beec9856300ddc79d32de0e}{offset}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_ad3d52195c2ca523241ee2df453aa520e}{operand}}.offset();}
-\DoxyCodeLine{00053\ \ \ \ \ \}}
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_abfb09740eb09262fddfb6f6249955045}{forward}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_ad3d52195c2ca523241ee2df453aa520e}{operand}}.forward();}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ target(\mbox{\hyperlink{classtannic_1_1expression_1_1Function_a87a2da4547c1e308c17e09aa0bb895fa}{dtype}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a5805cbf974abb5cb9f6542551dd5a903}{shape}}());}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a861f518af248b716d21eb57104fc7d22}{functor}}(source,\ target);}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ target;}
-\DoxyCodeLine{00060\ \ \ \ \ \}\ }
-\DoxyCodeLine{00061\ \};}
-\DoxyCodeLine{00062\ \ }
-\DoxyCodeLine{00063\ \}\ \textcolor{keyword}{namespace\ }function\ \{}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Log}{Log}}\ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Log_a517a50bdc84a859884469e1dae99454a}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00067\ \};}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Exp}{Exp}}\ \{}
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Exp_a04570bc86e39f900924546adf685b1fb}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00071\ \};}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Sqrt}{Sqrt}}\ \{\ }
-\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Sqrt_a9921eb136242ca19ca881ea521f85d85}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00075\ \};}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Abs}{Abs}}\ \{\ }
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Abs_af76e638509f021c600e96bf020735424}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00079\ \};}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Sin}{Sin}}\ \{}
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Sin_a695d33eb4dafcc6cff1c60b503c01b25}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00083\ \};}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Cos}{Cos}}\ \{\ }
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Cos_a06f4063d7bbffc5f52167afacc9e5e2d}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00087\ \};}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Tan}{Tan}}\ \{\ }
-\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Tan_adbbcbcba4902e8660239f75a60425476}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00091\ \};}
-\DoxyCodeLine{00092\ \ }
-\DoxyCodeLine{00093\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Sinh}{Sinh}}\ \{\ }
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Sinh_ac2d1225ba0253612c17849c3b700c4ce}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00095\ \};}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00097\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Cosh}{Cosh}}\ \{\ }
-\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Cosh_ae0a76306026dac893d5ae050c85fc894}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00099\ \};}
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Tanh}{Tanh}}\ \{\ }
-\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Tanh_acbfb5b916d582aa7a144fdb4c2d2a39f}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00103\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }function\ \{}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Functor,\ Expression\ Operand>}
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ Functor\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a30023159f35789d1fa77e20096d619f5}{functor}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operand>::Reference}}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a3a9ffe9ad15fcc5dbe9ce9e88e925067}{Function}}(Functor\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a30023159f35789d1fa77e20096d619f5}{functor}},\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operand>::Reference}}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}})}
+\DoxyCodeLine{00036\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a30023159f35789d1fa77e20096d619f5}{functor}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function_a30023159f35789d1fa77e20096d619f5}{functor}})}
+\DoxyCodeLine{00037\ \ \ \ \ ,\ \ \ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}})}
+\DoxyCodeLine{00038\ \ \ \ \ \{\}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a0078c7638603140cfd364776351ff329}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}}.dtype();}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a81e2d16f5f52d741724554a523f55cf5}{shape}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}}.shape();}
+\DoxyCodeLine{00046\ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_afb0bb05b989cdc2fbdce58f5d05a21b0}{strides}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}}.strides();}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a5a6faf95e62f442885a146fa9109945b}{offset}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}}.offset();}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a6297b8a576fdf49f9e2220e81e22f78d}{forward}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}}.forward();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ target(\mbox{\hyperlink{classtannic_1_1function_1_1Function_a0078c7638603140cfd364776351ff329}{dtype}}(),\ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a81e2d16f5f52d741724554a523f55cf5}{shape}}());}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a30023159f35789d1fa77e20096d619f5}{functor}}(source,\ target);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ target;}
+\DoxyCodeLine{00061\ \ \ \ \ \}\ }
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ \ \ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Log}{Log}}\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Log_a517a50bdc84a859884469e1dae99454a}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Exp}{Exp}}\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Exp_a04570bc86e39f900924546adf685b1fb}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Sqrt}{Sqrt}}\ \{\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Sqrt_a9921eb136242ca19ca881ea521f85d85}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Abs}{Abs}}\ \{\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Abs_af76e638509f021c600e96bf020735424}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00078\ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Sin}{Sin}}\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Sin_a695d33eb4dafcc6cff1c60b503c01b25}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Cos}{Cos}}\ \{\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Cos_a06f4063d7bbffc5f52167afacc9e5e2d}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00086\ \};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Tan}{Tan}}\ \{\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Tan_adbbcbcba4902e8660239f75a60425476}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00090\ \};}
+\DoxyCodeLine{00091\ \ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Sinh}{Sinh}}\ \{\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Sinh_ac2d1225ba0253612c17849c3b700c4ce}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Cosh}{Cosh}}\ \{\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Cosh_ae0a76306026dac893d5ae050c85fc894}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00098\ \};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1function_1_1Tanh}{Tanh}}\ \{\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1function_1_1Tanh_acbfb5b916d582aa7a144fdb4c2d2a39f}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
 \DoxyCodeLine{00104\ }
-\DoxyCodeLine{00105\ }
-\DoxyCodeLine{00106\ \textcolor{keyword}{template}<Expression\ Operand>}
-\DoxyCodeLine{00107\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(Operand\&\&\ operand)\ \{}
-\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Function<Log,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
-\DoxyCodeLine{00109\ \}}
-\DoxyCodeLine{00110\ }
-\DoxyCodeLine{00111\ \textcolor{keyword}{template}<Expression\ Operand>}
-\DoxyCodeLine{00112\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(Operand\&\&\ operand)\ \{}
-\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Function<Exp,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
-\DoxyCodeLine{00114\ \}}
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00116\ \textcolor{keyword}{template}<Expression\ Operand>}
-\DoxyCodeLine{00117\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b}{sqrt}}(Operand\&\&\ operand)\ \{}
-\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Function<Sqrt,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
-\DoxyCodeLine{00119\ \}}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00121\ \textcolor{keyword}{template}<Expression\ Operand>}
-\DoxyCodeLine{00122\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_adf8029815df9c9b3b40179dd788a9ba8}{abs}}(Operand\&\&\ operand)\ \{}
-\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Function<Abs,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
-\DoxyCodeLine{00124\ \}}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ \textcolor{keyword}{template}<Expression\ Operand>}
-\DoxyCodeLine{00127\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a8048b5991804efd638c160566eadb715}{sin}}(Operand\&\&\ operand)\ \{}
-\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Function<Sin,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
-\DoxyCodeLine{00129\ \}}
-\DoxyCodeLine{00130\ }
-\DoxyCodeLine{00131\ \textcolor{keyword}{template}<Expression\ Operand>}
-\DoxyCodeLine{00132\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a4ee4a5baeff864c9605cc1c088ef9895}{cos}}(Operand\&\&\ operand)\ \{}
-\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Function<Cos,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
-\DoxyCodeLine{00134\ \}}
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00136\ \textcolor{keyword}{template}<Expression\ Operand>}
-\DoxyCodeLine{00137\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a78acb787d42b68d6bf8fcc3fdafa6dc7}{tan}}(Operand\&\&\ operand)\ \{}
-\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Function<Tan,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
-\DoxyCodeLine{00139\ \}}
-\DoxyCodeLine{00140\ }
-\DoxyCodeLine{00141\ \textcolor{keyword}{template}<Expression\ Operand>}
-\DoxyCodeLine{00142\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_af97a5da6ca19a282f6c4ec90d40fe468}{sinh}}(Operand\&\&\ operand)\ \{}
-\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Function<Sinh,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
-\DoxyCodeLine{00144\ \}}
-\DoxyCodeLine{00145\ }
-\DoxyCodeLine{00146\ \textcolor{keyword}{template}<Expression\ Operand>}
-\DoxyCodeLine{00147\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a8419d8c9fe7bcb9ac418842fb3d726bd}{cosh}}(Operand\&\&\ operand)\ \{}
-\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Function<Cosh,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
-\DoxyCodeLine{00149\ \}}
-\DoxyCodeLine{00150\ }
-\DoxyCodeLine{00151\ \textcolor{keyword}{template}<Expression\ Operand>}
-\DoxyCodeLine{00152\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a4d71856a8e51387988d8d3b1a3ac4f61}{tanh}}(Operand\&\&\ operand)\ \{}
-\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{expression::Function<Tanh,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
-\DoxyCodeLine{00154\ \}}
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00156\ \}\ \textcolor{comment}{//\ namespace\ function}}
-\DoxyCodeLine{00157\ }
-\DoxyCodeLine{00158\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{function::log}};}
-\DoxyCodeLine{00159\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{function::exp}};}
-\DoxyCodeLine{00160\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b}{function::sqrt}};}
-\DoxyCodeLine{00161\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_adf8029815df9c9b3b40179dd788a9ba8}{function::abs}};}
-\DoxyCodeLine{00162\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a8048b5991804efd638c160566eadb715}{function::sin}};}
-\DoxyCodeLine{00163\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a4ee4a5baeff864c9605cc1c088ef9895}{function::cos}};}
-\DoxyCodeLine{00164\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a78acb787d42b68d6bf8fcc3fdafa6dc7}{function::tan}};}
-\DoxyCodeLine{00165\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_af97a5da6ca19a282f6c4ec90d40fe468}{function::sinh}};}
-\DoxyCodeLine{00166\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a8419d8c9fe7bcb9ac418842fb3d726bd}{function::cosh}};}
-\DoxyCodeLine{00167\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a4d71856a8e51387988d8d3b1a3ac4f61}{function::tanh}};}
-\DoxyCodeLine{00168\ }
-\DoxyCodeLine{00169\ \}\ \textcolor{comment}{//namespace\ tannic}}
-\DoxyCodeLine{00170\ }
-\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FUNCTIONS\_HPP}}
+\DoxyCodeLine{00105\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00106\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(Operand\&\&\ operand)\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function<Log,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
+\DoxyCodeLine{00108\ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00111\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}}\&\&\ operand)\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function<Exp,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
+\DoxyCodeLine{00113\ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00116\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b}{sqrt}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}}\&\&\ operand)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function<Sqrt,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
+\DoxyCodeLine{00118\ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00121\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_adf8029815df9c9b3b40179dd788a9ba8}{abs}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}}\&\&\ operand)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function<Abs,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
+\DoxyCodeLine{00123\ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00126\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a8048b5991804efd638c160566eadb715}{sin}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}}\&\&\ operand)\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function<Sin,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
+\DoxyCodeLine{00128\ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00131\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a4ee4a5baeff864c9605cc1c088ef9895}{cos}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}}\&\&\ operand)\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function<Cos,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
+\DoxyCodeLine{00133\ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00136\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a78acb787d42b68d6bf8fcc3fdafa6dc7}{tan}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}}\&\&\ operand)\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function<Tan,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
+\DoxyCodeLine{00138\ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00141\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_af97a5da6ca19a282f6c4ec90d40fe468}{sinh}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}}\&\&\ operand)\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function<Sinh,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
+\DoxyCodeLine{00143\ \}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00146\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a8419d8c9fe7bcb9ac418842fb3d726bd}{cosh}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}}\&\&\ operand)\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function<Cosh,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
+\DoxyCodeLine{00148\ \}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{keyword}{template}<Expression\ Operand>}
+\DoxyCodeLine{00151\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1function_a4d71856a8e51387988d8d3b1a3ac4f61}{tanh}}(\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}}\&\&\ operand)\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function<Tanh,\ Operand>}}(\{\},\ std::forward<Operand>(operand));}
+\DoxyCodeLine{00153\ \}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \}\ \textcolor{comment}{//\ namespace\ function}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{function::log}};}
+\DoxyCodeLine{00158\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{function::exp}};}
+\DoxyCodeLine{00159\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b}{function::sqrt}};}
+\DoxyCodeLine{00160\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_adf8029815df9c9b3b40179dd788a9ba8}{function::abs}};}
+\DoxyCodeLine{00161\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a8048b5991804efd638c160566eadb715}{function::sin}};}
+\DoxyCodeLine{00162\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a4ee4a5baeff864c9605cc1c088ef9895}{function::cos}};}
+\DoxyCodeLine{00163\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a78acb787d42b68d6bf8fcc3fdafa6dc7}{function::tan}};}
+\DoxyCodeLine{00164\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_af97a5da6ca19a282f6c4ec90d40fe468}{function::sinh}};}
+\DoxyCodeLine{00165\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a8419d8c9fe7bcb9ac418842fb3d726bd}{function::cosh}};}
+\DoxyCodeLine{00166\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1function_a4d71856a8e51387988d8d3b1a3ac4f61}{function::tanh}};}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \}\ \textcolor{comment}{//namespace\ tannic}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FUNCTIONS\_HPP}}
 
 \end{DoxyCode}

@@ -107,7 +107,7 @@ void computeOffsets(
   
 
 template<typename S0, typename S1, typename D>
-void launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {  
+status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {  
     size_t M = dst->shape.sizes[dst->rank - 2];
     size_t N = dst->shape.sizes[dst->rank - 1];
     size_t K = src0->shape.sizes[src0->rank - 1];
@@ -154,14 +154,16 @@ void launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst)
             A_ld, B_ld, C_ld
         );
     }
+
+    return SUCCESS;
 }
 
 
-void defaultKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
-    throw std::runtime_error("Not supported dtype");
+status defaultKernel(const tensor_t*, const tensor_t*, tensor_t*) {
+    return UNSUPORTED_DTYPE;
 };
 
-using Kernel = void(*)(const tensor_t* src0, const tensor_t* src1, tensor_t* dst);        
+using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*);        
  
 constexpr static inline auto index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
@@ -205,8 +207,8 @@ namespace cpu {
 
 using tannic::dsizeof;
 
-void gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {   
-    dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst); 
+status gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {   
+    return dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst); 
 } 
 
 } 

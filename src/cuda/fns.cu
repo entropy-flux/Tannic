@@ -3,8 +3,7 @@
 #include <array>
 #include <stdexcept>
 #include "cuda/exc.cuh"
-#include "cuda/fns.cuh" 
-
+#include "cuda/fns.cuh"  
 
 template<typename S, typename D, class Fn>
 __global__ void scalarFnKernel(const S* src, D* dst) {
@@ -37,9 +36,10 @@ __global__ void batchedFnKernel(
 }  
 
 template<typename S, typename D, class Fn>
-void launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream) { 
+status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream) { 
+    cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
     if (src->rank == 0) {
-        scalarFnKernel<S, D, Fn><<<1, 1, 0, reinterpret_cast<cudaStream_t>(stream.address)>>>(
+        scalarFnKernel<S, D, Fn><<<1, 1, 0, cudaStream>>>(
             (const S*)(src->address),
             (D*)(dst->address)
         ); 
@@ -54,84 +54,86 @@ void launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream) {
         size_t blockSize = 256;
         size_t gridSize = (ne + blockSize - 1) / blockSize;
 
-        batchedFnKernel<S, D, Fn><<<gridSize, blockSize, 0, reinterpret_cast<cudaStream_t>(stream.address)>>>(
+        batchedFnKernel<S, D, Fn><<<gridSize, blockSize, 0, cudaStream>>>(
             (const S*)(src->address), src->shape, src->strides,
             (D*)(dst->address), dst->shape, dst->strides,
             src->rank, ne
         ); 
     } 
+
+    return SUCCESS;
 } 
 
-void launchDefaultKernel(const tensor_t* src, tensor_t* dst, stream_t) {
-    exit(EXIT_FAILURE);
+status launchDefaultKernel(const tensor_t* src, tensor_t* dst, stream_t) {
+    return UNSUPORTED_DTYPE;
 };   
 
 struct Log { 
     template<class A>
-    __device__ auto operator()(A&& a) const noexcept(noexcept(log(a))) {
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(log(a))) {
         return log(a);
     }
 };
  
 struct Exp { 
     template<class A>
-    __device__ auto operator()(A&& a) const noexcept(noexcept(exp(a))) {
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(exp(a))) {
         return exp(a);
     }
 };
   
 struct Sqrt { 
     template<class A>
-    __device__ auto operator()(A&& a) const noexcept(noexcept(sqrt(a))) {
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(sqrt(a))) {
         return sqrt(a);
     }
 };
  
 struct Abs { 
     template<class A>
-    __device__ auto operator()(A&& a) const noexcept(noexcept(abs(a))) {
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(abs(a))) {
         return abs(a);
     }
 };
  
 struct Sin { 
     template<class A>
-    __device__ auto operator()(A&& a) const noexcept(noexcept(sin(a))) {
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(sin(a))) {
         return sin(a);
     }
 };
  
 struct Cos { 
     template<class A>
-    __device__ auto operator()(A&& a) const noexcept(noexcept(cos(a))) {
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(cos(a))) {
         return cos(a);
     }
 };
 
 struct Tan { 
     template<class A>
-    __device__ auto operator()(A&& a) const noexcept(noexcept(tan(a))) {
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(tan(a))) {
         return tan(a);
     }
 }; 
 
 struct Sinh { 
     template<class A>
-    __device__ auto operator()(A&& a) const noexcept(noexcept(sinh(a))) {
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(sinh(a))) {
         return sinh(a);
     }
 };
  
 struct Cosh{ 
     template<class A>
-    __device__ auto operator()(A&& a) const noexcept(noexcept(cosh(a))) {
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(cosh(a))) {
         return cosh(a);
     }
 };
  
 struct Tanh { 
     template<class A>
-    __device__ auto operator()(A&& a) const noexcept(noexcept(tanh(a))) {
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(tanh(a))) {
         return tanh(a);
     }
 };    
@@ -140,7 +142,7 @@ constexpr static inline int index(type type) {
     return static_cast<int>(type);
 }  
  
-using Kernel = void(*)(const tensor_t*, tensor_t*, stream_t);       
+using Kernel = status(*)(const tensor_t*, tensor_t*, stream_t);       
 
 constexpr auto dispatchLog = []() {
     std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
@@ -216,44 +218,44 @@ constexpr auto dispatchTanh = []() {
 
 namespace cuda {
  
-void log(tensor_t const* src, tensor_t* dst, stream_t stream) {   
-    dispatchLog[index(src->dtype)](src, dst, stream); 
+status log(tensor_t const* src, tensor_t* dst, stream_t stream) {   
+    return dispatchLog[index(src->dtype)](src, dst, stream); 
 }
 
-void exp(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    dispatchExp[index(src->dtype)](src, dst, stream); 
+status exp(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    return dispatchExp[index(src->dtype)](src, dst, stream); 
 }
 
-void sqrt(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    dispatchSqrt[index(src->dtype)](src, dst, stream); 
+status sqrt(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    return dispatchSqrt[index(src->dtype)](src, dst, stream); 
 }
 
-void abs(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    dispatchAbs[index(src->dtype)](src, dst, stream); 
+status abs(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    return dispatchAbs[index(src->dtype)](src, dst, stream); 
 }
 
-void sin(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    dispatchSin[index(src->dtype)](src, dst, stream); 
+status sin(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    return dispatchSin[index(src->dtype)](src, dst, stream); 
 }
 
-void cos(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    dispatchCos[index(src->dtype)](src, dst, stream); 
+status cos(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    return dispatchCos[index(src->dtype)](src, dst, stream); 
 }
 
-void tan(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    dispatchTan[index(src->dtype)](src, dst, stream); 
+status tan(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    return dispatchTan[index(src->dtype)](src, dst, stream); 
 }
 
-void sinh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    dispatchSinh[index(src->dtype)](src, dst, stream); 
+status sinh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    return dispatchSinh[index(src->dtype)](src, dst, stream); 
 }
 
-void cosh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    dispatchCosh[index(src->dtype)](src, dst, stream); 
+status cosh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    return dispatchCosh[index(src->dtype)](src, dst, stream); 
 }
 
-void tanh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    dispatchTanh[index(src->dtype)](src, dst, stream); 
+status tanh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
+    return dispatchTanh[index(src->dtype)](src, dst, stream); 
 }
 
 } // namespace cuda

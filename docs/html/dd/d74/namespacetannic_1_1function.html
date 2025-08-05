@@ -9,11 +9,16 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 <link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="../../doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -48,6 +53,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('dd/d74/namespacetannic_1_1function.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +91,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></li><li class="navelem"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html">function</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -92,6 +109,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/da3/structtannic_1_1function_1_1Exp.html">Exp</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Function</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d67/structtannic_1_1function_1_1Log.html">Log</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d31/structtannic_1_1function_1_1Sin.html">Sin</a></td></tr>
@@ -108,34 +127,34 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a9ec44a47e78a5e28b75b76573d98e06b" id="r_a9ec44a47e78a5e28b75b76573d98e06b"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
-<tr class="memitem:a9ec44a47e78a5e28b75b76573d98e06b"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">log</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memitem:a9ec44a47e78a5e28b75b76573d98e06b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">log</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
 <tr class="separator:a9ec44a47e78a5e28b75b76573d98e06b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a8e818c37a5236e4481677e70ce6209" id="r_a1a8e818c37a5236e4481677e70ce6209"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
-<tr class="memitem:a1a8e818c37a5236e4481677e70ce6209"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">exp</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memitem:a1a8e818c37a5236e4481677e70ce6209"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">exp</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
 <tr class="separator:a1a8e818c37a5236e4481677e70ce6209"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b" id="r_a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
-<tr class="memitem:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b">sqrt</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memitem:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b">sqrt</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
 <tr class="separator:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf8029815df9c9b3b40179dd788a9ba8" id="r_adf8029815df9c9b3b40179dd788a9ba8"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
-<tr class="memitem:adf8029815df9c9b3b40179dd788a9ba8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#adf8029815df9c9b3b40179dd788a9ba8">abs</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memitem:adf8029815df9c9b3b40179dd788a9ba8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#adf8029815df9c9b3b40179dd788a9ba8">abs</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
 <tr class="separator:adf8029815df9c9b3b40179dd788a9ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8048b5991804efd638c160566eadb715" id="r_a8048b5991804efd638c160566eadb715"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
-<tr class="memitem:a8048b5991804efd638c160566eadb715"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a8048b5991804efd638c160566eadb715">sin</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memitem:a8048b5991804efd638c160566eadb715"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a8048b5991804efd638c160566eadb715">sin</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
 <tr class="separator:a8048b5991804efd638c160566eadb715"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ee4a5baeff864c9605cc1c088ef9895" id="r_a4ee4a5baeff864c9605cc1c088ef9895"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
-<tr class="memitem:a4ee4a5baeff864c9605cc1c088ef9895"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a4ee4a5baeff864c9605cc1c088ef9895">cos</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memitem:a4ee4a5baeff864c9605cc1c088ef9895"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a4ee4a5baeff864c9605cc1c088ef9895">cos</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
 <tr class="separator:a4ee4a5baeff864c9605cc1c088ef9895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78acb787d42b68d6bf8fcc3fdafa6dc7" id="r_a78acb787d42b68d6bf8fcc3fdafa6dc7"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
-<tr class="memitem:a78acb787d42b68d6bf8fcc3fdafa6dc7"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a78acb787d42b68d6bf8fcc3fdafa6dc7">tan</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memitem:a78acb787d42b68d6bf8fcc3fdafa6dc7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a78acb787d42b68d6bf8fcc3fdafa6dc7">tan</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
 <tr class="separator:a78acb787d42b68d6bf8fcc3fdafa6dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af97a5da6ca19a282f6c4ec90d40fe468" id="r_af97a5da6ca19a282f6c4ec90d40fe468"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
-<tr class="memitem:af97a5da6ca19a282f6c4ec90d40fe468"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#af97a5da6ca19a282f6c4ec90d40fe468">sinh</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memitem:af97a5da6ca19a282f6c4ec90d40fe468"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#af97a5da6ca19a282f6c4ec90d40fe468">sinh</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
 <tr class="separator:af97a5da6ca19a282f6c4ec90d40fe468"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8419d8c9fe7bcb9ac418842fb3d726bd" id="r_a8419d8c9fe7bcb9ac418842fb3d726bd"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
-<tr class="memitem:a8419d8c9fe7bcb9ac418842fb3d726bd"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a8419d8c9fe7bcb9ac418842fb3d726bd">cosh</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memitem:a8419d8c9fe7bcb9ac418842fb3d726bd"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a8419d8c9fe7bcb9ac418842fb3d726bd">cosh</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
 <tr class="separator:a8419d8c9fe7bcb9ac418842fb3d726bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d71856a8e51387988d8d3b1a3ac4f61" id="r_a4d71856a8e51387988d8d3b1a3ac4f61"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
-<tr class="memitem:a4d71856a8e51387988d8d3b1a3ac4f61"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a4d71856a8e51387988d8d3b1a3ac4f61">tanh</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memitem:a4d71856a8e51387988d8d3b1a3ac4f61"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a4d71856a8e51387988d8d3b1a3ac4f61">tanh</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
 <tr class="separator:a4d71856a8e51387988d8d3b1a3ac4f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -151,9 +170,9 @@ template&lt;Expression Operand&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto tannic::function::abs </td>
+          <td class="memname"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a> tannic::function::abs </td>
           <td>(</td>
-          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
           <td></td>
         </tr>
@@ -179,9 +198,9 @@ template&lt;Expression Operand&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto tannic::function::cos </td>
+          <td class="memname"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a> tannic::function::cos </td>
           <td>(</td>
-          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
           <td></td>
         </tr>
@@ -207,9 +226,9 @@ template&lt;Expression Operand&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto tannic::function::cosh </td>
+          <td class="memname"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a> tannic::function::cosh </td>
           <td>(</td>
-          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
           <td></td>
         </tr>
@@ -235,9 +254,9 @@ template&lt;Expression Operand&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto tannic::function::exp </td>
+          <td class="memname"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a> tannic::function::exp </td>
           <td>(</td>
-          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
           <td></td>
         </tr>
@@ -263,9 +282,9 @@ template&lt;Expression Operand&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto tannic::function::log </td>
+          <td class="memname"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a> tannic::function::log </td>
           <td>(</td>
-          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
           <td></td>
         </tr>
@@ -291,9 +310,9 @@ template&lt;Expression Operand&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto tannic::function::sin </td>
+          <td class="memname"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a> tannic::function::sin </td>
           <td>(</td>
-          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
           <td></td>
         </tr>
@@ -319,9 +338,9 @@ template&lt;Expression Operand&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto tannic::function::sinh </td>
+          <td class="memname"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a> tannic::function::sinh </td>
           <td>(</td>
-          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
           <td></td>
         </tr>
@@ -347,9 +366,9 @@ template&lt;Expression Operand&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto tannic::function::sqrt </td>
+          <td class="memname"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a> tannic::function::sqrt </td>
           <td>(</td>
-          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
           <td></td>
         </tr>
@@ -375,9 +394,9 @@ template&lt;Expression Operand&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto tannic::function::tan </td>
+          <td class="memname"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a> tannic::function::tan </td>
           <td>(</td>
-          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
           <td></td>
         </tr>
@@ -403,9 +422,9 @@ template&lt;Expression Operand&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr auto tannic::function::tanh </td>
+          <td class="memname"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a> tannic::function::tanh </td>
           <td>(</td>
-          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>operand</em></td><td>)</td>
           <td></td>
         </tr>
@@ -420,9 +439,13 @@ template&lt;Expression Operand&gt; </div>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></li><li class="navelem"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html">function</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

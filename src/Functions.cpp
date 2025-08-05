@@ -1,13 +1,14 @@
 #include "Bindings.hpp"
 #include "Functions.hpp"
 #include "runtime/tensor.h"
+#include "runtime/status.h"
 #include "cpu/fns.hpp"  
 #include "cuda/fns.cuh"  
   
 namespace tannic::function {   
 
-using H = void (*)(const tensor_t*, tensor_t*);
-using D = void (*)(const tensor_t*, tensor_t*, stream_t); 
+using H = status (*)(const tensor_t*, tensor_t*);
+using D = status (*)(const tensor_t*, tensor_t*, stream_t); 
 
 struct layout_t {
     uint8_t rank;
@@ -21,20 +22,26 @@ inline void apply(Tensor const& input, Tensor& output) {
     switch (allocator.environment) {
         case HOST: {
             output.initialize(); 
-            tensor_t src = structure(input);
-            tensor_t dst = structure(output);
-            hcall(&src, &dst);    
+            auto src = structure(input);
+            auto dst = structure(output);
+            auto status = hcall(&src, &dst);    
+            if(status != SUCCESS) {
+                throw std::runtime_error("Unsupported dtype");
+            }
             break; 
         } 
 
         case DEVICE: { 
-            device_t dvc = allocator.resource.device; 
+            auto dvc = allocator.resource.device; 
             output.initialize(Device(dvc.id));
-            tensor_t src = structure(input);
-            tensor_t dst = structure(output);
-            stream_t stream = pop_stream(&dvc);
-            dcall(&src, &dst, stream);
+            auto src = structure(input);
+            auto dst = structure(output);
+            auto stream = pop_stream(&dvc);
+            auto status = dcall(&src, &dst, stream);
             put_stream(&dvc, stream);
+            if(status != SUCCESS) {
+                throw std::runtime_error("Unsupported dtype");
+            } 
             break; 
         } 
         

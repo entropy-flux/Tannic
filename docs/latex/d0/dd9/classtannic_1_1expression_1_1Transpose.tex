@@ -7,17 +7,17 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a8a249c8137fb87b17025731e6315e17a}{Transpose}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{source}}, std\+::pair$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}} $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{dimensions}})
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a8a249c8137fb87b17025731e6315e17a}{Transpose}} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, std\+::pair$<$ int, int $>$ dimensions)
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a9cb47b2a9524225c53a91827422b0f10}{dtype}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a9cb47b2a9524225c53a91827422b0f10}{dtype}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a34917975841840765cba6f0904888202}{shape}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a34917975841840765cba6f0904888202}{shape}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a956cad9ae69fd7e7a4147565d5f3e712}{strides}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a956cad9ae69fd7e7a4147565d5f3e712}{strides}} () const
 \item 
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a3784e6c4f79e9fcc21b9941aaac6cd79}{offset}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a3784e6c4f79e9fcc21b9941aaac6cd79}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936}{forward}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936}{forward}} () const
 \end{DoxyCompactItemize}
 
 
@@ -27,7 +27,7 @@ std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a3
 \index{Transpose@{Transpose}!tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{Transpose()}{Transpose()}}
 {\footnotesize\ttfamily template$<$Expression Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::\+Transpose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::\+Reference}]{source,  }\item[{std\+::pair$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{int}} $>$}]{dimensions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ Source $>$\+::\+Transpose (\begin{DoxyParamCaption}\item[{typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference}]{source,  }\item[{std\+::pair$<$ int, int $>$}]{dimensions }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -37,35 +37,35 @@ std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a3
 \index{dtype@{dtype}!tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
 {\footnotesize\ttfamily template$<$Expression Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ Source $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936}\label{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936} 
 \index{tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$Expression Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1Transpose_a3784e6c4f79e9fcc21b9941aaac6cd79}\label{classtannic_1_1expression_1_1Transpose_a3784e6c4f79e9fcc21b9941aaac6cd79} 
 \index{tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}!offset@{offset}}
 \index{offset@{offset}!tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{offset()}{offset()}}
 {\footnotesize\ttfamily template$<$Expression Source$>$ \\
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ Source $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Transpose_a34917975841840765cba6f0904888202}\label{classtannic_1_1expression_1_1Transpose_a34917975841840765cba6f0904888202} 
 \index{tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
 {\footnotesize\ttfamily template$<$Expression Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ Source $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Transpose_a956cad9ae69fd7e7a4147565d5f3e712}\label{classtannic_1_1expression_1_1Transpose_a956cad9ae69fd7e7a4147565d5f3e712} 
 \index{tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
 {\footnotesize\ttfamily template$<$Expression Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Source}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ Source $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 

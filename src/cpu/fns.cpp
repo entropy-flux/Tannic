@@ -37,7 +37,7 @@ void batchedFnKernel(
 }
 
 template<typename S, typename D, class Fn>
-void launchFnKernel(const tensor_t* src, tensor_t* dst) {
+status launchFnKernel(const tensor_t* src, tensor_t* dst) {
     if (src->rank == 0) {
         scalarFnKernel<S, D, Fn>(
             (const S*)(src->address), 
@@ -57,11 +57,11 @@ void launchFnKernel(const tensor_t* src, tensor_t* dst) {
             src->rank, ne
         ); 
     } 
-    return;
+    return SUCCESS;
 }     
 
-void launchDefaultKernel(const tensor_t* src, tensor_t* dst) {
-    throw std::runtime_error("Not supported dtype");
+status launchDefaultKernel(const tensor_t* src, tensor_t* dst) {
+    return UNSUPORTED_DTYPE;
 }; 
 
 struct Log { 
@@ -138,7 +138,7 @@ constexpr static inline int index(type type) {
     return static_cast<int>(type);
 }  
  
-using Kernel = void(*)(const tensor_t*, tensor_t*);       
+using Kernel = status(*)(const tensor_t*, tensor_t*);       
 
 constexpr auto dispatchLog = []() {
     std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
@@ -214,44 +214,44 @@ constexpr auto dispatchTanh = []() {
 
 namespace cpu {
  
-void log(tensor_t const* src, tensor_t* dst) { 
-    dispatchLog[index(src->dtype)](src, dst);
+status log(tensor_t const* src, tensor_t* dst) { 
+    return dispatchLog[index(src->dtype)](src, dst);
 }
 
-void exp(tensor_t const* src, tensor_t* dst) { 
-    dispatchExp[index(src->dtype)](src, dst);
+status exp(tensor_t const* src, tensor_t* dst) { 
+    return dispatchExp[index(src->dtype)](src, dst);
 }
 
-void sqrt(tensor_t const* src, tensor_t* dst) { 
-    dispatchSqrt[index(src->dtype)](src, dst);
+status sqrt(tensor_t const* src, tensor_t* dst) { 
+    return dispatchSqrt[index(src->dtype)](src, dst);
 }
 
-void abs(tensor_t const* src, tensor_t* dst) { 
-    dispatchAbs[index(src->dtype)](src, dst);
+status abs(tensor_t const* src, tensor_t* dst) { 
+    return dispatchAbs[index(src->dtype)](src, dst);
 }
 
-void sin(tensor_t const* src, tensor_t* dst) { 
-    dispatchSin[index(src->dtype)](src, dst);
+status sin(tensor_t const* src, tensor_t* dst) { 
+    return dispatchSin[index(src->dtype)](src, dst);
 }
 
-void cos(tensor_t const* src, tensor_t* dst) { 
-    dispatchCos[index(src->dtype)](src, dst);
+status cos(tensor_t const* src, tensor_t* dst) { 
+    return dispatchCos[index(src->dtype)](src, dst);
 }
 
-void tan(tensor_t const* src, tensor_t* dst) { 
-    dispatchTan[index(src->dtype)](src, dst);
+status tan(tensor_t const* src, tensor_t* dst) { 
+    return dispatchTan[index(src->dtype)](src, dst);
 }
 
-void sinh(tensor_t const* src, tensor_t* dst) { 
-    dispatchSinh[index(src->dtype)](src, dst);
+status sinh(tensor_t const* src, tensor_t* dst) { 
+    return dispatchSinh[index(src->dtype)](src, dst);
 }
 
-void cosh(tensor_t const* src, tensor_t* dst) { 
-    dispatchCosh[index(src->dtype)](src, dst);
+status cosh(tensor_t const* src, tensor_t* dst) { 
+    return dispatchCosh[index(src->dtype)](src, dst);
 }
 
-void tanh(tensor_t const* src, tensor_t* dst) { 
-    dispatchTanh[index(src->dtype)](src, dst);
+status tanh(tensor_t const* src, tensor_t* dst) { 
+    return dispatchTanh[index(src->dtype)](src, dst);
 }
 
 } // namespace cpu

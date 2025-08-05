@@ -127,7 +127,7 @@ struct Composition {
          
         if (first_rank == 1 && second_rank == 1) {
             assert(first[0] == second[0] && "Vector dimensions must match for dot product");
-            return Shape{};  // scalar result
+            return Shape{};  
         }
          
         if (first_rank == 1 && second_rank == 2) {

@@ -81,7 +81,7 @@ void batchedBinaryOpKernel(
 }   
 
 template<typename S, typename D, class Op>
-void launchUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
+status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
     if (src->rank == 0) {
         scalarUnaryOpKernel<S, D, Op>(
             (const S*)(src->address), 
@@ -101,11 +101,11 @@ void launchUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
             src->rank, ne
         ); 
     } 
-    return;
+    return SUCCESS;
 }        
  
 template<typename S0, typename S1, typename D, class Op>
-void launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
+status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
     if (dst->rank == 0) {
         scalarBinaryOpKernel<S0, S1, D, Op>(
             (const S0*)(src0->address), 
@@ -122,15 +122,15 @@ void launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* 
             dst->rank
         ); 
     } 
-    return;
+    return SUCCESS;
 }       
 
-void launchDefaultUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
-    throw std::runtime_error("Not supported dtype");
+status launchDefaultUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
+    return UNSUPORTED_DTYPE;
 };  
 
-void launchDefaultBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
-    throw std::runtime_error("Not supported dtype");
+status launchDefaultBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
+    return UNSUPORTED_DTYPE;
 };    
 
  
@@ -172,8 +172,8 @@ constexpr static inline int index(type first, type second) {
 }  
 
 
-using UnaryOpKernel = void(*)( const tensor_t*, tensor_t*);      
-using BinaryOpKernel = void(*)( const tensor_t*, const tensor_t*, tensor_t*);      
+using UnaryOpKernel = status(*)( const tensor_t*, tensor_t*);      
+using BinaryOpKernel = status(*)( const tensor_t*, const tensor_t*, tensor_t*);      
 
 constexpr auto dispatchNeg = []() {  
     std::array<UnaryOpKernel, index(TYPES)> table; table.fill(launchDefaultUnaryOpKernel);
@@ -290,20 +290,20 @@ constexpr auto dispatchMul = []() {
 
 namespace cpu {
 
-void neg(tensor_t const* src, tensor_t* dst) {  
-    dispatchNeg[index(src->dtype)](src, dst);
+status neg(tensor_t const* src, tensor_t* dst) {  
+    return dispatchNeg[index(src->dtype)](src, dst);
 }
 
-void add(tensor_t const* src1, tensor_t const* src2, tensor_t* dst) { 
-    dispatchAdd[index(src1->dtype, src2->dtype)](src1, src2, dst);
+status add(tensor_t const* src1, tensor_t const* src2, tensor_t* dst) { 
+    return dispatchAdd[index(src1->dtype, src2->dtype)](src1, src2, dst);
 }
 
-void sub(tensor_t const* src1, tensor_t const* src2, tensor_t* dst) { 
-    dispatchSub[index(src1->dtype, src2->dtype)](src1, src2, dst);
+status sub(tensor_t const* src1, tensor_t const* src2, tensor_t* dst) { 
+    return dispatchSub[index(src1->dtype, src2->dtype)](src1, src2, dst);
 } 
 
-void mul(tensor_t const* src1, tensor_t const* src2, tensor_t* dst) { 
-    dispatchMul[index(src1->dtype, src2->dtype)](src1, src2, dst);
+status mul(tensor_t const* src1, tensor_t const* src2, tensor_t* dst) { 
+    return dispatchMul[index(src1->dtype, src2->dtype)](src1, src2, dst);
 }  
 
 } // namespace cpu

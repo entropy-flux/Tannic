@@ -18,7 +18,7 @@ var searchData=
   ['trait_3c_20operand_20_3e_15',['Trait&lt; Operand &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
   ['trait_3c_20source_20_3e_16',['Trait&lt; Source &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
   ['traits_2ehpp_17',['Traits.hpp',['../d8/d38/Traits_8hpp.html',1,'']]],
-  ['transformation_18',['transformation',['../dc/dd5/classtannic_1_1expression_1_1Transformation.html#a81567154e44e3efc412e606343e8769c',1,'tannic::expression::Transformation::Transformation()'],['../dc/dd5/classtannic_1_1expression_1_1Transformation.html',1,'tannic::expression::Transformation&lt; Operation, Operands &gt;']]],
+  ['transformation_18',['transformation',['../d9/d4d/classtannic_1_1transformation_1_1Transformation.html#a9204f338e3bdfd0d018e77b363e73d18',1,'tannic::transformation::Transformation::Transformation()'],['../d9/d4d/classtannic_1_1transformation_1_1Transformation.html',1,'tannic::transformation::Transformation&lt; Operation, Operands &gt;']]],
   ['transformations_2ehpp_19',['Transformations.hpp',['../df/d25/Transformations_8hpp.html',1,'']]],
   ['transpose_20',['transpose',['../d9/dd9/namespacetannic_1_1expression.html#ab43b77ed569cfeb4380abc2e6458aa00',1,'tannic::expression::transpose()'],['../d0/dd9/classtannic_1_1expression_1_1Transpose.html#a8a249c8137fb87b17025731e6315e17a',1,'tannic::expression::Transpose::Transpose()'],['../da/d93/classtannic_1_1Tensor.html#a2970d79712c97bca7c781c3d7987fb0b',1,'tannic::Tensor::transpose()'],['../d0/dd9/classtannic_1_1expression_1_1Transpose.html',1,'tannic::expression::Transpose&lt; Source &gt;']]],
   ['types_21',['Supported Data Types',['../d5/d34/Types_8hpp.html#autotoc_md22',1,'']]],
