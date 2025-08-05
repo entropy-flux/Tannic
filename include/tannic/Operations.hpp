@@ -111,19 +111,15 @@ public:
      */
     constexpr Strides const& strides() const {
         return operand.strides();
-    }  
-
+    }   
 
     /**
      * @brief Returns the offset of the expression.
-     *
-     * Unary expressions are assumed to have zero offset, since the result is 
-     * a new tensor.
-     *
-     * @return Always returns 0.
+     * 
+     * @return Always returns operand offset.
      */
     std::ptrdiff_t offset() const {
-        return 0;
+        return operand.offset();
     }
 
     /**

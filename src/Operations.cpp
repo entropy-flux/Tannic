@@ -2,8 +2,17 @@
 #include "Operations.hpp"
 #include "Tensor.hpp" 
 #include "cpu/ops.hpp"  
-#include "cuda/ops.cuh"  
- 
+#ifdef CUDA
+#include "cuda/ops.cuh"
+#else 
+namespace cuda {
+inline status neg(const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
+inline status add(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
+inline status mul(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
+inline status sub(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
+}
+#endif 
+
 namespace tannic::operation {  
 
 using UH = status (*)(const tensor_t*, tensor_t*);

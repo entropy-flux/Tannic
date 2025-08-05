@@ -1,3 +1,4 @@
+#ifdef CUDA
 #include <gtest/gtest.h>
 #include <vector>
 #include <numeric>
@@ -233,3 +234,4 @@ TEST_F(CUDAMatmulTests, Rank4_SecondTransposed) {
 
     compareMatrices(Z, &Z_expected[0][0][0][0], 2*2*2*3);
 }
+#endif

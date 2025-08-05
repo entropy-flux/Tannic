@@ -1,3 +1,4 @@
+#ifdef CUDA
 #include <gtest/gtest.h>
 #include <vector>
 #include <cmath>
@@ -124,3 +125,4 @@ TEST_F(TestCUDAFunctions, Tanh) {
     };
     compareWithExpected(result, expected);
 }
+#endif

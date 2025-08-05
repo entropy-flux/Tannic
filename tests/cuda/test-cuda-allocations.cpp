@@ -1,7 +1,7 @@
+#ifdef CUDA
 #include <gtest/gtest.h> 
 #include "Resources.hpp"
  
-#ifdef CUDA
 using namespace tannic; 
 TEST(TestCUDADevice, TestCUDAAlloc) {
     Device device(0, false);

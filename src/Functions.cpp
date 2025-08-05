@@ -2,8 +2,23 @@
 #include "Functions.hpp"
 #include "runtime/tensor.h"
 #include "runtime/status.h"
-#include "cpu/fns.hpp"  
-#include "cuda/fns.cuh"  
+#include "cpu/fns.hpp"   
+#ifdef CUDA
+#include "cuda/fns.cuh"
+#else 
+namespace cuda {
+inline status log(const tensor_t*, tensor_t*, stream_t)  { throw std::runtime_error("CUDA not available"); }
+inline status exp(const tensor_t*, tensor_t*, stream_t)  { throw std::runtime_error("CUDA not available"); }
+inline status sqrt(const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
+inline status abs(const tensor_t*, tensor_t*, stream_t)  { throw std::runtime_error("CUDA not available"); }
+inline status sin(const tensor_t*, tensor_t*, stream_t)  { throw std::runtime_error("CUDA not available"); }
+inline status cos(const tensor_t*, tensor_t*, stream_t)  { throw std::runtime_error("CUDA not available"); }
+inline status tan(const tensor_t*, tensor_t*, stream_t)  { throw std::runtime_error("CUDA not available"); }
+inline status sinh(const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
+inline status cosh(const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
+inline status tanh(const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
+}
+#endif
   
 namespace tannic::function {   
 

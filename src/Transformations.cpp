@@ -2,7 +2,14 @@
 #include "Tensor.hpp"
 #include "Transformations.hpp" 
 #include "cpu/gemm.hpp"   
+
+#ifdef CUDA
 #include "cuda/gemm.cuh"   
+#else   
+namespace cuda { 
+inline status gemm(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }
+} // namespace cuda
+#endif
 
 namespace tannic::transformation { 
  

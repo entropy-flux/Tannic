@@ -4,7 +4,13 @@
 #include <ostream>
 #include <cstring>
 #include <functional>
+
+#ifdef CUDA
 #include "cuda/mem.cuh"
+#else 
+inline void copyFromHost(const device_t*, std::byte const* src, std::byte* dst, size_t size) { throw std::runtime_error("CUDA copyFromHost called without CUDA support"); }
+inline bool compareFromHost(const device_t*, std::byte const* src, std::byte const* dst, size_t size) { throw std::runtime_error("CUDA compareFromHost called without CUDA support"); }
+#endif
 
 namespace tannic {
 

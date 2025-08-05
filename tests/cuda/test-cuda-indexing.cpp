@@ -1,8 +1,7 @@
+#ifdef CUDA
 #include <gtest/gtest.h>
 #include "Tensor.hpp"  
 
- 
-#ifdef CUDA
 using namespace tannic;
 
 TEST(TestCUDAView, TestCUDASlice) { 

@@ -9,6 +9,11 @@
 
 using namespace tannic;
 
+/*
+NOTE: All this functions may change and some of them will go to the runtime api when
+the backend is more stable.
+*/
+
 tensor_t structure(Tensor const&);
 host_t structure(Host const&);
 device_t structure(Device const&);

@@ -381,7 +381,7 @@ inline std::ostream& operator<<(std::ostream& ostream, Source source) {
 
 template<class Operation, Expression Operand>
 Tensor operation::Unary<Operation, Operand>::forward() const { 
-    Tensor result(dtype(), shape(), strides());  
+    Tensor result(dtype(), shape(), strides(), offset());  
     operation.forward(operand, result);
     return result;
 }

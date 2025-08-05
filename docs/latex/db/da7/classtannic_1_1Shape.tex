@@ -23,7 +23,7 @@ constexpr \mbox{\hyperlink{classtannic_1_1Shape_aa4ee03251e1c92a230b060290086a0a
 \begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 constexpr \mbox{\hyperlink{classtannic_1_1Shape_a887ad192d9ebd596cd81251a10e8b218}{Shape}} (std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{classtannic_1_1Shape_afe7a445e1fad9128dd7984035d717273}{size\+\_\+type}} $>$ shape)
 \begin{DoxyCompactList}\small\item\em Constructs a shape from an initializer list of dimension sizes. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename... Sizes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1Shape_a43042ceabb1192091fc9900dfaf8a3af}{Shape}} (Sizes... sizes)
+{\footnotesize template$<$Integral... Sizes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1Shape_a43042ceabb1192091fc9900dfaf8a3af}{Shape}} (Sizes... sizes)
 \begin{DoxyCompactList}\small\item\em Constructs a shape from a list of size arguments. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Iterable Sizes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1Shape_adbdbaaef585952714d0c5175ebdd4002}{Shape}} (Sizes \&\&sizes)
 \begin{DoxyCompactList}\small\item\em Constructs a shape from any iterable container of sizes. \end{DoxyCompactList}\item 
@@ -148,7 +148,7 @@ Asserts if the number of dimensions exceeds {\ttfamily limit}.
 \index{tannic::Shape@{tannic::Shape}!Shape@{Shape}}
 \index{Shape@{Shape}!tannic::Shape@{tannic::Shape}}
 \doxysubsubsection{\texorpdfstring{Shape()}{Shape()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
-{\footnotesize\ttfamily template$<$typename... Sizes$>$ \\
+{\footnotesize\ttfamily template$<$Integral... Sizes$>$ \\
 constexpr tannic\+::\+Shape\+::\+Shape (\begin{DoxyParamCaption}\item[{Sizes...}]{sizes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 

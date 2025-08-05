@@ -81,51 +81,63 @@ public:
     {}
 
     /**
-     * @brief Returns the data type of the result
-     * @return Data type of the argument (functions preserve input type)
+     * @brief Returns the data type of the result.
+     * @return The data type of the underlying argument.
+     *
+     * Functions in this expression template system are type-preserving —
+     * applying them element-wise does not change the scalar type
+     * (e.g., applying `exp()` to a `float32` tensor produces `float32` output).
+     * Therefore, we can directly query and return the argument's dtype.
      */
     constexpr type dtype() const {
         return argument.dtype();
     }
 
+
     /**
-     * @brief Returns the shape of the result
-     * @return Shape of the argument (functions preserve input shape)
+     * @brief Returns the shape of the result.
+     * @return A const reference to the shape of the underlying argument.
+     *
+     * The shape is returned as `const&` to avoid copying the shape object,
+     * and because element-wise functions do not alter tensor dimensions.
      */
     constexpr Shape const& shape() const {
         return argument.shape();
     }  
 
     /**
-     * @brief Returns the strides of the result
-     * @return Strides of the argument (functions preserve input strides)
+     * @brief Returns the strides of the result.
+     * @return A const reference to the strides of the underlying argument.
+     *
+     * Strides describe memory layout, and for pure element-wise operations
+     * they remain identical to those of the input tensor.
+     * Returning `const&` avoids copying and preserves the original stride information.
      */
     constexpr Strides const& strides() const {
         return argument.strides();
     }
 
     /**
-     * @brief Returns the offset of the argument
-     * @return Offset of the underlying tensor data
+     * @brief Returns the offset of the result.
+     * @return The offset (in elements) into the underlying tensor storage.
+     *
+     * Since element-wise functions do not change the memory location of the data,
+     * the offset is taken directly from the argument.
      */
     auto offset() const {
         return argument.offset();
     }
-
-    /**
-     * @brief Evaluates the function expression
-     * @return New Tensor with the function applied element-wise
-     */
+ 
     Tensor forward() const {
         Tensor source = argument.forward();
-        Tensor target(dtype(), shape());
+        Tensor target(dtype(), shape(), strides(), offset());
         function(source, target);
         return target;
     } 
 };
 
 /**
- * @brief Function natural logarithm (ln(x))
+ * @brief Functor natural logarithm (ln(x))
  * Applies element-wise natural logarithm to tensor elements
  */
 struct Log {
@@ -133,7 +145,7 @@ struct Log {
 };
 
 /**
- * @brief Function exponential (e^x)
+ * @brief Functor exponential (e^x)
  * Applies element-wise exponential to tensor elements
  */
 struct Exp {
@@ -141,7 +153,7 @@ struct Exp {
 };
 
 /**
- * @brief Function square root (√x)
+ * @brief Functor square root (√x)
  * Applies element-wise square root to tensor elements
  */
 struct Sqrt { 
@@ -149,7 +161,7 @@ struct Sqrt {
 };
 
 /**
- * @brief Function absolute value (|x|)
+ * @brief Functor absolute value (|x|)
  * Applies element-wise absolute value to tensor elements
  */
 struct Abs { 
@@ -157,7 +169,7 @@ struct Abs {
 };
 
 /**
- * @brief Function sine
+ * @brief Functor sine
  * Applies element-wise sine to tensor elements (radians)
  */
 struct Sin {
@@ -165,7 +177,7 @@ struct Sin {
 };
 
 /**
- * @brief Function cosine
+ * @brief Functor cosine
  * Applies element-wise cosine to tensor elements (radians)
  */
 struct Cos { 
@@ -173,7 +185,7 @@ struct Cos {
 };
 
 /**
- * @brief Function tangent
+ * @brief Functor tangent
  * Applies element-wise tangent to tensor elements (radians)
  */
 struct Tan { 
@@ -181,7 +193,7 @@ struct Tan {
 };
 
 /**
- * @brief Function hyperbolic sine
+ * @brief Functor hyperbolic sine
  * Applies element-wise hyperbolic sine to tensor elements
  */
 struct Sinh { 
@@ -189,7 +201,7 @@ struct Sinh {
 };
 
 /**
- * @brief Function hyperbolic cosine
+ * @brief Functor hyperbolic cosine
  * Applies element-wise hyperbolic cosine to tensor elements
  */
 struct Cosh { 
@@ -197,7 +209,7 @@ struct Cosh {
 };
 
 /**
- * @brief Function hyperbolic tangent
+ * @brief Functor hyperbolic tangent
  * Applies element-wise hyperbolic tangent to tensor elements
  */
 struct Tanh { 

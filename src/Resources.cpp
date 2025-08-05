@@ -3,9 +3,16 @@
 #include <cstring>  
 #include "Resources.hpp"
 #include "Bindings.hpp" 
-#include "cuda/mem.cuh"
 
 #ifdef CUDA   
+#include "cuda/mem.cuh"
+#else 
+namespace cuda {
+inline int getDeviceCount() { throw std::runtime_error("CUDA is not available in this build"); }
+inline void* allocate(const device_t*, std::size_t) { throw std::runtime_error("CUDA allocation attempted without CUDA support"); }
+inline void deallocate(const device_t*, void*) { throw std::runtime_error("CUDA deallocation attempted without CUDA support"); }
+} // namespace cuda
+#endif 
 
 namespace tannic { 
 
@@ -46,29 +53,6 @@ void Device::deallocate(void* address, std::size_t nbytes) const {
     device_t resource = structure(*this);  
     cuda::deallocate(&resource, address); 
 } 
-
-#elif
  
-void* Host::allocate(std::size_t nbytes) const {  
-    return std::malloc(nbytes);
-}
-
-void Host::deallocate(void* address, std::size_t nbytes) const {  
-    std::free(address);
-}  
-
-Device::Device(int id) : id_(id) {
-    throw std::runtime_error("Device not supported without compute capabilities");
-}
-
-void* Device::allocate(std::size_t nbytes) const { 
-    throw std::runtime_error("Device not supported without compute capabilities");
-}
-
-void Device::deallocate(void* address, std::size_t nbytes) const {
-    throw std::runtime_error("Device not supported without compute capabilities");
-} 
-
-#endif
 
 } // namespace tannic

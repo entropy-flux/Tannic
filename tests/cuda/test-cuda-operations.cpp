@@ -1,3 +1,4 @@
+#ifdef CUDA
 #include <gtest/gtest.h>
 #include <vector>
 #include <cmath>
@@ -117,3 +118,4 @@ TEST_F(TestCUDAOperations, Subtraction) {
     };
     compareWithExpectedBinary(result, expected);
 }
+#endif
