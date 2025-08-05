@@ -16,14 +16,7 @@ jobs:
 
       - name: Generate Doxygen
         run: |
-          doxygen Doxyfile
-
-      - name: Move to /docs
-        run: | 
-          rm -rf docs
-          mkdir -p docs
-          mv html/* docs/    
-          touch docs/.nojekyll
+          doxygen Doxyfile 
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
