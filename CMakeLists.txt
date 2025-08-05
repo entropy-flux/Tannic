@@ -1,10 +1,18 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(TANNIC 
-    VERSION 1.0
-    DESCRIPTION "Tannic tensor library"
-    LANGUAGES CXX CUDA
-)
+project(TANNIC LANGUAGES CXX)
+
+include(CheckLanguage)
+check_language(CUDA)
+if(CMAKE_CUDA_COMPILER)
+    enable_language(CUDA)
+    set(CUDA_ENABLED TRUE)
+    message(STATUS "CUDA support enabled.")
+    find_package(CUDAToolkit)
+else()
+    set(CUDA_ENABLED FALSE)
+    message(STATUS "CUDA not found. Building without CUDA support.")
+endif()
 
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
