@@ -10,7 +10,7 @@ void scalarFnKernel(
 ) {
     Fn fn;
     *dst_ptr = fn(*src_ptr);
-}  
+}    
 
 template<typename S, typename D, class Fn>
 void batchedFnKernel( 

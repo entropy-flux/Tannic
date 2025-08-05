@@ -125,7 +125,7 @@ public:
      */
     Tensor forward() const {   
         Tensor source = operand.forward();
-        Tensor result(dtype_, shape_, strides_, offset());          
+        Tensor result(dtype(), shape(), strides(), offset());          
         reducer.forward(source, result);
         return result;
     }
@@ -161,8 +161,14 @@ struct Argmax {
      * @throws assert if input has rank < 1
      */
     constexpr Shape reduce(Shape const& shape) const {
-        assert(shape.rank() >= 1 && "Argmax requires at least 1D tensor");
-        return Shape(shape.begin(), shape.end()-1);
+        assert(shape.rank() >= 1);
+        std::vector<size_t> sizes;
+        sizes.reserve(shape.rank() - 1);
+        for (size_t dimension = 0; dimension < shape.rank(); ++dimension) {
+            if (dimension != static_cast<size_t>(axis))
+                sizes.push_back(shape[dimension]);
+        }
+        return Shape(sizes.begin(), sizes.end());
     }
 
     /**
@@ -174,15 +180,14 @@ struct Argmax {
         if (strides.rank() == 1) {
             return Strides();
         }
-        
-        uint8_t rank = strides.rank() - 1; 
-        std::vector<std::size_t> sizes(rank);
-        for(uint8_t dimension = 0; dimension < rank - 2; ++dimension) {
-            sizes[dimension] = strides[dimension];
+        std::vector<Strides::size_type> sizes;
+        sizes.reserve(strides.rank() - 1);
+        for (size_t dimension = 0; dimension < strides.rank(); ++dimension) {
+            if (dimension != static_cast<size_t>(axis))
+                sizes.push_back(strides[dimension]);
         }
-        sizes[rank - 1] = strides.back();
         return Strides(sizes.begin(), sizes.end());
-    } 
+    }
     
     /**
      * @brief Performs the argmax operation
@@ -217,9 +222,16 @@ struct Argmin {
      * @throws assert if input has rank < 1
      */
     constexpr Shape reduce(Shape const& shape) const {
-        assert(shape.rank() >= 1 && "Argmax requires at least 1D tensor");
-        return Shape(shape.begin(), shape.end()-1);
+        assert(shape.rank() >= 1);
+        std::vector<Strides::size_type> sizes;
+        sizes.reserve(shape.rank() - 1);
+        for (uint8_t dimension = 0; dimension < shape.rank(); ++dimension) {
+            if (dimension != static_cast<uint8_t>(axis))
+                sizes.push_back(shape[dimension]);
+        }
+        return Shape(sizes.begin(), sizes.end());
     }
+
 
     /**
      * @brief Computes output strides after reducing the specified axis
@@ -247,15 +259,14 @@ struct Argmin {
         if (strides.rank() == 1) {
             return Strides();
         }
-        
-        uint8_t rank = strides.rank() - 1; 
-        std::vector<std::size_t> sizes(rank);
-        for(uint8_t dimension = 0; dimension < rank - 2; ++dimension) {
-            sizes[dimension] = strides[dimension];
+        std::vector<Strides::size_type> sizes;
+        sizes.reserve(strides.rank() - 1);
+        for (uint8_t dimension = 0; dimension < strides.rank(); ++dimension) {
+            if (dimension != static_cast<uint8_t>(axis))
+                sizes.push_back(strides[dimension]);
         }
-        sizes[rank - 1] = strides.back();
         return Strides(sizes.begin(), sizes.end());
-    } 
+    }
 
     /**
      * @brief Performs the argmin operation

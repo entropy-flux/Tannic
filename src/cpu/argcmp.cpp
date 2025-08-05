@@ -8,10 +8,9 @@ template<typename S, typename D, typename Cmp>
 void argCompareKernel(
     const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,
     D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides,
-    uint8_t rank, uint8_t dim, const void* init_val
+    uint8_t rank, uint8_t dim, S initial_value
 ) { 
-    Cmp cmp{}; 
-    S initial_value = *static_cast<const S*>(init_val);
+    Cmp cmp{};  
 
     if (rank == 0) {
         *dst_ptr = 0;
@@ -25,7 +24,7 @@ void argCompareKernel(
 
     size_t cnt[8] = {0};
     for (size_t idx = 0; idx < total; ++idx) {
-        size_t best_idx = 0;
+        int64_t best_idx = 0;
         S best_val = initial_value;
 
         for (size_t i = 0; i < src_shape.sizes[dim]; ++i) {
@@ -79,7 +78,7 @@ status argmax(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<int8_t, int64_t, GE>(
                 (int8_t*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         case int16: {
@@ -87,7 +86,7 @@ status argmax(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<int16_t, int64_t, GE>(
                 (int16_t*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         case int32: {
@@ -95,7 +94,7 @@ status argmax(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<int32_t, int64_t, GE>(
                 (int32_t*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         case int64: {
@@ -103,7 +102,7 @@ status argmax(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<int64_t, int64_t, GE>(
                 (int64_t*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         case float32: {
@@ -111,7 +110,7 @@ status argmax(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<float, int64_t, GE>(
                 (float*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         case float64: {
@@ -119,7 +118,7 @@ status argmax(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<double, int64_t, GE>(
                 (double*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         default:
@@ -134,7 +133,7 @@ status argmin(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<int8_t, int64_t, LE>(
                 (int8_t*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         case int16: {
@@ -142,7 +141,7 @@ status argmin(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<int16_t, int64_t, LE>(
                 (int16_t*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         case int32: {
@@ -150,7 +149,7 @@ status argmin(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<int32_t, int64_t, LE>(
                 (int32_t*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         case int64: {
@@ -158,7 +157,7 @@ status argmin(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<int64_t, int64_t, LE>(
                 (int64_t*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         case float32: {
@@ -166,7 +165,7 @@ status argmin(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<float, int64_t, LE>(
                 (float*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         case float64: {
@@ -174,7 +173,7 @@ status argmin(tensor_t const* src, tensor_t* dst, uint8_t dim) {
             argCompareKernel<double, int64_t, LE>(
                 (double*)(src->address), src->shape, src->strides,
                 (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, &init);
+                src->rank, dim, init);
             return SUCCESS;
         }
         default:

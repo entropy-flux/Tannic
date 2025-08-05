@@ -136,28 +136,28 @@ status launchDefaultBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, t
  
 struct Neg { 
     template<class A>
-    constexpr auto operator()(A&& a) const noexcept(noexcept(-a)) {
+    auto operator()(A&& a) const noexcept(noexcept(-a)) {
         return -a;
     }
 };
 
 struct Add { 
     template<class A, class B>
-    constexpr auto operator()(A&& a, B&& b) const noexcept(noexcept(a + b)) {
+    auto operator()(A&& a, B&& b) const noexcept(noexcept(a + b)) {
         return a + b;
     }
 };
 
 struct Sub { 
     template<class A, class B>
-    constexpr auto operator()(A&& a, B&& b) const noexcept(noexcept(a - b)) {
+    auto operator()(A&& a, B&& b) const noexcept(noexcept(a - b)) {
         return a - b;
     }
 };
 
 struct Mul { 
     template<class A, class B>
-    constexpr auto operator()(A&& a, B&& b) const noexcept(noexcept(a * b)) {
+    auto operator()(A&& a, B&& b) const noexcept(noexcept(a * b)) {
         return a * b;
     }
 }; 
