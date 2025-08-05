@@ -15,7 +15,7 @@ inline bool compareFromHost(const device_t*, std::byte const* src, std::byte con
 #endif
 
 namespace tannic {
-
+ 
 void Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {      
     std::byte* target = static_cast<std::byte*>(buffer_->address()) + offset;    
     if (std::holds_alternative<Host>(this->allocator())) {

@@ -2,7 +2,7 @@
 #include <ostream>
 #include "Bindings.hpp"
 #include "Types.hpp"
-#include "Tensor.hpp" 
+#include "Tensor.hpp"   
 
 namespace tannic {  
 

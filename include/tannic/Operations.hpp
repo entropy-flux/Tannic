@@ -111,7 +111,8 @@ public:
      */
     constexpr Strides const& strides() const {
         return operand.strides();
-    }   
+    }  
+
 
     /**
      * @brief Returns the offset of the expression.

@@ -25,11 +25,14 @@ option(TANNIC_BUILD_MAIN "Build the main executable" ON)
 include(cmake/CMakeLists.txt) 
 
 if(TANNIC_BUILD_MAIN)
-    add_executable(main main.cpp) 
+    add_executable(main main.cpp)
     if(CUDA_ENABLED)
         target_link_libraries(main PRIVATE CUDA::cudart)
         set_target_properties(main PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-    endif() 
+    endif()
     target_include_directories(main PRIVATE include)
     target_compile_features(main PRIVATE cxx_std_23)
+    
+    # Link the tannic library here
+    target_link_libraries(main PRIVATE tannic)
 endif()
