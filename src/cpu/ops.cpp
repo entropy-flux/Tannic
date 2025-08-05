@@ -27,7 +27,7 @@ void batchedUnaryOpKernel(
     D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides, 
     uint8_t rank, size_t ne
 ) { 
-    Op op;  
+    Op op{};  
     size_t cnt[8] = {0};
     for (size_t idx = 0; idx < ne; ++idx) {
         size_t offs = 0;

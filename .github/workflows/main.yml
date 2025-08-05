@@ -30,40 +30,34 @@ jobs:
         if: runner.os == 'Windows'
         working-directory: build
         shell: powershell
-        run: cmake $Env:GITHUB_WORKSPACE
-        continue-on-error: true
+        run: cmake $Env:GITHUB_WORKSPACE 
 
       - name: Configure (Linux/macOS)
         if: runner.os != 'Windows'
         working-directory: build
         shell: bash
-        run: cmake $GITHUB_WORKSPACE
-        continue-on-error: true
+        run: cmake $GITHUB_WORKSPACE 
  
       - name: Build (Windows)
         if: runner.os == 'Windows'
         working-directory: build
         shell: powershell
-        run: cmake --build .
-        continue-on-error: true
+        run: cmake --build . 
 
       - name: Build (Linux/macOS)
         if: runner.os != 'Windows'
         working-directory: build
         shell: bash
-        run: cmake --build .
-        continue-on-error: true
+        run: cmake --build . 
  
       - name: Test (Windows)
         if: runner.os == 'Windows'
         working-directory: build
         shell: powershell
-        run: ctest . --build-config Debug --rerun-failed --output-on-failure
-        continue-on-error: true
+        run: ctest . --build-config Debug --rerun-failed --output-on-failure 
 
       - name: Test (Linux/macOS)
         if: runner.os != 'Windows'
         working-directory: build
         shell: bash
-        run: ctest . --build-config Debug --rerun-failed --output-on-failure
-        continue-on-error: true
+        run: ctest . --build-config Debug --rerun-failed --output-on-failure 

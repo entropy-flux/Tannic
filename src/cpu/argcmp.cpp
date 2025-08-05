@@ -10,7 +10,7 @@ void argCompareKernel(
     D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides,
     uint8_t rank, size_t* cnt, uint8_t dim, const void* init_val
 ) { 
-    Cmp cmp; 
+    Cmp cmp{}; 
     S initial_value = *static_cast<const S*>(init_val);
 
     if (rank == 0) {
