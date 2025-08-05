@@ -4,25 +4,28 @@
 #include <cmath> 
 #include "argcmp.hpp"  
 
+
 template<typename S, typename D, typename Cmp>
 void argCompareKernel(
     const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,
     D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides,
     uint8_t rank, uint8_t dim, S initial_value
-) { 
-    Cmp cmp{};  
+) {
+    Cmp cmp{};
 
     if (rank == 0) {
         *dst_ptr = 0;
         return;
     }
-
+ 
     size_t total = 1;
-    for (int i = 0; i < rank; ++i)
-        if (i != dim) total *= dst_shape.sizes[i];
-
+    for (int i = 0; i < rank; ++i) {
+        if (i != dim)
+            total *= src_shape.sizes[i];
+    } 
 
     size_t cnt[8] = {0};
+
     for (size_t idx = 0; idx < total; ++idx) {
         int64_t best_idx = 0;
         S best_val = initial_value;
@@ -44,12 +47,16 @@ void argCompareKernel(
         *dst_ptr++ = static_cast<D>(best_idx);
  
         for (int d = rank - 1; d >= 0; --d) {
-            if (d == dim) continue;
-            if (++cnt[d] < dst_shape.sizes[d]) break;
-            cnt[d] = 0;
+            if (d == dim) continue; 
+            if (++cnt[d] < src_shape.sizes[d]) {
+                break;
+            } else {
+                cnt[d] = 0;
+            }
         }
     }
 }
+
 
 
 struct GE {

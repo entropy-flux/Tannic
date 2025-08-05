@@ -4,7 +4,29 @@
  
 #include "Tensor.hpp"   
 
-using namespace tannic;
+using namespace tannic; 
+
+TEST(TestUnaryOp, Negation) {
+    Tensor A(float32, {3, 3}); A.initialize(); 
+    float* A_data = reinterpret_cast<float*>(A.bytes());
+    for(int i = 0; i < 3*3; i++) {
+        A_data[i] = 9 + 1. * i;
+    }
+
+    Tensor B = -A;
+    float* B_data = reinterpret_cast<float*>(B.bytes());
+
+    float expected[] = {
+        -9.0, -10.0, -11.0,                
+        -12.0, -13.0, -14.0,
+        -15.0, -16.0, -17.0
+    };
+    
+    for(int i = 0; i < 3*3; i++) {
+        ASSERT_FLOAT_EQ(B_data[i], expected[i]);
+    }
+}
+
 
 class TestBinaryOps : public ::testing::Test {
 protected:
@@ -53,28 +75,7 @@ protected:
             }
         }
     }
-};
-
-TEST(TestUnaryOp, Negation) {
-    Tensor A(float32, {3, 3, 3}); A.initialize(); 
-    float* A_data = reinterpret_cast<float*>(A.bytes());
-    for(int i = 0; i < 3*3*3; i++) {
-        A_data[i] = 1. * i;
-    }
-
-    Tensor B = -A[1];
-    float* B_data = reinterpret_cast<float*>(B.bytes());
-
-    float expected[] = {
-        -9.0, -10.0, -11.0,                
-        -12.0, -13.0, -14.0,
-        -15.0, -16.0, -17.0
-    };
-    
-    for(int i = 0; i < 3*3; i++) {
-        ASSERT_FLOAT_EQ(B_data[i], expected[i]);
-    }
-}
+}; 
 
 TEST_F(TestBinaryOps, Addition) {
     Tensor C = A + B;

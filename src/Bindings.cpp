@@ -72,8 +72,8 @@ allocator_t structure(Allocator const& allocator) {
 
 tensor_t structure(Tensor const& tensor) {
     const Allocator& alloc = tensor.allocator();
-    shape_t shape;
-    strides_t strides;
+    shape_t shape{};
+    strides_t strides{};
     for (int dimension = 0; dimension < tensor.rank(); ++dimension) {
         shape.sizes[dimension] = tensor.shape()[dimension];
         strides.sizes[dimension] = tensor.strides()[dimension];

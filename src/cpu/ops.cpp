@@ -31,8 +31,9 @@ void batchedUnaryOpKernel(
     size_t cnt[8] = {0};
     for (size_t idx = 0; idx < ne; ++idx) {
         size_t offs = 0;
-        for (int dim = 0; dim < rank; ++dim) {
-            offs += cnt[dim] * src_strides.sizes[dim];
+        for (int dim = 0; dim < rank; ++dim) { 
+            size_t coord = (src_shape.sizes[dim] == 1) ? 0 : cnt[dim];
+            offs += coord * src_strides.sizes[dim];
         }
 
         dst_ptr[idx] = op(src_ptr[offs]);
