@@ -18,17 +18,17 @@ namespace tannic::operation {
 using UH = status (*)(const tensor_t*, tensor_t*);
 using UD = status (*)(const tensor_t*, tensor_t*, stream_t); 
 using BH = status (*)(const tensor_t*, const tensor_t*, tensor_t*);
-using BD = status (*)(const tensor_t*, const tensor_t*, tensor_t*, stream_t); 
+using BD = status (*)(const tensor_t*, const tensor_t*, tensor_t*, stream_t);  
 
 template <UH hcall, UD dcall>
-static inline void apply(Tensor const& input, Tensor& output) {  
-    tensor_t src = structure(input);
+static inline void apply(Tensor const& input, Tensor& output) {   
     allocator_t allocator = structure(input.allocator()); 
     switch (allocator.environment) {
         case HOST: {
             output.initialize();  
-            auto dst = structure(output);
-            auto status = hcall(&src, &dst);    
+            tensor_t dst = structure(output);
+            tensor_t src = structure(input);
+            status status = hcall(&src, &dst);    
             if(status != SUCCESS) {
                 throw std::runtime_error("Unsupported dtype");
             }
@@ -38,9 +38,10 @@ static inline void apply(Tensor const& input, Tensor& output) {
         case DEVICE: { 
             auto dvc = allocator.resource.device; 
             output.initialize(Device(dvc.id)); 
-            auto dst = structure(output);
-            auto stream = pop_stream(&dvc);
-            auto status = dcall(&src, &dst, stream);
+            tensor_t dst = structure(output);
+            tensor_t src = structure(input);
+            stream_t stream = pop_stream(&dvc);
+            status status = dcall(&src, &dst, stream);
             put_stream(&dvc, stream);
             if(status != SUCCESS) {
                 throw std::runtime_error("Unsupported dtype");
