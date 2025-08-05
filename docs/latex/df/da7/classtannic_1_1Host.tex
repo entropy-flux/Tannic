@@ -2,23 +2,45 @@
 \hypertarget{classtannic_1_1Host}{}\label{classtannic_1_1Host}\index{tannic::Host@{tannic::Host}}
 
 
+\doxylink{classtannic_1_1Host}{Host} memory domain.  
+
+
+
+
 {\ttfamily \#include $<$Resources.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classtannic_1_1Host_a1830de43bc0b0ca2dfef20ffad434596}{Host}} ()=default
-\item 
+\begin{DoxyCompactList}\small\item\em Constructs a host memory allocator ~\newline
+ \end{DoxyCompactList}\item 
 void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1Host_a74e48a6b533e9dbaf1321f02734f0343}{allocate}} (std\+::size\+\_\+t nbytes) const
-\item 
+\begin{DoxyCompactList}\small\item\em Allocates memory in host address space. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classtannic_1_1Host_a4d32bc66b1bc6f2cfa91448ee7ac1af8}{deallocate}} (void \texorpdfstring{$\ast$}{*}address, std\+::size\+\_\+t nbytes) const
-\item 
+\begin{DoxyCompactList}\small\item\em Releases host memory resources. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classtannic_1_1Host_a44d3fb44daeda17f43cce11ca2452eee}{id}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Domain identifier constant. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classtannic_1_1Host_a38d315c3ea9734e1e75bba2bea97a7ba}{pageable}} () const
 \item 
 bool \mbox{\hyperlink{classtannic_1_1Host_a239efbb9b09c9fa5a9b75643e2c7fa14}{pinned}} () const
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classtannic_1_1Host}{Host} memory domain. 
+
+
+\begin{DoxyItemize}
+\item Primary memory space attached to the root execution environment
+\item Manages the default address space for the main processor ~\newline
+
+\item Required for all operations in the root execution context
+\end{DoxyItemize}
+
+\begin{DoxyWarning}{Warning}
+This class interface is experimental and likely to change as the backend evolves. 
+\end{DoxyWarning}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -30,6 +52,14 @@ bool \mbox{\hyperlink{classtannic_1_1Host_a239efbb9b09c9fa5a9b75643e2c7fa14}{pin
 
 
 
+Constructs a host memory allocator ~\newline
+ 
+
+\begin{DoxyPostcond}{Postcondition}
+Defaults to pageable allocation strategy 
+\end{DoxyPostcond}
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtannic_1_1Host_a74e48a6b533e9dbaf1321f02734f0343}\label{classtannic_1_1Host_a74e48a6b533e9dbaf1321f02734f0343} 
 \index{tannic::Host@{tannic::Host}!allocate@{allocate}}
@@ -37,18 +67,60 @@ bool \mbox{\hyperlink{classtannic_1_1Host_a239efbb9b09c9fa5a9b75643e2c7fa14}{pin
 \doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
 {\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} tannic\+::\+Host\+::allocate (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{nbytes }\end{DoxyParamCaption}) const}
 
+
+
+Allocates memory in host address space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nbytes} & Contiguous memory block size in bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to allocated memory in host space 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+nbytes \texorpdfstring{$>$}{>} 0 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Returned pointer is valid in host execution context 
+\end{DoxyPostcond}
 \Hypertarget{classtannic_1_1Host_a4d32bc66b1bc6f2cfa91448ee7ac1af8}\label{classtannic_1_1Host_a4d32bc66b1bc6f2cfa91448ee7ac1af8} 
 \index{tannic::Host@{tannic::Host}!deallocate@{deallocate}}
 \index{deallocate@{deallocate}!tannic::Host@{tannic::Host}}
 \doxysubsubsection{\texorpdfstring{deallocate()}{deallocate()}}
 {\footnotesize\ttfamily void tannic\+::\+Host\+::deallocate (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{address,  }\item[{std\+::size\+\_\+t}]{nbytes }\end{DoxyParamCaption}) const}
 
+
+
+Releases host memory resources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & Base pointer of allocation \\
+\hline
+{\em nbytes} & Size of original allocation (for accounting) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+address points to valid host allocation 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Memory is returned to host allocator 
+\end{DoxyPostcond}
 \Hypertarget{classtannic_1_1Host_a44d3fb44daeda17f43cce11ca2452eee}\label{classtannic_1_1Host_a44d3fb44daeda17f43cce11ca2452eee} 
 \index{tannic::Host@{tannic::Host}!id@{id}}
 \index{id@{id}!tannic::Host@{tannic::Host}}
 \doxysubsubsection{\texorpdfstring{id()}{id()}}
 {\footnotesize\ttfamily int tannic\+::\+Host\+::id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Domain identifier constant. 
+
+\begin{DoxyReturn}{Returns}
+Constant -\/1 representing the host domain 
+\end{DoxyReturn}
 \Hypertarget{classtannic_1_1Host_a38d315c3ea9734e1e75bba2bea97a7ba}\label{classtannic_1_1Host_a38d315c3ea9734e1e75bba2bea97a7ba} 
 \index{tannic::Host@{tannic::Host}!pageable@{pageable}}
 \index{pageable@{pageable}!tannic::Host@{tannic::Host}}

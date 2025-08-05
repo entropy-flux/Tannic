@@ -1,9 +1,9 @@
 <map id="include/tannic/Slices.hpp" name="include/tannic/Slices.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="152,5,335,31"/>
+<area shape="rect" id="Node000001" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="152,5,335,31"/>
 <area shape="rect" id="Node000002" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="150,79,337,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,44,246,79,241,79,241,44"/>
-<area shape="rect" id="Node000003" href="$db/db8/Reductions_8hpp.html" title=" " alt="" coords="5,152,223,177"/>
+<area shape="rect" id="Node000003" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="5,152,223,177"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="212,113,136,154,134,149,209,108"/>
-<area shape="rect" id="Node000004" href="$df/d25/Transformations_8hpp.html" title=" " alt="" coords="247,152,498,177"/>
+<area shape="rect" id="Node000004" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="247,152,498,177"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="278,108,353,149,350,154,275,113"/>
 </map>

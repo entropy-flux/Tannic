@@ -17,13 +17,13 @@ namespace \mbox{\hyperlink{namespacetannic_1_1transformation}{transformation}}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}}
-\item 
+\begin{DoxyCompactList}\small\item\em Managed memory buffer with explicit ownership. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Device}{Device}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Device}{Device} memory domain. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Device}{Device} enumeration singleton. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Host}{Host}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Host}{Host} memory domain. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}
 \begin{DoxyCompactList}\small\item\em Represents the shape (dimensions) of an tensor-\/like expression. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}
@@ -49,7 +49,7 @@ concept \mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}
 using \mbox{\hyperlink{namespacetannic_a9468873460db4ea12f41458b87c63975}{range}} = \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}
 \item 
 using \mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}} = std\+::variant$<$ \mbox{\hyperlink{classtannic_1_1Host}{Host}}, \mbox{\hyperlink{classtannic_1_1Device}{Device}} $>$
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Memory allocator variant type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -66,7 +66,7 @@ std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1a847102d1be0f3bdc61821df668
 {\footnotesize template$<$Expression Source$>$ }\\std\+::ostream \& \mbox{\hyperlink{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9}{operator$<$$<$}} (std\+::ostream \&ostream, Source source)
 \item 
 {\footnotesize template$<$Expression Multiplicand, Expression Multiplier$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}} (Multiplicand \&\&multiplicand, Multiplier \&\&multiplier)
-\item 
+\begin{DoxyCompactList}\small\item\em Matrix multiplication convenience function. \end{DoxyCompactList}\item 
 constexpr std\+::size\+\_\+t \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}} (type type)
 \begin{DoxyCompactList}\small\item\em Returns the size in bytes of a given tensor data type. \end{DoxyCompactList}\item 
 constexpr std\+::string \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}} (type type)
@@ -86,7 +86,11 @@ std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1c1a48f353ac51e8ae5affa4dccd
 \doxysubsubsection{\texorpdfstring{Allocator}{Allocator}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{tannic\+::\+Allocator}} = typedef std\+::variant$<$\mbox{\hyperlink{classtannic_1_1Host}{Host}}, \mbox{\hyperlink{classtannic_1_1Device}{Device}}$>$}
 
-\Hypertarget{namespacetannic_a9468873460db4ea12f41458b87c63975}\label{namespacetannic_a9468873460db4ea12f41458b87c63975} 
+
+
+Memory allocator variant type. 
+
+Type-\/safe union of host and device memory allocators. \Hypertarget{namespacetannic_a9468873460db4ea12f41458b87c63975}\label{namespacetannic_a9468873460db4ea12f41458b87c63975} 
 \index{tannic@{tannic}!range@{range}}
 \index{range@{range}!tannic@{tannic}}
 \doxysubsubsection{\texorpdfstring{range}{range}}
@@ -218,6 +222,27 @@ This is the inverse operation of \doxylink{namespacetannic_a7cc5a20569f733cb88c5
 {\footnotesize\ttfamily template$<$Expression Multiplicand, Expression Multiplier$>$ \\
 constexpr auto tannic\+::matmul (\begin{DoxyParamCaption}\item[{Multiplicand \&\&}]{multiplicand,  }\item[{Multiplier \&\&}]{multiplier }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
+
+
+Matrix multiplication convenience function. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Multiplicand} & Left tensor expression type \\
+\hline
+{\em Multiplier} & Right tensor expression type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em multiplicand} & Left tensor operand \\
+\hline
+{\em multiplier} & Right tensor operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Transformation expression representing matrix multiplication 
+\end{DoxyReturn}
 \Hypertarget{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}\label{namespacetannic_a8b7066a546d8d6a8605b695788c479f0} 
 \index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!tannic@{tannic}}

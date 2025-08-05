@@ -2,6 +2,11 @@
 \hypertarget{classtannic_1_1function_1_1Function}{}\label{classtannic_1_1function_1_1Function}\index{tannic::function::Function$<$ Functor, Operand $>$@{tannic::function::Function$<$ Functor, Operand $>$}}
 
 
+Expression template for mathematical function operations.  
+
+
+
+
 {\ttfamily \#include $<$Functions.\+hpp$>$}
 
 
@@ -17,17 +22,17 @@ Collaboration diagram for tannic\+::function\+::Function\texorpdfstring{$<$}{<} 
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a3a9ffe9ad15fcc5dbe9ce9e88e925067}{Function}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a30023159f35789d1fa77e20096d619f5}{functor}}, \mbox{\hyperlink{classtannic_1_1function_1_1Function}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}})
-\item 
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classtannic_1_1function_1_1Function}{Function} expression. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{type}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a0078c7638603140cfd364776351ff329}{dtype}} () \mbox{\hyperlink{classtannic_1_1function_1_1Function}{const}}
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the data type of the result. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{const}} \& \mbox{\hyperlink{classtannic_1_1function_1_1Function_a81e2d16f5f52d741724554a523f55cf5}{shape}} () \mbox{\hyperlink{classtannic_1_1function_1_1Function}{const}}
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the shape of the result. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{const}} \& \mbox{\hyperlink{classtannic_1_1function_1_1Function_afb0bb05b989cdc2fbdce58f5d05a21b0}{strides}} () \mbox{\hyperlink{classtannic_1_1function_1_1Function}{const}}
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the strides of the result. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a5a6faf95e62f442885a146fa9109945b}{offset}} () \mbox{\hyperlink{classtannic_1_1function_1_1Function}{const}}
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the offset of the operand. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a6297b8a576fdf49f9e2220e81e22f78d}{forward}} () \mbox{\hyperlink{classtannic_1_1function_1_1Function}{const}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Evaluates the function expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,6 +40,22 @@ Collaboration diagram for tannic\+::function\+::Function\texorpdfstring{$<$}{<} 
 \item 
 \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1function_1_1Function_a06cf6246437125b1d7471d0e77601a58}{operand}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{classtannic_1_1function_1_1Function_a3a9ffe9ad15fcc5dbe9ce9e88e925067}{class}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a3a9ffe9ad15fcc5dbe9ce9e88e925067}{Functor}}, Expression Operand$>$\newline
+class tannic\+::function\+::\+Function$<$ Functor, Operand $>$}
+Expression template for mathematical function operations. 
+
+Represents a lazily evaluated unary function applied to a tensor expression. The actual computation is deferred until {\ttfamily \doxylink{classtannic_1_1function_1_1Function_a6297b8a576fdf49f9e2220e81e22f78d}{forward()}} is called.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Functor} & A stateless functor implementing {\ttfamily operator()(\doxylink{classtannic_1_1Tensor}{Tensor} const\&, \doxylink{classtannic_1_1Tensor}{Tensor}\&)} \\
+\hline
+{\em Operand} & An expression type satisfying the {\ttfamily Expression} concept \\
+\hline
+\end{DoxyTemplParams}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -47,6 +68,17 @@ Collaboration diagram for tannic\+::function\+::Function\texorpdfstring{$<$}{<} 
 
 
 
+Constructs a \doxylink{classtannic_1_1function_1_1Function}{Function} expression. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em functor} & The function functor (e.\+g., \doxylink{structtannic_1_1function_1_1Log}{Log}, \doxylink{structtannic_1_1function_1_1Exp}{Exp}) \\
+\hline
+{\em operand} & The input tensor expression \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtannic_1_1function_1_1Function_a0078c7638603140cfd364776351ff329}\label{classtannic_1_1function_1_1Function_a0078c7638603140cfd364776351ff329} 
 \index{tannic::function::Function$<$ Functor, Operand $>$@{tannic::function::Function$<$ Functor, Operand $>$}!dtype@{dtype}}
@@ -55,6 +87,13 @@ Collaboration diagram for tannic\+::function\+::Function\texorpdfstring{$<$}{<} 
 {\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1function_1_1Function}{class}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}} , Expression Operand$>$ \\
 \mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{type}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}}, \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
+
+
+Returns the data type of the result. 
+
+\begin{DoxyReturn}{Returns}
+Data type of the operand (functions preserve input type) 
+\end{DoxyReturn}
 \Hypertarget{classtannic_1_1function_1_1Function_a6297b8a576fdf49f9e2220e81e22f78d}\label{classtannic_1_1function_1_1Function_a6297b8a576fdf49f9e2220e81e22f78d} 
 \index{tannic::function::Function$<$ Functor, Operand $>$@{tannic::function::Function$<$ Functor, Operand $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::function::Function$<$ Functor, Operand $>$@{tannic::function::Function$<$ Functor, Operand $>$}}
@@ -62,6 +101,13 @@ Collaboration diagram for tannic\+::function\+::Function\texorpdfstring{$<$}{<} 
 {\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1function_1_1Function}{class}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}} , Expression Operand$>$ \\
 \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}}, \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Evaluates the function expression. 
+
+\begin{DoxyReturn}{Returns}
+New \doxylink{classtannic_1_1Tensor}{Tensor} with the function applied element-\/wise 
+\end{DoxyReturn}
 \Hypertarget{classtannic_1_1function_1_1Function_a5a6faf95e62f442885a146fa9109945b}\label{classtannic_1_1function_1_1Function_a5a6faf95e62f442885a146fa9109945b} 
 \index{tannic::function::Function$<$ Functor, Operand $>$@{tannic::function::Function$<$ Functor, Operand $>$}!offset@{offset}}
 \index{offset@{offset}!tannic::function::Function$<$ Functor, Operand $>$@{tannic::function::Function$<$ Functor, Operand $>$}}
@@ -69,6 +115,13 @@ Collaboration diagram for tannic\+::function\+::Function\texorpdfstring{$<$}{<} 
 {\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1function_1_1Function}{class}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}} , Expression Operand$>$ \\
 \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}}, \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns the offset of the operand. 
+
+\begin{DoxyReturn}{Returns}
+Offset of the underlying tensor data 
+\end{DoxyReturn}
 \Hypertarget{classtannic_1_1function_1_1Function_a81e2d16f5f52d741724554a523f55cf5}\label{classtannic_1_1function_1_1Function_a81e2d16f5f52d741724554a523f55cf5} 
 \index{tannic::function::Function$<$ Functor, Operand $>$@{tannic::function::Function$<$ Functor, Operand $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::function::Function$<$ Functor, Operand $>$@{tannic::function::Function$<$ Functor, Operand $>$}}
@@ -76,6 +129,13 @@ Collaboration diagram for tannic\+::function\+::Function\texorpdfstring{$<$}{<} 
 {\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1function_1_1Function}{class}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}} , Expression Operand$>$ \\
 \mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{const}}  \& \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}}, \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
+
+
+Returns the shape of the result. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1Shape}{Shape} of the operand (functions preserve input shape) 
+\end{DoxyReturn}
 \Hypertarget{classtannic_1_1function_1_1Function_afb0bb05b989cdc2fbdce58f5d05a21b0}\label{classtannic_1_1function_1_1Function_afb0bb05b989cdc2fbdce58f5d05a21b0} 
 \index{tannic::function::Function$<$ Functor, Operand $>$@{tannic::function::Function$<$ Functor, Operand $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::function::Function$<$ Functor, Operand $>$@{tannic::function::Function$<$ Functor, Operand $>$}}
@@ -83,6 +143,13 @@ Collaboration diagram for tannic\+::function\+::Function\texorpdfstring{$<$}{<} 
 {\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1function_1_1Function}{class}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}} , Expression Operand$>$ \\
 \mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{const}}  \& \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Functor}}, \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
+
+
+Returns the strides of the result. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1Strides}{Strides} of the operand (functions preserve input strides) 
+\end{DoxyReturn}
 
 
 \doxysubsection{Member Data Documentation}

@@ -1,5 +1,46 @@
+// Copyright 2025 Eric Cardozo
+//
+// This file is part of the Tannic Tensor Library.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+ 
 #ifndef VIEWS_HPP
-#define VIEWS_HPP
+#define VIEWS_HPP 
+
+/**
+ * @file Views.hpp
+ * @brief Implements views for tensors in the Tannic Tensor Library.
+ *
+ * This header defines expression templates for tensors views
+ * without copying data. These views operate on the underlying tensor metadata
+ * (shape, strides, and offset) to reinterpret how elements are accessed while
+ * preserving the original storage.
+ *
+ * Example usage:
+ *
+ * ```cpp
+ * Tensor X(float32, {2, 3}); X.initialize();
+ * 
+ * // Reshape from (2, 3) to (3, 2)
+ * auto Y = view(X, 3, 2);
+ * std::cout << Y.shape() << std::endl; // (3, 2)
+ *
+ * // Swap the first and second dimensions
+ * auto Z = transpose(X, 0, 1);
+ * std::cout << Z.shape() << std::endl; // (3, 2)
+ * ```
+ */
 
 #include <utility> 
 #include <algorithm>
@@ -18,9 +59,38 @@ class Tensor;
 
 namespace expression {   
    
+/**
+ * @class Reshape
+ * @brief Expression template for viewing a tensor with a new shape.
+ *
+ * @tparam Source The expression or tensor type being reshaped.
+ *
+ * The `Reshape` view changes how the elements of a tensor are indexed
+ * by updating its shape and recomputing its strides without moving data.
+ *
+ * This operation requires that the total number of elements in the new
+ * shape matches the original tensor's total number of elements.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {2, 3});
+ * auto Y = view(X, 3, 2); // new shape: (3, 2)
+ * ```
+ */
 template<Expression Source>
 class Reshape {
-public: 
+public:  
+
+    /**
+     * @brief Construct a reshaped view of the source tensor.
+     *
+     * @tparam Indexes Integral dimension sizes of the new shape.
+     * @param source Reference to the source expression or tensor.
+     * @param indexes Dimension sizes for the reshaped view.
+     *
+     * @throws Assertion failure if the number of elements in the new shape
+     *         does not match the number of elements in the source.
+     */
     template<Integral... Indexes>  
     constexpr Reshape(Trait<Source>::Reference source, Indexes... indexes)
     :   shape_(indexes...) 
@@ -35,18 +105,46 @@ public:
         && "Shape mismatch: view must preserve total number of elements");
     }
 
+    /**
+     * @return The runtime data type of the tensor elements.
+     *
+     * This simply forwards the call to the underlying source expression’s
+     * `dtype`. Since a view (reshape or transpose) does not alter
+     * the actual stored values.
+     */
     constexpr type dtype() const {
         return source_.dtype();
     }
 
+    /**
+     * @return The shape of the reshaped view.
+     *
+     * In a reshape, this value is explicitly provided in the constructor
+     * through `indexes...` and stored in `shape_`.  
+     */
     constexpr Shape const& shape() const {
         return shape_;
     }
 
+    /**
+     * @return The strides of the reshaped view.
+     *
+     * For a reshape, strides are recomputed from the new `shape_` so that
+     * the element layout in memory matches the original data ordering. 
+     */
     constexpr Strides const& strides() const {
         return strides_;
     }
 
+    /**
+     * @return The byte offset of the reshaped view from the start of the storage.
+     *
+     * This value is forwarded from the source expression’s `offset()` method.
+     * The offset represents the memory position (in bytes) where the first
+     * element of the view begins relative to the start of the underlying
+     * storage buffer. Since reshape do not move elements in
+     * memory, the offset is unchanged from the source tensor.
+     */
     std::ptrdiff_t offset() const {
         return source_.offset();
     }
@@ -57,12 +155,52 @@ private:
     Shape shape_;
     Strides strides_;
     typename Trait<Source>::Reference source_;                
-}; 
- 
- 
+};  
+
+/**
+ * @brief Creates a reshaped view of a tensor or expression.
+ *
+ * @tparam Source The expression or tensor type.
+ * @tparam Indexes New shape dimensions (integral values).
+ * @param source The source expression.
+ * @param indexes Dimension sizes for the new shape.
+ * @return A `Reshape` view expression.
+ */
+template<Expression Source, Integral ... Indexes>
+constexpr auto view(Source&& source, Indexes ... indexes) {
+    return Reshape<Source>(
+        std::forward<Source>(source), indexes...
+    );
+} 
+
+
+/**
+ * @class Transpose
+ * @brief Expression template for transposing two dimensions of a tensor.
+ *
+ * @tparam Source The expression or tensor type being transposed.
+ *
+ * The `Transpose` view swaps the shape and strides of two dimensions
+ * without moving data. This is useful for reordering axes for operations
+ * like matrix multiplication.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {2, 3});
+ * auto Y = transpose(X, 0, 1); // shape becomes (3, 2)
+ * auto Z = X.transpose(0, 1); // oop syntax.
+ * ```
+ */
 template<Expression Source>
 class Transpose {
 public: 
+
+    /**
+     * @brief Construct a transposed view of the source tensor.
+     *
+     * @param source Reference to the source expression or tensor.
+     * @param dimensions A pair of dimension indices to swap.
+     */
     constexpr Transpose(typename Trait<Source>::Reference source, std::pair<int, int> dimensions)
     :   shape_(source.shape()) 
     ,   strides_(source.strides())
@@ -73,18 +211,44 @@ public:
         std::swap(strides_[indexing::normalize(dimensions.first, rank)], strides_[indexing::normalize(dimensions.second, rank)]);   
     }
 
+    /**
+     * @return The data type of the tensor elements.
+     *
+     * Transposing does not change the element type. This value is
+     * returned from the source expression's `dtype()`.
+     */
     constexpr type dtype() const {
         return source_.dtype();
-    }
-
+    } 
+        
+    /**
+     * @return The shape of the transposed view.
+     *
+     * The shape is initially copied from the source tensor, then
+     * in the constructor the two specified dimensions are swapped.
+     */
     constexpr Shape const& shape() const {
         return shape_;
-    }
-
-    constexpr Strides const& strides() const {
-        return strides_;
     } 
 
+    /**
+     * @return The strides of the transposed view.
+     *
+     * Strides are copied from the source tensor in the constructor,
+     * and then the strides for the two swapped dimensions are exchanged
+     * to match the new layout in memory.
+     */
+    constexpr Strides const& strides() const {
+        return strides_;
+    }  
+
+    /**
+     * @return The byte offset of the transposed view from the start of the storage.
+     *
+     * This is taken directly from the source expression’s `offset()` because
+     * transposing only changes how dimensions are indexed, not where the
+     * first element is stored.
+     */
     std::ptrdiff_t offset() const {
         return source_.offset();
     }
@@ -96,15 +260,18 @@ private:
     Strides strides_;
     typename Trait<Source>::Reference source_; 
     std::pair<int, int> dimensions_;
-};
+};  
 
-template<Expression Source, Integral ... Indexes>
-constexpr auto view(Source&& source, Indexes ... indexes) {
-    return Reshape<Source>(
-        std::forward<Source>(source), indexes...
-    );
-}
 
+/**
+ * @brief Creates a transposed view of a tensor or expression by swapping two dimensions.
+ *
+ * @tparam Source The expression or tensor type.
+ * @param source The source expression.
+ * @param first First dimension index to swap.
+ * @param second Second dimension index to swap.
+ * @return A `Transpose` view expression.
+ */
 template<Expression Source>
 constexpr auto transpose(Source&& source, int first, int second) {
     return Transpose<Source>(

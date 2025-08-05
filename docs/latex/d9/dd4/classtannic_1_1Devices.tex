@@ -2,6 +2,11 @@
 \hypertarget{classtannic_1_1Devices}{}\label{classtannic_1_1Devices}\index{tannic::Devices@{tannic::Devices}}
 
 
+\doxylink{classtannic_1_1Device}{Device} enumeration singleton.  
+
+
+
+
 {\ttfamily \#include $<$Resources.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -24,6 +29,23 @@ static \mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \& \mbox{\hyperlink{cl
 \item 
 static int \mbox{\hyperlink{classtannic_1_1Devices_a5f0a34f7a26f78f7328c3af3a188528e}{count}} ()
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classtannic_1_1Device}{Device} enumeration singleton. 
+
+
+\begin{DoxyItemize}
+\item Maintains global knowledge of available compute domains ~\newline
+
+\item Provides immutable count of attached devices
+\item Follows Meyer\textquotesingle{}s singleton pattern for thread-\/safe initialization
+\item Exists as a single instance per process
+\end{DoxyItemize}
+
+\begin{DoxyWarning}{Warning}
+\doxylink{classtannic_1_1Device}{Device} memory management is highly likely to change as the backend evolves. 
+\end{DoxyWarning}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}

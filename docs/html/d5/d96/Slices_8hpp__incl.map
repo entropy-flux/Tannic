@@ -1,5 +1,5 @@
 <map id="include/tannic/Slices.hpp" name="include/tannic/Slices.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="369,5,552,31"/>
+<area shape="rect" id="Node000001" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="369,5,552,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,79,60,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="370,32,234,52,74,81,73,76,233,46,369,27"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="84,79,144,104"/>

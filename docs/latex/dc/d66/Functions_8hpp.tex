@@ -1,5 +1,10 @@
 \doxysection{include/tannic/\+Functions.hpp File Reference}
 \hypertarget{Functions_8hpp}{}\label{Functions_8hpp}\index{include/tannic/Functions.hpp@{include/tannic/Functions.hpp}}
+
+
+Defines mathematical function operations for tensor expressions.  
+
+
 {\ttfamily \#include "{}Concepts.\+hpp"{}}\newline
 {\ttfamily \#include "{}Traits.\+hpp"{}}\newline
 {\ttfamily \#include "{}Shape.\+hpp"{}}\newline
@@ -14,27 +19,27 @@ Include dependency graph for Functions.\+hpp\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function$<$ Functor, Operand $>$}}
-\item 
+\begin{DoxyCompactList}\small\item\em Expression template for mathematical function operations. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Log}{tannic\+::function\+::\+Log}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1function_1_1Function}{Function} natural logarithm (ln(x)) Applies element-\/wise natural logarithm to tensor elements. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Exp}{tannic\+::function\+::\+Exp}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1function_1_1Function}{Function} exponential (e\texorpdfstring{$^\wedge$}{\string^}x) Applies element-\/wise exponential to tensor elements. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Sqrt}{tannic\+::function\+::\+Sqrt}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1function_1_1Function}{Function} square root (√x) Applies element-\/wise square root to tensor elements. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Abs}{tannic\+::function\+::\+Abs}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1function_1_1Function}{Function} absolute value (\texorpdfstring{$\vert$}{|}x\texorpdfstring{$\vert$}{|}) Applies element-\/wise absolute value to tensor elements. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Sin}{tannic\+::function\+::\+Sin}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1function_1_1Function}{Function} sine Applies element-\/wise sine to tensor elements (radians) \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Cos}{tannic\+::function\+::\+Cos}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1function_1_1Function}{Function} cosine Applies element-\/wise cosine to tensor elements (radians) \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Tan}{tannic\+::function\+::\+Tan}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1function_1_1Function}{Function} tangent Applies element-\/wise tangent to tensor elements (radians) \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Sinh}{tannic\+::function\+::\+Sinh}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1function_1_1Function}{Function} hyperbolic sine Applies element-\/wise hyperbolic sine to tensor elements. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Cosh}{tannic\+::function\+::\+Cosh}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1function_1_1Function}{Function} hyperbolic cosine Applies element-\/wise hyperbolic cosine to tensor elements. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Tanh}{tannic\+::function\+::\+Tanh}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1function_1_1Function}{Function} hyperbolic tangent Applies element-\/wise hyperbolic tangent to tensor elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -46,22 +51,59 @@ namespace \mbox{\hyperlink{namespacetannic_1_1function}{tannic\+::function}}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$Expression Operand$>$ }\\\mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{tannic\+::function\+::log}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} \&\&operand)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated natural logarithm expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Operand$>$ }\\\mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{tannic\+::function\+::exp}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} \&\&operand)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated exponential function expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Operand$>$ }\\\mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1function_a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b}{tannic\+::function\+::sqrt}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} \&\&operand)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated square root expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Operand$>$ }\\\mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1function_adf8029815df9c9b3b40179dd788a9ba8}{tannic\+::function\+::abs}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} \&\&operand)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated absolute value expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Operand$>$ }\\\mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1function_a8048b5991804efd638c160566eadb715}{tannic\+::function\+::sin}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} \&\&operand)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated sine function expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Operand$>$ }\\\mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1function_a4ee4a5baeff864c9605cc1c088ef9895}{tannic\+::function\+::cos}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} \&\&operand)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated cosine function expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Operand$>$ }\\\mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1function_a78acb787d42b68d6bf8fcc3fdafa6dc7}{tannic\+::function\+::tan}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} \&\&operand)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated tangent function expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Operand$>$ }\\\mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1function_af97a5da6ca19a282f6c4ec90d40fe468}{tannic\+::function\+::sinh}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} \&\&operand)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated hyperbolic sine expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Operand$>$ }\\\mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1function_a8419d8c9fe7bcb9ac418842fb3d726bd}{tannic\+::function\+::cosh}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} \&\&operand)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated hyperbolic cosine expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Operand$>$ }\\\mbox{\hyperlink{classtannic_1_1function_1_1Function}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{auto}} \mbox{\hyperlink{namespacetannic_1_1function_a4d71856a8e51387988d8d3b1a3ac4f61}{tannic\+::function\+::tanh}} (\mbox{\hyperlink{classtannic_1_1function_1_1Function}{Operand}} \&\&operand)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated hyperbolic tangent expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines mathematical function operations for tensor expressions. 
+
+\begin{DoxyAuthor}{Author}
+Eric Cardozo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+This header provides lazy-\/evaluated mathematical functions for tensor-\/like objects, implemented as expression templates. All operations are element-\/wise and maintain the original tensor\textquotesingle{}s shape and strides.
+
+Includes the following mathematical functions\+:
+\begin{DoxyItemize}
+\item Basic functions\+:
+\begin{DoxyItemize}
+\item log() -\/ Natural logarithm (ln)
+\item exp() -\/ Exponential (e\texorpdfstring{$^\wedge$}{\string^}x)
+\item sqrt() -\/ Square root (√x)
+\item abs() -\/ Absolute value (\texorpdfstring{$\vert$}{|}x\texorpdfstring{$\vert$}{|})
+\end{DoxyItemize}
+\item Trigonometric functions (radians)\+:
+\begin{DoxyItemize}
+\item sin() -\/ Sine
+\item cos() -\/ Cosine
+\item tan() -\/ Tangent
+\end{DoxyItemize}
+\item Hyperbolic functions\+:
+\begin{DoxyItemize}
+\item sinh() -\/ Hyperbolic sine
+\item cosh() -\/ Hyperbolic cosine
+\item tanh() -\/ Hyperbolic tangent
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+Part of the Tannic Tensor Library. 

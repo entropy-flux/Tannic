@@ -1,7 +1,7 @@
 <map id="include/tannic/Tensor.hpp" name="include/tannic/Tensor.hpp">
 <area shape="rect" id="Node000001" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="150,5,337,31"/>
-<area shape="rect" id="Node000002" href="$db/db8/Reductions_8hpp.html" title=" " alt="" coords="5,79,223,104"/>
+<area shape="rect" id="Node000002" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="5,79,223,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,40,136,81,134,76,209,35"/>
-<area shape="rect" id="Node000003" href="$df/d25/Transformations_8hpp.html" title=" " alt="" coords="247,79,498,104"/>
+<area shape="rect" id="Node000003" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="247,79,498,104"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="278,35,353,76,350,81,275,40"/>
 </map>

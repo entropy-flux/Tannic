@@ -99,6 +99,9 @@ $(document).ready(function(){initNavTree('dc/d66/Functions_8hpp.html','../../');
   <div class="headertitle"><div class="title">Functions.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines mathematical function operations for tensor expressions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d3/d84/Concepts_8hpp_source.html">Concepts.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d8/d38/Traits_8hpp_source.html">Traits.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/df8/Shape_8hpp_source.html">Shape.hpp</a>&quot;</code><br />
@@ -107,7 +110,7 @@ Include dependency graph for Functions.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/dfb/Functions_8hpp__incl.png" border="0" usemap="#ainclude_2tannic_2Functions_8hpp" alt=""/></div>
 <map name="ainclude_2tannic_2Functions_8hpp" id="ainclude_2tannic_2Functions_8hpp">
-<area shape="rect" title=" " alt="" coords="200,5,407,31"/>
+<area shape="rect" title="Defines mathematical function operations for tensor expressions." alt="" coords="200,5,407,31"/>
 <area shape="rect" href="../../d3/d84/Concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="352,225,463,251"/>
 <area shape="poly" title=" " alt="" coords="408,22,480,34,556,57,593,74,627,95,658,120,684,151,690,165,684,179,670,191,650,201,598,216,536,227,477,234,476,229,536,222,597,211,648,196,667,186,680,176,684,165,680,153,654,124,624,99,590,78,554,62,478,39,407,27"/>
 <area shape="rect" href="../../d8/d38/Traits_8hpp.html" title=" " alt="" coords="105,79,190,104"/>
@@ -153,26 +156,37 @@ Include dependency graph for Functions.hpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">tannic::function::Function&lt; Functor, Operand &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for mathematical function operations.  <a href="../../db/d37/classtannic_1_1function_1_1Function.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d67/structtannic_1_1function_1_1Log.html">tannic::function::Log</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html" title="Expression template for mathematical function operations.">Function</a> natural logarithm (ln(x)) Applies element-wise natural logarithm to tensor elements.  <a href="../../d9/d67/structtannic_1_1function_1_1Log.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/da3/structtannic_1_1function_1_1Exp.html">tannic::function::Exp</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html" title="Expression template for mathematical function operations.">Function</a> exponential (e^x) Applies element-wise exponential to tensor elements.  <a href="../../dc/da3/structtannic_1_1function_1_1Exp.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/df8/structtannic_1_1function_1_1Sqrt.html">tannic::function::Sqrt</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html" title="Expression template for mathematical function operations.">Function</a> square root (√x) Applies element-wise square root to tensor elements.  <a href="../../d7/df8/structtannic_1_1function_1_1Sqrt.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de6/structtannic_1_1function_1_1Abs.html">tannic::function::Abs</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html" title="Expression template for mathematical function operations.">Function</a> absolute value (|x|) Applies element-wise absolute value to tensor elements.  <a href="../../da/de6/structtannic_1_1function_1_1Abs.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d31/structtannic_1_1function_1_1Sin.html">tannic::function::Sin</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html" title="Expression template for mathematical function operations.">Function</a> sine Applies element-wise sine to tensor elements (radians)  <a href="../../d5/d31/structtannic_1_1function_1_1Sin.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd6/structtannic_1_1function_1_1Cos.html">tannic::function::Cos</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html" title="Expression template for mathematical function operations.">Function</a> cosine Applies element-wise cosine to tensor elements (radians)  <a href="../../d1/dd6/structtannic_1_1function_1_1Cos.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d15/structtannic_1_1function_1_1Tan.html">tannic::function::Tan</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html" title="Expression template for mathematical function operations.">Function</a> tangent Applies element-wise tangent to tensor elements (radians)  <a href="../../d2/d15/structtannic_1_1function_1_1Tan.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d64/structtannic_1_1function_1_1Sinh.html">tannic::function::Sinh</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html" title="Expression template for mathematical function operations.">Function</a> hyperbolic sine Applies element-wise hyperbolic sine to tensor elements.  <a href="../../de/d64/structtannic_1_1function_1_1Sinh.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc5/structtannic_1_1function_1_1Cosh.html">tannic::function::Cosh</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html" title="Expression template for mathematical function operations.">Function</a> hyperbolic cosine Applies element-wise hyperbolic cosine to tensor elements.  <a href="../../df/dc5/structtannic_1_1function_1_1Cosh.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d39/structtannic_1_1function_1_1Tanh.html">tannic::function::Tanh</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html" title="Expression template for mathematical function operations.">Function</a> hyperbolic tangent Applies element-wise hyperbolic tangent to tensor elements.  <a href="../../d6/d39/structtannic_1_1function_1_1Tanh.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -186,36 +200,73 @@ Namespaces</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a9ec44a47e78a5e28b75b76573d98e06b" id="r_a9ec44a47e78a5e28b75b76573d98e06b"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:a9ec44a47e78a5e28b75b76573d98e06b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
+<tr class="memdesc:a9ec44a47e78a5e28b75b76573d98e06b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated natural logarithm expression.  <br /></td></tr>
 <tr class="separator:a9ec44a47e78a5e28b75b76573d98e06b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a8e818c37a5236e4481677e70ce6209" id="r_a1a8e818c37a5236e4481677e70ce6209"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:a1a8e818c37a5236e4481677e70ce6209"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
+<tr class="memdesc:a1a8e818c37a5236e4481677e70ce6209"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated exponential function expression.  <br /></td></tr>
 <tr class="separator:a1a8e818c37a5236e4481677e70ce6209"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b" id="r_a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b">tannic::function::sqrt</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
+<tr class="memdesc:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated square root expression.  <br /></td></tr>
 <tr class="separator:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf8029815df9c9b3b40179dd788a9ba8" id="r_adf8029815df9c9b3b40179dd788a9ba8"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:adf8029815df9c9b3b40179dd788a9ba8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#adf8029815df9c9b3b40179dd788a9ba8">tannic::function::abs</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
+<tr class="memdesc:adf8029815df9c9b3b40179dd788a9ba8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated absolute value expression.  <br /></td></tr>
 <tr class="separator:adf8029815df9c9b3b40179dd788a9ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8048b5991804efd638c160566eadb715" id="r_a8048b5991804efd638c160566eadb715"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:a8048b5991804efd638c160566eadb715"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a8048b5991804efd638c160566eadb715">tannic::function::sin</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
+<tr class="memdesc:a8048b5991804efd638c160566eadb715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated sine function expression.  <br /></td></tr>
 <tr class="separator:a8048b5991804efd638c160566eadb715"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ee4a5baeff864c9605cc1c088ef9895" id="r_a4ee4a5baeff864c9605cc1c088ef9895"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:a4ee4a5baeff864c9605cc1c088ef9895"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a4ee4a5baeff864c9605cc1c088ef9895">tannic::function::cos</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
+<tr class="memdesc:a4ee4a5baeff864c9605cc1c088ef9895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated cosine function expression.  <br /></td></tr>
 <tr class="separator:a4ee4a5baeff864c9605cc1c088ef9895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78acb787d42b68d6bf8fcc3fdafa6dc7" id="r_a78acb787d42b68d6bf8fcc3fdafa6dc7"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:a78acb787d42b68d6bf8fcc3fdafa6dc7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a78acb787d42b68d6bf8fcc3fdafa6dc7">tannic::function::tan</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
+<tr class="memdesc:a78acb787d42b68d6bf8fcc3fdafa6dc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated tangent function expression.  <br /></td></tr>
 <tr class="separator:a78acb787d42b68d6bf8fcc3fdafa6dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af97a5da6ca19a282f6c4ec90d40fe468" id="r_af97a5da6ca19a282f6c4ec90d40fe468"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:af97a5da6ca19a282f6c4ec90d40fe468"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#af97a5da6ca19a282f6c4ec90d40fe468">tannic::function::sinh</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
+<tr class="memdesc:af97a5da6ca19a282f6c4ec90d40fe468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated hyperbolic sine expression.  <br /></td></tr>
 <tr class="separator:af97a5da6ca19a282f6c4ec90d40fe468"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8419d8c9fe7bcb9ac418842fb3d726bd" id="r_a8419d8c9fe7bcb9ac418842fb3d726bd"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:a8419d8c9fe7bcb9ac418842fb3d726bd"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a8419d8c9fe7bcb9ac418842fb3d726bd">tannic::function::cosh</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
+<tr class="memdesc:a8419d8c9fe7bcb9ac418842fb3d726bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated hyperbolic cosine expression.  <br /></td></tr>
 <tr class="separator:a8419d8c9fe7bcb9ac418842fb3d726bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d71856a8e51387988d8d3b1a3ac4f61" id="r_a4d71856a8e51387988d8d3b1a3ac4f61"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:a4d71856a8e51387988d8d3b1a3ac4f61"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">constexpr</a> <a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a4d71856a8e51387988d8d3b1a3ac4f61">tannic::function::tanh</a> (<a class="el" href="../../db/d37/classtannic_1_1function_1_1Function.html">Operand</a> &amp;&amp;operand)</td></tr>
+<tr class="memdesc:a4d71856a8e51387988d8d3b1a3ac4f61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated hyperbolic tangent expression.  <br /></td></tr>
 <tr class="separator:a4d71856a8e51387988d8d3b1a3ac4f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines mathematical function operations for tensor expressions. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Cardozo </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>This header provides lazy-evaluated mathematical functions for tensor-like objects, implemented as expression templates. All operations are element-wise and maintain the original tensor's shape and strides.</p>
+<p>Includes the following mathematical functions:</p><ul>
+<li>Basic functions:<ul>
+<li>log() - Natural logarithm (ln)</li>
+<li>exp() - Exponential (e^x)</li>
+<li>sqrt() - Square root (√x)</li>
+<li>abs() - Absolute value (|x|)</li>
+</ul>
+</li>
+<li>Trigonometric functions (radians):<ul>
+<li>sin() - Sine</li>
+<li>cos() - Cosine</li>
+<li>tan() - Tangent</li>
+</ul>
+</li>
+<li>Hyperbolic functions:<ul>
+<li>sinh() - Hyperbolic sine</li>
+<li>cosh() - Hyperbolic cosine</li>
+<li>tanh() - Hyperbolic tangent</li>
+</ul>
+</li>
+</ul>
+<p>Part of the Tannic Tensor Library. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -17,23 +17,98 @@
 
 #ifndef BUFFER_HPP
 #define BUFFER_HPP
+
+/**
+ * @file Buffer.hpp
+ * @author Eric Cardozo  
+ * @date 2025
+ * @brief Memory buffer management for tensor storage
+ * @details
+ * Provides a basic memory buffer abstraction that:
+ * 
+ * - Manages allocation and ownership of raw memory
+ * 
+ * - Supports both host and device memory through allocators
+ * 
+ * - Enforces move-only semantics for clear ownership
+ * 
+ * - Tracks memory region size and location
+ * 
+ * @see Allocator.hpp (supported allocators)
+ */
  
 #include <cstddef>   
 #include "Resources.hpp" 
 
-namespace tannic {
+namespace tannic { 
 
+/**
+ * @brief Managed memory buffer with explicit ownership
+ * @details
+ * Wraps a contiguous memory region with:
+ * 
+ * - Size tracking
+ * 
+ * - Allocator awareness  
+ * 
+ * - Move semantics for ownership transfer
+ * 
+ * - Const-correct access methods
+ */
 class Buffer {
-public:  
+public:   
+
+    /**
+     * @brief Constructs a buffer with specified size and allocator
+     * @param nbytes Size of memory region in bytes
+     * @param allocator Allocator to use (defaults to Host)
+     */
     Buffer(std::size_t nbytes, Allocator allocator = Host{}); 
+
+    // Non-copyable to maintain clear ownership
     Buffer(const Buffer&) = delete;
     Buffer& operator=(const Buffer&) = delete;
-    Buffer(Buffer&& other) noexcept;
+
+    /**
+     * @brief Move constructor transfers ownership
+     * @param other Source buffer to move from
+     */
+    Buffer(Buffer&& other) noexcept; 
+    
+    /**
+     * @brief Move assignment transfers ownership 
+     * @param other Source buffer to move from
+     * @return Reference to this buffer
+     */
     Buffer& operator=(Buffer&& other) noexcept;
-    ~Buffer();
+
+    /**
+     * @brief Destructor releases owned memory
+     */
+    ~Buffer(); 
+
+    /**
+     * @brief Gets writable pointer to memory
+     * @return Pointer to allocated memory
+     */
     void* address();
+
+    /**
+     * @brief Gets read-only pointer to memory  
+     * @return Const pointer to allocated memory
+     */
     const void* address() const;
-    std::size_t nbytes() const;
+
+    /**
+     * @brief Gets buffer size in bytes
+     * @return Size of allocated memory region
+     */
+    std::size_t nbytes() const; 
+    
+    /**
+     * @brief Gets the allocator used for this buffer
+     * @return Reference to the allocator instance
+     */
     Allocator const& allocator() const; 
 
 private:  

@@ -1,11 +1,11 @@
 <map id="include/tannic/Resources.hpp" name="include/tannic/Resources.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="137,5,349,31"/>
-<area shape="rect" id="Node000002" href="$d8/d36/Buffer_8hpp.html" title=" " alt="" coords="152,79,335,104"/>
+<area shape="rect" id="Node000001" title="Memory resource management for heterogeneous computing." alt="" coords="137,5,349,31"/>
+<area shape="rect" id="Node000002" href="$d8/d36/Buffer_8hpp.html" title="Memory buffer management for tensor storage." alt="" coords="152,79,335,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,44,246,79,241,79,241,44"/>
 <area shape="rect" id="Node000003" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="150,152,337,177"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="246,118,246,152,241,152,241,118"/>
-<area shape="rect" id="Node000004" href="$db/db8/Reductions_8hpp.html" title=" " alt="" coords="5,225,223,251"/>
+<area shape="rect" id="Node000004" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="5,225,223,251"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="212,186,136,227,134,223,209,182"/>
-<area shape="rect" id="Node000005" href="$df/d25/Transformations_8hpp.html" title=" " alt="" coords="247,225,498,251"/>
+<area shape="rect" id="Node000005" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="247,225,498,251"/>
 <area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="278,182,353,223,350,227,275,186"/>
 </map>

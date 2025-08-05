@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('d2/d6a/Slices_8hpp.html','../../'); in
   <div class="headertitle"><div class="title">Slices.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements tensor slicing for expression templates in the Tannic Tensor Library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;tuple&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
@@ -112,7 +115,7 @@ Include dependency graph for Slices.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d5/d96/Slices_8hpp__incl.png" border="0" usemap="#ainclude_2tannic_2Slices_8hpp" alt=""/></div>
 <map name="ainclude_2tannic_2Slices_8hpp" id="ainclude_2tannic_2Slices_8hpp">
-<area shape="rect" title=" " alt="" coords="369,5,552,31"/>
+<area shape="rect" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="369,5,552,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,60,104"/>
 <area shape="poly" title=" " alt="" coords="370,32,234,52,74,81,73,76,233,46,369,27"/>
 <area shape="rect" title=" " alt="" coords="84,79,144,104"/>
@@ -176,12 +179,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d97/Slices_8hpp__dep__incl.png" border="0" usemap="#ainclude_2tannic_2Slices_8hppdep" alt=""/></div>
 <map name="ainclude_2tannic_2Slices_8hppdep" id="ainclude_2tannic_2Slices_8hppdep">
-<area shape="rect" title=" " alt="" coords="152,5,335,31"/>
+<area shape="rect" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="152,5,335,31"/>
 <area shape="rect" href="../../db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="150,79,337,104"/>
 <area shape="poly" title=" " alt="" coords="246,44,246,79,241,79,241,44"/>
-<area shape="rect" href="../../db/db8/Reductions_8hpp.html" title=" " alt="" coords="5,152,223,177"/>
+<area shape="rect" href="../../db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="5,152,223,177"/>
 <area shape="poly" title=" " alt="" coords="212,113,136,154,134,149,209,108"/>
-<area shape="rect" href="../../df/d25/Transformations_8hpp.html" title=" " alt="" coords="247,152,498,177"/>
+<area shape="rect" href="../../df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="247,152,498,177"/>
 <area shape="poly" title=" " alt="" coords="278,108,353,149,350,154,275,113"/>
 </map>
 </div>
@@ -191,6 +194,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html">tannic::expression::Slice&lt; Source, Indexes &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template representing a tensor slice or subview.  <a href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -200,7 +204,26 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d9/dd9/namespacetannic_1_1expression" id="r_d9/dd9/namespacetannic_1_1expression"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html">tannic::expression</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements tensor slicing for expression templates in the Tannic Tensor Library. </p>
+<p>This header defines the <code>Slice</code> class template, which represents a view or subrange of a tensor without copying its data. It supports chained indexing, assignment, and comparison operations while preserving the underlying expression structure.</p>
+<p>Key features:</p><ul>
+<li>Zero-copy view into a tensor or tensor expression.</li>
+<li>Supports integer indexing and range slicing.</li>
+<li>Preserves shape, strides, and data type information.</li>
+<li>Works as part of the Tannic expression template framework.</li>
+</ul>
+<p>Example usage:</p>
+<div class="fragment"><div class="line">Tensor X(float32, {2,2,2}); X.initialize(); </div>
+<div class="line">X[0] = 1;    <span class="comment">//arbitrary types assignment support.</span></div>
+<div class="line">X[1] = 2.f;</div>
+<div class="line">std::cout &lt;&lt; X  &lt;&lt; std::endl; <span class="comment">// Tensor([[[1, 1], [1, 1]], </span></div>
+<div class="line">                             <span class="comment">//          [[2, 2], [2, 2]]] dtype=float32, shape=(2, 2, 2))</span></div>
+<div class="line">Tensor Y = X[1]; </div>
+<div class="line">std::cout &lt;&lt; Y &lt;&lt; std::endl; <span class="comment">// Tensor([[2, 2], </span></div>
+<div class="line">                            <span class="comment">//          [2, 2]] dtype=float32, shape=(2, 2))</span></div>
+<div class="line">std::cout &lt;&lt; Y[0] &lt;&lt; std::endl; <span class="comment">// Tensor([2, 2] dtype=float32, shape=(2))</span></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

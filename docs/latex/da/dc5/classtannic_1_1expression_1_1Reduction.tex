@@ -2,6 +2,11 @@
 \hypertarget{classtannic_1_1expression_1_1Reduction}{}\label{classtannic_1_1expression_1_1Reduction}\index{tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}}
 
 
+Expression template for reduction operations.  
+
+
+
+
 {\ttfamily \#include $<$Reductions.\+hpp$>$}
 
 
@@ -17,17 +22,17 @@ Collaboration diagram for tannic\+::expression\+::Reduction\texorpdfstring{$<$}{
 \begin{DoxyCompactItemize}
 \item 
 constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a9e79399f2f9ba00d0d95b58653ae5d05}{Reduction}} (Reducer \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}}, typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operand $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}})
-\item 
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classtannic_1_1expression_1_1Reduction}{Reduction} expression. \end{DoxyCompactList}\item 
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a490b9f5f332ad6df24ab82792af7e486}{dtype}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the data type of the reduced result. \end{DoxyCompactList}\item 
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad3ad6ef60474446a9df10985717c1af2}{shape}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the shape of the reduced result. \end{DoxyCompactList}\item 
 constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_adc8cbfb029055ea3a770e65e41efa48b}{strides}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the strides of the reduced result. \end{DoxyCompactList}\item 
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a5fccaa5f3c597ec6caab4ec846c2a84a}{offset}} () const
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the offset of the result tensor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{forward}} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Evaluates the reduction expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,6 +40,22 @@ Reducer \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff
 \item 
 \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operand $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class Reducer, Expression Operand$>$\newline
+class tannic\+::expression\+::\+Reduction$<$ Reducer, Operand $>$}
+Expression template for reduction operations. 
+
+Represents a lazily evaluated reduction operation applied to a tensor expression. Handles proper shape, stride and dtype transformations for the reduced result.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Reducer} & \doxylink{classtannic_1_1expression_1_1Reduction}{Reduction} operation type (must implement reduce() and \doxylink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{forward()}) \\
+\hline
+{\em Operand} & Input expression type satisfying the Expression concept \\
+\hline
+\end{DoxyTemplParams}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -47,6 +68,17 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::exp
 
 
 
+Constructs a \doxylink{classtannic_1_1expression_1_1Reduction}{Reduction} expression. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reducer} & \doxylink{classtannic_1_1expression_1_1Reduction}{Reduction} operation functor \\
+\hline
+{\em operand} & Input tensor expression \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Reduction_a490b9f5f332ad6df24ab82792af7e486}\label{classtannic_1_1expression_1_1Reduction_a490b9f5f332ad6df24ab82792af7e486} 
 \index{tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}!dtype@{dtype}}
@@ -55,6 +87,13 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::exp
 {\footnotesize\ttfamily template$<$class Reducer , Expression Operand$>$ \\
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::expression\+::\+Reduction}}$<$ Reducer, Operand $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
+
+
+Returns the data type of the reduced result. 
+
+\begin{DoxyReturn}{Returns}
+Transformed dtype after reduction 
+\end{DoxyReturn}
 \Hypertarget{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}\label{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67} 
 \index{tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}}
@@ -62,6 +101,13 @@ constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+
 {\footnotesize\ttfamily template$<$class Reducer , Expression Operand$>$ \\
 \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::expression\+::\+Reduction}}$<$ Reducer, Operand $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Evaluates the reduction expression. 
+
+\begin{DoxyReturn}{Returns}
+New \doxylink{classtannic_1_1Tensor}{Tensor} containing the reduced result 
+\end{DoxyReturn}
 \Hypertarget{classtannic_1_1expression_1_1Reduction_a5fccaa5f3c597ec6caab4ec846c2a84a}\label{classtannic_1_1expression_1_1Reduction_a5fccaa5f3c597ec6caab4ec846c2a84a} 
 \index{tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}!offset@{offset}}
 \index{offset@{offset}!tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}}
@@ -69,6 +115,13 @@ constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+
 {\footnotesize\ttfamily template$<$class Reducer , Expression Operand$>$ \\
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::expression\+::\+Reduction}}$<$ Reducer, Operand $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
+
+
+Returns the offset of the result tensor. 
+
+\begin{DoxyReturn}{Returns}
+Always 0 since reductions create new tensors 
+\end{DoxyReturn}
 \Hypertarget{classtannic_1_1expression_1_1Reduction_ad3ad6ef60474446a9df10985717c1af2}\label{classtannic_1_1expression_1_1Reduction_ad3ad6ef60474446a9df10985717c1af2} 
 \index{tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}}
@@ -76,6 +129,13 @@ std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{t
 {\footnotesize\ttfamily template$<$class Reducer , Expression Operand$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::expression\+::\+Reduction}}$<$ Reducer, Operand $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
+
+
+Returns the shape of the reduced result. 
+
+\begin{DoxyReturn}{Returns}
+Reduced shape after applying the reduction 
+\end{DoxyReturn}
 \Hypertarget{classtannic_1_1expression_1_1Reduction_adc8cbfb029055ea3a770e65e41efa48b}\label{classtannic_1_1expression_1_1Reduction_adc8cbfb029055ea3a770e65e41efa48b} 
 \index{tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}}
@@ -83,6 +143,13 @@ constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperl
 {\footnotesize\ttfamily template$<$class Reducer , Expression Operand$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::expression\+::\+Reduction}}$<$ Reducer, Operand $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
+
+
+Returns the strides of the reduced result. 
+
+\begin{DoxyReturn}{Returns}
+Adjusted strides for the reduced shape 
+\end{DoxyReturn}
 
 
 \doxysubsection{Member Data Documentation}

@@ -1,5 +1,10 @@
 \doxysection{include/tannic/\+Views.hpp File Reference}
 \hypertarget{Views_8hpp}{}\label{Views_8hpp}\index{include/tannic/Views.hpp@{include/tannic/Views.hpp}}
+
+
+Implements views for tensors in the Tannic Tensor Library.  
+
+
 {\ttfamily \#include $<$utility$>$}\newline
 {\ttfamily \#include $<$algorithm$>$}\newline
 {\ttfamily \#include $<$numeric$>$}\newline
@@ -27,9 +32,9 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape$<$ Source $>$}}
-\item 
+\begin{DoxyCompactList}\small\item\em Expression template for viewing a tensor with a new shape. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose$<$ Source $>$}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Expression template for transposing two dimensions of a tensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,6 +46,29 @@ namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$Expression Source, Integral ... Indexes$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}{tannic\+::expression\+::view}} (Source \&\&source, Indexes ... indexes)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a reshaped view of a tensor or expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}{tannic\+::expression\+::transpose}} (Source \&\&source, int first, int second)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates a transposed view of a tensor or expression by swapping two dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements views for tensors in the Tannic Tensor Library. 
+
+This header defines expression templates for tensors views without copying data. These views operate on the underlying tensor metadata (shape, strides, and offset) to reinterpret how elements are accessed while preserving the original storage.
+
+Example usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ X(float32,\ \{2,\ 3\});\ X.initialize();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Reshape\ from\ (2,\ 3)\ to\ (3,\ 2)}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}{view}}(X,\ 3,\ 2);}
+\DoxyCodeLine{std::cout\ <<\ Y.shape()\ <<\ std::endl;\ \textcolor{comment}{//\ (3,\ 2)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Swap\ the\ first\ and\ second\ dimensions}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}{transpose}}(X,\ 0,\ 1);}
+\DoxyCodeLine{std::cout\ <<\ Z.shape()\ <<\ std::endl;\ \textcolor{comment}{//\ (3,\ 2)}}
+
+\end{DoxyCode}
+ 

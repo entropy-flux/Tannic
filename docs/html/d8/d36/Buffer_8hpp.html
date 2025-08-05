@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('d8/d36/Buffer_8hpp.html','../../'); in
   <div class="headertitle"><div class="title">Buffer.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Memory buffer management for tensor storage.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d6/ddc/Resources_8hpp_source.html">Resources.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -105,10 +108,10 @@ Include dependency graph for Buffer.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d77/Buffer_8hpp__incl.png" border="0" usemap="#ainclude_2tannic_2Buffer_8hpp" alt=""/></div>
 <map name="ainclude_2tannic_2Buffer_8hpp" id="ainclude_2tannic_2Buffer_8hpp">
-<area shape="rect" title=" " alt="" coords="37,5,220,31"/>
+<area shape="rect" title="Memory buffer management for tensor storage." alt="" coords="37,5,220,31"/>
 <area shape="rect" title=" " alt="" coords="5,152,76,177"/>
 <area shape="poly" title=" " alt="" coords="124,33,57,142,52,139,119,30"/>
-<area shape="rect" href="../../d6/ddc/Resources_8hpp.html" title=" " alt="" coords="138,79,255,104"/>
+<area shape="rect" href="../../d6/ddc/Resources_8hpp.html" title="Memory resource management for heterogeneous computing." alt="" coords="138,79,255,104"/>
 <area shape="poly" title=" " alt="" coords="142,29,178,67,174,70,138,33"/>
 <area shape="poly" title=" " alt="" coords="173,106,80,149,78,144,171,102"/>
 <area shape="rect" title=" " alt="" coords="101,152,167,177"/>
@@ -126,12 +129,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/dd9/Buffer_8hpp__dep__incl.png" border="0" usemap="#ainclude_2tannic_2Buffer_8hppdep" alt=""/></div>
 <map name="ainclude_2tannic_2Buffer_8hppdep" id="ainclude_2tannic_2Buffer_8hppdep">
-<area shape="rect" title=" " alt="" coords="152,5,335,31"/>
+<area shape="rect" title="Memory buffer management for tensor storage." alt="" coords="152,5,335,31"/>
 <area shape="rect" href="../../db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="150,79,337,104"/>
 <area shape="poly" title=" " alt="" coords="246,44,246,79,241,79,241,44"/>
-<area shape="rect" href="../../db/db8/Reductions_8hpp.html" title=" " alt="" coords="5,152,223,177"/>
+<area shape="rect" href="../../db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="5,152,223,177"/>
 <area shape="poly" title=" " alt="" coords="212,113,136,154,134,149,209,108"/>
-<area shape="rect" href="../../df/d25/Transformations_8hpp.html" title=" " alt="" coords="247,152,498,177"/>
+<area shape="rect" href="../../df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="247,152,498,177"/>
 <area shape="poly" title=" " alt="" coords="278,108,353,149,350,154,275,113"/>
 </map>
 </div>
@@ -141,6 +144,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">tannic::Buffer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managed memory buffer with explicit ownership.  <a href="../../d4/d50/classtannic_1_1Buffer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -148,7 +152,20 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d0/d1a/namespacetannic" id="r_d0/d1a/namespacetannic"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Memory buffer management for tensor storage. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Cardozo <br  />
+ </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<p>Provides a basic memory buffer abstraction that:</p>
+<ul>
+<li>Manages allocation and ownership of raw memory</li>
+<li>Supports both host and device memory through allocators</li>
+<li>Enforces move-only semantics for clear ownership</li>
+<li>Tracks memory region size and location</li>
+</ul>
+<dl class="section see"><dt>See also</dt><dd>Allocator.hpp (supported allocators) </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

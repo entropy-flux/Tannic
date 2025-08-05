@@ -99,6 +99,9 @@ $(document).ready(function(){initNavTree('d8/dea/Views_8hpp.html','../../'); ini
   <div class="headertitle"><div class="title">Views.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements views for tensors in the Tannic Tensor Library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;numeric&gt;</code><br />
@@ -113,7 +116,7 @@ Include dependency graph for Views.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d85/Views_8hpp__incl.png" border="0" usemap="#ainclude_2tannic_2Views_8hpp" alt=""/></div>
 <map name="ainclude_2tannic_2Views_8hpp" id="ainclude_2tannic_2Views_8hpp">
-<area shape="rect" title=" " alt="" coords="307,5,491,31"/>
+<area shape="rect" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="307,5,491,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,65,104"/>
 <area shape="poly" title=" " alt="" coords="329,33,216,53,79,81,78,76,215,48,328,28"/>
 <area shape="rect" title=" " alt="" coords="90,79,175,104"/>
@@ -178,12 +181,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/dc4/Views_8hpp__dep__incl.png" border="0" usemap="#ainclude_2tannic_2Views_8hppdep" alt=""/></div>
 <map name="ainclude_2tannic_2Views_8hppdep" id="ainclude_2tannic_2Views_8hppdep">
-<area shape="rect" title=" " alt="" coords="151,5,335,31"/>
+<area shape="rect" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="151,5,335,31"/>
 <area shape="rect" href="../../db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="150,79,337,104"/>
 <area shape="poly" title=" " alt="" coords="246,44,246,79,241,79,241,44"/>
-<area shape="rect" href="../../db/db8/Reductions_8hpp.html" title=" " alt="" coords="5,152,223,177"/>
+<area shape="rect" href="../../db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="5,152,223,177"/>
 <area shape="poly" title=" " alt="" coords="212,113,136,154,134,149,209,108"/>
-<area shape="rect" href="../../df/d25/Transformations_8hpp.html" title=" " alt="" coords="247,152,498,177"/>
+<area shape="rect" href="../../df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="247,152,498,177"/>
 <area shape="poly" title=" " alt="" coords="278,108,353,149,350,154,275,113"/>
 </map>
 </div>
@@ -193,8 +196,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd8/classtannic_1_1expression_1_1Reshape.html">tannic::expression::Reshape&lt; Source &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for viewing a tensor with a new shape.  <a href="../../d2/dd8/classtannic_1_1expression_1_1Reshape.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html">tannic::expression::Transpose&lt; Source &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for transposing two dimensions of a tensor.  <a href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -208,12 +213,27 @@ Namespaces</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a5f5b6b37401a67689b7df785f85eefbe" id="r_a5f5b6b37401a67689b7df785f85eefbe"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral ... Indexes&gt; </td></tr>
 <tr class="memitem:a5f5b6b37401a67689b7df785f85eefbe"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe">tannic::expression::view</a> (Source &amp;&amp;source, Indexes ... indexes)</td></tr>
+<tr class="memdesc:a5f5b6b37401a67689b7df785f85eefbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a reshaped view of a tensor or expression.  <br /></td></tr>
 <tr class="separator:a5f5b6b37401a67689b7df785f85eefbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab43b77ed569cfeb4380abc2e6458aa00" id="r_ab43b77ed569cfeb4380abc2e6458aa00"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
 <tr class="memitem:ab43b77ed569cfeb4380abc2e6458aa00"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#ab43b77ed569cfeb4380abc2e6458aa00">tannic::expression::transpose</a> (Source &amp;&amp;source, int first, int second)</td></tr>
+<tr class="memdesc:ab43b77ed569cfeb4380abc2e6458aa00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a transposed view of a tensor or expression by swapping two dimensions.  <br /></td></tr>
 <tr class="separator:ab43b77ed569cfeb4380abc2e6458aa00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements views for tensors in the Tannic Tensor Library. </p>
+<p>This header defines expression templates for tensors views without copying data. These views operate on the underlying tensor metadata (shape, strides, and offset) to reinterpret how elements are accessed while preserving the original storage.</p>
+<p>Example usage:</p>
+<div class="fragment"><div class="line">Tensor X(float32, {2, 3}); X.initialize();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Reshape from (2, 3) to (3, 2)</span></div>
+<div class="line"><span class="keyword">auto</span> Y = view(X, 3, 2);</div>
+<div class="line">std::cout &lt;&lt; Y.shape() &lt;&lt; std::endl; <span class="comment">// (3, 2)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Swap the first and second dimensions</span></div>
+<div class="line"><span class="keyword">auto</span> Z = transpose(X, 0, 1);</div>
+<div class="line">std::cout &lt;&lt; Z.shape() &lt;&lt; std::endl; <span class="comment">// (3, 2)</span></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -104,7 +104,7 @@ public:
      * 
      * #### Example:
      * 
-     * ```
+     * ```cpp
      * constexpr tannic::Strides s(6, 2, 1);
      * std::cout << s;  // Output: Strides(6, 2, 1)
      * ```
@@ -127,7 +127,7 @@ public:
      *
      * #### Example:
      * 
-     * ```
+     * ```cpp
      * std::vector<std::size_t> values = {12, 4, 1};
      * tannic::Strides s(values.begin(), values.end());
      * ```
@@ -148,7 +148,7 @@ public:
      *
      * #### Example:
      * 
-     * ```
+     * ```cpp
      * constexpr tannic::Shape shape(2, 3, 4);
      * constexpr tannic::Strides s(shape);
      * std::cout << s;  // Output: Strides(12, 4, 1)

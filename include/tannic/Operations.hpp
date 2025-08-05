@@ -58,7 +58,7 @@ namespace operation {
  * Represents a lazily evaluated unary operation applied to a single tensor-like operand.
  * This template enables deferred execution and composability at compile time.
  *
- * @tparam Operation A stateless functor implementing `void forward(Tensor const&, Tensor&)`.
+ * @tparam Operation A stateless operation implementing `void forward(Tensor const&, Tensor&)`.
  * @tparam Operand An expression type satisfying the `Expression` concept.
  */
 template<class Operation, Expression Operand>
@@ -285,7 +285,7 @@ static constexpr Shape broadcast(Shape const& first, Shape const& second) {
 
 
 /**
- * @brief Element-wise negation of a tensor expression.
+ * @brief Unary element-wise negation of a tensor expression.
  *
  * Used to build a lazily evaluated `Unary<Negation, Operand>` expression.
  * The computation is not performed immediately, but deferred until 
@@ -313,7 +313,7 @@ struct Negation {
 
 
 /**
- * @brief Element-wise addition of two tensor expressions.
+ * @brief Binary element-wise addition of two tensor expressions.
  *
  * Used to build a lazily evaluated `Binary<Addition, Augend, Addend>` expression.
  * Computation is deferred until `forward()` is called or assigned to a `Tensor`.
@@ -349,7 +349,7 @@ struct Addition {
 
 
 /**
- * @brief Element-wise multiplication of two tensor expressions.
+ * @brief Binary element-wise multiplication of two tensor expressions.
  *
  * Used to build a lazily evaluated `Binary<Multiplication, Multiplicand, Multiplier>` expression.
  * Computation is deferred until `forward()` is called or assigned to a `Tensor`.
@@ -385,7 +385,7 @@ struct Multiplication {
 
 
 /**
- * @brief Element-wise subtraction of two tensor expressions.
+ * @brief Binary element-wise subtraction of two tensor expressions.
  *
  * Used to build a lazily evaluated `Binary<Subtraction, Subtrahend, Minuend>` expression.
  * Computation is deferred until `forward()` is called or assigned to a `Tensor`.

@@ -2,13 +2,18 @@
 \hypertarget{classtannic_1_1expression_1_1Transpose}{}\label{classtannic_1_1expression_1_1Transpose}\index{tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}}
 
 
+Expression template for transposing two dimensions of a tensor.  
+
+
+
+
 {\ttfamily \#include $<$Views.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a8a249c8137fb87b17025731e6315e17a}{Transpose}} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, std\+::pair$<$ int, int $>$ dimensions)
-\item 
+\begin{DoxyCompactList}\small\item\em Construct a transposed view of the source tensor. \end{DoxyCompactList}\item 
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a9cb47b2a9524225c53a91827422b0f10}{dtype}} () const
 \item 
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a34917975841840765cba6f0904888202}{shape}} () const
@@ -21,6 +26,27 @@ std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a3
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$Expression Source$>$\newline
+class tannic\+::expression\+::\+Transpose$<$ Source $>$}
+Expression template for transposing two dimensions of a tensor. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Source} & The expression or tensor type being transposed.\\
+\hline
+\end{DoxyTemplParams}
+The {\ttfamily \doxylink{classtannic_1_1expression_1_1Transpose}{Transpose}} view swaps the shape and strides of two dimensions without moving data. This is useful for reordering axes for operations like matrix multiplication.
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ X(float32,\ \{2,\ 3\});}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}{transpose}}(X,\ 0,\ 1);\ \textcolor{comment}{//\ shape\ becomes\ (3,\ 2)}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Z\ =\ X.transpose(0,\ 1);\ \textcolor{comment}{//\ oop\ syntax.}}
+
+\end{DoxyCode}
+ 
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Transpose_a8a249c8137fb87b17025731e6315e17a}\label{classtannic_1_1expression_1_1Transpose_a8a249c8137fb87b17025731e6315e17a} 
 \index{tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}!Transpose@{Transpose}}
@@ -31,6 +57,17 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::exp
 
 
 
+Construct a transposed view of the source tensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Reference to the source expression or tensor. \\
+\hline
+{\em dimensions} & A pair of dimension indices to swap. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Transpose_a9cb47b2a9524225c53a91827422b0f10}\label{classtannic_1_1expression_1_1Transpose_a9cb47b2a9524225c53a91827422b0f10} 
 \index{tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}!dtype@{dtype}}
@@ -39,7 +76,10 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::exp
 {\footnotesize\ttfamily template$<$Expression Source$>$ \\
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ Source $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\Hypertarget{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936}\label{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936} 
+\begin{DoxyReturn}{Returns}
+The data type of the tensor elements.
+\end{DoxyReturn}
+Transposing does not change the element type. This value is returned from the source expression\textquotesingle{}s {\ttfamily \doxylink{classtannic_1_1expression_1_1Transpose_a9cb47b2a9524225c53a91827422b0f10}{dtype()}}. \Hypertarget{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936}\label{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936} 
 \index{tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
@@ -53,21 +93,30 @@ constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+
 {\footnotesize\ttfamily template$<$Expression Source$>$ \\
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ Source $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{classtannic_1_1expression_1_1Transpose_a34917975841840765cba6f0904888202}\label{classtannic_1_1expression_1_1Transpose_a34917975841840765cba6f0904888202} 
+\begin{DoxyReturn}{Returns}
+The byte offset of the transposed view from the start of the storage.
+\end{DoxyReturn}
+This is taken directly from the source expression’s {\ttfamily \doxylink{classtannic_1_1expression_1_1Transpose_a3784e6c4f79e9fcc21b9941aaac6cd79}{offset()}} because transposing only changes how dimensions are indexed, not where the first element is stored. \Hypertarget{classtannic_1_1expression_1_1Transpose_a34917975841840765cba6f0904888202}\label{classtannic_1_1expression_1_1Transpose_a34917975841840765cba6f0904888202} 
 \index{tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
 {\footnotesize\ttfamily template$<$Expression Source$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ Source $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\Hypertarget{classtannic_1_1expression_1_1Transpose_a956cad9ae69fd7e7a4147565d5f3e712}\label{classtannic_1_1expression_1_1Transpose_a956cad9ae69fd7e7a4147565d5f3e712} 
+\begin{DoxyReturn}{Returns}
+The shape of the transposed view.
+\end{DoxyReturn}
+The shape is initially copied from the source tensor, then in the constructor the two specified dimensions are swapped. \Hypertarget{classtannic_1_1expression_1_1Transpose_a956cad9ae69fd7e7a4147565d5f3e712}\label{classtannic_1_1expression_1_1Transpose_a956cad9ae69fd7e7a4147565d5f3e712} 
 \index{tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::expression::Transpose$<$ Source $>$@{tannic::expression::Transpose$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
 {\footnotesize\ttfamily template$<$Expression Source$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose}}$<$ Source $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-
+\begin{DoxyReturn}{Returns}
+The strides of the transposed view.
+\end{DoxyReturn}
+\doxylink{classtannic_1_1Strides}{Strides} are copied from the source tensor in the constructor, and then the strides for the two swapped dimensions are exchanged to match the new layout in memory. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

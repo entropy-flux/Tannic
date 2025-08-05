@@ -1,8 +1,8 @@
 <map id="include/tannic/Buffer.hpp" name="include/tannic/Buffer.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="37,5,220,31"/>
+<area shape="rect" id="Node000001" title="Memory buffer management for tensor storage." alt="" coords="37,5,220,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,152,76,177"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,33,57,142,52,139,119,30"/>
-<area shape="rect" id="Node000003" href="$d6/ddc/Resources_8hpp.html" title=" " alt="" coords="138,79,255,104"/>
+<area shape="rect" id="Node000003" href="$d6/ddc/Resources_8hpp.html" title="Memory resource management for heterogeneous computing." alt="" coords="138,79,255,104"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,29,178,67,174,70,138,33"/>
 <area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="173,106,80,149,78,144,171,102"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="101,152,167,177"/>

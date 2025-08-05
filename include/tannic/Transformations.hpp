@@ -14,11 +14,23 @@
 //
 
 #ifndef TRANSFORMATIONS_HPP
-#define TRANSFORMATIONS_HPP
+#define TRANSFORMATIONS_HPP 
+
+/**
+ * @file Transformations.hpp
+ * @author Eric Cardozo
+ * @date 2025
+ * @brief Defines tensor transformation operations.
+ *
+ * This header provides tensor transformation operations implemented as expression templates. 
+ *
+ * Part of the Tannic Tensor Library.
+ */
 
 #include <tuple>
 #include <array>
 #include <vector>
+#include <cassert>
 
 #include "Concepts.hpp"
 #include "Types.hpp"
@@ -28,16 +40,30 @@
 
 namespace tannic {
 
-class Tensor;
+class Tensor;  
 
-namespace transformation {    
-  
+namespace transformation {
+
+/**
+ * @brief Expression template for tensor transformations
+ *
+ * Represents a lazily evaluated transformation operation between multiple tensors.
+ * Handles type promotion, shape broadcasting, and proper stride computation.
+ *
+ * @tparam Operation The transformation operation type
+ * @tparam Operands Variadic template for input expressions
+ */
 template<class Operation, Expression ... Operands>
 class Transformation {
 public:
     Operation operation;
     std::tuple<typename Trait<Operands>::Reference...> operands;
 
+    /**
+     * @brief Constructs a Transformation expression
+     * @param operation The transformation operation
+     * @param operands Input tensor expressions
+     */
     constexpr Transformation(Operation operation, typename Trait<Operands>::Reference... operands)
     :   operation(operation)
     ,   operands(operands...) 
@@ -46,22 +72,42 @@ public:
     ,   strides_(shape_)
     {}
     
+    /**
+     * @brief Gets the result data type after promotion
+     * @return Promoted data type
+     */
     constexpr type dtype() const {
         return dtype_;
     }
 
+    /**
+     * @brief Gets the broadcasted output shape
+     * @return Shape after broadcasting and transformation
+     */
     constexpr Shape const& shape() const {
         return shape_;
     }
 
+    /**
+     * @brief Gets the computed strides for the result
+     * @return Strides based on output shape (row-major)
+     */
     constexpr Strides const& strides() const {
         return strides_;
     } 
 
+    /**
+     * @brief Gets the data offset (always 0 for new tensors)
+     * @return Always returns 0
+     */
     std::ptrdiff_t offset() const {
         return 0;
     }
 
+    /**
+     * @brief Evaluates the transformation
+     * @return New tensor containing the transformed result
+     */
     Tensor forward() const {
         Tensor result(dtype_, shape_);
         std::apply([&](const auto&... arguments) {
@@ -74,17 +120,47 @@ private:
     type dtype_;
     Shape shape_; 
     Strides strides_;
-};   
- 
-static constexpr auto index(type inner, type outer) {
-    return static_cast<int>(inner) + static_cast<int>(outer) * static_cast<int>(TYPES);
+};
+
+/**
+ * @brief Helper function to compute type promotion table indices
+ * @param first  First type
+ * @param second Second type
+ * @return Index into promotion table
+ */
+static constexpr auto index(type first, type second) {
+    return static_cast<int>(first) + static_cast<int>(second) * static_cast<int>(TYPES);
 }  
 
+/**
+ * @brief Transformation composition (Known as Matrix Multiplication) operation
+ *
+ * Implements tensor composition with:
+ * - Automatic type promotion
+ * - Shape broadcasting for batch dimensions
+ * - Support for vectors, matrices, and higher-rank tensors
+ */
 struct Composition { 
-    void forward(Tensor const&, Tensor const&, Tensor&) const; 
+    /**
+     * @brief Performs the composition operation
+     * @param outer Outer tensor operand
+     * @param inner Inner tensor operand
+     * @param result Output tensor
+     */
+    void forward(Tensor const& outer, Tensor const& inner, Tensor& result) const; 
  
+    /**
+     * @brief Type promotion rules table
+     *
+     * Defines promotion rules for all type combinations:
+     * - Integer operations promote to avoid overflow
+     * - Mixed integer/float promotes to float
+     * - Operations preserve highest precision
+     */
     static constexpr auto promotions = []() {
         std::array<type, index(TYPES, TYPES)> table{};  
+        table.fill(none);
+        // Integer promotions
         table[index(int8, int8)]   = int32;
         table[index(int8, int16)]  = int32;
         table[index(int8, int32)]  = int32;
@@ -105,11 +181,13 @@ struct Composition {
         table[index(int64, int32)]   = int64;
         table[index(int64, int64)]   = int64; 
         
+        // Mixed integer/float promotions
         table[index(int32, float32)] = float32;
         table[index(float32, int32)] = float32;
         table[index(int32, float64)] = float64;
         table[index(float64, int32)] = float64; 
         
+        // Float promotions
         table[index(float32, float32)] = float32;
         table[index(float32, float64)] = float64;
         table[index(float64, float32)] = float64;
@@ -117,42 +195,88 @@ struct Composition {
         return table;
     }();  
  
+    /**
+     * @brief Promotes two operand types to a common type for composition operations
+     * @param inner Type of the inner (right) operand
+     * @param outer Type of the outer (left) operand 
+     * @return Promoted type according to the composition rules
+     * @throws assertion error if the type combination is unsupported
+     *
+     * @details This promotion system:
+     * 1. Uses a precomputed promotion table for all valid type combinations
+     * 2. Ensures safe arithmetic by:
+     *    - Promoting integers to avoid overflow (e.g., int8 → int32)
+     *    - Promoting mixed integer/float to float
+     *    - Preserving higher precision when types differ
+     * 3. Explicitly rejects invalid combinations via assertion
+     *
+     * Example promotions:
+     * 
+     * ```
+     * promote(int8, int32) → int32  // Integer widening
+     * promote(int32, float32) → float32  // Mixed to float
+     * promote(float32, float64) → float64  // Precision preservation
+     * ```
+     */
     static constexpr type promote(type inner, type outer) {
-        return promotions[index(inner, outer)];
+        type dtype = promotions[index(inner, outer)];
+        assert(dtype != none && "Unsuported dtypes");
+        return dtype;
     }
 
+    /**
+     * @brief Computes output shape for composition
+     * @param first First operand shape
+     * @param second Second operand shape
+     * @return Broadcasted output shape
+     * @throws assertion error if shapes are incompatible
+     *
+     * @details Handles multiple cases:
+     * 1. Vector-vector: (n) × (n) → scalar (empty shape)
+     * 2. Matrix-vector: (m,n) × (n) → (m)
+     * 3. Vector-matrix: (n) × (n,k) → (k)
+     * 4. Matrix-matrix: (m,n) × (n,k) → (m,k)
+     * 5. Batched operations: (...,m,n) × (...,n,k) → (...,m,k)
+     */
     static constexpr Shape broadcast(Shape const& first, Shape const& second) {
         auto first_rank = first.rank();
         auto second_rank = second.rank();
          
+        // Vector dot product
         if (first_rank == 1 && second_rank == 1) {
             assert(first[0] == second[0] && "Vector dimensions must match for dot product");
-            return Shape{};  
+            return Shape{};  // Scalar result
         }
          
+        // Matrix-vector multiplication
         if (first_rank == 1 && second_rank == 2) {
             assert(first[0] == second[1] && "Matrix inner dimensions do not match");
-            return Shape{second[0]};
+            return Shape{second[0]};  // Vector result
         }
          
+        // Vector-matrix multiplication
         if (first_rank == 2 && second_rank == 1) {
             assert(first[1] == second[0] && "Matrix inner dimensions do not match");
-            return Shape{first[0]};
+            return Shape{first[0]};  // Vector result
         } 
          
         assert(first_rank >= 2 && second_rank >= 2 && "Inputs must have rank >= 2");
         
+        // Handle batch dimensions
         Shape first_batches(first.begin(), first.end() - 2);
         Shape second_batches(second.begin(), second.end() - 2);
         Shape batches = operation::broadcast(first_batches, second_batches);
         
+        // Check matrix inner dimensions
         auto K1 = *(first.end() - 1);
         auto K2 = *(second.end() - 2);   
         assert(K1 == K2 && "Inner dimensions must match for matmul");
         
+        // Get output matrix dimensions
         auto M = *(first.end() - 2);
         auto N = *(second.end() - 1);
         
+        // Combine batch and matrix dimensions
         std::vector<Shape::size_type> result(batches.begin(), batches.end());
         result.push_back(M);
         result.push_back(N);
@@ -160,23 +284,38 @@ struct Composition {
     }
 };
 
-
+/**
+ * @brief Creates a composition (matrix multiplication) expression
+ * @tparam Outer Outer tensor expression type
+ * @tparam Inner Inner tensor expression type
+ * @param outer Outer tensor operand
+ * @param inner Inner tensor operand
+ * @return Transformation expression representing the composition
+ */
 template<Expression Outer, Expression Inner>
 constexpr auto composition(Outer&& outer, Inner&& inner) {
     return Transformation<Composition, Outer, Inner>{
         {}, std::forward<Outer>(outer), std::forward<Inner>(inner)
     };
 }
- 
+
 } // namespace transformation
 
+/**
+ * @brief Matrix multiplication convenience function
+ * @tparam Multiplicand Left tensor expression type
+ * @tparam Multiplier Right tensor expression type
+ * @param multiplicand Left tensor operand
+ * @param multiplier Right tensor operand
+ * @return Transformation expression representing matrix multiplication
+ */
 template<Expression Multiplicand, Expression Multiplier>
 constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier) {
     return transformation::composition(
         std::forward<Multiplicand>(multiplicand),
         std::forward<Multiplier>(multiplier)
     );
-}  
+}
 
 } // namespace tannic
 

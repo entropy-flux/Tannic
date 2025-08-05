@@ -66,8 +66,9 @@ namespace tannic {
  *
  * #### Example:
  * 
- * ```
+ * ```cpp
  * using namespace tannic;
+ * 
  * constexpr Shape s1(2, 3, 4);
  * constexpr Shape s2(2, 3, 4);
  * static_assert(s1 == s2);
@@ -95,8 +96,7 @@ public:
     * 
     * #### Example:
     *
-    *  ```
-    * using namespace tannic;
+    *  ```cpp 
     * Shape shape({2, 3, 4});
     * std::cout << shape;  // Output: Shape(2, 3, 4)
     * ```
@@ -121,8 +121,7 @@ public:
     *   
     * #### Example:
     * 
-    * ```
-    * using namespace tannic;
+    * ```cpp 
     * Shape shape(2, 3, 4);
     * std::cout << shape;  // Output: Shape(2, 3, 4)
     * ```
@@ -161,8 +160,7 @@ public:
      *
      * #### Example:
      * 
-     * ```
-     * using namespace tannic;
+     * ```cpp 
      * std::vector<std::size_t> dims = {2, 3, 4};
      * Shape shape(dims.begin(), dims.end());
      * std::cout << shape;  // Output: Shape(2, 3, 4)

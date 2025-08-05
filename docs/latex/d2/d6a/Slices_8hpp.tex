@@ -1,5 +1,10 @@
 \doxysection{include/tannic/\+Slices.hpp File Reference}
 \hypertarget{Slices_8hpp}{}\label{Slices_8hpp}\index{include/tannic/Slices.hpp@{include/tannic/Slices.hpp}}
+
+
+Implements tensor slicing for expression templates in the Tannic Tensor Library.  
+
+
 {\ttfamily \#include $<$tuple$>$}\newline
 {\ttfamily \#include $<$utility$>$}\newline
 {\ttfamily \#include $<$cstddef$>$}\newline
@@ -27,7 +32,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice$<$ Source, Indexes $>$}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Expression template representing a tensor slice or subview. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,3 +40,34 @@ namespace \mbox{\hyperlink{namespacetannic}{tannic}}
 \item 
 namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements tensor slicing for expression templates in the Tannic Tensor Library. 
+
+This header defines the {\ttfamily Slice} class template, which represents a view or subrange of a tensor without copying its data. It supports chained indexing, assignment, and comparison operations while preserving the underlying expression structure.
+
+Key features\+:
+\begin{DoxyItemize}
+\item Zero-\/copy view into a tensor or tensor expression.
+\item Supports integer indexing and range slicing.
+\item Preserves shape, strides, and data type information.
+\item Works as part of the Tannic expression template framework.
+\end{DoxyItemize}
+
+Example usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ X(float32,\ \{2,2,2\});\ X.initialize();\ }
+\DoxyCodeLine{X[0]\ =\ 1;\ \ \ \ \textcolor{comment}{//arbitrary\ types\ assignment\ support.}}
+\DoxyCodeLine{X[1]\ =\ 2.f;}
+\DoxyCodeLine{std::cout\ <<\ X\ \ <<\ std::endl;\ \textcolor{comment}{//\ Tensor([[[1,\ 1],\ [1,\ 1]],\ }}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ [[2,\ 2],\ [2,\ 2]]]\ dtype=float32,\ shape=(2,\ 2,\ 2))}}
+\DoxyCodeLine{Tensor\ Y\ =\ X[1];\ }
+\DoxyCodeLine{std::cout\ <<\ Y\ <<\ std::endl;\ \textcolor{comment}{//\ Tensor([[2,\ 2],\ }}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ [2,\ 2]]\ dtype=float32,\ shape=(2,\ 2))}}
+\DoxyCodeLine{std::cout\ <<\ Y[0]\ <<\ std::endl;\ \textcolor{comment}{//\ Tensor([2,\ 2]\ dtype=float32,\ shape=(2))}}
+
+\end{DoxyCode}
+ 

@@ -1,5 +1,10 @@
 \doxysection{include/tannic/\+Reductions.hpp File Reference}
 \hypertarget{Reductions_8hpp}{}\label{Reductions_8hpp}\index{include/tannic/Reductions.hpp@{include/tannic/Reductions.hpp}}
+
+
+Defines reduction operations for tensor expressions.  
+
+
 {\ttfamily \#include $<$array$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$cassert$>$}\newline
@@ -20,11 +25,11 @@ Include dependency graph for Reductions.\+hpp\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::expression\+::\+Reduction$<$ Reducer, Operand $>$}}
-\item 
+\begin{DoxyCompactList}\small\item\em Expression template for reduction operations. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax}{tannic\+::expression\+::\+Argmax}}
-\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Reduction}{Reduction} argmax operation. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin}{tannic\+::expression\+::\+Argmin}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Reduction}{Reduction} argmin operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,6 +41,24 @@ namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a674c22c100877e7a9fd931291ebb3765}{tannic\+::expression\+::argmax}} (Source \&\&source, int axis=-\/1)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates an argmax reduction expression. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a7a31ff65859bcf18d2862ccfc6232ef4}{tannic\+::expression\+::argmin}} (Source \&\&source, int axis=-\/1)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates an argmin reduction expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines reduction operations for tensor expressions. 
+
+\begin{DoxyAuthor}{Author}
+Eric Cardozo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+This header provides reduction operations for tensor-\/like objects, implemented as expression templates. Currently supports\+:
+\begin{DoxyItemize}
+\item argmax\+: Index of maximum value along axis
+\item argmin\+: Index of minimum value along axis
+\end{DoxyItemize}
+
+All reductions are lazy-\/evaluated and maintain proper shape/dtype transformations. Part of the Tannic Tensor Library. 

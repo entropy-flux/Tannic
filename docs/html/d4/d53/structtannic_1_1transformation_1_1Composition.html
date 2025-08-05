@@ -101,26 +101,40 @@ $(document).ready(function(){initNavTree('d4/d53/structtannic_1_1transformation_
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> composition (Known as Matrix Multiplication) operation.  
+ <a href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d25/Transformations_8hpp_source.html">Transformations.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a89b2a04b101570a452be4bbfd5d2f11e" id="r_a89b2a04b101570a452be4bbfd5d2f11e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#a89b2a04b101570a452be4bbfd5d2f11e">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;) const</td></tr>
-<tr class="separator:a89b2a04b101570a452be4bbfd5d2f11e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a1e66b56b18be4cfcd4d69b7a9a1bf0" id="r_a5a1e66b56b18be4cfcd4d69b7a9a1bf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#a5a1e66b56b18be4cfcd4d69b7a9a1bf0">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;outer, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;inner, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;result) const</td></tr>
+<tr class="memdesc:a5a1e66b56b18be4cfcd4d69b7a9a1bf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the composition operation.  <br /></td></tr>
+<tr class="separator:a5a1e66b56b18be4cfcd4d69b7a9a1bf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a9eb38435828870a1ad2c1eadddea0c82" id="r_a9eb38435828870a1ad2c1eadddea0c82"><td class="memItemLeft" align="right" valign="top">static constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#a9eb38435828870a1ad2c1eadddea0c82">promote</a> (type inner, type outer)</td></tr>
+<tr class="memdesc:a9eb38435828870a1ad2c1eadddea0c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Promotes two operand types to a common type for composition operations.  <br /></td></tr>
 <tr class="separator:a9eb38435828870a1ad2c1eadddea0c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54ffedb4a5ca7827e9df3ae371bae4c2" id="r_a54ffedb4a5ca7827e9df3ae371bae4c2"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#a54ffedb4a5ca7827e9df3ae371bae4c2">broadcast</a> (<a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;first, <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;second)</td></tr>
+<tr class="memdesc:a54ffedb4a5ca7827e9df3ae371bae4c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes output shape for composition.  <br /></td></tr>
 <tr class="separator:a54ffedb4a5ca7827e9df3ae371bae4c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:ae5532fbe7069dd08c4ee780f4b4e6a51" id="r_ae5532fbe7069dd08c4ee780f4b4e6a51"><td class="memItemLeft" align="right" valign="top">static constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#ae5532fbe7069dd08c4ee780f4b4e6a51">promotions</a></td></tr>
+<tr class="memdesc:ae5532fbe7069dd08c4ee780f4b4e6a51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type promotion rules table.  <br /></td></tr>
 <tr class="separator:ae5532fbe7069dd08c4ee780f4b4e6a51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> composition (Known as Matrix Multiplication) operation. </p>
+<p>Implements tensor composition with:</p><ul>
+<li>Automatic type promotion</li>
+<li><a class="el" href="../../db/da7/classtannic_1_1Shape.html" title="Represents the shape (dimensions) of an tensor-like expression.">Shape</a> broadcasting for batch dimensions</li>
+<li>Support for vectors, matrices, and higher-rank tensors </li>
+</ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a54ffedb4a5ca7827e9df3ae371bae4c2" name="a54ffedb4a5ca7827e9df3ae371bae4c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54ffedb4a5ca7827e9df3ae371bae4c2">&#9670;&#160;</a></span>broadcast()</h2>
 
@@ -155,10 +169,33 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Computes output shape for composition. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>First operand shape </td></tr>
+    <tr><td class="paramname">second</td><td>Second operand shape </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Broadcasted output shape </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">assertion</td><td>error if shapes are incompatible</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Handles multiple cases:</p><ol type="1">
+<li>Vector-vector: (n) × (n) → scalar (empty shape)</li>
+<li>Matrix-vector: (m,n) × (n) → (m)</li>
+<li>Vector-matrix: (n) × (n,k) → (k)</li>
+<li>Matrix-matrix: (m,n) × (n,k) → (m,k)</li>
+<li>Batched operations: (...,m,n) × (...,n,k) → (...,m,k) </li>
+</ol>
+
 </div>
 </div>
-<a id="a89b2a04b101570a452be4bbfd5d2f11e" name="a89b2a04b101570a452be4bbfd5d2f11e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89b2a04b101570a452be4bbfd5d2f11e">&#9670;&#160;</a></span>forward()</h2>
+<a id="a5a1e66b56b18be4cfcd4d69b7a9a1bf0" name="a5a1e66b56b18be4cfcd4d69b7a9a1bf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a1e66b56b18be4cfcd4d69b7a9a1bf0">&#9670;&#160;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,19 +204,19 @@ Static Public Attributes</h2></td></tr>
           <td class="memname">void tannic::transformation::Composition::forward </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>outer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>inner</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -188,6 +225,16 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Performs the composition operation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outer</td><td>Outer tensor operand </td></tr>
+    <tr><td class="paramname">inner</td><td>Inner tensor operand </td></tr>
+    <tr><td class="paramname">result</td><td>Output tensor </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -225,6 +272,37 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Promotes two operand types to a common type for composition operations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inner</td><td>Type of the inner (right) operand </td></tr>
+    <tr><td class="paramname">outer</td><td>Type of the outer (left) operand </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Promoted type according to the composition rules </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">assertion</td><td>error if the type combination is unsupported</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This promotion system:</p><ol type="1">
+<li>Uses a precomputed promotion table for all valid type combinations</li>
+<li>Ensures safe arithmetic by:<ul>
+<li>Promoting integers to avoid overflow (e.g., int8 → int32)</li>
+<li>Promoting mixed integer/float to float</li>
+<li>Preserving higher precision when types differ</li>
+</ul>
+</li>
+<li>Explicitly rejects invalid combinations via assertion</li>
+</ol>
+<p>Example promotions:</p>
+<div class="fragment"><div class="line"><a class="code hl_function" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#a9eb38435828870a1ad2c1eadddea0c82">promote</a>(int8, int32) → int32  <span class="comment">// Integer widening</span></div>
+<div class="line"><a class="code hl_function" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#a9eb38435828870a1ad2c1eadddea0c82">promote</a>(int32, float32) → float32  <span class="comment">// Mixed to float</span></div>
+<div class="line"><a class="code hl_function" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#a9eb38435828870a1ad2c1eadddea0c82">promote</a>(float32, float64) → float64  <span class="comment">// Precision preservation</span></div>
+<div class="ttc" id="astructtannic_1_1transformation_1_1Composition_html_a9eb38435828870a1ad2c1eadddea0c82"><div class="ttname"><a href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#a9eb38435828870a1ad2c1eadddea0c82">tannic::transformation::Composition::promote</a></div><div class="ttdeci">static constexpr type promote(type inner, type outer)</div><div class="ttdoc">Promotes two operand types to a common type for composition operations.</div><div class="ttdef"><b>Definition</b> Transformations.hpp:221</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -247,6 +325,13 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Type promotion rules table. </p>
+<p>Defines promotion rules for all type combinations:</p><ul>
+<li>Integer operations promote to avoid overflow</li>
+<li>Mixed integer/float promotes to float</li>
+<li>Operations preserve highest precision </li>
+</ul>
 
 </div>
 </div>

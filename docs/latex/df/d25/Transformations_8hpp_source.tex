@@ -18,172 +18,185 @@
 \DoxyCodeLine{00014\ \textcolor{comment}{//}}
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ TRANSFORMATIONS\_HPP}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ TRANSFORMATIONS\_HPP}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ TRANSFORMATIONS\_HPP\ }}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <tuple>}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <array>}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00022\ }
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Concepts_8hpp}{Concepts.hpp}}"{}}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Types_8hpp}{Types.hpp}}"{}}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Traits_8hpp}{Traits.hpp}}"{}}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Shape_8hpp}{Shape.hpp}}"{}}\ }
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Tensor_8hpp}{Tensor.hpp}}"{}}\ }
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }Tensor;}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{namespace\ }transformation\ \{\ \ \ \ }
-\DoxyCodeLine{00034\ \ \ }
-\DoxyCodeLine{00035\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Operation,\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\ ...\ Operands>}
-\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{Transformation}}\ \{}
-\DoxyCodeLine{00037\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00038\ \ \ \ \ Operation\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}};}
-\DoxyCodeLine{00039\ \ \ \ \ std::tuple<typename\ Trait<Operands>::Reference...>\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}};}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Concepts_8hpp}{Concepts.hpp}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Types_8hpp}{Types.hpp}}"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Traits_8hpp}{Traits.hpp}}"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Shape_8hpp}{Shape.hpp}}"{}}\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Tensor_8hpp}{Tensor.hpp}}"{}}\ }
 \DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a9204f338e3bdfd0d018e77b363e73d18}{Transformation}}(Operation\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}},\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operands>::Reference}}...\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}})}
-\DoxyCodeLine{00042\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}})}
-\DoxyCodeLine{00043\ \ \ \ \ ,\ \ \ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}}(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}}...)\ }
-\DoxyCodeLine{00044\ \ \ \ \ ,\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}.promote(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}}.\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a2bcf28b6dd2d820780960d645d9559d6}{dtype}}()...))}
-\DoxyCodeLine{00045\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}.broadcast(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}}.\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_af98b88d10c88e966c6f3d25a2498939a}{shape}}()...))\ }
-\DoxyCodeLine{00046\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
-\DoxyCodeLine{00047\ \ \ \ \ \{\}}
-\DoxyCodeLine{00048\ \ \ \ \ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a2bcf28b6dd2d820780960d645d9559d6}{dtype}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
-\DoxyCodeLine{00051\ \ \ \ \ \}}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_af98b88d10c88e966c6f3d25a2498939a}{shape}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
-\DoxyCodeLine{00055\ \ \ \ \ \}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a34ff066350d57fd9f759b2395b949d40}{strides}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
-\DoxyCodeLine{00059\ \ \ \ \ \}\ }
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_ad473aa1af5b9d6c44ffab2b42baa7566}{offset}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00063\ \ \ \ \ \}}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{forward}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(dtype\_,\ shape\_);}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ std::apply([\&](\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&...\ arguments)\ \{}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}.forward(arguments.forward()...,\ result);}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \},\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}});}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
-\DoxyCodeLine{00071\ \ \ \ \ \}}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00074\ \ \ \ \ type\ dtype\_;}
-\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;\ }
-\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
-\DoxyCodeLine{00077\ \};\ \ \ }
-\DoxyCodeLine{00078\ \ }
-\DoxyCodeLine{00079\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ index(type\ inner,\ type\ outer)\ \{}
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(inner)\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(outer)\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(TYPES);}
-\DoxyCodeLine{00081\ \}\ \ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }Tensor;\ \ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{namespace\ }transformation\ \{}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Operation,\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\ ...\ Operands>}
+\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{Transformation}}\ \{}
+\DoxyCodeLine{00058\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ Operation\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}};}
+\DoxyCodeLine{00060\ \ \ \ \ std::tuple<typename\ Trait<Operands>::Reference...>\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a9204f338e3bdfd0d018e77b363e73d18}{Transformation}}(Operation\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}},\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operands>::Reference}}...\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}})}
+\DoxyCodeLine{00068\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}})}
+\DoxyCodeLine{00069\ \ \ \ \ ,\ \ \ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}}(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}}...)\ }
+\DoxyCodeLine{00070\ \ \ \ \ ,\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}.promote(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}}.\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a2bcf28b6dd2d820780960d645d9559d6}{dtype}}()...))}
+\DoxyCodeLine{00071\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}.broadcast(\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}}.\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_af98b88d10c88e966c6f3d25a2498939a}{shape}}()...))\ }
+\DoxyCodeLine{00072\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
+\DoxyCodeLine{00073\ \ \ \ \ \{\}}
+\DoxyCodeLine{00074\ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a2bcf28b6dd2d820780960d645d9559d6}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
 \DoxyCodeLine{00082\ }
-\DoxyCodeLine{00083\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition}{Composition}}\ \{\ }
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a89b2a04b101570a452be4bbfd5d2f11e}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};\ }
-\DoxyCodeLine{00085\ \ }
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_ae5532fbe7069dd08c4ee780f4b4e6a51}{promotions}}\ =\ []()\ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ std::array<type,\ index(TYPES,\ TYPES)>\ table\{\};\ \ }
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ table[index(int8,\ int8)]\ \ \ =\ int32;}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ table[index(int8,\ int16)]\ \ =\ int32;}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ table[index(int8,\ int32)]\ \ =\ int32;}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ table[index(int8,\ int64)]\ \ =\ int64;\ \ }
-\DoxyCodeLine{00092\ }
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ table[index(int16,\ int8)]\ \ \ \ =\ int32;}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ table[index(int16,\ int16)]\ \ \ =\ int32;}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ table[index(int16,\ int32)]\ \ \ =\ int32;}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ table[index(int16,\ int64)]\ \ \ =\ int64;\ }
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ table[index(int32,\ int8)]\ \ \ \ =\ int32;}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ table[index(int32,\ int16)]\ \ \ =\ int32;}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ table[index(int32,\ int32)]\ \ \ =\ int64;}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ table[index(int32,\ int64)]\ \ \ =\ int64;\ }
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ table[index(int64,\ int8)]\ \ \ \ =\ int64;}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ table[index(int64,\ int16)]\ \ \ =\ int64;}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ table[index(int64,\ int32)]\ \ \ =\ int64;}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ table[index(int64,\ int64)]\ \ \ =\ int64;\ }
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ table[index(int32,\ float32)]\ =\ float32;}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ table[index(float32,\ int32)]\ =\ float32;}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ table[index(int32,\ float64)]\ =\ float64;}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ table[index(float64,\ int32)]\ =\ float64;\ }
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ table[index(float32,\ float32)]\ =\ float32;}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ table[index(float32,\ float64)]\ =\ float64;}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ table[index(float64,\ float32)]\ =\ float64;}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ table[index(float64,\ float64)]\ =\ float64;\ }
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ table;}
-\DoxyCodeLine{00118\ \ \ \ \ \}();\ \ }
-\DoxyCodeLine{00119\ \ }
-\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}{promote}}(type\ inner,\ type\ outer)\ \{}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_ae5532fbe7069dd08c4ee780f4b4e6a51}{promotions}}[index(inner,\ outer)];}
-\DoxyCodeLine{00122\ \ \ \ \ \}}
-\DoxyCodeLine{00123\ }
-\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a54ffedb4a5ca7827e9df3ae371bae4c2}{broadcast}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ first,\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ second)\ \{}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ first\_rank\ =\ first.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ second\_rank\ =\ second.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 1\ \&\&\ second\_rank\ ==\ 1)\ \{}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ assert(first[0]\ ==\ second[0]\ \&\&\ \textcolor{stringliteral}{"{}Vector\ dimensions\ must\ match\ for\ dot\ product"{}});}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\{\};\ \ }
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 1\ \&\&\ second\_rank\ ==\ 2)\ \{}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ assert(first[0]\ ==\ second[1]\ \&\&\ \textcolor{stringliteral}{"{}Matrix\ inner\ dimensions\ do\ not\ match"{}});}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\{second[0]\};}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 2\ \&\&\ second\_rank\ ==\ 1)\ \{}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ assert(first[1]\ ==\ second[0]\ \&\&\ \textcolor{stringliteral}{"{}Matrix\ inner\ dimensions\ do\ not\ match"{}});}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\{first[0]\};}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ assert(first\_rank\ >=\ 2\ \&\&\ second\_rank\ >=\ 2\ \&\&\ \textcolor{stringliteral}{"{}Inputs\ must\ have\ rank\ >=\ 2"{}});}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ first\_batches(first.\mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}}(),\ first.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 2);}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ second\_batches(second.\mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}}(),\ second.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 2);}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ batches\ =\ operation::broadcast(first\_batches,\ second\_batches);}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ K1\ =\ *(first.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 1);}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ K2\ =\ *(second.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 2);\ \ \ }
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ assert(K1\ ==\ K2\ \&\&\ \textcolor{stringliteral}{"{}Inner\ dimensions\ must\ match\ for\ matmul"{}});}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ M\ =\ *(first.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 2);}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ N\ =\ *(second.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 1);}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ std::vector<Shape::size\_type>\ result(batches.\mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}}(),\ batches.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}());}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ result.push\_back(M);}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ result.push\_back(N);}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}(result);}
-\DoxyCodeLine{00160\ \ \ \ \ \}}
-\DoxyCodeLine{00161\ \};}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00163\ }
-\DoxyCodeLine{00164\ \textcolor{keyword}{template}<Expression\ Outer,\ Expression\ Inner>}
-\DoxyCodeLine{00165\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1transformation_a305bc5073fd7fbb2f1948a77c5e5a969}{composition}}(Outer\&\&\ outer,\ Inner\&\&\ inner)\ \{}
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{Transformation<Composition,\ Outer,\ Inner>}}\{}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \{\},\ std::forward<Outer>(outer),\ std::forward<Inner>(inner)}
-\DoxyCodeLine{00168\ \ \ \ \ \};}
-\DoxyCodeLine{00169\ \}}
-\DoxyCodeLine{00170\ \ }
-\DoxyCodeLine{00171\ \}\ \textcolor{comment}{//\ namespace\ transformation}}
-\DoxyCodeLine{00172\ }
-\DoxyCodeLine{00173\ \textcolor{keyword}{template}<Expression\ Multiplicand,\ Expression\ Multiplier>}
-\DoxyCodeLine{00174\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(Multiplicand\&\&\ multiplicand,\ Multiplier\&\&\ multiplier)\ \{}
-\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacetannic_1_1transformation_a305bc5073fd7fbb2f1948a77c5e5a969}{transformation::composition}}(}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ std::forward<Multiplicand>(multiplicand),}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ std::forward<Multiplier>(multiplier)}
-\DoxyCodeLine{00178\ \ \ \ \ );}
-\DoxyCodeLine{00179\ \}\ \ }
-\DoxyCodeLine{00180\ }
-\DoxyCodeLine{00181\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00182\ }
-\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TRANSFORMATIONS\_HPP}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_af98b88d10c88e966c6f3d25a2498939a}{shape}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a34ff066350d57fd9f759b2395b949d40}{strides}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
+\DoxyCodeLine{00097\ \ \ \ \ \}\ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \ \ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_ad473aa1af5b9d6c44ffab2b42baa7566}{offset}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{forward}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(dtype\_,\ shape\_);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ std::apply([\&](\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&...\ arguments)\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}.forward(arguments.forward()...,\ result);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \},\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}});}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00120\ \ \ \ \ type\ dtype\_;}
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;\ }
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
+\DoxyCodeLine{00123\ \};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ index(type\ first,\ type\ second)\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(first)\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(second)\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(TYPES);}
+\DoxyCodeLine{00133\ \}\ \ }
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00143\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition}{Composition}}\ \{\ }
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ outer,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ inner,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ result)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00151\ \ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_ae5532fbe7069dd08c4ee780f4b4e6a51}{promotions}}\ =\ []()\ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ std::array<type,\ index(TYPES,\ TYPES)>\ table\{\};\ \ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ table.fill(none);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Integer\ promotions}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ table[index(int8,\ int8)]\ \ \ =\ int32;}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ table[index(int8,\ int16)]\ \ =\ int32;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ table[index(int8,\ int32)]\ \ =\ int32;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ table[index(int8,\ int64)]\ \ =\ int64;\ \ }
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ table[index(int16,\ int8)]\ \ \ \ =\ int32;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ table[index(int16,\ int16)]\ \ \ =\ int32;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ table[index(int16,\ int32)]\ \ \ =\ int32;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ table[index(int16,\ int64)]\ \ \ =\ int64;\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ table[index(int32,\ int8)]\ \ \ \ =\ int32;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ table[index(int32,\ int16)]\ \ \ =\ int32;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ table[index(int32,\ int32)]\ \ \ =\ int64;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ table[index(int32,\ int64)]\ \ \ =\ int64;\ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ table[index(int64,\ int8)]\ \ \ \ =\ int64;}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ table[index(int64,\ int16)]\ \ \ =\ int64;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ table[index(int64,\ int32)]\ \ \ =\ int64;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ table[index(int64,\ int64)]\ \ \ =\ int64;\ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mixed\ integer/float\ promotions}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ table[index(int32,\ float32)]\ =\ float32;}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ table[index(float32,\ int32)]\ =\ float32;}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ table[index(int32,\ float64)]\ =\ float64;}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ table[index(float64,\ int32)]\ =\ float64;\ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Float\ promotions}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ table[index(float32,\ float32)]\ =\ float32;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ table[index(float32,\ float64)]\ =\ float64;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ table[index(float64,\ float32)]\ =\ float64;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ table[index(float64,\ float64)]\ =\ float64;\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ table;}
+\DoxyCodeLine{00196\ \ \ \ \ \}();\ \ }
+\DoxyCodeLine{00197\ \ }
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}{promote}}(type\ inner,\ type\ outer)\ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ type\ dtype\ =\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_ae5532fbe7069dd08c4ee780f4b4e6a51}{promotions}}[index(inner,\ outer)];}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ assert(dtype\ !=\ none\ \&\&\ \textcolor{stringliteral}{"{}Unsuported\ dtypes"{}});}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;}
+\DoxyCodeLine{00225\ \ \ \ \ \}}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a54ffedb4a5ca7827e9df3ae371bae4c2}{broadcast}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ first,\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ second)\ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ first\_rank\ =\ first.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ second\_rank\ =\ second.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vector\ dot\ product}}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 1\ \&\&\ second\_rank\ ==\ 1)\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ assert(first[0]\ ==\ second[0]\ \&\&\ \textcolor{stringliteral}{"{}Vector\ dimensions\ must\ match\ for\ dot\ product"{}});}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\{\};\ \ \textcolor{comment}{//\ Scalar\ result}}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Matrix-\/vector\ multiplication}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 1\ \&\&\ second\_rank\ ==\ 2)\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ assert(first[0]\ ==\ second[1]\ \&\&\ \textcolor{stringliteral}{"{}Matrix\ inner\ dimensions\ do\ not\ match"{}});}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\{second[0]\};\ \ \textcolor{comment}{//\ Vector\ result}}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vector-\/matrix\ multiplication}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 2\ \&\&\ second\_rank\ ==\ 1)\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ assert(first[1]\ ==\ second[0]\ \&\&\ \textcolor{stringliteral}{"{}Matrix\ inner\ dimensions\ do\ not\ match"{}});}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\{first[0]\};\ \ \textcolor{comment}{//\ Vector\ result}}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ assert(first\_rank\ >=\ 2\ \&\&\ second\_rank\ >=\ 2\ \&\&\ \textcolor{stringliteral}{"{}Inputs\ must\ have\ rank\ >=\ 2"{}});}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ batch\ dimensions}}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ first\_batches(first.\mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}}(),\ first.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 2);}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ second\_batches(second.\mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}}(),\ second.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 2);}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ batches\ =\ operation::broadcast(first\_batches,\ second\_batches);}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ matrix\ inner\ dimensions}}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ K1\ =\ *(first.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 1);}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ K2\ =\ *(second.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 2);\ \ \ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ assert(K1\ ==\ K2\ \&\&\ \textcolor{stringliteral}{"{}Inner\ dimensions\ must\ match\ for\ matmul"{}});}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ output\ matrix\ dimensions}}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ M\ =\ *(first.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 2);}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ N\ =\ *(second.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}()\ -\/\ 1);}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Combine\ batch\ and\ matrix\ dimensions}}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ std::vector<Shape::size\_type>\ result(batches.\mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}}(),\ batches.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}());}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ result.push\_back(M);}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ result.push\_back(N);}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}(result);}
+\DoxyCodeLine{00284\ \ \ \ \ \}}
+\DoxyCodeLine{00285\ \};}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00295\ \textcolor{keyword}{template}<Expression\ Outer,\ Expression\ Inner>}
+\DoxyCodeLine{00296\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1transformation_a305bc5073fd7fbb2f1948a77c5e5a969}{composition}}(Outer\&\&\ outer,\ Inner\&\&\ inner)\ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{Transformation<Composition,\ Outer,\ Inner>}}\{}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \{\},\ std::forward<Outer>(outer),\ std::forward<Inner>(inner)}
+\DoxyCodeLine{00299\ \ \ \ \ \};}
+\DoxyCodeLine{00300\ \}}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \}\ \textcolor{comment}{//\ namespace\ transformation}}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00312\ \textcolor{keyword}{template}<Expression\ Multiplicand,\ Expression\ Multiplier>}
+\DoxyCodeLine{00313\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(Multiplicand\&\&\ multiplicand,\ Multiplier\&\&\ multiplier)\ \{}
+\DoxyCodeLine{00314\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacetannic_1_1transformation_a305bc5073fd7fbb2f1948a77c5e5a969}{transformation::composition}}(}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ std::forward<Multiplicand>(multiplicand),}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ std::forward<Multiplier>(multiplier)}
+\DoxyCodeLine{00317\ \ \ \ \ );}
+\DoxyCodeLine{00318\ \}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TRANSFORMATIONS\_HPP}}
 
 \end{DoxyCode}

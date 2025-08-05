@@ -75,6 +75,7 @@ Shapes are limited to a maximum rank of 8 dimensions.\hypertarget{classtannic_1_
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
+\DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ s1(2,\ 3,\ 4);}
 \DoxyCodeLine{\textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ s2(2,\ 3,\ 4);}
 \DoxyCodeLine{\textcolor{keyword}{static\_assert}(s1\ ==\ s2);}
@@ -138,11 +139,11 @@ Asserts if the number of dimensions exceeds {\ttfamily limit}.
 \hypertarget{classtannic_1_1Shape_autotoc_md8}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Shape_autotoc_md8}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape(\{2,\ 3,\ 4\});}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Shape_aa4ee03251e1c92a230b060290086a0ac}{Shape}}\ shape(\{2,\ 3,\ 4\});}
 \DoxyCodeLine{std::cout\ <<\ shape;\ \ \textcolor{comment}{//\ Output:\ Shape(2,\ 3,\ 4)}}
 
 \end{DoxyCode}
+ ~\newline
  \Hypertarget{classtannic_1_1Shape_a43042ceabb1192091fc9900dfaf8a3af}\label{classtannic_1_1Shape_a43042ceabb1192091fc9900dfaf8a3af} 
 \index{tannic::Shape@{tannic::Shape}!Shape@{Shape}}
 \index{Shape@{Shape}!tannic::Shape@{tannic::Shape}}
@@ -170,8 +171,7 @@ Asserts if the number of dimensions exceeds {\ttfamily limit}.
 \hypertarget{classtannic_1_1Shape_autotoc_md9}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Shape_autotoc_md9}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape(2,\ 3,\ 4);}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Shape_aa4ee03251e1c92a230b060290086a0ac}{Shape}}\ shape(2,\ 3,\ 4);}
 \DoxyCodeLine{std::cout\ <<\ shape;\ \ \textcolor{comment}{//\ Output:\ Shape(2,\ 3,\ 4)}}
 
 \end{DoxyCode}
@@ -225,9 +225,8 @@ Asserts if the number of dimensions exceeds {\ttfamily limit}.
 \hypertarget{classtannic_1_1Shape_autotoc_md10}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Shape_autotoc_md10}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
 \DoxyCodeLine{std::vector<std::size\_t>\ dims\ =\ \{2,\ 3,\ 4\};}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape(dims.begin(),\ dims.end());}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Shape_aa4ee03251e1c92a230b060290086a0ac}{Shape}}\ shape(dims.begin(),\ dims.end());}
 \DoxyCodeLine{std::cout\ <<\ shape;\ \ \textcolor{comment}{//\ Output:\ Shape(2,\ 3,\ 4)}}
 
 \end{DoxyCode}
