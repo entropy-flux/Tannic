@@ -109,7 +109,7 @@ public:
      * std::cout << s;  // Output: Strides(6, 2, 1)
      * ```
      */
-    template<typename... Sizes>
+    template<Integral... Sizes>
     constexpr Strides(Sizes... sizes)
     :   sizes_{static_cast<size_type>(sizes)...}
     ,   rank_(sizeof...(sizes)) {

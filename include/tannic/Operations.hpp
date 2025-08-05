@@ -20,10 +20,10 @@
  * @file Operations.hpp
  * @author Eric Cardozo
  * @date 2025
- * @brief Defines expression templates tensor operations.
+ * @brief Defines expression templates tensor aritmetic operations.
  *
  * This header defines expression templates used to represent lazy evaluation of unary
- * and binary tensor operations. The system enables composable arithmetic on tensor-like
+ * and binary tensor aritmetic operations. The system enables composable arithmetic on tensor-like
  * objects while deferring actual computation until evaluation (via `forward()`).
  *
  * Includes:
@@ -48,12 +48,12 @@
  
 namespace tannic {
 
-class Tensor;   
-
+class Tensor;    
+  
 namespace operation {  
 
 /**
- * @brief Expression template for a unary tensor operation.
+ * @brief Expression template for a unary tensor aritmetic operation.
  *
  * Represents a lazily evaluated unary operation applied to a single tensor-like operand.
  * This template enables deferred execution and composability at compile time.
@@ -144,7 +144,7 @@ public:
  * @tparam Operand Left-hand-side expression satisfying the `Expression` concept.
  * @tparam Cooperand Right-hand-side expression satisfying the `Expression` concept.
  */
-template<class Operation, Expression Operand, Expression Cooperand>
+template<Operator Operation, Expression Operand, Expression Cooperand>
 class Binary {
 public:
     Operation operation;

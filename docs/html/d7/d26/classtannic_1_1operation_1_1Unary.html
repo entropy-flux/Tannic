@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('d7/d26/classtannic_1_1operation_1_1Una
 </div><!--header-->
 <div class="contents">
 
-<p>Expression template for a unary tensor operation.  
+<p>Expression template for a unary tensor aritmetic operation.  
  <a href="../../d7/d26/classtannic_1_1operation_1_1Unary.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d1/d00/Operations_8hpp_source.html">Operations.hpp</a>&gt;</code></p>
@@ -109,16 +109,18 @@ Collaboration diagram for tannic::operation::Unary&lt; Operation, Operand &gt;:<
 <div class="dyncontent">
 <div class="center"><img src="../../da/df9/classtannic_1_1operation_1_1Unary__coll__graph.png" border="0" usemap="#atannic_1_1operation_1_1Unary_3_01Operation_00_01Operand_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="atannic_1_1operation_1_1Unary_3_01Operation_00_01Operand_01_4_coll__map" id="atannic_1_1operation_1_1Unary_3_01Operation_00_01Operand_01_4_coll__map">
-<area shape="rect" title="Expression template for a unary tensor operation." alt="" coords="5,93,224,133"/>
-<area shape="rect" href="../../d1/d96/structtannic_1_1Trait.html" title=" " alt="" coords="23,5,206,31"/>
-<area shape="poly" title=" " alt="" coords="117,44,117,93,112,93,112,44"/>
+<area shape="rect" title="Expression template for a unary tensor aritmetic operation." alt="" coords="18,93,237,133"/>
+<area shape="rect" title=" " alt="" coords="5,5,92,31"/>
+<area shape="poly" title=" " alt="" coords="69,39,113,91,109,95,65,43"/>
+<area shape="rect" href="../../d1/d96/structtannic_1_1Trait.html" title=" " alt="" coords="116,5,299,31"/>
+<area shape="poly" title=" " alt="" coords="191,43,146,95,142,91,187,39"/>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ace5f518adcde5db1bfe65444a5e687b6" id="r_ace5f518adcde5db1bfe65444a5e687b6"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html#ace5f518adcde5db1bfe65444a5e687b6">Unary</a> (Operation <a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html#ab92fce23dc41990144a8013faf71ff5b">operation</a>, <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Operand &gt;::Reference <a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html#a00bf166cc4f53a3a87107c5b07d22743">operand</a>)</td></tr>
-<tr class="memdesc:ace5f518adcde5db1bfe65444a5e687b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html" title="Expression template for a unary tensor operation.">Unary</a> expression.  <br /></td></tr>
+<tr class="memdesc:ace5f518adcde5db1bfe65444a5e687b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html" title="Expression template for a unary tensor aritmetic operation.">Unary</a> expression.  <br /></td></tr>
 <tr class="separator:ace5f518adcde5db1bfe65444a5e687b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c3dfdc2be0d9ef45e8a1b1aa7142d83" id="r_a2c3dfdc2be0d9ef45e8a1b1aa7142d83"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html#a2c3dfdc2be0d9ef45e8a1b1aa7142d83">dtype</a> () const</td></tr>
 <tr class="memdesc:a2c3dfdc2be0d9ef45e8a1b1aa7142d83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the data type of the result.  <br /></td></tr>
@@ -145,11 +147,11 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;class Operation, Expression Operand&gt;<br />
-class tannic::operation::Unary&lt; Operation, Operand &gt;</div><p>Expression template for a unary tensor operation. </p>
+class tannic::operation::Unary&lt; Operation, Operand &gt;</div><p>Expression template for a unary tensor aritmetic operation. </p>
 <p>Represents a lazily evaluated unary operation applied to a single tensor-like operand. This template enables deferred execution and composability at compile time.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Operation</td><td>A stateless functor implementing <code>void forward(<a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a> const&amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a>&amp;)</code>. </td></tr>
+    <tr><td class="paramname">Operation</td><td>A stateless operation implementing <code>void forward(<a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a> const&amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a>&amp;)</code>. </td></tr>
     <tr><td class="paramname">Operand</td><td>An expression type satisfying the <code>Expression</code> concept. </td></tr>
   </table>
   </dd>
@@ -191,7 +193,7 @@ template&lt;class Operation , Expression Operand&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html" title="Expression template for a unary tensor operation.">Unary</a> expression. </p>
+<p>Constructs a <a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html" title="Expression template for a unary tensor aritmetic operation.">Unary</a> expression. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">operation</td><td>Operation functor (e.g., <code><a class="el" href="../../d6/deb/structtannic_1_1operation_1_1Negation.html" title="Unary element-wise negation of a tensor expression.">Negation</a></code>). </td></tr>
@@ -282,7 +284,7 @@ template&lt;class Operation , Expression Operand&gt; </div>
 </div><div class="memdoc">
 
 <p>Returns the offset of the expression. </p>
-<p><a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html" title="Expression template for a unary tensor operation.">Unary</a> expressions are assumed to have zero offset, since the result is a new tensor.</p>
+<p><a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html" title="Expression template for a unary tensor aritmetic operation.">Unary</a> expressions are assumed to have zero offset, since the result is a new tensor.</p>
 <dl class="section return"><dt>Returns</dt><dd>Always returns 0. </dd></dl>
 
 </div>

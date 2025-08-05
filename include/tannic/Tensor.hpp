@@ -386,7 +386,7 @@ Tensor operation::Unary<Operation, Operand>::forward() const {
     return result;
 }
 
-template<class Operation, Expression Operand, Expression Cooperand>
+template<Operator Operation, Expression Operand, Expression Cooperand>
 Tensor operation::Binary<Operation, Operand, Cooperand>::forward() const {
     Tensor result(dtype(), shape(), strides());
     operation.forward(operand, cooperand, result);

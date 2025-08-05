@@ -1,7 +1,9 @@
 <map id="tannic::operation::Binary&lt; Operation, Operand, Cooperand &gt;" name="tannic::operation::Binary&lt; Operation, Operand, Cooperand &gt;">
-<area shape="rect" id="Node000001" title="Expression template for a binary tensor operation." alt="" coords="98,93,309,148"/>
-<area shape="rect" id="Node000002" href="$d1/d96/structtannic_1_1Trait.html" title=" " alt="" coords="5,5,188,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,38,177,91,173,95,117,42"/>
-<area shape="rect" id="Node000003" href="$d1/d96/structtannic_1_1Trait.html" title=" " alt="" coords="212,5,411,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="291,42,234,95,230,91,287,38"/>
+<area shape="rect" id="Node000001" title="Expression template for a binary tensor operation." alt="" coords="102,93,313,148"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,92,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,36,167,91,164,95,77,40"/>
+<area shape="rect" id="Node000003" href="$d1/d96/structtannic_1_1Trait.html" title=" " alt="" coords="116,5,299,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,45,210,93,205,93,205,45"/>
+<area shape="rect" id="Node000004" href="$d1/d96/structtannic_1_1Trait.html" title=" " alt="" coords="323,5,521,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="386,39,264,96,262,91,384,34"/>
 </map>

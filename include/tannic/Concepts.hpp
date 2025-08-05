@@ -86,8 +86,41 @@ concept Expression = requires(const T expression) {
     { expression.strides() } -> std::same_as<Strides const&>;
       expression.offset();
       expression.forward();
+}; 
+
+/**
+ * @brief Concept defining requirements for tensor operation types
+ *  
+ * This concept specifies the interface that all tensor operators must implement:
+ * - Type promotion rules between operands
+ * - Shape broadcasting behavior
+ *
+ * A type satisfies the Operator concept if it provides:
+ * 1. A static `promote` method that determines the result type
+ *    from two input types
+ * 2. A static `broadcast` method that computes the output shape
+ *    from two input shapes 
+ * 
+ * @see Operations.hpp (tensor operations)
+ */
+template<typename T>
+concept Operator = requires(T operation, const Shape& first, const Shape& second) {
+    { T::promote(type{}, type{}) } -> std::same_as<type>;
+    { T::broadcast(first, second) } -> std::same_as<Shape>; 
 };
- 
+
+/**
+ * @brief Concept for unary mathematical function operations 
+ *
+ * Specifies requirements for types that represent mathematical function operations:
+ * - Must provide a call operator that performs element-wise transformation 
+ *
+ * Used to constrain template parameters for mathematical function operations.
+ */
+template<typename Function>
+concept Functional = requires(Function function, const Tensor& input, Tensor& output) {
+    { function(input, output) } -> std::same_as<void>;
+};
 
 /**
  * @concept Iterable

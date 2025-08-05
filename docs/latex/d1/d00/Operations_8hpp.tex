@@ -2,7 +2,7 @@
 \hypertarget{Operations_8hpp}{}\label{Operations_8hpp}\index{include/tannic/Operations.hpp@{include/tannic/Operations.hpp}}
 
 
-Defines expression templates tensor operations.  
+Defines expression templates tensor aritmetic operations.  
 
 
 {\ttfamily \#include $<$vector$>$}\newline
@@ -13,14 +13,16 @@ Defines expression templates tensor operations.
 {\ttfamily \#include "{}Shape.\+hpp"{}}\newline
 {\ttfamily \#include "{}Strides.\+hpp"{}}\newline
 {\ttfamily \#include "{}Traits.\+hpp"{}}\newline
-Include dependency graph for Operations.\+hpp\+:\nopagebreak
+Include dependency graph for Operations.\+hpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{da/d0f/Operations_8hpp__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -31,7 +33,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{tannic\+::operation\+::\+Unary$<$ Operation, Operand $>$}}
-\begin{DoxyCompactList}\small\item\em Expression template for a unary tensor operation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Expression template for a unary tensor aritmetic operation. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1operation_1_1Binary}{tannic\+::operation\+::\+Binary$<$ Operation, Operand, Cooperand $>$}}
 \begin{DoxyCompactList}\small\item\em Expression template for a binary tensor operation. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Negation}{tannic\+::operation\+::\+Negation}}
@@ -63,7 +65,7 @@ namespace \mbox{\hyperlink{namespacetannic_1_1operation}{tannic\+::operation}}
 
 
 \doxysubsection{Detailed Description}
-Defines expression templates tensor operations. 
+Defines expression templates tensor aritmetic operations. 
 
 \begin{DoxyAuthor}{Author}
 Eric Cardozo 
@@ -71,7 +73,7 @@ Eric Cardozo
 \begin{DoxyDate}{Date}
 2025 
 \end{DoxyDate}
-This header defines expression templates used to represent lazy evaluation of unary and binary tensor operations. The system enables composable arithmetic on tensor-\/like objects while deferring actual computation until evaluation (via {\ttfamily forward()}).
+This header defines expression templates used to represent lazy evaluation of unary and binary tensor aritmetic operations. The system enables composable arithmetic on tensor-\/like objects while deferring actual computation until evaluation (via {\ttfamily forward()}).
 
 Includes\+:
 \begin{DoxyItemize}

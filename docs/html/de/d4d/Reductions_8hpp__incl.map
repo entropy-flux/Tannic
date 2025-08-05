@@ -61,7 +61,7 @@
 <area shape="poly" id="edge49_Node000019_Node000029" title=" " alt="" coords="919,106,875,145,871,141,916,102"/>
 <area shape="rect" id="Node000031" href="$d8/dea/Views_8hpp.html" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="1507,152,1597,177"/>
 <area shape="poly" id="edge59_Node000019_Node000031" title=" " alt="" coords="977,95,1494,154,1493,159,976,101"/>
-<area shape="rect" id="Node000034" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor operations." alt="" coords="1153,152,1274,177"/>
+<area shape="rect" id="Node000034" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="1153,152,1274,177"/>
 <area shape="poly" id="edge69_Node000019_Node000034" title=" " alt="" coords="977,101,1155,146,1154,151,975,107"/>
 <area shape="poly" id="edge34_Node000022_Node000002" title=" " alt="" coords="867,253,616,369,613,364,864,248"/>
 <area shape="poly" id="edge38_Node000022_Node000005" title=" " alt="" coords="901,249,919,284,922,305,916,325,899,342,877,353,829,365,809,370,797,376,793,383,801,395,821,406,860,416,975,432,1110,444,1228,451,1228,456,1110,449,975,437,859,421,819,411,797,399,788,383,793,372,808,365,828,360,875,348,896,338,911,323,917,305,914,286,897,252"/>

@@ -20,7 +20,7 @@
 <area shape="poly" id="edge40_Node000001_Node000027" title=" " alt="" coords="691,31,691,65,685,65,685,31"/>
 <area shape="rect" id="Node000030" href="$d8/dea/Views_8hpp.html" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="1129,79,1218,104"/>
 <area shape="poly" id="edge51_Node000001_Node000030" title=" " alt="" coords="766,28,1115,79,1115,84,766,33"/>
-<area shape="rect" id="Node000033" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor operations." alt="" coords="1501,79,1622,104"/>
+<area shape="rect" id="Node000033" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="1501,79,1622,104"/>
 <area shape="poly" id="edge61_Node000001_Node000033" title=" " alt="" coords="782,24,1487,81,1487,87,781,30"/>
 <area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="658,468,255,525,254,520,657,463"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="668,519,735,544"/>

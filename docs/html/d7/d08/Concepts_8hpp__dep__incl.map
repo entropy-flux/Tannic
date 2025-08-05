@@ -8,7 +8,7 @@
 <area shape="poly" id="edge25_Node000001_Node000004" title=" " alt="" coords="762,24,899,38,971,49,1041,64,1103,82,1153,104,1187,131,1197,146,1200,163,1200,313,1195,342,1183,366,1164,388,1140,405,1084,432,1027,448,1026,443,1083,427,1138,401,1160,384,1179,363,1190,340,1195,312,1195,164,1192,148,1183,134,1151,108,1101,87,1040,69,970,54,898,43,762,29"/>
 <area shape="rect" id="Node000005" href="$d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="353,152,538,177"/>
 <area shape="poly" id="edge26_Node000001_Node000005" title=" " alt="" coords="618,41,559,81,462,154,458,150,556,76,615,36"/>
-<area shape="rect" id="Node000006" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor operations." alt="" coords="427,299,643,324"/>
+<area shape="rect" id="Node000006" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="427,299,643,324"/>
 <area shape="poly" id="edge24_Node000001_Node000006" title=" " alt="" coords="628,43,604,80,578,142,559,206,539,299,534,298,554,204,573,141,599,77,624,40"/>
 <area shape="rect" id="Node000008" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="163,445,413,471"/>
 <area shape="poly" id="edge28_Node000001_Node000008" title=" " alt="" coords="529,25,370,35,283,45,198,58,123,76,62,100,39,114,22,129,12,145,8,164,8,312,12,341,24,364,42,385,65,402,121,427,182,443,181,448,119,432,62,406,38,389,19,367,7,342,3,313,3,163,7,143,18,125,36,109,60,95,122,71,197,53,282,39,369,30,529,19"/>

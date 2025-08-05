@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="400,5,585,31"/>
 <area shape="rect" id="Node000002" href="$dc/d66/Functions_8hpp.html" title="Defines mathematical function operations for tensor expressions." alt="" coords="5,79,212,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="418,36,171,81,170,76,417,31"/>
-<area shape="rect" id="Node000003" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor operations." alt="" coords="805,152,1021,177"/>
+<area shape="rect" id="Node000003" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="805,152,1021,177"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="549,32,694,76,886,149,884,154,692,81,547,37"/>
 <area shape="rect" id="Node000004" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="466,225,653,251"/>
 <area shape="poly" id="edge15_Node000001_Node000004" title=" " alt="" coords="451,38,399,64,349,97,331,116,320,135,318,155,328,176,349,191,383,204,470,223,469,228,382,209,347,196,324,179,313,156,315,134,327,113,346,93,396,59,449,34"/>

@@ -126,7 +126,7 @@ public:
     * std::cout << shape;  // Output: Shape(2, 3, 4)
     * ```
     */
-    template<typename... Sizes>
+    template<Integral... Sizes>
     constexpr Shape(Sizes... sizes) 
     :   sizes_{static_cast<size_type>(sizes)...}
     ,   rank_(sizeof...(sizes)) {      

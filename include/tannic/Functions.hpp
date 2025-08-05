@@ -57,58 +57,59 @@ namespace function {
 /**
  * @brief Expression template for mathematical function operations.
  *
- * Represents a lazily evaluated unary function applied to a tensor expression.
+ * Represents a lazily evaluated unary functor that takes a function as argument
+ * and maps it to an argument.
  * The actual computation is deferred until `forward()` is called.
  *
- * @tparam Functor A stateless functor implementing `operator()(Tensor const&, Tensor&)`
- * @tparam Operand An expression type satisfying the `Expression` concept
+ * @tparam Function A mathematical function satisfying the Functional concept`
+ * @tparam Argument An expression type satisfying the `Expression` concept
  */
-template<class Functor, Expression Operand>
-class Function {
+template<Functional Function, Expression Argument>
+class Functor {
 public:
-    Functor functor;
-    typename Trait<Operand>::Reference operand;
+    Function function;
+    typename Trait<Argument>::Reference argument;
 
     /**
      * @brief Constructs a Function expression
-     * @param functor The function functor (e.g., Log, Exp)
-     * @param operand The input tensor expression
+     * @param function The function (e.g., Log, Exp)
+     * @param argument The input tensor expression
      */
-    constexpr Function(Functor functor, typename Trait<Operand>::Reference operand)
-    :   functor(functor)
-    ,   operand(operand)
+    constexpr Functor(Function function, typename Trait<Argument>::Reference argument)
+    :   function(function)
+    ,   argument(argument)
     {}
 
     /**
      * @brief Returns the data type of the result
-     * @return Data type of the operand (functions preserve input type)
+     * @return Data type of the argument (functions preserve input type)
      */
     constexpr type dtype() const {
-        return operand.dtype();
+        return argument.dtype();
     }
 
     /**
      * @brief Returns the shape of the result
-     * @return Shape of the operand (functions preserve input shape)
+     * @return Shape of the argument (functions preserve input shape)
      */
     constexpr Shape const& shape() const {
-        return operand.shape();
+        return argument.shape();
     }  
 
     /**
      * @brief Returns the strides of the result
-     * @return Strides of the operand (functions preserve input strides)
+     * @return Strides of the argument (functions preserve input strides)
      */
     constexpr Strides const& strides() const {
-        return operand.strides();
+        return argument.strides();
     }
 
     /**
-     * @brief Returns the offset of the operand
+     * @brief Returns the offset of the argument
      * @return Offset of the underlying tensor data
      */
     auto offset() const {
-        return operand.offset();
+        return argument.offset();
     }
 
     /**
@@ -116,9 +117,9 @@ public:
      * @return New Tensor with the function applied element-wise
      */
     Tensor forward() const {
-        Tensor source = operand.forward();
+        Tensor source = argument.forward();
         Tensor target(dtype(), shape());
-        functor(source, target);
+        function(source, target);
         return target;
     } 
 };
@@ -207,123 +208,123 @@ struct Tanh {
  * @brief Creates a lazy-evaluated natural logarithm expression
  * @tparam Operand Type satisfying Expression concept
  * @param operand Input tensor expression
- * @return Function expression representing element-wise ln(operand)
+ * @return Functor expression representing element-wise ln(operand)
  * @note Computes natural logarithm (base e) for each element
  * @see Log
  */
 template<Expression Operand>
 constexpr auto log(Operand&& operand) {
-    return Function<Log, Operand>({}, std::forward<Operand>(operand));
+    return Functor<Log, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
  * @brief Creates a lazy-evaluated exponential function expression
  * @tparam Operand Type satisfying Expression concept
  * @param operand Input tensor expression
- * @return Function expression representing element-wise e^(operand)
+ * @return Functor expression representing element-wise e^(operand)
  * @see Exp
  */
 template<Expression Operand>
 constexpr auto exp(Operand&& operand) {
-    return Function<Exp, Operand>({}, std::forward<Operand>(operand));
+    return Functor<Exp, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
  * @brief Creates a lazy-evaluated square root expression
  * @tparam Operand Type satisfying Expression concept
  * @param operand Input tensor expression
- * @return Function expression representing element-wise √operand
+ * @return Functor expression representing element-wise √operand
  * @note Returns NaN for negative inputs
  * @see Sqrt
  */
 template<Expression Operand>
 constexpr auto sqrt(Operand&& operand) {
-    return Function<Sqrt, Operand>({}, std::forward<Operand>(operand));
+    return Functor<Sqrt, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
  * @brief Creates a lazy-evaluated absolute value expression
  * @tparam Operand Type satisfying Expression concept
  * @param operand Input tensor expression
- * @return Function expression representing element-wise |operand|
+ * @return Functor expression representing element-wise |operand|
  * @see Abs
  */
 template<Expression Operand>
 constexpr auto abs(Operand&& operand) {
-    return Function<Abs, Operand>({}, std::forward<Operand>(operand));
+    return Functor<Abs, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
  * @brief Creates a lazy-evaluated sine function expression
  * @tparam Operand Type satisfying Expression concept
  * @param operand Input tensor expression (in radians)
- * @return Function expression representing element-wise sin(operand)
+ * @return Functor expression representing element-wise sin(operand)
  * @see Sin
  */
 template<Expression Operand>
 constexpr auto sin(Operand&& operand) {
-    return Function<Sin, Operand>({}, std::forward<Operand>(operand));
+    return Functor<Sin, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
  * @brief Creates a lazy-evaluated cosine function expression
  * @tparam Operand Type satisfying Expression concept
  * @param operand Input tensor expression (in radians)
- * @return Function expression representing element-wise cos(operand)
+ * @return Functor expression representing element-wise cos(operand)
  * @see Cos
  */
 template<Expression Operand>
 constexpr auto cos(Operand&& operand) {
-    return Function<Cos, Operand>({}, std::forward<Operand>(operand));
+    return Functor<Cos, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
  * @brief Creates a lazy-evaluated tangent function expression
  * @tparam Operand Type satisfying Expression concept
  * @param operand Input tensor expression (in radians)
- * @return Function expression representing element-wise tan(operand)
+ * @return Functor expression representing element-wise tan(operand)
  * @note Returns NaN where cosine equals zero
  * @see Tan
  */
 template<Expression Operand>
 constexpr auto tan(Operand&& operand) {
-    return Function<Tan, Operand>({}, std::forward<Operand>(operand));
+    return Functor<Tan, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
  * @brief Creates a lazy-evaluated hyperbolic sine expression
  * @tparam Operand Type satisfying Expression concept
  * @param operand Input tensor expression
- * @return Function expression representing element-wise sinh(operand)
+ * @return Functor expression representing element-wise sinh(operand)
  * @see Sinh
  */
 template<Expression Operand>
 constexpr auto sinh(Operand&& operand) {
-    return Function<Sinh, Operand>({}, std::forward<Operand>(operand));
+    return Functor<Sinh, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
  * @brief Creates a lazy-evaluated hyperbolic cosine expression
  * @tparam Operand Type satisfying Expression concept
  * @param operand Input tensor expression
- * @return Function expression representing element-wise cosh(operand)
+ * @return Functor expression representing element-wise cosh(operand)
  * @see Cosh
  */
 template<Expression Operand>
 constexpr auto cosh(Operand&& operand) {
-    return Function<Cosh, Operand>({}, std::forward<Operand>(operand));
+    return Functor<Cosh, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
  * @brief Creates a lazy-evaluated hyperbolic tangent expression
  * @tparam Operand Type satisfying Expression concept
  * @param operand Input tensor expression
- * @return Function expression representing element-wise tanh(operand) 
+ * @return Functor expression representing element-wise tanh(operand) 
  * @see Tanh
  */
 template<Expression Operand>
 constexpr auto tanh(Operand&& operand) {
-    return Function<Tanh, Operand>({}, std::forward<Operand>(operand));
+    return Functor<Tanh, Operand>({}, std::forward<Operand>(operand));
 }
 
 } // namespace function

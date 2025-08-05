@@ -111,13 +111,13 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html" title="Expression template for a binary tensor operation.">Binary</a> element-wise multiplication of two tensor expressions.  <a href="../../d0/dcf/structtannic_1_1operation_1_1Multiplication.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/deb/structtannic_1_1operation_1_1Negation.html">Negation</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html" title="Expression template for a unary tensor operation.">Unary</a> element-wise negation of a tensor expression.  <a href="../../d6/deb/structtannic_1_1operation_1_1Negation.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html" title="Expression template for a unary tensor aritmetic operation.">Unary</a> element-wise negation of a tensor expression.  <a href="../../d6/deb/structtannic_1_1operation_1_1Negation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html">Subtraction</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html" title="Expression template for a binary tensor operation.">Binary</a> element-wise subtraction of two tensor expressions.  <a href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html">Unary</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for a unary tensor operation.  <a href="../../d7/d26/classtannic_1_1operation_1_1Unary.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for a unary tensor aritmetic operation.  <a href="../../d7/d26/classtannic_1_1operation_1_1Unary.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -279,7 +279,7 @@ template&lt;Expression Operand&gt; </div>
 </div><div class="memdoc">
 
 <p>Element-wise negation of a tensor expression. </p>
-<p>Constructs a lazily evaluated <code><a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html" title="Expression template for a unary tensor operation.">Unary</a>&lt;<a class="el" href="../../d6/deb/structtannic_1_1operation_1_1Negation.html" title="Unary element-wise negation of a tensor expression.">Negation</a>, Operand&gt;</code> expression. This operation does not perform immediate computation; it represents a node in the expression graph and will be evaluated upon calling <code>forward()</code>.</p>
+<p>Constructs a lazily evaluated <code><a class="el" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html" title="Expression template for a unary tensor aritmetic operation.">Unary</a>&lt;<a class="el" href="../../d6/deb/structtannic_1_1operation_1_1Negation.html" title="Unary element-wise negation of a tensor expression.">Negation</a>, Operand&gt;</code> expression. This operation does not perform immediate computation; it represents a node in the expression graph and will be evaluated upon calling <code>forward()</code>.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Operand</td><td>A type satisfying the <code>Expression</code> concept. </td></tr>

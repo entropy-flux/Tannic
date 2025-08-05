@@ -1,5 +1,5 @@
 <map id="include/tannic/Operations.hpp" name="include/tannic/Operations.hpp">
-<area shape="rect" id="Node000001" title="Defines expression templates tensor operations." alt="" coords="135,5,351,31"/>
+<area shape="rect" id="Node000001" title="Defines expression templates tensor aritmetic operations." alt="" coords="135,5,351,31"/>
 <area shape="rect" id="Node000002" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="150,79,337,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,44,246,79,241,79,241,44"/>
 <area shape="rect" id="Node000003" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="5,152,223,177"/>

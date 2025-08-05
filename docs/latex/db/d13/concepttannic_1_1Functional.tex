@@ -1,0 +1,31 @@
+\doxysection{tannic\+::Functional Concept Reference}
+\hypertarget{concepttannic_1_1Functional}{}\label{concepttannic_1_1Functional}\index{tannic::Functional@{tannic::Functional}}
+
+
+Concept for unary mathematical function operations.  
+
+
+
+
+{\ttfamily \#include $<$Concepts.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Function>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Functional}{tannic::Functional}}\ =\ \ \textcolor{keyword}{requires}(Function\ function,\ \textcolor{keyword}{const}\ Tensor\&\ input,\ Tensor\&\ output)\ \{}
+\DoxyCodeLine{\ \ \ \ \{\ function(input,\ output)\ \}\ -\/>\ std::same\_as<void>;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+Concept for unary mathematical function operations. 
+
+Specifies requirements for types that represent mathematical function operations\+:
+\begin{DoxyItemize}
+\item Must provide a call operator that performs element-\/wise transformation
+\end{DoxyItemize}
+
+Used to constrain template parameters for mathematical function operations. 
