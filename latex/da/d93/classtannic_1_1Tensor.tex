@@ -1,0 +1,545 @@
+\doxysection{tannic\+::Tensor Class Reference}
+\hypertarget{classtannic_1_1Tensor}{}\label{classtannic_1_1Tensor}\index{tannic::Tensor@{tannic::Tensor}}
+
+
+A multidimensional, strided tensor data structure.  
+
+
+
+
+{\ttfamily \#include $<$Tensor.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classtannic_1_1Tensor_ab57635886a913849763fd6f8a3681239}{rank\+\_\+type}} = uint8\+\_\+t
+\begin{DoxyCompactList}\small\item\em Type used for rank (number of dimensions). \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classtannic_1_1Tensor_a7763d4fac9b2cb12f84e363475ddfafb}{size\+\_\+type}} = std\+::size\+\_\+t
+\begin{DoxyCompactList}\small\item\em Type used for size and shape dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}} (type \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})
+\begin{DoxyCompactList}\small\item\em Constructs an uninitialized tensor with default (contiguous) strides. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Tensor_a3410eb0c4a1e751e40a7df2153be804c}{Tensor}} (type \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}}, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}}, std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}}=0)
+\begin{DoxyCompactList}\small\item\em Constructs an uninitialized tensor with custom strides and offset. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Expression$>$ }\\\mbox{\hyperlink{classtannic_1_1Tensor_ad7d3de73d311b6f56db0f177b55f816c}{Tensor}} (const Expression \&expression)
+\begin{DoxyCompactList}\small\item\em Constructs a tensor by forwarding an {\ttfamily Expression}-\/like object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Expression$>$ }\\\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \& \mbox{\hyperlink{classtannic_1_1Tensor_aa74c128ad7859e3e48d431e2a6dfeecf}{operator=}} (const Expression \&expression)
+\begin{DoxyCompactList}\small\item\em Assigns the result of an expression to the tensor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Tensor_ace47b4a9fcb1068b6a5084b2816e4e7f}{Tensor}} (type \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}}, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}}, std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} $>$ storage)
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Metadata Access (May be constexpr in the future.)}\par
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}} () const
+\begin{DoxyCompactList}\small\item\em Returns the tensor\textquotesingle{}s data type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}} () const
+\begin{DoxyCompactList}\small\item\em Returns the tensor\textquotesingle{}s shape (dimension sizes per dimension). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}} () const
+\begin{DoxyCompactList}\small\item\em Returns the tensor\textquotesingle{}s strides (step sizes per dimension). \end{DoxyCompactList}\item 
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}} () const
+\begin{DoxyCompactList}\small\item\em Returns the offset of the tensor in the current buffer. \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}} () const
+\begin{DoxyCompactList}\small\item\em Returns the total number of bytes occupied by the tensor\textquotesingle{}s elements. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Tensor_ab57635886a913849763fd6f8a3681239}{rank\+\_\+type}} \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}} () const
+\begin{DoxyCompactList}\small\item\em Returns the number of dimensions (rank) of the tensor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \& \mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}} ()
+\begin{DoxyCompactList}\small\item\em Returns a reference to this tensor (const-\/qualified). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \& \mbox{\hyperlink{classtannic_1_1Tensor_afa045be0c377ee3127a5a9d97c5b1fcb}{forward}} () const
+\begin{DoxyCompactList}\small\item\em Returns a reference to this tensor (non-\/const). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Memory Management (Always runtime.)}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}{initialize}} (\mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}} \mbox{\hyperlink{classtannic_1_1Tensor_afc696fcdc106333ce6410d5863201d25}{allocator}}=\mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\}) const
+\begin{DoxyCompactList}\small\item\em Allocates the memory buffer for the tensor. \end{DoxyCompactList}\item 
+std\+::byte \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1Tensor_a104cf81bd4da1b3e8e96e2ad2644f941}{bytes}} () const
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the beginning of the tensor\textquotesingle{}s data (accounting for offset). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\+\_\+initialized}} () const
+\begin{DoxyCompactList}\small\item\em Checks whether the tensor has been initialized with memory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}} const \& \mbox{\hyperlink{classtannic_1_1Tensor_afc696fcdc106333ce6410d5863201d25}{allocator}} () const
+\begin{DoxyCompactList}\small\item\em Returns a reference to the allocator variant used to allocate this tensor\textquotesingle{}s buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Indexing, Slicing and Views.}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Integral Index$>$ }\\auto \mbox{\hyperlink{classtannic_1_1Tensor_addd20f7c75af9c8bdc7f6e87e4b5785b}{operator\mbox{[}$\,$\mbox{]}}} (Index index) const
+\begin{DoxyCompactList}\small\item\em Indexes the tensor with a single integral index. \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{classtannic_1_1Tensor_a45f09412a47ac74d30ac11968583afa7}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}} \mbox{\hyperlink{namespacetannic_a9468873460db4ea12f41458b87c63975}{range}}) const
+\begin{DoxyCompactList}\small\item\em Indexes the tensor with a {\ttfamily Range} object. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class ... Indexes$>$ }\\auto \mbox{\hyperlink{classtannic_1_1Tensor_a02fcaeee20dea90506e7afde810f9132}{operator\mbox{[}$\,$\mbox{]}}} (Indexes... indexes) const
+\begin{DoxyCompactList}\small\item\em Indexes the tensor with multiple indices (e.\+g., integers or ranges). \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{classtannic_1_1Tensor_a2970d79712c97bca7c781c3d7987fb0b}{transpose}} (int first=-\/1, int second=-\/2) const
+\begin{DoxyCompactList}\small\item\em Returns a view of the tensor with two dimensions transposed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}} (std\+::byte const \texorpdfstring{$\ast$}{*}, std\+::ptrdiff\+\_\+t)
+\item 
+bool \mbox{\hyperlink{classtannic_1_1Tensor_ae5d53f0606904d652ef67b1d99909e55}{compare}} (std\+::byte const \texorpdfstring{$\ast$}{*}, std\+::ptrdiff\+\_\+t) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Expression Source, class... Indexes$>$ }\\class \mbox{\hyperlink{classtannic_1_1Tensor_acd979f317f147e5b65290548bed8fa45}{expression\+::\+Slice}}
+\item 
+{\footnotesize template$<$Expression Source$>$ }\\class \mbox{\hyperlink{classtannic_1_1Tensor_ae69fa951d7e1f4c2e93eabef4dc136d9}{expression\+::\+Transpose}}
+\item 
+{\footnotesize template$<$Expression Source$>$ }\\class \mbox{\hyperlink{classtannic_1_1Tensor_a5386dee168164fdecd9162f1234534f7}{expression\+::\+Reshape}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A multidimensional, strided tensor data structure. 
+
+The {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}} class is the primary data structure in the Tannic \doxylink{classtannic_1_1Tensor}{Tensor} Library. It represents a dynamic typed intention of a computation. It supports slicing, transposition, and expression composition.\hypertarget{classtannic_1_1Tensor_autotoc_md16}{}\doxyparagraph{\texorpdfstring{Evaluation Mode\+:}{Evaluation Mode:}}\label{classtannic_1_1Tensor_autotoc_md16}
+
+\begin{DoxyItemize}
+\item Tensors are currently {\bfseries{eager}}\+: expressions assigned to them are immediately evaluated and stored.
+\item A lazy {\ttfamily constexpr} evaluation mode is planned for future versions, enabling compile-\/time computational graphs.
+\end{DoxyItemize}\hypertarget{classtannic_1_1Tensor_autotoc_md17}{}\doxyparagraph{\texorpdfstring{Memory\+:}{Memory:}}\label{classtannic_1_1Tensor_autotoc_md17}
+
+\begin{DoxyItemize}
+\item \doxylink{classtannic_1_1Host}{Host} and \doxylink{classtannic_1_1Device}{Device} (e.\+g., CUDA) allocations are supported using allocators like {\ttfamily Host()} or {\ttfamily Device()}.
+\item Memory must be explicitly allocated via {\ttfamily initialize(\+Host())} or initialize(\+Device()) but maybe removed in the future.
+\end{DoxyItemize}\hypertarget{classtannic_1_1Tensor_autotoc_md18}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Tensor_autotoc_md18}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X(float32,\ \{2,2\});\ X.\mbox{\hyperlink{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}{initialize}}();\ \textcolor{comment}{//\ or\ X.initialize(Device());\ for\ CUDA\ support\ \ \ }}
+\DoxyCodeLine{X[0,\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}\{0,-\/1\}]\ =\ 1;\ }
+\DoxyCodeLine{X[1,0]\ =\ 3;}
+\DoxyCodeLine{X[1,1]\ =\ 4;\ \ \ }
+\DoxyCodeLine{\ }
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ Y(float32,\ \{1,2\});\ Y.\mbox{\hyperlink{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}{initialize}}();\ \ \textcolor{comment}{//\ or\ X.initialize(Device());\ for\ CUDA\ support\ \ \ }}
+\DoxyCodeLine{Y[0,0]\ =\ 4;}
+\DoxyCodeLine{Y[0,1]\ =\ 6;\ \ \ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(X)\ +\ Y\ *\ Y\ -\/\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(X)\ +\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(X,\ Y.transpose());}
+
+\end{DoxyCode}
+
+
+This example demonstrates eager initialization, advanced indexing, broadcasting, and composite expression evaluation.
+
+\begin{DoxyWarning}{Warning}
+\+: Explicit inialization required for now but maybe removed in the future. If not properly initialized the tensors may segfault instead of throwing assertion error. This will be fixed when resources can be infered at the end of a templated expression. 
+\end{DoxyWarning}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classtannic_1_1Tensor_ab57635886a913849763fd6f8a3681239}\label{classtannic_1_1Tensor_ab57635886a913849763fd6f8a3681239} 
+\index{tannic::Tensor@{tannic::Tensor}!rank\_type@{rank\_type}}
+\index{rank\_type@{rank\_type}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{rank\_type}{rank\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classtannic_1_1Tensor_ab57635886a913849763fd6f8a3681239}{tannic\+::\+Tensor\+::rank\+\_\+type}} =  uint8\+\_\+t}
+
+
+
+Type used for rank (number of dimensions). 
+
+\Hypertarget{classtannic_1_1Tensor_a7763d4fac9b2cb12f84e363475ddfafb}\label{classtannic_1_1Tensor_a7763d4fac9b2cb12f84e363475ddfafb} 
+\index{tannic::Tensor@{tannic::Tensor}!size\_type@{size\_type}}
+\index{size\_type@{size\_type}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{size\_type}{size\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classtannic_1_1Tensor_a7763d4fac9b2cb12f84e363475ddfafb}{tannic\+::\+Tensor\+::size\+\_\+type}} =  std\+::size\+\_\+t}
+
+
+
+Type used for size and shape dimensions. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}\label{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67} 
+\index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
+\index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{type}]{dtype,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs an uninitialized tensor with default (contiguous) strides. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtype} & Data type of the tensor. \\
+\hline
+{\em shape} & \doxylink{classtannic_1_1Shape}{Shape} (dimensions) of the tensor. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classtannic_1_1Tensor_a3410eb0c4a1e751e40a7df2153be804c}\label{classtannic_1_1Tensor_a3410eb0c4a1e751e40a7df2153be804c} 
+\index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
+\index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{type}]{dtype,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}}]{shape,  }\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}}]{strides,  }\item[{std\+::ptrdiff\+\_\+t}]{offset = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs an uninitialized tensor with custom strides and offset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtype} & Data type of the tensor. \\
+\hline
+{\em shape} & \doxylink{classtannic_1_1Shape}{Shape} of the tensor. \\
+\hline
+{\em strides} & \doxylink{classtannic_1_1Strides}{Strides} per dimension. \\
+\hline
+{\em offset} & Byte offset from start of underlying memory buffer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classtannic_1_1Tensor_ad7d3de73d311b6f56db0f177b55f816c}\label{classtannic_1_1Tensor_ad7d3de73d311b6f56db0f177b55f816c} 
+\index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
+\index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$Expression Expression$>$ \\
+tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{const Expression \&}]{expression }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a tensor by forwarding an {\ttfamily Expression}-\/like object. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Expression} & Expression type satisfying the {\ttfamily Expression} concept. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em expression} & An expression to evaluate and store as a tensor. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classtannic_1_1Tensor_ace47b4a9fcb1068b6a5084b2816e4e7f}\label{classtannic_1_1Tensor_ace47b4a9fcb1068b6a5084b2816e4e7f} 
+\index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
+\index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{type}]{dtype,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}}]{shape,  }\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}}]{strides,  }\item[{std\+::ptrdiff\+\_\+t}]{offset,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} $>$}]{storage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1Tensor_afc696fcdc106333ce6410d5863201d25}\label{classtannic_1_1Tensor_afc696fcdc106333ce6410d5863201d25} 
+\index{tannic::Tensor@{tannic::Tensor}!allocator@{allocator}}
+\index{allocator@{allocator}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{allocator()}{allocator()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}} const  \& tannic\+::\+Tensor\+::allocator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a reference to the allocator variant used to allocate this tensor\textquotesingle{}s buffer. 
+
+\begin{DoxyReturn}{Returns}
+Allocator reference. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Asserts if the tensor is not initialized. 
+\end{DoxyNote}
+\Hypertarget{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}\label{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602} 
+\index{tannic::Tensor@{tannic::Tensor}!assign@{assign}}
+\index{assign@{assign}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily void tannic\+::\+Tensor\+::assign (\begin{DoxyParamCaption}\item[{std\+::byte const \texorpdfstring{$\ast$}{*}}]{,  }\item[{std\+::ptrdiff\+\_\+t}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classtannic_1_1Tensor_a104cf81bd4da1b3e8e96e2ad2644f941}\label{classtannic_1_1Tensor_a104cf81bd4da1b3e8e96e2ad2644f941} 
+\index{tannic::Tensor@{tannic::Tensor}!bytes@{bytes}}
+\index{bytes@{bytes}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{bytes()}{bytes()}}
+{\footnotesize\ttfamily std\+::byte \texorpdfstring{$\ast$}{*} tannic\+::\+Tensor\+::bytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a pointer to the beginning of the tensor\textquotesingle{}s data (accounting for offset). 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the tensor\textquotesingle{}s data in bytes. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Tensor_ae5d53f0606904d652ef67b1d99909e55}\label{classtannic_1_1Tensor_ae5d53f0606904d652ef67b1d99909e55} 
+\index{tannic::Tensor@{tannic::Tensor}!compare@{compare}}
+\index{compare@{compare}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{compare()}{compare()}}
+{\footnotesize\ttfamily bool tannic\+::\+Tensor\+::compare (\begin{DoxyParamCaption}\item[{std\+::byte const \texorpdfstring{$\ast$}{*}}]{,  }\item[{std\+::ptrdiff\+\_\+t}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}\label{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea} 
+\index{tannic::Tensor@{tannic::Tensor}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily type tannic\+::\+Tensor\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the tensor\textquotesingle{}s data type. 
+
+\Hypertarget{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}\label{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397} 
+\index{tannic::Tensor@{tannic::Tensor}!forward@{forward}}
+\index{forward@{forward}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \& tannic\+::\+Tensor\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a reference to this tensor (const-\/qualified). 
+
+\Hypertarget{classtannic_1_1Tensor_afa045be0c377ee3127a5a9d97c5b1fcb}\label{classtannic_1_1Tensor_afa045be0c377ee3127a5a9d97c5b1fcb} 
+\index{tannic::Tensor@{tannic::Tensor}!forward@{forward}}
+\index{forward@{forward}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const  \& tannic\+::\+Tensor\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a reference to this tensor (non-\/const). 
+
+\Hypertarget{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}\label{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882} 
+\index{tannic::Tensor@{tannic::Tensor}!initialize@{initialize}}
+\index{initialize@{initialize}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void tannic\+::\+Tensor\+::initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}}}]{allocator = {\ttfamily \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\}} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Allocates the memory buffer for the tensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em allocator} & Memory allocator (defaults to {\ttfamily \doxylink{classtannic_1_1Host}{Host}\{\}}). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}\label{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f} 
+\index{tannic::Tensor@{tannic::Tensor}!is\_initialized@{is\_initialized}}
+\index{is\_initialized@{is\_initialized}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{is\_initialized()}{is\_initialized()}}
+{\footnotesize\ttfamily bool tannic\+::\+Tensor\+::is\+\_\+initialized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks whether the tensor has been initialized with memory. 
+
+\begin{DoxyReturn}{Returns}
+True if initialized, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}\label{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43} 
+\index{tannic::Tensor@{tannic::Tensor}!nbytes@{nbytes}}
+\index{nbytes@{nbytes}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{nbytes()}{nbytes()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t tannic\+::\+Tensor\+::nbytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the total number of bytes occupied by the tensor\textquotesingle{}s elements. 
+
+\Hypertarget{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}\label{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a} 
+\index{tannic::Tensor@{tannic::Tensor}!offset@{offset}}
+\index{offset@{offset}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily std\+::ptrdiff\+\_\+t tannic\+::\+Tensor\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the offset of the tensor in the current buffer. 
+
+\Hypertarget{classtannic_1_1Tensor_aa74c128ad7859e3e48d431e2a6dfeecf}\label{classtannic_1_1Tensor_aa74c128ad7859e3e48d431e2a6dfeecf} 
+\index{tannic::Tensor@{tannic::Tensor}!operator=@{operator=}}
+\index{operator=@{operator=}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$Expression Expression$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \& tannic\+::\+Tensor\+::operator= (\begin{DoxyParamCaption}\item[{const Expression \&}]{expression }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Assigns the result of an expression to the tensor. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Expression} & Expression type satisfying the {\ttfamily Expression} concept. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em expression} & Expression to evaluate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to {\ttfamily \texorpdfstring{$\ast$}{*}this}. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Tensor_addd20f7c75af9c8bdc7f6e87e4b5785b}\label{classtannic_1_1Tensor_addd20f7c75af9c8bdc7f6e87e4b5785b} 
+\index{tannic::Tensor@{tannic::Tensor}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$Integral Index$>$ \\
+auto tannic\+::\+Tensor\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{Index}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indexes the tensor with a single integral index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index to access. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A slice expression representing the sub-\/tensor.
+\end{DoxyReturn}
+\hypertarget{classtannic_1_1Tensor_autotoc_md19}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Tensor_autotoc_md19}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X(float32,\ \{2,2,2\});\ X.\mbox{\hyperlink{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}{initialize}}();\ }
+\DoxyCodeLine{X[0]\ =\ 1;\ \ \ \ \textcolor{comment}{//arbitrary\ types\ assignment\ support.}}
+\DoxyCodeLine{X[1]\ =\ 2.f;}
+\DoxyCodeLine{std::cout\ <<\ X\ \ <<\ std::endl;\ \textcolor{comment}{//\ Tensor([[[1,\ 1],\ [1,\ 1]],\ }}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ [[2,\ 2],\ [2,\ 2]]]\ dtype=float32,\ shape=(2,\ 2,\ 2))}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ Y\ =\ X[1];\ }
+\DoxyCodeLine{std::cout\ <<\ Y\ <<\ std::endl;\ \textcolor{comment}{//\ Tensor([[2,\ 2],\ }}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ [2,\ 2]]\ dtype=float32,\ shape=(2,\ 2))}}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{std::cout\ <<\ Y[0]\ <<\ std::endl;\ \textcolor{comment}{//\ Tensor([2,\ 2]\ dtype=float32,\ shape=(2))}}
+
+\end{DoxyCode}
+ \Hypertarget{classtannic_1_1Tensor_a02fcaeee20dea90506e7afde810f9132}\label{classtannic_1_1Tensor_a02fcaeee20dea90506e7afde810f9132} 
+\index{tannic::Tensor@{tannic::Tensor}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class ... Indexes$>$ \\
+auto tannic\+::\+Tensor\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{Indexes...}]{indexes }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indexes the tensor with multiple indices (e.\+g., integers or ranges). 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Indexes} & Variadic index types. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em indexes} & Indices to apply. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A slice expression representing the sub-\/tensor.
+\end{DoxyReturn}
+\hypertarget{classtannic_1_1Tensor_autotoc_md21}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Tensor_autotoc_md21}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X(float32,\ \{2,2\});\ X.\mbox{\hyperlink{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}{initialize}}();\ \textcolor{comment}{//\ or\ X.initialize(Device());\ for\ CUDA\ support\ \ \ }}
+\DoxyCodeLine{X[0,\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}\{0,-\/1\}]\ =\ 1;\ \ \textcolor{comment}{//\ \ fills\ [0,0]\ and\ [0,1]\ with\ 1.}}
+\DoxyCodeLine{X[1,0]\ =\ 3;}
+\DoxyCodeLine{X[1,1]\ =\ 4;\ \ \ \ \ \ \ }
+
+\end{DoxyCode}
+ \Hypertarget{classtannic_1_1Tensor_a45f09412a47ac74d30ac11968583afa7}\label{classtannic_1_1Tensor_a45f09412a47ac74d30ac11968583afa7} 
+\index{tannic::Tensor@{tannic::Tensor}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily auto tannic\+::\+Tensor\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}}]{range }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indexes the tensor with a {\ttfamily Range} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em range} & Range to apply to the first dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A slice expression representing the sub-\/tensor.
+\end{DoxyReturn}
+\hypertarget{classtannic_1_1Tensor_autotoc_md20}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Tensor_autotoc_md20}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X(float32,\ \{2,2,2\});\ X.\mbox{\hyperlink{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}{initialize}}();\ \ }
+\DoxyCodeLine{X[\{0,1\}]\ =\ 5;\ \textcolor{comment}{//\ same\ as\ X[range\{0,1\}]\ =\ 5}}
+
+\end{DoxyCode}
+ \Hypertarget{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}\label{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa} 
+\index{tannic::Tensor@{tannic::Tensor}!rank@{rank}}
+\index{rank@{rank}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{rank()}{rank()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1Tensor_ab57635886a913849763fd6f8a3681239}{rank\+\_\+type}} tannic\+::\+Tensor\+::rank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the number of dimensions (rank) of the tensor. 
+
+\Hypertarget{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}\label{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e} 
+\index{tannic::Tensor@{tannic::Tensor}!shape@{shape}}
+\index{shape@{shape}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& tannic\+::\+Tensor\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the tensor\textquotesingle{}s shape (dimension sizes per dimension). 
+
+\Hypertarget{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}\label{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302} 
+\index{tannic::Tensor@{tannic::Tensor}!strides@{strides}}
+\index{strides@{strides}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& tannic\+::\+Tensor\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the tensor\textquotesingle{}s strides (step sizes per dimension). 
+
+\Hypertarget{classtannic_1_1Tensor_a2970d79712c97bca7c781c3d7987fb0b}\label{classtannic_1_1Tensor_a2970d79712c97bca7c781c3d7987fb0b} 
+\index{tannic::Tensor@{tannic::Tensor}!transpose@{transpose}}
+\index{transpose@{transpose}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{transpose()}{transpose()}}
+{\footnotesize\ttfamily auto tannic\+::\+Tensor\+::transpose (\begin{DoxyParamCaption}\item[{int}]{first = {\ttfamily -\/1},  }\item[{int}]{second = {\ttfamily -\/2} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a view of the tensor with two dimensions transposed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & First dimension to swap (default\+: -\/1). \\
+\hline
+{\em second} & Second dimension to swap (default\+: -\/2). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Transpose expression. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classtannic_1_1Tensor_a5386dee168164fdecd9162f1234534f7}\label{classtannic_1_1Tensor_a5386dee168164fdecd9162f1234534f7} 
+\index{tannic::Tensor@{tannic::Tensor}!expression::Reshape@{expression::Reshape}}
+\index{expression::Reshape@{expression::Reshape}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{expression::Reshape}{expression::Reshape}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+friend class \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{expression\+::\+Reshape}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{classtannic_1_1Tensor_acd979f317f147e5b65290548bed8fa45}\label{classtannic_1_1Tensor_acd979f317f147e5b65290548bed8fa45} 
+\index{tannic::Tensor@{tannic::Tensor}!expression::Slice@{expression::Slice}}
+\index{expression::Slice@{expression::Slice}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{expression::Slice}{expression::Slice}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+friend class \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression\+::\+Slice}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\Hypertarget{classtannic_1_1Tensor_ae69fa951d7e1f4c2e93eabef4dc136d9}\label{classtannic_1_1Tensor_ae69fa951d7e1f4c2e93eabef4dc136d9} 
+\index{tannic::Tensor@{tannic::Tensor}!expression::Transpose@{expression::Transpose}}
+\index{expression::Transpose@{expression::Transpose}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{expression::Transpose}{expression::Transpose}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+friend class \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{expression\+::\+Transpose}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{Tensor_8hpp}{Tensor.\+hpp}}\end{DoxyCompactItemize}

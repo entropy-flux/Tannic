@@ -1,0 +1,21 @@
+<map id="include/tannic/Indexing.hpp" name="include/tannic/Indexing.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,207,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="14,79,83,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,33,69,70,65,66,94,29"/>
+<area shape="rect" id="Node000003" href="$d3/d84/Concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="108,79,219,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,29,147,66,143,70,113,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="23,152,103,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="149,106,92,146,89,142,146,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="128,152,199,177"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="166,104,166,138,161,138,161,104"/>
+<area shape="rect" id="Node000006" href="$d5/d34/Types_8hpp.html" title="Core type system for the Tannic Tensor Library." alt="" coords="223,152,309,177"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="181,102,239,142,236,146,178,106"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="85,225,165,251"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="244,180,161,221,159,217,242,175"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="189,225,255,251"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="261,179,239,215,234,212,256,176"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="279,225,338,251"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="275,176,297,212,293,215,271,179"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="362,225,487,251"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="293,175,387,217,385,222,290,180"/>
+</map>

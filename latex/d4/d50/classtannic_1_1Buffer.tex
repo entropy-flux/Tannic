@@ -1,0 +1,185 @@
+\doxysection{tannic\+::Buffer Class Reference}
+\hypertarget{classtannic_1_1Buffer}{}\label{classtannic_1_1Buffer}\index{tannic::Buffer@{tannic::Buffer}}
+
+
+Managed memory buffer with explicit ownership.  
+
+
+
+
+{\ttfamily \#include $<$Buffer.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1Buffer_a983886240f76aa8492bd45ca81593c7e}{Buffer}} (std\+::size\+\_\+t \mbox{\hyperlink{classtannic_1_1Buffer_aa987fe955f172709b13a5a07b6abca61}{nbytes}}, \mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}} \mbox{\hyperlink{classtannic_1_1Buffer_ae8279b96d25510e6c4be7c5dd37d2528}{allocator}}=\mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})
+\begin{DoxyCompactList}\small\item\em Constructs a buffer with specified size and allocator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Buffer_aa1d2f3b93cace356b84eeb19171f4cf4}{Buffer}} (const \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \&)=delete
+\item 
+\mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \& \mbox{\hyperlink{classtannic_1_1Buffer_aafa3f5ab9e76af7621cd2457c8da2b86}{operator=}} (const \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \&)=delete
+\item 
+\mbox{\hyperlink{classtannic_1_1Buffer_a47e35c6f4d86bc2124dc547723439541}{Buffer}} (\mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em Move constructor transfers ownership. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \& \mbox{\hyperlink{classtannic_1_1Buffer_af1a9b423b277aa1d226e30dad2ba31e1}{operator=}} (\mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em Move assignment transfers ownership. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Buffer_a7c75111cb4c087e0a37c7bc6a30c27cd}{\texorpdfstring{$\sim$}{\string~}\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Destructor releases owned memory. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1Buffer_aedfd20d2580033d4d397c909f0172588}{address}} ()
+\begin{DoxyCompactList}\small\item\em Gets writable pointer to memory. \end{DoxyCompactList}\item 
+const void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1Buffer_a88ceb08e4ebc5855d0776201b6eab63d}{address}} () const
+\begin{DoxyCompactList}\small\item\em Gets read-\/only pointer to memory ~\newline
+ \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classtannic_1_1Buffer_aa987fe955f172709b13a5a07b6abca61}{nbytes}} () const
+\begin{DoxyCompactList}\small\item\em Gets buffer size in bytes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}} const \& \mbox{\hyperlink{classtannic_1_1Buffer_ae8279b96d25510e6c4be7c5dd37d2528}{allocator}} () const
+\begin{DoxyCompactList}\small\item\em Gets the allocator used for this buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Managed memory buffer with explicit ownership. 
+
+Wraps a contiguous memory region with\+:
+
+
+\begin{DoxyItemize}
+\item Size tracking
+\item Allocator awareness ~\newline
+
+\item Move semantics for ownership transfer
+\item Const-\/correct access methods 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1Buffer_a983886240f76aa8492bd45ca81593c7e}\label{classtannic_1_1Buffer_a983886240f76aa8492bd45ca81593c7e} 
+\index{tannic::Buffer@{tannic::Buffer}!Buffer@{Buffer}}
+\index{Buffer@{Buffer}!tannic::Buffer@{tannic::Buffer}}
+\doxysubsubsection{\texorpdfstring{Buffer()}{Buffer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily tannic\+::\+Buffer\+::\+Buffer (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{nbytes,  }\item[{\mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}}}]{allocator = {\ttfamily \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\}} }\end{DoxyParamCaption})}
+
+
+
+Constructs a buffer with specified size and allocator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nbytes} & Size of memory region in bytes \\
+\hline
+{\em allocator} & Allocator to use (defaults to \doxylink{classtannic_1_1Host}{Host}) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classtannic_1_1Buffer_aa1d2f3b93cace356b84eeb19171f4cf4}\label{classtannic_1_1Buffer_aa1d2f3b93cace356b84eeb19171f4cf4} 
+\index{tannic::Buffer@{tannic::Buffer}!Buffer@{Buffer}}
+\index{Buffer@{Buffer}!tannic::Buffer@{tannic::Buffer}}
+\doxysubsubsection{\texorpdfstring{Buffer()}{Buffer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily tannic\+::\+Buffer\+::\+Buffer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classtannic_1_1Buffer_a47e35c6f4d86bc2124dc547723439541}\label{classtannic_1_1Buffer_a47e35c6f4d86bc2124dc547723439541} 
+\index{tannic::Buffer@{tannic::Buffer}!Buffer@{Buffer}}
+\index{Buffer@{Buffer}!tannic::Buffer@{tannic::Buffer}}
+\doxysubsubsection{\texorpdfstring{Buffer()}{Buffer()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily tannic\+::\+Buffer\+::\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Move constructor transfers ownership. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Source buffer to move from \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classtannic_1_1Buffer_a7c75111cb4c087e0a37c7bc6a30c27cd}\label{classtannic_1_1Buffer_a7c75111cb4c087e0a37c7bc6a30c27cd} 
+\index{tannic::Buffer@{tannic::Buffer}!````~Buffer@{\texorpdfstring{$\sim$}{\string~}Buffer}}
+\index{````~Buffer@{\texorpdfstring{$\sim$}{\string~}Buffer}!tannic::Buffer@{tannic::Buffer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Buffer()}{\string~Buffer()}}
+{\footnotesize\ttfamily tannic\+::\+Buffer\+::\texorpdfstring{$\sim$}{\string~}\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor releases owned memory. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1Buffer_aedfd20d2580033d4d397c909f0172588}\label{classtannic_1_1Buffer_aedfd20d2580033d4d397c909f0172588} 
+\index{tannic::Buffer@{tannic::Buffer}!address@{address}}
+\index{address@{address}!tannic::Buffer@{tannic::Buffer}}
+\doxysubsubsection{\texorpdfstring{address()}{address()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} tannic\+::\+Buffer\+::address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets writable pointer to memory. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to allocated memory 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Buffer_a88ceb08e4ebc5855d0776201b6eab63d}\label{classtannic_1_1Buffer_a88ceb08e4ebc5855d0776201b6eab63d} 
+\index{tannic::Buffer@{tannic::Buffer}!address@{address}}
+\index{address@{address}!tannic::Buffer@{tannic::Buffer}}
+\doxysubsubsection{\texorpdfstring{address()}{address()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const void \texorpdfstring{$\ast$}{*} tannic\+::\+Buffer\+::address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets read-\/only pointer to memory ~\newline
+ 
+
+\begin{DoxyReturn}{Returns}
+Const pointer to allocated memory 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Buffer_ae8279b96d25510e6c4be7c5dd37d2528}\label{classtannic_1_1Buffer_ae8279b96d25510e6c4be7c5dd37d2528} 
+\index{tannic::Buffer@{tannic::Buffer}!allocator@{allocator}}
+\index{allocator@{allocator}!tannic::Buffer@{tannic::Buffer}}
+\doxysubsubsection{\texorpdfstring{allocator()}{allocator()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}} const  \& tannic\+::\+Buffer\+::allocator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the allocator used for this buffer. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the allocator instance 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Buffer_aa987fe955f172709b13a5a07b6abca61}\label{classtannic_1_1Buffer_aa987fe955f172709b13a5a07b6abca61} 
+\index{tannic::Buffer@{tannic::Buffer}!nbytes@{nbytes}}
+\index{nbytes@{nbytes}!tannic::Buffer@{tannic::Buffer}}
+\doxysubsubsection{\texorpdfstring{nbytes()}{nbytes()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t tannic\+::\+Buffer\+::nbytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets buffer size in bytes. 
+
+\begin{DoxyReturn}{Returns}
+Size of allocated memory region 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Buffer_af1a9b423b277aa1d226e30dad2ba31e1}\label{classtannic_1_1Buffer_af1a9b423b277aa1d226e30dad2ba31e1} 
+\index{tannic::Buffer@{tannic::Buffer}!operator=@{operator=}}
+\index{operator=@{operator=}!tannic::Buffer@{tannic::Buffer}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \& tannic\+::\+Buffer\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Move assignment transfers ownership. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Source buffer to move from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this buffer 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Buffer_aafa3f5ab9e76af7621cd2457c8da2b86}\label{classtannic_1_1Buffer_aafa3f5ab9e76af7621cd2457c8da2b86} 
+\index{tannic::Buffer@{tannic::Buffer}!operator=@{operator=}}
+\index{operator=@{operator=}!tannic::Buffer@{tannic::Buffer}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \& tannic\+::\+Buffer\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{Buffer_8hpp}{Buffer.\+hpp}}\end{DoxyCompactItemize}

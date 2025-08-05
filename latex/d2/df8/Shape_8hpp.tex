@@ -1,0 +1,71 @@
+\doxysection{include/tannic/\+Shape.hpp File Reference}
+\hypertarget{Shape_8hpp}{}\label{Shape_8hpp}\index{include/tannic/Shape.hpp@{include/tannic/Shape.hpp}}
+
+
+Defines the {\ttfamily \doxylink{classtannic_1_1Shape}{tannic\+::\+Shape}} class for representing tensor dimensions. ~\newline
+  
+
+
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$initializer\+\_\+list$>$}\newline
+{\ttfamily \#include $<$ostream$>$}\newline
+{\ttfamily \#include "{}Concepts.\+hpp"{}}\newline
+{\ttfamily \#include "{}Indexing.\+hpp"{}}\newline
+Include dependency graph for Shape.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d88/Shape_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/dac/Shape_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtannic_1_1Shape}{tannic\+::\+Shape}}
+\begin{DoxyCompactList}\small\item\em Represents the shape (dimensions) of an tensor-\/like expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr bool \mbox{\hyperlink{namespacetannic_ab9024d05a23081306cb9f03929bd96d9}{tannic\+::operator==}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&first, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&second)
+\begin{DoxyCompactList}\small\item\em Equality comparison operator for shapes. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{tannic\+::operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&shape)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the {\ttfamily \doxylink{classtannic_1_1Shape}{tannic\+::\+Shape}} class for representing tensor dimensions. ~\newline
+ 
+
+\begin{DoxyAuthor}{Author}
+Eric Cardozo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+This file is part of the Tannic Tensor Library and defines the {\ttfamily Shape} class, a compact, constexpr-\/friendly abstraction for representing the shape (i.\+e., dimensions) of tensors and expression-\/like objects. Shapes are integral to indexing, broadcasting, and tensor manipulation throughout the library.
+
+The shape supports\+:
+
+
+\begin{DoxyItemize}
+\item Compile-\/time construction (constexpr)
+\item Convenient initialization from iterators, lists, or variadic arguments
+\item Safe indexing, including Python-\/style negative indexing
+\end{DoxyItemize}
+
+All expression-\/like objects in the library expose a {\ttfamily Shape} as part of their interface, making this file central to the Tannic design. 

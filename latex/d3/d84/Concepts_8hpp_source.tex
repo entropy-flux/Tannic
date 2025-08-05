@@ -1,0 +1,68 @@
+\doxysection{Concepts.\+hpp}
+\hypertarget{Concepts_8hpp_source}{}\label{Concepts_8hpp_source}\index{include/tannic/Concepts.hpp@{include/tannic/Concepts.hpp}}
+\mbox{\hyperlink{Concepts_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2025\ Eric\ Cardozo}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ This\ file\ is\ part\ of\ the\ Tannic\ Tensor\ Library.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ CONCEPTS\_HPP}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ CONCEPTS\_HPP\ }}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <concepts>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <iterator>}\ \ \ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Types_8hpp}{Types.hpp}}"{}}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }Shape;}
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }Strides;}
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }Tensor;\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00083\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\ =\ \textcolor{keyword}{requires}(\textcolor{keyword}{const}\ T\ expression)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \{\ expression.dtype()\ \ \ \}\ -\/>\ std::same\_as<type>;}
+\DoxyCodeLine{00085\ \ \ \ \ \{\ expression.shape()\ \ \ \}\ -\/>\ std::same\_as<Shape\ const\&>;}
+\DoxyCodeLine{00086\ \ \ \ \ \{\ expression.strides()\ \}\ -\/>\ std::same\_as<Strides\ const\&>;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ expression.offset();}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ expression.forward();}
+\DoxyCodeLine{00089\ \};\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00106\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00107\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Operator}{Operator}}\ =\ \textcolor{keyword}{requires}(T\ operation,\ \textcolor{keyword}{const}\ Shape\&\ first,\ \textcolor{keyword}{const}\ Shape\&\ second)\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \{\ T::promote(type\{\},\ type\{\})\ \}\ -\/>\ std::same\_as<type>;}
+\DoxyCodeLine{00109\ \ \ \ \ \{\ T::broadcast(first,\ second)\ \}\ -\/>\ std::same\_as<Shape>;\ }
+\DoxyCodeLine{00110\ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00120\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Function>}
+\DoxyCodeLine{00121\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Functional}{Functional}}\ =\ \textcolor{keyword}{requires}(Function\ function,\ \textcolor{keyword}{const}\ Tensor\&\ input,\ Tensor\&\ output)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \{\ function(input,\ output)\ \}\ -\/>\ std::same\_as<void>;}
+\DoxyCodeLine{00123\ \};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00129\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00130\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Iterable}{Iterable}}\ =\ \textcolor{keyword}{requires}(T\ type)\ \{\ std::begin(type);\ std::end(type);\ \};\ \ \ }
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00136\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00137\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}\ =\ std::input\_iterator<T>;\ \ }
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00143\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00144\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}\ =\ std::is\_integral\_v<T>;}
+\DoxyCodeLine{00145\ \ }
+\DoxyCodeLine{00146\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONCEPTS\_HPP}}
+
+\end{DoxyCode}

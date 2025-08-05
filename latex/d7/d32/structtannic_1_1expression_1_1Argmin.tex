@@ -1,0 +1,152 @@
+\doxysection{tannic\+::expression\+::Argmin Struct Reference}
+\hypertarget{structtannic_1_1expression_1_1Argmin}{}\label{structtannic_1_1expression_1_1Argmin}\index{tannic::expression::Argmin@{tannic::expression::Argmin}}
+
+
+\doxylink{classtannic_1_1expression_1_1Reduction}{Reduction} argmin operation.  
+
+
+
+
+{\ttfamily \#include $<$Reductions.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr type \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_ab47d8cc3c5e2090f1ca2a07c71954070}{reduce}} (type dtype) const
+\begin{DoxyCompactList}\small\item\em Determines output dtype for argmin. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a8bd4f399aa919a343ccc815fba4568e8}{reduce}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&shape) const
+\begin{DoxyCompactList}\small\item\em Computes reduced shape for argmin. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_ad7e1a5a0e79ccbe72ad00a2024848c29}{reduce}} (\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&strides) const
+\begin{DoxyCompactList}\small\item\em Computes output strides after reducing the specified axis. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&) const
+\begin{DoxyCompactList}\small\item\em Performs the argmin operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e}{axis}}
+\begin{DoxyCompactList}\small\item\em Axis along which to find minima. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classtannic_1_1expression_1_1Reduction}{Reduction} argmin operation. 
+
+Finds the indices of minimum values along the specified axis. Reduces input dtype to int64 and removes the reduced dimension. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}\label{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819} 
+\index{tannic::expression::Argmin@{tannic::expression::Argmin}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Argmin@{tannic::expression::Argmin}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily void tannic\+::expression\+::\+Argmin\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Performs the argmin operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Source tensor \\
+\hline
+{\em output} & Result tensor containing indices \\
+\hline
+\end{DoxyParams}
+\Hypertarget{structtannic_1_1expression_1_1Argmin_a8bd4f399aa919a343ccc815fba4568e8}\label{structtannic_1_1expression_1_1Argmin_a8bd4f399aa919a343ccc815fba4568e8} 
+\index{tannic::expression::Argmin@{tannic::expression::Argmin}!reduce@{reduce}}
+\index{reduce@{reduce}!tannic::expression::Argmin@{tannic::expression::Argmin}}
+\doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::expression\+::\+Argmin\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{shape }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Computes reduced shape for argmin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & Input shape \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1Shape}{Shape} with reduced dimension removed 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em assert} & if input has rank \texorpdfstring{$<$}{<} 1 \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{structtannic_1_1expression_1_1Argmin_ad7e1a5a0e79ccbe72ad00a2024848c29}\label{structtannic_1_1expression_1_1Argmin_ad7e1a5a0e79ccbe72ad00a2024848c29} 
+\index{tannic::expression::Argmin@{tannic::expression::Argmin}!reduce@{reduce}}
+\index{reduce@{reduce}!tannic::expression::Argmin@{tannic::expression::Argmin}}
+\doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} tannic\+::expression\+::\+Argmin\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&}]{strides }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Computes output strides after reducing the specified axis. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em strides} & Input tensor strides before reduction \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New strides with the reduced dimension removed
+\end{DoxyReturn}
+When reducing along an axis (for argmax/argmin), the output tensor loses that dimension. This requires adjusting the strides accordingly\+:
+
+
+\begin{DoxyEnumerate}
+\item For scalar results (rank-\/1 input reduced to rank-\/0)\+:
+\begin{DoxyItemize}
+\item Returns empty strides (scalar has no strides)
+\end{DoxyItemize}
+\item For higher-\/rank tensors\+:
+\begin{DoxyItemize}
+\item Copies all strides except the one corresponding to the reduced axis
+\item Maintains the original memory layout for remaining dimensions
+\item The last stride is preserved to maintain contiguous access
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Input\ shape:\ [3,4,5],\ strides:\ [20,5,1]\ (C-\/contiguous)}
+\DoxyCodeLine{After\ reducing\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e}{axis}}=1\ (shape\ becomes\ [3,5]):}
+\DoxyCodeLine{Output\ strides:\ [20,1]\ \ \textcolor{comment}{//\ Skips\ the\ reduced\ dimension's\ stride\ (5)\ }}
+
+\end{DoxyCode}
+ \Hypertarget{structtannic_1_1expression_1_1Argmin_ab47d8cc3c5e2090f1ca2a07c71954070}\label{structtannic_1_1expression_1_1Argmin_ab47d8cc3c5e2090f1ca2a07c71954070} 
+\index{tannic::expression::Argmin@{tannic::expression::Argmin}!reduce@{reduce}}
+\index{reduce@{reduce}!tannic::expression::Argmin@{tannic::expression::Argmin}}
+\doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily constexpr type tannic\+::expression\+::\+Argmin\+::reduce (\begin{DoxyParamCaption}\item[{type}]{dtype }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Determines output dtype for argmin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtype} & Input dtype \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Always returns int64 for indices 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e}\label{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e} 
+\index{tannic::expression::Argmin@{tannic::expression::Argmin}!axis@{axis}}
+\index{axis@{axis}!tannic::expression::Argmin@{tannic::expression::Argmin}}
+\doxysubsubsection{\texorpdfstring{axis}{axis}}
+{\footnotesize\ttfamily int tannic\+::expression\+::\+Argmin\+::axis}
+
+
+
+Axis along which to find minima. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{Reductions_8hpp}{Reductions.\+hpp}}\end{DoxyCompactItemize}

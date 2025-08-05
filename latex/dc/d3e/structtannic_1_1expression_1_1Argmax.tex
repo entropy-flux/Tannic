@@ -1,0 +1,129 @@
+\doxysection{tannic\+::expression\+::Argmax Struct Reference}
+\hypertarget{structtannic_1_1expression_1_1Argmax}{}\label{structtannic_1_1expression_1_1Argmax}\index{tannic::expression::Argmax@{tannic::expression::Argmax}}
+
+
+\doxylink{classtannic_1_1expression_1_1Reduction}{Reduction} argmax operation.  
+
+
+
+
+{\ttfamily \#include $<$Reductions.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr type \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_af5565f57e72a903f23de86caa38357df}{reduce}} (type dtype) const
+\begin{DoxyCompactList}\small\item\em Determines output dtype for argmax. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ab6ca23ef9e519f7a40e979104e597b61}{reduce}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&shape) const
+\begin{DoxyCompactList}\small\item\em Computes reduced shape for argmax. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ae4d14dd615bfcc34c940137215108328}{reduce}} (\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&strides) const
+\begin{DoxyCompactList}\small\item\em Computes reduced strides for argmax. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_a78adde0e750ad2264a7595d61310673f}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&) const
+\begin{DoxyCompactList}\small\item\em Performs the argmax operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676cd885d44b909}{axis}}
+\begin{DoxyCompactList}\small\item\em Axis along which to find maxima. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classtannic_1_1expression_1_1Reduction}{Reduction} argmax operation. 
+
+Finds the indices of maximum values along the specified axis. Reduces input dtype to int64 and removes the reduced dimension. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structtannic_1_1expression_1_1Argmax_a78adde0e750ad2264a7595d61310673f}\label{structtannic_1_1expression_1_1Argmax_a78adde0e750ad2264a7595d61310673f} 
+\index{tannic::expression::Argmax@{tannic::expression::Argmax}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Argmax@{tannic::expression::Argmax}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily void tannic\+::expression\+::\+Argmax\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Performs the argmax operation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & Source tensor \\
+\hline
+{\em output} & Result tensor containing indices \\
+\hline
+\end{DoxyParams}
+\Hypertarget{structtannic_1_1expression_1_1Argmax_ab6ca23ef9e519f7a40e979104e597b61}\label{structtannic_1_1expression_1_1Argmax_ab6ca23ef9e519f7a40e979104e597b61} 
+\index{tannic::expression::Argmax@{tannic::expression::Argmax}!reduce@{reduce}}
+\index{reduce@{reduce}!tannic::expression::Argmax@{tannic::expression::Argmax}}
+\doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::expression\+::\+Argmax\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{shape }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Computes reduced shape for argmax. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & Input shape \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1Shape}{Shape} with reduced dimension removed 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em assert} & if input has rank \texorpdfstring{$<$}{<} 1 \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{structtannic_1_1expression_1_1Argmax_ae4d14dd615bfcc34c940137215108328}\label{structtannic_1_1expression_1_1Argmax_ae4d14dd615bfcc34c940137215108328} 
+\index{tannic::expression::Argmax@{tannic::expression::Argmax}!reduce@{reduce}}
+\index{reduce@{reduce}!tannic::expression::Argmax@{tannic::expression::Argmax}}
+\doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} tannic\+::expression\+::\+Argmax\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&}]{strides }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Computes reduced strides for argmax. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em strides} & Input strides \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1Strides}{Strides} adjusted for reduced shape 
+\end{DoxyReturn}
+\Hypertarget{structtannic_1_1expression_1_1Argmax_af5565f57e72a903f23de86caa38357df}\label{structtannic_1_1expression_1_1Argmax_af5565f57e72a903f23de86caa38357df} 
+\index{tannic::expression::Argmax@{tannic::expression::Argmax}!reduce@{reduce}}
+\index{reduce@{reduce}!tannic::expression::Argmax@{tannic::expression::Argmax}}
+\doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily constexpr type tannic\+::expression\+::\+Argmax\+::reduce (\begin{DoxyParamCaption}\item[{type}]{dtype }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Determines output dtype for argmax. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtype} & Input dtype \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Always returns int64 for indices 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676cd885d44b909}\label{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676cd885d44b909} 
+\index{tannic::expression::Argmax@{tannic::expression::Argmax}!axis@{axis}}
+\index{axis@{axis}!tannic::expression::Argmax@{tannic::expression::Argmax}}
+\doxysubsubsection{\texorpdfstring{axis}{axis}}
+{\footnotesize\ttfamily int tannic\+::expression\+::\+Argmax\+::axis}
+
+
+
+Axis along which to find maxima. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{Reductions_8hpp}{Reductions.\+hpp}}\end{DoxyCompactItemize}

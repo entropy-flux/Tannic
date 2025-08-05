@@ -1,0 +1,137 @@
+\doxysection{tannic\+::expression\+::Reshape\texorpdfstring{$<$}{<} Source \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1expression_1_1Reshape}{}\label{classtannic_1_1expression_1_1Reshape}\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+
+
+Expression template for viewing a tensor with a new shape.  
+
+
+
+
+{\ttfamily \#include $<$Views.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Integral... Indexes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_abab1d866ae98f6110ccf0c2a562ee1a8}{Reshape}} (\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, Indexes... indexes)
+\begin{DoxyCompactList}\small\item\em Construct a reshaped view of the source tensor. \end{DoxyCompactList}\item 
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_af5867677de585169871d47f3b2d4e6bf}{dtype}} () const
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_a1f095a0d68ebf341b4276621f8ce851d}{shape}} () const
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_af5e3b7a267434e03678ecb62ae952b85}{strides}} () const
+\item 
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_a2154865dd157974dd85746b1a1b6d0c4}{offset}} () const
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape_a890d0b5bf3b5da73b3ef0fe743675a72}{forward}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$Expression Source$>$\newline
+class tannic\+::expression\+::\+Reshape$<$ Source $>$}
+Expression template for viewing a tensor with a new shape. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Source} & The expression or tensor type being reshaped.\\
+\hline
+\end{DoxyTemplParams}
+The {\ttfamily \doxylink{classtannic_1_1expression_1_1Reshape}{Reshape}} view changes how the elements of a tensor are indexed by updating its shape and recomputing its strides without moving data.
+
+This operation requires that the total number of elements in the new shape matches the original tensor\textquotesingle{}s total number of elements.
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ X(float32,\ \{2,\ 3\});}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}{view}}(X,\ 3,\ 2);\ \textcolor{comment}{//\ new\ shape:\ (3,\ 2)}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Reshape_abab1d866ae98f6110ccf0c2a562ee1a8}\label{classtannic_1_1expression_1_1Reshape_abab1d866ae98f6110ccf0c2a562ee1a8} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!Reshape@{Reshape}}
+\index{Reshape@{Reshape}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{Reshape()}{Reshape()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+template$<$Integral... Indexes$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ Source $>$\+::\+Reshape (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference}]{source,  }\item[{Indexes...}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Construct a reshaped view of the source tensor. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Indexes} & Integral dimension sizes of the new shape. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Reference to the source expression or tensor. \\
+\hline
+{\em indexes} & Dimension sizes for the reshaped view.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Assertion} & failure if the number of elements in the new shape does not match the number of elements in the source. \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Reshape_af5867677de585169871d47f3b2d4e6bf}\label{classtannic_1_1expression_1_1Reshape_af5867677de585169871d47f3b2d4e6bf} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ Source $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\begin{DoxyReturn}{Returns}
+The runtime data type of the tensor elements.
+\end{DoxyReturn}
+This simply forwards the call to the underlying source expression’s {\ttfamily dtype}. Since a view (reshape or transpose) does not alter the actual stored values. \Hypertarget{classtannic_1_1expression_1_1Reshape_a890d0b5bf3b5da73b3ef0fe743675a72}\label{classtannic_1_1expression_1_1Reshape_a890d0b5bf3b5da73b3ef0fe743675a72} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classtannic_1_1expression_1_1Reshape_a2154865dd157974dd85746b1a1b6d0c4}\label{classtannic_1_1expression_1_1Reshape_a2154865dd157974dd85746b1a1b6d0c4} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ Source $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+The byte offset of the reshaped view from the start of the storage.
+\end{DoxyReturn}
+This value is forwarded from the source expression’s {\ttfamily \doxylink{classtannic_1_1expression_1_1Reshape_a2154865dd157974dd85746b1a1b6d0c4}{offset()}} method. The offset represents the memory position (in bytes) where the first element of the view begins relative to the start of the underlying storage buffer. Since reshape do not move elements in memory, the offset is unchanged from the source tensor. \Hypertarget{classtannic_1_1expression_1_1Reshape_a1f095a0d68ebf341b4276621f8ce851d}\label{classtannic_1_1expression_1_1Reshape_a1f095a0d68ebf341b4276621f8ce851d} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ Source $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\begin{DoxyReturn}{Returns}
+The shape of the reshaped view.
+\end{DoxyReturn}
+In a reshape, this value is explicitly provided in the constructor through {\ttfamily indexes...} and stored in {\ttfamily shape\+\_\+}. ~\newline
+ \Hypertarget{classtannic_1_1expression_1_1Reshape_af5e3b7a267434e03678ecb62ae952b85}\label{classtannic_1_1expression_1_1Reshape_af5e3b7a267434e03678ecb62ae952b85} 
+\index{tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::expression::Reshape$<$ Source $>$@{tannic::expression::Reshape$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Reshape}{tannic\+::expression\+::\+Reshape}}$<$ Source $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\begin{DoxyReturn}{Returns}
+The strides of the reshaped view.
+\end{DoxyReturn}
+For a reshape, strides are recomputed from the new {\ttfamily shape\+\_\+} so that the element layout in memory matches the original data ordering. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{Views_8hpp}{Views.\+hpp}}\item 
+include/tannic/\mbox{\hyperlink{Tensor_8hpp}{Tensor.\+hpp}}\end{DoxyCompactItemize}
