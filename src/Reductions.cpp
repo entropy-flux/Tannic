@@ -7,7 +7,7 @@
 #else 
 namespace cuda { 
 inline status argmax(const tensor_t*, tensor_t*, uint8_t, stream_t)  { throw std::runtime_error("CUDA not available"); }
-inline status argmin(const tensor_t*, tensor_t*. uint8_t, stream_t)  { throw std::runtime_error("CUDA not available"); } 
+inline status argmin(const tensor_t*, tensor_t*, uint8_t, stream_t)  { throw std::runtime_error("CUDA not available"); } 
 }
 #endif 
 
