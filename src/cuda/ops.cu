@@ -6,7 +6,7 @@
 #include "cuda/ops.cuh"
 #include "cuda/streams.cuh"
 
-namespace cuda {
+namespace {
 
 template<typename S, typename D, class Op>
 __global__ void scalarUnaryOpKernel(const S* src, D* dst) {
@@ -17,7 +17,7 @@ __global__ void scalarUnaryOpKernel(const S* src, D* dst) {
 template<typename S, typename D, class Op>
 __global__ void batchedUnaryOpKernel(
     const S* src, shape_t src_shape, strides_t src_strides,           
-    D* dst, shape_t dst_shape, strides_t dst_strides, 
+    D* dst , shape_t dst_shape, strides_t dst_strides, 
     uint8_t rank, size_t ne
 ) {
     Op op{};
@@ -74,9 +74,9 @@ __global__ void scalarBinaryOpKernel(const S0* src0, const S1* src1, D* dst) {
 
 template<typename S0, typename S1, typename D, class Op>
 __global__ void batchedBinaryOpKernel(
-    const S0* src0_ptr, shape_t src0_shape, strides_t src0_strides,
-    const S1* src1_ptr, shape_t src1_shape, strides_t src1_strides,
-    D* dst_ptr, shape_t dst_shape, strides_t dst_strides,
+    const S0* __restrict__ src0_ptr, shape_t src0_shape, strides_t src0_strides,
+    const S1* __restrict__ src1_ptr, shape_t src1_shape, strides_t src1_strides,
+    D* __restrict__ dst_ptr, shape_t dst_shape, strides_t dst_strides,
     uint8_t rank, size_t ne
 ) {
     Op op{};  
@@ -324,6 +324,8 @@ constexpr auto dispatchMul = []() {
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Mul>;
     return table;
 }();  
+
+} namespace cuda {
   
 status neg(tensor_t const* src, tensor_t* dst, stream_t stream) {   
     return dispatchNeg[index(src->dtype)](src, dst, stream); 

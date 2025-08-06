@@ -22,8 +22,9 @@ TEST(TestCUDAView, TestCUDASlice) {
     ASSERT_EQ(slice.strides(), Strides(1));
     ASSERT_EQ(slice.rank(), 1);
 
-    auto view = slice[0];
+    Tensor view = slice[0];
     ASSERT_EQ(view.rank(), 0);  
+    ASSERT_EQ(view.shape(), Shape());  
     ASSERT_EQ((slice[0] == 3), true);
 }    
 

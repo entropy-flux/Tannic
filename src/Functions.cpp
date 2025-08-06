@@ -23,16 +23,10 @@ inline status tanh(const tensor_t*, tensor_t*, stream_t) { throw std::runtime_er
 namespace tannic::function {   
 
 using H = status (*)(const tensor_t*, tensor_t*);
-using D = status (*)(const tensor_t*, tensor_t*, stream_t); 
-
-struct layout_t {
-    uint8_t rank;
-    uint32_t shape;
-    int64_t strides;
-};
+using D = status (*)(const tensor_t*, tensor_t*, stream_t);   
 
 template <H hcall, D dcall>
-inline void apply(Tensor const& input, Tensor& output) {  
+static inline void apply(Tensor const& input, Tensor& output) {  
     allocator_t allocator = structure(input.allocator()); 
     switch (allocator.environment) {
         case HOST: {

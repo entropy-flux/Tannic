@@ -98,46 +98,54 @@ public:
     ,   source_(source)
     ,   indexes_(indexes)
     {   
-        std::array<Shape::size_type, Shape::limit> shape{};
-        std::array<Strides::size_type, Strides::limit> strides{};
-        Shape::rank_type dimension = 0;
-        Shape::rank_type rank = 0;   
-        offset_ = 0;
-        auto process = [&](const auto& argument) {
-            using Argument = std::decay_t<decltype(argument)>;
-            if constexpr (std::is_same_v<Argument, indexing::Range>) { 
-                auto range = normalize(argument, source.shape()[dimension]);
-                auto size = range.stop - range.start;
-                assert(size >= 0);
-                shape[rank] = size;
-                strides[rank] = source.strides()[dimension]; 
-                offset_ += range.start * source.strides()[dimension] * dsizeof(dtype_); 
+        if (source.rank() == 0) { 
+            shape_ = Shape{};
+            strides_ = Strides{};
+            offset_ = 0;  
+        }
+
+        else {
+            std::array<Shape::size_type, Shape::limit> shape{};
+            std::array<Strides::size_type, Strides::limit> strides{};
+            Shape::rank_type dimension = 0;
+            Shape::rank_type rank = 0;   
+            offset_ = 0;
+            auto process = [&](const auto& argument) {
+                using Argument = std::decay_t<decltype(argument)>;
+                if constexpr (std::is_same_v<Argument, indexing::Range>) { 
+                    auto range = normalize(argument, source.shape()[dimension]);
+                    auto size = range.stop - range.start;
+                    assert(size >= 0);
+                    shape[rank] = size;
+                    strides[rank] = source.strides()[dimension]; 
+                    offset_ += range.start * source.strides()[dimension] * dsizeof(dtype_); 
+                    rank++; dimension++;
+                } 
+                
+                else if constexpr (std::is_integral_v<Argument>) { 
+                    auto index = indexing::normalize(argument, source.shape()[dimension]);
+                    offset_ += index * source.strides()[dimension] * dsizeof(dtype_);
+                    dimension++;
+                } 
+                
+                else {
+                    static_assert(sizeof(Argument) == 0, "Unsupported index type in Slice");
+                } 
+            };
+
+            std::apply([&](const auto&... arguments) {
+                (process(arguments), ...);
+            }, indexes);
+
+            while (dimension < source.rank()) {
+                shape[rank] = source.shape()[dimension];
+                strides[rank] = source.strides()[dimension];
                 rank++; dimension++;
             } 
-            
-            else if constexpr (std::is_integral_v<Argument>) { 
-                auto index = indexing::normalize(argument, source.shape()[dimension]);
-                offset_ += index * source.strides()[dimension] * dsizeof(dtype_);
-                dimension++;
-            } 
-            
-            else {
-                static_assert(sizeof(Argument) == 0, "Unsupported index type in Slice");
-            } 
-        };
 
-        std::apply([&](const auto&... arguments) {
-            (process(arguments), ...);
-        }, indexes);
-
-        while (dimension < source.rank()) {
-            shape[rank] = source.shape()[dimension];
-            strides[rank] = source.strides()[dimension];
-            rank++; dimension++;
+            shape_ = Shape(shape.begin(), shape.begin() + rank);
+            strides_ = Strides(strides.begin(), strides.begin() + rank); 
         } 
-
-        shape_ = Shape(shape.begin(), shape.begin() + rank);
-        strides_ = Strides(strides.begin(), strides.begin() + rank);
     }    
 
     /**
