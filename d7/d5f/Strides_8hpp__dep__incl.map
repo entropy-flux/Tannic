@@ -1,0 +1,9 @@
+<map id="include/tannic/Strides.hpp" name="include/tannic/Strides.hpp">
+<area shape="rect" id="node1" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="227,5,418,31"/>
+<area shape="rect" id="node2" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="5,79,221,104"/>
+<area shape="rect" id="node3" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="229,152,416,177"/>
+<area shape="rect" id="node6" href="$d2/d6a/Slices_8hpp.html" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="297,79,479,104"/>
+<area shape="rect" id="node7" href="$d8/dea/Views_8hpp.html" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="504,79,688,104"/>
+<area shape="rect" id="node4" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="85,225,302,251"/>
+<area shape="rect" id="node5" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="327,225,577,251"/>
+</map>

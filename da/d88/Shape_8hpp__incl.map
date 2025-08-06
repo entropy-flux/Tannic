@@ -1,0 +1,17 @@
+<map id="include/tannic/Shape.hpp" name="include/tannic/Shape.hpp">
+<area shape="rect" id="node1" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="220,5,405,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,79,97,104"/>
+<area shape="rect" id="node3" title=" " alt="" coords="122,79,178,104"/>
+<area shape="rect" id="node4" title=" " alt="" coords="301,299,367,324"/>
+<area shape="rect" id="node5" title=" " alt="" coords="349,152,418,177"/>
+<area shape="rect" id="node6" title=" " alt="" coords="304,79,415,104"/>
+<area shape="rect" id="node7" title=" " alt="" coords="439,79,515,104"/>
+<area shape="rect" id="node8" href="$d3/d84/Concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="537,152,648,177"/>
+<area shape="rect" id="node15" href="$d3/da7/Indexing_8hpp.html" title=" " alt="" coords="539,79,646,104"/>
+<area shape="rect" id="node9" title=" " alt="" coords="401,225,481,251"/>
+<area shape="rect" id="node10" title=" " alt="" coords="505,225,576,251"/>
+<area shape="rect" id="node11" href="$d5/d34/Types_8hpp.html" title="Core type system for the Tannic Tensor Library." alt="" coords="600,225,687,251"/>
+<area shape="rect" id="node12" title=" " alt="" coords="510,299,590,324"/>
+<area shape="rect" id="node13" title=" " alt="" coords="614,299,673,324"/>
+<area shape="rect" id="node14" title=" " alt="" coords="697,299,822,324"/>
+</map>
