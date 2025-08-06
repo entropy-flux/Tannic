@@ -18,7 +18,6 @@
 <script type="text/javascript" src="../../search/search.js"></script>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
 <link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css"/>
-<link href="../../doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -116,9 +115,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae4d14dd615bfcc34c940137215108328" id="r_ae4d14dd615bfcc34c940137215108328"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d3e/structtannic_1_1expression_1_1Argmax.html#ae4d14dd615bfcc34c940137215108328">reduce</a> (<a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;strides) const</td></tr>
 <tr class="memdesc:ae4d14dd615bfcc34c940137215108328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes reduced strides for argmax.  <br /></td></tr>
 <tr class="separator:ae4d14dd615bfcc34c940137215108328"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78adde0e750ad2264a7595d61310673f" id="r_a78adde0e750ad2264a7595d61310673f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d3e/structtannic_1_1expression_1_1Argmax.html#a78adde0e750ad2264a7595d61310673f">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;) const</td></tr>
-<tr class="memdesc:a78adde0e750ad2264a7595d61310673f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the argmax operation.  <br /></td></tr>
-<tr class="separator:a78adde0e750ad2264a7595d61310673f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0777e72003105a3371a471c1beb683a" id="r_ad0777e72003105a3371a471c1beb683a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d3e/structtannic_1_1expression_1_1Argmax.html#ad0777e72003105a3371a471c1beb683a">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;input, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;output) const</td></tr>
+<tr class="memdesc:ad0777e72003105a3371a471c1beb683a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the argmax operation.  <br /></td></tr>
+<tr class="separator:ad0777e72003105a3371a471c1beb683a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -130,8 +129,8 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html" title="Expression template for reduction operations.">Reduction</a> argmax operation. </p>
 <p>Finds the indices of maximum values along the specified axis. Reduces input dtype to int64 and removes the reduced dimension. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a78adde0e750ad2264a7595d61310673f" name="a78adde0e750ad2264a7595d61310673f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78adde0e750ad2264a7595d61310673f">&#9670;&#160;</a></span>forward()</h2>
+<a id="ad0777e72003105a3371a471c1beb683a" name="ad0777e72003105a3371a471c1beb683a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0777e72003105a3371a471c1beb683a">&#9670;&#160;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -140,13 +139,13 @@ Public Attributes</h2></td></tr>
           <td class="memname">void tannic::expression::Argmax::forward </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>input</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

@@ -1,6 +1,6 @@
 var structtannic_1_1expression_1_1Argmax =
 [
-    [ "forward", "dc/d3e/structtannic_1_1expression_1_1Argmax.html#a78adde0e750ad2264a7595d61310673f", null ],
+    [ "forward", "dc/d3e/structtannic_1_1expression_1_1Argmax.html#ad0777e72003105a3371a471c1beb683a", null ],
     [ "reduce", "dc/d3e/structtannic_1_1expression_1_1Argmax.html#ab6ca23ef9e519f7a40e979104e597b61", null ],
     [ "reduce", "dc/d3e/structtannic_1_1expression_1_1Argmax.html#ae4d14dd615bfcc34c940137215108328", null ],
     [ "reduce", "dc/d3e/structtannic_1_1expression_1_1Argmax.html#af5565f57e72a903f23de86caa38357df", null ],

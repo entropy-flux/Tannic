@@ -194,7 +194,7 @@ struct Argmax {
      * @param input Source tensor
      * @param output Result tensor containing indices
      */
-    void forward(Tensor const&, Tensor&) const;
+    void forward(Tensor const& input, Tensor& output) const;
 };
 
 /**

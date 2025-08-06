@@ -8,7 +8,10 @@ var searchData=
   ['reduction_5',['reduction',['../da/dc5/classtannic_1_1expression_1_1Reduction.html',1,'tannic::expression::Reduction&lt; Reducer, Operand &gt;'],['../da/dc5/classtannic_1_1expression_1_1Reduction.html#a9e79399f2f9ba00d0d95b58653ae5d05',1,'tannic::expression::Reduction::Reduction()']]],
   ['reductions_2ehpp_6',['Reductions.hpp',['../db/db8/Reductions_8hpp.html',1,'']]],
   ['reference_7',['Reference',['../d1/d96/structtannic_1_1Trait.html#a9129038f382bd1ddae5bc8d9d4c255d5',1,'tannic::Trait']]],
-  ['requirements_3a_8',['Requirements:',['../d7/d3b/concepttannic_1_1Expression.html#autotoc_md0',1,'']]],
-  ['reshape_9',['reshape',['../d2/dd8/classtannic_1_1expression_1_1Reshape.html#abab1d866ae98f6110ccf0c2a562ee1a8',1,'tannic::expression::Reshape::Reshape()'],['../d2/dd8/classtannic_1_1expression_1_1Reshape.html',1,'tannic::expression::Reshape&lt; Source &gt;']]],
-  ['resources_2ehpp_10',['Resources.hpp',['../d6/ddc/Resources_8hpp.html',1,'']]]
+  ['release_20build_8',['Release build',['../index.html#autotoc_md35',1,'']]],
+  ['requirements_9',['Requirements',['../index.html#autotoc_md32',1,'']]],
+  ['requirements_3a_10',['Requirements:',['../d7/d3b/concepttannic_1_1Expression.html#autotoc_md0',1,'']]],
+  ['reshape_11',['reshape',['../d2/dd8/classtannic_1_1expression_1_1Reshape.html#abab1d866ae98f6110ccf0c2a562ee1a8',1,'tannic::expression::Reshape::Reshape()'],['../d2/dd8/classtannic_1_1expression_1_1Reshape.html',1,'tannic::expression::Reshape&lt; Source &gt;']]],
+  ['resources_2ehpp_12',['Resources.hpp',['../d6/ddc/Resources_8hpp.html',1,'']]],
+  ['run_20the_20example_13',['Run the example',['../index.html#autotoc_md36',1,'']]]
 ];
