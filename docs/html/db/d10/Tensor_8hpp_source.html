@@ -346,7 +346,7 @@ $(document).ready(function(){initNavTree('db/d10/Tensor_8hpp_source.html','../..
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span><span class="keyword">template</span>&lt;<span class="keyword">class</span> Operation, Expression Operand&gt;</div>
 <div class="foldopen" id="foldopen00383" data-start="{" data-end="}">
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno"><a class="line" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html#a642a2cd62b03ec15def11b5fb59a4e5a">  383</a></span><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <a class="code hl_function" href="../../d7/d26/classtannic_1_1operation_1_1Unary.html#a642a2cd62b03ec15def11b5fb59a4e5a">operation::Unary&lt;Operation, Operand&gt;::forward</a>()<span class="keyword"> const </span>{ </div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> result(dtype(), shape(), strides());  </div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    <a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> result(dtype(), shape(), strides(), offset());  </div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    operation.forward(operand, result);</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    <span class="keywordflow">return</span> result;</div>
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>}</div>

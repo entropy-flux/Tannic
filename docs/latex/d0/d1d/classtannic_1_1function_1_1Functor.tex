@@ -30,9 +30,9 @@ Collaboration diagram for tannic\+::function\+::Functor\texorpdfstring{$<$}{<} F
 \mbox{\hyperlink{classtannic_1_1function_1_1Functor}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1function_1_1Functor}{const}} \& \mbox{\hyperlink{classtannic_1_1function_1_1Functor_ab0ee7efb45a345e4230e6080c56a678f}{strides}} () \mbox{\hyperlink{classtannic_1_1function_1_1Functor}{const}}
 \begin{DoxyCompactList}\small\item\em Returns the strides of the result. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtannic_1_1function_1_1Functor}{auto}} \mbox{\hyperlink{classtannic_1_1function_1_1Functor_a3adfc4f4404a196ca0cf3e272988ee7b}{offset}} () \mbox{\hyperlink{classtannic_1_1function_1_1Functor}{const}}
-\begin{DoxyCompactList}\small\item\em Returns the offset of the argument. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the offset of the result. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1function_1_1Functor_abeafec4af1aac21a518659913f841142}{forward}} () \mbox{\hyperlink{classtannic_1_1function_1_1Functor}{const}}
-\begin{DoxyCompactList}\small\item\em Evaluates the function expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -90,22 +90,15 @@ Constructs a Function expression.
 Returns the data type of the result. 
 
 \begin{DoxyReturn}{Returns}
-Data type of the argument (functions preserve input type) 
+The data type of the underlying argument.
 \end{DoxyReturn}
-\Hypertarget{classtannic_1_1function_1_1Functor_abeafec4af1aac21a518659913f841142}\label{classtannic_1_1function_1_1Functor_abeafec4af1aac21a518659913f841142} 
+Functions in this expression template system are type-\/preserving — applying them element-\/wise does not change the scalar type (e.\+g., applying {\ttfamily exp()} to a {\ttfamily float32} tensor produces {\ttfamily float32} output). Therefore, we can directly query and return the argument\textquotesingle{}s dtype. \Hypertarget{classtannic_1_1function_1_1Functor_abeafec4af1aac21a518659913f841142}\label{classtannic_1_1function_1_1Functor_abeafec4af1aac21a518659913f841142} 
 \index{tannic::function::Functor$<$ Function, Argument $>$@{tannic::function::Functor$<$ Function, Argument $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::function::Functor$<$ Function, Argument $>$@{tannic::function::Functor$<$ Function, Argument $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$Functional Function, Expression Argument$>$ \\
 \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1function_1_1Functor}{tannic\+::function\+::\+Functor}}$<$ Function, \mbox{\hyperlink{classtannic_1_1function_1_1Functor}{Argument}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-
-
-Evaluates the function expression. 
-
-\begin{DoxyReturn}{Returns}
-New \doxylink{classtannic_1_1Tensor}{Tensor} with the function applied element-\/wise 
-\end{DoxyReturn}
 \Hypertarget{classtannic_1_1function_1_1Functor_a3adfc4f4404a196ca0cf3e272988ee7b}\label{classtannic_1_1function_1_1Functor_a3adfc4f4404a196ca0cf3e272988ee7b} 
 \index{tannic::function::Functor$<$ Function, Argument $>$@{tannic::function::Functor$<$ Function, Argument $>$}!offset@{offset}}
 \index{offset@{offset}!tannic::function::Functor$<$ Function, Argument $>$@{tannic::function::Functor$<$ Function, Argument $>$}}
@@ -115,12 +108,12 @@ New \doxylink{classtannic_1_1Tensor}{Tensor} with the function applied element-\
 
 
 
-Returns the offset of the argument. 
+Returns the offset of the result. 
 
 \begin{DoxyReturn}{Returns}
-Offset of the underlying tensor data 
+The offset (in elements) into the underlying tensor storage.
 \end{DoxyReturn}
-\Hypertarget{classtannic_1_1function_1_1Functor_ac710efe999ba742237c4e8708840f710}\label{classtannic_1_1function_1_1Functor_ac710efe999ba742237c4e8708840f710} 
+Since element-\/wise functions do not change the memory location of the data, the offset is taken directly from the argument. \Hypertarget{classtannic_1_1function_1_1Functor_ac710efe999ba742237c4e8708840f710}\label{classtannic_1_1function_1_1Functor_ac710efe999ba742237c4e8708840f710} 
 \index{tannic::function::Functor$<$ Function, Argument $>$@{tannic::function::Functor$<$ Function, Argument $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::function::Functor$<$ Function, Argument $>$@{tannic::function::Functor$<$ Function, Argument $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
@@ -132,9 +125,9 @@ Offset of the underlying tensor data
 Returns the shape of the result. 
 
 \begin{DoxyReturn}{Returns}
-\doxylink{classtannic_1_1Shape}{Shape} of the argument (functions preserve input shape) 
+A const reference to the shape of the underlying argument.
 \end{DoxyReturn}
-\Hypertarget{classtannic_1_1function_1_1Functor_ab0ee7efb45a345e4230e6080c56a678f}\label{classtannic_1_1function_1_1Functor_ab0ee7efb45a345e4230e6080c56a678f} 
+The shape is returned as {\ttfamily const\&} to avoid copying the shape object, and because element-\/wise functions do not alter tensor dimensions. \Hypertarget{classtannic_1_1function_1_1Functor_ab0ee7efb45a345e4230e6080c56a678f}\label{classtannic_1_1function_1_1Functor_ab0ee7efb45a345e4230e6080c56a678f} 
 \index{tannic::function::Functor$<$ Function, Argument $>$@{tannic::function::Functor$<$ Function, Argument $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::function::Functor$<$ Function, Argument $>$@{tannic::function::Functor$<$ Function, Argument $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
@@ -146,9 +139,9 @@ Returns the shape of the result.
 Returns the strides of the result. 
 
 \begin{DoxyReturn}{Returns}
-\doxylink{classtannic_1_1Strides}{Strides} of the argument (functions preserve input strides) 
+A const reference to the strides of the underlying argument.
 \end{DoxyReturn}
-
+\doxylink{classtannic_1_1Strides}{Strides} describe memory layout, and for pure element-\/wise operations they remain identical to those of the input tensor. Returning {\ttfamily const\&} avoids copying and preserves the original stride information. 
 
 \doxysubsection{Member Data Documentation}
 \Hypertarget{classtannic_1_1function_1_1Functor_a6f5d1bb3c05c5024c4c82d3b45a2955f}\label{classtannic_1_1function_1_1Functor_a6f5d1bb3c05c5024c4c82d3b45a2955f} 

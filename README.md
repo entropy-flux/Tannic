@@ -56,7 +56,6 @@ Y = torch.log(X) + Y * Y - torch.exp(X) + torch.matmul(X, Y.t())
 print(Y) 
 ```  
 
---- 
 
 ## Status
 
@@ -64,8 +63,6 @@ Note: Tannic is currently in an early development stage. It is functional but no
 
 While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental- too significant to ignore. At some point, it may be a hard requirement for Tannic. 
 
-
---- 
 
 ## Features
 
@@ -79,7 +76,6 @@ While the library is currently written in C++23, the arrival of C++26, is shapin
 
 - Minimal core operators: Only essential built-in operations to keep the library lightweight and extensible. 
 
---- 
 
 ## What is comming...
 
@@ -100,8 +96,7 @@ While the library is currently written in C++23, the arrival of C++26, is shapin
 - OpenBLAS (optional): If installed on your system, OpenBLAS will accelerate matrix multiplication.
 
 - CUDA Toolkit (optional): CUDA 12+ is required only if you want GPU support. If not installed, Tannic will build and run with CPU-only support.
-
----
+ 
 
 ## Installation
 
@@ -148,8 +143,7 @@ You can explicitly disable CUDA with:
 ```
 cmake .. -DTANNIC_ENABLE_CUDA=OFF
 ```
-
---- 
+ 
 
 ## Contributing
 
@@ -166,11 +160,9 @@ Tannic is licensed under the Apache License 2.0, a permissive open-source licens
 The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development.
 
 By contributing, you agree that your contributions will also be licensed under Apache 2.0 and that proper attribution is appreciated.
-
---- 
+ 
 
 ## License
 
 Tannic is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
-
---- 
+ 
