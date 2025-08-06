@@ -4,6 +4,8 @@
 #include <cmath>  
 #include "cpu/fns.hpp"  
  
+namespace cpu {
+    
 template<typename S, typename D, class Fn>
 void scalarFnKernel(
     const S* src_ptr, D* dst_ptr
@@ -210,9 +212,7 @@ constexpr auto dispatchTanh = []() {
     table[index(float32)] = launchFnKernel<float, float, Tanh>;
     table[index(float64)] = launchFnKernel<double, double, Tanh>;
     return table;
-}();
-
-namespace cpu {
+}(); 
  
 status log(tensor_t const* src, tensor_t* dst) { 
     return dispatchLog[index(src->dtype)](src, dst);

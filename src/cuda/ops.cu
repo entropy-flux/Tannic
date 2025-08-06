@@ -6,6 +6,8 @@
 #include "cuda/ops.cuh"
 #include "cuda/streams.cuh"
 
+namespace cuda {
+
 template<typename S, typename D, class Op>
 __global__ void scalarUnaryOpKernel(const S* src, D* dst) {
     Op op;
@@ -322,9 +324,7 @@ constexpr auto dispatchMul = []() {
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Mul>;
     return table;
 }();  
-
-namespace cuda {
-
+  
 status neg(tensor_t const* src, tensor_t* dst, stream_t stream) {   
     return dispatchNeg[index(src->dtype)](src, dst, stream); 
 }

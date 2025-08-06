@@ -5,6 +5,8 @@
 #include "cuda/exc.cuh"
 #include "cuda/fns.cuh"  
 
+namespace cuda {
+    
 template<typename S, typename D, class Fn>
 __global__ void scalarFnKernel(const S* src, D* dst) {
     Fn fn;
@@ -214,9 +216,7 @@ constexpr auto dispatchTanh = []() {
     table[index(float32)] = launchFnKernel<float, float, Tanh>;
     table[index(float64)] = launchFnKernel<double, double, Tanh>;
     return table;
-}();
-
-namespace cuda {
+}(); 
  
 status log(tensor_t const* src, tensor_t* dst, stream_t stream) {   
     return dispatchLog[index(src->dtype)](src, dst, stream); 

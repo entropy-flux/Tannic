@@ -3,7 +3,9 @@
 #include <stdexcept>
 #include <array>
 #include "cpu/gemm.hpp" 
-#include "Types.hpp"
+#include "Types.hpp" 
+
+namespace cpu {
  
 template<typename S0, typename S1, typename D>
 void gemmKernel( 
@@ -201,9 +203,7 @@ constexpr auto dispatchGemm = []() {
     table[index(float64, float32)] = launchGemmKernel<double, float, double>;
     table[index(float64, float64)] = launchGemmKernel<double, double, double>;
     return table;
-}();
-
-namespace cpu {
+}(); 
 
 using tannic::dsizeof;
 

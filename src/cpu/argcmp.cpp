@@ -4,6 +4,7 @@
 #include <cmath> 
 #include "argcmp.hpp"  
 
+namespace cpu { 
 
 template<typename S, typename D, typename Cmp>
 void argCompareKernel(
@@ -71,12 +72,8 @@ struct LE {
     bool operator()(A&& a, B&& b) const noexcept {
         return a < b;
     }
-};
+}; 
  
-
-#include <iostream>
-
-namespace cpu { 
 
 status argmax(tensor_t const* src, tensor_t* dst, uint8_t dim) {   
     switch (src->dtype) { 

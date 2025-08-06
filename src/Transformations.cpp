@@ -25,8 +25,8 @@ static inline void apply(Tensor const& first, Tensor const& second, Tensor& outp
     if(status != SUCCESS) {
         throw std::runtime_error("Allocator issue!");
     }
-    switch (allocator.environment) {
-        case HOST: {
+    switch (allocator.environment) { 
+        case HOST: { 
             auto resource = allocator.resource.host;
             output.initialize(Host());  
             auto dst = structure(output);
@@ -37,7 +37,7 @@ static inline void apply(Tensor const& first, Tensor const& second, Tensor& outp
             break; 
         } 
 
-        case DEVICE: { 
+        case DEVICE: {  
             auto dvc = allocator.resource.device; 
             output.initialize(Device(dvc.id)); 
             auto dst = structure(output);

@@ -24,7 +24,11 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
  
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
-set(CMAKE_CUDA_FLAGS_DEBUG "-g -O0") 
+set(CMAKE_CUDA_FLAGS_DEBUG "-g -O0")    
+if(CUDA_ENABLED)
+    set(CMAKE_CUDA_FLAGS_DEBUG "-G -g -O0")
+endif() 
+ 
 
 include_directories(include/tannic)
 include_directories(src)

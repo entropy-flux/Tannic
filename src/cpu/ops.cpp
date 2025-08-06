@@ -3,6 +3,8 @@
 #include <array>
 #include "cpu/ops.hpp" 
 
+namespace cpu {
+    
 template<typename S, typename D, class Op>
 void scalarUnaryOpKernel(
     const S* src_ptr, D* dst_ptr
@@ -287,9 +289,7 @@ constexpr auto dispatchMul = []() {
     table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Mul>;
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Mul>;
     return table;
-}(); 
-
-namespace cpu {
+}();  
 
 status neg(tensor_t const* src, tensor_t* dst) {  
     return dispatchNeg[index(src->dtype)](src, dst);

@@ -4,6 +4,8 @@
 #include "cuda/streams.cuh"
 #include "cuda/gemm.cuh"
 
+namespace cuda { 
+    
 template<typename S0, typename S1, typename D>
 __global__ void gemmKernel(
     bool A_trans, bool B_trans,
@@ -160,9 +162,7 @@ constexpr auto dispatchGemm = []() {
     table[index(float64, float64)] = launchGemmKernel<double, double, double>;
     return table;
 }();
-
-namespace cuda { 
-
+  
 status gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream) {    
     return dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst, stream);  
 } 
