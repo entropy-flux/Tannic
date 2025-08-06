@@ -1,8 +1,8 @@
-# Tannic
-
-**Tannic** is an extensible, modern C++ tensor library built around a host–device execution model.  
-Unlike monolithic frameworks, it provides only a minimal set of built‑in operators, focusing instead on providing a flexible framework where new operations, data types, and backends can be added easily.  
-This approach keeps the library lightweight while allowing it to adapt to a wide range of computational needs. 
+# Tannic 
+ 
+**Tannic** is an extensible C++ tensor library built around a host–device execution model.
+Unlike monolithic frameworks, it provides only a minimal set of built‑in operators, focusing on a flexible architecture where new operations, data types, and backends can be added easily.
+This approach keeps the library lightweight while enabling adaptation to a wide range of computational needs.
 
 This library is designed to serve as the foundational core for a neural network inference framework, but is equally suited to other domains such as classical ML or physics simulations—all without requiring Python. 
 
@@ -91,6 +91,17 @@ While the library is currently written in C++23, the arrival of C++26, is shapin
 
 - Additional backends: Expansion beyond CUDA to support other device backends is planned. Host-Device computational model can be used as well with other hardware vendors.
 
+---
+
+## Requirements
+
+- C++23 compiler: A compiler with C++23 support is required to build and run Tannic. 
+
+- OpenBLAS (optional): If installed on your system, OpenBLAS will accelerate matrix multiplication.
+
+- CUDA Toolkit (optional): CUDA 12+ is required only if you want GPU support. If not installed, Tannic will build and run with CPU-only support.
+
+---
 
 ## Installation
 
