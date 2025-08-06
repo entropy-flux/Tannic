@@ -8,7 +8,8 @@ var indexSectionsWithContent =
   5: "acfloprs",
   6: "ars",
   7: "e",
-  8: "t"
+  8: "t",
+  9: "t"
 };
 
 var indexSectionNames =
@@ -21,7 +22,8 @@ var indexSectionNames =
   5: "variables",
   6: "typedefs",
   7: "related",
-  8: "concepts"
+  8: "pages",
+  9: "concepts"
 };
 
 var indexSectionLabels =
@@ -34,6 +36,7 @@ var indexSectionLabels =
   5: "Variables",
   6: "Typedefs",
   7: "Friends",
-  8: "Concepts"
+  8: "Pages",
+  9: "Concepts"
 };
 

@@ -25,6 +25,19 @@
 var NAVTREE =
 [
   [ "Tannic", "index.html", [
+    [ "Status", "index.html#autotoc_md28", null ],
+    [ "Features", "index.html#autotoc_md29", null ],
+    [ "What is comming...", "index.html#autotoc_md30", null ],
+    [ "Requirements", "index.html#autotoc_md32", null ],
+    [ "Installation", "index.html#autotoc_md33", [
+      [ "Debug build:", "index.html#autotoc_md34", null ],
+      [ "Release build", "index.html#autotoc_md35", null ],
+      [ "Run the example", "index.html#autotoc_md36", null ],
+      [ "Include Tannic in your project", "index.html#autotoc_md37", null ],
+      [ "CUDA support", "index.html#autotoc_md38", null ]
+    ] ],
+    [ "Contributing", "index.html#autotoc_md39", null ],
+    [ "License", "index.html#autotoc_md40", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
