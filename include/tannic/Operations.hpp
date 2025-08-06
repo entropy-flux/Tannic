@@ -257,9 +257,9 @@ static constexpr inline type promote(type first, type second) {
  *
  * #### Example:
  * ```cpp
- * broadcast(Shape(3, 1), Shape(1, 4)) → Shape{3, 4}
- * broadcast(Shape(5)   , Shape(2, 5)) → Shape{2, 5}
- * broadcast(Shape(2, 3), Shape(3))    → Shape{2, 3}
+ * broadcast(Shape(3, 1), Shape(1, 4)) → Shape(3, 4)
+ * broadcast(Shape(5)   , Shape(2, 5)) → Shape(2, 5)
+ * broadcast(Shape(2, 3), Shape(3))    → Shape(2, 3)
  * ```
  */
 static constexpr Shape broadcast(Shape const& first, Shape const& second) {

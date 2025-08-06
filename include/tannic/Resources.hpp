@@ -148,7 +148,10 @@ public:
  * - Requires explicit data transfer from host domain  
  * - Allocation strategies may vary by device capabilities
  * - Memory operations are asynchronous by default
- * - Each instance manages a single logical device
+ * - Each instance manages a single logical device 
+ * 
+ * @warning Device memory management is highly likely to change as the
+ * backend evolves.
  */
 class Device {
 public: 

@@ -20,4 +20,4 @@ device_t structure(Device const&);
 allocator_t structure(Allocator const&);  
 stream_t pop_stream(const device_t*);
 void put_stream(const device_t*, stream_t);  
-status resolve(const allocator_t*, const allocator_t*, allocator_t*);
+status resolve(const allocator_t*, const allocator_t*, allocator_t*); 

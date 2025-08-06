@@ -41,8 +41,6 @@ TEST(TestReductions, Test2D) {
     ASSERT_EQ(zmindat[1], 2);
     ASSERT_EQ(zmindat[2], 1);
 }
-
-
  
 TEST(TestReductions, Test2D_Axis0) {
     Tensor X(float32, {3, 4}); X.initialize();

@@ -61,12 +61,14 @@ print(Y)
 
 Note: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API—used to extend the library—is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.
 
-While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental- too significant to ignore. At some point, it may be a hard requirement for Tannic. 
+While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental- too significant to ignore. At some point, it may be requirement for Tannic. 
 
 
 ## Features
 
-- Dynamic typing: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization.
+- Dynamic typing: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization, but that also support compile time specifications thanks to constexpr. 
+
+- Constexpr templated expressions: This allows custom kernel fusion strategies using SFINAE and compile time assertions and shape calculations.
 
 - Broadcasting: NumPy‑style automatic shape expansion in arithmetic operations, enabling intuitive and efficient tensor computations across dimensions.
 
@@ -78,14 +80,20 @@ While the library is currently written in C++23, the arrival of C++26, is shapin
 
 
 ## What is comming...
+ 
 
-- Autograd: Autograd is not necessary for inference, so it will be added to the library later when the runtime api is optimized and mature.
+- **cuBlas and cuTensor optional support**: This may be added soon to accelerate tensor computations.
 
-- Graph mode: A constexpr graph mode will be added to the library, possibly with the arrival of C++26.
+- **Autograd**: Autograd is not necessary for inference, so it will be added to the library later when the runtime api is optimized and mature.
 
-- Quantization support: The library will support necessary dtypes to create quantized neural networks like bitnet.
+- **Graph mode**: A constexpr graph mode will be added to the library, possibly with the arrival of C++26.
 
-- Additional backends: Expansion beyond CUDA to support other device backends is planned. Host-Device computational model can be used as well with other hardware vendors.
+- **Quantization support**: The library will support necessary dtypes to create quantized neural networks like bitnet.
+
+- **Additional backends**: Expansion beyond CUDA to support other device backends is planned. Host-Device computational model can be used as well with other hardware vendors.
+
+- **Multi GPU support**. Unfortunately I don't have either the expertise or the resources to add multigpu support, but the whole library was build taking this in mind so it won't be a breaking change when added.  
+
 
 ---
 

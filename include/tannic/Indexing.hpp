@@ -24,8 +24,8 @@
 namespace tannic::indexing {
   
 struct Range {
-    int start;
-    int stop;
+    int start = 0;
+    int stop = -1;
 };
 
 template<Integral Index, Integral Size>

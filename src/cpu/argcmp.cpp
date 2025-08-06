@@ -58,8 +58,6 @@ void argCompareKernel(
     }
 }
 
-
-
 struct GE {
     template<class A, class B>
     bool operator()(A&& a, B&& b) const noexcept {
@@ -74,115 +72,39 @@ struct LE {
     }
 }; 
  
+template<typename S, typename Cmp>
+status launchArgCompare(const tensor_t* src, tensor_t* dst, uint8_t dim, S init) {    
+    argCompareKernel<S, int64_t, Cmp>(
+        reinterpret_cast<const S*>(src->address), src->shape, src->strides,
+        reinterpret_cast<int64_t*>(dst->address), dst->shape, dst->strides,
+        src->rank, dim, init
+    );
+    return SUCCESS;
+} 
 
-status argmax(tensor_t const* src, tensor_t* dst, uint8_t dim) {   
-    switch (src->dtype) { 
-        case int8: {
-            static const int8_t init = std::numeric_limits<int8_t>::lowest();
-            argCompareKernel<int8_t, int64_t, GE>(
-                (int8_t*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        case int16: {
-            static const int16_t init = std::numeric_limits<int16_t>::lowest();
-            argCompareKernel<int16_t, int64_t, GE>(
-                (int16_t*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        case int32: {
-            static const int32_t init = std::numeric_limits<int32_t>::lowest();
-            argCompareKernel<int32_t, int64_t, GE>(
-                (int32_t*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        case int64: {
-            static const int64_t init = std::numeric_limits<int64_t>::lowest();
-            argCompareKernel<int64_t, int64_t, GE>(
-                (int64_t*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        case float32: {
-            static const float init = -std::numeric_limits<float>::infinity();
-            argCompareKernel<float, int64_t, GE>(
-                (float*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        case float64: {
-            static const double init = -std::numeric_limits<double>::infinity();
-            argCompareKernel<double, int64_t, GE>(
-                (double*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        default:
-            return UNSUPPORTED_DTYPE;
-    }  
-}
-
-status argmin(tensor_t const* src, tensor_t* dst, uint8_t dim) {   
-    switch (src->dtype) { 
-        case int8: {
-            static const int8_t init = std::numeric_limits<int8_t>::max();
-            argCompareKernel<int8_t, int64_t, LE>(
-                (int8_t*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        case int16: {
-            static const int16_t init = std::numeric_limits<int16_t>::max();
-            argCompareKernel<int16_t, int64_t, LE>(
-                (int16_t*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        case int32: {
-            static const int32_t init = std::numeric_limits<int32_t>::max();
-            argCompareKernel<int32_t, int64_t, LE>(
-                (int32_t*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        case int64: {
-            static const int64_t init = std::numeric_limits<int64_t>::max();
-            argCompareKernel<int64_t, int64_t, LE>(
-                (int64_t*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        case float32: {
-            static const float init = std::numeric_limits<float>::infinity();
-            argCompareKernel<float, int64_t, LE>(
-                (float*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        case float64: {
-            static const double init = std::numeric_limits<double>::infinity();
-            argCompareKernel<double, int64_t, LE>(
-                (double*)(src->address), src->shape, src->strides,
-                (int64_t*)(dst->address), dst->shape, dst->strides,
-                src->rank, dim, init);
-            return SUCCESS;
-        }
-        default:
-            return UNSUPPORTED_DTYPE;
+status argmax(const tensor_t* src, tensor_t* dst, uint8_t dim) {
+    switch (src->dtype) {
+        case int8:    return launchArgCompare<int8_t, GE>(src, dst, dim, std::numeric_limits<int8_t>::lowest());
+        case int16:   return launchArgCompare<int16_t, GE>(src, dst, dim, std::numeric_limits<int16_t>::lowest());
+        case int32:   return launchArgCompare<int32_t, GE>(src, dst, dim, std::numeric_limits<int32_t>::lowest());
+        case int64:   return launchArgCompare<int64_t, GE>(src, dst, dim, std::numeric_limits<int64_t>::lowest());
+        case float32: return launchArgCompare<float, GE>(src, dst, dim, -std::numeric_limits<float>::infinity());
+        case float64: return launchArgCompare<double, GE>(src, dst, dim, -std::numeric_limits<double>::infinity());
+        default:      return UNSUPPORTED_DTYPE;
     }
 }
+
+status argmin(const tensor_t* src, tensor_t* dst, uint8_t dim) {
+    switch (src->dtype) {
+        case int8:    return launchArgCompare<int8_t, LE>(src, dst, dim, std::numeric_limits<int8_t>::max());
+        case int16:   return launchArgCompare<int16_t, LE>(src, dst, dim, std::numeric_limits<int16_t>::max());
+        case int32:   return launchArgCompare<int32_t, LE>(src, dst, dim, std::numeric_limits<int32_t>::max());
+        case int64:   return launchArgCompare<int64_t, LE>(src, dst, dim, std::numeric_limits<int64_t>::max());
+        case float32: return launchArgCompare<float, LE>(src, dst, dim, std::numeric_limits<float>::infinity());
+        case float64: return launchArgCompare<double, LE>(src, dst, dim, std::numeric_limits<double>::infinity());
+        default:      return UNSUPPORTED_DTYPE;
+    }
+}
+
 
 } // namespace cpu
