@@ -114,6 +114,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4.html">Complexification&lt; Coordinates, Source &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dd3/structtannic_1_1expression_1_1Polar.html">Polar</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d96/classtannic_1_1expression_1_1Realification.html">Realification</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">Reduction</a></td></tr>
@@ -137,6 +139,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a79760dbb305bbb78577f24479457c383"><td class="memTemplParams" colspan="2">template&lt;Expression Real, Expression Imaginary&gt; </td></tr>
 <tr class="memitem:a79760dbb305bbb78577f24479457c383"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a79760dbb305bbb78577f24479457c383">complex</a> (Real &amp;&amp;<a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a8f400da867dfa9de61c16f8db84dfcbd">real</a>, Imaginary &amp;&amp;imaginary)</td></tr>
 <tr class="separator:a79760dbb305bbb78577f24479457c383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94ab220f2ca090334605296af5f3de84"><td class="memTemplParams" colspan="2">template&lt;Expression Magnitude, Expression Angle&gt; </td></tr>
+<tr class="memitem:a94ab220f2ca090334605296af5f3de84"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a94ab220f2ca090334605296af5f3de84">polar</a> (Magnitude &amp;&amp;rho, Angle &amp;&amp;theta)</td></tr>
+<tr class="separator:a94ab220f2ca090334605296af5f3de84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f400da867dfa9de61c16f8db84dfcbd"><td class="memTemplParams" colspan="2">template&lt;Expression Complex&gt; </td></tr>
 <tr class="memitem:a8f400da867dfa9de61c16f8db84dfcbd"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a8f400da867dfa9de61c16f8db84dfcbd">real</a> (Complex &amp;&amp;<a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a8dcee36af859d4e3a0dfb9948082e0bc">complex</a>)</td></tr>
 <tr class="separator:a8f400da867dfa9de61c16f8db84dfcbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -318,6 +323,44 @@ template&lt;Expression Real, Expression Imaginary&gt; </div>
           <td></td>
           <td class="paramtype">Imaginary &amp;&amp;&#160;</td>
           <td class="paramname"><em>imaginary</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a94ab220f2ca090334605296af5f3de84" name="a94ab220f2ca090334605296af5f3de84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94ab220f2ca090334605296af5f3de84">&#9670;&#160;</a></span>polar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression Magnitude, Expression Angle&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::expression::polar </td>
+          <td>(</td>
+          <td class="paramtype">Magnitude &amp;&amp;&#160;</td>
+          <td class="paramname"><em>rho</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Angle &amp;&amp;&#160;</td>
+          <td class="paramname"><em>theta</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
