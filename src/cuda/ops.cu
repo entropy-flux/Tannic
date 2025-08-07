@@ -74,8 +74,8 @@ __global__ void scalarBinaryOpKernel(const S0* src0, const S1* src1, D* dst) {
 
 template<typename S0, typename S1, typename D, class Op>
 __global__ void batchedBinaryOpKernel(
-    const S0* __restrict__ src0_ptr, shape_t src0_shape, strides_t src0_strides,
-    const S1* __restrict__ src1_ptr, shape_t src1_shape, strides_t src1_strides,
+    const S0* src0_ptr, shape_t src0_shape, strides_t src0_strides,
+    const S1* src1_ptr, shape_t src1_shape, strides_t src1_strides,
     D* __restrict__ dst_ptr, shape_t dst_shape, strides_t dst_strides,
     uint8_t rank, size_t ne
 ) {

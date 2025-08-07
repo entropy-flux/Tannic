@@ -31,13 +31,16 @@ class Tensor;
  
 namespace expression { 
 
-struct Polar {  
-    static void forward(Tensor const&, Tensor const&, Tensor&);
-};
-
 struct Cartesian {
     static void forward(Tensor const&, Tensor const&, Tensor&);
 };
+
+/*
+struct Polar {  
+    static void forward(Tensor const&, Tensor const&, Tensor&);
+};
+*/
+
 
 template<class Coordinates, Expression ... Sources>
 class Complexification;
@@ -187,9 +190,27 @@ private:
     type dtype_;
     Shape shape_;
     Strides strides_;
-}; 
-  
+};  
+
+template<Expression Real>
+constexpr auto complex(Real&& real) {
+    return Complexification<Cartesian, Real>{std::forward<Real>(real)};
+} 
+
+template<Expression Real, Expression Imaginary>
+constexpr auto complex(Real&& real, Imaginary&& imaginary) {
+    return Complexification<Cartesian, Real, Imaginary>{std::forward<Real>(real), std::forward<Imaginary>(imaginary)};
+} 
+
+template<Expression Complex>
+constexpr auto real(Complex&& complex) {
+    return Realification<Complex>{std::forward<Complex>(complex)};
+}
+
 } // namespace expression
+
+using expression::complex;
+using expression::real;
  
 } // namespace tannic
 

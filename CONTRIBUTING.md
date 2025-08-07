@@ -168,10 +168,10 @@ std::cout << W[1] + Z[0]; // IO supported for expressions.
 
 TODO LIST: 
 - outer: DONE
-- polar:  
-- ones_like
-- zeros, repeat_interleave
-- view_as_complex, view_as_real
-- ones, rsqrt
+- view_as_complex, view_as_real: DOne
+- polar:   
+- repeat_interleave 
+- rsqrt
 - hstack
 - complex mul
+- ones_like, zeros

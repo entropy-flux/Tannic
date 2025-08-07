@@ -62,7 +62,7 @@ status launchFnKernel(const tensor_t* src, tensor_t* dst) {
     return SUCCESS;
 }     
 
-status launchDefaultKernel(const tensor_t* src, tensor_t* dst) {
+constexpr static status launchDefaultKernel(const tensor_t* src, tensor_t* dst) {
     return UNSUPPORTED_DTYPE;
 }; 
 
