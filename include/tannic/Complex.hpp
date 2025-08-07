@@ -35,12 +35,9 @@ struct Cartesian {
     static void forward(Tensor const&, Tensor const&, Tensor&);
 };
 
-/*
 struct Polar {  
     static void forward(Tensor const&, Tensor const&, Tensor&);
 };
-*/
-
 
 template<class Coordinates, Expression ... Sources>
 class Complexification;
@@ -202,6 +199,13 @@ constexpr auto complex(Real&& real, Imaginary&& imaginary) {
     return Complexification<Cartesian, Real, Imaginary>{std::forward<Real>(real), std::forward<Imaginary>(imaginary)};
 } 
 
+
+template<Expression Magnitude, Expression Angle>
+constexpr auto polar(Magnitude&& rho, Angle&& theta) {
+    return Complexification<Polar, Magnitude, Angle>{std::forward<Magnitude>(rho), std::forward<Angle>(theta)};
+} 
+
+
 template<Expression Complex>
 constexpr auto real(Complex&& complex) {
     return Realification<Complex>{std::forward<Complex>(complex)};
@@ -211,6 +215,7 @@ constexpr auto real(Complex&& complex) {
 
 using expression::complex;
 using expression::real;
+using expression::polar;
  
 } // namespace tannic
 

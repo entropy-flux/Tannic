@@ -9,5 +9,6 @@ using namespace tannic;
 namespace cuda {  
       
 status view_as_cartesian(tensor_t const*, tensor_t const*, tensor_t*, stream_t);  
+status view_as_polar(const tensor_t*, const tensor_t*, tensor_t*, stream_t);
 
 } // namespace cuda

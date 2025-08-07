@@ -7,6 +7,7 @@ using namespace tannic;
 
 namespace cpu {  
       
-status view_as_cartesian(tensor_t const*, tensor_t const*, tensor_t*);  
+status view_as_cartesian(tensor_t const*, tensor_t const*, tensor_t*);   
+status view_as_polar(const tensor_t*, const tensor_t*, tensor_t*);
 
 } // namespace cpu

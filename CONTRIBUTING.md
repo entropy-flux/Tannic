@@ -168,7 +168,7 @@ std::cout << W[1] + Z[0]; // IO supported for expressions.
 
 TODO LIST: 
 - outer: DONE
-- view_as_complex, view_as_real: DOne
+- view_as_complex, view_as_real: Done
 - polar:   
 - repeat_interleave 
 - rsqrt

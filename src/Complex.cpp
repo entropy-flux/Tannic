@@ -6,6 +6,7 @@
 #else
 namespace cuda {
 inline status view_as_cartesian(tensor_t const*, tensor_t const*, tensor_t*, stream_t) {throw std::runtime_error("CUDA not available");}
+inline status view_as_polar(tensor_t const*, tensor_t const*, tensor_t*, stream_t) {throw std::runtime_error("CUDA not available");}
 }
 #endif
 
@@ -55,6 +56,10 @@ static inline void apply(Tensor const& first, Tensor const& second, Tensor& outp
 
 void Cartesian::forward(Tensor const& real, Tensor const& imaginary, Tensor& complex) {
     apply<cpu::view_as_cartesian, cuda::view_as_cartesian>(real, imaginary, complex);
+}
+
+void Polar::forward(Tensor const& rho, Tensor const& theta, Tensor& complex) {
+    apply<cpu::view_as_polar, cuda::view_as_polar>(rho, theta, complex);
 }
 
 }

@@ -15,31 +15,32 @@ int main() {
 
     Tensor X(float32, {2,2}); X.initialize(); // or X.initialize(Device()); for CUDA support   
     X[0, 0] = 1;
-    X[0, 1] = 0;
+    X[0, 1] = 6;
     X[1, 0] = 2;
     X[1, 1] = 3;  
-    std::cout << X << std::endl; 
+    
+    Tensor Y(float32, {2,2}); Y.initialize();
+    Y[0, 0] = 2;
+    Y[0, 1] = 1;
+    Y[1, 0] = 1.5;
+    Y[1, 1] = 3.14;  
+
+    Tensor Z = polar(X, Y);
+    std::cout << Z;
 }
 
-/*
-Equivalent torch code
+/*import torch
 
-import torch
- 
-X = torch.zeros((2, 2), dtype=torch.float32)
- 
-X[0, 0:] = 1       
-X[1, 0] = 3
-X[1, 1] = 4
- 
-Y = torch.zeros((1, 2), dtype=torch.float32)
- 
-Y[0, 0] = 4     
-Y[0, 1] = 6       
-result = torch.log(X) + Y * Y - torch.exp(X) + torch.matmul(X, Y.t())
+# Create magnitude tensor X
+X = torch.tensor([[1.0, 6.0],
+                  [2.0, 3.0]])
 
-print(result) 
-tensor([[23.2817, 43.2817],
-        [33.0131, 18.7881]])
+# Create phase tensor Y (in radians)
+Y = torch.tensor([[2.0, 1.0],
+                  [1.5, 3.14]])
+
+# Create complex tensor Z from polar coordinates
+Z = torch.polar(X, Y)
+ 
 
 */
