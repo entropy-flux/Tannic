@@ -108,6 +108,7 @@ public:
         for (auto size : shape) {
             sizes_[dimension++] = size;
         } 
+        assert(rank_ <= limit && "Rank limit exceeded"); 
     } 
 
 
@@ -130,7 +131,7 @@ public:
     constexpr Shape(Sizes... sizes) 
     :   sizes_{static_cast<size_type>(sizes)...}
     ,   rank_(sizeof...(sizes)) {      
-        assert(rank_ < limit && "Rank limit exceeded"); 
+        assert(rank_ <= limit && "Rank limit exceeded"); 
     }
 
 
@@ -146,6 +147,7 @@ public:
             sizes_[dimension++] = static_cast<size_type>(size);
         }
         rank_ = dimension; 
+        assert(rank_ <= limit && "Rank limit exceeded"); 
     } 
 
  
@@ -173,6 +175,7 @@ public:
             sizes_[dimension++] = static_cast<size_type>(*iterator);
         }
         rank_ = dimension;  
+        assert(rank_ <= limit && "Rank limit exceeded"); 
     }
 
 public:    
@@ -268,6 +271,12 @@ public:
     constexpr auto& operator[](Index index) {
         return sizes_[indexing::normalize(index, rank())]; 
     } 
+
+    constexpr void expand(size_type size) { 
+        assert(rank_ < limit && "Rank limit exceeded");  
+        sizes_[rank_] = size;
+        rank_ += 1; 
+    }
 
 
 private:

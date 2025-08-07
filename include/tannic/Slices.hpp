@@ -291,7 +291,7 @@ public:
 
     bool compare(std::byte const* value, std::ptrdiff_t offset) const {
         return source_.compare(value, offset);
-    }  
+    }    
 
 private: 
     type dtype_;
@@ -404,8 +404,8 @@ bool Slice<Source, Indexes...>::operator==(T value) const {
         default:
             return false;
         }
-}  
-
+}   
+ 
 } // namespace tannic::expression
  
 #endif // SLICES_HPP 

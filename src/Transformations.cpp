@@ -2,11 +2,14 @@
 #include "Tensor.hpp"
 #include "Transformations.hpp" 
 #include "cpu/gemm.hpp"   
+#include "cpu/outer.hpp"
 
 #ifdef CUDA
 #include "cuda/gemm.cuh"   
+#include "cuda/outer.cuh"
 #else   
 namespace cuda { 
+inline status gemm(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }
 inline status gemm(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }
 } // namespace cuda
 #endif
@@ -57,6 +60,10 @@ static inline void apply(Tensor const& first, Tensor const& second, Tensor& outp
 
 void Composition::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
     return apply<cpu::gemm, cuda::gemm>(first, second, output);
-}
+} 
+
+void Outer::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
+    return apply<cpu::outer, cuda::outer>(first, second, output);
+} 
 
 } //namespace tannic::transformation

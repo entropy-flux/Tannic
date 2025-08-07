@@ -68,7 +68,7 @@ public:
     :   operation(operation)
     ,   operands(operands...) 
     ,   dtype_(operation.promote(operands.dtype()...))
-    ,   shape_(operation.broadcast(operands.shape()...)) 
+    ,   shape_(operation.transform(operands.shape()...)) 
     ,   strides_(shape_)
     {}
     
@@ -139,16 +139,8 @@ static constexpr auto index(type first, type second) {
  * - Automatic type promotion
  * - Shape broadcasting for batch dimensions
  * - Support for vectors, matrices, and higher-rank tensors
- */
-struct Composition { 
-    /**
-     * @brief Performs the composition operation
-     * @param outer Outer tensor operand
-     * @param inner Inner tensor operand
-     * @param result Output tensor
-     */
-    void forward(Tensor const& outer, Tensor const& inner, Tensor& result) const; 
- 
+ */ 
+struct Composition {    
     /**
      * @brief Type promotion rules table
      *
@@ -225,7 +217,7 @@ struct Composition {
     }
 
     /**
-     * @brief Computes output shape for composition
+     * @brief Computes transformed output shape for composition
      * @param first First operand shape
      * @param second Second operand shape
      * @return Broadcasted output shape
@@ -238,7 +230,7 @@ struct Composition {
      * 4. Matrix-matrix: (m,n) × (n,k) → (m,k)
      * 5. Batched operations: (...,m,n) × (...,n,k) → (...,m,k)
      */
-    static constexpr Shape broadcast(Shape const& first, Shape const& second) {
+    static constexpr Shape transform(Shape const& first, Shape const& second) {
         auto first_rank = first.rank();
         auto second_rank = second.rank();
          
@@ -282,7 +274,10 @@ struct Composition {
         result.push_back(N);
         return Shape(result);
     }
+
+    void forward(Tensor const& outer, Tensor const& inner, Tensor& result) const; 
 };
+ 
 
 /**
  * @brief Creates a composition (matrix multiplication) expression
@@ -295,11 +290,75 @@ struct Composition {
 template<Expression Outer, Expression Inner>
 constexpr auto composition(Outer&& outer, Inner&& inner) {
     return Transformation<Composition, Outer, Inner>{
-        {}, std::forward<Outer>(outer), std::forward<Inner>(inner)
+        {}, 
+        std::forward<Outer>(outer), 
+        std::forward<Inner>(inner)
     };
-}
+} 
+
+/**
+ * @brief Represents the outer product operation between two vectors. 
+ * 
+ * The outer product of two vectors with shapes (n) and (m) results in 
+ * a matrix of shape (n, m). Currently, only vectors are supported — tensors 
+ * with rank greater than 1 are not supported, but this may be extended in the future.
+ */
+struct Outer { 
+    /**
+     * @brief Type promotion for the outer product operation
+     * 
+     * Promotes two operand types to the higher precision type.  
+     * @param first Type of the first operand (left)
+     * @param second Type of the second operand (right)
+     * @return Promoted type for outer product computation
+     */
+    static constexpr type promote(type first, type second) {
+        return static_cast<int>(first) > static_cast<int>(second) ? first : second;
+    }
+
+    /**
+     * @brief Computes output shape for the outer product of two vectors 
+     * @param first Shape of the first tensor 
+     * @param second Shape of the second tensor  
+     * @return Shape of the resulting outer product tensor
+     * 
+     * @throws assertion error if either input tensor is not rank 1
+     * for now outer product only support vectors and not general tensors
+     * but this may change in the future.
+     * 
+     * @details The outer product of two vectors with shapes (n) and (m) 
+     * produces a matrix of shape (n, m).
+     * Outer product is not defined here for tensors with rank > 1.
+     */
+    static constexpr Shape transform(Shape const& first, Shape const& second) {
+        assert(first.rank() == 1 && second.rank() == 1 && 
+               "Outer product of tensors with rank more than 1 not supported");
+        return Shape(first[0], second[0]);
+    }
+ 
+    void forward(Tensor const& first, Tensor const& second, Tensor& result) const;
+}; 
+
+/**
+ * @brief Creates an outer product expression.
+ * @tparam First Left tensor expression type
+ * @tparam Second Right tensor expression type
+ * @param first Left tensor operand
+ * @param second Right tensor operand
+ * @return Transformation expression representing the outer product
+ */
+template<Expression First, Expression Second>
+constexpr auto outer(First&& first, Second&& second) {
+    return Transformation<Outer, First, Second>(
+        {},
+        std::forward<First>(first),
+        std::forward<Second>(second)
+    );
+} 
 
 } // namespace transformation
+
+using transformation::outer;
 
 /**
  * @brief Matrix multiplication convenience function

@@ -1,4 +1,4 @@
-mkdir -p build && cd build 
-cmake -DTANNIC_BUILD_MAIN=ON ..
-cmake --build . 
-./main
+set -e
+cmake -S . -B build -DTANNIC_BUILD_MAIN=ON -DCMAKE_BUILD_TYPE=Debug
+cmake --build build --parallel "$(nproc)"
+./build/main

@@ -127,16 +127,7 @@ status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t
     } 
     return SUCCESS;
 }       
-
-status launchDefaultUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
-    return UNSUPPORTED_DTYPE;
-};  
-
-status launchDefaultBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
-    return UNSUPPORTED_DTYPE;
-};    
-
- 
+  
 struct Neg { 
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(-a)) {
@@ -165,19 +156,25 @@ struct Mul {
     }
 }; 
 
+using UnaryOpKernel = status(*)( const tensor_t*, tensor_t*);      
+using BinaryOpKernel = status(*)( const tensor_t*, const tensor_t*, tensor_t*);      
+
 constexpr static inline int index(type type) {
     return static_cast<int>(type);
-}
-
+} 
 
 constexpr static inline int index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 }  
 
+constexpr static status launchDefaultUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
+    return UNSUPPORTED_DTYPE;
+};  
 
-using UnaryOpKernel = status(*)( const tensor_t*, tensor_t*);      
-using BinaryOpKernel = status(*)( const tensor_t*, const tensor_t*, tensor_t*);      
-
+constexpr static status launchDefaultBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
+    return UNSUPPORTED_DTYPE;
+};    
+ 
 constexpr auto dispatchNeg = []() {  
     std::array<UnaryOpKernel, index(TYPES)> table; table.fill(launchDefaultUnaryOpKernel);
     table[index(int8)] = launchUnaryOpKernel<int8_t, int8_t, Neg>;

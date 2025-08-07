@@ -163,12 +163,12 @@ status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t
 }         
 
 
-status launchDefaultUnaryOpKernel(const tensor_t*, tensor_t*, stream_t) {
+constexpr static status launchDefaultUnaryOpKernel(const tensor_t*, tensor_t*, stream_t) {
     return UNSUPPORTED_DTYPE;
 };  
   
 
-status launchDefaultBinaryOpKernel(const tensor_t*, const tensor_t*, tensor_t*, stream_t) {
+constexpr static status launchDefaultBinaryOpKernel(const tensor_t*, const tensor_t*, tensor_t*, stream_t) {
     return UNSUPPORTED_DTYPE;
 };   
 

@@ -158,12 +158,8 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
     }
 
     return SUCCESS;
-}
-
-
-status defaultKernel(const tensor_t*, const tensor_t*, tensor_t*) {
-    return UNSUPPORTED_DTYPE;
-};
+} 
+ 
 
 using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*);        
  
@@ -171,8 +167,12 @@ constexpr static inline auto index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 } 
 
+constexpr static  status launchDefaultKernel(const tensor_t*, const tensor_t*, tensor_t*) {
+    return UNSUPPORTED_DTYPE;
+};
+
 constexpr auto dispatchGemm = []() {
-    std::array<Kernel, index(TYPES, TYPES)> table; table.fill(defaultKernel); 
+    std::array<Kernel, index(TYPES, TYPES)> table; table.fill(launchDefaultKernel); 
     table[index(int8, int8)]     = launchGemmKernel<int8_t, int8_t, int32_t>;
     table[index(int8, int16)]    = launchGemmKernel<int8_t, int16_t, int32_t>;
     table[index(int8, int32)]    = launchGemmKernel<int8_t, int32_t, int32_t>;

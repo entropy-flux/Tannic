@@ -53,6 +53,7 @@
 #include "Slices.hpp" 
 #include "Views.hpp"
 #include "Operations.hpp" 
+#include "Complex.hpp"
 
 namespace tannic {  
 
@@ -210,7 +211,7 @@ public:
         return *this;
     } 
     /// @}
-
+ 
 public:   
     /// @name Memory Management (Always runtime.)
     /// @{
@@ -358,6 +359,12 @@ protected:
     template <Expression Source>
     friend class expression::Reshape;
 
+    template <class Coordinates, Expression... Sources>
+    friend class expression::Complexification;
+
+    template <Expression Source>
+    friend class expression::Realification;
+
     void assign(std::byte const*, std::ptrdiff_t); 
     bool compare(std::byte const*, std::ptrdiff_t) const; 
      
@@ -409,7 +416,28 @@ template<Expression Source, class... Indexes>
 Tensor expression::Slice<Source, Indexes...>::forward() const {   
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source_.buffer_);
-}       
+}         
+
+template<class Coordinates, Expression Source>
+Tensor expression::Complexification<Coordinates, Source>::forward() const {
+    Tensor real = source.forward();
+    Tensor complex(dtype(), shape(), strides(), offset(), real.buffer_); 
+    return complex; 
+} 
+
+template<class Coordinates, Expression Real, Expression Imaginary>
+Tensor expression::Complexification<Coordinates, Real, Imaginary>::forward() const {  
+    Tensor result(dtype(), shape(), strides(), offset());
+    Coordinates::forward(real.forward(), imaginary.forward(), result);
+    return result;
+} 
+
+template<Expression Source>
+Tensor expression::Realification<Source>::forward() const {
+    Tensor complex = source.forward();
+    Tensor real(dtype(), shape(), strides(), offset(), complex.buffer_); 
+    return real; 
+}
 
 } // namespace tannic
 

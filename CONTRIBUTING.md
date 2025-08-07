@@ -165,3 +165,13 @@ W = W * log(Z);
 W = W * exp(Y) + X[1]; 
 std::cout << W[1] + Z[0]; // IO supported for expressions.
 ```
+
+TODO LIST: 
+- outer: DONE
+- polar:  
+- ones_like
+- zeros, repeat_interleave
+- view_as_complex, view_as_real
+- ones, rsqrt
+- hstack
+- complex mul

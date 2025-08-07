@@ -119,7 +119,7 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
     return SUCCESS;
 }
 
-status defaultKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t) {
+constexpr static status defaultKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t) {
     return UNSUPPORTED_DTYPE;
 };
 
