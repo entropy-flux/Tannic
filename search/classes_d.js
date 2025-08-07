@@ -1,10 +1,15 @@
 var searchData=
 [
-  ['shape_0',['Shape',['../db/da7/classtannic_1_1Shape.html',1,'tannic']]],
-  ['sin_1',['Sin',['../d5/d31/structtannic_1_1function_1_1Sin.html',1,'tannic::function']]],
-  ['sinh_2',['Sinh',['../de/d64/structtannic_1_1function_1_1Sinh.html',1,'tannic::function']]],
-  ['slice_3',['Slice',['../dd/d0f/classtannic_1_1expression_1_1Slice.html',1,'tannic::expression']]],
-  ['sqrt_4',['Sqrt',['../d7/df8/structtannic_1_1function_1_1Sqrt.html',1,'tannic::function']]],
-  ['strides_5',['Strides',['../dc/deb/classtannic_1_1Strides.html',1,'tannic']]],
-  ['subtraction_6',['Subtraction',['../d6/de5/structtannic_1_1operation_1_1Subtraction.html',1,'tannic::operation']]]
+  ['tan_0',['Tan',['../d2/d15/structtannic_1_1function_1_1Tan.html',1,'tannic::function']]],
+  ['tanh_1',['Tanh',['../d6/d39/structtannic_1_1function_1_1Tanh.html',1,'tannic::function']]],
+  ['tensor_2',['Tensor',['../da/d93/classtannic_1_1Tensor.html',1,'tannic']]],
+  ['trait_3',['Trait',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
+  ['trait_3c_20argument_20_3e_4',['Trait&lt; Argument &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
+  ['trait_3c_20cooperand_20_3e_5',['Trait&lt; Cooperand &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
+  ['trait_3c_20imaginary_20_3e_6',['Trait&lt; Imaginary &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
+  ['trait_3c_20operand_20_3e_7',['Trait&lt; Operand &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
+  ['trait_3c_20real_20_3e_8',['Trait&lt; Real &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
+  ['trait_3c_20source_20_3e_9',['Trait&lt; Source &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
+  ['transformation_10',['Transformation',['../d9/d4d/classtannic_1_1transformation_1_1Transformation.html',1,'tannic::transformation']]],
+  ['transpose_11',['Transpose',['../d0/dd9/classtannic_1_1expression_1_1Transpose.html',1,'tannic::expression']]]
 ];

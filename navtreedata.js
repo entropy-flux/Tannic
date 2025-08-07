@@ -67,8 +67,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/d7a/namespacetannic_1_1operation.html",
-"dc/deb/classtannic_1_1Strides.html#a11e2dc7323bb92b3ba8b19d9edd1eabc"
+"d7/d6b/classtannic_1_1operation_1_1Binary.html#afb57760bdcaa664b38819216fbad64ce",
+"dc/da3/structtannic_1_1function_1_1Exp.html#a04570bc86e39f900924546adf685b1fb"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
