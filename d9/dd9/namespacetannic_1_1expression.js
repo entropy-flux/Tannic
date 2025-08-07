@@ -2,6 +2,12 @@ var namespacetannic_1_1expression =
 [
     [ "Argmax", "dc/d3e/structtannic_1_1expression_1_1Argmax.html", "dc/d3e/structtannic_1_1expression_1_1Argmax" ],
     [ "Argmin", "d7/d32/structtannic_1_1expression_1_1Argmin.html", "d7/d32/structtannic_1_1expression_1_1Argmin" ],
+    [ "Cartesian", "d7/d1c/structtannic_1_1expression_1_1Cartesian.html", null ],
+    [ "Complexification", "d3/d42/classtannic_1_1expression_1_1Complexification.html", null ],
+    [ "Complexification< Coordinates, Real, Imaginary >", "d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html", "d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4" ],
+    [ "Complexification< Coordinates, Source >", "df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4.html", "df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4" ],
+    [ "Polar", "d3/dd3/structtannic_1_1expression_1_1Polar.html", null ],
+    [ "Realification", "db/d96/classtannic_1_1expression_1_1Realification.html", "db/d96/classtannic_1_1expression_1_1Realification" ],
     [ "Reduction", "da/dc5/classtannic_1_1expression_1_1Reduction.html", "da/dc5/classtannic_1_1expression_1_1Reduction" ],
     [ "Reshape", "d2/dd8/classtannic_1_1expression_1_1Reshape.html", "d2/dd8/classtannic_1_1expression_1_1Reshape" ],
     [ "Slice", "dd/d0f/classtannic_1_1expression_1_1Slice.html", "dd/d0f/classtannic_1_1expression_1_1Slice" ],

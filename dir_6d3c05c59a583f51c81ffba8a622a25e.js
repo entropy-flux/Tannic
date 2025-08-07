@@ -1,6 +1,7 @@
 var dir_6d3c05c59a583f51c81ffba8a622a25e =
 [
     [ "Buffer.hpp", "d8/d36/Buffer_8hpp.html", "d8/d36/Buffer_8hpp" ],
+    [ "Complex.hpp", "d5/dae/Complex_8hpp.html", "d5/dae/Complex_8hpp" ],
     [ "Concepts.hpp", "d3/d84/Concepts_8hpp.html", "d3/d84/Concepts_8hpp" ],
     [ "Functions.hpp", "dc/d66/Functions_8hpp.html", "dc/d66/Functions_8hpp" ],
     [ "Indexing.hpp", "d3/da7/Indexing_8hpp.html", "d3/da7/Indexing_8hpp" ],

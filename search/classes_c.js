@@ -1,13 +1,7 @@
 var searchData=
 [
-  ['tan_0',['Tan',['../d2/d15/structtannic_1_1function_1_1Tan.html',1,'tannic::function']]],
-  ['tanh_1',['Tanh',['../d6/d39/structtannic_1_1function_1_1Tanh.html',1,'tannic::function']]],
-  ['tensor_2',['Tensor',['../da/d93/classtannic_1_1Tensor.html',1,'tannic']]],
-  ['trait_3',['Trait',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
-  ['trait_3c_20argument_20_3e_4',['Trait&lt; Argument &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
-  ['trait_3c_20cooperand_20_3e_5',['Trait&lt; Cooperand &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
-  ['trait_3c_20operand_20_3e_6',['Trait&lt; Operand &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
-  ['trait_3c_20source_20_3e_7',['Trait&lt; Source &gt;',['../d1/d96/structtannic_1_1Trait.html',1,'tannic']]],
-  ['transformation_8',['Transformation',['../d9/d4d/classtannic_1_1transformation_1_1Transformation.html',1,'tannic::transformation']]],
-  ['transpose_9',['Transpose',['../d0/dd9/classtannic_1_1expression_1_1Transpose.html',1,'tannic::expression']]]
+  ['range_0',['Range',['../de/dea/structtannic_1_1indexing_1_1Range.html',1,'tannic::indexing']]],
+  ['realification_1',['Realification',['../db/d96/classtannic_1_1expression_1_1Realification.html',1,'tannic::expression']]],
+  ['reduction_2',['Reduction',['../da/dc5/classtannic_1_1expression_1_1Reduction.html',1,'tannic::expression']]],
+  ['reshape_3',['Reshape',['../d2/dd8/classtannic_1_1expression_1_1Reshape.html',1,'tannic::expression']]]
 ];

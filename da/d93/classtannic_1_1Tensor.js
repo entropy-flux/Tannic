@@ -25,6 +25,8 @@ var classtannic_1_1Tensor =
     [ "shape", "da/d93/classtannic_1_1Tensor.html#a81394f7df9e3334bad0cad7a890d090e", null ],
     [ "strides", "da/d93/classtannic_1_1Tensor.html#a9ddcd9641feaa0640993c593a184f302", null ],
     [ "transpose", "da/d93/classtannic_1_1Tensor.html#a2970d79712c97bca7c781c3d7987fb0b", null ],
+    [ "expression::Complexification", "da/d93/classtannic_1_1Tensor.html#a34c3e1f41aa63bf22aacd96cc66d9075", null ],
+    [ "expression::Realification", "da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082", null ],
     [ "expression::Reshape", "da/d93/classtannic_1_1Tensor.html#a5386dee168164fdecd9162f1234534f7", null ],
     [ "expression::Slice", "da/d93/classtannic_1_1Tensor.html#acd979f317f147e5b65290548bed8fa45", null ],
     [ "expression::Transpose", "da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9", null ]

@@ -103,6 +103,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html">Composition</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> composition (Known as Matrix Multiplication) operation.  <a href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html">Outer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the outer product operation between two vectors.  <a href="../../de/d42/structtannic_1_1transformation_1_1Outer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html">Transformation</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for tensor transformations.  <a href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,9 +113,13 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="memTemplParams" colspan="2">template&lt;Expression Outer, Expression Inner&gt; </td></tr>
-<tr class="memitem:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a305bc5073fd7fbb2f1948a77c5e5a969">composition</a> (Outer &amp;&amp;outer, Inner &amp;&amp;inner)</td></tr>
+<tr class="memitem:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a305bc5073fd7fbb2f1948a77c5e5a969">composition</a> (<a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html">Outer</a> &amp;&amp;<a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d">outer</a>, Inner &amp;&amp;inner)</td></tr>
 <tr class="memdesc:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a composition (matrix multiplication) expression.  <br /></td></tr>
 <tr class="separator:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memTemplParams" colspan="2">template&lt;Expression First, Expression Second&gt; </td></tr>
+<tr class="memitem:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d">outer</a> (First &amp;&amp;first, Second &amp;&amp;second)</td></tr>
+<tr class="memdesc:aae536af65f2dee7cb7279c58f82b2e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an outer product expression.  <br /></td></tr>
+<tr class="separator:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a305bc5073fd7fbb2f1948a77c5e5a969" name="a305bc5073fd7fbb2f1948a77c5e5a969"></a>
@@ -129,7 +136,7 @@ template&lt;Expression Outer, Expression Inner&gt; </div>
         <tr>
           <td class="memname">constexpr auto tannic::transformation::composition </td>
           <td>(</td>
-          <td class="paramtype">Outer &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html">Outer</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>outer</em>, </td>
         </tr>
         <tr>
@@ -154,19 +161,74 @@ template&lt;Expression Outer, Expression Inner&gt; </div>
 <p>Creates a composition (matrix multiplication) expression. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Outer</td><td>Outer tensor expression type </td></tr>
+    <tr><td class="paramname"><a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html" title="Represents the outer product operation between two vectors.">Outer</a></td><td><a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html" title="Represents the outer product operation between two vectors.">Outer</a> tensor expression type </td></tr>
     <tr><td class="paramname">Inner</td><td>Inner tensor expression type </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">outer</td><td>Outer tensor operand </td></tr>
+    <tr><td class="paramname">outer</td><td><a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html" title="Represents the outer product operation between two vectors.">Outer</a> tensor operand </td></tr>
     <tr><td class="paramname">inner</td><td>Inner tensor operand </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> expression representing the composition </dd></dl>
+
+</div>
+</div>
+<a id="aae536af65f2dee7cb7279c58f82b2e2d" name="aae536af65f2dee7cb7279c58f82b2e2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae536af65f2dee7cb7279c58f82b2e2d">&#9670;&#160;</a></span>outer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression First, Expression Second&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::transformation::outer </td>
+          <td>(</td>
+          <td class="paramtype">First &amp;&amp;&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Second &amp;&amp;&#160;</td>
+          <td class="paramname"><em>second</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates an outer product expression. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">First</td><td>Left tensor expression type </td></tr>
+    <tr><td class="paramname">Second</td><td>Right tensor expression type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>Left tensor operand </td></tr>
+    <tr><td class="paramname">second</td><td>Right tensor operand </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> expression representing the outer product </dd></dl>
 
 </div>
 </div>

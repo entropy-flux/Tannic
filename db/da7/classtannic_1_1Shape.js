@@ -16,6 +16,7 @@ var classtannic_1_1Shape =
     [ "cend", "db/da7/classtannic_1_1Shape.html#a503031effa03b129773a9ca011890784", null ],
     [ "end", "db/da7/classtannic_1_1Shape.html#aa03bdbd1a3b17fff0c03a364c5a46d83", null ],
     [ "end", "db/da7/classtannic_1_1Shape.html#a30d47aff4d631626c97754261ab13490", null ],
+    [ "expand", "db/da7/classtannic_1_1Shape.html#a936a0809e4f31f6c9a32f25dd7ce1be6", null ],
     [ "front", "db/da7/classtannic_1_1Shape.html#ab838e93c0984f4f0d1ddfac4d20fd12e", null ],
     [ "operator[]", "db/da7/classtannic_1_1Shape.html#ad18791f179ce8634d8254f955b066887", null ],
     [ "operator[]", "db/da7/classtannic_1_1Shape.html#a75f342d708afeb26912871a6ec1dd5b4", null ],

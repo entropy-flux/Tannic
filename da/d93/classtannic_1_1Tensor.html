@@ -205,6 +205,12 @@ Friends</h2></td></tr>
 <tr class="memitem:a5386dee168164fdecd9162f1234534f7"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
 <tr class="memitem:a5386dee168164fdecd9162f1234534f7"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a5386dee168164fdecd9162f1234534f7">expression::Reshape</a></td></tr>
 <tr class="separator:a5386dee168164fdecd9162f1234534f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34c3e1f41aa63bf22aacd96cc66d9075"><td class="memTemplParams" colspan="2">template&lt;class Coordinates , Expression... Sources&gt; </td></tr>
+<tr class="memitem:a34c3e1f41aa63bf22aacd96cc66d9075"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a34c3e1f41aa63bf22aacd96cc66d9075">expression::Complexification</a></td></tr>
+<tr class="separator:a34c3e1f41aa63bf22aacd96cc66d9075"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab27984c26f8fa4ecdea9ca97bd3da082"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
+<tr class="memitem:ab27984c26f8fa4ecdea9ca97bd3da082"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082">expression::Realification</a></td></tr>
+<tr class="separator:ab27984c26f8fa4ecdea9ca97bd3da082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A multidimensional, strided tensor data structure. </p>
@@ -235,12 +241,12 @@ Example:</h4>
 <div class="line">Y[0,1] = 6;    </div>
 <div class="line"> </div>
 <div class="line">std::cout &lt;&lt; <a class="code hl_function" href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">log</a>(X) + Y * Y - <a class="code hl_function" href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">exp</a>(X) + <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">matmul</a>(X, Y.transpose());</div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> Tensor.hpp:102</div></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a4ee063da4965ea868081841b3d967882"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Allocator allocator=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div><div class="ttdef"><b>Definition:</b> Tensor.hpp:222</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> Tensor.hpp:103</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_a4ee063da4965ea868081841b3d967882"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Allocator allocator=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div><div class="ttdef"><b>Definition:</b> Tensor.hpp:223</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a1a8e818c37a5236e4481677e70ce6209"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a></div><div class="ttdeci">constexpr auto exp(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated exponential function expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:240</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a9ec44a47e78a5e28b75b76573d98e06b"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a></div><div class="ttdeci">constexpr auto log(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated natural logarithm expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:228</div></div>
 <div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition:</b> Buffer.hpp:43</div></div>
-<div class="ttc" id="anamespacetannic_html_a3681656aa208b88dfc79a1806cf669b6"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> Transformations.hpp:313</div></div>
+<div class="ttc" id="anamespacetannic_html_a3681656aa208b88dfc79a1806cf669b6"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> Transformations.hpp:372</div></div>
 <div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="../../de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdef"><b>Definition:</b> Indexing.hpp:26</div></div>
 </div><!-- fragment --><p>This example demonstrates eager initialization, advanced indexing, broadcasting, and composite expression evaluation.</p>
 <dl class="section warning"><dt>Warning</dt><dd>: Explicit inialization required for now but maybe removed in the future. If not properly initialized the tensors may segfault instead of throwing assertion error. This will be fixed when resources can be infered at the end of a templated expression. </dd></dl>
@@ -1120,6 +1126,54 @@ Example:</h4>
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a34c3e1f41aa63bf22aacd96cc66d9075" name="a34c3e1f41aa63bf22aacd96cc66d9075"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34c3e1f41aa63bf22aacd96cc66d9075">&#9670;&#160;</a></span>expression::Complexification</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Coordinates , Expression... Sources&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="../../d3/d42/classtannic_1_1expression_1_1Complexification.html">expression::Complexification</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab27984c26f8fa4ecdea9ca97bd3da082" name="ab27984c26f8fa4ecdea9ca97bd3da082"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab27984c26f8fa4ecdea9ca97bd3da082">&#9670;&#160;</a></span>expression::Realification</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression Source&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="../../db/d96/classtannic_1_1expression_1_1Realification.html">expression::Realification</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5386dee168164fdecd9162f1234534f7" name="a5386dee168164fdecd9162f1234534f7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5386dee168164fdecd9162f1234534f7">&#9670;&#160;</a></span>expression::Reshape</h2>
 

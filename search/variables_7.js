@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['start_0',['start',['../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80',1,'tannic::indexing::Range']]],
-  ['stop_1',['stop',['../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872',1,'tannic::indexing::Range']]]
+  ['real_0',['real',['../d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html#a765ddfa758f053ed6b199f41369e35dc',1,'tannic::expression::Complexification&lt; Coordinates, Real, Imaginary &gt;']]],
+  ['reducer_1',['reducer',['../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad538ecaf232c6ff457f46291497700c8',1,'tannic::expression::Reduction']]]
 ];

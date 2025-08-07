@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reducer_0',['reducer',['../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad538ecaf232c6ff457f46291497700c8',1,'tannic::expression::Reduction']]]
+  ['promotions_0',['promotions',['../d4/d53/structtannic_1_1transformation_1_1Composition.html#ae5532fbe7069dd08c4ee780f4b4e6a51',1,'tannic::transformation::Composition']]]
 ];
