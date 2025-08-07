@@ -4,7 +4,9 @@
 #ifdef CUDA
 #include "cuda/complex.cuh"
 #else
+namespace cuda {
 inline status view_as_cartesian(tensor_t const*, tensor_t const*, tensor_t*, stream_t) {throw std::runtime_error("CUDA not available");}
+}
 #endif
 
 namespace tannic::expression { 
