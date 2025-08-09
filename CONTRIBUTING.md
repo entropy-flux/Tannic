@@ -170,8 +170,8 @@ TODO LIST:
 - outer: DONE
 - view_as_complex, view_as_real: Done
 - polar:   DONE
-- repeat_interleave 
-- rsqrt
-- hstack
-- complex mul
-- ones_like, zeros
+- repeat_interleave DONE
+- rsqrt:  DONE
+- hstack:
+- complex mul:
+- ones_like, zeros: 

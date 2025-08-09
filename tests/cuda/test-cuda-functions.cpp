@@ -61,6 +61,20 @@ TEST_F(TestCUDAFunctions, Sqrt) {
     compareWithExpected(result, expected);
 }
 
+TEST_F(TestCUDAFunctions, Rsqrt) { 
+    Tensor result = rsqrt(A, 1e-6);
+
+    const float expected[6] = {
+        1.0f / std::sqrt(1.0f + 1e-6),
+        1.0f / std::sqrt(2.0f + 1e-6),
+        1.0f / std::sqrt(3.0f + 1e-6),
+        1.0f / std::sqrt(4.0f + 1e-6),
+        1.0f / std::sqrt(5.0f + 1e-6),
+        1.0f / std::sqrt(6.0f + 1e-6)
+    };
+    compareWithExpected(result, expected);
+} 
+
 TEST_F(TestCUDAFunctions, Abs) {
     // Modify A to contain negative values (on GPU)
     float host_neg_data[6] = {-1.0f, -2.0f, -3.0f, -4.0f, -5.0f, -6.0f};

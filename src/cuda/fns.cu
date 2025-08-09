@@ -8,8 +8,7 @@
 namespace {
     
 template<typename S, typename D, class Fn>
-__global__ void scalarFnKernel(const S* src, D* dst) {
-    Fn fn;
+__global__ void scalarFnKernel(const S* src, D* dst, Fn fn) { 
     *dst = fn(*src);
 }  
 
@@ -17,10 +16,8 @@ template<typename S, typename D, class Fn>
 __global__ void batchedFnKernel(
     const S* src, shape_t src_shape, strides_t src_strides,
     D* dst, shape_t dst_shape, strides_t dst_strides,
-    uint8_t rank, size_t ne
-) {
-    Fn fn{};
-
+    uint8_t rank, size_t ne, Fn fn
+) { 
     for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) { 
         size_t offs = 0;
         size_t remaining = idx;
@@ -35,15 +32,16 @@ __global__ void batchedFnKernel(
 
         dst[idx] = fn(src[offs]);
     }
-}  
+}   
 
-template<typename S, typename D, class Fn>
-status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream) { 
+template<typename S, typename D, class Fn, class ... Args>
+status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args... args)  { 
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
+    Fn fn(std::forward<Args>(args)...);
     if (src->rank == 0) {
         scalarFnKernel<S, D, Fn><<<1, 1, 0, cudaStream>>>(
             (const S*)(src->address),
-            (D*)(dst->address)
+            (D*)(dst->address), fn
         ); 
     } 
     
@@ -59,17 +57,12 @@ status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream) {
         batchedFnKernel<S, D, Fn><<<gridSize, blockSize, 0, cudaStream>>>(
             (const S*)(src->address), src->shape, src->strides,
             (D*)(dst->address), dst->shape, dst->strides,
-            src->rank, ne
+            src->rank, ne, fn
         ); 
-    } 
-
+    }  
     return SUCCESS;
 } 
-
-constexpr static status launchDefaultKernel(const tensor_t* src, tensor_t* dst, stream_t) {
-    return UNSUPPORTED_DTYPE;
-};   
-
+ 
 struct Log { 
     template<class A>
     __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(log(a))) {
@@ -90,7 +83,20 @@ struct Sqrt {
         return sqrt(a);
     }
 };
- 
+
+struct Rsqrt {
+    float eps; 
+
+    template<class A>
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept {
+        if constexpr (std::is_same_v<std::decay_t<A>, float>) {
+            return rsqrtf(a + eps);
+        } else {
+            return 1.0 / sqrt(a + eps);
+        }
+    }
+}; 
+
 struct Abs { 
     template<class A>
     __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(abs(a))) {
@@ -140,124 +146,133 @@ struct Tanh {
     }
 };    
 
-constexpr static inline int index(type type) {
-    return static_cast<int>(type);
-}  
- 
-using Kernel = status(*)(const tensor_t*, tensor_t*, stream_t);       
-
-constexpr auto dispatchLog = []() {
-    std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
-    table[index(float32)] = launchFnKernel<float, float, Log>;
-    table[index(float64)] = launchFnKernel<double, double, Log>;
-    return table;
-}();  
-
-constexpr auto dispatchExp = []() {
-    std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
-    table[index(float32)] = launchFnKernel<float, float, Exp>;
-    table[index(float64)] = launchFnKernel<double, double, Exp>;
-    return table;
-}();  
- 
-constexpr auto dispatchSqrt = []() {
-    std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
-    table[index(float32)] = launchFnKernel<float, float, Sqrt>;
-    table[index(float64)] = launchFnKernel<double, double, Sqrt>;
-    return table;
-}();
-
-constexpr auto dispatchAbs = []() {
-    std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
-    table[index(float32)] = launchFnKernel<float, float, Abs>;
-    table[index(float64)] = launchFnKernel<double, double, Abs>;
-    table[index(int32)] = launchFnKernel<int32_t, int32_t, Abs>;
-    table[index(int64)] = launchFnKernel<int64_t, int64_t, Abs>;
-    return table;
-}();
-
-constexpr auto dispatchSin = []() {
-    std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
-    table[index(float32)] = launchFnKernel<float, float, Sin>;
-    table[index(float64)] = launchFnKernel<double, double, Sin>;
-    return table;
-}();
-
-constexpr auto dispatchCos = []() {
-    std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
-    table[index(float32)] = launchFnKernel<float, float, Cos>;
-    table[index(float64)] = launchFnKernel<double, double, Cos>;
-    return table;
-}();
-
-constexpr auto dispatchTan = []() {
-    std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
-    table[index(float32)] = launchFnKernel<float, float, Tan>;
-    table[index(float64)] = launchFnKernel<double, double, Tan>;
-    return table;
-}();
-
-constexpr auto dispatchSinh = []() {
-    std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
-    table[index(float32)] = launchFnKernel<float, float, Sinh>;
-    table[index(float64)] = launchFnKernel<double, double, Sinh>;
-    return table;
-}();
-
-constexpr auto dispatchCosh = []() {
-    std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
-    table[index(float32)] = launchFnKernel<float, float, Cosh>;
-    table[index(float64)] = launchFnKernel<double, double, Cosh>;
-    return table;
-}();
-
-constexpr auto dispatchTanh = []() {
-    std::array<Kernel, index(TYPES)> table{}; table.fill(launchDefaultKernel);
-    table[index(float32)] = launchFnKernel<float, float, Tanh>;
-    table[index(float64)] = launchFnKernel<double, double, Tanh>;
-    return table;
-}(); 
-
 } namespace cuda {
- 
-status log(tensor_t const* src, tensor_t* dst, stream_t stream) {   
-    return dispatchLog[index(src->dtype)](src, dst, stream); 
+
+status log(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Log>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Log>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
 }
 
-status exp(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    return dispatchExp[index(src->dtype)](src, dst, stream); 
+status exp(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Exp>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Exp>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
 }
 
-status sqrt(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    return dispatchSqrt[index(src->dtype)](src, dst, stream); 
+status sqrt(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Sqrt>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Sqrt>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
 }
 
-status abs(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    return dispatchAbs[index(src->dtype)](src, dst, stream); 
+
+status rsqrt(const tensor_t* src, tensor_t* dst, stream_t stream, float eps) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Rsqrt>(src, dst, stream, eps);
+        case float64:
+            return launchFnKernel<double, double, Rsqrt>(src, dst, stream, eps);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
 }
 
-status sin(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    return dispatchSin[index(src->dtype)](src, dst, stream); 
+
+status abs(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Abs>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Abs>(src, dst, stream);
+        case int32:
+            return launchFnKernel<int32_t, int32_t, Abs>(src, dst, stream);
+        case int64:
+            return launchFnKernel<int64_t, int64_t, Abs>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
 }
 
-status cos(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    return dispatchCos[index(src->dtype)](src, dst, stream); 
+status sin(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Sin>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Sin>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
 }
 
-status tan(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    return dispatchTan[index(src->dtype)](src, dst, stream); 
+status cos(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Cos>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Cos>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
 }
 
-status sinh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    return dispatchSinh[index(src->dtype)](src, dst, stream); 
+status tan(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Tan>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Tan>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
 }
 
-status cosh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    return dispatchCosh[index(src->dtype)](src, dst, stream); 
+status sinh(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Sinh>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Sinh>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
 }
 
-status tanh(tensor_t const* src, tensor_t* dst, stream_t stream) {  
-    return dispatchTanh[index(src->dtype)](src, dst, stream); 
+status cosh(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Cosh>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Cosh>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
+}
+
+status tanh(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case float32:
+            return launchFnKernel<float, float, Tanh>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Tanh>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
 }
 
 } // namespace cuda

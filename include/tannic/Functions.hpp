@@ -161,6 +161,16 @@ struct Sqrt {
 };
 
 /**
+ * @brief Functor inverse square root (1/√x)
+ * Applies element-wise inverse square root to tensor elements
+ */
+struct Rsqrt { 
+    float epsilon;
+    void operator()(Tensor const&, Tensor&) const;
+};
+
+
+/**
  * @brief Functor absolute value (|x|)
  * Applies element-wise absolute value to tensor elements
  */
@@ -252,6 +262,19 @@ constexpr auto exp(Operand&& operand) {
 template<Expression Operand>
 constexpr auto sqrt(Operand&& operand) {
     return Functor<Sqrt, Operand>({}, std::forward<Operand>(operand));
+}  
+
+/**
+ * @brief Creates a lazy-evaluated inverse square root expression
+ * @tparam Operand Type satisfying Expression concept
+ * @param operand Input tensor expression
+ * @return Functor expression representing element-wise √operand
+ * @note Returns NaN for negative inputs
+ * @see Rsqrt
+ */
+template<Expression Operand>
+constexpr auto rsqrt(Operand&& operand, float epsilon) {
+    return Functor<Rsqrt, Operand>({epsilon}, std::forward<Operand>(operand));
 }
 
 /**
@@ -344,6 +367,7 @@ constexpr auto tanh(Operand&& operand) {
 using function::log;
 using function::exp;
 using function::sqrt;
+using function::rsqrt;
 using function::abs;
 using function::sin;
 using function::cos;

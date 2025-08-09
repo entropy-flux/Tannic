@@ -10,6 +10,7 @@ namespace cpu {
 status log(tensor_t  const*, tensor_t*); 
 status exp(tensor_t  const*, tensor_t*); 
 status sqrt(tensor_t const*, tensor_t*); 
+status rsqrt(tensor_t const*, tensor_t*, float); 
 status abs(tensor_t  const*, tensor_t*); 
 status sin(tensor_t  const*, tensor_t*); 
 status cos(tensor_t  const*, tensor_t*); 
