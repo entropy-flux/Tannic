@@ -80,7 +80,7 @@ std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
                 os << ", ";
             } 
             if (dim == 0 && sz != tensor->shape.sizes[dim] - 1) {
-                os << "\n       ";
+                os << "\n        ";
             }
         }
         

@@ -210,7 +210,7 @@ struct Composition {
      * promote(float32, float64) → float64  // Precision preservation
      * ```
      */
-    static constexpr type promote(type inner, type outer) {
+    constexpr static type promote(type inner, type outer) {
         type dtype = promotions[index(inner, outer)];
         assert(dtype != none && "Unsuported dtypes");
         return dtype;
@@ -354,11 +354,36 @@ constexpr auto outer(First&& first, Second&& second) {
         std::forward<First>(first),
         std::forward<Second>(second)
     );
-} 
+}   
+
+struct Repetition {
+    int repeats;
+    int axis;
+     
+    constexpr auto promote(type dtype) const {
+        return dtype;
+    }
+
+    constexpr Shape transform(Shape shape) const {
+        shape[indexing::normalize(axis, shape.rank())] *= repeats; 
+        return shape;
+    }
+
+    void forward(Tensor const&, Tensor&) const;
+};
+
+template<Expression Source>
+constexpr auto repeat(Source&& source, int repeats, int axis) {
+    return Transformation<Repetition, Source>(
+        {repeats, axis},
+        std::forward<Source>(source)
+    ); 
+}
 
 } // namespace transformation
 
 using transformation::outer;
+using transformation::repeat;
 
 /**
  * @brief Matrix multiplication convenience function

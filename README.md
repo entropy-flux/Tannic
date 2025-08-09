@@ -56,6 +56,12 @@ Y = torch.log(X) + Y * Y - torch.exp(X) + torch.matmul(X, Y.t())
 print(Y) 
 ```  
 
+Giving:
+
+```
+tensor([[23.2817, 43.2817],
+        [33.0131, 18.7881]])
+```
 
 ## Status
 
