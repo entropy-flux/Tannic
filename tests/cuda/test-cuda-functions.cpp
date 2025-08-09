@@ -65,12 +65,12 @@ TEST_F(TestCUDAFunctions, Rsqrt) {
     Tensor result = rsqrt(A, 1e-6);
 
     const float expected[6] = {
-        1.0f / std::sqrt(1.0f + 1e-6),
-        1.0f / std::sqrt(2.0f + 1e-6),
-        1.0f / std::sqrt(3.0f + 1e-6),
-        1.0f / std::sqrt(4.0f + 1e-6),
-        1.0f / std::sqrt(5.0f + 1e-6),
-        1.0f / std::sqrt(6.0f + 1e-6)
+        1.0f / std::sqrt(1.0f + 1e-6f),
+        1.0f / std::sqrt(2.0f + 1e-6f),
+        1.0f / std::sqrt(3.0f + 1e-6f),
+        1.0f / std::sqrt(4.0f + 1e-6f),
+        1.0f / std::sqrt(5.0f + 1e-6f),
+        1.0f / std::sqrt(6.0f + 1e-6f)
     };
     compareWithExpected(result, expected);
 } 
