@@ -118,6 +118,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d67/structtannic_1_1function_1_1Log.html">Log</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d0/d1d/classtannic_1_1function_1_1Functor.html" title="Expression template for mathematical function operations.">Functor</a> natural logarithm (ln(x)) Applies element-wise natural logarithm to tensor elements.  <a href="../../d9/d67/structtannic_1_1function_1_1Log.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/db8/structtannic_1_1function_1_1Rsqrt.html">Rsqrt</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d0/d1d/classtannic_1_1function_1_1Functor.html" title="Expression template for mathematical function operations.">Functor</a> inverse square root (1/√x) Applies element-wise inverse square root to tensor elements.  <a href="../../dc/db8/structtannic_1_1function_1_1Rsqrt.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d31/structtannic_1_1function_1_1Sin.html">Sin</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d0/d1d/classtannic_1_1function_1_1Functor.html" title="Expression template for mathematical function operations.">Functor</a> sine Applies element-wise sine to tensor elements (radians)  <a href="../../d5/d31/structtannic_1_1function_1_1Sin.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,6 +151,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b">sqrt</a> (Operand &amp;&amp;operand)</td></tr>
 <tr class="memdesc:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated square root expression.  <br /></td></tr>
 <tr class="separator:a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a9800c45a44de531933db2b1ad1a089"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
+<tr class="memitem:a8a9800c45a44de531933db2b1ad1a089"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#a8a9800c45a44de531933db2b1ad1a089">rsqrt</a> (Operand &amp;&amp;operand, float epsilon)</td></tr>
+<tr class="memdesc:a8a9800c45a44de531933db2b1ad1a089"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated inverse square root expression.  <br /></td></tr>
+<tr class="separator:a8a9800c45a44de531933db2b1ad1a089"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf8029815df9c9b3b40179dd788a9ba8"><td class="memTemplParams" colspan="2">template&lt;Expression Operand&gt; </td></tr>
 <tr class="memitem:adf8029815df9c9b3b40179dd788a9ba8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d74/namespacetannic_1_1function.html#adf8029815df9c9b3b40179dd788a9ba8">abs</a> (Operand &amp;&amp;operand)</td></tr>
 <tr class="memdesc:adf8029815df9c9b3b40179dd788a9ba8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a lazy-evaluated absolute value expression.  <br /></td></tr>
@@ -396,6 +403,61 @@ template&lt;Expression Operand&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d0/d1d/classtannic_1_1function_1_1Functor.html" title="Expression template for mathematical function operations.">Functor</a> expression representing element-wise ln(operand) </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Computes natural logarithm (base e) for each element </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d9/d67/structtannic_1_1function_1_1Log.html" title="Functor natural logarithm (ln(x)) Applies element-wise natural logarithm to tensor elements.">Log</a> </dd></dl>
+
+</div>
+</div>
+<a id="a8a9800c45a44de531933db2b1ad1a089" name="a8a9800c45a44de531933db2b1ad1a089"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a9800c45a44de531933db2b1ad1a089">&#9670;&#160;</a></span>rsqrt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression Operand&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::function::rsqrt </td>
+          <td>(</td>
+          <td class="paramtype">Operand &amp;&amp;&#160;</td>
+          <td class="paramname"><em>operand</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>epsilon</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a lazy-evaluated inverse square root expression. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Operand</td><td>Type satisfying Expression concept </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">operand</td><td>Input tensor expression </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d0/d1d/classtannic_1_1function_1_1Functor.html" title="Expression template for mathematical function operations.">Functor</a> expression representing element-wise √operand </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Returns NaN for negative inputs </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../dc/db8/structtannic_1_1function_1_1Rsqrt.html" title="Functor inverse square root (1/√x) Applies element-wise inverse square root to tensor elements.">Rsqrt</a> </dd></dl>
 
 </div>
 </div>

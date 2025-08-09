@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['source_0',['source',['../df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4.html#abfa0b7a4f4d84d1f430381fba6c99960',1,'tannic::expression::Complexification&lt; Coordinates, Source &gt;::source()'],['../db/d96/classtannic_1_1expression_1_1Realification.html#a4c94275ff00d70fa74326ea021694970',1,'tannic::expression::Realification::source()']]],
-  ['start_1',['start',['../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80',1,'tannic::indexing::Range']]],
-  ['stop_2',['stop',['../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872',1,'tannic::indexing::Range']]]
+  ['real_0',['real',['../d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html#a765ddfa758f053ed6b199f41369e35dc',1,'tannic::expression::Complexification&lt; Coordinates, Real, Imaginary &gt;']]],
+  ['reducer_1',['reducer',['../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad538ecaf232c6ff457f46291497700c8',1,'tannic::expression::Reduction']]],
+  ['repeats_2',['repeats',['../da/d5d/structtannic_1_1transformation_1_1Repetition.html#ad81145fd3afc10df86f8947523ed638f',1,'tannic::transformation::Repetition']]]
 ];

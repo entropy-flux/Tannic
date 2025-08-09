@@ -22,6 +22,7 @@ var annotated_dup =
         [ "Exp", "dc/da3/structtannic_1_1function_1_1Exp.html", "dc/da3/structtannic_1_1function_1_1Exp" ],
         [ "Functor", "d0/d1d/classtannic_1_1function_1_1Functor.html", "d0/d1d/classtannic_1_1function_1_1Functor" ],
         [ "Log", "d9/d67/structtannic_1_1function_1_1Log.html", "d9/d67/structtannic_1_1function_1_1Log" ],
+        [ "Rsqrt", "dc/db8/structtannic_1_1function_1_1Rsqrt.html", "dc/db8/structtannic_1_1function_1_1Rsqrt" ],
         [ "Sin", "d5/d31/structtannic_1_1function_1_1Sin.html", "d5/d31/structtannic_1_1function_1_1Sin" ],
         [ "Sinh", "de/d64/structtannic_1_1function_1_1Sinh.html", "de/d64/structtannic_1_1function_1_1Sinh" ],
         [ "Sqrt", "d7/df8/structtannic_1_1function_1_1Sqrt.html", "d7/df8/structtannic_1_1function_1_1Sqrt" ],
