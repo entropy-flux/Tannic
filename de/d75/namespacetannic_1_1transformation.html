@@ -103,6 +103,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html">Composition</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> composition (Known as Matrix Multiplication) operation.  <a href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html">Concatenation</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html">Outer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the outer product operation between two vectors.  <a href="../../de/d42/structtannic_1_1transformation_1_1Outer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,6 +127,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aebefd592643507fb020743aa9580069a"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
 <tr class="memitem:aebefd592643507fb020743aa9580069a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aebefd592643507fb020743aa9580069a">repeat</a> (Source &amp;&amp;source, int repeats, int axis)</td></tr>
 <tr class="separator:aebefd592643507fb020743aa9580069a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab369832ba286712d12e8d552373c5fbd"><td class="memTemplParams" colspan="2">template&lt;Expression First, Expression Second&gt; </td></tr>
+<tr class="memitem:ab369832ba286712d12e8d552373c5fbd"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#ab369832ba286712d12e8d552373c5fbd">concatenate</a> (First &amp;&amp;first, Second &amp;&amp;second, int axis)</td></tr>
+<tr class="separator:ab369832ba286712d12e8d552373c5fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a305bc5073fd7fbb2f1948a77c5e5a969" name="a305bc5073fd7fbb2f1948a77c5e5a969"></a>
@@ -179,6 +184,50 @@ template&lt;Expression Outer, Expression Inner&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> expression representing the composition </dd></dl>
+
+</div>
+</div>
+<a id="ab369832ba286712d12e8d552373c5fbd" name="ab369832ba286712d12e8d552373c5fbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab369832ba286712d12e8d552373c5fbd">&#9670;&#160;</a></span>concatenate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression First, Expression Second&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::transformation::concatenate </td>
+          <td>(</td>
+          <td class="paramtype">First &amp;&amp;&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Second &amp;&amp;&#160;</td>
+          <td class="paramname"><em>second</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>axis</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

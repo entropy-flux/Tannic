@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tannic: tannic::transformation::Repetition Struct Reference</title>
+<title>Tannic: tannic::transformation::Concatenation Struct Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -65,7 +65,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('da/d5d/structtannic_1_1transformation_1_1Repetition.html','../../'); initResizable(); });
+$(document).ready(function(){initNavTree('dd/d77/structtannic_1_1transformation_1_1Concatenation.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -94,8 +94,8 @@ $(document).ready(function(){initNavTree('da/d5d/structtannic_1_1transformation_
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="../../dc/d67/structtannic_1_1transformation_1_1Repetition-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">tannic::transformation::Repetition Struct Reference</div></div>
+<a href="../../d0/dd8/structtannic_1_1transformation_1_1Concatenation-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">tannic::transformation::Concatenation Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -103,30 +103,34 @@ $(document).ready(function(){initNavTree('da/d5d/structtannic_1_1transformation_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aeb2cf220d62b164396993fad28d9c278"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#aeb2cf220d62b164396993fad28d9c278">promote</a> (type dtype) const</td></tr>
-<tr class="separator:aeb2cf220d62b164396993fad28d9c278"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a119132fd4a9bccd6069465129d5efb39"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#a119132fd4a9bccd6069465129d5efb39">transform</a> (<a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> shape) const</td></tr>
-<tr class="separator:a119132fd4a9bccd6069465129d5efb39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab498ec608a7dcfe845d1d15fe4d9cf3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#ab498ec608a7dcfe845d1d15fe4d9cf3e">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;) const</td></tr>
-<tr class="separator:ab498ec608a7dcfe845d1d15fe4d9cf3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a493aff346483146c21f695dcf09777cc"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#a493aff346483146c21f695dcf09777cc">promote</a> (type first, type second) const</td></tr>
+<tr class="separator:a493aff346483146c21f695dcf09777cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6441069a6bfe2b6947fe1570ba1eb6ae"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#a6441069a6bfe2b6947fe1570ba1eb6ae">transform</a> (<a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;first, <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;second)</td></tr>
+<tr class="separator:a6441069a6bfe2b6947fe1570ba1eb6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fb69b59b92074c0debbe533ecab8d61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#a0fb69b59b92074c0debbe533ecab8d61">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;) const</td></tr>
+<tr class="separator:a0fb69b59b92074c0debbe533ecab8d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ad81145fd3afc10df86f8947523ed638f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#ad81145fd3afc10df86f8947523ed638f">repeats</a></td></tr>
-<tr class="separator:ad81145fd3afc10df86f8947523ed638f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab37be05a5f1045efebb79b80e0bf7ee0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#ab37be05a5f1045efebb79b80e0bf7ee0">axis</a></td></tr>
-<tr class="separator:ab37be05a5f1045efebb79b80e0bf7ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a260d08404464240bead779361c2973ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#a260d08404464240bead779361c2973ea">axis</a></td></tr>
+<tr class="separator:a260d08404464240bead779361c2973ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab498ec608a7dcfe845d1d15fe4d9cf3e" name="ab498ec608a7dcfe845d1d15fe4d9cf3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab498ec608a7dcfe845d1d15fe4d9cf3e">&#9670;&#160;</a></span>forward()</h2>
+<a id="a0fb69b59b92074c0debbe533ecab8d61" name="a0fb69b59b92074c0debbe533ecab8d61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fb69b59b92074c0debbe533ecab8d61">&#9670;&#160;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void tannic::transformation::Repetition::forward </td>
+          <td class="memname">void tannic::transformation::Concatenation::forward </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;&#160;</td>
           <td class="paramname">, </td>
         </tr>
@@ -146,8 +150,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb2cf220d62b164396993fad28d9c278" name="aeb2cf220d62b164396993fad28d9c278"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb2cf220d62b164396993fad28d9c278">&#9670;&#160;</a></span>promote()</h2>
+<a id="a493aff346483146c21f695dcf09777cc" name="a493aff346483146c21f695dcf09777cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a493aff346483146c21f695dcf09777cc">&#9670;&#160;</a></span>promote()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -156,11 +160,21 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr type tannic::transformation::Repetition::promote </td>
+          <td class="memname">constexpr auto tannic::transformation::Concatenation::promote </td>
           <td>(</td>
           <td class="paramtype">type&#160;</td>
-          <td class="paramname"><em>dtype</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">type&#160;</td>
+          <td class="paramname"><em>second</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -172,8 +186,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a119132fd4a9bccd6069465129d5efb39" name="a119132fd4a9bccd6069465129d5efb39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a119132fd4a9bccd6069465129d5efb39">&#9670;&#160;</a></span>transform()</h2>
+<a id="a6441069a6bfe2b6947fe1570ba1eb6ae" name="a6441069a6bfe2b6947fe1570ba1eb6ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6441069a6bfe2b6947fe1570ba1eb6ae">&#9670;&#160;</a></span>transform()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,11 +196,21 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> tannic::transformation::Repetition::transform </td>
+          <td class="memname">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> tannic::transformation::Concatenation::transform </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a>&#160;</td>
-          <td class="paramname"><em>shape</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype"><a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;&#160;</td>
+          <td class="paramname"><em>second</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -199,28 +223,14 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab37be05a5f1045efebb79b80e0bf7ee0" name="ab37be05a5f1045efebb79b80e0bf7ee0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab37be05a5f1045efebb79b80e0bf7ee0">&#9670;&#160;</a></span>axis</h2>
+<a id="a260d08404464240bead779361c2973ea" name="a260d08404464240bead779361c2973ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a260d08404464240bead779361c2973ea">&#9670;&#160;</a></span>axis</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int tannic::transformation::Repetition::axis</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad81145fd3afc10df86f8947523ed638f" name="ad81145fd3afc10df86f8947523ed638f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad81145fd3afc10df86f8947523ed638f">&#9670;&#160;</a></span>repeats</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int tannic::transformation::Repetition::repeats</td>
+          <td class="memname">int tannic::transformation::Concatenation::axis</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -235,7 +245,7 @@ Public Attributes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></li><li class="navelem"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html">transformation</a></li><li class="navelem"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html">Repetition</a></li>
+    <li class="navelem"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></li><li class="navelem"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html">transformation</a></li><li class="navelem"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html">Concatenation</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
