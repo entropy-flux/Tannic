@@ -276,26 +276,8 @@ struct Composition {
     }
 
     void forward(Tensor const& outer, Tensor const& inner, Tensor& result) const; 
-};
+}; 
  
-
-/**
- * @brief Creates a composition (matrix multiplication) expression
- * @tparam Outer Outer tensor expression type
- * @tparam Inner Inner tensor expression type
- * @param outer Outer tensor operand
- * @param inner Inner tensor operand
- * @return Transformation expression representing the composition
- */
-template<Expression Outer, Expression Inner>
-constexpr auto composition(Outer&& outer, Inner&& inner) {
-    return Transformation<Composition, Outer, Inner>{
-        {}, 
-        std::forward<Outer>(outer), 
-        std::forward<Inner>(inner)
-    };
-} 
-
 /**
  * @brief Represents the outer product operation between two vectors. 
  * 
@@ -337,7 +319,68 @@ struct Outer {
     }
  
     void forward(Tensor const& first, Tensor const& second, Tensor& result) const;
-}; 
+};  
+
+struct Repetition {
+    int repeats;
+    int axis;
+     
+    constexpr type promote(type dtype) const {
+        return dtype;
+    }
+
+    constexpr Shape transform(Shape shape) const {
+        shape[indexing::normalize(axis, shape.rank())] *= repeats; 
+        return shape;
+    }
+
+    void forward(Tensor const&, Tensor&) const;
+};
+
+struct Concatenation {
+    int axis;
+
+    constexpr auto promote(type first, type second) const {
+        assert(first == second && "Cannot concatenate tensors of different dtypes");
+        return first;
+    } 
+
+    constexpr Shape transform(Shape const& first, Shape const& second) {
+        assert(first.rank() == second.rank() && "Ranks must match for concatenation");
+        Shape result = first;
+
+        for (int dimension = 0; dimension < first.rank(); ++dimension) {
+            if (dimension == axis) {
+                result[dimension] = first[dimension] + second[dimension];
+            } else {
+                assert(first[dimension] == second[dimension] &&
+                    "All dimensions except concat axis must match");
+            }
+        }
+
+        return result;
+    }
+
+    void forward(Tensor const&, Tensor const&, Tensor&) const;
+};
+
+
+/**
+ * @brief Creates a composition (matrix multiplication) expression
+ * @tparam Outer Outer tensor expression type
+ * @tparam Inner Inner tensor expression type
+ * @param outer Outer tensor operand
+ * @param inner Inner tensor operand
+ * @return Transformation expression representing the composition
+ */
+template<Expression Outer, Expression Inner>
+constexpr auto composition(Outer&& outer, Inner&& inner) {
+    return Transformation<Composition, Outer, Inner>{
+        {}, 
+        std::forward<Outer>(outer), 
+        std::forward<Inner>(inner)
+    };
+} 
 
 /**
  * @brief Creates an outer product expression.
@@ -356,22 +399,6 @@ constexpr auto outer(First&& first, Second&& second) {
     );
 }   
 
-struct Repetition {
-    int repeats;
-    int axis;
-     
-    constexpr auto promote(type dtype) const {
-        return dtype;
-    }
-
-    constexpr Shape transform(Shape shape) const {
-        shape[indexing::normalize(axis, shape.rank())] *= repeats; 
-        return shape;
-    }
-
-    void forward(Tensor const&, Tensor&) const;
-};
-
 template<Expression Source>
 constexpr auto repeat(Source&& source, int repeats, int axis) {
     return Transformation<Repetition, Source>(
@@ -380,10 +407,20 @@ constexpr auto repeat(Source&& source, int repeats, int axis) {
     ); 
 }
 
+template<Expression First, Expression Second>
+constexpr auto concatenate(First&& first, Second&& second, int axis) {
+    return Transformation<Concatenation, First, Second>(
+        {axis},
+        std::forward<First>(first),
+        std::forward<Second>(second)
+    ); 
+}
+
 } // namespace transformation
 
 using transformation::outer;
 using transformation::repeat;
+using transformation::concatenate;
 
 /**
  * @brief Matrix multiplication convenience function

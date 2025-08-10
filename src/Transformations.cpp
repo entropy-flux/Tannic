@@ -4,16 +4,19 @@
 #include "cpu/gemm.hpp"   
 #include "cpu/outer.hpp"
 #include "cpu/reps.hpp"
+#include "cpu/concat.hpp"
 
 #ifdef CUDA
 #include "cuda/gemm.cuh"   
 #include "cuda/outer.cuh"
 #include "cuda/reps.cuh"
+#include "cuda/concat.cuh"
 #else   
 namespace cuda {  
 inline status gemm(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }
 inline status outer(tensor_t const*, tensor_t const*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
 inline status repeat(const tensor_t*, tensor_t*, int, int, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
+inline status concat(const tensor_t*, const tensor_t*, tensor_t*, stream_t, int)  { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
 } // namespace cuda
 #endif
 
@@ -23,6 +26,8 @@ using UH = status (*)(const tensor_t*, tensor_t*);
 using UD = status (*)(const tensor_t*, tensor_t*, stream_t); 
 using BH = status (*)(const tensor_t*, const tensor_t*, tensor_t*);
 using BD = status (*)(const tensor_t*, const tensor_t*, tensor_t*, stream_t);   
+
+// TODO: Refactor with variadic args and lambdas like Functions.cpp
 
 template <UH hcall, UD dcall>
 static inline void apply(Tensor const& input, Tensor& output) {   
@@ -143,8 +148,54 @@ static inline void apply(Tensor const& input, Tensor& output, int axis, int repe
         } 
 }    
 
+using ConcatUH = status (*)(const tensor_t*, const tensor_t*, tensor_t*, int);
+using ConcatUD = status (*)(const tensor_t*, const tensor_t*, tensor_t*, stream_t, int);
+   
+template <ConcatUH hcall, ConcatUD dcall>
+static inline void applyConcat(Tensor const& first, Tensor const& second, Tensor& output, int dim) {   
+    tensor_t src0 = structure(first);
+    tensor_t src1 = structure(second);
+    allocator_t allocator;
+    auto status = resolve(&src0.allocator, &src1.allocator, &allocator);
+    if(status != SUCCESS) {
+        throw std::runtime_error("Allocator issue!");
+    }
+    switch (allocator.environment) { 
+        case HOST: { 
+            auto resource = allocator.resource.host;
+            output.initialize(Host());  
+            auto dst = structure(output);
+            auto status = hcall(&src0, &src1, &dst, dim);    
+            if(status != SUCCESS) {
+                throw std::runtime_error("Unsupported dtype");
+            }
+            break; 
+        } 
+
+        case DEVICE: {  
+            auto dvc = allocator.resource.device; 
+            output.initialize(Device(dvc.id)); 
+            auto dst = structure(output);
+            auto stream = pop_stream(&dvc);
+            auto status = dcall(&src0, &src1, &dst, stream, dim);
+            put_stream(&dvc, stream);
+            if(status != SUCCESS) {
+                throw std::runtime_error("Unsupported dtype");
+            } 
+            break; 
+        } 
+        
+        default:
+            break;
+        } 
+}      
+
 void Repetition::forward(Tensor const& source, Tensor& output) const {
-    return apply<cpu::repeat, cuda::repeat>(source, output, axis, repeats); 
-}
+    apply<cpu::repeat, cuda::repeat>(source, output, axis, repeats); 
+} 
+
+void Concatenation::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
+    applyConcat<cpu::concat, cuda::concat>(first, second, output, axis); 
+} 
 
 } //namespace tannic::transformation
