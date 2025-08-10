@@ -99,13 +99,18 @@ $(document).ready(function(){initNavTree('da/d5d/structtannic_1_1transformation_
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html" title="Repetition operation along a specified axis.">Repetition</a> operation along a specified axis.  
+ <a href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d25/Transformations_8hpp_source.html">Transformations.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aeb2cf220d62b164396993fad28d9c278"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#aeb2cf220d62b164396993fad28d9c278">promote</a> (type dtype) const</td></tr>
+<tr class="memdesc:aeb2cf220d62b164396993fad28d9c278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type promotion for repetition operation.  <br /></td></tr>
 <tr class="separator:aeb2cf220d62b164396993fad28d9c278"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a119132fd4a9bccd6069465129d5efb39"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#a119132fd4a9bccd6069465129d5efb39">transform</a> (<a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> shape) const</td></tr>
+<tr class="memdesc:a119132fd4a9bccd6069465129d5efb39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes output shape after repetition.  <br /></td></tr>
 <tr class="separator:a119132fd4a9bccd6069465129d5efb39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab498ec608a7dcfe845d1d15fe4d9cf3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#ab498ec608a7dcfe845d1d15fe4d9cf3e">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;) const</td></tr>
 <tr class="separator:ab498ec608a7dcfe845d1d15fe4d9cf3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,7 +122,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ab37be05a5f1045efebb79b80e0bf7ee0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#ab37be05a5f1045efebb79b80e0bf7ee0">axis</a></td></tr>
 <tr class="separator:ab37be05a5f1045efebb79b80e0bf7ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html" title="Repetition operation along a specified axis.">Repetition</a> operation along a specified axis. </p>
+<p>Replicates the tensor data along a given axis multiple times. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab498ec608a7dcfe845d1d15fe4d9cf3e" name="ab498ec608a7dcfe845d1d15fe4d9cf3e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab498ec608a7dcfe845d1d15fe4d9cf3e">&#9670;&#160;</a></span>forward()</h2>
 
@@ -170,6 +178,16 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Type promotion for repetition operation. </p>
+<p><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html" title="Repetition operation along a specified axis.">Repetition</a> does not change data type.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dtype</td><td>Original tensor data type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Same data type. </dd></dl>
+
 </div>
 </div>
 <a id="a119132fd4a9bccd6069465129d5efb39" name="a119132fd4a9bccd6069465129d5efb39"></a>
@@ -195,6 +213,16 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Computes output shape after repetition. </p>
+<p>Multiplies the size of the specified axis by repeats.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shape</td><td>Input tensor shape. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Output shape after repetition. </dd></dl>
 
 </div>
 </div>

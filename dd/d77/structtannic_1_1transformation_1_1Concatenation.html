@@ -99,13 +99,18 @@ $(document).ready(function(){initNavTree('dd/d77/structtannic_1_1transformation_
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html" title="Concatenation operation along a specified axis.">Concatenation</a> operation along a specified axis.  
+ <a href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d25/Transformations_8hpp_source.html">Transformations.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a493aff346483146c21f695dcf09777cc"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#a493aff346483146c21f695dcf09777cc">promote</a> (type first, type second) const</td></tr>
+<tr class="memdesc:a493aff346483146c21f695dcf09777cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type promotion for concatenation.  <br /></td></tr>
 <tr class="separator:a493aff346483146c21f695dcf09777cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6441069a6bfe2b6947fe1570ba1eb6ae"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#a6441069a6bfe2b6947fe1570ba1eb6ae">transform</a> (<a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;first, <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;second)</td></tr>
+<tr class="memdesc:a6441069a6bfe2b6947fe1570ba1eb6ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes output shape after concatenation.  <br /></td></tr>
 <tr class="separator:a6441069a6bfe2b6947fe1570ba1eb6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fb69b59b92074c0debbe533ecab8d61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#a0fb69b59b92074c0debbe533ecab8d61">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;) const</td></tr>
 <tr class="separator:a0fb69b59b92074c0debbe533ecab8d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,7 +120,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a260d08404464240bead779361c2973ea"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#a260d08404464240bead779361c2973ea">axis</a></td></tr>
 <tr class="separator:a260d08404464240bead779361c2973ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html" title="Concatenation operation along a specified axis.">Concatenation</a> operation along a specified axis. </p>
+<p>Concatenates two tensors of the same rank and dtype along a given axis. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0fb69b59b92074c0debbe533ecab8d61" name="a0fb69b59b92074c0debbe533ecab8d61"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0fb69b59b92074c0debbe533ecab8d61">&#9670;&#160;</a></span>forward()</h2>
 
@@ -184,6 +192,17 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Type promotion for concatenation. </p>
+<p>Requires both tensors to have identical data types.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>Left tensor dtype. </td></tr>
+    <tr><td class="paramname">second</td><td>Right tensor dtype. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Data type (same as inputs). </dd></dl>
+
 </div>
 </div>
 <a id="a6441069a6bfe2b6947fe1570ba1eb6ae" name="a6441069a6bfe2b6947fe1570ba1eb6ae"></a>
@@ -219,6 +238,17 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Computes output shape after concatenation. </p>
+<p>Validates that all dimensions except the concatenation axis are equal. Output shape is input shapes with concatenation axis dimension summed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">first</td><td>Left tensor shape. </td></tr>
+    <tr><td class="paramname">second</td><td>Right tensor shape. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Output shape after concatenation. </dd></dl>
 
 </div>
 </div>

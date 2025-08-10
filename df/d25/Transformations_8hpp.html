@@ -167,8 +167,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the outer product operation between two vectors.  <a href="../../de/d42/structtannic_1_1transformation_1_1Outer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html">tannic::transformation::Repetition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html" title="Repetition operation along a specified axis.">Repetition</a> operation along a specified axis.  <a href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html">tannic::transformation::Concatenation</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html" title="Concatenation operation along a specified axis.">Concatenation</a> operation along a specified axis.  <a href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -188,12 +190,14 @@ Functions</h2></td></tr>
 <tr class="memitem:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d">tannic::transformation::outer</a> (First &amp;&amp;first, Second &amp;&amp;second)</td></tr>
 <tr class="memdesc:aae536af65f2dee7cb7279c58f82b2e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an outer product expression.  <br /></td></tr>
 <tr class="separator:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebefd592643507fb020743aa9580069a"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
-<tr class="memitem:aebefd592643507fb020743aa9580069a"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aebefd592643507fb020743aa9580069a">tannic::transformation::repeat</a> (Source &amp;&amp;source, int repeats, int axis)</td></tr>
-<tr class="separator:aebefd592643507fb020743aa9580069a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab369832ba286712d12e8d552373c5fbd"><td class="memTemplParams" colspan="2">template&lt;Expression First, Expression Second&gt; </td></tr>
-<tr class="memitem:ab369832ba286712d12e8d552373c5fbd"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#ab369832ba286712d12e8d552373c5fbd">tannic::transformation::concatenate</a> (First &amp;&amp;first, Second &amp;&amp;second, int axis)</td></tr>
-<tr class="separator:ab369832ba286712d12e8d552373c5fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f49aca0f8b48ceb6f1992c5f34ab6fb"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
+<tr class="memitem:a4f49aca0f8b48ceb6f1992c5f34ab6fb"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a4f49aca0f8b48ceb6f1992c5f34ab6fb">tannic::transformation::repeat</a> (Source &amp;&amp;source, int repeats, int axis=0)</td></tr>
+<tr class="memdesc:a4f49aca0f8b48ceb6f1992c5f34ab6fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a repetition transformation.  <br /></td></tr>
+<tr class="separator:a4f49aca0f8b48ceb6f1992c5f34ab6fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb2680136e1491dededb15e6f6169f77"><td class="memTemplParams" colspan="2">template&lt;Expression First, Expression Second&gt; </td></tr>
+<tr class="memitem:adb2680136e1491dededb15e6f6169f77"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#adb2680136e1491dededb15e6f6169f77">tannic::transformation::concatenate</a> (First &amp;&amp;first, Second &amp;&amp;second, int axis=0)</td></tr>
+<tr class="memdesc:adb2680136e1491dededb15e6f6169f77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to create a concatenation transformation.  <br /></td></tr>
+<tr class="separator:adb2680136e1491dededb15e6f6169f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3681656aa208b88dfc79a1806cf669b6"><td class="memTemplParams" colspan="2">template&lt;Expression Multiplicand, Expression Multiplier&gt; </td></tr>
 <tr class="memitem:a3681656aa208b88dfc79a1806cf669b6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a> (Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</td></tr>
 <tr class="memdesc:a3681656aa208b88dfc79a1806cf669b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix multiplication convenience function.  <br /></td></tr>
