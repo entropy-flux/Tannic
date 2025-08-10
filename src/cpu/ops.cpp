@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include <vector>
 #include <array>
+#include <complex>
 #include "cpu/ops.hpp" 
 
 namespace cpu {
@@ -183,6 +184,9 @@ constexpr auto dispatchNeg = []() {
     table[index(int64)] = launchUnaryOpKernel<int64_t, int64_t, Neg>;
     table[index(float32)] = launchUnaryOpKernel<float, float, Neg>;
     table[index(float64)] = launchUnaryOpKernel<double, double, Neg>;
+    table[index(complex64)] = launchUnaryOpKernel<std::complex<float>, std::complex<float>, Neg>;
+    table[index(complex128)] = launchUnaryOpKernel<std::complex<double>, std::complex<double>, Neg>;
+    return table;
     return table;
 }();      
 
@@ -217,6 +221,9 @@ constexpr auto dispatchAdd = []() {
     table[index(float32, float64)] = launchBinaryOpKernel<float, double, double, Add>;
     table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Add>;
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Add>;
+
+    table[index(complex64, complex64)] = launchBinaryOpKernel<std::complex<float>, std::complex<float>, std::complex<float>, Add>;
+    table[index(complex128, complex128)] = launchBinaryOpKernel<std::complex<double>, std::complex<double>, std::complex<double>, Add>;
     return table;
 }();  
 
@@ -251,6 +258,9 @@ constexpr auto dispatchSub = []() {
     table[index(float32, float64)] = launchBinaryOpKernel<float, double, double, Sub>;
     table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Sub>;
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Sub>;
+
+    table[index(complex64, complex64)] = launchBinaryOpKernel<std::complex<float>, std::complex<float>, std::complex<float>, Sub>;
+    table[index(complex128, complex128)] = launchBinaryOpKernel<std::complex<double>, std::complex<double>, std::complex<double>, Sub>;
     return table;
 }(); 
 
@@ -285,6 +295,9 @@ constexpr auto dispatchMul = []() {
     table[index(float32, float64)] = launchBinaryOpKernel<float, double, double, Mul>;
     table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Mul>;
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Mul>;
+    
+    table[index(complex64, complex64)] = launchBinaryOpKernel<std::complex<float>, std::complex<float>, std::complex<float>, Mul>;
+    table[index(complex128, complex128)] = launchBinaryOpKernel<std::complex<double>, std::complex<double>, std::complex<double>, Mul>;
     return table;
 }();  
 

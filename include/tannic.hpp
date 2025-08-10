@@ -21,5 +21,6 @@
 #include "tannic/Transformations.hpp"
 #include "tannic/Reductions.hpp"
 #include "tannic/Views.hpp"
+#include "tannic/Complex.hpp"
 
 #endif
