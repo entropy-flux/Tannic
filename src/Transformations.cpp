@@ -191,11 +191,11 @@ static inline void applyConcat(Tensor const& first, Tensor const& second, Tensor
 }      
 
 void Repetition::forward(Tensor const& source, Tensor& output) const {
-    apply<cpu::repeat, cuda::repeat>(source, output, axis, repeats); 
+    apply<cpu::repeat, cuda::repeat>(source, output, indexing::normalize(axis, output.rank()), repeats); 
 } 
 
 void Concatenation::forward(Tensor const& first, Tensor const& second, Tensor& output) const {
-    applyConcat<cpu::concat, cuda::concat>(first, second, output, axis); 
+    applyConcat<cpu::concat, cuda::concat>(first, second, output, indexing::normalize(axis, output.rank())); 
 } 
 
 } //namespace tannic::transformation

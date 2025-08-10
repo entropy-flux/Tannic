@@ -321,14 +321,35 @@ struct Outer {
     void forward(Tensor const& first, Tensor const& second, Tensor& result) const;
 };  
 
+/**
+ * @brief Repetition operation along a specified axis.
+ * 
+ * Replicates the tensor data along a given axis multiple times.
+ */
 struct Repetition {
     int repeats;
     int axis;
      
+    /**
+     * @brief Type promotion for repetition operation.
+     * 
+     * Repetition does not change data type.
+     * 
+     * @param dtype Original tensor data type.
+     * @return Same data type.
+     */
     constexpr type promote(type dtype) const {
         return dtype;
     }
 
+    /**
+     * @brief Computes output shape after repetition.
+     * 
+     * Multiplies the size of the specified axis by repeats.
+     * 
+     * @param shape Input tensor shape.
+     * @return Output shape after repetition.
+     */
     constexpr Shape transform(Shape shape) const {
         shape[indexing::normalize(axis, shape.rank())] *= repeats; 
         return shape;
@@ -337,14 +358,40 @@ struct Repetition {
     void forward(Tensor const&, Tensor&) const;
 };
 
+
+/**
+ * @brief Concatenation operation along a specified axis.
+ * 
+ * Concatenates two tensors of the same rank and dtype along a given axis.
+ */
 struct Concatenation {
     int axis;
 
+
+    /**
+     * @brief Type promotion for concatenation.
+     * 
+     * Requires both tensors to have identical data types.
+     * 
+     * @param first Left tensor dtype.
+     * @param second Right tensor dtype.
+     * @return Data type (same as inputs).
+     */
     constexpr auto promote(type first, type second) const {
         assert(first == second && "Cannot concatenate tensors of different dtypes");
         return first;
     } 
 
+    /**
+     * @brief Computes output shape after concatenation.
+     * 
+     * Validates that all dimensions except the concatenation axis are equal.
+     * Output shape is input shapes with concatenation axis dimension summed.
+     * 
+     * @param first Left tensor shape.
+     * @param second Right tensor shape.
+     * @return Output shape after concatenation.
+     */
     constexpr Shape transform(Shape const& first, Shape const& second) {
         assert(first.rank() == second.rank() && "Ranks must match for concatenation");
         Shape result = first;
@@ -399,16 +446,37 @@ constexpr auto outer(First&& first, Second&& second) {
     );
 }   
 
+
+/**
+ * @brief Creates a repetition transformation.
+ * 
+ * @tparam Source Source tensor expression type.
+ * @param source Tensor to be repeated.
+ * @param repeats Number of repetitions.
+ * @param axis Axis along which to repeat.
+ * @return Transformation expression representing repetition.
+ */
 template<Expression Source>
-constexpr auto repeat(Source&& source, int repeats, int axis) {
+constexpr auto repeat(Source&& source, int repeats, int axis = 0) {
     return Transformation<Repetition, Source>(
         {repeats, axis},
         std::forward<Source>(source)
     ); 
 }
 
+
+/**
+ * @brief Helper function to create a concatenation transformation.
+ * 
+ * @tparam First Left tensor expression type.
+ * @tparam Second Right tensor expression type.
+ * @param first Left tensor operand.
+ * @param second Right tensor operand.
+ * @param axis Axis along which to concatenate.
+ * @return Transformation expression representing concatenation.
+ */
 template<Expression First, Expression Second>
-constexpr auto concatenate(First&& first, Second&& second, int axis) {
+constexpr auto concatenate(First&& first, Second&& second, int axis = 0) {
     return Transformation<Concatenation, First, Second>(
         {axis},
         std::forward<First>(first),
