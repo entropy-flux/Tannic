@@ -1,3 +1,4 @@
+#ifdef CUDA
 #include <gtest/gtest.h>
 
 #include "Tensor.hpp"
@@ -61,3 +62,4 @@ TEST(TestCUDAConcat, ConcatCUDADim1) {
     ASSERT_EQ(Y[1][3], 9);
     ASSERT_EQ(Y[1][4], 10);
 }
+#endif
