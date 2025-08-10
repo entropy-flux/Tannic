@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <array>
 #include <stdexcept>
+#include <thrust/complex.h>
 #include "cuda/exc.cuh"
 #include "cuda/ops.cuh"
 #include "cuda/streams.cuh"
@@ -220,6 +221,8 @@ constexpr auto dispatchNeg = []() {
     table[index(int64)] = launchUnaryOpKernel<int64_t, int64_t, Neg>;
     table[index(float32)] = launchUnaryOpKernel<float, float, Neg>;
     table[index(float64)] = launchUnaryOpKernel<double, double, Neg>;
+    table[index(complex64)] = launchUnaryOpKernel<thrust::complex<float>, thrust::complex<float>, Neg>;
+    table[index(complex128)] = launchUnaryOpKernel<thrust::complex<double>, thrust::complex<double>, Neg>;
     return table;
 }();      
 
@@ -254,6 +257,9 @@ constexpr auto dispatchAdd = []() {
     table[index(float32, float64)] = launchBinaryOpKernel<float, double, double, Add>;
     table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Add>;
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Add>;
+    
+    table[index(complex64, complex64)] = launchBinaryOpKernel<thrust::complex<float>, thrust::complex<float>, thrust::complex<float>, Add>;
+    table[index(complex128, complex128)] = launchBinaryOpKernel<thrust::complex<double>, thrust::complex<double>, thrust::complex<double>, Add>;
     return table;
 }();  
 
@@ -288,6 +294,10 @@ constexpr auto dispatchSub = []() {
     table[index(float32, float64)] = launchBinaryOpKernel<float, double, double, Sub>;
     table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Sub>;
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Sub>;
+
+
+    table[index(complex64, complex64)] = launchBinaryOpKernel<thrust::complex<float>, thrust::complex<float>, thrust::complex<float>, Sub>;
+    table[index(complex128, complex128)] = launchBinaryOpKernel<thrust::complex<double>, thrust::complex<double>, thrust::complex<double>, Sub>;
     return table;
 }(); 
 
@@ -322,6 +332,9 @@ constexpr auto dispatchMul = []() {
     table[index(float32, float64)] = launchBinaryOpKernel<float, double, double, Mul>;
     table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Mul>;
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Mul>;
+
+    table[index(complex64, complex64)] = launchBinaryOpKernel<thrust::complex<float>, thrust::complex<float>, thrust::complex<float>, Mul>;
+    table[index(complex128, complex128)] = launchBinaryOpKernel<thrust::complex<double>, thrust::complex<double>, thrust::complex<double>, Mul>;
     return table;
 }();  
 

@@ -118,4 +118,42 @@ TEST_F(TestCUDAOperations, Subtraction) {
     };
     compareWithExpectedBinary(result, expected);
 }
+
+TEST_F(TestCUDAOperations, Complex_CUDA) { 
+    Tensor X(float32, {2,2});
+    X.initialize(Device());   
+    X[0, 0] = 1;
+    X[0, 1] = 6;
+    X[1, 0] = 2;
+    X[1, 1] = 3;
+    X = complex(X);  
+    
+    
+    Tensor Y(float32, {2,2});
+    Y.initialize(Device()); 
+    
+    Y[0, 0] = 2;
+    Y[0, 1] = 1;
+    Y[1, 0] = 1.5;
+    Y[1, 1] = 3.14;
+    Y = complex(Y);
+    
+    Tensor Z = real(X * Y);
+
+    float Z_host[4];
+ 
+    cudaMemcpy(
+        Z_host,
+        reinterpret_cast<float*>(Z.bytes()),
+        4 * sizeof(float),
+        cudaMemcpyDeviceToHost
+    );
+
+    ASSERT_NEAR(Z_host[0], -4.00, 0.001);
+    ASSERT_NEAR(Z_host[1], 13.00, 0.001);
+    ASSERT_NEAR(Z_host[2], -6.42, 0.001);
+    ASSERT_NEAR(Z_host[3], 10.78, 0.001);
+}
+
+
 #endif

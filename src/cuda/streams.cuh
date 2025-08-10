@@ -8,7 +8,7 @@ namespace cuda {
 class Streams {
 private:
     Streams();
-    std::vector<std::forward_list<cudaStream_t>> streams_;
+    ::std::vector<::std::forward_list<cudaStream_t>> streams_;
 
 public: 
     ~Streams(); 
