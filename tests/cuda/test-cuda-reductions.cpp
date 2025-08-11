@@ -11,7 +11,6 @@
 using namespace tannic;
 
 TEST(TestCUDAReductions, TestCUDA1D) {
-
     Tensor X(float32, {7}); X.initialize();
     X[0] = 3; X[1] = 5; X[2] = 4; X[3] = 1; X[4] = 5; X[5] = 9; X[6] = 2;
     

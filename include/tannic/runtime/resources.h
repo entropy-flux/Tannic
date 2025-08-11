@@ -21,6 +21,7 @@
 #ifdef __cplusplus
 #include <cstdint>
 #include <cstddef>
+#include "runtime/status.h"
 
 namespace tannic {
 extern "C" {
@@ -28,6 +29,7 @@ extern "C" {
 #else
 #include <stdint.h>
 #include <stddef.h>
+#include "runtime/status.h"
 #endif 
 
 enum environment {
@@ -62,6 +64,8 @@ struct allocator_t {
         struct device_t device;
     } resource;
 };
+
+status resolve_allocator(const allocator_t*, const allocator_t*, allocator_t*); 
 
 #ifdef __cplusplus
 }

@@ -20,17 +20,21 @@
 
 #ifdef __cplusplus
 #include <cstdint>  
-
+#include "runtime/resources.h"
 namespace tannic {
 extern "C" {
 
 #else
 #include <stdint.h>  
+#include "runtime/resources.h"
 #endif 
  
 struct stream_t { 
     uintptr_t address;
 };  
+
+stream_t pop_stream(const device_t*);
+void put_stream(const device_t*, stream_t);  
 
 #ifdef __cplusplus
 }

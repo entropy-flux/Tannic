@@ -1,6 +1,7 @@
 #include <vector>
 #include <ostream>
 #include "Bindings.hpp"
+#include "runtime/streams.h"
 #include "Types.hpp"
 #include "Tensor.hpp"   
 

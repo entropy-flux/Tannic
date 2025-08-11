@@ -2,6 +2,7 @@
 #include "Functions.hpp"
 #include "runtime/tensor.h"
 #include "runtime/status.h"
+#include "runtime/streams.h"
 #include "cpu/fns.hpp"
 
 #ifdef CUDA

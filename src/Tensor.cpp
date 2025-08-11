@@ -1,6 +1,7 @@
 #include "Bindings.hpp" 
 #include "Types.hpp"
-#include "Tensor.hpp"   
+#include "Tensor.hpp"
+#include "runtime/streams.h"   
 #include <ostream>
 #include <cstring>
 #include <functional>

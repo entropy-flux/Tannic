@@ -3,6 +3,7 @@
 #include <cstring>  
 #include "Resources.hpp"
 #include "Bindings.hpp" 
+#include "runtime/streams.h"
 
 #ifdef CUDA   
 #include "cuda/mem.cuh"

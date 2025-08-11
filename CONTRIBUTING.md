@@ -32,7 +32,7 @@ x[1][1] = 3;
 ASSERT_EQ(x[1][1], 3); // GTest support this but not  ASSERT_EQ(x[1,1], 3)
 ```
 
-This is especially important in CUDA tests, where manually copying device memory to the host hurts test performance.
+This is especially important in CUDA tests, where manually copying device memory sync to the host hurts test performance.
 
 - **Improve installation documentation**. One of the main challenges with C++ adoption is the complexity of building and linking libraries. I plan to create a comprehensive guide on installing and integrating the library into other projects.
 
@@ -100,6 +100,8 @@ The project is organized into the following main components:
 
     * C utilities should not be exposed in the C++ frontend, except for data types (dtypes) which are included for compatibility and convenience.
 
+Currently what is in the src root folder is a mess, lot of code repetition and nasty helper functions with bunch of templates. I promise I will take the time to refactor this but after I find a way to dynamically add and remove nodes from a graph dynamically based on reference counting.  This refactor won't change anything on the public API. 
+
 
 ## Creating new features.
 
@@ -164,8 +166,4 @@ Tensor W = matmul(X, Y) + Z;
 W = W * log(Z);
 W = W * exp(Y) + X[1]; 
 std::cout << W[1] + Z[0]; // IO supported for expressions.
-```
-
-TODO LIST:  
-- complex mul: ??? 
-- ones_like, zeros: 
+``` 

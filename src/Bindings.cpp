@@ -17,7 +17,7 @@ struct Streams {
 }
 #endif
 
-using namespace tannic;
+namespace tannic {
 
 stream_t pop_stream(const device_t* dvc) {
 #ifdef CUDA
@@ -108,7 +108,7 @@ tensor_t structure(Tensor const& tensor) {
     }
 }
 
-status resolve(const allocator_t* a, const allocator_t* b, allocator_t* result_out) {
+status resolve_allocator(const allocator_t* a, const allocator_t* b, allocator_t* result_out) {
     if (!a || !b || !result_out) {
         return NULL_ALLOCATOR;
     }
@@ -142,4 +142,6 @@ status resolve(const allocator_t* a, const allocator_t* b, allocator_t* result_o
         }
     }
     return SUCCESS;
+}
+
 }

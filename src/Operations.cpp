@@ -1,6 +1,7 @@
 #include "Bindings.hpp"
 #include "Operations.hpp"
 #include "Tensor.hpp" 
+#include "runtime/streams.h"
 #include "cpu/ops.hpp"  
 #ifdef CUDA
 #include "cuda/ops.cuh"
@@ -59,7 +60,7 @@ static inline void apply(Tensor const& first, Tensor const& second, Tensor& outp
     tensor_t src0 = structure(first);
     tensor_t src1 = structure(second);
     allocator_t allocator;
-    auto status = resolve(&src0.allocator, &src1.allocator, &allocator);
+    auto status = resolve_allocator(&src0.allocator, &src1.allocator, &allocator);
     if(status != SUCCESS) {
         throw std::runtime_error("Allocator issue!");
     }

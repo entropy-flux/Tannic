@@ -1,6 +1,7 @@
 #include "Bindings.hpp"
 #include "Reductions.hpp"
 #include "Indexing.hpp"
+#include "runtime/streams.h"
 #include "cpu/argcmp.hpp" 
 #ifdef CUDA
 #include "cuda/argcmp.cuh"
