@@ -81,7 +81,7 @@ public:
 
 public:
     using rank_type = uint8_t;      ///< Type used for rank (number of dimensions).
-    using size_type = uint32_t;  ///< Type used for size and shape dimensions. 
+    using size_type = size_t;  ///< Type used for size and shape dimensions. 
  
     /**
     * @brief Default constructor. Initializes a shape of rank 0 and size 1 (shape of scalars).

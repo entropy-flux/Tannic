@@ -38,8 +38,8 @@ extern "C" {
 
 struct shape_t {
     union {
-        const uint32_t* address;
-        uint32_t sizes[DIMENSIONS];
+        const size_t* address;
+        size_t sizes[DIMENSIONS];
     };
 };
 

@@ -477,7 +477,7 @@ constexpr auto repeat(Source&& source, int repeats, int axis = 0) {
  */
 template<Expression First, Expression Second>
 constexpr auto concatenate(First&& first, Second&& second, int axis = 0) {
-    assert(axis > 0 && "Negative index not supported in concat");
+    assert(axis >= 0 && "Negative index not supported in concat");
     return Transformation<Concatenation, First, Second>(
         {axis},
         std::forward<First>(first),
