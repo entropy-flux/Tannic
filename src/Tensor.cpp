@@ -15,8 +15,13 @@ inline bool compareFromHost(const device_t*, std::byte const* src, std::byte con
 } // namespace cuda
 #endif
 
-namespace tannic {
- 
+namespace tannic { 
+
+void Tensor::initialize(Allocator allocator) const {  
+    buffer_ = std::make_shared<Buffer>(nbytes_, allocator);  
+    node_ = std::make_shared<Node>(*this);
+}    
+
 void Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {      
     std::byte* target = static_cast<std::byte*>(buffer_->address()) + offset;    
     if (std::holds_alternative<Host>(this->allocator())) {

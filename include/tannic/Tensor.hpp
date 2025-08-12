@@ -54,6 +54,7 @@
 #include "Views.hpp"
 #include "Operations.hpp" 
 #include "Complex.hpp"
+#include "Graph.hpp"
 
 namespace tannic {  
 
@@ -220,9 +221,7 @@ public:
      * @brief Allocates the memory buffer for the tensor.
      * @param allocator Memory allocator (defaults to `Host{}`).
      */
-    void initialize(Allocator allocator = Host{}) const {  
-        buffer_ = std::make_shared<Buffer>(nbytes_, allocator); 
-    }    
+    void initialize(Allocator allocator = Host{}) const;
    
     /**
      * @brief Returns a pointer to the beginning of the tensor's data (accounting for offset).
@@ -368,6 +367,10 @@ protected:
     void assign(std::byte const*, std::ptrdiff_t); 
     bool compare(std::byte const*, std::ptrdiff_t) const; 
      
+    Node* node() const {
+        return node_.get();
+    }
+
 private:
     type dtype_;
     Shape shape_; 
@@ -375,6 +378,7 @@ private:
     std::size_t nbytes_ = 0; 
     std::ptrdiff_t offset_ = 0;    
     mutable std::shared_ptr<Buffer> buffer_ = nullptr;
+    mutable std::shared_ptr<Node> node_ = nullptr;
 };    
 
 std::ostream& operator<<(std::ostream& ostream, Tensor const& tensor);  
