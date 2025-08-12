@@ -1,9 +1,12 @@
-#pragma once
+#ifndef CALLBACK_HPP
+#define CALLBACK_HPP
 #include "runtime/tensor.h"
 #include "runtime/graph.h"
 #include "runtime/streams.h"
 
 namespace tannic {
+
+// WARNING: THIS FILE IS UNDER ACTIVE DEVELOPMENT!.
 
 static inline tensor_t* get_tensor(uintptr_t id) {
     return reinterpret_cast<node_t*>(id)->target;
@@ -93,3 +96,5 @@ public:
 }; 
 
 } // namespace tannic
+
+#endif

@@ -112,7 +112,7 @@ std::ostream& operator<<(std::ostream& ostream, Tensor const& tensor) {
     } 
 
     else {
-        throw std::runtime_error("IO not implemented for cuda tensor");
+        throw std::runtime_error("IO not implemented for cuda tensor, but will be!");
     } 
     return ostream;
 }

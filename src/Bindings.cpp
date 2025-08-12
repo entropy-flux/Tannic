@@ -42,12 +42,14 @@ void put_stream(const device_t* dvc, stream_t stream) {
 }
 
 host_t structure(Host const& resource) {
+    // OLD FUNCTION TO BE DELETED.
     return host_t{
         .traits = resource.pinned() ? PINNED : PAGEABLE
     };
 }
 
 device_t structure(Device const& resource) {
+    // OLD FUNCTION TO BE DELETED.
     return device_t{
         .id = resource.id(),
         .traits = resource.blocking() ? SYNC : ASYNC
@@ -55,6 +57,7 @@ device_t structure(Device const& resource) {
 }
 
 allocator_t structure(Allocator const& allocator) {
+    // OLD FUNCTION TO BE DELETED.
     if (std::holds_alternative<Host>(allocator)) {
         Host const& resource = std::get<Host>(allocator);
         return allocator_t{
@@ -71,6 +74,7 @@ allocator_t structure(Allocator const& allocator) {
 }
 
 tensor_t structure(Tensor const& tensor) {
+    // OLD FUNCTION TO BE DELETED.
     const Allocator& alloc = tensor.allocator();
     shape_t shape{};
     strides_t strides{};
