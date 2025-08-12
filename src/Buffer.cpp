@@ -20,6 +20,7 @@ Buffer::Buffer(Buffer&& other) noexcept
 ,   allocator_(std::move(other.allocator_))
 ,   address_(std::exchange(other.address_, nullptr)) {}
 
+
 Buffer& Buffer::operator=(Buffer&& other) noexcept {
     if (this != &other) { 
         std::visit([&](auto& variant) {

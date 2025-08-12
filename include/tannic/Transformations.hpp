@@ -459,7 +459,7 @@ constexpr auto outer(First&& first, Second&& second) {
 template<Expression Source>
 constexpr auto repeat(Source&& source, int repeats, int axis = 0) {
     return Transformation<Repetition, Source>(
-        {repeats, axis},
+        {repeats, indexing::normalize(axis, source.shape().rank())},
         std::forward<Source>(source)
     ); 
 }
@@ -477,6 +477,7 @@ constexpr auto repeat(Source&& source, int repeats, int axis = 0) {
  */
 template<Expression First, Expression Second>
 constexpr auto concatenate(First&& first, Second&& second, int axis = 0) {
+    assert(axis > 0 && "Negative index not supported in concat");
     return Transformation<Concatenation, First, Second>(
         {axis},
         std::forward<First>(first),

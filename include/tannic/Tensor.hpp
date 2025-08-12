@@ -376,6 +376,11 @@ public:
     } 
 
 private:
+    // Note: I didn't decide yet if put all this inside node.
+    // That will speed tensor copies but disallow make the tensors
+    // only runtime since shared ptrs don't support constexpr.
+    // For now kernel optimization is more important.
+     
     type dtype_;
     Shape shape_; 
     Strides strides_; 
