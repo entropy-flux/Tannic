@@ -133,6 +133,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa74c128ad7859e3e48d431e2a6dfeecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace47b4a9fcb1068b6a5084b2816e4e7f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ace47b4a9fcb1068b6a5084b2816e4e7f">Tensor</a> (type <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ae2ed5e8543bccbf5a65a6a38f9b0aaea">dtype</a>, <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a81394f7df9e3334bad0cad7a890d090e">shape</a>, <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a9ddcd9641feaa0640993c593a184f302">strides</a>, std::ptrdiff_t <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a64e1ab26b63bda193b0252b840aacc5a">offset</a>, std::shared_ptr&lt; <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &gt; storage)</td></tr>
 <tr class="separator:ace47b4a9fcb1068b6a5084b2816e4e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a451eebfea1fb68557e20d8b91fdd7876"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d85/structtannic_1_1Node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a451eebfea1fb68557e20d8b91fdd7876">node</a> () const</td></tr>
+<tr class="separator:a451eebfea1fb68557e20d8b91fdd7876"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Metadata Access (May be constexpr in the future.)</div></td></tr>
 <tr class="memitem:ae2ed5e8543bccbf5a65a6a38f9b0aaea"><td class="memItemLeft" align="right" valign="top">type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ae2ed5e8543bccbf5a65a6a38f9b0aaea">dtype</a> () const</td></tr>
 <tr class="memdesc:ae2ed5e8543bccbf5a65a6a38f9b0aaea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tensor's data type.  <br /></td></tr>
@@ -241,8 +243,8 @@ Example:</h4>
 <div class="line">Y[0,1] = 6;    </div>
 <div class="line"> </div>
 <div class="line">std::cout &lt;&lt; <a class="code hl_function" href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">log</a>(X) + Y * Y - <a class="code hl_function" href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">exp</a>(X) + <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">matmul</a>(X, Y.transpose());</div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> Tensor.hpp:103</div></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a4ee063da4965ea868081841b3d967882"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Allocator allocator=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div><div class="ttdef"><b>Definition:</b> Tensor.hpp:223</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> Tensor.hpp:104</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_a4ee063da4965ea868081841b3d967882"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Allocator allocator=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a1a8e818c37a5236e4481677e70ce6209"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a></div><div class="ttdeci">constexpr auto exp(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated exponential function expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:250</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a9ec44a47e78a5e28b75b76573d98e06b"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a></div><div class="ttdeci">constexpr auto log(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated natural logarithm expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:238</div></div>
 <div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition:</b> Buffer.hpp:43</div></div>
@@ -700,9 +702,6 @@ template&lt;Expression Expression&gt; </div>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void tannic::Tensor::initialize </td>
@@ -712,11 +711,6 @@ template&lt;Expression Expression&gt; </div>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Allocates the memory buffer for the tensor. </p>
@@ -781,6 +775,31 @@ template&lt;Expression Expression&gt; </div>
 </div><div class="memdoc">
 
 <p>Returns the total number of bytes occupied by the tensor's elements. </p>
+
+</div>
+</div>
+<a id="a451eebfea1fb68557e20d8b91fdd7876" name="a451eebfea1fb68557e20d8b91fdd7876"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a451eebfea1fb68557e20d8b91fdd7876">&#9670;&#160;</a></span>node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../df/d85/structtannic_1_1Node.html">Node</a> * tannic::Tensor::node </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -68,7 +68,8 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d7/d6b/classtannic_1_1operation_1_1Binary.html#ad480dbcbf1dfb703f3bf6ef232cebe61",
-"dc/d3e/structtannic_1_1expression_1_1Argmax.html#af5565f57e72a903f23de86caa38357df"
+"dc/d3e/structtannic_1_1expression_1_1Argmax.html#ad0777e72003105a3371a471c1beb683a",
+"index.html#autotoc_md35"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

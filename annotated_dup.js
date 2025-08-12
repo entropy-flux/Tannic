@@ -51,6 +51,7 @@ var annotated_dup =
       [ "Device", "d3/d46/classtannic_1_1Device.html", "d3/d46/classtannic_1_1Device" ],
       [ "Devices", "d9/dd4/classtannic_1_1Devices.html", "d9/dd4/classtannic_1_1Devices" ],
       [ "Host", "df/da7/classtannic_1_1Host.html", "df/da7/classtannic_1_1Host" ],
+      [ "Node", "df/d85/structtannic_1_1Node.html", "df/d85/structtannic_1_1Node" ],
       [ "Shape", "db/da7/classtannic_1_1Shape.html", "db/da7/classtannic_1_1Shape" ],
       [ "Strides", "dc/deb/classtannic_1_1Strides.html", "dc/deb/classtannic_1_1Strides" ],
       [ "Tensor", "da/d93/classtannic_1_1Tensor.html", "da/d93/classtannic_1_1Tensor" ],

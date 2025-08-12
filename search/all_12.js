@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7ebuffer_0',['~Buffer',['../d4/d50/classtannic_1_1Buffer.html#a7c75111cb4c087e0a37c7bc6a30c27cd',1,'tannic::Buffer']]],
-  ['_7edevices_1',['~Devices',['../d9/dd4/classtannic_1_1Devices.html#a513783c8846b32def70425c651f08c1d',1,'tannic::Devices']]]
+  ['view_0',['view',['../d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe',1,'tannic::expression']]],
+  ['views_2ehpp_1',['Views.hpp',['../d8/dea/Views_8hpp.html',1,'']]]
 ];

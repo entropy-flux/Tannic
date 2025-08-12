@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['view_0',['view',['../d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe',1,'tannic::expression']]],
-  ['views_2ehpp_1',['Views.hpp',['../d8/dea/Views_8hpp.html',1,'']]]
+  ['unary_0',['Unary',['../d7/d26/classtannic_1_1operation_1_1Unary.html',1,'tannic::operation::Unary&lt; Operation, Operand &gt;'],['../d7/d26/classtannic_1_1operation_1_1Unary.html#ace5f518adcde5db1bfe65444a5e687b6',1,'tannic::operation::Unary::Unary()']]]
 ];
