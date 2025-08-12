@@ -164,8 +164,8 @@ public:
     Tensor& operator=(const Expression& expression) {
         *this = expression.forward(); 
         return *this;
-    }
-  
+    } 
+
 public:  
     /// @name Metadata Access (May be constexpr in the future.)
     /// @{
@@ -345,8 +345,10 @@ public:
     ,   shape_(shape) 
     ,   strides_(strides)
     ,   offset_(offset)   
-    ,   buffer_(std::move(storage))
-    {}
+    ,   buffer_(std::move(storage)) 
+    {
+        node_ = std::make_shared<Node>(*this);
+    }
 
 protected:    
     template <Expression Source, class... Indexes> 
@@ -367,9 +369,11 @@ protected:
     void assign(std::byte const*, std::ptrdiff_t); 
     bool compare(std::byte const*, std::ptrdiff_t) const; 
      
-    Node* node() const {
+
+public:
+    Node* node() const { 
         return node_.get();
-    }
+    } 
 
 private:
     type dtype_;
@@ -412,7 +416,7 @@ Tensor expression::Reshape<Source>::forward() const {
  
 template<Expression Source>
 Tensor expression::Transpose<Source>::forward() const { 
-    Tensor source = source_.forward();
+    Tensor source = source_.forward(); 
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }   
 

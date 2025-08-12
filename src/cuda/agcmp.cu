@@ -80,7 +80,7 @@ status launchArgCompare(const tensor_t* src, tensor_t* dst, uint8_t dim, S init,
 
 } namespace cuda {
 
-status argmax(const tensor_t* src, tensor_t* dst, uint8_t dim, stream_t stream) {
+status argmax(const tensor_t* src, tensor_t* dst, stream_t stream, uint8_t dim) {
     switch (src->dtype) {
         case int8:    return launchArgCompare<int8_t, GE>(src, dst, dim, std::numeric_limits<int8_t>::lowest(), stream);
         case int16:   return launchArgCompare<int16_t, GE>(src, dst, dim, std::numeric_limits<int16_t>::lowest(), stream);
@@ -92,7 +92,7 @@ status argmax(const tensor_t* src, tensor_t* dst, uint8_t dim, stream_t stream) 
     }
 }
 
-status argmin(const tensor_t* src, tensor_t* dst, uint8_t dim, stream_t stream) {
+status argmin(const tensor_t* src, tensor_t* dst, stream_t stream, uint8_t dim) {
     switch (src->dtype) {
         case int8:    return launchArgCompare<int8_t, LE>(src, dst, dim, std::numeric_limits<int8_t>::max(), stream);
         case int16:   return launchArgCompare<int16_t, LE>(src, dst, dim, std::numeric_limits<int16_t>::max(), stream);

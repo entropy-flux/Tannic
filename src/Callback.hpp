@@ -1,0 +1,95 @@
+#pragma once
+#include "runtime/tensor.h"
+#include "runtime/graph.h"
+#include "runtime/streams.h"
+
+namespace tannic {
+
+static inline tensor_t* get_tensor(uintptr_t id) {
+    return reinterpret_cast<node_t*>(id)->target;
+}
+
+template <class H, class D>
+class Callback {
+    H host_fn;
+    D device_fn;
+
+public:
+    Callback(H host, D device)
+    :   host_fn(host)
+    ,   device_fn(device) {}
+
+    void operator()(Tensor const& input, Tensor& output) const {
+        allocator_t allocator = structure(input.allocator()); 
+        switch (allocator.environment) {
+            case HOST: {
+                output.initialize(); 
+                tensor_t* src = get_tensor(input.node()->id);
+                tensor_t* dst = get_tensor(output.node()->id);
+                auto status = host_fn(src, dst);
+                if (status != SUCCESS) {
+                    throw std::runtime_error("Unsupported dtype");
+                }
+                break;
+            }
+
+            case DEVICE: {
+                auto dvc = allocator.resource.device;
+                output.initialize(Device(dvc.id));
+                assert(output.node() && "INTERNAL ERROR!");
+                tensor_t* src = get_tensor(input.node()->id);
+                tensor_t* dst = get_tensor(output.node()->id);
+                stream_t stream = pop_stream(&dvc);
+                auto status = device_fn(src, dst, stream);
+                put_stream(&dvc, stream);
+                if (status != SUCCESS) {
+                    throw std::runtime_error("Unsupported dtype");
+                }
+                break;
+            }
+            default:
+                throw std::runtime_error("Unknown allocator environment");
+        }
+    }
+
+    void operator()(Tensor const& first, Tensor const& second, Tensor& output){   
+        tensor_t* src0 = get_tensor(first.node()->id);
+        tensor_t* src1 = get_tensor(second.node()->id);
+        allocator_t allocator;
+        auto status = resolve_allocator(&src0->allocator, &src1->allocator, &allocator);
+        if(status != SUCCESS) {
+            throw std::runtime_error("Allocator issue!");
+        }
+        switch (allocator.environment) {
+            case HOST: {
+                host_t resource = allocator.resource.host;
+                output.initialize(Host());  
+                tensor_t* dst = get_tensor(output.node()->id);
+                auto status = host_fn(src0, src1, dst);    
+                if(status != SUCCESS) {
+                    throw std::runtime_error("Unsupported dtype");
+                }
+                break; 
+            } 
+
+            case DEVICE: { 
+                device_t dvc = allocator.resource.device; 
+                output.initialize(Device(dvc.id));  
+                stream_t stream = pop_stream(&dvc);
+                tensor_t* dst = get_tensor(output.node()->id);
+                auto status = device_fn(src0, src1, dst, stream);
+                put_stream(&dvc, stream);
+                if(status != SUCCESS) {
+                    throw std::runtime_error("Unsupported dtype");
+                } 
+                break; 
+            } 
+            
+            default:
+                break;
+            }  
+    }
+ 
+}; 
+
+} // namespace tannic

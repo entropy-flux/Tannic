@@ -39,6 +39,7 @@ struct node_t {
     struct node_t** priors;  
 };
  
+ 
 #ifdef __cplusplus
 }
 } // namespace tannic

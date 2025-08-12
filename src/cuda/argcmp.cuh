@@ -8,7 +8,7 @@ using namespace tannic;
 
 namespace cuda {  
      
-status argmax(tensor_t const*, tensor_t*, uint8_t, stream_t);
-status argmin(tensor_t const*, tensor_t*, uint8_t, stream_t);
+status argmax(tensor_t const*, tensor_t*, stream_t, uint8_t);
+status argmin(tensor_t const*, tensor_t*, stream_t, uint8_t);
 
 } // namespace cuda
