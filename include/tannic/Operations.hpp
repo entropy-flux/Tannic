@@ -35,8 +35,7 @@
  *
  * Part of the Tannic Tensor Library.
  */
-
-#include <vector>  
+ 
 #include <utility>      
 #include <type_traits> 
  
@@ -266,8 +265,7 @@ static constexpr Shape broadcast(Shape const& first, Shape const& second) {
     auto first_rank = first.rank();
     auto second_rank = second.rank();
     auto rank = std::max(first_rank, second_rank);
-    std::vector<std::size_t> result(rank, 1);
-
+    Shape shape;  
     for (auto dimension = 0; dimension < rank; ++dimension) {
         auto first_dimension = (dimension < rank - first_rank) ? 1 : first[dimension - (rank - first_rank)];
         auto second_dimension = (dimension < rank - second_rank) ? 1 : second[dimension - (rank - second_rank)];
@@ -275,9 +273,9 @@ static constexpr Shape broadcast(Shape const& first, Shape const& second) {
     if (!(first_dimension == second_dimension || first_dimension == 1 || second_dimension == 1)) {
         throw std::invalid_argument("Shapes are not broadcast-compatible.");
     }
-        result[dimension] = std::max(first_dimension, second_dimension);
+        shape.expand(std::max(first_dimension, second_dimension));
     }
-    return Shape(result);
+    return shape;
 } 
 
 
