@@ -141,7 +141,17 @@ concept Iterator = std::input_iterator<T>;
  * @brief Requires a type to be an integral type (e.g., `int`, `std::size_t`). 
  */
 template<typename T>
-concept Integral = std::is_integral_v<T>;
+concept Integral = std::is_integral_v<T>; 
+
+template<typename T>
+concept Assignable = requires(T t, const std::byte* ptr, std::ptrdiff_t offset) {
+    { t.assign(ptr, offset) } -> std::same_as<void>;
+};
+
+template<typename T>
+concept Comparable = requires(const T t, const std::byte* ptr, std::ptrdiff_t offset) {
+    { t.compare(ptr, offset) } -> std::same_as<bool>;
+};
  
 } // namespace tannic
 

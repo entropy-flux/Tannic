@@ -285,13 +285,8 @@ public:
 
     Tensor forward() const;
  
-    void assign(std::byte const* value, std::ptrdiff_t offset) { 
-        source_.assign(value, offset); 
-    }
-
-    bool compare(std::byte const* value, std::ptrdiff_t offset) const {
-        return source_.compare(value, offset);
-    }    
+    void assign(std::byte const* value, std::ptrdiff_t offset); 
+    bool compare(std::byte const* value, std::ptrdiff_t offset) const;
 
 private: 
     type dtype_;

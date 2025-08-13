@@ -428,9 +428,33 @@ Tensor expression::Transpose<Source>::forward() const {
 template<Expression Source, class... Indexes>
 Tensor expression::Slice<Source, Indexes...>::forward() const {   
     Tensor source = source_.forward();
-    return Tensor(dtype(), shape(), strides(), offset(), source_.buffer_);
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }         
 
+template<Expression Source, class... Indexes>
+void expression::Slice<Source, Indexes...>::assign(std::byte const* value, std::ptrdiff_t offset) { 
+    if constexpr (Trait<Source>::is_assignable) {
+        source_.assign(value, offset); 
+    } 
+
+    else {
+        Tensor tensor = forward();
+        tensor.assign(value, offset);
+    }
+}  
+
+template<Expression Source, class... Indexes>
+bool expression::Slice<Source, Indexes...>::compare(std::byte const* value, std::ptrdiff_t offset) const { 
+    if constexpr (Trait<Source>::is_comparable) {
+        return source_.compare(value, offset); 
+    } 
+
+    else {
+        Tensor tensor = forward();
+        return tensor.compare(value, offset);
+    }
+}  
+ 
 template<class Coordinates, Expression Source>
 Tensor expression::Complexification<Coordinates, Source>::forward() const {
     Tensor real = source.forward();

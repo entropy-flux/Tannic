@@ -19,12 +19,15 @@
 #define TRAITS_HPP
 
 #include <type_traits>
+#include "Concepts.hpp"
 
 namespace tannic {
-
+  
 template<typename T>
 struct Trait {
     using Reference = std::decay_t<T>;;
+    static constexpr bool is_assignable = Assignable<Reference>;
+    static constexpr bool is_comparable = Comparable<Reference>;
 }; 
 
 } // namespace TANNIC
