@@ -45,8 +45,7 @@
  * Part of the Tannic Tensor Library.
  */
  
-#include <array>
-#include <vector>
+#include <array> 
 #include <cassert>
 
 #include "Concepts.hpp"
@@ -161,14 +160,13 @@ struct Argmax {
      * @throws assert if input has rank < 1
      */
     constexpr Shape reduce(Shape const& shape) const {
-        assert(shape.rank() >= 1);
-        std::vector<size_t> sizes;
-        sizes.reserve(shape.rank() - 1);
+        assert(shape.rank() >= 1); 
+        Shape reduced;
         for (size_t dimension = 0; dimension < shape.rank(); ++dimension) {
             if (dimension != static_cast<size_t>(axis))
-                sizes.push_back(shape[dimension]);
+                reduced.expand(shape[dimension]);
         }
-        return Shape(sizes.begin(), sizes.end());
+        return reduced;
     }
 
     /**
@@ -180,13 +178,12 @@ struct Argmax {
         if (strides.rank() == 1) {
             return Strides();
         }
-        std::vector<Strides::size_type> sizes;
-        sizes.reserve(strides.rank() - 1);
+        Strides reduced; 
         for (size_t dimension = 0; dimension < strides.rank(); ++dimension) {
             if (dimension != static_cast<size_t>(axis))
-                sizes.push_back(strides[dimension]);
+                reduced.expand(strides[dimension]);
         }
-        return Strides(sizes.begin(), sizes.end());
+        return reduced;
     }
     
     /**
@@ -222,14 +219,13 @@ struct Argmin {
      * @throws assert if input has rank < 1
      */
     constexpr Shape reduce(Shape const& shape) const {
-        assert(shape.rank() >= 1);
-        std::vector<Strides::size_type> sizes;
-        sizes.reserve(shape.rank() - 1);
+        assert(shape.rank() >= 1); 
+        Shape reduced; 
         for (uint8_t dimension = 0; dimension < shape.rank(); ++dimension) {
             if (dimension != static_cast<uint8_t>(axis))
-                sizes.push_back(shape[dimension]);
+                reduced.expand(shape[dimension]);
         }
-        return Shape(sizes.begin(), sizes.end());
+        return reduced;
     }
 
 
@@ -259,13 +255,12 @@ struct Argmin {
         if (strides.rank() == 1) {
             return Strides();
         }
-        std::vector<Strides::size_type> sizes;
-        sizes.reserve(strides.rank() - 1);
+        Strides reduced;
         for (uint8_t dimension = 0; dimension < strides.rank(); ++dimension) {
             if (dimension != static_cast<uint8_t>(axis))
-                sizes.push_back(strides[dimension]);
+                reduced.expand(strides[dimension]);
         }
-        return Strides(sizes.begin(), sizes.end());
+        return reduced;
     }
 
     /**
