@@ -271,6 +271,92 @@ struct Argmin {
     void forward(Tensor const&, Tensor&) const; 
 };
 
+
+/**
+ * @brief Reduction sum operation.
+ *
+ * Computes the sum of elements along the specified axis.
+ * Maintains input dtype but removes the reduced dimension.
+ */
+struct Argsum {
+    int axis;
+    bool keepdim = false;  ///< Whether to keep the reduced dimension
+    
+    constexpr type reduce(type dtype) const {
+        return dtype;  // Sum preserves dtype
+    }
+
+    constexpr Shape reduce(Shape const& shape) const {
+        Shape reduced;
+        for (size_t dim = 0; dim < shape.rank(); ++dim) {
+            if (dim != static_cast<size_t>(axis)) {
+                reduced.expand(shape[dim]);
+            } else if (keepdim) {
+                reduced.expand(1);  // Keep reduced dim as size 1
+            }
+        }
+        return reduced;
+    }
+
+    constexpr Strides reduce(Strides const& strides) const {
+        Strides reduced;
+        for (size_t dim = 0; dim < strides.rank(); ++dim) {
+            if (dim != static_cast<size_t>(axis)) {
+                reduced.expand(strides[dim]);
+            } else if (keepdim) {
+                reduced.expand(0);  // Stride 0 for kept dim
+            }
+        }
+        return reduced;
+    }
+
+    void forward(Tensor const& input, Tensor& output) const;
+};
+
+
+/**
+ * @brief Reduction mean operation.
+ *
+ * Computes the mean of elements along the specified axis.
+ * Converts integer inputs to float and removes the reduced dimension.
+ */
+struct Argmean {
+    int axis;
+    bool keepdim = false;
+    
+    constexpr type reduce(type dtype) const { 
+        assert(dtype == float32 | dtype == float64 && "Integral dtypes not supported.");
+        return dtype;
+    }
+
+    constexpr Shape reduce(Shape const& shape) const {
+        Shape reduced;
+        for (size_t dim = 0; dim < shape.rank(); ++dim) {
+            if (dim != static_cast<size_t>(axis)) {
+                reduced.expand(shape[dim]);
+            } else if (keepdim) {
+                reduced.expand(1);
+            }
+        }
+        return reduced;
+    }
+
+    constexpr Strides reduce(Strides const& strides) const {
+        Strides reduced;
+        for (size_t dim = 0; dim < strides.rank(); ++dim) {
+            if (dim != static_cast<size_t>(axis)) {
+                reduced.expand(strides[dim]);
+            } else if (keepdim) {
+                reduced.expand(0);
+            }
+        }
+        return reduced;
+    }
+
+    void forward(Tensor const& input, Tensor& output) const;
+};
+
+
 /**
  * @brief Creates an argmax reduction expression
  * @tparam Source Input expression type
@@ -299,13 +385,31 @@ constexpr auto argmin(Source&& source, int axis = -1) {
     return Reduction<Argmin, Source>{ 
         {indexing::normalize(axis, source.shape().rank())}, std::forward<Source>(source) 
     };
+} 
+
+template<Expression Source>
+constexpr auto sum(Source&& source, int axis = -1, bool keepdim = false) {
+    return Reduction<Argsum, Source>{
+        {indexing::normalize(axis, source.shape().rank()), keepdim},
+        std::forward<Source>(source)
+    };
 }
+
+template<Expression Source>
+constexpr auto mean(Source&& source, int axis = -1, bool keepdim = false) {
+    return Reduction<Argmean, Source>{
+        {indexing::normalize(axis, source.shape().rank()), keepdim},
+        std::forward<Source>(source)
+    };
+}
+
  
 } // namespace expression
-
-// Bring reduction functions into tannic namespace
+ 
 using expression::argmax;
 using expression::argmin;
+using expression::sum;
+using expression::mean;
 
 } // namespace tannic
 

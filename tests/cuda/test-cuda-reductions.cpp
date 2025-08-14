@@ -78,5 +78,41 @@ TEST(TestCUDAReductions, TestCUDA2D_Axis0) {
     ASSERT_EQ(host_zmin[1], 2);    
     ASSERT_EQ(host_zmin[2], 1);   
     ASSERT_EQ(host_zmin[3], 0); 
-} 
+}  
+ 
+
+TEST(TestCUDAReductions, TestCUDASum2D_Keepdim) {
+    Tensor X(float32, {2, 3}); X.initialize(Device());
+    X[0][0] = 1; X[0][1] = 2; X[0][2] = 3;
+    X[1][0] = 4; X[1][1] = 5; X[1][2] = 6;
+
+    Tensor result = sum(X, 1, true);  // keepdim = true
+
+    ASSERT_EQ(result.shape(), Shape({2, 1}));  // shape check
+
+    float host_data[2];
+    cudaMemcpy(host_data, result.bytes(), sizeof(host_data), cudaMemcpyDeviceToHost);
+
+    ASSERT_FLOAT_EQ(host_data[0], 6.0f);   // 1+2+3
+    ASSERT_FLOAT_EQ(host_data[1], 15.0f);  // 4+5+6
+}
+
+
+TEST(TestCUDAReductions, TestCUDAMean2D) {
+    Tensor X(float32, {2, 3}); X.initialize(Device());
+    X[0][0] = 1; X[0][1] = 2; X[0][2] = 3;
+    X[1][0] = 4; X[1][1] = 5; X[1][2] = 6;
+
+    Tensor result = mean(X, 0);  // reduce along axis 0
+
+    ASSERT_EQ(result.shape(), Shape({3}));  // reduced shape
+
+    float host_data[3];
+    cudaMemcpy(host_data, result.bytes(), sizeof(host_data), cudaMemcpyDeviceToHost);
+
+    ASSERT_FLOAT_EQ(host_data[0], 2.5f);  // (1+4)/2
+    ASSERT_FLOAT_EQ(host_data[1], 3.5f);  // (2+5)/2
+    ASSERT_FLOAT_EQ(host_data[2], 4.5f);  // (3+6)/2
+}
+
 #endif

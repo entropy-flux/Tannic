@@ -1,5 +1,4 @@
-#include <array>
-#include "cuda_runtime.h"
+#include <array> 
 #include "cuda/concat.cuh"  
 
 namespace {

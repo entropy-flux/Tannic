@@ -21,8 +21,7 @@ TEST(TestReductions, Test1D) {
 }
 
 TEST(TestReductions, Test2D) {
-    Tensor X(float32, {3, 4});
-    X.initialize();
+    Tensor X(float32, {3, 4}); X.initialize();
     X[0][0] = 3; X[0][1] = 5; X[0][2] = 4; X[0][3] = 1;
     X[1][0] = 5; X[1][1] = 9; X[1][2] = 2; X[1][3] = 7;
     X[2][0] = 6; X[2][1] = 2; X[2][2] = 8; X[2][3] = 4;
@@ -66,4 +65,31 @@ TEST(TestReductions, Test2D_Axis0) {
     ASSERT_EQ(zmindat[1], 2);    
     ASSERT_EQ(zmindat[2], 1);   
     ASSERT_EQ(zmindat[3], 0); 
+} 
+
+TEST(TestReductions, TestSum2D_Keepdim) {
+    Tensor X(float32, {2, 3}); X.initialize();
+    X[0][0] = 1; X[0][1] = 2; X[0][2] = 3;
+    X[1][0] = 4; X[1][1] = 5; X[1][2] = 6;
+ 
+    Tensor result = sum(X, 1, true);
+    float* data = reinterpret_cast<float*>(result.bytes());
+    
+    ASSERT_EQ(result.shape(), Shape({2, 1}));  // Keeps reduced dimension
+    ASSERT_FLOAT_EQ(data[0], 6.0f);  // 1+2+3
+    ASSERT_FLOAT_EQ(data[1], 15.0f); // 4+5+6
+}
+
+TEST(TestReductions, TestMean2D) {
+    Tensor X(float32, {2, 3}); X.initialize();
+    X[0][0] = 1; X[0][1] = 2; X[0][2] = 3;
+    X[1][0] = 4; X[1][1] = 5; X[1][2] = 6;
+
+    Tensor result = mean(X, 0);
+    float* data = reinterpret_cast<float*>(result.bytes());
+    
+    ASSERT_EQ(result.shape(), Shape({3}));  // Reduced shape
+    ASSERT_FLOAT_EQ(data[0], 2.5f);  // (1+4)/2
+    ASSERT_FLOAT_EQ(data[1], 3.5f);  
+    ASSERT_FLOAT_EQ(data[2], 4.5f);  
 } 
