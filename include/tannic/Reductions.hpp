@@ -84,7 +84,7 @@ public:
     ,   operand(operand)
     ,   dtype_(reducer.reduce(operand.dtype()))
     ,   shape_(reducer.reduce(operand.shape()))
-    ,   strides_(reducer.reduce(operand.strides())) {}
+    ,   strides_(shape_) {}
 
     /**
      * @brief Returns the data type of the reduced result
@@ -168,24 +168,7 @@ struct Argmax {
         }
         return reduced;
     }
-
-    /**
-     * @brief Computes reduced strides for argmax
-     * @param strides Input strides
-     * @return Strides adjusted for reduced shape
-     */
-    constexpr Strides reduce(Strides const& strides) const {
-        if (strides.rank() == 1) {
-            return Strides();
-        }
-        Strides reduced; 
-        for (size_t dimension = 0; dimension < strides.rank(); ++dimension) {
-            if (dimension != static_cast<size_t>(axis))
-                reduced.expand(strides[dimension]);
-        }
-        return reduced;
-    }
-    
+ 
     /**
      * @brief Performs the argmax operation
      * @param input Source tensor
@@ -226,42 +209,7 @@ struct Argmin {
                 reduced.expand(shape[dimension]);
         }
         return reduced;
-    }
-
-
-    /**
-     * @brief Computes output strides after reducing the specified axis
-     * @param strides Input tensor strides before reduction
-     * @return New strides with the reduced dimension removed
-     *
-     * @details When reducing along an axis (for argmax/argmin), the output tensor
-     * loses that dimension. This requires adjusting the strides accordingly:
-     * 
-     * 1. For scalar results (rank-1 input reduced to rank-0):
-     *    - Returns empty strides (scalar has no strides)
-     *    
-     * 2. For higher-rank tensors:
-     *    - Copies all strides except the one corresponding to the reduced axis
-     *    - Maintains the original memory layout for remaining dimensions
-     *    - The last stride is preserved to maintain contiguous access 
-     * 
-     * ```
-     * Input shape: [3,4,5], strides: [20,5,1] (C-contiguous)
-     * After reducing axis=1 (shape becomes [3,5]):
-     * Output strides: [20,1]  // Skips the reduced dimension's stride (5) 
-     * ```
-     */
-    constexpr Strides reduce(Strides const& strides) const {
-        if (strides.rank() == 1) {
-            return Strides();
-        }
-        Strides reduced;
-        for (uint8_t dimension = 0; dimension < strides.rank(); ++dimension) {
-            if (dimension != static_cast<uint8_t>(axis))
-                reduced.expand(strides[dimension]);
-        }
-        return reduced;
-    }
+    } 
 
     /**
      * @brief Performs the argmin operation
@@ -296,19 +244,7 @@ struct Argsum {
             }
         }
         return reduced;
-    }
-
-    constexpr Strides reduce(Strides const& strides) const {
-        Strides reduced;
-        for (size_t dim = 0; dim < strides.rank(); ++dim) {
-            if (dim != static_cast<size_t>(axis)) {
-                reduced.expand(strides[dim]);
-            } else if (keepdim) {
-                reduced.expand(0);  // Stride 0 for kept dim
-            }
-        }
-        return reduced;
-    }
+    } 
 
     void forward(Tensor const& input, Tensor& output) const;
 };
@@ -339,19 +275,7 @@ struct Argmean {
             }
         }
         return reduced;
-    }
-
-    constexpr Strides reduce(Strides const& strides) const {
-        Strides reduced;
-        for (size_t dim = 0; dim < strides.rank(); ++dim) {
-            if (dim != static_cast<size_t>(axis)) {
-                reduced.expand(strides[dim]);
-            } else if (keepdim) {
-                reduced.expand(0);
-            }
-        }
-        return reduced;
-    }
+    } 
 
     void forward(Tensor const& input, Tensor& output) const;
 };
