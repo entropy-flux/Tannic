@@ -12,6 +12,7 @@ inline status neg(const tensor_t*, tensor_t*, stream_t) { throw std::runtime_err
 inline status add(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
 inline status mul(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
 inline status sub(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
+inline status pow(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
 }
 #endif 
 
@@ -36,5 +37,10 @@ void Subtraction::forward(Tensor const& first, Tensor const& second, Tensor& out
     Callback callback(cpu::sub, cuda::sub);
     callback(first, second, output);
 } 
+
+void Exponentiation::forward(Tensor const& first, Tensor const& second, Tensor& output) const { 
+    Callback callback(cpu::pow, cuda::pow);
+    callback(first, second, output);
+}
 
 } // namespace tannic

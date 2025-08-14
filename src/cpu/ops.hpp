@@ -7,9 +7,10 @@ using namespace tannic;
 
 namespace cpu {  
     
-status neg(tensor_t const*, tensor_t*);
-status add(tensor_t const*, tensor_t const*, tensor_t*);
-status sub(tensor_t const*, tensor_t const*, tensor_t*); 
-status mul(tensor_t const*, tensor_t const*, tensor_t*);    
+status neg(const tensor_t*, tensor_t*);
+status add(const tensor_t*, const tensor_t*, tensor_t*);
+status sub(const tensor_t*, const tensor_t*, tensor_t*); 
+status mul(const tensor_t*, const tensor_t*, tensor_t*);    
+status pow(const tensor_t*, const tensor_t*, tensor_t*);
 
 } // namespace cpu

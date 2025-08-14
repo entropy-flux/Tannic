@@ -4,7 +4,7 @@
 #include <complex>
 #include "cpu/ops.hpp" 
 
-namespace cpu {
+namespace {
     
 template<typename S, typename D, class Op>
 void scalarUnaryOpKernel(
@@ -157,6 +157,13 @@ struct Mul {
     }
 }; 
 
+struct Pow { 
+    template<class A, class B>
+    auto operator()(A&& a, B&& b) const noexcept(noexcept(a * b)) {
+        return std::pow(a, b);
+    }
+};
+
 using UnaryOpKernel = status(*)( const tensor_t*, tensor_t*);      
 using BinaryOpKernel = status(*)( const tensor_t*, const tensor_t*, tensor_t*);      
 
@@ -299,7 +306,23 @@ constexpr auto dispatchMul = []() {
     table[index(complex64, complex64)] = launchBinaryOpKernel<std::complex<float>, std::complex<float>, std::complex<float>, Mul>;
     table[index(complex128, complex128)] = launchBinaryOpKernel<std::complex<double>, std::complex<double>, std::complex<double>, Mul>;
     return table;
+}();   
+
+constexpr auto dispatchPow = []() {
+    std::array<BinaryOpKernel, index(TYPES, TYPES)> table; table.fill(launchDefaultBinaryOpKernel);   
+    table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Pow>;
+    table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Pow>;
+    table[index(int32, float64)] = launchBinaryOpKernel<int32_t, double, double, Pow>;
+    table[index(float64, int32)] = launchBinaryOpKernel<double, int32_t, double, Pow>;
+
+    table[index(float32, float32)] = launchBinaryOpKernel<float, float, float, Pow>;
+    table[index(float32, float64)] = launchBinaryOpKernel<float, double, double, Pow>;
+    table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Pow>;
+    table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Pow>; 
+    return table;
 }();  
+
+} namespace cpu {
 
 status neg(tensor_t const* src, tensor_t* dst) {  
     return dispatchNeg[index(src->dtype)](src, dst);
@@ -315,6 +338,10 @@ status sub(tensor_t const* src1, tensor_t const* src2, tensor_t* dst) {
 
 status mul(tensor_t const* src1, tensor_t const* src2, tensor_t* dst) { 
     return dispatchMul[index(src1->dtype, src2->dtype)](src1, src2, dst);
-}  
+}   
+
+status pow(tensor_t const* src1, tensor_t const* src2, tensor_t* dst) { 
+    return dispatchPow[index(src1->dtype, src2->dtype)](src1, src2, dst);
+}
 
 } // namespace cpu

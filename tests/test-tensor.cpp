@@ -10,12 +10,12 @@ TEST(TestView, TestSlice) {
     tensor[1,0] = 3;
     tensor[1,1] = 4;
   
-    ASSERT_EQ((tensor[0,0] == 1), true); // Note: gtest macros don't support c++23 variadic arguments in operator[]
+    ASSERT_EQ((tensor[0,0] == 1), true);  
     ASSERT_EQ((tensor[0,1] == 2), true);
     ASSERT_EQ((tensor[1,0] == 3), true);
     ASSERT_EQ((tensor[1,1] == 4), true);
  
-    ASSERT_EQ(tensor[0][0], 1); // This is supported.
+    ASSERT_EQ(tensor[0][0], 1); 
     ASSERT_EQ(tensor[0][1], 2);
     ASSERT_EQ(tensor[1][0], 3);
     ASSERT_EQ(tensor[1][1], 4); 

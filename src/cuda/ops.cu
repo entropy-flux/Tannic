@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <array>
 #include <stdexcept>
+#include <cuda_runtime.h>
 #include <thrust/complex.h>
 #include "cuda/exc.cuh"
 #include "cuda/ops.cuh"
@@ -199,6 +200,13 @@ struct Mul {
     __device__ __forceinline__ auto operator()(A&& a, B&& b) const noexcept(noexcept(a * b)) {
         return a * b;
     }
+};    
+
+struct Pow { 
+    template<class A, class B>
+    __device__ __forceinline__ auto operator()(A&& a, B&& b) const noexcept(noexcept(a * b)) {
+        return pow(a, b);
+    }
 };   
 
 constexpr static inline int index(type type) {
@@ -336,7 +344,22 @@ constexpr auto dispatchMul = []() {
     table[index(complex64, complex64)] = launchBinaryOpKernel<thrust::complex<float>, thrust::complex<float>, thrust::complex<float>, Mul>;
     table[index(complex128, complex128)] = launchBinaryOpKernel<thrust::complex<double>, thrust::complex<double>, thrust::complex<double>, Mul>;
     return table;
+}();   
+
+constexpr auto dispatchPow = []() {
+    std::array<BinaryOpKernel, index(TYPES, TYPES)> table; table.fill(launchDefaultBinaryOpKernel); 
+    table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Mul>;
+    table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Mul>;
+    table[index(int32, float64)] = launchBinaryOpKernel<int32_t, double, double, Mul>;
+    table[index(float64, int32)] = launchBinaryOpKernel<double, int32_t, double, Mul>;
+
+    table[index(float32, float32)] = launchBinaryOpKernel<float, float, float, Mul>;
+    table[index(float32, float64)] = launchBinaryOpKernel<float, double, double, Mul>;
+    table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Mul>;
+    table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Mul>; 
+    return table;
 }();  
+
 
 } namespace cuda {
   
@@ -355,5 +378,9 @@ status sub(tensor_t const* src1, tensor_t const* src2, tensor_t* dst, stream_t s
 status mul(tensor_t const* src1, tensor_t const* src2, tensor_t* dst, stream_t stream) {  
     return dispatchMul[index(src1->dtype, src2->dtype)](src1, src2, dst, stream); 
 }  
+
+status pow(tensor_t const* src1, tensor_t const* src2, tensor_t* dst, stream_t stream) {  
+    return dispatchPow[index(src1->dtype, src2->dtype)](src1, src2, dst, stream); 
+}   
 
 } // namespace cuda

@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include <numeric>
+#include <cmath>
  
 #include "Tensor.hpp"   
 
@@ -183,6 +184,37 @@ TEST_F(TestBinaryOps, Complex) {
     ASSERT_NEAR(Z_data[2], -6.42, 0.001);
     ASSERT_NEAR(Z_data[3], 10.78, 0.001);
 }
+
+TEST_F(TestBinaryOps, Power) { 
+    Tensor C = A ^ B;
+    ASSERT_EQ(C.shape(), Shape(2, 4, 3));
+
+    float expected[2][4][3];
+    float* A_data = reinterpret_cast<float*>(A.bytes());
+    float* B_data = reinterpret_cast<float*>(B.bytes());
+ 
+    for (int i = 0; i < 2; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            for (int k = 0; k < 3; ++k) {
+                int idx_A = i * 3 + k;       
+                int idx_B = j * 3 + k; 
+                expected[i][j][k] = std::pow(A_data[idx_A], B_data[idx_B]);
+            }
+        }
+    }
+ 
+    float* C_data = reinterpret_cast<float*>(C.bytes());
+    for (int i = 0; i < 2; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            for (int k = 0; k < 3; ++k) {
+                int idx = i * 12 + j * 3 + k;
+                EXPECT_FLOAT_EQ(C_data[idx], expected[i][j][k])
+                    << "Mismatch at C[" << i << "][" << j << "][" << k << "]";
+            }
+        }
+    }
+}
+
 
 /* 
 

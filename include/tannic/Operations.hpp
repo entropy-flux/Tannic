@@ -414,6 +414,17 @@ struct Subtraction {
     }
 }; 
 
+struct Exponentiation {
+    void forward(Tensor const&, Tensor const&, Tensor&) const; 
+
+    constexpr static type promote(type first, type second) {
+        return operation::promote(first, second);
+    }
+
+    constexpr static Shape broadcast(Shape const& first, Shape const& second) {
+        return operation::broadcast(first, second);
+    }
+};
 
 /**
  * @brief Element-wise negation of a tensor expression.
@@ -429,8 +440,7 @@ struct Subtraction {
 template<Expression Operand>
 constexpr auto operator-(Operand&& operand) {
     return Unary<Negation, Operand>{{}, std::forward<Operand>(operand)};
-} 
-
+}  
 
 /**
  * @brief Element-wise addition of two tensor expressions.
@@ -494,14 +504,18 @@ template<Expression Multiplicand, Expression Multiplier>
 constexpr auto operator*(Multiplicand&& multiplicand, Multiplier&& multiplier) {
     return Binary<Multiplication, Multiplicand, Multiplier>{{}, std::forward<Multiplicand>(multiplicand), std::forward<Multiplier>(multiplier)};
 } 
+ 
+template<Expression Base, Expression Exponent>
+constexpr auto operator^(Base&& base, Exponent&& exponent) {
+    return Binary<Exponentiation, Base, Exponent>{{}, std::forward<Base>(base), std::forward<Exponent>(exponent)};
+} 
 
-} // namespace operation
-
+} // namespace operation 
 
 using operation::operator-; 
 using operation::operator+; 
 using operation::operator*;  
-
+using operation::operator^;   
 
 } // namespace tannic
 
