@@ -180,6 +180,11 @@ public:
         return shape_; 
     }
 
+    /// Returns the tensor's size at a given dimension.
+    Shape::size_type size(int dimension) const {
+        return shape_[dimension];
+    }
+
     /// Returns the tensor's strides (step sizes per dimension).
     Strides const& strides() const { 
         return strides_; 
