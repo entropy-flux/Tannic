@@ -126,7 +126,7 @@ TEST_F(TestCUDAOperations, Complex_CUDA) {
     X[0, 1] = 6;
     X[1, 0] = 2;
     X[1, 1] = 3;
-    X = complex(X);  
+    X = complexify(X);  
     
     
     Tensor Y(float32, {2,2});
@@ -136,9 +136,9 @@ TEST_F(TestCUDAOperations, Complex_CUDA) {
     Y[0, 1] = 1;
     Y[1, 0] = 1.5;
     Y[1, 1] = 3.14;
-    Y = complex(Y);
+    Y = complexify(Y);
     
-    Tensor Z = real(X * Y);
+    Tensor Z = realify(X * Y);
 
     float Z_host[4];
  

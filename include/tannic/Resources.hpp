@@ -22,7 +22,7 @@
  * @file Resources.hpp
  * @author Eric Cardozo  
  * @date 2025
- * @brief Memory resource management for heterogeneous computing.
+ * @brief Memory resource management for heterogeneous computing. 
  *
  * Defines the abstract memory architecture:
  * - Host: The primary execution environment and memory space (eg. CPU)

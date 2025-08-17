@@ -27,7 +27,7 @@ Defines the core protocol for all expression-\/like types in the Tannic Tensor L
 \doxysubsection{Detailed Description}
 Defines the core protocol for all expression-\/like types in the Tannic Tensor Library. 
 
-This concept specifies the interface required to participate in tensor operations such as broadcasting, slicing, evaluation, and composition. Any type that satisfies this concept is considered a valid expression—this includes tensors, views, lazy expressions, and future compile-\/time tensor constructs.\hypertarget{concepttannic_1_1Expression_autotoc_md0}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{concepttannic_1_1Expression_autotoc_md0}
+This concept specifies the interface required to participate in tensor operations such as broadcasting, slicing, evaluation, and composition. Any type that satisfies this concept is considered a valid expression—this includes tensors, views, lazy expressions, and future compile-\/time tensor constructs.\hypertarget{concepttannic_1_1Expression_autotoc_md21}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{concepttannic_1_1Expression_autotoc_md21}
 A type {\ttfamily T} satisfies {\ttfamily Expression} if it provides\+:
 
 
@@ -41,7 +41,7 @@ A type {\ttfamily T} satisfies {\ttfamily Expression} if it provides\+:
 
 The methods {\ttfamily dtype()}, {\ttfamily shape()}, and {\ttfamily strides()} {\bfseries{can be {\ttfamily constexpr}}}. All major components—such as {\ttfamily Tensor}, views, and expression trees—must satisfy this concept. This ensures a consistent interface for operations like {\ttfamily +}, {\ttfamily matmul}, {\ttfamily broadcast}, etc.
 
-The {\ttfamily Expression} concept is designed to be {\bfseries{extensible}}\+: custom user-\/defined types can participate in the tensor system by conforming to this protocol, enabling interoperability with native Tannic expressions.\hypertarget{concepttannic_1_1Expression_autotoc_md1}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{concepttannic_1_1Expression_autotoc_md1}
+The {\ttfamily Expression} concept is designed to be {\bfseries{extensible}}\+: custom user-\/defined types can participate in the tensor system by conforming to this protocol, enabling interoperability with native Tannic expressions.\hypertarget{concepttannic_1_1Expression_autotoc_md22}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{concepttannic_1_1Expression_autotoc_md22}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{template}<tannic::Expression\ E>}

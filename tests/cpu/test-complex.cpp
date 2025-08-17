@@ -19,7 +19,7 @@ TEST_F(ComplexTests, ComplexificationAndRealification) {
     X[0][1] = 0;
     X[1][0] = 2;
     X[1][1] = 3;  
-    Tensor Z = complex(X);
+    Tensor Z = complexify(X);
 
     float* data = reinterpret_cast<float*>(Z.bytes());
     ASSERT_EQ(data[0], 1);
@@ -27,7 +27,7 @@ TEST_F(ComplexTests, ComplexificationAndRealification) {
     ASSERT_EQ(data[2], 2);
     ASSERT_EQ(data[3], 3);
     
-    Tensor Y = real(Z);
+    Tensor Y = realify(Z);
 
 
     ASSERT_EQ(X[0][0], 1);

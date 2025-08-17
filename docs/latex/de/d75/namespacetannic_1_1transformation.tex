@@ -5,13 +5,25 @@
 \item 
 struct \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition}{Composition}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1transformation_1_1Transformation}{Transformation} composition (Known as Matrix Multiplication) operation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1transformation_1_1Concatenation}{Concatenation}}
+\begin{DoxyCompactList}\small\item\em \doxylink{structtannic_1_1transformation_1_1Concatenation}{Concatenation} operation along a specified axis. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer}{Outer}}
+\begin{DoxyCompactList}\small\item\em Represents the outer product operation between two vectors. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition}{Repetition}}
+\begin{DoxyCompactList}\small\item\em \doxylink{structtannic_1_1transformation_1_1Repetition}{Repetition} operation along a specified axis. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{Transformation}}
 \begin{DoxyCompactList}\small\item\em Expression template for tensor transformations. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$Expression Outer, Expression Inner$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a305bc5073fd7fbb2f1948a77c5e5a969}{composition}} (Outer \&\&outer, Inner \&\&inner)
-\begin{DoxyCompactList}\small\item\em Creates a composition (matrix multiplication) expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\footnotesize template$<$Expression Outer, Expression Inner$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a305bc5073fd7fbb2f1948a77c5e5a969}{composition}} (\mbox{\hyperlink{structtannic_1_1transformation_1_1Outer}{Outer}} \&\&\mbox{\hyperlink{namespacetannic_1_1transformation_aae536af65f2dee7cb7279c58f82b2e2d}{outer}}, Inner \&\&inner)
+\begin{DoxyCompactList}\small\item\em Creates a composition (matrix multiplication) expression. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression First, Expression Second$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_aae536af65f2dee7cb7279c58f82b2e2d}{outer}} (First \&\&first, Second \&\&second)
+\begin{DoxyCompactList}\small\item\em Creates an outer product expression. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a4f49aca0f8b48ceb6f1992c5f34ab6fb}{repeat}} (Source \&\&source, int repeats, int axis=0)
+\begin{DoxyCompactList}\small\item\em Creates a repetition transformation. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression First, Expression Second$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_adb2680136e1491dededb15e6f6169f77}{concatenate}} (First \&\&first, Second \&\&second, int axis=0)
+\begin{DoxyCompactList}\small\item\em Helper function to create a concatenation transformation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -20,7 +32,7 @@ class \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{Transfor
 \index{composition@{composition}!tannic::transformation@{tannic::transformation}}
 \doxysubsubsection{\texorpdfstring{composition()}{composition()}}
 {\footnotesize\ttfamily template$<$Expression Outer, Expression Inner$>$ \\
-constexpr auto tannic\+::transformation\+::composition (\begin{DoxyParamCaption}\item[{Outer \&\&}]{outer,  }\item[{Inner \&\&}]{inner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+constexpr auto tannic\+::transformation\+::composition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1transformation_1_1Outer}{Outer}} \&\&}]{outer,  }\item[{Inner \&\&}]{inner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -28,18 +40,104 @@ Creates a composition (matrix multiplication) expression.
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em Outer} & Outer tensor expression type \\
+{\em \doxylink{structtannic_1_1transformation_1_1Outer}{Outer}} & \doxylink{structtannic_1_1transformation_1_1Outer}{Outer} tensor expression type \\
 \hline
 {\em Inner} & Inner tensor expression type \\
 \hline
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em outer} & Outer tensor operand \\
+{\em outer} & \doxylink{structtannic_1_1transformation_1_1Outer}{Outer} tensor operand \\
 \hline
 {\em inner} & Inner tensor operand \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 \doxylink{classtannic_1_1transformation_1_1Transformation}{Transformation} expression representing the composition 
+\end{DoxyReturn}
+\Hypertarget{namespacetannic_1_1transformation_adb2680136e1491dededb15e6f6169f77}\label{namespacetannic_1_1transformation_adb2680136e1491dededb15e6f6169f77} 
+\index{tannic::transformation@{tannic::transformation}!concatenate@{concatenate}}
+\index{concatenate@{concatenate}!tannic::transformation@{tannic::transformation}}
+\doxysubsubsection{\texorpdfstring{concatenate()}{concatenate()}}
+{\footnotesize\ttfamily template$<$Expression First, Expression Second$>$ \\
+constexpr auto tannic\+::transformation\+::concatenate (\begin{DoxyParamCaption}\item[{First \&\&}]{first,  }\item[{Second \&\&}]{second,  }\item[{int}]{axis = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Helper function to create a concatenation transformation. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em First} & Left tensor expression type. \\
+\hline
+{\em Second} & Right tensor expression type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em first} & Left tensor operand. \\
+\hline
+{\em second} & Right tensor operand. \\
+\hline
+{\em axis} & Axis along which to concatenate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1transformation_1_1Transformation}{Transformation} expression representing concatenation. 
+\end{DoxyReturn}
+\Hypertarget{namespacetannic_1_1transformation_aae536af65f2dee7cb7279c58f82b2e2d}\label{namespacetannic_1_1transformation_aae536af65f2dee7cb7279c58f82b2e2d} 
+\index{tannic::transformation@{tannic::transformation}!outer@{outer}}
+\index{outer@{outer}!tannic::transformation@{tannic::transformation}}
+\doxysubsubsection{\texorpdfstring{outer()}{outer()}}
+{\footnotesize\ttfamily template$<$Expression First, Expression Second$>$ \\
+constexpr auto tannic\+::transformation\+::outer (\begin{DoxyParamCaption}\item[{First \&\&}]{first,  }\item[{Second \&\&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Creates an outer product expression. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em First} & Left tensor expression type \\
+\hline
+{\em Second} & Right tensor expression type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em first} & Left tensor operand \\
+\hline
+{\em second} & Right tensor operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1transformation_1_1Transformation}{Transformation} expression representing the outer product 
+\end{DoxyReturn}
+\Hypertarget{namespacetannic_1_1transformation_a4f49aca0f8b48ceb6f1992c5f34ab6fb}\label{namespacetannic_1_1transformation_a4f49aca0f8b48ceb6f1992c5f34ab6fb} 
+\index{tannic::transformation@{tannic::transformation}!repeat@{repeat}}
+\index{repeat@{repeat}!tannic::transformation@{tannic::transformation}}
+\doxysubsubsection{\texorpdfstring{repeat()}{repeat()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+constexpr auto tannic\+::transformation\+::repeat (\begin{DoxyParamCaption}\item[{Source \&\&}]{source,  }\item[{int}]{repeats,  }\item[{int}]{axis = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Creates a repetition transformation. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Source} & Source tensor expression type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em source} & \doxylink{classtannic_1_1Tensor}{Tensor} to be repeated. \\
+\hline
+{\em repeats} & Number of repetitions. \\
+\hline
+{\em axis} & Axis along which to repeat. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1transformation_1_1Transformation}{Transformation} expression representing repetition. 
 \end{DoxyReturn}

@@ -18,12 +18,16 @@ namespace \mbox{\hyperlink{namespacetannic_1_1transformation}{transformation}}
 \item 
 class \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}}
 \begin{DoxyCompactList}\small\item\em Managed memory buffer with explicit ownership. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1Callback}{Callback}}
+\item 
 class \mbox{\hyperlink{classtannic_1_1Device}{Device}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Device}{Device} memory domain. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Device}{Device} enumeration singleton. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Host}{Host}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Host}{Host} memory domain. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1Node}{Node}}
+\item 
 class \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}
 \begin{DoxyCompactList}\small\item\em Represents the shape (dimensions) of an tensor-\/like expression. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}
@@ -46,12 +50,16 @@ concept \mbox{\hyperlink{concepttannic_1_1Iterable}{Iterable}}
 concept \mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}
 \begin{DoxyCompactList}\small\item\em Requires a type to satisfy the C++20 {\ttfamily std\+::input\+\_\+iterator} concept. \end{DoxyCompactList}\item 
 concept \mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}
-\begin{DoxyCompactList}\small\item\em Requires a type to be an integral type (e.\+g., {\ttfamily int}, {\ttfamily std\+::size\+\_\+t}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Requires a type to be an integral type (e.\+g., {\ttfamily int}, {\ttfamily std\+::size\+\_\+t}). \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Assignable}{Assignable}}
+\begin{DoxyCompactList}\small\item\em Concept for types that can assign values. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Comparable}{Comparable}}
+\begin{DoxyCompactList}\small\item\em Concept for types that can compare their value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \mbox{\hyperlink{namespacetannic_a9468873460db4ea12f41458b87c63975}{range}} = \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}
-\item 
+using \mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{range}} = \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}
+\begin{DoxyCompactList}\small\item\em Convenience alias for {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{tannic\+::indexing\+::\+Range}}. \end{DoxyCompactList}\item 
 using \mbox{\hyperlink{namespacetannic_ae3a6cffd27941abef241bf9dd55cf112}{Allocator}} = std\+::variant$<$ \mbox{\hyperlink{classtannic_1_1Host}{Host}}, \mbox{\hyperlink{classtannic_1_1Device}{Device}} $>$
 \begin{DoxyCompactList}\small\item\em Memory allocator variant type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
@@ -94,13 +102,17 @@ std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1c1a48f353ac51e8ae5affa4dccd
 
 Memory allocator variant type. 
 
-Type-\/safe union of host and device memory allocators. \Hypertarget{namespacetannic_a9468873460db4ea12f41458b87c63975}\label{namespacetannic_a9468873460db4ea12f41458b87c63975} 
+Type-\/safe union of host and device memory allocators. \Hypertarget{namespacetannic_affef8090e8f7ba383c67e15135664024}\label{namespacetannic_affef8090e8f7ba383c67e15135664024} 
 \index{tannic@{tannic}!range@{range}}
 \index{range@{range}!tannic@{tannic}}
 \doxysubsubsection{\texorpdfstring{range}{range}}
-{\footnotesize\ttfamily using \mbox{\hyperlink{namespacetannic_a9468873460db4ea12f41458b87c63975}{tannic\+::range}} = typedef \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{tannic\+::range}}}
 
 
+
+Convenience alias for {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{tannic\+::indexing\+::\+Range}}. 
+
+This alias allows using {\ttfamily \doxylink{namespacetannic_affef8090e8f7ba383c67e15135664024}{tannic\+::range}} directly when declaring slices without fully qualifying the {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}} type. 
 
 \doxysubsection{Function Documentation}
 \Hypertarget{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}\label{namespacetannic_a7cc5a20569f733cb88c508ebb9119363} 
@@ -156,7 +168,7 @@ Returns the string name of a given tensor data type.
 \begin{DoxyReturn}{Returns}
 Human-\/readable type name ("{}none"{} for invalid types)
 \end{DoxyReturn}
-\hypertarget{namespacetannic_autotoc_md26}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md26}
+\hypertarget{namespacetannic_autotoc_md59}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md59}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(int32)\ <<\ std::endl\ \ \ \textcolor{comment}{//\ prints\ "{}int32"{}}}
@@ -188,7 +200,7 @@ For complex types\+:
 \item {\ttfamily complex128} returns 16 (2 × float64)
 \end{DoxyItemize}
 \end{DoxyNote}
-\hypertarget{namespacetannic_autotoc_md25}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md25}
+\hypertarget{namespacetannic_autotoc_md58}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md58}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(float32);\ \ \textcolor{comment}{//\ returns\ 4}}

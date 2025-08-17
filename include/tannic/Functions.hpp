@@ -20,7 +20,7 @@
  * @file Functions.hpp
  * @author Eric Cardozo
  * @date 2025
- * @brief Defines mathematical function operations for tensor expressions.
+ * @brief Defines mathematical function operations for tensor expressions. 
  *
  * This header provides lazy-evaluated mathematical functions for tensor-like objects,
  * implemented as expression templates. All operations are element-wise and maintain
@@ -165,7 +165,7 @@ struct Sqrt {
  * Applies element-wise inverse square root to tensor elements
  */
 struct Rsqrt { 
-    float epsilon;
+    float epsilon = 0.0f;
     void operator()(Tensor const&, Tensor&) const;
 };
 
@@ -273,7 +273,7 @@ constexpr auto sqrt(Operand&& operand) {
  * @see Rsqrt
  */
 template<Expression Operand>
-constexpr auto rsqrt(Operand&& operand, float epsilon) {
+constexpr auto rsqrt(Operand&& operand, float epsilon = 0.0f) {
     return Functor<Rsqrt, Operand>({epsilon}, std::forward<Operand>(operand));
 }
 

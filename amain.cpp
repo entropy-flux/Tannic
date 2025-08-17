@@ -18,14 +18,14 @@ int main() {
     X[0, 1] = 6;
     X[1, 0] = 2;
     X[1, 1] = 3;     
-    X = complex(X);
+    X = complexify(X);
     
     Tensor Y(float32, {2,2}); Y.initialize(); 
     Y[0, 0] = 2;
     Y[0, 1] = 1;
     Y[1, 0] = 1.5;
     Y[1, 1] = 3.14;  
-    Y = complex(Y);
+    Y = complexify(Y);
 
     std::cout << X << std::endl;
     std::cout << Y << std::endl;

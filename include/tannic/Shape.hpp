@@ -22,8 +22,8 @@
  * @file Shape.hpp
  * @author Eric Cardozo
  * @date 2025
- * @brief Defines the `tannic::Shape` class for representing tensor dimensions.  
- *
+ * @brief Defines the `tannic::Shape` class for representing tensor dimensions.   
+ * 
  * This file is part of the Tannic Tensor Library and defines the `Shape` class,
  * a compact, constexpr-friendly abstraction for representing the shape (i.e., dimensions)
  * of tensors and expression-like objects. Shapes are integral to indexing, broadcasting,
@@ -272,6 +272,11 @@ public:
         return sizes_[indexing::normalize(index, rank())]; 
     } 
 
+
+    /**
+     * @brief Expands the shape's last dimension with a given size. Increments the rank by one. 
+     * @param size The size of the dimension that will be added to the back of the shape. 
+     */
     constexpr void expand(size_type size) { 
         assert(rank_ < limit && "Rank limit exceeded");  
         sizes_[rank_] = size;

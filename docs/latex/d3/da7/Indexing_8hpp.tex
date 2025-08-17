@@ -1,5 +1,10 @@
 \doxysection{include/tannic/\+Indexing.hpp File Reference}
 \hypertarget{Indexing_8hpp}{}\label{Indexing_8hpp}\index{include/tannic/Indexing.hpp@{include/tannic/Indexing.hpp}}
+
+
+Utilities for index normalization and slicing ranges in the Tannic Tensor Library.  
+
+
 {\ttfamily \#include $<$cassert$>$}\newline
 {\ttfamily \#include "{}Concepts.\+hpp"{}}\newline
 Include dependency graph for Indexing.\+hpp\+:\nopagebreak
@@ -20,7 +25,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{tannic\+::indexing\+::\+Range}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Represents a half-\/open interval {\ttfamily \mbox{[}start, stop)} for slicing. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -31,12 +36,25 @@ namespace \mbox{\hyperlink{namespacetannic_1_1indexing}{tannic\+::indexing}}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \mbox{\hyperlink{namespacetannic_a9468873460db4ea12f41458b87c63975}{tannic\+::range}} = \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}
-\end{DoxyCompactItemize}
+using \mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{tannic\+::range}} = \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}
+\begin{DoxyCompactList}\small\item\em Convenience alias for {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{tannic\+::indexing\+::\+Range}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$Integral Index, Integral Size$>$ }\\constexpr Index \mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{tannic\+::indexing\+::normalize}} (Index index, Size bound)
-\item 
-{\footnotesize template$<$Integral Size$>$ }\\constexpr \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}} \mbox{\hyperlink{namespacetannic_1_1indexing_aa32d55359b2e4a8162a3859edd089e0a}{tannic\+::indexing\+::normalize}} (\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}} \mbox{\hyperlink{namespacetannic_a9468873460db4ea12f41458b87c63975}{range}}, Size size)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Normalize a possibly-\/negative index into the valid range {\ttfamily \mbox{[}0, bound)}. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Integral Size$>$ }\\constexpr \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}} \mbox{\hyperlink{namespacetannic_1_1indexing_aa32d55359b2e4a8162a3859edd089e0a}{tannic\+::indexing\+::normalize}} (\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}} \mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{range}}, Size size)
+\begin{DoxyCompactList}\small\item\em Normalize a slicing range into valid {\ttfamily \mbox{[}start, stop)} indices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utilities for index normalization and slicing ranges in the Tannic Tensor Library. 
+
+\begin{DoxyAuthor}{Author}
+Eric Cardozo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 ~\newline
+ 
+\end{DoxyDate}
+This header defines helper structures and functions for working with tensor indices and slices. The utilities are inspired by Python\textquotesingle{}s negative indexing and range semantics, providing a consistent and safe interface for normalizing indices into valid positive ranges within tensor dimensions. 

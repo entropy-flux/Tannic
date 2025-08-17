@@ -1,0 +1,101 @@
+\doxysection{tannic\+::transformation\+::Repetition Struct Reference}
+\hypertarget{structtannic_1_1transformation_1_1Repetition}{}\label{structtannic_1_1transformation_1_1Repetition}\index{tannic::transformation::Repetition@{tannic::transformation::Repetition}}
+
+
+\doxylink{structtannic_1_1transformation_1_1Repetition}{Repetition} operation along a specified axis.  
+
+
+
+
+{\ttfamily \#include $<$Transformations.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{constexpr}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{type}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_aeb2cf220d62b164396993fad28d9c278}{promote}} (\mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{type}} dtype) \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{const}}
+\begin{DoxyCompactList}\small\item\em Type promotion for repetition operation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_a119132fd4a9bccd6069465129d5efb39}{transform}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} shape) \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{const}}
+\begin{DoxyCompactList}\small\item\em Computes output shape after repetition. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{int}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ad81145fd3afc10df86f8947523ed638f}{repeats}}
+\item 
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{int}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab37be05a5f1045efebb79b80e0bf7ee0}{axis}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{structtannic_1_1transformation_1_1Repetition}{Repetition} operation along a specified axis. 
+
+Replicates the tensor data along a given axis multiple times. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}\label{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e} 
+\index{tannic::transformation::Repetition@{tannic::transformation::Repetition}!forward@{forward}}
+\index{forward@{forward}!tannic::transformation::Repetition@{tannic::transformation::Repetition}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily void tannic\+::transformation\+::\+Repetition\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structtannic_1_1transformation_1_1Repetition_aeb2cf220d62b164396993fad28d9c278}\label{structtannic_1_1transformation_1_1Repetition_aeb2cf220d62b164396993fad28d9c278} 
+\index{tannic::transformation::Repetition@{tannic::transformation::Repetition}!promote@{promote}}
+\index{promote@{promote}!tannic::transformation::Repetition@{tannic::transformation::Repetition}}
+\doxysubsubsection{\texorpdfstring{promote()}{promote()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{constexpr}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{type}} tannic\+::transformation\+::\+Repetition\+::promote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{type}}}]{dtype }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Type promotion for repetition operation. 
+
+\doxylink{structtannic_1_1transformation_1_1Repetition}{Repetition} does not change data type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtype} & Original tensor data type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Same data type. 
+\end{DoxyReturn}
+\Hypertarget{structtannic_1_1transformation_1_1Repetition_a119132fd4a9bccd6069465129d5efb39}\label{structtannic_1_1transformation_1_1Repetition_a119132fd4a9bccd6069465129d5efb39} 
+\index{tannic::transformation::Repetition@{tannic::transformation::Repetition}!transform@{transform}}
+\index{transform@{transform}!tannic::transformation::Repetition@{tannic::transformation::Repetition}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::transformation\+::\+Repetition\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}}]{shape }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Computes output shape after repetition. 
+
+Multiplies the size of the specified axis by repeats.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & Input tensor shape. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Output shape after repetition. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structtannic_1_1transformation_1_1Repetition_ab37be05a5f1045efebb79b80e0bf7ee0}\label{structtannic_1_1transformation_1_1Repetition_ab37be05a5f1045efebb79b80e0bf7ee0} 
+\index{tannic::transformation::Repetition@{tannic::transformation::Repetition}!axis@{axis}}
+\index{axis@{axis}!tannic::transformation::Repetition@{tannic::transformation::Repetition}}
+\doxysubsubsection{\texorpdfstring{axis}{axis}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{int}} tannic\+::transformation\+::\+Repetition\+::axis}
+
+\Hypertarget{structtannic_1_1transformation_1_1Repetition_ad81145fd3afc10df86f8947523ed638f}\label{structtannic_1_1transformation_1_1Repetition_ad81145fd3afc10df86f8947523ed638f} 
+\index{tannic::transformation::Repetition@{tannic::transformation::Repetition}!repeats@{repeats}}
+\index{repeats@{repeats}!tannic::transformation::Repetition@{tannic::transformation::Repetition}}
+\doxysubsubsection{\texorpdfstring{repeats}{repeats}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Repetition_ab498ec608a7dcfe845d1d15fe4d9cf3e}{int}} tannic\+::transformation\+::\+Repetition\+::repeats}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{Transformations_8hpp}{Transformations.\+hpp}}\end{DoxyCompactItemize}

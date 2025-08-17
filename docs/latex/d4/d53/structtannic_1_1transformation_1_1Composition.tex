@@ -12,19 +12,19 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&outer, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&inner, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&result) const
-\begin{DoxyCompactList}\small\item\em Performs the composition operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&\mbox{\hyperlink{namespacetannic_1_1transformation_aae536af65f2dee7cb7279c58f82b2e2d}{outer}}, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&inner, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&result) const
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static constexpr type \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}{promote}} (type inner, type outer)
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{static}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{constexpr}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{type}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}{promote}} (\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{type}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{inner}}, \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{type}} \mbox{\hyperlink{namespacetannic_1_1transformation_aae536af65f2dee7cb7279c58f82b2e2d}{outer}})
 \begin{DoxyCompactList}\small\item\em Promotes two operand types to a common type for composition operations. \end{DoxyCompactList}\item 
-static constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a54ffedb4a5ca7827e9df3ae371bae4c2}{broadcast}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&first, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&second)
-\begin{DoxyCompactList}\small\item\em Computes output shape for composition. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{static}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a8e816b4edf365755d931b95a420a6269}{transform}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{const}} \&\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{first}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{const}} \&\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{second}})
+\begin{DoxyCompactList}\small\item\em Computes transformed output shape for composition. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static constexpr auto \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_ae5532fbe7069dd08c4ee780f4b4e6a51}{promotions}}
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{static}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{constexpr}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{auto}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_ae5532fbe7069dd08c4ee780f4b4e6a51}{promotions}}
 \begin{DoxyCompactList}\small\item\em Type promotion rules table. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -39,62 +39,17 @@ Implements tensor composition with\+:
 \end{DoxyItemize}
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{structtannic_1_1transformation_1_1Composition_a54ffedb4a5ca7827e9df3ae371bae4c2}\label{structtannic_1_1transformation_1_1Composition_a54ffedb4a5ca7827e9df3ae371bae4c2} 
-\index{tannic::transformation::Composition@{tannic::transformation::Composition}!broadcast@{broadcast}}
-\index{broadcast@{broadcast}!tannic::transformation::Composition@{tannic::transformation::Composition}}
-\doxysubsubsection{\texorpdfstring{broadcast()}{broadcast()}}
-{\footnotesize\ttfamily static constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::transformation\+::\+Composition\+::broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
-
-
-
-Computes output shape for composition. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em first} & First operand shape \\
-\hline
-{\em second} & Second operand shape \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Broadcasted output shape 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em assertion} & error if shapes are incompatible\\
-\hline
-\end{DoxyExceptions}
-Handles multiple cases\+:
-\begin{DoxyEnumerate}
-\item Vector-\/vector\+: (n) × (n) → scalar (empty shape)
-\item Matrix-\/vector\+: (m,n) × (n) → (m)
-\item Vector-\/matrix\+: (n) × (n,k) → (k)
-\item Matrix-\/matrix\+: (m,n) × (n,k) → (m,k)
-\item Batched operations\+: (...,m,n) × (...,n,k) → (...,m,k) 
-\end{DoxyEnumerate}\Hypertarget{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}\label{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0} 
+\Hypertarget{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}\label{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0} 
 \index{tannic::transformation::Composition@{tannic::transformation::Composition}!forward@{forward}}
 \index{forward@{forward}!tannic::transformation::Composition@{tannic::transformation::Composition}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily void tannic\+::transformation\+::\+Composition\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{outer,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{inner,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{result }\end{DoxyParamCaption}) const}
 
-
-
-Performs the composition operation. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em outer} & Outer tensor operand \\
-\hline
-{\em inner} & Inner tensor operand \\
-\hline
-{\em result} & Output tensor \\
-\hline
-\end{DoxyParams}
 \Hypertarget{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}\label{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82} 
 \index{tannic::transformation::Composition@{tannic::transformation::Composition}!promote@{promote}}
 \index{promote@{promote}!tannic::transformation::Composition@{tannic::transformation::Composition}}
 \doxysubsubsection{\texorpdfstring{promote()}{promote()}}
-{\footnotesize\ttfamily static constexpr type tannic\+::transformation\+::\+Composition\+::promote (\begin{DoxyParamCaption}\item[{type}]{inner,  }\item[{type}]{outer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{static}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{constexpr}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{type}} tannic\+::transformation\+::\+Composition\+::promote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{type}}}]{inner,  }\item[{\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{type}}}]{outer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 
 
@@ -131,19 +86,51 @@ Example promotions\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}{promote}}(int8,\ int32)\ →\ int32\ \ \textcolor{comment}{//\ Integer\ widening}}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}{promote}}(int32,\ float32)\ →\ float32\ \ \textcolor{comment}{//\ Mixed\ to\ float}}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}{promote}}(float32,\ float64)\ →\ float64\ \ \textcolor{comment}{//\ Precision\ preservation}}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}{promote}}(\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{int8}},\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{int32}})\ →\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{int32}}\ \ \textcolor{comment}{//\ Integer\ widening}}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}{promote}}(\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{int32}},\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{float32}})\ →\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{float32}}\ \ \textcolor{comment}{//\ Mixed\ to\ float}}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a9eb38435828870a1ad2c1eadddea0c82}{promote}}(\mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{float32}},\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{float64}})\ →\ \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{float64}}\ \ \textcolor{comment}{//\ Precision\ preservation}}
 
 \end{DoxyCode}
- 
+ \Hypertarget{structtannic_1_1transformation_1_1Composition_a8e816b4edf365755d931b95a420a6269}\label{structtannic_1_1transformation_1_1Composition_a8e816b4edf365755d931b95a420a6269} 
+\index{tannic::transformation::Composition@{tannic::transformation::Composition}!transform@{transform}}
+\index{transform@{transform}!tannic::transformation::Composition@{tannic::transformation::Composition}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{static}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::transformation\+::\+Composition\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{const}} \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{const}} \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Computes transformed output shape for composition. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & First operand shape \\
+\hline
+{\em second} & Second operand shape \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Broadcasted output shape 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em assertion} & error if shapes are incompatible\\
+\hline
+\end{DoxyExceptions}
+Handles multiple cases\+:
+\begin{DoxyEnumerate}
+\item Vector-\/vector\+: (n) × (n) → scalar (empty shape)
+\item Matrix-\/vector\+: (m,n) × (n) → (m)
+\item Vector-\/matrix\+: (n) × (n,k) → (k)
+\item Matrix-\/matrix\+: (m,n) × (n,k) → (m,k)
+\item Batched operations\+: (...,m,n) × (...,n,k) → (...,m,k) 
+\end{DoxyEnumerate}
 
 \doxysubsection{Member Data Documentation}
 \Hypertarget{structtannic_1_1transformation_1_1Composition_ae5532fbe7069dd08c4ee780f4b4e6a51}\label{structtannic_1_1transformation_1_1Composition_ae5532fbe7069dd08c4ee780f4b4e6a51} 
 \index{tannic::transformation::Composition@{tannic::transformation::Composition}!promotions@{promotions}}
 \index{promotions@{promotions}!tannic::transformation::Composition@{tannic::transformation::Composition}}
 \doxysubsubsection{\texorpdfstring{promotions}{promotions}}
-{\footnotesize\ttfamily constexpr auto tannic\+::transformation\+::\+Composition\+::promotions\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{constexpr}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Composition_a5a1e66b56b18be4cfcd4d69b7a9a1bf0}{auto}} tannic\+::transformation\+::\+Composition\+::promotions\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 
 

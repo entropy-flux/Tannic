@@ -17,28 +17,28 @@ void \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static constexpr type \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_a956cbedac79481902ec984cb4b39f8b4}{promote}} (type first, type second)
+\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{constexpr}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_a956cbedac79481902ec984cb4b39f8b4}{promote}} (\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{first}}, \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{second}})
 \item 
-static constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_a7359d4d440448d0e9a1cc9c07acb897c}{broadcast}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&first, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&second)
+\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_a7359d4d440448d0e9a1cc9c07acb897c}{broadcast}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{const}} \&\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{first}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{const}} \&\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{second}})
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise addition of two tensor expressions. 
 
-Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1_1Binary}{Binary}\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Addition}{Addition}, Augend, Addend\texorpdfstring{$>$}{>}} expression. Computation is deferred until {\ttfamily \doxylink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{forward()}} is called or assigned to a {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}}. Supports broadcasting and type promotion.\hypertarget{structtannic_1_1operation_1_1Addition_autotoc_md4}{}\doxyparagraph{\texorpdfstring{Example\+: Addition}{Example: Addition}}\label{structtannic_1_1operation_1_1Addition_autotoc_md4}
+Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1_1Binary}{Binary}\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Addition}{Addition}, Augend, Addend\texorpdfstring{$>$}{>}} expression. Computation is deferred until {\ttfamily \doxylink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{forward()}} is called or assigned to a {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}}. Supports broadcasting and type promotion.\hypertarget{structtannic_1_1operation_1_1Addition_autotoc_md27}{}\doxyparagraph{\texorpdfstring{Example\+: Addition}{Example: Addition}}\label{structtannic_1_1operation_1_1Addition_autotoc_md27}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ A(float32,\ \{2,\ 2\});\ A.initialize();}
-\DoxyCodeLine{A[0,\ 0]\ =\ 1;\ A[0,\ 1]\ =\ 2;}
-\DoxyCodeLine{A[1,\ 0]\ =\ 3;\ A[1,\ 1]\ =\ 4;}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{A}}(\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{float32}},\ \{2,\ 2\});\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{A}}.initialize();}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{A}}[0,\ 0]\ =\ 1;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{A}}[0,\ 1]\ =\ 2;}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{A}}[1,\ 0]\ =\ 3;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{A}}[1,\ 1]\ =\ 4;}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ B(float32,\ \{2,\ 2\});\ B.initialize();}
-\DoxyCodeLine{B[0,\ 0]\ =\ 5;\ B[0,\ 1]\ =\ 6;}
-\DoxyCodeLine{B[1,\ 0]\ =\ 7;\ B[1,\ 1]\ =\ 8;}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{B}}(\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{float32}},\ \{2,\ 2\});\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{B}}.initialize();}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{B}}[0,\ 0]\ =\ 5;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{B}}[0,\ 1]\ =\ 6;}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{B}}[1,\ 0]\ =\ 7;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{B}}[1,\ 1]\ =\ 8;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ C\ =\ A\ +\ B;}
-\DoxyCodeLine{std::cout\ <<\ C.forward();}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{C}}\ =\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{A}}\ +\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{B}};}
+\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{C}}.forward();}
 \DoxyCodeLine{\textcolor{comment}{//\ Output:\ [[6,\ 8],\ [10,\ 12]]}}
 
 \end{DoxyCode}
@@ -49,7 +49,7 @@ Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1
 \index{tannic::operation::Addition@{tannic::operation::Addition}!broadcast@{broadcast}}
 \index{broadcast@{broadcast}!tannic::operation::Addition@{tannic::operation::Addition}}
 \doxysubsubsection{\texorpdfstring{broadcast()}{broadcast()}}
-{\footnotesize\ttfamily static constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::operation\+::\+Addition\+::broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::operation\+::\+Addition\+::broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{const}} \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{const}} \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}\label{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9} 
 \index{tannic::operation::Addition@{tannic::operation::Addition}!forward@{forward}}
@@ -61,7 +61,7 @@ Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1
 \index{tannic::operation::Addition@{tannic::operation::Addition}!promote@{promote}}
 \index{promote@{promote}!tannic::operation::Addition@{tannic::operation::Addition}}
 \doxysubsubsection{\texorpdfstring{promote()}{promote()}}
-{\footnotesize\ttfamily static constexpr type tannic\+::operation\+::\+Addition\+::promote (\begin{DoxyParamCaption}\item[{type}]{first,  }\item[{type}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{constexpr}} \mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{type}} tannic\+::operation\+::\+Addition\+::promote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{type}}}]{first,  }\item[{\mbox{\hyperlink{structtannic_1_1operation_1_1Addition_aaf1e81033a9b9907db9f9c3c94b458f9}{type}}}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 
 

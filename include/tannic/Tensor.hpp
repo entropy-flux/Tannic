@@ -22,8 +22,8 @@
  * @file Tensor.hpp
  * @author Eric Cardozo
  * @date 2025
- * @brief Core multidimensional tensor class for the Tannic Tensor Library.
- *
+ * @brief Core multidimensional tensor class for the Tannic Tensor Library. 
+ * 
  * Defines `tannic::Tensor`, the primary data structure of the library, supporting:
  * 
  * - **Dynamic dtypes**: No need for templates, data types can be passed to tensors as arguments to simplify serialization and IO operations.

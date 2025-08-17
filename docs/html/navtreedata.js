@@ -25,19 +25,19 @@
 var NAVTREE =
 [
   [ "Tannic", "index.html", [
-    [ "Status", "index.html#autotoc_md28", null ],
-    [ "Features", "index.html#autotoc_md29", null ],
-    [ "What is comming...", "index.html#autotoc_md30", null ],
-    [ "Requirements", "index.html#autotoc_md32", null ],
-    [ "Installation", "index.html#autotoc_md33", [
-      [ "Debug build:", "index.html#autotoc_md34", null ],
-      [ "Release build", "index.html#autotoc_md35", null ],
-      [ "Run the example", "index.html#autotoc_md36", null ],
-      [ "Include Tannic in your project", "index.html#autotoc_md37", null ],
-      [ "CUDA support", "index.html#autotoc_md38", null ]
+    [ "Status", "index.html#autotoc_md61", null ],
+    [ "Features", "index.html#autotoc_md62", null ],
+    [ "What is comming...", "index.html#autotoc_md63", null ],
+    [ "Requirements", "index.html#autotoc_md65", null ],
+    [ "Installation", "index.html#autotoc_md66", [
+      [ "Debug build:", "index.html#autotoc_md67", null ],
+      [ "Release build", "index.html#autotoc_md68", null ],
+      [ "Run the example", "index.html#autotoc_md69", null ],
+      [ "Include Tannic in your project", "index.html#autotoc_md70", null ],
+      [ "CUDA support", "index.html#autotoc_md71", null ]
     ] ],
-    [ "Contributing", "index.html#autotoc_md39", null ],
-    [ "License", "index.html#autotoc_md40", null ],
+    [ "Contributing", "index.html#autotoc_md72", null ],
+    [ "License", "index.html#autotoc_md73", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -52,7 +52,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Related Symbols", "functions_rela.html", null ]
@@ -67,8 +67,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d9/d4d/classtannic_1_1transformation_1_1Transformation.html#a2bcf28b6dd2d820780960d645d9559d6",
-"dd/d0f/classtannic_1_1expression_1_1Slice.html#a4fbfd61857c6b31365fc5875e834899c"
+"d7/d6b/classtannic_1_1operation_1_1Binary.html#a0a864c0103c2a1c28564f1cec4e6aad6",
+"db/da7/classtannic_1_1Shape.html#a75f342d708afeb26912871a6ec1dd5b4",
+"df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4.html#ad925deacdcee165092dc24996128c912"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

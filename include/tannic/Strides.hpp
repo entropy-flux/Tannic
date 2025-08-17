@@ -22,8 +22,8 @@
  * @file Strides.hpp
  * @author Eric Cardozo
  * @date 2025
- * @brief Memory layout specification for tensor dimensions in the Tannic Tensor Library.
- *
+ * @brief Memory layout specification for tensor dimensions in the Tannic Tensor Library. 
+ * 
  * Defines `tannic::Strides`, which determines how elements are spaced in memory
  * across tensor dimensions. Key features:
  * 
@@ -256,6 +256,10 @@ public:
         return sizes_[indexing::normalize(index, rank())]; 
     }  
  
+    /**
+     * @brief Expands the strides's last dimension with a given size. Increments the rank by one. 
+     * @param size The size of the dimension that will be added to the back of the strides. 
+     */
     constexpr void expand(size_type size) { 
         assert(rank_ < limit && "Rank limit exceeded");  
         sizes_[rank_] = size;

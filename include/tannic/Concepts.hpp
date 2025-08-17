@@ -25,6 +25,9 @@
  * @brief This header the `tannic::Expression` fundamental concept as a compile time
  * interface for all operations defined in this library and a few other concepts used
  * internally to validate template arguments in compile-time expressions. 
+ * 
+ * @note Unless you are extending the library with your custom expressions you can skip this
+ * secction.
  */  
  
 #include <concepts>
@@ -72,7 +75,7 @@ class Tensor;
  *
  * #### Example:
  * 
- * ```
+ * ```cpp
  * template<tannic::Expression E>
  * void print_metadata(E const& expr) {
  *     std::cout << expr.shape() << " | dtype = " << expr.dtype() << '\n';
@@ -143,15 +146,55 @@ concept Iterator = std::input_iterator<T>;
 template<typename T>
 concept Integral = std::is_integral_v<T>; 
 
+
+/**
+ * @concept Assignable
+ * @brief Concept for types that can assign values.
+ *
+ * @details
+ * A type `T` satisfies this concept if it provides a method:
+ *
+ * ```cpp
+ * void assign(const std::byte* ptr, std::ptrdiff_t offset);
+ * ```
+ *
+ * This function must take a pointer to a raw byte buffer and an offset, then
+ * assign the corresponding value into the object.
+ *
+ * This concept is mainly used internally when populating tensor elements
+ * from a memory buffer (e.g., in serialization, slicing, or low-level tensor
+ * initialization), and enables the usage of slices from custom data structures 
+ * beside the `Tensor` class.
+ * 
+ */
 template<typename T>
 concept Assignable = requires(T t, const std::byte* ptr, std::ptrdiff_t offset) {
     { t.assign(ptr, offset) } -> std::same_as<void>;
 };
 
+/**
+ * @concept Comparable
+ * @brief Concept for types that can compare their value.
+ *
+ * @details
+ * A type `T` satisfies this concept if it provides a method:
+ *
+ * ```cpp
+ * bool compare(const std::byte* ptr, std::ptrdiff_t offset) const;
+ * ```
+ *
+ * This function must take a pointer to a raw byte buffer and an offset, then
+ * return `true` if the object is equal to the value at that memory location,
+ * or `false` otherwise.
+ *
+ * This concept is mainly used internally when comparing tensor elements, and 
+ * enables the usage of slices from custom data structures beside the `Tensor` class.
+ *  
+ */
 template<typename T>
 concept Comparable = requires(const T t, const std::byte* ptr, std::ptrdiff_t offset) {
     { t.compare(ptr, offset) } -> std::same_as<bool>;
-};
+}; 
  
 } // namespace tannic
 

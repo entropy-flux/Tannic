@@ -19,9 +19,11 @@
 #define VIEWS_HPP 
 
 /**
- * @file Views.hpp
+ * @file Views.hpp 
+ * @author Eric Cardozo
+ * @date 2025  
  * @brief Implements views for tensors in the Tannic Tensor Library.
- *
+ * 
  * This header defines expression templates for tensors views
  * without copying data. These views operate on the underlying tensor metadata
  * (shape, strides, and offset) to reinterpret how elements are accessed while

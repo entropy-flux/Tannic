@@ -22,7 +22,9 @@
 
 namespace tannic { 
 
-class Tensor;
+class Tensor; 
+
+// WARNING: THIS FILE IS UNDER ACTIVE DEVELOPMENT!.
 
 struct Node {
     uintptr_t id = 0;

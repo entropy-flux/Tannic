@@ -2,6 +2,11 @@
 \hypertarget{structtannic_1_1indexing_1_1Range}{}\label{structtannic_1_1indexing_1_1Range}\index{tannic::indexing::Range@{tannic::indexing::Range}}
 
 
+Represents a half-\/open interval {\ttfamily \mbox{[}start, stop)} for slicing.  
+
+
+
+
 {\ttfamily \#include $<$Indexing.\+hpp$>$}
 
 \doxysubsubsection*{Public Attributes}
@@ -11,6 +16,27 @@ int \mbox{\hyperlink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f175317581
 \item 
 int \mbox{\hyperlink{structtannic_1_1indexing_1_1Range_ab25842dedc9b4f9987153cd0b4750872}{stop}} = -\/1
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a half-\/open interval {\ttfamily \mbox{[}start, stop)} for slicing. 
+
+The {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{Range}} struct mimics Python\textquotesingle{}s slice behavior\+:
+\begin{DoxyItemize}
+\item {\ttfamily start} is inclusive
+\item {\ttfamily stop} is exclusive
+\item Negative values are allowed and are interpreted relative to the size of the dimension being indexed.
+\end{DoxyItemize}
+
+By default\+:
+\begin{DoxyItemize}
+\item {\ttfamily start = 0} (beginning of the axis)
+\item {\ttfamily stop = -\/1} (interpreted as "{}until the end"{} when normalized)
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{namespacetannic_1_1indexing_aa32d55359b2e4a8162a3859edd089e0a}{normalize(\+Range, Size)} 
+\end{DoxySeeAlso}
 
 
 \doxysubsection{Member Data Documentation}

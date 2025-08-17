@@ -23,7 +23,7 @@
  * @author Eric Cardozo  
  * @date 2025
  * @brief Memory buffer management for tensor storage
- * @details
+ * 
  * Provides a basic memory buffer abstraction that:
  * 
  * - Manages allocation and ownership of raw memory

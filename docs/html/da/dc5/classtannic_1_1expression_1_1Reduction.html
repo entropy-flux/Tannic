@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('da/dc5/classtannic_1_1expression_1_1Re
 </div><!--header-->
 <div class="contents">
 
-<p>Expression template for reduction operations.  
+<p>Lazy reduction expression.  
  <a href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../db/db8/Reductions_8hpp_source.html">Reductions.hpp</a>&gt;</code></p>
@@ -108,7 +108,7 @@ Collaboration diagram for tannic::expression::Reduction&lt; Reducer, Operand &gt
 <div class="dyncontent">
 <div class="center"><img src="../../d5/d52/classtannic_1_1expression_1_1Reduction__coll__graph.png" border="0" usemap="#atannic_1_1expression_1_1Reduction_3_01Reducer_00_01Operand_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="atannic_1_1expression_1_1Reduction_3_01Reducer_00_01Operand_01_4_coll__map" id="atannic_1_1expression_1_1Reduction_3_01Reducer_00_01Operand_01_4_coll__map">
-<area shape="rect" title="Expression template for reduction operations." alt="" coords="13,93,180,148"/>
+<area shape="rect" title="Lazy reduction expression." alt="" coords="13,93,180,148"/>
 <area shape="rect" href="../../d1/d96/structtannic_1_1Trait.html" title=" " alt="" coords="5,5,188,31"/>
 <area shape="poly" title=" " alt="" coords="99,45,99,93,94,93,94,45"/>
 </map>
@@ -116,40 +116,34 @@ Collaboration diagram for tannic::expression::Reduction&lt; Reducer, Operand &gt
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9e79399f2f9ba00d0d95b58653ae5d05" id="r_a9e79399f2f9ba00d0d95b58653ae5d05"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a9e79399f2f9ba00d0d95b58653ae5d05">Reduction</a> (Reducer <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad538ecaf232c6ff457f46291497700c8">reducer</a>, typename <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Operand &gt;::Reference <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#af8fda61f8b519adfa6ad09670f39d570">operand</a>)</td></tr>
-<tr class="memdesc:a9e79399f2f9ba00d0d95b58653ae5d05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html" title="Expression template for reduction operations.">Reduction</a> expression.  <br /></td></tr>
+<tr class="memitem:a9e79399f2f9ba00d0d95b58653ae5d05" id="r_a9e79399f2f9ba00d0d95b58653ae5d05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">constexpr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a9e79399f2f9ba00d0d95b58653ae5d05">Reduction</a> (<a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad538ecaf232c6ff457f46291497700c8">reducer</a>, <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">typename</a> <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a> &gt;::Reference <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#af8fda61f8b519adfa6ad09670f39d570">operand</a>)</td></tr>
 <tr class="separator:a9e79399f2f9ba00d0d95b58653ae5d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a490b9f5f332ad6df24ab82792af7e486" id="r_a490b9f5f332ad6df24ab82792af7e486"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a490b9f5f332ad6df24ab82792af7e486">dtype</a> () const</td></tr>
-<tr class="memdesc:a490b9f5f332ad6df24ab82792af7e486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the data type of the reduced result.  <br /></td></tr>
+<tr class="memitem:a490b9f5f332ad6df24ab82792af7e486" id="r_a490b9f5f332ad6df24ab82792af7e486"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">constexpr</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a490b9f5f332ad6df24ab82792af7e486">dtype</a> () <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">const</a></td></tr>
 <tr class="separator:a490b9f5f332ad6df24ab82792af7e486"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3ad6ef60474446a9df10985717c1af2" id="r_ad3ad6ef60474446a9df10985717c1af2"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad3ad6ef60474446a9df10985717c1af2">shape</a> () const</td></tr>
-<tr class="memdesc:ad3ad6ef60474446a9df10985717c1af2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shape of the reduced result.  <br /></td></tr>
+<tr class="memitem:ad3ad6ef60474446a9df10985717c1af2" id="r_ad3ad6ef60474446a9df10985717c1af2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">constexpr</a> <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">const</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad3ad6ef60474446a9df10985717c1af2">shape</a> () <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">const</a></td></tr>
 <tr class="separator:ad3ad6ef60474446a9df10985717c1af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc8cbfb029055ea3a770e65e41efa48b" id="r_adc8cbfb029055ea3a770e65e41efa48b"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#adc8cbfb029055ea3a770e65e41efa48b">strides</a> () const</td></tr>
-<tr class="memdesc:adc8cbfb029055ea3a770e65e41efa48b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the strides of the reduced result.  <br /></td></tr>
+<tr class="memitem:adc8cbfb029055ea3a770e65e41efa48b" id="r_adc8cbfb029055ea3a770e65e41efa48b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">constexpr</a> <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">const</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#adc8cbfb029055ea3a770e65e41efa48b">strides</a> () <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">const</a></td></tr>
 <tr class="separator:adc8cbfb029055ea3a770e65e41efa48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fccaa5f3c597ec6caab4ec846c2a84a" id="r_a5fccaa5f3c597ec6caab4ec846c2a84a"><td class="memItemLeft" align="right" valign="top">std::ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a5fccaa5f3c597ec6caab4ec846c2a84a">offset</a> () const</td></tr>
-<tr class="memdesc:a5fccaa5f3c597ec6caab4ec846c2a84a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the offset of the result tensor.  <br /></td></tr>
+<tr class="memitem:a5fccaa5f3c597ec6caab4ec846c2a84a" id="r_a5fccaa5f3c597ec6caab4ec846c2a84a"><td class="memItemLeft" align="right" valign="top">std::ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a5fccaa5f3c597ec6caab4ec846c2a84a">offset</a> () <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">const</a></td></tr>
 <tr class="separator:a5fccaa5f3c597ec6caab4ec846c2a84a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e1590a909e8eefe012f6f84c7fe2c67" id="r_a7e1590a909e8eefe012f6f84c7fe2c67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">forward</a> () const</td></tr>
-<tr class="memdesc:a7e1590a909e8eefe012f6f84c7fe2c67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the reduction expression.  <br /></td></tr>
 <tr class="separator:a7e1590a909e8eefe012f6f84c7fe2c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ad538ecaf232c6ff457f46291497700c8" id="r_ad538ecaf232c6ff457f46291497700c8"><td class="memItemLeft" align="right" valign="top">Reducer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad538ecaf232c6ff457f46291497700c8">reducer</a></td></tr>
+<tr class="memitem:ad538ecaf232c6ff457f46291497700c8" id="r_ad538ecaf232c6ff457f46291497700c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad538ecaf232c6ff457f46291497700c8">reducer</a></td></tr>
 <tr class="separator:ad538ecaf232c6ff457f46291497700c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8fda61f8b519adfa6ad09670f39d570" id="r_af8fda61f8b519adfa6ad09670f39d570"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Operand &gt;::Reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#af8fda61f8b519adfa6ad09670f39d570">operand</a></td></tr>
+<tr class="memitem:af8fda61f8b519adfa6ad09670f39d570" id="r_af8fda61f8b519adfa6ad09670f39d570"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a> &gt;::Reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#af8fda61f8b519adfa6ad09670f39d570">operand</a></td></tr>
 <tr class="separator:af8fda61f8b519adfa6ad09670f39d570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;class Reducer, Expression Operand&gt;<br />
-class tannic::expression::Reduction&lt; Reducer, Operand &gt;</div><p>Expression template for reduction operations. </p>
-<p>Represents a lazily evaluated reduction operation applied to a tensor expression. Handles proper shape, stride and dtype transformations for the reduced result.</p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">class</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a>, Expression Operand&gt;<br />
+class tannic::expression::Reduction&lt; Reducer, Operand &gt;</div><p>Lazy reduction expression. </p>
+<p>Represents reductions like <code>sum</code>, <code>max</code>, or <code>mean</code> that collapse tensors along an axis. Output shape/dtype are determined by the <code>Reducer</code>'s rules.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Reducer</td><td><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html" title="Expression template for reduction operations.">Reduction</a> operation type (must implement reduce() and <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67" title="Evaluates the reduction expression.">forward()</a>) </td></tr>
-    <tr><td class="paramname">Operand</td><td>Input expression type satisfying the Expression concept </td></tr>
+    <tr><td class="paramname">Reducer</td><td>Policy defining the reduction (e.g., <code><a class="el" href="../../dc/d3e/structtannic_1_1expression_1_1Argmax.html" title="Finds the indices of maximum values along an axis.">Argmax</a></code>). </td></tr>
+    <tr><td class="paramname">Operand</td><td>Input satisfying the <code>Expression</code> concept.. </td></tr>
   </table>
   </dd>
 </dl>
@@ -160,21 +154,21 @@ class tannic::expression::Reduction&lt; Reducer, Operand &gt;</div><p>Expression
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Reducer , Expression Operand&gt; </div>
+template&lt;<a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">class</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a> , Expression Operand&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; Reducer, Operand &gt;::Reduction </td>
+          <td class="memname"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">constexpr</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a>, <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a> &gt;::Reduction </td>
           <td>(</td>
-          <td class="paramtype">Reducer&#160;</td>
+          <td class="paramtype"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a>&#160;</td>
           <td class="paramname"><em>reducer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">typename <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Operand &gt;::Reference&#160;</td>
+          <td class="paramtype"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">typename</a> <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a> &gt;::Reference&#160;</td>
           <td class="paramname"><em>operand</em>&#160;</td>
         </tr>
         <tr>
@@ -190,15 +184,6 @@ template&lt;class Reducer , Expression Operand&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html" title="Expression template for reduction operations.">Reduction</a> expression. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">reducer</td><td><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html" title="Expression template for reduction operations.">Reduction</a> operation functor </td></tr>
-    <tr><td class="paramname">operand</td><td>Input tensor expression </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -208,13 +193,13 @@ template&lt;class Reducer , Expression Operand&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Reducer , Expression Operand&gt; </div>
+template&lt;<a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">class</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a> , Expression Operand&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr type <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; Reducer, Operand &gt;::dtype </td>
+          <td class="memname"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">constexpr</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">type</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a>, <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a> &gt;::dtype </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -226,9 +211,6 @@ template&lt;class Reducer , Expression Operand&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Returns the data type of the reduced result. </p>
-<dl class="section return"><dt>Returns</dt><dd>Transformed dtype after reduction </dd></dl>
 
 </div>
 </div>
@@ -257,9 +239,6 @@ template&lt;class Reducer , Expression Operand&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Evaluates the reduction expression. </p>
-<dl class="section return"><dt>Returns</dt><dd>New <a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a> containing the reduced result </dd></dl>
-
 </div>
 </div>
 <a id="a5fccaa5f3c597ec6caab4ec846c2a84a" name="a5fccaa5f3c597ec6caab4ec846c2a84a"></a>
@@ -268,13 +247,13 @@ template&lt;class Reducer , Expression Operand&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Reducer , Expression Operand&gt; </div>
+template&lt;<a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">class</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a> , Expression Operand&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::ptrdiff_t <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; Reducer, Operand &gt;::offset </td>
+          <td class="memname">std::ptrdiff_t <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a>, <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a> &gt;::offset </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -287,9 +266,6 @@ template&lt;class Reducer , Expression Operand&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the offset of the result tensor. </p>
-<dl class="section return"><dt>Returns</dt><dd>Always 0 since reductions create new tensors </dd></dl>
-
 </div>
 </div>
 <a id="ad3ad6ef60474446a9df10985717c1af2" name="ad3ad6ef60474446a9df10985717c1af2"></a>
@@ -298,13 +274,13 @@ template&lt;class Reducer , Expression Operand&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Reducer , Expression Operand&gt; </div>
+template&lt;<a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">class</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a> , Expression Operand&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const  &amp; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; Reducer, Operand &gt;::shape </td>
+          <td class="memname"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">constexpr</a> <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">const</a>  &amp; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a>, <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a> &gt;::shape </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -316,9 +292,6 @@ template&lt;class Reducer , Expression Operand&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Returns the shape of the reduced result. </p>
-<dl class="section return"><dt>Returns</dt><dd>Reduced shape after applying the reduction </dd></dl>
 
 </div>
 </div>
@@ -328,13 +301,13 @@ template&lt;class Reducer , Expression Operand&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Reducer , Expression Operand&gt; </div>
+template&lt;<a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">class</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a> , Expression Operand&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const  &amp; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; Reducer, Operand &gt;::strides </td>
+          <td class="memname"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">constexpr</a> <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">const</a>  &amp; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a>, <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a> &gt;::strides </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -346,9 +319,6 @@ template&lt;class Reducer , Expression Operand&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Returns the strides of the reduced result. </p>
-<dl class="section return"><dt>Returns</dt><dd>Adjusted strides for the reduced shape </dd></dl>
 
 </div>
 </div>
@@ -359,10 +329,10 @@ template&lt;class Reducer , Expression Operand&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Reducer , Expression Operand&gt; </div>
+template&lt;<a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">class</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a> , Expression Operand&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt;Operand&gt;::Reference <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; Reducer, Operand &gt;::operand</td>
+          <td class="memname"><a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt;<a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a>&gt;::Reference <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a>, <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a> &gt;::operand</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -375,10 +345,10 @@ template&lt;class Reducer , Expression Operand&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class Reducer , Expression Operand&gt; </div>
+template&lt;<a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">class</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a> , Expression Operand&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Reducer <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; Reducer, Operand &gt;::reducer</td>
+          <td class="memname"><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a> <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html">tannic::expression::Reduction</a>&lt; <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Reducer</a>, <a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html#a7e1590a909e8eefe012f6f84c7fe2c67">Operand</a> &gt;::reducer</td>
         </tr>
       </table>
 </div><div class="memdoc">

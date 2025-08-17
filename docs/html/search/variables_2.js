@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['function_0',['function',['../d0/d1d/classtannic_1_1function_1_1Functor.html#ad7c09d17ea5a5fa53551b363d6928cb1',1,'tannic::function::Functor']]]
+  ['epsilon_0',['epsilon',['../dc/db8/structtannic_1_1function_1_1Rsqrt.html#a572b1b2cde53573fa993af694e87e074',1,'tannic::function::Rsqrt']]]
 ];

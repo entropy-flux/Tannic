@@ -40,7 +40,9 @@ constexpr auto \mbox{\hyperlink{classtannic_1_1Strides_ae12a35e163505895661333ff
 {\footnotesize template$<$Integral Index$>$ }\\constexpr auto const \& \mbox{\hyperlink{classtannic_1_1Strides_a18797dc00a0dadb4a0600ec408fd4409}{operator\mbox{[}$\,$\mbox{]}}} (Index index) const
 \begin{DoxyCompactList}\small\item\em Accesses a stride value by index (const). \end{DoxyCompactList}\item 
 {\footnotesize template$<$Integral Index$>$ }\\constexpr auto \& \mbox{\hyperlink{classtannic_1_1Strides_a729f3f25f2eb716b76bdea706e2bd9d3}{operator\mbox{[}$\,$\mbox{]}}} (Index index)
-\begin{DoxyCompactList}\small\item\em Accesses a stride value by index (non-\/const). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Accesses a stride value by index (non-\/const). \end{DoxyCompactList}\item 
+constexpr void \mbox{\hyperlink{classtannic_1_1Strides_aa19c88689f47e239b7dfb8a82c134e96}{expand}} (\mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\+\_\+type}} size)
+\begin{DoxyCompactList}\small\item\em Expands the strides\textquotesingle{}s last dimension with a given size. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \begin{Indent}\textbf{ Iterators}\par
 {\em ~\newline
  }\begin{DoxyCompactItemize}
@@ -72,7 +74,7 @@ Represents the memory strides associated with a tensor shape.
 
 A {\ttfamily \doxylink{classtannic_1_1Strides}{Strides}} object can be constructed manually (via variadic arguments or iterators), or automatically from a {\ttfamily \doxylink{classtannic_1_1Shape}{Shape}} (default row-\/major/contiguous layout).
 
-Maximum rank is limited to {\ttfamily \doxylink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{Strides\+::limit} = 8} for constexpr compatibility and static layout. This limit may be removed in C++26 when std\+::vector become constexpr friendly.\hypertarget{classtannic_1_1Strides_autotoc_md11}{}\doxyparagraph{\texorpdfstring{Example (\+Contiguous Layout)\+:}{Example (Contiguous Layout):}}\label{classtannic_1_1Strides_autotoc_md11}
+Maximum rank is limited to {\ttfamily \doxylink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{Strides\+::limit} = 8} for constexpr compatibility and static layout. This limit may be removed in C++26 when std\+::vector become constexpr friendly.\hypertarget{classtannic_1_1Strides_autotoc_md44}{}\doxyparagraph{\texorpdfstring{Example (\+Contiguous Layout)\+:}{Example (Contiguous Layout):}}\label{classtannic_1_1Strides_autotoc_md44}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
@@ -83,7 +85,7 @@ Maximum rank is limited to {\ttfamily \doxylink{classtannic_1_1Strides_a11b903b9
 \DoxyCodeLine{std::cout\ <<\ strides;\ \ \ \ \textcolor{comment}{//\ Output:\ Strides(12,\ 4,\ 1)}}
 
 \end{DoxyCode}
-\hypertarget{classtannic_1_1Strides_autotoc_md12}{}\doxyparagraph{\texorpdfstring{Example (\+Custom Strides)\+:}{Example (Custom Strides):}}\label{classtannic_1_1Strides_autotoc_md12}
+\hypertarget{classtannic_1_1Strides_autotoc_md45}{}\doxyparagraph{\texorpdfstring{Example (\+Custom Strides)\+:}{Example (Custom Strides):}}\label{classtannic_1_1Strides_autotoc_md45}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides(6,\ 2,\ 1);\ \textcolor{comment}{//\ Custom\ strides\ for\ a\ specific\ memory\ layout}}
@@ -149,7 +151,7 @@ Constructs strides from variadic size arguments.
 \begin{DoxyNote}{Note}
 Asserts if the number of dimensions (rank) exceeds {\ttfamily limit}.
 \end{DoxyNote}
-\hypertarget{classtannic_1_1Strides_autotoc_md13}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md13}
+\hypertarget{classtannic_1_1Strides_autotoc_md46}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md46}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{tannic::Strides}}\ s(6,\ 2,\ 1);}
@@ -182,7 +184,7 @@ Constructs strides from a pair of iterators.
 \begin{DoxyNote}{Note}
 Asserts if the number of dimensions exceeds {\ttfamily limit}.
 \end{DoxyNote}
-\hypertarget{classtannic_1_1Strides_autotoc_md14}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md14}
+\hypertarget{classtannic_1_1Strides_autotoc_md47}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md47}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{std::vector<std::size\_t>\ values\ =\ \{12,\ 4,\ 1\};}
@@ -204,7 +206,7 @@ Constructs strides from a shape assuming row-\/major layout.
 {\em shape} & \doxylink{classtannic_1_1Shape}{Shape} from which to compute contiguous strides.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classtannic_1_1Strides_autotoc_md15}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md15}
+\hypertarget{classtannic_1_1Strides_autotoc_md48}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md48}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{tannic::Shape}}\ shape(2,\ 3,\ 4);}
@@ -290,6 +292,21 @@ Stride of the last dimension.
 \doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily constexpr auto tannic\+::\+Strides\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
+\Hypertarget{classtannic_1_1Strides_aa19c88689f47e239b7dfb8a82c134e96}\label{classtannic_1_1Strides_aa19c88689f47e239b7dfb8a82c134e96} 
+\index{tannic::Strides@{tannic::Strides}!expand@{expand}}
+\index{expand@{expand}!tannic::Strides@{tannic::Strides}}
+\doxysubsubsection{\texorpdfstring{expand()}{expand()}}
+{\footnotesize\ttfamily constexpr void tannic\+::\+Strides\+::expand (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\+\_\+type}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Expands the strides\textquotesingle{}s last dimension with a given size. 
+
+Increments the rank by one. 
+\begin{DoxyParams}{Parameters}
+{\em size} & The size of the dimension that will be added to the back of the strides. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classtannic_1_1Strides_a6c6000fcf947fde44193535e9edff445}\label{classtannic_1_1Strides_a6c6000fcf947fde44193535e9edff445} 
 \index{tannic::Strides@{tannic::Strides}!front@{front}}
 \index{front@{front}!tannic::Strides@{tannic::Strides}}

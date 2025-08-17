@@ -1,0 +1,54 @@
+<map id="include/tannic/Complex.hpp" name="include/tannic/Complex.hpp">
+<area shape="rect" id="Node000001" title="Complex number operations for the Tannic Tensor Library." alt="" coords="271,5,473,31"/>
+<area shape="rect" id="Node000002" href="$d3/d84/Concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="247,299,358,324"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="372,32,325,226,311,286,306,285,320,225,367,30"/>
+<area shape="rect" id="Node000005" href="$d5/d34/Types_8hpp.html" title="Core type system for the Tannic Tensor Library." alt="" coords="151,372,238,397"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="271,24,192,35,152,45,116,59,84,77,58,100,42,129,36,164,36,239,39,261,47,282,60,300,76,316,114,344,152,364,150,369,111,349,72,320,56,303,43,284,34,263,31,240,31,163,37,127,54,97,80,73,113,54,151,40,191,30,270,19"/>
+<area shape="rect" id="Node000010" href="$d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="457,152,548,177"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="385,29,485,140,481,143,381,33"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="687,299,756,324"/>
+<area shape="poly" id="edge32_Node000001_Node000013" title=" " alt="" coords="455,28,570,47,700,74,818,109,864,129,896,150,920,174,937,198,942,224,938,238,930,252,904,271,863,285,770,306,769,300,861,280,902,266,926,249,934,236,937,224,932,200,916,177,893,154,861,133,816,114,699,79,569,52,454,33"/>
+<area shape="rect" id="Node000017" href="$d8/d85/Strides_8hpp.html" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="569,79,663,104"/>
+<area shape="poly" id="edge21_Node000001_Node000017" title=" " alt="" coords="412,28,564,72,563,77,410,33"/>
+<area shape="rect" id="Node000020" href="$d8/d38/Traits_8hpp.html" title=" " alt="" coords="125,152,211,177"/>
+<area shape="poly" id="edge29_Node000001_Node000020" title=" " alt="" coords="332,33,283,52,235,81,205,111,183,142,179,139,201,107,232,77,281,47,330,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="263,372,343,397"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="305,324,305,358,300,358,300,324"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="367,372,438,397"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="320,322,377,362,374,366,317,326"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="287,326,225,367,222,362,284,322"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="155,445,235,471"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="197,398,197,432,192,432,192,398"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="424,445,491,471"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="238,395,412,442,410,447,236,400"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="259,445,317,471"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="211,395,264,435,260,439,208,399"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,445,131,471"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="176,400,102,441,99,436,173,395"/>
+<area shape="poly" id="edge17_Node000010_Node000002" title=" " alt="" coords="472,180,428,200,382,227,348,258,321,289,317,286,344,254,378,223,425,195,470,175"/>
+<area shape="poly" id="edge13_Node000010_Node000007" title=" " alt="" coords="509,177,516,210,517,251,508,303,495,354,469,434,464,432,490,352,503,302,512,250,511,211,504,178"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="122,225,214,251"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="458,178,228,227,227,221,457,173"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="860,225,916,251"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="549,170,679,190,847,223,846,228,678,195,548,175"/>
+<area shape="poly" id="edge14_Node000010_Node000013" title=" " alt="" coords="549,165,585,171,625,181,664,198,698,223,708,237,716,253,723,284,717,286,711,255,704,240,694,227,661,203,623,186,584,176,548,171"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="391,225,502,251"/>
+<area shape="poly" id="edge15_Node000010_Node000014" title=" " alt="" coords="496,179,466,216,462,213,491,176"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="759,225,835,251"/>
+<area shape="poly" id="edge16_Node000010_Node000015" title=" " alt="" coords="549,174,746,222,745,227,547,179"/>
+<area shape="rect" id="Node000016" href="$d3/da7/Indexing_8hpp.html" title="Utilities for index normalization and slicing ranges in the Tannic Tensor Library." alt="" coords="577,225,684,251"/>
+<area shape="poly" id="edge18_Node000010_Node000016" title=" " alt="" coords="525,175,599,216,596,221,522,180"/>
+<area shape="poly" id="edge20_Node000016_Node000002" title=" " alt="" coords="579,253,369,298,368,293,577,248"/>
+<area shape="poly" id="edge19_Node000016_Node000013" title=" " alt="" coords="647,249,697,288,694,292,644,253"/>
+<area shape="poly" id="edge26_Node000017_Node000002" title=" " alt="" coords="569,106,517,122,458,147,398,181,371,203,347,227,328,257,314,287,309,285,323,254,343,224,368,199,395,177,455,142,516,117,568,101"/>
+<area shape="poly" id="edge27_Node000017_Node000010" title=" " alt="" coords="599,106,534,147,531,142,596,102"/>
+<area shape="poly" id="edge22_Node000017_Node000012" title=" " alt="" coords="664,95,781,115,835,130,856,139,871,150,881,164,887,180,892,211,887,212,882,181,876,166,867,154,854,144,834,135,780,120,663,100"/>
+<area shape="poly" id="edge25_Node000017_Node000015" title=" " alt="" coords="643,102,683,122,724,150,757,181,783,213,779,216,753,185,721,154,680,127,641,106"/>
+<area shape="poly" id="edge28_Node000017_Node000016" title=" " alt="" coords="617,105,613,137,615,177,624,212,619,213,609,178,608,137,611,104"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="786,152,857,177"/>
+<area shape="poly" id="edge23_Node000017_Node000018" title=" " alt="" coords="650,101,776,145,774,150,648,107"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="623,152,710,177"/>
+<area shape="poly" id="edge24_Node000017_Node000019" title=" " alt="" coords="627,103,653,139,648,142,622,106"/>
+<area shape="poly" id="edge31_Node000020_Node000002" title=" " alt="" coords="152,179,133,194,116,212,107,231,107,240,112,249,136,273,167,290,201,300,234,306,233,311,199,305,165,294,133,277,107,252,102,241,102,230,112,209,129,190,148,175"/>
+<area shape="poly" id="edge30_Node000020_Node000011" title=" " alt="" coords="171,178,171,212,165,212,165,178"/>
+</map>

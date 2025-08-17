@@ -7,6 +7,8 @@ struct \mbox{\hyperlink{structtannic_1_1operation_1_1Addition}{Addition}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise addition of two tensor expressions. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1operation_1_1Binary}{Binary}}
 \begin{DoxyCompactList}\small\item\em Expression template for a binary tensor operation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation}{Exponentiation}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise exponentiation of two tensor expressions. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication}{Multiplication}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise multiplication of two tensor expressions. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Negation}{Negation}}
@@ -25,7 +27,9 @@ class \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{Unary}}
 {\footnotesize template$<$Expression Subtrahend, Expression Minuend$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_a179b2c13fdccd0a5c6ec02d3800abfb6}{operator-\/}} (Subtrahend \&\&subtrahend, Minuend \&\&minuend)
 \begin{DoxyCompactList}\small\item\em Element-\/wise subtraction of two tensor expressions. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Expression Multiplicand, Expression Multiplier$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_a5590027235472667a74b3a2740101b30}{operator\texorpdfstring{$\ast$}{*}}} (Multiplicand \&\&multiplicand, Multiplier \&\&multiplier)
-\begin{DoxyCompactList}\small\item\em Element-\/wise multiplication of two tensor expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Element-\/wise multiplication of two tensor expressions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Base, Expression Exponent$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_a22f701767e5ab9dd10789ae8933d25a6}{operator\texorpdfstring{$^\wedge$}{\string^}}} (Base \&\&base, Exponent \&\&exponent)
+\begin{DoxyCompactList}\small\item\em Element-\/wise exponentiation of two tensor expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -145,3 +149,40 @@ Constructs a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1_1B
 \begin{DoxyReturn}{Returns}
 A binary expression representing element-\/wise subtraction. 
 \end{DoxyReturn}
+\Hypertarget{namespacetannic_1_1operation_a22f701767e5ab9dd10789ae8933d25a6}\label{namespacetannic_1_1operation_a22f701767e5ab9dd10789ae8933d25a6} 
+\index{tannic::operation@{tannic::operation}!operator\texorpdfstring{$^\wedge$}{\string^}@{operator\texorpdfstring{$^\wedge$}{\string^}}}
+\index{operator\texorpdfstring{$^\wedge$}{\string^}@{operator\texorpdfstring{$^\wedge$}{\string^}}!tannic::operation@{tannic::operation}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$^\wedge$}{\string^}()}{operator\string^()}}
+{\footnotesize\ttfamily template$<$Expression Base, Expression Exponent$>$ \\
+constexpr auto tannic\+::operation\+::operator\texorpdfstring{$^\wedge$}{\string^} (\begin{DoxyParamCaption}\item[{Base \&\&}]{base,  }\item[{Exponent \&\&}]{exponent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Element-\/wise exponentiation of two tensor expressions. 
+
+Constructs a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1_1Binary}{Binary}\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Exponentiation}{Exponentiation}, Base, Exponent\texorpdfstring{$>$}{>}} expression. Supports broadcasting across dimensions and type promotion between the base and exponent types.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Base} & Left-\/hand-\/side operand (expression). \\
+\hline
+{\em Exponent} & Right-\/hand-\/side operand (expression). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em base} & The base tensor expression. \\
+\hline
+{\em exponent} & The exponent tensor expression. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A binary expression representing element-\/wise exponentiation.
+\end{DoxyReturn}
+\hypertarget{namespacetannic_1_1operation_autotoc_md31}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1operation_autotoc_md31}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ result\ =\ A\ \string^\ B;}
+
+\end{DoxyCode}
+ 

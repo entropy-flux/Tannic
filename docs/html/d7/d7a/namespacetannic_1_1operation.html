@@ -106,6 +106,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html">Binary</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for a binary tensor operation.  <a href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d23/structtannic_1_1operation_1_1Exponentiation.html">Exponentiation</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html" title="Expression template for a binary tensor operation.">Binary</a> element-wise exponentiation of two tensor expressions.  <a href="../../db/d23/structtannic_1_1operation_1_1Exponentiation.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dcf/structtannic_1_1operation_1_1Multiplication.html">Multiplication</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html" title="Expression template for a binary tensor operation.">Binary</a> element-wise multiplication of two tensor expressions.  <a href="../../d0/dcf/structtannic_1_1operation_1_1Multiplication.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,6 +140,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a5590027235472667a74b3a2740101b30"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#a5590027235472667a74b3a2740101b30">operator*</a> (Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</td></tr>
 <tr class="memdesc:a5590027235472667a74b3a2740101b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Element-wise multiplication of two tensor expressions.  <br /></td></tr>
 <tr class="separator:a5590027235472667a74b3a2740101b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22f701767e5ab9dd10789ae8933d25a6" id="r_a22f701767e5ab9dd10789ae8933d25a6"><td class="memTemplParams" colspan="2">template&lt;Expression Base, Expression Exponent&gt; </td></tr>
+<tr class="memitem:a22f701767e5ab9dd10789ae8933d25a6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#a22f701767e5ab9dd10789ae8933d25a6">operator^</a> (Base &amp;&amp;base, Exponent &amp;&amp;exponent)</td></tr>
+<tr class="memdesc:a22f701767e5ab9dd10789ae8933d25a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Element-wise exponentiation of two tensor expressions.  <br /></td></tr>
+<tr class="separator:a22f701767e5ab9dd10789ae8933d25a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a5590027235472667a74b3a2740101b30" name="a5590027235472667a74b3a2740101b30"></a>
@@ -349,6 +356,65 @@ template&lt;Expression Subtrahend, Expression Minuend&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A binary expression representing element-wise subtraction. </dd></dl>
 
+</div>
+</div>
+<a id="a22f701767e5ab9dd10789ae8933d25a6" name="a22f701767e5ab9dd10789ae8933d25a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22f701767e5ab9dd10789ae8933d25a6">&#9670;&#160;</a></span>operator^()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression Base, Expression Exponent&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::operation::operator^ </td>
+          <td>(</td>
+          <td class="paramtype">Base &amp;&amp;&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Exponent &amp;&amp;&#160;</td>
+          <td class="paramname"><em>exponent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Element-wise exponentiation of two tensor expressions. </p>
+<p>Constructs a lazily evaluated <code><a class="el" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html" title="Expression template for a binary tensor operation.">Binary</a>&lt;<a class="el" href="../../db/d23/structtannic_1_1operation_1_1Exponentiation.html" title="Binary element-wise exponentiation of two tensor expressions.">Exponentiation</a>, Base, Exponent&gt;</code> expression. Supports broadcasting across dimensions and type promotion between the base and exponent types.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Base</td><td>Left-hand-side operand (expression). </td></tr>
+    <tr><td class="paramname">Exponent</td><td>Right-hand-side operand (expression). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">base</td><td>The base tensor expression. </td></tr>
+    <tr><td class="paramname">exponent</td><td>The exponent tensor expression. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A binary expression representing element-wise exponentiation.</dd></dl>
+<h4><a class="anchor" id="autotoc_md31"></a>
+Example:</h4>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> result = A ^ B;</div>
+</div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

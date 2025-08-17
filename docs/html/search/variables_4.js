@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['operand_0',['operand',['../d7/d26/classtannic_1_1operation_1_1Unary.html#a00bf166cc4f53a3a87107c5b07d22743',1,'tannic::operation::Unary::operand'],['../d7/d6b/classtannic_1_1operation_1_1Binary.html#a0a864c0103c2a1c28564f1cec4e6aad6',1,'tannic::operation::Binary::operand'],['../da/dc5/classtannic_1_1expression_1_1Reduction.html#af8fda61f8b519adfa6ad09670f39d570',1,'tannic::expression::Reduction::operand']]],
-  ['operands_1',['operands',['../d9/d4d/classtannic_1_1transformation_1_1Transformation.html#a8c594c8947003e7ef016e8d4e6003a49',1,'tannic::transformation::Transformation']]],
-  ['operation_2',['operation',['../d7/d26/classtannic_1_1operation_1_1Unary.html#ab92fce23dc41990144a8013faf71ff5b',1,'tannic::operation::Unary::operation'],['../d7/d6b/classtannic_1_1operation_1_1Binary.html#a92f111ea2bc85a3c4496a7e0f38abef7',1,'tannic::operation::Binary::operation'],['../d9/d4d/classtannic_1_1transformation_1_1Transformation.html#a09f348f1360ddb16babeb5c36986ce7f',1,'tannic::transformation::Transformation::operation']]]
+  ['id_0',['id',['../df/d85/structtannic_1_1Node.html#aa5a6d8ef7392c47b27d32578a329b69d',1,'tannic::Node']]],
+  ['imaginary_1',['imaginary',['../d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html#a0367d23806cd0e74d0c40a39a7834364',1,'tannic::expression::Complexification&lt; Coordinates, Real, Imaginary &gt;']]],
+  ['is_5fassignable_2',['is_assignable',['../d1/d96/structtannic_1_1Trait.html#af2ea5857d5ac63c84cd0849a8a11cfa6',1,'tannic::Trait']]],
+  ['is_5fcomparable_3',['is_comparable',['../d1/d96/structtannic_1_1Trait.html#acfa95553b70aa62a6c29d4a59bf504c0',1,'tannic::Trait']]]
 ];

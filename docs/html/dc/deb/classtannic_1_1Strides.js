@@ -15,6 +15,7 @@ var classtannic_1_1Strides =
     [ "cend", "dc/deb/classtannic_1_1Strides.html#a11e2dc7323bb92b3ba8b19d9edd1eabc", null ],
     [ "end", "dc/deb/classtannic_1_1Strides.html#af52de355100616be17c46fb213a814dc", null ],
     [ "end", "dc/deb/classtannic_1_1Strides.html#a3106697e9953c618f56ca6eef9e6e955", null ],
+    [ "expand", "dc/deb/classtannic_1_1Strides.html#aa19c88689f47e239b7dfb8a82c134e96", null ],
     [ "front", "dc/deb/classtannic_1_1Strides.html#a6c6000fcf947fde44193535e9edff445", null ],
     [ "operator[]", "dc/deb/classtannic_1_1Strides.html#a729f3f25f2eb716b76bdea706e2bd9d3", null ],
     [ "operator[]", "dc/deb/classtannic_1_1Strides.html#a18797dc00a0dadb4a0600ec408fd4409", null ],

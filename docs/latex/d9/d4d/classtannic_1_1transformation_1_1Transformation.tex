@@ -21,15 +21,15 @@ Collaboration diagram for tannic\+::transformation\+::Transformation\texorpdfstr
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-constexpr \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a9204f338e3bdfd0d018e77b363e73d18}{Transformation}} (Operation \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}, typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference... \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}})
+\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{constexpr}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a9204f338e3bdfd0d018e77b363e73d18}{Transformation}} (Operation \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}, \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}} $>$\+::\+Reference... \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}})
 \begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classtannic_1_1transformation_1_1Transformation}{Transformation} expression. \end{DoxyCompactList}\item 
-constexpr type \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a2bcf28b6dd2d820780960d645d9559d6}{dtype}} () const
+\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{constexpr}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{type}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a2bcf28b6dd2d820780960d645d9559d6}{dtype}} () \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{const}}
 \begin{DoxyCompactList}\small\item\em Gets the result data type after promotion. \end{DoxyCompactList}\item 
-constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_af98b88d10c88e966c6f3d25a2498939a}{shape}} () const
+\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{const}} \& \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_af98b88d10c88e966c6f3d25a2498939a}{shape}} () \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{const}}
 \begin{DoxyCompactList}\small\item\em Gets the broadcasted output shape. \end{DoxyCompactList}\item 
-constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a34ff066350d57fd9f759b2395b949d40}{strides}} () const
+\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{const}} \& \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a34ff066350d57fd9f759b2395b949d40}{strides}} () \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{const}}
 \begin{DoxyCompactList}\small\item\em Gets the computed strides for the result. \end{DoxyCompactList}\item 
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_ad473aa1af5b9d6c44ffab2b42baa7566}{offset}} () const
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_ad473aa1af5b9d6c44ffab2b42baa7566}{offset}} () \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{const}}
 \begin{DoxyCompactList}\small\item\em Gets the data offset (always 0 for new tensors) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{forward}} () const
 \begin{DoxyCompactList}\small\item\em Evaluates the transformation. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -38,12 +38,12 @@ std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1transformation_1_1Transfor
 \item 
 Operation \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}{operation}}
 \item 
-std\+::tuple$<$ typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}}
+std\+::tuple$<$ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}} $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_a8c594c8947003e7ef016e8d4e6003a49}{operands}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\subsubsection*{template$<$class Operation, Expression ... Operands$>$\newline
+\subsubsection*{template$<$\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{class}} Operation, Expression ... Operands$>$\newline
 class tannic\+::transformation\+::\+Transformation$<$ Operation, Operands $>$}
 Expression template for tensor transformations. 
 
@@ -63,8 +63,8 @@ Represents a lazily evaluated transformation operation between multiple tensors.
 \index{tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}!Transformation@{Transformation}}
 \index{Transformation@{Transformation}!tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}}
 \doxysubsubsection{\texorpdfstring{Transformation()}{Transformation()}}
-{\footnotesize\ttfamily template$<$class Operation , Expression ... Operands$>$ \\
-constexpr \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, Operands $>$\+::\+Transformation (\begin{DoxyParamCaption}\item[{Operation}]{operation,  }\item[{typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference...}]{operands }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{class}} Operation , Expression ... Operands$>$ \\
+\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{constexpr}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}} $>$\+::\+Transformation (\begin{DoxyParamCaption}\item[{Operation}]{operation,  }\item[{\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}} $>$\+::\+Reference...}]{operands }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -84,8 +84,8 @@ Constructs a \doxylink{classtannic_1_1transformation_1_1Transformation}{Transfor
 \index{tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}!dtype@{dtype}}
 \index{dtype@{dtype}!tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}}
 \doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
-{\footnotesize\ttfamily template$<$class Operation , Expression ... Operands$>$ \\
-constexpr type \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, Operands $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{class}} Operation , Expression ... Operands$>$ \\
+\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{constexpr}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{type}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -112,8 +112,8 @@ New tensor containing the transformed result
 \index{tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}!offset@{offset}}
 \index{offset@{offset}!tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}}
 \doxysubsubsection{\texorpdfstring{offset()}{offset()}}
-{\footnotesize\ttfamily template$<$class Operation , Expression ... Operands$>$ \\
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, Operands $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{class}} Operation , Expression ... Operands$>$ \\
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -126,8 +126,8 @@ Always returns 0
 \index{tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
-{\footnotesize\ttfamily template$<$class Operation , Expression ... Operands$>$ \\
-constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, Operands $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{class}} Operation , Expression ... Operands$>$ \\
+\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{const}}  \& \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -140,8 +140,8 @@ Gets the broadcasted output shape.
 \index{tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
-{\footnotesize\ttfamily template$<$class Operation , Expression ... Operands$>$ \\
-constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, Operands $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{class}} Operation , Expression ... Operands$>$ \\
+\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{const}}  \& \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -157,15 +157,15 @@ Gets the computed strides for the result.
 \index{tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}!operands@{operands}}
 \index{operands@{operands}!tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}}
 \doxysubsubsection{\texorpdfstring{operands}{operands}}
-{\footnotesize\ttfamily template$<$class Operation , Expression ... Operands$>$ \\
-std\+::tuple$<$typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$Operands$>$\+::\+Reference...$>$ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, Operands $>$\+::operands}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{class}} Operation , Expression ... Operands$>$ \\
+std\+::tuple$<$\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}}$>$\+::\+Reference...$>$ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}} $>$\+::operands}
 
 \Hypertarget{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f}\label{classtannic_1_1transformation_1_1Transformation_a09f348f1360ddb16babeb5c36986ce7f} 
 \index{tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}!operation@{operation}}
 \index{operation@{operation}!tannic::transformation::Transformation$<$ Operation, Operands $>$@{tannic::transformation::Transformation$<$ Operation, Operands $>$}}
 \doxysubsubsection{\texorpdfstring{operation}{operation}}
-{\footnotesize\ttfamily template$<$class Operation , Expression ... Operands$>$ \\
-Operation \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, Operands $>$\+::operation}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{class}} Operation , Expression ... Operands$>$ \\
+Operation \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{tannic\+::transformation\+::\+Transformation}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation_aa7ce3925268c4b20658c6c9c926d8fab}{Operands}} $>$\+::operation}
 
 
 

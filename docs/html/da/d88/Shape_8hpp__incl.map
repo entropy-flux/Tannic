@@ -14,7 +14,7 @@
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="340,28,439,71,436,76,338,33"/>
 <area shape="rect" id="Node000008" href="$d3/d84/Concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="537,152,648,177"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="406,20,479,25,555,36,619,52,643,63,660,77,667,96,660,115,644,132,626,146,622,142,641,128,655,112,661,96,656,80,640,68,617,57,554,41,479,31,406,25"/>
-<area shape="rect" id="Node000015" href="$d3/da7/Indexing_8hpp.html" title=" " alt="" coords="539,79,646,104"/>
+<area shape="rect" id="Node000015" href="$d3/da7/Indexing_8hpp.html" title="Utilities for index normalization and slicing ranges in the Tannic Tensor Library." alt="" coords="539,79,646,104"/>
 <area shape="poly" id="edge15_Node000001_Node000015" title=" " alt="" coords="358,28,535,73,534,78,357,33"/>
 <area shape="rect" id="Node000009" title=" " alt="" coords="401,225,481,251"/>
 <area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="569,180,479,222,477,217,567,175"/>

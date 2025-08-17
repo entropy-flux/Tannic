@@ -153,6 +153,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a729f3f25f2eb716b76bdea706e2bd9d3"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dc/deb/classtannic_1_1Strides.html#a729f3f25f2eb716b76bdea706e2bd9d3">operator[]</a> (Index index)</td></tr>
 <tr class="memdesc:a729f3f25f2eb716b76bdea706e2bd9d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accesses a stride value by index (non-const).  <br /></td></tr>
 <tr class="separator:a729f3f25f2eb716b76bdea706e2bd9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa19c88689f47e239b7dfb8a82c134e96" id="r_aa19c88689f47e239b7dfb8a82c134e96"><td class="memItemLeft" align="right" valign="top">constexpr void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/deb/classtannic_1_1Strides.html#aa19c88689f47e239b7dfb8a82c134e96">expand</a> (<a class="el" href="../../dc/deb/classtannic_1_1Strides.html#af23666c3ab8d1191d3cdbd2600529128">size_type</a> size)</td></tr>
+<tr class="memdesc:aa19c88689f47e239b7dfb8a82c134e96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expands the strides's last dimension with a given size.  <br /></td></tr>
+<tr class="separator:aa19c88689f47e239b7dfb8a82c134e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Iterators</div></td></tr>
 <tr><td colspan="2"><div class="groupText"><p><br  />
  </p>
@@ -180,7 +183,7 @@ Static Public Attributes</h2></td></tr>
 <p><code><a class="el" href="../../dc/deb/classtannic_1_1Strides.html" title="Represents the memory strides associated with a tensor shape.">Strides</a></code> describes how many elements must be skipped in memory to move between elements along each tensor dimension. It is a key part of defining how multidimensional data is stored and accessed in memory.</p>
 <p>A <code><a class="el" href="../../dc/deb/classtannic_1_1Strides.html" title="Represents the memory strides associated with a tensor shape.">Strides</a></code> object can be constructed manually (via variadic arguments or iterators), or automatically from a <code><a class="el" href="../../db/da7/classtannic_1_1Shape.html" title="Represents the shape (dimensions) of an tensor-like expression.">Shape</a></code> (default row-major/contiguous layout).</p>
 <p>Maximum rank is limited to <code><a class="el" href="../../dc/deb/classtannic_1_1Strides.html#a11b903b9305e1258a3c5ddd3e3597e9f">Strides::limit</a> = 8</code> for constexpr compatibility and static layout. This limit may be removed in C++26 when std::vector become constexpr friendly.</p>
-<h4><a class="anchor" id="autotoc_md11"></a>
+<h4><a class="anchor" id="autotoc_md44"></a>
 Example (Contiguous Layout):</h4>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a>;</div>
 <div class="line"> </div>
@@ -191,7 +194,7 @@ Example (Contiguous Layout):</h4>
 <div class="ttc" id="aclasstannic_1_1Shape_html"><div class="ttname"><a href="../../db/da7/classtannic_1_1Shape.html">tannic::Shape</a></div><div class="ttdoc">Represents the shape (dimensions) of an tensor-like expression.</div><div class="ttdef"><b>Definition</b> Shape.hpp:78</div></div>
 <div class="ttc" id="aclasstannic_1_1Strides_html"><div class="ttname"><a href="../../dc/deb/classtannic_1_1Strides.html">tannic::Strides</a></div><div class="ttdoc">Represents the memory strides associated with a tensor shape.</div><div class="ttdef"><b>Definition</b> Strides.hpp:86</div></div>
 <div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition</b> Buffer.hpp:43</div></div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md45"></a>
 Example (Custom Strides):</h4>
 <div class="fragment"><div class="line"><a class="code hl_class" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> strides(6, 2, 1); <span class="comment">// Custom strides for a specific memory layout</span></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Typedef Documentation</h2>
@@ -295,7 +298,7 @@ template&lt;Integral... Sizes&gt; </div>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Asserts if the number of dimensions (rank) exceeds <code>limit</code>.</dd></dl>
-<h4><a class="anchor" id="autotoc_md13"></a>
+<h4><a class="anchor" id="autotoc_md46"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">constexpr</span> <a class="code hl_class" href="../../dc/deb/classtannic_1_1Strides.html">tannic::Strides</a> s(6, 2, 1);</div>
 <div class="line">std::cout &lt;&lt; s;  <span class="comment">// Output: Strides(6, 2, 1)</span></div>
@@ -353,7 +356,7 @@ template&lt;Iterator Iterator&gt; </div>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>Asserts if the number of dimensions exceeds <code>limit</code>.</dd></dl>
-<h4><a class="anchor" id="autotoc_md14"></a>
+<h4><a class="anchor" id="autotoc_md47"></a>
 Example:</h4>
 <div class="fragment"><div class="line">std::vector&lt;std::size_t&gt; values = {12, 4, 1};</div>
 <div class="line"><a class="code hl_class" href="../../dc/deb/classtannic_1_1Strides.html">tannic::Strides</a> s(values.begin(), values.end());</div>
@@ -391,7 +394,7 @@ Example:</h4>
   </table>
   </dd>
 </dl>
-<h4><a class="anchor" id="autotoc_md15"></a>
+<h4><a class="anchor" id="autotoc_md48"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">constexpr</span> <a class="code hl_class" href="../../db/da7/classtannic_1_1Shape.html">tannic::Shape</a> shape(2, 3, 4);</div>
 <div class="line"><span class="keyword">constexpr</span> <a class="code hl_class" href="../../dc/deb/classtannic_1_1Strides.html">tannic::Strides</a> s(shape);</div>
@@ -631,6 +634,40 @@ Example:</h4>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa19c88689f47e239b7dfb8a82c134e96" name="aa19c88689f47e239b7dfb8a82c134e96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa19c88689f47e239b7dfb8a82c134e96">&#9670;&#160;</a></span>expand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr void tannic::Strides::expand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dc/deb/classtannic_1_1Strides.html#af23666c3ab8d1191d3cdbd2600529128">size_type</a>&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Expands the strides's last dimension with a given size. </p>
+<p>Increments the rank by one. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>The size of the dimension that will be added to the back of the strides. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

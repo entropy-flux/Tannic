@@ -12,7 +12,7 @@
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="292,33,242,49,189,73,139,108,118,129,101,153,97,163,98,173,109,190,130,205,155,218,153,223,127,210,105,194,93,174,92,163,96,151,114,126,136,104,186,69,241,44,290,28"/>
 <area shape="rect" id="Node000014" href="$d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="299,79,389,104"/>
 <area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="347,31,347,65,341,65,341,31"/>
-<area shape="rect" id="Node000018" href="$d3/da7/Indexing_8hpp.html" title=" " alt="" coords="645,152,752,177"/>
+<area shape="rect" id="Node000018" href="$d3/da7/Indexing_8hpp.html" title="Utilities for index normalization and slicing ranges in the Tannic Tensor Library." alt="" coords="645,152,752,177"/>
 <area shape="poly" id="edge24_Node000001_Node000018" title=" " alt="" coords="357,29,398,65,425,85,454,102,532,126,633,148,631,153,531,131,452,106,422,89,395,69,354,33"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="12,299,92,324"/>
 <area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="180,253,90,295,88,290,177,248"/>

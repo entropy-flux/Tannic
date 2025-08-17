@@ -34,12 +34,14 @@
  * @file Reductions.hpp
  * @author Eric Cardozo
  * @date 2025
- * @brief Defines reduction operations for tensor expressions.
+ * @brief Defines reduction operations for tensor expressions. 
  *
  * This header provides reduction operations for tensor-like objects,
  * implemented as expression templates. Currently supports:
- * - argmax: Index of maximum value along axis
- * - argmin: Index of minimum value along axis
+ * - argmax: Index of maximum value along axis optionally keeping the original rank. 
+ * - argmin: Index of minimum value along axis optionally keeping the original rank. 
+ * - sum:  Sum of the values along axis optionally keeping the original rank. 
+ * - mean: Mean of the values along axis optionally keeping the original rank. 
  *
  * All reductions are lazy-evaluated and maintain proper shape/dtype transformations.
  * Part of the Tannic Tensor Library.
@@ -58,70 +60,46 @@
 namespace tannic { 
 
 namespace expression {
+ 
 
 /**
- * @brief Expression template for reduction operations.
+ * @brief Lazy reduction expression.
  *
- * Represents a lazily evaluated reduction operation applied to a tensor expression.
- * Handles proper shape, stride and dtype transformations for the reduced result.
+ * Represents reductions like `sum`, `max`, or `mean` that collapse tensors along an axis.
+ * Output shape/dtype are determined by the `Reducer`'s rules.
  *
- * @tparam Reducer Reduction operation type (must implement reduce() and forward())
- * @tparam Operand Input expression type satisfying the Expression concept
+ * @tparam Reducer Policy defining the reduction (e.g., `Argmax`).
+ * @tparam Operand Input satisfying the `Expression` concept..
  */
 template<class Reducer, Expression Operand>
 class Reduction {
 public:
     Reducer reducer;
     typename Trait<Operand>::Reference operand;
-
-    /**
-     * @brief Constructs a Reduction expression
-     * @param reducer Reduction operation functor
-     * @param operand Input tensor expression
-     */
+ 
     constexpr Reduction(Reducer reducer, typename Trait<Operand>::Reference operand)
     :   reducer(reducer)
     ,   operand(operand)
     ,   dtype_(reducer.reduce(operand.dtype()))
     ,   shape_(reducer.reduce(operand.shape()))
     ,   strides_(shape_) {}
-
-    /**
-     * @brief Returns the data type of the reduced result
-     * @return Transformed dtype after reduction
-     */
+ 
     constexpr type dtype() const {
         return dtype_;
     }
-
-    /**
-     * @brief Returns the shape of the reduced result
-     * @return Reduced shape after applying the reduction
-     */
+ 
     constexpr Shape const& shape() const {
         return shape_;
-    }
+    } 
 
-    /**
-     * @brief Returns the strides of the reduced result
-     * @return Adjusted strides for the reduced shape
-     */
     constexpr Strides const& strides() const {
         return strides_;
     }
-
-    /**
-     * @brief Returns the offset of the result tensor
-     * @return Always 0 since reductions create new tensors
-     */
+ 
     std::ptrdiff_t offset() const {
         return 0;
     }
-
-    /**
-     * @brief Evaluates the reduction expression
-     * @return New Tensor containing the reduced result
-     */
+ 
     Tensor forward() const {   
         Tensor source = operand.forward();
         Tensor result(dtype(), shape(), strides(), offset());          
@@ -135,72 +113,71 @@ private:
     Strides strides_;
 };
 
+
 /**
- * @brief Reduction argmax operation.
+ * @brief Finds the **indices of maximum values** along an axis.
  *
- * Finds the indices of maximum values along the specified axis.
- * Reduces input dtype to int64 and removes the reduced dimension.
+ * Output dtype is always `int64`. The reduced axis is removed by default (`keepdim=false`).
+ *
+ * #### Example:
+ * ```cpp
+ * Tensor X = {{3, 1, 4}, 
+ *             {1, 5, 9}};  // shape(2, 3)
+ *
+ * Tensor Y = argmax(X, 0);  // Reduce axis 0 (rows)
+ * std::cout << Y << std::endl;
+ * // Y = [0, 1, 1]          // Indexes of max values per column
+ *
+ * Tensor Z = argmax(X, 1, /*keepdim=* /true);  // Reduce axis 1 (columns), keep dims
+ * std::cout << Z << std::endl;
+ * // Z = [[2],
+ * //      [2]]              // Indexes of max values per row
+ * ```
  */
 struct Argmax {   
-    int axis;  ///< Axis along which to find maxima 
-    
-    /**
-     * @brief Determines output dtype for argmax
-     * @param dtype Input dtype
-     * @return Always returns int64 for indices
-     */
+    int axis; 
+    bool keepdim;   
+
     constexpr type reduce(type dtype) const {
         return int64;
-    }
+    } 
 
-    /**
-     * @brief Computes reduced shape for argmax
-     * @param shape Input shape
-     * @return Shape with reduced dimension removed
-     * @throws assert if input has rank < 1
-     */
     constexpr Shape reduce(Shape const& shape) const {
-        assert(shape.rank() >= 1); 
-        Shape reduced;
-        for (size_t dimension = 0; dimension < shape.rank(); ++dimension) {
-            if (dimension != static_cast<size_t>(axis))
-                reduced.expand(shape[dimension]);
+        assert(shape.rank() >= 1);
+        Shape out;
+        for (size_t dim = 0; dim < shape.rank(); ++dim) {
+            if (dim != static_cast<size_t>(axis)) out.expand(shape[dim]);
+            else if (keepdim) out.expand(1);
         }
-        return reduced;
+        return out;
     }
- 
-    /**
-     * @brief Performs the argmax operation
-     * @param input Source tensor
-     * @param output Result tensor containing indices
-     */
+  
     void forward(Tensor const& input, Tensor& output) const;
-};
+}; 
 
 /**
- * @brief Reduction argmin operation
+ * @brief Finds the **indexes of minimum values** along an axis.
  *
- * Finds the indices of minimum values along the specified axis.
- * Reduces input dtype to int64 and removes the reduced dimension.
+ * Identical to `Argmax` but for minima. Output dtype is `int64`.
+ * Use `keepdim=true` to maintain shape for broadcasting.
+ *
+ * #### Example:
+ * ```cpp
+ * Tensor X = {{3, 1, 4}, 
+ *             {1, 5, 9}};
+ *
+ * Tensor Y = argmin(X, 1);
+ * // Y = [1, 0]  // Min indexes per row
+ * ```
  */
 struct Argmin {   
-    int axis;  ///< Axis along which to find minima 
-
-    /**
-     * @brief Determines output dtype for argmin
-     * @param dtype Input dtype
-     * @return Always returns int64 for indices
-     */
+    int axis;    
+    bool keepdim;  
+ 
     constexpr type reduce(type dtype) const {
         return int64;
     }
-
-    /**
-     * @brief Computes reduced shape for argmin
-     * @param shape Input shape
-     * @return Shape with reduced dimension removed
-     * @throws assert if input has rank < 1
-     */
+ 
     constexpr Shape reduce(Shape const& shape) const {
         assert(shape.rank() >= 1); 
         Shape reduced; 
@@ -210,28 +187,35 @@ struct Argmin {
         }
         return reduced;
     } 
-
-    /**
-     * @brief Performs the argmin operation
-     * @param input Source tensor
-     * @param output Result tensor containing indices
-     */
+ 
     void forward(Tensor const&, Tensor&) const; 
 };
 
-
+ 
 /**
- * @brief Reduction sum operation.
+ * @brief Sums tensor values along an axis.
  *
- * Computes the sum of elements along the specified axis.
- * Maintains input dtype but removes the reduced dimension.
+ * Preserves input dtype. Use `keepdim=true` to maintain shape for broadcasting.
+ *
+ * #### Example (NumPy/PyTorch behavior):
+ * ```cpp
+ * Tensor X = {{1, 2}, 
+ *             {3, 4}};  // shape(2, 2)
+ *
+ * Tensor Y = sum(X, 0);  // Sum over rows
+ * // Y = [4, 6]          // 1+3=4, 2+4=6
+ *
+ * Tensor Z = sum(X, 1, /*keepdim=* /true);
+ * // Z = [[3],           // 1+2=3
+ * //      [7]]           // 3+4=7
+ * ```
  */
 struct Argsum {
-    int axis;
-    bool keepdim = false;  ///< Whether to keep the reduced dimension
+    int axis;       
+    bool keepdim;  
     
     constexpr type reduce(type dtype) const {
-        return dtype;  // Sum preserves dtype
+        return dtype;   
     }
 
     constexpr Shape reduce(Shape const& shape) const {
@@ -249,12 +233,21 @@ struct Argsum {
     void forward(Tensor const& input, Tensor& output) const;
 };
 
-
+ 
 /**
- * @brief Reduction mean operation.
+ * @brief Computes the **mean** along an axis.
  *
- * Computes the mean of elements along the specified axis.
- * Converts integer inputs to float and removes the reduced dimension.
+ * Requires floating-point input (`float32`/`float64`).  
+ * Use `keepdim=true` to maintain shape for broadcasting.
+ *
+ * #### Example:
+ * ```cpp
+ * Tensor X = {{1.0, 2.0}, 
+ *             {3.0, 4.0}};
+ *
+ * Tensor Y = mean(X, 0);
+ * // Y = [2.0, 3.0]  // (1+3)/2=2.0, (2+4)/2=3.0
+ * ```
  */
 struct Argmean {
     int axis;
@@ -280,37 +273,76 @@ struct Argmean {
     void forward(Tensor const& input, Tensor& output) const;
 };
 
-
+ 
 /**
- * @brief Creates an argmax reduction expression
- * @tparam Source Input expression type
- * @param source Input tensor expression
- * @param axis Axis along which to find maxima (default: last dimension)
- * @return Reduction expression for argmax
- * @note Currently only supports axis=-1 (last dimension)
+ * @brief Creates an Argmax reduction.
+ * @param axis Axis to reduce (`-1` for last axis). 
+ * @param keepdim If `true`, keeps reduced axis as size 1. 
+ *
+ * #### Example:
+ * ```cpp
+ * Tensor X = {{3, 1, 4}, 
+ *             {1, 5, 9}};  // shape(2, 3)
+ *
+ * Tensor Y = argmax(X, 0);  // Reduce axis 0 (rows)
+ * std::cout << Y << std::endl;
+ * // Y = [0, 1, 1]          // Indexes of max values per column
+ *
+ * Tensor Z = argmax(X, 1, /*keepdim=* /true);  // Reduce axis 1 (columns), keep dims
+ * std::cout << Z << std::endl;
+ * // Z = [[2],
+ * //      [2]]              // Indexes of max values per row
+ * ```
  */
 template<Expression Source>
-constexpr auto argmax(Source&& source, int axis = -1) {  
+constexpr auto argmax(Source&& source, int axis = -1, bool keepdim = false) {  
     return Reduction<Argmax, Source>{
-        {indexing::normalize(axis, source.shape().rank())}, std::forward<Source>(source) 
+        {indexing::normalize(axis, source.shape().rank()), keepdim}, std::forward<Source>(source) 
     };
 }
+ 
 
 /**
- * @brief Creates an argmin reduction expression
- * @tparam Source Input expression type
- * @param source Input tensor expression
- * @param axis Axis along which to find minima (default: last dimension)
- * @return Reduction expression for argmin
- * @note Currently only supports axis=-1 (last dimension)
+ * @brief Creates an Argmin reduction.
+ * @param axis Axis to reduce (`-1` for last axis). 
+ * @param keepdim If `true`, keeps reduced axis as size 1. 
+ *
+ * #### Example:
+ * ```cpp
+ * Tensor X = {{3, 1, 4}, 
+ *             {1, 5, 9}};
+ *
+ * Tensor Y = argmin(X, 1);
+ * // Y = [1, 0]  // Min indexes per row
+ * ```
  */
 template<Expression Source>
-constexpr auto argmin(Source&& source, int axis = -1) {  
+constexpr auto argmin(Source&& source, int axis = -1, bool keepdim = false) {  
     return Reduction<Argmin, Source>{ 
-        {indexing::normalize(axis, source.shape().rank())}, std::forward<Source>(source) 
+        {indexing::normalize(axis, source.shape().rank()), keepdim}, std::forward<Source>(source) 
     };
 } 
 
+/**
+ * @brief Creates a sum reduction.
+ * @param axis Axis to reduce (`-1` for last axis).
+ * @param keepdim If `true`, keeps reduced axis as size 1.
+ *
+ * #### Example:
+ * ```cpp
+ * Tensor X = {{1, 2, 3},
+ *             {4, 5, 6}};  // shape(2, 3)
+ *
+ * Tensor Y = sum(X, 0);  // Reduce axis 0 (rows)
+ * std::cout << Y << std::endl;
+ * // Y = [5, 7, 9]       // Sum of values per column
+ *
+ * Tensor Z = sum(X, 1, /*keepdim=* /true);  // Reduce axis 1 (columns), keep dims
+ * std::cout << Z << std::endl;
+ * // Z = [[6],
+ * //      [15]]           // Sum of values per row
+ * ```
+ */
 template<Expression Source>
 constexpr auto sum(Source&& source, int axis = -1, bool keepdim = false) {
     return Reduction<Argsum, Source>{
@@ -319,6 +351,26 @@ constexpr auto sum(Source&& source, int axis = -1, bool keepdim = false) {
     };
 }
 
+/**
+ * @brief Creates a mean reduction.
+ * @param axis Axis to reduce (`-1` for last axis).
+ * @param keepdim If `true`, keeps reduced axis as size 1.
+ *
+ * #### Example:
+ * ```cpp
+ * Tensor X = {{1.0, 2.0, 3.0},
+ *             {4.0, 5.0, 6.0}};  // shape(2, 3)
+ *
+ * Tensor Y = mean(X, 0);  // Reduce axis 0 (rows)
+ * std::cout << Y << std::endl;
+ * // Y = [2.5, 3.5, 4.5]  // Mean of values per column
+ *
+ * Tensor Z = mean(X, 1, /*keepdim=* /true);  // Reduce axis 1 (columns), keep dims
+ * std::cout << Z << std::endl;
+ * // Z = [[2.0],
+ * //      [5.0]]          // Mean of values per row
+ * ```
+ */
 template<Expression Source>
 constexpr auto mean(Source&& source, int axis = -1, bool keepdim = false) {
     return Reduction<Argmean, Source>{
@@ -326,7 +378,6 @@ constexpr auto mean(Source&& source, int axis = -1, bool keepdim = false) {
         std::forward<Source>(source)
     };
 }
-
  
 } // namespace expression
  

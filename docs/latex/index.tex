@@ -63,35 +63,39 @@ Equivalent Py\+Torch code for comparison\+:
 \DoxyCodeLine{print(Y)\ }
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md28}{}\doxysection{\texorpdfstring{Status}{Status}}\label{index_autotoc_md28}
+\hypertarget{index_autotoc_md61}{}\doxysection{\texorpdfstring{Status}{Status}}\label{index_autotoc_md61}
 Note\+: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API—used to extend the library—is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.
 
-While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental-\/ too significant to ignore. At some point, it may be a hard requirement for Tannic.\hypertarget{index_autotoc_md29}{}\doxysection{\texorpdfstring{Features}{Features}}\label{index_autotoc_md29}
+While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental-\/ too significant to ignore. At some point, it may be requirement for Tannic.\hypertarget{index_autotoc_md62}{}\doxysection{\texorpdfstring{Features}{Features}}\label{index_autotoc_md62}
 
 \begin{DoxyItemize}
-\item Dynamic typing\+: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization.
+\item Dynamic typing\+: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization, but that also support compile time specifications thanks to constexpr.
+\item Constexpr templated expressions\+: This allows custom kernel fusion strategies using SFINAE and compile time assertions and shape calculations.
 \item Broadcasting\+: Num\+Py‑style automatic shape expansion in arithmetic operations, enabling intuitive and efficient tensor computations across dimensions.
 \item Advanced indexing and slicing\+: Intuitive multi-\/dimensional tensor access and manipulation.
 \item Host–\+Device execution model\+: Unified support for CPU and CUDA-\/enabled GPU computation within the same codebase. While the device backend is currently developed in CUDA, the design is not tied to it and can support other backends in the future.
 \item Minimal core operators\+: Only essential built-\/in operations to keep the library lightweight and extensible.
-\end{DoxyItemize}\hypertarget{index_autotoc_md30}{}\doxysection{\texorpdfstring{What is comming...}{What is comming...}}\label{index_autotoc_md30}
+\end{DoxyItemize}\hypertarget{index_autotoc_md63}{}\doxysection{\texorpdfstring{What is comming...}{What is comming...}}\label{index_autotoc_md63}
 
 \begin{DoxyItemize}
-\item Autograd\+: Autograd is not necessary for inference, so it will be added to the library later when the runtime api is optimized and mature.
-\item Graph mode\+: A constexpr graph mode will be added to the library, possibly with the arrival of C++26.
-\item Quantization support\+: The library will support necessary dtypes to create quantized neural networks like bitnet.
-\item Additional backends\+: Expansion beyond CUDA to support other device backends is planned. Host-\/\+Device computational model can be used as well with other hardware vendors.
+\item {\bfseries{cu\+Blas and cu\+Tensor optional support}}\+: This may be added soon to accelerate tensor computations.
+\item {\bfseries{Autograd}}\+: Autograd is not necessary for inference, so it will be added to the library later when the runtime api is optimized and mature.
+\item {\bfseries{Graph mode}}\+: A constexpr graph mode will be added to the library, possibly with the arrival of C++26.
+\item {\bfseries{Quantization support}}\+: The library will support necessary dtypes to create quantized neural networks like bitnet.
+\item {\bfseries{Additional backends}}\+: Expansion beyond CUDA to support other device backends is planned. Host-\/\+Device computational model can be used as well with other hardware vendors.
+\item {\bfseries{Multi GPU support}}. Unfortunately I don\textquotesingle{}t have either the expertise or the resources to add multigpu support, but the whole library was build taking this in mind so it won\textquotesingle{}t be a breaking change when added. ~\newline
+
 \end{DoxyItemize}
 
 \DoxyHorRuler{0}
-\hypertarget{index_autotoc_md32}{}\doxysection{\texorpdfstring{Requirements}{Requirements}}\label{index_autotoc_md32}
+\hypertarget{index_autotoc_md65}{}\doxysection{\texorpdfstring{Requirements}{Requirements}}\label{index_autotoc_md65}
 
 \begin{DoxyItemize}
 \item C++23 compiler\+: A compiler with C++23 support is required to build and run Tannic.
 \item Open\+BLAS (optional)\+: If installed on your system, Open\+BLAS will accelerate matrix multiplication.
 \item CUDA Toolkit (optional)\+: CUDA 12+ is required only if you want GPU support. If not installed, Tannic will build and run with CPU-\/only support.
-\end{DoxyItemize}\hypertarget{index_autotoc_md33}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_autotoc_md33}
-Clone the repository and include {\ttfamily tannic.\+hpp} and build it as follows\+:\hypertarget{index_autotoc_md34}{}\doxysubsection{\texorpdfstring{Debug build\+:}{Debug build:}}\label{index_autotoc_md34}
+\end{DoxyItemize}\hypertarget{index_autotoc_md66}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_autotoc_md66}
+Clone the repository and include {\ttfamily tannic.\+hpp} and build it as follows\+:\hypertarget{index_autotoc_md67}{}\doxysubsection{\texorpdfstring{Debug build\+:}{Debug build:}}\label{index_autotoc_md67}
 Use this for development — includes extra checks, assertions, and debug symbols for easier troubleshooting.
 
 
@@ -102,7 +106,7 @@ Use this for development — includes extra checks, assertions, and debug symbol
 \DoxyCodeLine{ctest\ -\/-\/output-\/on-\/failure}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md35}{}\doxysubsection{\texorpdfstring{Release build}{Release build}}\label{index_autotoc_md35}
+\hypertarget{index_autotoc_md68}{}\doxysubsection{\texorpdfstring{Release build}{Release build}}\label{index_autotoc_md68}
 Use this for deployment or benchmarking — builds with full compiler optimizations and without debug checks.
 
 
@@ -112,19 +116,19 @@ Use this for deployment or benchmarking — builds with full compiler optimizati
 \DoxyCodeLine{make\ -\/j\$(nproc)\ }
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md36}{}\doxysubsection{\texorpdfstring{Run the example}{Run the example}}\label{index_autotoc_md36}
+\hypertarget{index_autotoc_md69}{}\doxysubsection{\texorpdfstring{Run the example}{Run the example}}\label{index_autotoc_md69}
 You can run the example provided in the main.\+cpp from the build folder\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{./main}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md37}{}\doxysubsection{\texorpdfstring{Include Tannic in your project}{Include Tannic in your project}}\label{index_autotoc_md37}
+\hypertarget{index_autotoc_md70}{}\doxysubsection{\texorpdfstring{Include Tannic in your project}{Include Tannic in your project}}\label{index_autotoc_md70}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ <tannic.hpp>}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md38}{}\doxysubsection{\texorpdfstring{CUDA support}{CUDA support}}\label{index_autotoc_md38}
+\hypertarget{index_autotoc_md71}{}\doxysubsection{\texorpdfstring{CUDA support}{CUDA support}}\label{index_autotoc_md71}
 CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detected during configuration. If no CUDA installation is found, Tannic will automatically fall back to a CPU‑only build. You can explicitly disable CUDA with\+:
 
 
@@ -132,7 +136,7 @@ CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detecte
 \DoxyCodeLine{cmake\ ..\ -\/DTANNIC\_ENABLE\_CUDA=OFF}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md39}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{index_autotoc_md39}
+\hypertarget{index_autotoc_md72}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{index_autotoc_md72}
 Contributions to Tannic are welcome! If you\textquotesingle{}d like to report bugs, request features, or submit pull requests, please follow these guidelines\+:
 
 
@@ -146,5 +150,5 @@ Tannic is licensed under the Apache License 2.\+0, a permissive open-\/source li
 
 The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development.
 
-By contributing, you agree that your contributions will also be licensed under Apache 2.\+0 and that proper attribution is appreciated.\hypertarget{index_autotoc_md40}{}\doxysection{\texorpdfstring{License}{License}}\label{index_autotoc_md40}
+By contributing, you agree that your contributions will also be licensed under Apache 2.\+0 and that proper attribution is appreciated.\hypertarget{index_autotoc_md73}{}\doxysection{\texorpdfstring{License}{License}}\label{index_autotoc_md73}
 Tannic is licensed under the Apache License, Version 2.\+0. See the \mbox{[}LICENSE\mbox{]}(LICENSE) file for details. 

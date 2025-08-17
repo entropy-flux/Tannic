@@ -1,0 +1,37 @@
+\doxysection{tannic\+::Assignable Concept Reference}
+\hypertarget{concepttannic_1_1Assignable}{}\label{concepttannic_1_1Assignable}\index{tannic::Assignable@{tannic::Assignable}}
+
+
+Concept for types that can assign values.  
+
+
+
+
+{\ttfamily \#include $<$Concepts.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Assignable}{tannic::Assignable}}\ =\ \ \textcolor{keyword}{requires}(T\ t,\ \textcolor{keyword}{const}\ std::byte*\ ptr,\ std::ptrdiff\_t\ offset)\ \{}
+\DoxyCodeLine{\ \ \ \ \{\ t.assign(ptr,\ offset)\ \}\ -\/>\ std::same\_as<void>;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+Concept for types that can assign values. 
+
+A type {\ttfamily T} satisfies this concept if it provides a method\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ assign(\textcolor{keyword}{const}\ std::byte*\ ptr,\ std::ptrdiff\_t\ offset);}
+
+\end{DoxyCode}
+
+
+This function must take a pointer to a raw byte buffer and an offset, then assign the corresponding value into the object.
+
+This concept is mainly used internally when populating tensor elements from a memory buffer (e.\+g., in serialization, slicing, or low-\/level tensor initialization), and enables the usage of slices from custom data structures beside the {\ttfamily Tensor} class. 

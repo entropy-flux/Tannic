@@ -20,7 +20,7 @@
  * @file Operations.hpp
  * @author Eric Cardozo
  * @date 2025
- * @brief Defines expression templates tensor aritmetic operations.
+ * @brief Defines expression templates tensor aritmetic operations. 
  *
  * This header defines expression templates used to represent lazy evaluation of unary
  * and binary tensor aritmetic operations. The system enables composable arithmetic on tensor-like
@@ -414,6 +414,32 @@ struct Subtraction {
     }
 }; 
 
+/**
+ * @brief Binary element-wise exponentiation of two tensor expressions.
+ *
+ * Used to build a lazily evaluated `Binary<Exponentiation, Base, Exponent>` expression.
+ * The result shape is determined via broadcasting rules, and the result type
+ * is chosen according to type promotion rules between the base and exponent.
+ * 
+ * Computation is **deferred** until `forward()` is called or the expression
+ * is assigned to a `Tensor`, meaning it can be composed into larger expression
+ * graphs without incurring immediate cost.
+ *
+ * #### Example: Exponentiation
+ * ```cpp
+ * Tensor A(float32, {2, 2}); A.initialize();
+ * A[0, 0] = 2; A[0, 1] = 3;
+ * A[1, 0] = 4; A[1, 1] = 5;
+ *
+ * Tensor B(float32, {2, 2}); B.initialize();
+ * B[0, 0] = 3; B[0, 1] = 2;
+ * B[1, 0] = 1; B[1, 1] = 0;
+ *
+ * auto C = A ^ B;
+ * std::cout << C.forward();
+ * // Output: [[8, 9], [4, 1]]
+ * ```
+ */
 struct Exponentiation {
     void forward(Tensor const&, Tensor const&, Tensor&) const; 
 
@@ -503,8 +529,27 @@ constexpr auto operator-(Subtrahend&& subtrahend, Minuend&& minuend) {
 template<Expression Multiplicand, Expression Multiplier>
 constexpr auto operator*(Multiplicand&& multiplicand, Multiplier&& multiplier) {
     return Binary<Multiplication, Multiplicand, Multiplier>{{}, std::forward<Multiplicand>(multiplicand), std::forward<Multiplier>(multiplier)};
-} 
- 
+}  
+
+
+/**
+ * @brief Element-wise exponentiation of two tensor expressions.
+ *
+ * Constructs a lazily evaluated `Binary<Exponentiation, Base, Exponent>` expression.
+ * Supports broadcasting across dimensions and type promotion between the base
+ * and exponent types.
+ *
+ * @tparam Base Left-hand-side operand (expression).
+ * @tparam Exponent Right-hand-side operand (expression).
+ * @param base The base tensor expression.
+ * @param exponent The exponent tensor expression.
+ * @return A binary expression representing element-wise exponentiation.
+ *
+ * #### Example:
+ * ```cpp
+ * auto result = A ^ B;
+ * ```
+ */
 template<Expression Base, Expression Exponent>
 constexpr auto operator^(Base&& base, Exponent&& exponent) {
     return Binary<Exponentiation, Base, Exponent>{{}, std::forward<Base>(base), std::forward<Exponent>(exponent)};

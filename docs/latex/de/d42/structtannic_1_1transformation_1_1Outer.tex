@@ -1,0 +1,89 @@
+\doxysection{tannic\+::transformation\+::Outer Struct Reference}
+\hypertarget{structtannic_1_1transformation_1_1Outer}{}\label{structtannic_1_1transformation_1_1Outer}\index{tannic::transformation::Outer@{tannic::transformation::Outer}}
+
+
+Represents the outer product operation between two vectors.  
+
+
+
+
+{\ttfamily \#include $<$Transformations.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&first, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&second, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&result) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{static}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{constexpr}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{type}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a687581d53adbde67776d822973d82140}{promote}} (\mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{type}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{first}}, \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{type}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{second}})
+\begin{DoxyCompactList}\small\item\em Type promotion for the outer product operation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{static}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a6024db41716131b3010e98c4c8750f70}{transform}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{const}} \&\mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{first}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{const}} \&\mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{second}})
+\begin{DoxyCompactList}\small\item\em Computes output shape for the outer product of two vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the outer product operation between two vectors. 
+
+The outer product of two vectors with shapes (n) and (m) results in a matrix of shape (n, m). Currently, only vectors are supported — tensors with rank greater than 1 are not supported, but this may be extended in the future. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}\label{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544} 
+\index{tannic::transformation::Outer@{tannic::transformation::Outer}!forward@{forward}}
+\index{forward@{forward}!tannic::transformation::Outer@{tannic::transformation::Outer}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily void tannic\+::transformation\+::\+Outer\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{second,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{result }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structtannic_1_1transformation_1_1Outer_a687581d53adbde67776d822973d82140}\label{structtannic_1_1transformation_1_1Outer_a687581d53adbde67776d822973d82140} 
+\index{tannic::transformation::Outer@{tannic::transformation::Outer}!promote@{promote}}
+\index{promote@{promote}!tannic::transformation::Outer@{tannic::transformation::Outer}}
+\doxysubsubsection{\texorpdfstring{promote()}{promote()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{static}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{constexpr}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{type}} tannic\+::transformation\+::\+Outer\+::promote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{type}}}]{first,  }\item[{\mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{type}}}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Type promotion for the outer product operation. 
+
+Promotes two operand types to the higher precision type. ~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em first} & Type of the first operand (left) \\
+\hline
+{\em second} & Type of the second operand (right) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Promoted type for outer product computation 
+\end{DoxyReturn}
+\Hypertarget{structtannic_1_1transformation_1_1Outer_a6024db41716131b3010e98c4c8750f70}\label{structtannic_1_1transformation_1_1Outer_a6024db41716131b3010e98c4c8750f70} 
+\index{tannic::transformation::Outer@{tannic::transformation::Outer}!transform@{transform}}
+\index{transform@{transform}!tannic::transformation::Outer@{tannic::transformation::Outer}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{static}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::transformation\+::\+Outer\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{const}} \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Outer_a860078a88144f3b347abe590d4587544}{const}} \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Computes output shape for the outer product of two vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & \doxylink{classtannic_1_1Shape}{Shape} of the first tensor \\
+\hline
+{\em second} & \doxylink{classtannic_1_1Shape}{Shape} of the second tensor ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1Shape}{Shape} of the resulting outer product tensor
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em assertion} & error if either input tensor is not rank 1 for now outer product only support vectors and not general tensors but this may change in the future.\\
+\hline
+\end{DoxyExceptions}
+The outer product of two vectors with shapes (n) and (m) produces a matrix of shape (n, m). \doxylink{structtannic_1_1transformation_1_1Outer}{Outer} product is not defined here for tensors with rank \texorpdfstring{$>$}{>} 1. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{Transformations_8hpp}{Transformations.\+hpp}}\end{DoxyCompactItemize}

@@ -19,7 +19,9 @@
 #define SLICES_HPP
 
 /**
- * @file Slices.hpp
+ * @file Slices.hpp 
+ * @author Eric Cardozo
+ * @date 2025  
  * @brief Implements tensor slicing for expression templates in the Tannic Tensor Library.
  *
  * This header defines the `Slice` class template, which represents a view or subrange
@@ -249,8 +251,22 @@ public:
      * @brief Returns the shape (size in each dimension) of this slice.
      *
      * The shape is derived from the source tensor after applying the
-     * given indexes. Integer indexes reduce the rank, while range
-     * indexes preserve or reduce dimensions depending on their size.
+     * given indexes according to these rules:
+     * 1. For each index in the index tuple:
+     *    - If it's a range (`indexing::Range`):
+     *      - The dimension size becomes `range.stop - range.start`
+     *      - This dimension is preserved in the output shape
+     *    - If it's an integer index:
+     *      - The dimension is eliminated (not included in output shape)
+     * 2. Any remaining dimensions from the source tensor (after processing all indices) 
+     *    are preserved with their original sizes
+     *
+     * Example:
+     * ```cpp
+     * Tensor X({4,3,2});  // shape [4,3,2]
+     * auto slice = X[range(1,3)][1]; 
+     * // Resulting shape: [2, 2] (from range(1,3) and preserving last dimension)
+     * ```
      *
      * @return A constant reference to the `Shape` object describing this slice.
      */
@@ -258,18 +274,48 @@ public:
         return shape_;
     }
 
+
     /**
      * @brief Returns the memory strides for this slice.
      *
      * Strides represent the number of elements to skip in each dimension
-     * to move to the next element along that axis. They are computed relative to
-     * the source tensor after applying indexing.
+     * to move to the next element along that axis. They are computed as:
+     * 1. For each index in the tuple:
+     *    - If it's a range:
+     *      - The stride for this dimension is copied from the source tensor
+     *    - If it's an integer index:
+     *      - No stride is recorded (dimension is eliminated)
+     * 2. Remaining dimensions keep their original strides
+     *
+     * The strides are always computed in elements (not bytes) and are
+     * relative to the original tensor's memory layout.
      *
      * @return A constant reference to the `Strides` object for this slice.
      */
     constexpr Strides const& strides() const {
         return strides_;
-    } 
+    }  
+
+    /**
+     * @brief Returns the byte offset from the source tensor's data pointer.
+     *
+     * The offset is calculated as:
+     * 1. Initialized to 0
+     * 2. For each index:
+     *    - If it's a range:
+     *      - Add `range.start * source_stride * element_size` to offset
+     *    - If it's an integer index:
+     *      - Add `index * source_stride * element_size` to offset
+     * 3. The offset is relative to the source tensor's data pointer
+     *
+     * This represents the starting memory position of the slice within
+     * the original tensor's storage.
+     *
+     * @return The byte offset from the source tensor's data pointer.
+     */
+    std::ptrdiff_t offset() const {
+        return offset_ + source_.offset();
+    }
 
     std::byte* bytes() {
         return source_.bytes() + offset_;
@@ -277,11 +323,7 @@ public:
 
     std::byte const* bytes() const {
         return source_.bytes() + offset_;
-    }
-
-    std::ptrdiff_t offset() const {
-        return offset_ + source_.offset();
-    }
+    } 
 
     Tensor forward() const;
  

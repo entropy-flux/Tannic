@@ -19,19 +19,19 @@ void \mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be
 \doxysubsection{Detailed Description}
 \doxylink{classtannic_1_1operation_1_1Unary}{Unary} element-\/wise negation of a tensor expression. 
 
-Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1_1Unary}{Unary}\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Negation}{Negation}, Operand\texorpdfstring{$>$}{>}} expression. The computation is not performed immediately, but deferred until {\ttfamily \doxylink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{forward()}} is called or the expression is assigned to a {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}} object.\hypertarget{structtannic_1_1operation_1_1Negation_autotoc_md3}{}\doxyparagraph{\texorpdfstring{Example\+: Unary negation}{Example: Unary negation}}\label{structtannic_1_1operation_1_1Negation_autotoc_md3}
+Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1_1Unary}{Unary}\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Negation}{Negation}, Operand\texorpdfstring{$>$}{>}} expression. The computation is not performed immediately, but deferred until {\ttfamily \doxylink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{forward()}} is called or the expression is assigned to a {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}} object.\hypertarget{structtannic_1_1operation_1_1Negation_autotoc_md26}{}\doxyparagraph{\texorpdfstring{Example\+: Unary negation}{Example: Unary negation}}\label{structtannic_1_1operation_1_1Negation_autotoc_md26}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ A(float32,\ \{2,\ 2\});\ A.initialize();}
-\DoxyCodeLine{A[0,\ 0]\ =\ 1;\ A[0,\ 1]\ =\ -\/2;}
-\DoxyCodeLine{A[1,\ 0]\ =\ 3;\ A[1,\ 1]\ =\ -\/4;}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{A}}(\mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{float32}},\ \{2,\ 2\});\ \mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{A}}.initialize();}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{A}}[0,\ 0]\ =\ 1;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{A}}[0,\ 1]\ =\ -\/2;}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{A}}[1,\ 0]\ =\ 3;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{A}}[1,\ 1]\ =\ -\/4;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ B\ =\ -\/A;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lazy\ negation\ (Unary<Negation,\ Tensor>)\ \ }}
-\DoxyCodeLine{Tensor\ C\ =\ B.forward();\ \textcolor{comment}{//\ Triggers\ computation}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{B}}\ =\ -\/\mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{A}};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lazy\ negation\ (Unary<Negation,\ Tensor>)\ \ }}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{C}}\ =\ \mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{B}}.forward();\ \textcolor{comment}{//\ Triggers\ computation}}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ D\ =\ -\/A;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Computation\ triggered\ when\ assigned\ to\ Tensor}}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{D}}\ =\ -\/\mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{A}};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Computation\ triggered\ when\ assigned\ to\ Tensor}}
 \DoxyCodeLine{}
-\DoxyCodeLine{std::cout\ <<\ D;}
+\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{structtannic_1_1operation_1_1Negation_a5c904a0547f2f3929be04ea2ce761dd3}{D}};}
 \DoxyCodeLine{\textcolor{comment}{//\ Output:\ [[-\/1,\ 2],\ [-\/3,\ 4]]}}
 
 \end{DoxyCode}

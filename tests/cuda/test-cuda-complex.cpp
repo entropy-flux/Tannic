@@ -21,7 +21,7 @@ TEST_F(CUDAComplexTests, CUDAComplexificationAndRealification) {
     X[0][1] = 0;
     X[1][0] = 2;
     X[1][1] = 3;   
-    Tensor Z = complex(X);  
+    Tensor Z = complexify(X);  
  
     float* device_data = reinterpret_cast<float*>(Z.bytes()); 
     float host_data[4];
@@ -34,7 +34,7 @@ TEST_F(CUDAComplexTests, CUDAComplexificationAndRealification) {
     ASSERT_FLOAT_EQ(host_data[2], 2);  
     ASSERT_FLOAT_EQ(host_data[3], 3);  
 
-    Tensor Y = real(Z);  
+    Tensor Y = realify(Z);  
     ASSERT_EQ(X[0][0], 1);
     ASSERT_EQ(X[0][1], 0); 
     ASSERT_EQ(X[1][0], 2); 

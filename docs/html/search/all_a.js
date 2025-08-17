@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['layout_20_3a_0',['Example (Contiguous Layout):',['../dc/deb/classtannic_1_1Strides.html#autotoc_md11',1,'']]],
-  ['license_1',['License',['../index.html#autotoc_md40',1,'']]],
-  ['limit_2',['limit',['../db/da7/classtannic_1_1Shape.html#af8a4b0f86d77384fd7d4b9e768178a52',1,'tannic::Shape::limit'],['../dc/deb/classtannic_1_1Strides.html#a11b903b9305e1258a3c5ddd3e3597e9f',1,'tannic::Strides::limit']]],
-  ['log_3',['log',['../d9/d67/structtannic_1_1function_1_1Log.html',1,'tannic::function::Log'],['../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b',1,'tannic::function::log(Operand &amp;&amp;operand)']]]
+  ['keepdim_0',['keepdim',['../dc/d3e/structtannic_1_1expression_1_1Argmax.html#a7877a8168a1c81b602ef1b4090b5a744',1,'tannic::expression::Argmax::keepdim'],['../d7/d32/structtannic_1_1expression_1_1Argmin.html#a2c2eb8c098052a5cd70a6b755ec2dddf',1,'tannic::expression::Argmin::keepdim'],['../df/d20/structtannic_1_1expression_1_1Argsum.html#a35cc26c059df57051eb2800a1d38a188',1,'tannic::expression::Argsum::keepdim'],['../d8/d27/structtannic_1_1expression_1_1Argmean.html#a2433342825247ab024b0876a33e7f984',1,'tannic::expression::Argmean::keepdim']]],
+  ['key_20functions_1',['Key Functions',['../d5/d34/Types_8hpp.html#autotoc_md56',1,'']]]
 ];

@@ -1,0 +1,177 @@
+\doxysection{tannic\+::expression\+::Realification\texorpdfstring{$<$}{<} Source \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1expression_1_1Realification}{}\label{classtannic_1_1expression_1_1Realification}\index{tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}}
+
+
+Creates a real-\/valued view of complex tensor data.  
+
+
+
+
+{\ttfamily \#include $<$Complex.\+hpp$>$}
+
+
+
+Collaboration diagram for tannic\+::expression\+::Realification\texorpdfstring{$<$}{<} Source \texorpdfstring{$>$}{>}\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{d8/d8c/classtannic_1_1expression_1_1Realification__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a37129d7c601d0fc5e8210d21854a07d8}{Realification}} (\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{Source}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a4c94275ff00d70fa74326ea021694970}{source}})
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a0f9bb911a1fc9fa7e5fa8f1c9bf77306}{dtype}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the real dtype of the view. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a006b5073b55c4beca11a781f17e0e1d2}{shape}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the shape of the real view. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_ad1ec129f1ff9570a0bb9d4bac7535066}{strides}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the strides of the real view. \end{DoxyCompactList}\item 
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_ad01abc1c9ca1481a0f7f47d3053f14e2}{offset}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{const}}
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{forward}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{Source}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a4c94275ff00d70fa74326ea021694970}{source}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$Expression Source$>$\newline
+class tannic\+::expression\+::\+Realification$<$ Source $>$}
+Creates a real-\/valued view of complex tensor data. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Source} & Complex tensor type\\
+\hline
+\end{DoxyTemplParams}
+\hypertarget{classtannic_1_1expression_1_1Realification_autotoc_md0}{}\doxyparagraph{\texorpdfstring{Transformation Rules\+:}{Transformation Rules:}}\label{classtannic_1_1expression_1_1Realification_autotoc_md0}
+
+\begin{DoxyItemize}
+\item type\+: complex64 → float32, complex128 → float64
+\item \doxylink{classtannic_1_1Shape}{Shape}\+: \mbox{[}...,N\mbox{]} → \mbox{[}...,N,2\mbox{]} (adds dimension for components)
+\item Memory\+: Maintains same storage with adjusted strides
+\end{DoxyItemize}\hypertarget{classtannic_1_1expression_1_1Realification_autotoc_md1}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{classtannic_1_1expression_1_1Realification_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Input must be complex64 or complex128
+\item Must have stride 1 in last dimension (contiguous complex pairs)
+\end{DoxyItemize}\hypertarget{classtannic_1_1expression_1_1Realification_autotoc_md2}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1expression_1_1Realification_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ complex64\ input\ with\ shape\ [2]}}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{cplx}}\ =\ \{1+2\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{i}},\ 3+4\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{i}}\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ float32\ output\ with\ shape\ [2,2]\ }}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{real\_view}}\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a0e5202d0e8bc3b22deddc6eabcb0df39}{realify}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{cplx}});}
+\DoxyCodeLine{\textcolor{comment}{//\ real\_view\ =\ [[1,\ 2],\ \ //\ real,\ imag\ components}}
+\DoxyCodeLine{\textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ [3,\ 4]]\ }}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Realification_a37129d7c601d0fc5e8210d21854a07d8}\label{classtannic_1_1expression_1_1Realification_a37129d7c601d0fc5e8210d21854a07d8} 
+\index{tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}!Realification@{Realification}}
+\index{Realification@{Realification}!tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{Realification()}{Realification()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{tannic\+::expression\+::\+Realification}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{Source}} $>$\mbox{\hyperlink{classRealification}{\+::\+Realification}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{Source}} $>$\+::\+Reference}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Realification_a0f9bb911a1fc9fa7e5fa8f1c9bf77306}\label{classtannic_1_1expression_1_1Realification_a0f9bb911a1fc9fa7e5fa8f1c9bf77306} 
+\index{tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{tannic\+::expression\+::\+Realification}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{Source}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the real dtype of the view. 
+
+\begin{DoxyReturn}{Returns}
+float32 if source was complex64, float64 if complex128
+\end{DoxyReturn}
+\hypertarget{classtannic_1_1expression_1_1Realification_autotoc_md18}{}\doxyparagraph{\texorpdfstring{Transformation Rule\+:}{Transformation Rule:}}\label{classtannic_1_1expression_1_1Realification_autotoc_md18}
+complex64 → float32 ~\newline
+ complex128 → float64 \Hypertarget{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}\label{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d} 
+\index{tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} Realification\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classtannic_1_1expression_1_1Realification_ad01abc1c9ca1481a0f7f47d3053f14e2}\label{classtannic_1_1expression_1_1Realification_ad01abc1c9ca1481a0f7f47d3053f14e2} 
+\index{tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{tannic\+::expression\+::\+Realification}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{Source}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Realification_a006b5073b55c4beca11a781f17e0e1d2}\label{classtannic_1_1expression_1_1Realification_a006b5073b55c4beca11a781f17e0e1d2} 
+\index{tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{tannic\+::expression\+::\+Realification}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{Source}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the shape of the real view. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1Shape}{Shape} with last dimension expanded to 2
+\end{DoxyReturn}
+\hypertarget{classtannic_1_1expression_1_1Realification_autotoc_md19}{}\doxyparagraph{\texorpdfstring{Transformation Rule\+:}{Transformation Rule:}}\label{classtannic_1_1expression_1_1Realification_autotoc_md19}
+\mbox{[}...,N\mbox{]} → \mbox{[}...,N,2\mbox{]}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{cplx}}(\{2\});\ \ \ \ \ \ \ \textcolor{comment}{//\ [a+bi,\ c+di]}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ real\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a0e5202d0e8bc3b22deddc6eabcb0df39}{realify}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{cplx}});}
+\DoxyCodeLine{real.shape();\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ [2,2]}}
+
+\end{DoxyCode}
+ \Hypertarget{classtannic_1_1expression_1_1Realification_ad1ec129f1ff9570a0bb9d4bac7535066}\label{classtannic_1_1expression_1_1Realification_ad1ec129f1ff9570a0bb9d4bac7535066} 
+\index{tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{tannic\+::expression\+::\+Realification}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{Source}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the strides of the real view. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1Strides}{Strides} adjusted for component access
+\end{DoxyReturn}
+\hypertarget{classtannic_1_1expression_1_1Realification_autotoc_md20}{}\doxyparagraph{\texorpdfstring{Transformation Rules\+:}{Transformation Rules:}}\label{classtannic_1_1expression_1_1Realification_autotoc_md20}
+
+\begin{DoxyItemize}
+\item Last stride becomes 1 (contiguous components)
+\item Penultimate stride doubles (distance between complex numbers) 
+\end{DoxyItemize}
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Realification_a4c94275ff00d70fa74326ea021694970}\label{classtannic_1_1expression_1_1Realification_a4c94275ff00d70fa74326ea021694970} 
+\index{tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}!source@{source}}
+\index{source@{source}!tannic::expression::Realification$<$ Source $>$@{tannic::expression::Realification$<$ Source $>$}}
+\doxysubsubsection{\texorpdfstring{source}{source}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{Source}}$>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{tannic\+::expression\+::\+Realification}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{Source}} $>$\+::source}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{Complex_8hpp}{Complex.\+hpp}}\item 
+include/tannic/\mbox{\hyperlink{Tensor_8hpp}{Tensor.\+hpp}}\end{DoxyCompactItemize}

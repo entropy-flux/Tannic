@@ -23,7 +23,7 @@
  * @author Eric Cardozo
  * @date 2025
  * @brief Core type system for the Tannic Tensor Library.
- *
+ * 
  * Defines the fundamental data types supported by tensors and provides utilities for: 
  * 
  * ### Supported Data Types
