@@ -4,8 +4,8 @@
 #include "Resources.hpp"
 #include "Bindings.hpp" 
 #include "runtime/streams.h"
-
-#ifdef CUDA   
+#include "runtime/resources.h"
+#ifdef CUDA
 #include "cuda/mem.cuh"
 #else 
 namespace cuda {
@@ -13,7 +13,8 @@ inline int getDeviceCount() { throw std::runtime_error("CUDA is not available in
 inline void* allocate(const device_t*, std::size_t) { throw std::runtime_error("CUDA allocation attempted without CUDA support"); }
 inline void deallocate(const device_t*, void*) { throw std::runtime_error("CUDA deallocation attempted without CUDA support"); }
 } // namespace cuda
-#endif 
+#endif
+
 
 namespace tannic { 
 
@@ -21,7 +22,7 @@ void* Host::allocate(std::size_t nbytes) const {
     if(pageable_) {
         return std::malloc(nbytes);
     } else {
-        throw std::runtime_error("ERROR!");
+        throw std::runtime_error("Pinned memory not supported yet!");
     }
 }
 
@@ -29,7 +30,7 @@ void Host::deallocate(void* address, std::size_t nbytes) const {
     if(pageable_) {
         std::free(address); 
     } else {
-        throw std::runtime_error("ERROR!");
+        throw std::runtime_error("Pinned memory not supported yet!");
     }
 }
 
