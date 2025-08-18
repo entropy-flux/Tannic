@@ -6,6 +6,8 @@ var concepts =
       [ "Functional", "db/d13/concepttannic_1_1Functional.html", null ],
       [ "Iterable", "d6/ddb/concepttannic_1_1Iterable.html", null ],
       [ "Iterator", "d5/d5f/concepttannic_1_1Iterator.html", null ],
-      [ "Integral", "d0/d72/concepttannic_1_1Integral.html", null ]
+      [ "Integral", "d0/d72/concepttannic_1_1Integral.html", null ],
+      [ "Assignable", "d1/dfb/concepttannic_1_1Assignable.html", null ],
+      [ "Comparable", "d1/d00/concepttannic_1_1Comparable.html", null ]
     ] ]
 ];

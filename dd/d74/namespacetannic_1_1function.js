@@ -17,7 +17,7 @@ var namespacetannic_1_1function =
     [ "cosh", "dd/d74/namespacetannic_1_1function.html#a8419d8c9fe7bcb9ac418842fb3d726bd", null ],
     [ "exp", "dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209", null ],
     [ "log", "dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b", null ],
-    [ "rsqrt", "dd/d74/namespacetannic_1_1function.html#a8a9800c45a44de531933db2b1ad1a089", null ],
+    [ "rsqrt", "dd/d74/namespacetannic_1_1function.html#ae57777f5110c12a46eedfeb0e8bb10b8", null ],
     [ "sin", "dd/d74/namespacetannic_1_1function.html#a8048b5991804efd638c160566eadb715", null ],
     [ "sinh", "dd/d74/namespacetannic_1_1function.html#af97a5da6ca19a282f6c4ec90d40fe468", null ],
     [ "sqrt", "dd/d74/namespacetannic_1_1function.html#a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b", null ],

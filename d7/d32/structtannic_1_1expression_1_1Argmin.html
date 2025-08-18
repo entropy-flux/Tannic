@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('d7/d32/structtannic_1_1expression_1_1A
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html" title="Expression template for reduction operations.">Reduction</a> argmin operation.  
+<p>Finds the <b>indexes of minimum values</b> along an axis.  
  <a href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../db/db8/Reductions_8hpp_source.html">Reductions.hpp</a>&gt;</code></p>
@@ -107,28 +107,31 @@ $(document).ready(function(){initNavTree('d7/d32/structtannic_1_1expression_1_1A
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab47d8cc3c5e2090f1ca2a07c71954070"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html#ab47d8cc3c5e2090f1ca2a07c71954070">reduce</a> (type dtype) const</td></tr>
-<tr class="memdesc:ab47d8cc3c5e2090f1ca2a07c71954070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines output dtype for argmin.  <br /></td></tr>
 <tr class="separator:ab47d8cc3c5e2090f1ca2a07c71954070"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bd4f399aa919a343ccc815fba4568e8"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html#a8bd4f399aa919a343ccc815fba4568e8">reduce</a> (<a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;shape) const</td></tr>
-<tr class="memdesc:a8bd4f399aa919a343ccc815fba4568e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes reduced shape for argmin.  <br /></td></tr>
 <tr class="separator:a8bd4f399aa919a343ccc815fba4568e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7e1a5a0e79ccbe72ad00a2024848c29"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html#ad7e1a5a0e79ccbe72ad00a2024848c29">reduce</a> (<a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;strides) const</td></tr>
-<tr class="memdesc:ad7e1a5a0e79ccbe72ad00a2024848c29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes output strides after reducing the specified axis.  <br /></td></tr>
-<tr class="separator:ad7e1a5a0e79ccbe72ad00a2024848c29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f7a8964a2fa07e164e3170024bc1819"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html#a4f7a8964a2fa07e164e3170024bc1819">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;) const</td></tr>
-<tr class="memdesc:a4f7a8964a2fa07e164e3170024bc1819"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the argmin operation.  <br /></td></tr>
 <tr class="separator:a4f7a8964a2fa07e164e3170024bc1819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a9511d56e6095709027e779343814190e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html#a9511d56e6095709027e779343814190e">axis</a></td></tr>
-<tr class="memdesc:a9511d56e6095709027e779343814190e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Axis along which to find minima.  <br /></td></tr>
 <tr class="separator:a9511d56e6095709027e779343814190e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c2eb8c098052a5cd70a6b755ec2dddf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html#a2c2eb8c098052a5cd70a6b755ec2dddf">keepdim</a></td></tr>
+<tr class="separator:a2c2eb8c098052a5cd70a6b755ec2dddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="../../da/dc5/classtannic_1_1expression_1_1Reduction.html" title="Expression template for reduction operations.">Reduction</a> argmin operation. </p>
-<p>Finds the indices of minimum values along the specified axis. Reduces input dtype to int64 and removes the reduced dimension. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>Finds the <b>indexes of minimum values</b> along an axis. </p>
+<p>Identical to <code><a class="el" href="../../dc/d3e/structtannic_1_1expression_1_1Argmax.html" title="Finds the indices of maximum values along an axis.">Argmax</a></code> but for minima. Output dtype is <code>int64</code>. Use <code>keepdim=true</code> to maintain shape for broadcasting.</p>
+<h4><a class="anchor" id="autotoc_md33"></a>
+Example:</h4>
+<div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X = {{3, 1, 4}, </div>
+<div class="line">            {1, 5, 9}};</div>
+<div class="line"> </div>
+<div class="line">Tensor Y = argmin(X, 1);</div>
+<div class="line"><span class="comment">// Y = [1, 0]  // Min indexes per row</span></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> Tensor.hpp:104</div></div>
+</div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4f7a8964a2fa07e164e3170024bc1819" name="a4f7a8964a2fa07e164e3170024bc1819"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f7a8964a2fa07e164e3170024bc1819">&#9670;&#160;</a></span>forward()</h2>
 
@@ -155,19 +158,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Performs the argmin operation. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>Source tensor </td></tr>
-    <tr><td class="paramname">output</td><td>Result tensor containing indices </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
 <a id="a8bd4f399aa919a343ccc815fba4568e8" name="a8bd4f399aa919a343ccc815fba4568e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8bd4f399aa919a343ccc815fba4568e8">&#9670;&#160;</a></span>reduce() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bd4f399aa919a343ccc815fba4568e8">&#9670;&#160;</a></span>reduce() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -190,77 +184,10 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Computes reduced shape for argmin. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">shape</td><td>Input shape </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../db/da7/classtannic_1_1Shape.html" title="Represents the shape (dimensions) of an tensor-like expression.">Shape</a> with reduced dimension removed </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">assert</td><td>if input has rank &lt; 1 </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ad7e1a5a0e79ccbe72ad00a2024848c29" name="ad7e1a5a0e79ccbe72ad00a2024848c29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7e1a5a0e79ccbe72ad00a2024848c29">&#9670;&#160;</a></span>reduce() <span class="overload">[2/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> tannic::expression::Argmin::reduce </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;&#160;</td>
-          <td class="paramname"><em>strides</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Computes output strides after reducing the specified axis. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">strides</td><td>Input tensor strides before reduction </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>New strides with the reduced dimension removed</dd></dl>
-<p>When reducing along an axis (for argmax/argmin), the output tensor loses that dimension. This requires adjusting the strides accordingly:</p>
-<ol type="1">
-<li>For scalar results (rank-1 input reduced to rank-0):<ul>
-<li>Returns empty strides (scalar has no strides)</li>
-</ul>
-</li>
-<li>For higher-rank tensors:<ul>
-<li>Copies all strides except the one corresponding to the reduced axis</li>
-<li>Maintains the original memory layout for remaining dimensions</li>
-<li>The last stride is preserved to maintain contiguous access</li>
-</ul>
-</li>
-</ol>
-<div class="fragment"><div class="line">Input shape: [3,4,5], strides: [20,5,1] (C-contiguous)</div>
-<div class="line">After reducing <a class="code hl_variable" href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html#a9511d56e6095709027e779343814190e">axis</a>=1 (shape becomes [3,5]):</div>
-<div class="line">Output strides: [20,1]  <span class="comment">// Skips the reduced dimension&#39;s stride (5) </span></div>
-<div class="ttc" id="astructtannic_1_1expression_1_1Argmin_html_a9511d56e6095709027e779343814190e"><div class="ttname"><a href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html#a9511d56e6095709027e779343814190e">tannic::expression::Argmin::axis</a></div><div class="ttdeci">int axis</div><div class="ttdoc">Axis along which to find minima.</div><div class="ttdef"><b>Definition:</b> Reductions.hpp:207</div></div>
-</div><!-- fragment --> 
 </div>
 </div>
 <a id="ab47d8cc3c5e2090f1ca2a07c71954070" name="ab47d8cc3c5e2090f1ca2a07c71954070"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab47d8cc3c5e2090f1ca2a07c71954070">&#9670;&#160;</a></span>reduce() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab47d8cc3c5e2090f1ca2a07c71954070">&#9670;&#160;</a></span>reduce() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -283,15 +210,6 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Determines output dtype for argmin. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">dtype</td><td>Input dtype </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Always returns int64 for indices </dd></dl>
-
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -307,7 +225,19 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Axis along which to find minima. </p>
+</div>
+</div>
+<a id="a2c2eb8c098052a5cd70a6b755ec2dddf" name="a2c2eb8c098052a5cd70a6b755ec2dddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c2eb8c098052a5cd70a6b755ec2dddf">&#9670;&#160;</a></span>keepdim</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tannic::expression::Argmin::keepdim</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -1,6 +1,7 @@
 <map id="include/tannic/Tensor.hpp" name="include/tannic/Tensor.hpp">
-<area shape="rect" id="node1" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="251,5,438,31"/>
-<area shape="rect" id="node2" href="$dc/d66/Functions_8hpp.html" title="Defines mathematical function operations for tensor expressions." alt="" coords="5,79,212,104"/>
-<area shape="rect" id="node3" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="236,79,453,104"/>
-<area shape="rect" id="node4" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="478,79,729,104"/>
+<area shape="rect" id="node1" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="358,5,545,31"/>
+<area shape="rect" id="node2" href="$df/da3/Callback_8hpp.html" title=" " alt="" coords="5,79,207,104"/>
+<area shape="rect" id="node3" href="$dc/d66/Functions_8hpp.html" title="Defines the excception types used in the library." alt="" coords="231,79,437,104"/>
+<area shape="rect" id="node4" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="461,79,679,104"/>
+<area shape="rect" id="node5" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="703,79,954,104"/>
 </map>

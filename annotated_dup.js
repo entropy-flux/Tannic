@@ -3,7 +3,9 @@ var annotated_dup =
     [ "tannic", "d0/d1a/namespacetannic.html", [
       [ "expression", "d9/dd9/namespacetannic_1_1expression.html", [
         [ "Argmax", "dc/d3e/structtannic_1_1expression_1_1Argmax.html", "dc/d3e/structtannic_1_1expression_1_1Argmax" ],
+        [ "Argmean", "d8/d27/structtannic_1_1expression_1_1Argmean.html", "d8/d27/structtannic_1_1expression_1_1Argmean" ],
         [ "Argmin", "d7/d32/structtannic_1_1expression_1_1Argmin.html", "d7/d32/structtannic_1_1expression_1_1Argmin" ],
+        [ "Argsum", "df/d20/structtannic_1_1expression_1_1Argsum.html", "df/d20/structtannic_1_1expression_1_1Argsum" ],
         [ "Cartesian", "d7/d1c/structtannic_1_1expression_1_1Cartesian.html", null ],
         [ "Complexification", "d3/d42/classtannic_1_1expression_1_1Complexification.html", null ],
         [ "Complexification< Coordinates, Real, Imaginary >", "d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html", "d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4" ],
@@ -35,6 +37,7 @@ var annotated_dup =
       [ "operation", "d7/d7a/namespacetannic_1_1operation.html", [
         [ "Addition", "d9/da3/structtannic_1_1operation_1_1Addition.html", "d9/da3/structtannic_1_1operation_1_1Addition" ],
         [ "Binary", "d7/d6b/classtannic_1_1operation_1_1Binary.html", "d7/d6b/classtannic_1_1operation_1_1Binary" ],
+        [ "Exponentiation", "db/d23/structtannic_1_1operation_1_1Exponentiation.html", "db/d23/structtannic_1_1operation_1_1Exponentiation" ],
         [ "Multiplication", "d0/dcf/structtannic_1_1operation_1_1Multiplication.html", "d0/dcf/structtannic_1_1operation_1_1Multiplication" ],
         [ "Negation", "d6/deb/structtannic_1_1operation_1_1Negation.html", "d6/deb/structtannic_1_1operation_1_1Negation" ],
         [ "Subtraction", "d6/de5/structtannic_1_1operation_1_1Subtraction.html", "d6/de5/structtannic_1_1operation_1_1Subtraction" ],
@@ -48,13 +51,16 @@ var annotated_dup =
         [ "Transformation", "d9/d4d/classtannic_1_1transformation_1_1Transformation.html", "d9/d4d/classtannic_1_1transformation_1_1Transformation" ]
       ] ],
       [ "Buffer", "d4/d50/classtannic_1_1Buffer.html", "d4/d50/classtannic_1_1Buffer" ],
+      [ "Callback", "d2/d24/classtannic_1_1Callback.html", "d2/d24/classtannic_1_1Callback" ],
       [ "Device", "d3/d46/classtannic_1_1Device.html", "d3/d46/classtannic_1_1Device" ],
       [ "Devices", "d9/dd4/classtannic_1_1Devices.html", "d9/dd4/classtannic_1_1Devices" ],
+      [ "Exception", "d9/d87/classtannic_1_1Exception.html", "d9/d87/classtannic_1_1Exception" ],
       [ "Host", "df/da7/classtannic_1_1Host.html", "df/da7/classtannic_1_1Host" ],
       [ "Node", "df/d85/structtannic_1_1Node.html", "df/d85/structtannic_1_1Node" ],
       [ "Shape", "db/da7/classtannic_1_1Shape.html", "db/da7/classtannic_1_1Shape" ],
       [ "Strides", "dc/deb/classtannic_1_1Strides.html", "dc/deb/classtannic_1_1Strides" ],
       [ "Tensor", "da/d93/classtannic_1_1Tensor.html", "da/d93/classtannic_1_1Tensor" ],
       [ "Trait", "d1/d96/structtannic_1_1Trait.html", "d1/d96/structtannic_1_1Trait" ]
-    ] ]
+    ] ],
+    [ "Realification", "d6/d98/classRealification.html", null ]
 ];

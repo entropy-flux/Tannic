@@ -123,18 +123,20 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d08/Concepts_8hpp__dep__incl.png" border="0" usemap="#ainclude_2tannic_2Concepts_8hppdep" alt=""/></div>
 <map name="ainclude_2tannic_2Concepts_8hppdep" id="ainclude_2tannic_2Concepts_8hppdep">
-<area shape="rect" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="660,5,865,31"/>
-<area shape="rect" href="../../d5/dae/Complex_8hpp.html" title=" " alt="" coords="93,225,296,251"/>
-<area shape="rect" href="../../dc/d66/Functions_8hpp.html" title="Defines mathematical function operations for tensor expressions." alt="" coords="1005,445,1211,471"/>
-<area shape="rect" href="../../db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="142,445,359,471"/>
-<area shape="rect" href="../../df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="513,445,764,471"/>
-<area shape="rect" href="../../d3/da7/Indexing_8hpp.html" title=" " alt="" coords="473,79,674,104"/>
-<area shape="rect" href="../../d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="482,152,667,177"/>
-<area shape="rect" href="../../d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="1000,299,1216,324"/>
-<area shape="rect" href="../../d8/d85/Strides_8hpp.html" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="667,225,858,251"/>
-<area shape="rect" href="../../d8/dea/Views_8hpp.html" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="741,299,925,324"/>
-<area shape="rect" href="../../db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="545,372,732,397"/>
-<area shape="rect" href="../../d2/d6a/Slices_8hpp.html" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="483,299,666,324"/>
+<area shape="rect" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="699,5,905,31"/>
+<area shape="rect" href="../../d5/dae/Complex_8hpp.html" title="Complex number operations for the Tannic Tensor Library." alt="" coords="1179,299,1382,324"/>
+<area shape="rect" href="../../dc/d66/Functions_8hpp.html" title="Defines the excception types used in the library." alt="" coords="247,445,453,471"/>
+<area shape="rect" href="../../db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="5,445,223,471"/>
+<area shape="rect" href="../../df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="1202,445,1453,471"/>
+<area shape="rect" href="../../d3/da7/Indexing_8hpp.html" title="Utilities for index normalization and slicing ranges in the Tannic Tensor Library." alt="" coords="632,79,833,104"/>
+<area shape="rect" href="../../d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="779,152,964,177"/>
+<area shape="rect" href="../../d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="422,299,638,324"/>
+<area shape="rect" href="../../d8/d85/Strides_8hpp.html" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="788,225,979,251"/>
+<area shape="rect" href="../../d8/dea/Views_8hpp.html" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="971,299,1155,324"/>
+<area shape="rect" href="../../d8/d38/Traits_8hpp.html" title=" " alt="" coords="307,225,487,251"/>
+<area shape="rect" href="../../db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="841,372,1027,397"/>
+<area shape="rect" href="../../df/da3/Callback_8hpp.html" title=" " alt="" coords="833,445,1035,471"/>
+<area shape="rect" href="../../d2/d6a/Slices_8hpp.html" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="663,299,845,324"/>
 </map>
 </div>
 </div>
@@ -165,11 +167,18 @@ Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d72/concepttannic_1_1Integral.html">tannic::Integral</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires a type to be an integral type (e.g., <code>int</code>, <code>std::size_t</code>). <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dfb/concepttannic_1_1Assignable.html">tannic::Assignable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for types that can assign values. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d00/concepttannic_1_1Comparable.html">tannic::Comparable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for types that can compare their value. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines core C++20 concepts used throughout the Tannic Tensor Library. </p>
 <dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
-<p>This header the <code><a class="el" href="../../d7/d3b/concepttannic_1_1Expression.html" title="Defines the core protocol for all expression-like types in the Tannic Tensor Library.">tannic::Expression</a></code> fundamental concept as a compile time interface for all operations defined in this library and a few other concepts used internally to validate template arguments in compile-time expressions. </p>
+<p>This header the <code><a class="el" href="../../d7/d3b/concepttannic_1_1Expression.html" title="Defines the core protocol for all expression-like types in the Tannic Tensor Library.">tannic::Expression</a></code> fundamental concept as a compile time interface for all operations defined in this library and a few other concepts used internally to validate template arguments in compile-time expressions.</p>
+<dl class="section note"><dt>Note</dt><dd>Unless you are extending the library with your custom expressions you can skip this secction. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['promotions_0',['promotions',['../d4/d53/structtannic_1_1transformation_1_1Composition.html#ae5532fbe7069dd08c4ee780f4b4e6a51',1,'tannic::transformation::Composition']]]
+  ['message_0',['message',['../d9/d87/classtannic_1_1Exception.html#acc4253823005b369cfbfbcb0596ad7ee',1,'tannic::Exception']]]
 ];

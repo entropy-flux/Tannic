@@ -101,15 +101,18 @@ $(document).ready(function(){initNavTree('d1/d17/namespacetannic_1_1indexing.htm
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">Range</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a half-open interval <code>[start, stop)</code> for slicing.  <a href="../../de/dea/structtannic_1_1indexing_1_1Range.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ace9349c1e3b97c3df8283cde013aee85"><td class="memTemplParams" colspan="2">template&lt;Integral Index, Integral Size&gt; </td></tr>
 <tr class="memitem:ace9349c1e3b97c3df8283cde013aee85"><td class="memTemplItemLeft" align="right" valign="top">constexpr Index&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">normalize</a> (Index index, Size bound)</td></tr>
+<tr class="memdesc:ace9349c1e3b97c3df8283cde013aee85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize a possibly-negative index into the valid range <code>[0, bound)</code>.  <br /></td></tr>
 <tr class="separator:ace9349c1e3b97c3df8283cde013aee85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa32d55359b2e4a8162a3859edd089e0a"><td class="memTemplParams" colspan="2">template&lt;Integral Size&gt; </td></tr>
-<tr class="memitem:aa32d55359b2e4a8162a3859edd089e0a"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">Range</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d17/namespacetannic_1_1indexing.html#aa32d55359b2e4a8162a3859edd089e0a">normalize</a> (<a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">Range</a> <a class="el" href="../../d0/d1a/namespacetannic.html#a9468873460db4ea12f41458b87c63975">range</a>, Size size)</td></tr>
+<tr class="memitem:aa32d55359b2e4a8162a3859edd089e0a"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">Range</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d17/namespacetannic_1_1indexing.html#aa32d55359b2e4a8162a3859edd089e0a">normalize</a> (<a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">Range</a> <a class="el" href="../../d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024">range</a>, Size size)</td></tr>
+<tr class="memdesc:aa32d55359b2e4a8162a3859edd089e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize a slicing range into valid <code>[start, stop)</code> indices.  <br /></td></tr>
 <tr class="separator:aa32d55359b2e4a8162a3859edd089e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -149,6 +152,36 @@ template&lt;Integral Index, Integral Size&gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Normalize a possibly-negative index into the valid range <code>[0, bound)</code>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Index</td><td>Integral type of the index </td></tr>
+    <tr><td class="paramname">Size</td><td>Integral type of the bound </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Index to normalize (may be negative, counting from the end) </td></tr>
+    <tr><td class="paramname">bound</td><td>Upper bound (dimension size) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Normalized non-negative index</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Assertion</td><td>failure if the normalized index is out of bounds</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function is used <b>internally</b> by the tensor library when processing indexing operations. It allows Python-like negative indices, where <code>-1</code> refers to the last element of a dimension, <code>-2</code> the second-to-last, etc.</p>
+<h4><a class="anchor" id="autotoc_md23"></a>
+Example:</h4>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> i = <a class="code hl_function" href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">tannic::indexing::normalize</a>(-1, 5); <span class="comment">// → 4</span></div>
+<div class="line"><span class="keywordtype">int</span> j = <a class="code hl_function" href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">tannic::indexing::normalize</a>(2, 5);  <span class="comment">// → 2</span></div>
+<div class="ttc" id="anamespacetannic_1_1indexing_html_ace9349c1e3b97c3df8283cde013aee85"><div class="ttname"><a href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">tannic::indexing::normalize</a></div><div class="ttdeci">constexpr Index normalize(Index index, Size bound)</div><div class="ttdoc">Normalize a possibly-negative index into the valid range [0, bound).</div><div class="ttdef"><b>Definition:</b> Indexing.hpp:87</div></div>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>End-users typically don’t call this directly; it underpins higher-level indexing (<code>tensor[i]</code>) and slicing operations. </dd></dl>
+
 </div>
 </div>
 <a id="aa32d55359b2e4a8162a3859edd089e0a" name="aa32d55359b2e4a8162a3859edd089e0a"></a>
@@ -186,6 +219,31 @@ template&lt;Integral Size&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Normalize a slicing range into valid <code>[start, stop)</code> indices. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Size</td><td>Integral type of the dimension size </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">range</td><td>A possibly-negative <code><a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html" title="Represents a half-open interval [start, stop) for slicing.">Range</a></code> </td></tr>
+    <tr><td class="paramname">size</td><td>Size of the dimension being indexed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new <code><a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html" title="Represents a half-open interval [start, stop) for slicing.">Range</a></code> with non-negative, normalized indices</dd></dl>
+<p>This function is used <b>internally</b> by the tensor library when converting user-provided slicing ranges into valid <code>[start, stop)</code> intervals. Negative <code>start</code> and <code>stop</code> values are supported and are interpreted relative to the end of the dimension:</p><ul>
+<li><code>start = -1</code> → last element</li>
+<li><code>stop = -1</code> → one-past-the-end</li>
+</ul>
+<h4><a class="anchor" id="autotoc_md24"></a>
+Example:</h4>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> r1 = <a class="code hl_function" href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">tannic::indexing::normalize</a>({-3, -1}, 10);</div>
+<div class="line"><span class="comment">// r1.start = 7, r1.stop = 10</span></div>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>End-users generally use <code><a class="el" href="../../d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024" title="Convenience alias for tannic::indexing::Range.">tannic::range</a>{}</code> or slicing syntax; this function ensures those inputs are mapped into safe, non-negative indices before evaluation. </dd></dl>
 
 </div>
 </div>

@@ -142,6 +142,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a81394f7df9e3334bad0cad7a890d090e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a81394f7df9e3334bad0cad7a890d090e">shape</a> () const</td></tr>
 <tr class="memdesc:a81394f7df9e3334bad0cad7a890d090e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tensor's shape (dimension sizes per dimension).  <br /></td></tr>
 <tr class="separator:a81394f7df9e3334bad0cad7a890d090e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a575b57c01f3b63ca0edbaa18964fbe10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/da7/classtannic_1_1Shape.html#a4492b986a7ff6d75c916746693c449b6">Shape::size_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a575b57c01f3b63ca0edbaa18964fbe10">size</a> (int dimension) const</td></tr>
+<tr class="memdesc:a575b57c01f3b63ca0edbaa18964fbe10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tensor's size at a given dimension.  <br /></td></tr>
+<tr class="separator:a575b57c01f3b63ca0edbaa18964fbe10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ddcd9641feaa0640993c593a184f302"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a9ddcd9641feaa0640993c593a184f302">strides</a> () const</td></tr>
 <tr class="memdesc:a9ddcd9641feaa0640993c593a184f302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tensor's strides (step sizes per dimension).  <br /></td></tr>
 <tr class="separator:a9ddcd9641feaa0640993c593a184f302"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,7 +181,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:addd20f7c75af9c8bdc7f6e87e4b5785b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#addd20f7c75af9c8bdc7f6e87e4b5785b">operator[]</a> (Index index) const</td></tr>
 <tr class="memdesc:addd20f7c75af9c8bdc7f6e87e4b5785b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indexes the tensor with a single integral index.  <br /></td></tr>
 <tr class="separator:addd20f7c75af9c8bdc7f6e87e4b5785b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45f09412a47ac74d30ac11968583afa7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a45f09412a47ac74d30ac11968583afa7">operator[]</a> (<a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">indexing::Range</a> <a class="el" href="../../d0/d1a/namespacetannic.html#a9468873460db4ea12f41458b87c63975">range</a>) const</td></tr>
+<tr class="memitem:a45f09412a47ac74d30ac11968583afa7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a45f09412a47ac74d30ac11968583afa7">operator[]</a> (<a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">indexing::Range</a> <a class="el" href="../../d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024">range</a>) const</td></tr>
 <tr class="memdesc:a45f09412a47ac74d30ac11968583afa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indexes the tensor with a <code>Range</code> object.  <br /></td></tr>
 <tr class="separator:a45f09412a47ac74d30ac11968583afa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02fcaeee20dea90506e7afde810f9132"><td class="memTemplParams" colspan="2">template&lt;class ... Indexes&gt; </td></tr>
@@ -217,19 +220,19 @@ Friends</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A multidimensional, strided tensor data structure. </p>
 <p>The <code><a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a></code> class is the primary data structure in the Tannic <a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a> Library. It represents a dynamic typed intention of a computation. It supports slicing, transposition, and expression composition.</p>
-<h4><a class="anchor" id="autotoc_md16"></a>
+<h4><a class="anchor" id="autotoc_md49"></a>
 Evaluation Mode:</h4>
 <ul>
 <li>Tensors are currently <b>eager</b>: expressions assigned to them are immediately evaluated and stored.</li>
 <li>A lazy <code>constexpr</code> evaluation mode is planned for future versions, enabling compile-time computational graphs.</li>
 </ul>
-<h4><a class="anchor" id="autotoc_md17"></a>
+<h4><a class="anchor" id="autotoc_md50"></a>
 Memory:</h4>
 <ul>
 <li><a class="el" href="../../df/da7/classtannic_1_1Host.html" title="Host memory domain.">Host</a> and <a class="el" href="../../d3/d46/classtannic_1_1Device.html" title="Device memory domain.">Device</a> (e.g., CUDA) allocations are supported using allocators like <code>Host()</code> or <code>Device()</code>.</li>
 <li>Memory must be explicitly allocated via <code>initialize(Host())</code> or initialize(Device()) but maybe removed in the future.</li>
 </ul>
-<h4><a class="anchor" id="autotoc_md18"></a>
+<h4><a class="anchor" id="autotoc_md51"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a>; </div>
 <div class="line"> </div>
@@ -248,8 +251,8 @@ Example:</h4>
 <div class="ttc" id="anamespacetannic_1_1function_html_a1a8e818c37a5236e4481677e70ce6209"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a></div><div class="ttdeci">constexpr auto exp(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated exponential function expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:250</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a9ec44a47e78a5e28b75b76573d98e06b"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a></div><div class="ttdeci">constexpr auto log(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated natural logarithm expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:238</div></div>
 <div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition:</b> Buffer.hpp:43</div></div>
-<div class="ttc" id="anamespacetannic_html_a3681656aa208b88dfc79a1806cf669b6"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> Transformations.hpp:502</div></div>
-<div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="../../de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdef"><b>Definition:</b> Indexing.hpp:26</div></div>
+<div class="ttc" id="anamespacetannic_html_a3681656aa208b88dfc79a1806cf669b6"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> Transformations.hpp:507</div></div>
+<div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="../../de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdoc">Represents a half-open interval [start, stop) for slicing.</div><div class="ttdef"><b>Definition:</b> Indexing.hpp:56</div></div>
 </div><!-- fragment --><p>This example demonstrates eager initialization, advanced indexing, broadcasting, and composite expression evaluation.</p>
 <dl class="section warning"><dt>Warning</dt><dd>: Explicit inialization required for now but maybe removed in the future. If not properly initialized the tensors may segfault instead of throwing assertion error. This will be fixed when resources can be infered at the end of a templated expression. </dd></dl>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
@@ -907,7 +910,7 @@ template&lt;Integral Index&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A slice expression representing the sub-tensor.</dd></dl>
-<h4><a class="anchor" id="autotoc_md19"></a>
+<h4><a class="anchor" id="autotoc_md52"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a>; </div>
 <div class="line"> </div>
@@ -965,7 +968,7 @@ template&lt;class ... Indexes&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A slice expression representing the sub-tensor.</dd></dl>
-<h4><a class="anchor" id="autotoc_md21"></a>
+<h4><a class="anchor" id="autotoc_md54"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a>; </div>
 <div class="line"> </div>
@@ -1008,7 +1011,7 @@ Example:</h4>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A slice expression representing the sub-tensor.</dd></dl>
-<h4><a class="anchor" id="autotoc_md20"></a>
+<h4><a class="anchor" id="autotoc_md53"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a>; </div>
 <div class="line"> </div>
@@ -1068,6 +1071,34 @@ Example:</h4>
 </div><div class="memdoc">
 
 <p>Returns the tensor's shape (dimension sizes per dimension). </p>
+
+</div>
+</div>
+<a id="a575b57c01f3b63ca0edbaa18964fbe10" name="a575b57c01f3b63ca0edbaa18964fbe10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a575b57c01f3b63ca0edbaa18964fbe10">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/da7/classtannic_1_1Shape.html#a4492b986a7ff6d75c916746693c449b6">Shape::size_type</a> tannic::Tensor::size </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dimension</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the tensor's size at a given dimension. </p>
 
 </div>
 </div>

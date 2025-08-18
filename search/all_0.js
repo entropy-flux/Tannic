@@ -8,11 +8,13 @@ var searchData=
   ['allocator_5',['allocator',['../d4/d50/classtannic_1_1Buffer.html#ae8279b96d25510e6c4be7c5dd37d2528',1,'tannic::Buffer']]],
   ['allocator_6',['Allocator',['../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112',1,'tannic']]],
   ['allocator_7',['allocator',['../da/d93/classtannic_1_1Tensor.html#afc696fcdc106333ce6410d5863201d25',1,'tannic::Tensor']]],
-  ['argmax_8',['argmax',['../d9/dd9/namespacetannic_1_1expression.html#a674c22c100877e7a9fd931291ebb3765',1,'tannic::expression']]],
+  ['argmax_8',['argmax',['../d9/dd9/namespacetannic_1_1expression.html#a83caa2ee55fd9f434b633d9eba583b61',1,'tannic::expression']]],
   ['argmax_9',['Argmax',['../dc/d3e/structtannic_1_1expression_1_1Argmax.html',1,'tannic::expression']]],
-  ['argmin_10',['argmin',['../d9/dd9/namespacetannic_1_1expression.html#a7a31ff65859bcf18d2862ccfc6232ef4',1,'tannic::expression']]],
-  ['argmin_11',['Argmin',['../d7/d32/structtannic_1_1expression_1_1Argmin.html',1,'tannic::expression']]],
-  ['argument_12',['argument',['../d0/d1d/classtannic_1_1function_1_1Functor.html#a6f5d1bb3c05c5024c4c82d3b45a2955f',1,'tannic::function::Functor']]],
-  ['assign_13',['assign',['../dd/d0f/classtannic_1_1expression_1_1Slice.html#af670e5fd637111c77061a76f55b179ff',1,'tannic::expression::Slice::assign()'],['../da/d93/classtannic_1_1Tensor.html#adf4c49f9887498bb45b5d0b78a520602',1,'tannic::Tensor::assign()']]],
-  ['axis_14',['axis',['../dc/d3e/structtannic_1_1expression_1_1Argmax.html#ac0d3c29f8fb068d08676cd885d44b909',1,'tannic::expression::Argmax::axis()'],['../d7/d32/structtannic_1_1expression_1_1Argmin.html#a9511d56e6095709027e779343814190e',1,'tannic::expression::Argmin::axis()'],['../da/d5d/structtannic_1_1transformation_1_1Repetition.html#ab37be05a5f1045efebb79b80e0bf7ee0',1,'tannic::transformation::Repetition::axis()'],['../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#a260d08404464240bead779361c2973ea',1,'tannic::transformation::Concatenation::axis()']]]
+  ['argmean_10',['Argmean',['../d8/d27/structtannic_1_1expression_1_1Argmean.html',1,'tannic::expression']]],
+  ['argmin_11',['argmin',['../d9/dd9/namespacetannic_1_1expression.html#aa12d02d976951a8d0311e23af16e2ab3',1,'tannic::expression']]],
+  ['argmin_12',['Argmin',['../d7/d32/structtannic_1_1expression_1_1Argmin.html',1,'tannic::expression']]],
+  ['argsum_13',['Argsum',['../df/d20/structtannic_1_1expression_1_1Argsum.html',1,'tannic::expression']]],
+  ['argument_14',['argument',['../d0/d1d/classtannic_1_1function_1_1Functor.html#a6f5d1bb3c05c5024c4c82d3b45a2955f',1,'tannic::function::Functor']]],
+  ['assign_15',['assign',['../dd/d0f/classtannic_1_1expression_1_1Slice.html#af670e5fd637111c77061a76f55b179ff',1,'tannic::expression::Slice::assign()'],['../da/d93/classtannic_1_1Tensor.html#adf4c49f9887498bb45b5d0b78a520602',1,'tannic::Tensor::assign()']]],
+  ['axis_16',['axis',['../dc/d3e/structtannic_1_1expression_1_1Argmax.html#ac0d3c29f8fb068d08676cd885d44b909',1,'tannic::expression::Argmax::axis()'],['../d7/d32/structtannic_1_1expression_1_1Argmin.html#a9511d56e6095709027e779343814190e',1,'tannic::expression::Argmin::axis()'],['../df/d20/structtannic_1_1expression_1_1Argsum.html#a79e75eb9ba3e4075ef14c36735d3ae04',1,'tannic::expression::Argsum::axis()'],['../d8/d27/structtannic_1_1expression_1_1Argmean.html#a7944f517159156416c133ccefbf3e0b7',1,'tannic::expression::Argmean::axis()'],['../da/d5d/structtannic_1_1transformation_1_1Repetition.html#ab37be05a5f1045efebb79b80e0bf7ee0',1,'tannic::transformation::Repetition::axis()'],['../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#a260d08404464240bead779361c2973ea',1,'tannic::transformation::Concatenation::axis()']]]
 ];

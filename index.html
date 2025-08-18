@@ -121,8 +121,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="ttc" id="anamespacetannic_1_1function_html_a1a8e818c37a5236e4481677e70ce6209"><div class="ttname"><a href="dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a></div><div class="ttdeci">constexpr auto exp(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated exponential function expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:250</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a9ec44a47e78a5e28b75b76573d98e06b"><div class="ttname"><a href="dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a></div><div class="ttdeci">constexpr auto log(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated natural logarithm expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:238</div></div>
 <div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition:</b> Buffer.hpp:43</div></div>
-<div class="ttc" id="anamespacetannic_html_a3681656aa208b88dfc79a1806cf669b6"><div class="ttname"><a href="d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> Transformations.hpp:502</div></div>
-<div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdef"><b>Definition:</b> Indexing.hpp:26</div></div>
+<div class="ttc" id="anamespacetannic_html_a3681656aa208b88dfc79a1806cf669b6"><div class="ttname"><a href="d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> Transformations.hpp:507</div></div>
+<div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdoc">Represents a half-open interval [start, stop) for slicing.</div><div class="ttdef"><b>Definition:</b> Indexing.hpp:56</div></div>
 </div><!-- fragment --><p>It will output:</p>
 <div class="fragment"><div class="line">Tensor([[23.2817, 43.2817], </div>
 <div class="line">        [33.0131, 18.7881]] dtype=float32, shape=(2, 2))</div>
@@ -141,11 +141,11 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">Y[0, 1] = 6       </div>
 <div class="line">Y = torch.log(X) + Y * Y - torch.exp(X) + torch.matmul(X, Y.t())</div>
 <div class="line">print(Y) </div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md28"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md61"></a>
 Status</h1>
 <p>Note: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API—used to extend the library—is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.</p>
 <p>While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental- too significant to ignore. At some point, it may be requirement for Tannic.</p>
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md62"></a>
 Features</h1>
 <ul>
 <li>Dynamic typing: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization, but that also support compile time specifications thanks to constexpr.</li>
@@ -155,7 +155,7 @@ Features</h1>
 <li>Host–Device execution model: Unified support for CPU and CUDA-enabled GPU computation within the same codebase. While the device backend is currently developed in CUDA, the design is not tied to it and can support other backends in the future.</li>
 <li>Minimal core operators: Only essential built-in operations to keep the library lightweight and extensible.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md30"></a>
+<h1><a class="anchor" id="autotoc_md63"></a>
 What is comming...</h1>
 <ul>
 <li><b>cuBlas and cuTensor optional support</b>: This may be added soon to accelerate tensor computations.</li>
@@ -167,40 +167,40 @@ What is comming...</h1>
 </li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md32"></a>
+<h1><a class="anchor" id="autotoc_md65"></a>
 Requirements</h1>
 <ul>
 <li>C++23 compiler: A compiler with C++23 support is required to build and run Tannic.</li>
 <li>OpenBLAS (optional): If installed on your system, OpenBLAS will accelerate matrix multiplication.</li>
 <li>CUDA Toolkit (optional): CUDA 12+ is required only if you want GPU support. If not installed, Tannic will build and run with CPU-only support.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md33"></a>
+<h1><a class="anchor" id="autotoc_md66"></a>
 Installation</h1>
 <p>Clone the repository and include <code>tannic.hpp</code> and build it as follows:</p>
-<h2><a class="anchor" id="autotoc_md34"></a>
+<h2><a class="anchor" id="autotoc_md67"></a>
 Debug build:</h2>
 <p>Use this for development — includes extra checks, assertions, and debug symbols for easier troubleshooting.</p>
 <div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
 <div class="line">cmake .. -DCMAKE_BUILD_TYPE=Debug</div>
 <div class="line">make -j$(nproc)</div>
 <div class="line">ctest --output-on-failure</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md35"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md68"></a>
 Release build</h2>
 <p>Use this for deployment or benchmarking — builds with full compiler optimizations and without debug checks.</p>
 <div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
 <div class="line">cmake .. -DCMAKE_BUILD_TYPE=Release</div>
 <div class="line">make -j$(nproc) </div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md36"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md69"></a>
 Run the example</h2>
 <p>You can run the example provided in the main.cpp from the build folder: </p><div class="fragment"><div class="line">./main</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md37"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md70"></a>
 Include Tannic in your project</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;tannic.hpp&gt;</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md38"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md71"></a>
 CUDA support</h2>
 <p>CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detected during configuration. If no CUDA installation is found, Tannic will automatically fall back to a CPU‑only build. You can explicitly disable CUDA with:</p>
 <div class="fragment"><div class="line">cmake .. -DTANNIC_ENABLE_CUDA=OFF</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md39"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md72"></a>
 Contributing</h1>
 <p>Contributions to Tannic are welcome! If you'd like to report bugs, request features, or submit pull requests, please follow these guidelines:</p>
 <ul>
@@ -211,7 +211,7 @@ Contributing</h1>
 <p>Tannic is licensed under the Apache License 2.0, a permissive open-source license that allows you to use, modify, and distribute the code freely—even in commercial projects.</p>
 <p>The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development.</p>
 <p>By contributing, you agree that your contributions will also be licensed under Apache 2.0 and that proper attribution is appreciated.</p>
-<h1><a class="anchor" id="autotoc_md40"></a>
+<h1><a class="anchor" id="autotoc_md73"></a>
 License</h1>
 <p>Tannic is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details. </p>
 </div></div><!-- PageDoc -->

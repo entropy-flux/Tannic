@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('de/dea/structtannic_1_1indexing_1_1Ran
 </div><!--header-->
 <div class="contents">
 
+<p>Represents a half-open interval <code>[start, stop)</code> for slicing.  
+ <a href="../../de/dea/structtannic_1_1indexing_1_1Range.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d3/da7/Indexing_8hpp_source.html">Indexing.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -107,7 +110,19 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ab25842dedc9b4f9987153cd0b4750872"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872">stop</a> = -1</td></tr>
 <tr class="separator:ab25842dedc9b4f9987153cd0b4750872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a half-open interval <code>[start, stop)</code> for slicing. </p>
+<p>The <code><a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html" title="Represents a half-open interval [start, stop) for slicing.">Range</a></code> struct mimics Python's slice behavior:</p><ul>
+<li><code>start</code> is inclusive</li>
+<li><code>stop</code> is exclusive</li>
+<li>Negative values are allowed and are interpreted relative to the size of the dimension being indexed.</li>
+</ul>
+<p>By default:</p><ul>
+<li><code>start = 0</code> (beginning of the axis)</li>
+<li><code>stop = -1</code> (interpreted as "until the end" when normalized)</li>
+</ul>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d1/d17/namespacetannic_1_1indexing.html#aa32d55359b2e4a8162a3859edd089e0a" title="Normalize a slicing range into valid [start, stop) indices.">normalize(Range, Size)</a> </dd></dl>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="aa31ebd72934a95f17531758183f6ce80" name="aa31ebd72934a95f17531758183f6ce80"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa31ebd72934a95f17531758183f6ce80">&#9670;&#160;</a></span>start</h2>
 

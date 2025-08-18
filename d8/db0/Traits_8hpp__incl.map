@@ -1,4 +1,12 @@
 <map id="include/tannic/Traits.hpp" name="include/tannic/Traits.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,185,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="49,79,141,104"/>
+<area shape="rect" id="node1" title=" " alt="" coords="24,5,204,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,79,97,104"/>
+<area shape="rect" id="node3" href="$d3/d84/Concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="121,79,232,104"/>
+<area shape="rect" id="node4" title=" " alt="" coords="37,152,117,177"/>
+<area shape="rect" id="node5" title=" " alt="" coords="141,152,212,177"/>
+<area shape="rect" id="node6" href="$d5/d34/Types_8hpp.html" title="Core type system for the Tannic Tensor Library." alt="" coords="236,152,323,177"/>
+<area shape="rect" id="node7" title=" " alt="" coords="98,225,178,251"/>
+<area shape="rect" id="node8" title=" " alt="" coords="202,225,269,251"/>
+<area shape="rect" id="node9" title=" " alt="" coords="293,225,351,251"/>
+<area shape="rect" id="node10" title=" " alt="" coords="375,225,501,251"/>
 </map>
