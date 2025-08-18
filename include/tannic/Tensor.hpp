@@ -44,7 +44,8 @@
 #include <iostream>  
 #include <memory>
 #include <cassert> 
-#include <utility>  
+#include <utility> 
+#include <initializer_list> 
  
 #include "Types.hpp"
 #include "Shape.hpp" 
@@ -164,9 +165,8 @@ public:
     Tensor& operator=(const Expression& expression) {
         *this = expression.forward(); 
         return *this;
-    } 
+    }  
  
-
 public:  
     /// @name Metadata Access (May be constexpr in the future.)
     /// @{
@@ -220,6 +220,127 @@ public:
         return *this;
     } 
     /// @}
+
+public:
+
+    /**
+     * @brief Constructs a 1D tensor from an initializer list.
+     *
+     * @tparam T Element type (deduced from the initializer list).
+     * @param values A list of values to populate the tensor.
+     *
+     * @details
+     * This constructor allows **direct construction of 1D tensors** using brace-enclosed lists:
+     *
+     * ```cpp
+     * Tensor X = {1.0f, 2.0f, 3.0f, 4.0f};  // 1D tensor of shape {4}, dtype=float32
+     * ```
+     *
+     * The tensor is immediately initialized on host, contiguous in memory, and its dtype is deduced from `T`.
+     */
+    template<typename T>
+    Tensor(std::initializer_list<T> const& values)
+    :   dtype_(dtypeof<T>())
+    ,   shape_({values.size()})
+    ,   strides_(shape_)
+    ,   offset_(0) {
+        nbytes_ = values.size() * dsizeof(dtype_);
+        initialize();
+        size_t index = 0;
+        for (auto const& value : values) {
+            assign((std::byte const*)(&value), index * dsizeof(dtype_));
+            ++index;
+        }
+    }
+
+    /**
+     * @brief Constructs a 2D tensor from a nested initializer list.
+     *
+     * @tparam T Element type (deduced from the nested initializer list).
+     * @param values A nested list of values (rows) to populate the tensor.
+     *
+     * @details
+     * This constructor allows **direct construction of 2D tensors**:
+     *
+     * ```cpp
+     * Tensor Y = {
+     *     {1.0f, 2.0f, 3.0f},
+     *     {4.0f, 5.0f, 6.0f}
+     * };  // 2D tensor of shape {2,3}, dtype=float32
+     * ```
+     *
+     * All inner lists (rows) must have the same length. The tensor is contiguous in memory.
+     */
+    template<typename T>
+    Tensor(std::initializer_list<std::initializer_list<T>> const& values)
+        : dtype_(dtypeof<T>())
+        , shape_({values.size(), values.begin()->size()})
+        , strides_(shape_)
+        , offset_(0) 
+    {
+        nbytes_ =  shape_.front() * shape_.back() * dsizeof(dtype_);
+        initialize(); 
+        size_t index = 0;   
+        for (auto row : values) {
+            if (row.size() != shape_[1])
+                throw Exception("All rows must have the same number of columns");
+            for (auto const& value : row) {
+                assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                ++index;
+            }
+        }
+    }
+
+    /**
+     * @brief Constructs a 3D tensor from a triple-nested initializer list.
+     *
+     * @tparam T Element type (deduced from the nested lists).
+     * @param values A triple-nested list of values (matrices) to populate the tensor.
+     *
+     * @details
+     * This constructor allows **direct construction of 3D tensors**:
+     *
+     * ```cpp
+     * Tensor Z = {
+     *     {
+     *         {1.0f, 2.0f},
+     *         {3.0f, 4.0f}
+     *     },
+     *     {
+     *         {5.0f, 6.0f},
+     *         {7.0f, 8.0f}
+     *     }
+     * };  // 3D tensor of shape {2,2,2}, dtype=float32
+     * ```
+     *
+     * All matrices must have the same number of rows, and all rows must have the same number of columns.
+     * The tensor is contiguous in memory.
+     */
+    template<typename T>
+    Tensor(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values)
+        : dtype_(dtypeof<T>())
+        , shape_({values.size(), values.begin()->size(), values.begin()->begin()->size()})
+        , strides_(shape_)
+        , offset_(0)
+    {
+        nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
+        initialize();
+        std::cout << shape_ << std::endl;
+        std::cout << nbytes_ << std::endl;
+        size_t index = 0;   
+        for (auto const& matrix : values) {
+            if (matrix.size() != shape_[1])
+                throw Exception("All matrices must have the same number of rows");
+            for (auto const& row : matrix) {
+                if (row.size() != shape_[2])
+                    throw Exception("All rows must have the same number of columns");
+                for (auto const& value : row) {
+                    assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                    ++index;
+                }
+            }
+        }
+    }   
  
 public:   
     /// @name Memory Management (Always runtime.)

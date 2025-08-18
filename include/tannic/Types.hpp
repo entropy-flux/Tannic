@@ -66,6 +66,7 @@
 #include <iostream>
 #include <cstdint>  
 #include <string>   
+#include <complex>
 #include "runtime/types.h"
 
 namespace tannic {
@@ -184,7 +185,20 @@ constexpr inline type dtypeof(uint8_t code) {
         default: return none;
     }
 }
- 
+  
+template <typename T>
+constexpr inline type dtypeof() {
+    if constexpr (std::is_same_v<T, int8_t>)      return int8;
+    else if constexpr (std::is_same_v<T, int16_t>) return int16;
+    else if constexpr (std::is_same_v<T, int32_t>) return int32;
+    else if constexpr (std::is_same_v<T, int64_t>) return int64;
+    else if constexpr (std::is_same_v<T, float>)   return float32;
+    else if constexpr (std::is_same_v<T, double>)  return float64;
+    else if constexpr (std::is_same_v<T, std::complex<float>>)  return complex64;
+    else if constexpr (std::is_same_v<T, std::complex<double>>) return complex128;
+    else                                           return none;
+}
+
 inline std::ostream& operator<<(std::ostream& ostream, type type) {
     return ostream << dnameof(type);
 } 
