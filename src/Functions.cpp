@@ -11,6 +11,9 @@
 #include "cuda/fns.cuh"
 #else
 namespace cuda {
+using tannic::tensor_t;
+using tannic::stream_t;
+using tannic::device_t;
 inline status log(const tensor_t*, tensor_t*, stream_t)                { throw std::runtime_error("CUDA not available"); }
 inline status exp(const tensor_t*, tensor_t*, stream_t)                { throw std::runtime_error("CUDA not available"); }
 inline status sqrt(const tensor_t*, tensor_t*, stream_t)               { throw std::runtime_error("CUDA not available"); }

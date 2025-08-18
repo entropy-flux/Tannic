@@ -9,6 +9,9 @@
 #include "cuda/mem.cuh"
 #else 
 namespace cuda {
+using tannic::tensor_t;
+using tannic::stream_t;
+using tannic::device_t;
 inline int getDeviceCount() { throw std::runtime_error("CUDA is not available in this build"); }
 inline void* allocate(const device_t*, std::size_t) { throw std::runtime_error("CUDA allocation attempted without CUDA support"); }
 inline void deallocate(const device_t*, void*) { throw std::runtime_error("CUDA deallocation attempted without CUDA support"); }

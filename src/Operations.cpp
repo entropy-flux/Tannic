@@ -8,6 +8,9 @@
 #include "cuda/ops.cuh"
 #else 
 namespace cuda {
+using tannic::tensor_t;
+using tannic::stream_t;
+using tannic::device_t;
 inline status neg(const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
 inline status add(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
 inline status mul(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }

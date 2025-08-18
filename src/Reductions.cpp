@@ -10,6 +10,9 @@
 #include "cuda/argred.cuh" 
 #else 
 namespace cuda { 
+using tannic::tensor_t;
+using tannic::stream_t;
+using tannic::device_t;
 inline status argmax(const tensor_t*, tensor_t*, stream_t, uint8_t)  { throw std::runtime_error("CUDA not available"); }
 inline status argmin(const tensor_t*, tensor_t*, stream_t, uint8_t)  { throw std::runtime_error("CUDA not available"); } 
 inline status argsum(const tensor_t*, tensor_t*, stream_t, uint8_t)  { throw std::runtime_error("CUDA not available"); } 
