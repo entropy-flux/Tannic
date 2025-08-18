@@ -19,4 +19,3 @@ int main() {
     std::cout << Y << std::endl;
     std::cout << Z << std::endl;
 } 
- 
