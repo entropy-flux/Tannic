@@ -36,7 +36,7 @@ This is especially important in CUDA tests, where manually copying device memory
 
 - **Improve installation documentation**. One of the main challenges with C++ adoption is the complexity of building and linking libraries. I plan to create a comprehensive guide on installing and integrating the library into other projects.
 
-- **Optimize builds**. Currently there is a single CMakeLists.txt inside the cmake folder that compiles all the project. Decoupled builds for cpu and cuda backends will be a nice to have. 
+- **Optimize builds**. Currently there is a single CMakeLists.txt inside the cmake folder that compiles all the project. Decoupled builds for cpu and cuda backends will be a nice to have.
 
 - **Optimize kernels**. Kernels are currently unoptimized since I'm still focusing on builing necessary features. The kernels can be found on .cpp and .cu files inside src/cpu and src/cuda files.
 
