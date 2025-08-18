@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"df/da7/classtannic_1_1Host.html#a38d315c3ea9734e1e75bba2bea97a7ba":[9,0,0,10,4],
+"df/da7/classtannic_1_1Host.html#a44d3fb44daeda17f43cce11ca2452eee":[7,0,0,10,3],
 "df/da7/classtannic_1_1Host.html#a44d3fb44daeda17f43cce11ca2452eee":[9,0,0,10,3],
 "df/da7/classtannic_1_1Host.html#a4d32bc66b1bc6f2cfa91448ee7ac1af8":[7,0,0,10,2],
 "df/da7/classtannic_1_1Host.html#a4d32bc66b1bc6f2cfa91448ee7ac1af8":[9,0,0,10,2],
