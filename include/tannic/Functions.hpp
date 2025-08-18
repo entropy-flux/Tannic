@@ -53,30 +53,29 @@
 namespace tannic {
   
 namespace function {
-
 /**
  * @brief Expression template for mathematical function operations.
  *
- * Represents a lazily evaluated unary functor that takes a function as argument
+ * Represents a lazily evaluated unary function that takes a functor as argument
  * and maps it to an argument.
  * The actual computation is deferred until `forward()` is called.
  *
- * @tparam Function A mathematical function satisfying the Functional concept`
+ * @tparam Functor A mathematical functor satisfying the Functional concept
  * @tparam Argument An expression type satisfying the `Expression` concept
  */
-template<Functional Function, Expression Argument>
-class Functor {
+template<Functional Functor, Expression Argument>
+class Function {
 public:
-    Function function;
+    Functor functor;
     typename Trait<Argument>::Reference argument;
 
     /**
      * @brief Constructs a Function expression
-     * @param function The function (e.g., Log, Exp)
+     * @param functor The functor (e.g., Log, Exp)
      * @param argument The input tensor expression
      */
-    constexpr Functor(Function function, typename Trait<Argument>::Reference argument)
-    :   function(function)
+    constexpr Function(Functor functor, typename Trait<Argument>::Reference argument)
+    :   functor(functor)
     ,   argument(argument)
     {}
 
@@ -84,7 +83,7 @@ public:
      * @brief Returns the data type of the result.
      * @return The data type of the underlying argument.
      *
-     * Functions in this expression template system are type-preserving —
+     * Functors in this expression template system are type-preserving —
      * applying them element-wise does not change the scalar type
      * (e.g., applying `exp()` to a `float32` tensor produces `float32` output).
      * Therefore, we can directly query and return the argument's dtype.
@@ -93,13 +92,12 @@ public:
         return argument.dtype();
     }
 
-
     /**
      * @brief Returns the shape of the result.
      * @return A const reference to the shape of the underlying argument.
      *
      * The shape is returned as `const&` to avoid copying the shape object,
-     * and because element-wise functions do not alter tensor dimensions.
+     * and because element-wise functors do not alter tensor dimensions.
      */
     constexpr Shape const& shape() const {
         return argument.shape();
@@ -121,7 +119,7 @@ public:
      * @brief Returns the offset of the result.
      * @return The offset (in elements) into the underlying tensor storage.
      *
-     * Since element-wise functions do not change the memory location of the data,
+     * Since element-wise functors do not change the memory location of the data,
      * the offset is taken directly from the argument.
      */
     auto offset() const {
@@ -131,10 +129,11 @@ public:
     Tensor forward() const {
         Tensor source = argument.forward();
         Tensor target(dtype(), shape(), strides(), offset());
-        function(source, target);
+        functor(source, target);
         return target;
     } 
 };
+
 
 /**
  * @brief Functor natural logarithm (ln(x))
@@ -236,7 +235,7 @@ struct Tanh {
  */
 template<Expression Operand>
 constexpr auto log(Operand&& operand) {
-    return Functor<Log, Operand>({}, std::forward<Operand>(operand));
+    return Function<Log, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
@@ -248,7 +247,7 @@ constexpr auto log(Operand&& operand) {
  */
 template<Expression Operand>
 constexpr auto exp(Operand&& operand) {
-    return Functor<Exp, Operand>({}, std::forward<Operand>(operand));
+    return Function<Exp, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
@@ -261,7 +260,7 @@ constexpr auto exp(Operand&& operand) {
  */
 template<Expression Operand>
 constexpr auto sqrt(Operand&& operand) {
-    return Functor<Sqrt, Operand>({}, std::forward<Operand>(operand));
+    return Function<Sqrt, Operand>({}, std::forward<Operand>(operand));
 }  
 
 /**
@@ -274,7 +273,7 @@ constexpr auto sqrt(Operand&& operand) {
  */
 template<Expression Operand>
 constexpr auto rsqrt(Operand&& operand, float epsilon = 0.0f) {
-    return Functor<Rsqrt, Operand>({epsilon}, std::forward<Operand>(operand));
+    return Function<Rsqrt, Operand>({epsilon}, std::forward<Operand>(operand));
 }
 
 /**
@@ -286,7 +285,7 @@ constexpr auto rsqrt(Operand&& operand, float epsilon = 0.0f) {
  */
 template<Expression Operand>
 constexpr auto abs(Operand&& operand) {
-    return Functor<Abs, Operand>({}, std::forward<Operand>(operand));
+    return Function<Abs, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
@@ -298,7 +297,7 @@ constexpr auto abs(Operand&& operand) {
  */
 template<Expression Operand>
 constexpr auto sin(Operand&& operand) {
-    return Functor<Sin, Operand>({}, std::forward<Operand>(operand));
+    return Function<Sin, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
@@ -310,7 +309,7 @@ constexpr auto sin(Operand&& operand) {
  */
 template<Expression Operand>
 constexpr auto cos(Operand&& operand) {
-    return Functor<Cos, Operand>({}, std::forward<Operand>(operand));
+    return Function<Cos, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
@@ -323,7 +322,7 @@ constexpr auto cos(Operand&& operand) {
  */
 template<Expression Operand>
 constexpr auto tan(Operand&& operand) {
-    return Functor<Tan, Operand>({}, std::forward<Operand>(operand));
+    return Function<Tan, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
@@ -335,7 +334,7 @@ constexpr auto tan(Operand&& operand) {
  */
 template<Expression Operand>
 constexpr auto sinh(Operand&& operand) {
-    return Functor<Sinh, Operand>({}, std::forward<Operand>(operand));
+    return Function<Sinh, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
@@ -347,7 +346,7 @@ constexpr auto sinh(Operand&& operand) {
  */
 template<Expression Operand>
 constexpr auto cosh(Operand&& operand) {
-    return Functor<Cosh, Operand>({}, std::forward<Operand>(operand));
+    return Function<Cosh, Operand>({}, std::forward<Operand>(operand));
 }
 
 /**
@@ -359,7 +358,7 @@ constexpr auto cosh(Operand&& operand) {
  */
 template<Expression Operand>
 constexpr auto tanh(Operand&& operand) {
-    return Functor<Tanh, Operand>({}, std::forward<Operand>(operand));
+    return Function<Tanh, Operand>({}, std::forward<Operand>(operand));
 }
 
 } // namespace function
