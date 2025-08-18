@@ -18,11 +18,29 @@
 #ifndef EXCEPTIONS_HPP
 #define EXCEPTIONS_HPP
 
+/**
+ * @file Functions.hpp
+ * @author Eric Cardozo
+ * @date 2025
+ * @brief Defines the excception types used in the library.  
+**/
+
 #include <exception>
 #include <string>
 
 namespace tannic {
 
+/**
+ * @class Exception
+ * @brief A simple generic exception type for the Tannic Tensor Library.
+ *
+ * This class provides a lightweight generic exception mechanism during for 
+ * the frontend of the library.  
+ * 
+ * This class is a simple generic Exception to avoid overengineering during
+ * initial development. As the library matures, this may be extended or
+ * replaced with more specialized exception types.
+ */
 class Exception : public std::exception {
 public:
     std::string message;
