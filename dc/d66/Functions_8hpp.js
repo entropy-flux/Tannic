@@ -1,6 +1,6 @@
 var Functions_8hpp =
 [
-    [ "tannic::function::Functor< Function, Argument >", "d0/d1d/classtannic_1_1function_1_1Functor.html", "d0/d1d/classtannic_1_1function_1_1Functor" ],
+    [ "tannic::function::Function< Functor, Argument >", "db/d37/classtannic_1_1function_1_1Function.html", "db/d37/classtannic_1_1function_1_1Function" ],
     [ "tannic::function::Log", "d9/d67/structtannic_1_1function_1_1Log.html", "d9/d67/structtannic_1_1function_1_1Log" ],
     [ "tannic::function::Exp", "dc/da3/structtannic_1_1function_1_1Exp.html", "dc/da3/structtannic_1_1function_1_1Exp" ],
     [ "tannic::function::Sqrt", "d7/df8/structtannic_1_1function_1_1Sqrt.html", "d7/df8/structtannic_1_1function_1_1Sqrt" ],

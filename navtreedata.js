@@ -73,7 +73,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/d32/structtannic_1_1expression_1_1Argmin.html#a8bd4f399aa919a343ccc815fba4568e8",
+"d7/d6b/classtannic_1_1operation_1_1Binary.html#aa800c0ab9919c0033991f2a855298785",
 "db/d96/classtannic_1_1expression_1_1Realification.html#ad1ec129f1ff9570a0bb9d4bac7535066",
 "df/da7/classtannic_1_1Host.html#a44d3fb44daeda17f43cce11ca2452eee"
 ];

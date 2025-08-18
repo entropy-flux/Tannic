@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['functor_0',['Functor',['../d0/d1d/classtannic_1_1function_1_1Functor.html',1,'tannic::function']]]
+  ['function_0',['Function',['../db/d37/classtannic_1_1function_1_1Function.html',1,'tannic::function']]]
 ];
