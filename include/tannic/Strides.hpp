@@ -1,4 +1,4 @@
-// Copyright 2025 Eric Cardozo
+// Copyright 2025 Eric Hermosis
 //
 // This file is part of the Tannic Tensor Library.
 //
@@ -20,7 +20,7 @@
 
 /**
  * @file Strides.hpp
- * @author Eric Cardozo
+ * @author Eric Hermosis
  * @date 2025
  * @brief Memory layout specification for tensor dimensions in the Tannic Tensor Library. 
  * 

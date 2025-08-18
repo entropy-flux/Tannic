@@ -1,4 +1,4 @@
-// Copyright 2025 Eric Cardozo
+// Copyright 2025 Eric Hermosis
 //
 // This file is part of the Tannic Tensor Library.
 //
@@ -20,7 +20,7 @@
 
 /**
  * @file Indexing.hpp 
- * @author Eric Cardozo
+ * @author Eric Hermosis
  * @date 2025  
  * @brief Utilities for index normalization and slicing ranges in the Tannic Tensor Library.
  *

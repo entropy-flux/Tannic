@@ -1,4 +1,4 @@
-// Copyright 2025 Eric Cardozo
+// Copyright 2025 Eric Hermosis
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
 // limitations under the License.
 //
 
-// Copyright 2025 Eric Cardozo
+// Copyright 2025 Eric Hermosis
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@
  
 /**
  * @file Reductions.hpp
- * @author Eric Cardozo
+ * @author Eric Hermosis
  * @date 2025
  * @brief Defines reduction operations for tensor expressions. 
  *
