@@ -36,8 +36,13 @@ var NAVTREE =
       [ "Include Tannic in your project", "index.html#autotoc_md70", null ],
       [ "CUDA support", "index.html#autotoc_md71", null ]
     ] ],
-    [ "Contributing", "index.html#autotoc_md72", null ],
-    [ "License", "index.html#autotoc_md73", null ],
+    [ "License & Attribution", "index.html#autotoc_md72", null ],
+    [ "Contributing", "d5/d0d/md_docs_CONTRIBUTING.html", [
+      [ "Ways to Contribute", "d5/d0d/md_docs_CONTRIBUTING.html#autotoc_md74", null ],
+      [ "How to Contribute", "d5/d0d/md_docs_CONTRIBUTING.html#autotoc_md75", null ],
+      [ "Project structure", "d5/d0d/md_docs_CONTRIBUTING.html#autotoc_md76", null ],
+      [ "Creating new features.", "d5/d0d/md_docs_CONTRIBUTING.html#autotoc_md77", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -68,9 +73,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/d6b/classtannic_1_1operation_1_1Binary.html",
-"db/da7/classtannic_1_1Shape.html#a43042ceabb1192091fc9900dfaf8a3af",
-"df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4.html#a5cfecbcdb0bcca9205f09709bdca36b0"
+"d7/d32/structtannic_1_1expression_1_1Argmin.html#a9511d56e6095709027e779343814190e",
+"db/da7/classtannic_1_1Shape.html#a35f7ff956c2e5dcb77b0165bb4e21522",
+"df/dc5/structtannic_1_1function_1_1Cosh.html#ae0a76306026dac893d5ae050c85fc894"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
