@@ -474,6 +474,17 @@ public:
     /// @}
 
 public:
+
+    Tensor(type dtype, Shape shape, std::ptrdiff_t offset, std::shared_ptr<Buffer> storage)
+    :   dtype_(dtype)
+    ,   shape_(shape) 
+    ,   strides_(shape)
+    ,   offset_(offset)   
+    ,   buffer_(std::move(storage)) 
+    {
+        node_ = std::make_shared<Node>(*this);
+    }
+
     Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset, std::shared_ptr<Buffer> storage)
     :   dtype_(dtype)
     ,   shape_(shape) 
