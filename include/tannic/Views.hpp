@@ -54,6 +54,7 @@
 #include "Shape.hpp"
 #include "Strides.hpp"
 #include "Concepts.hpp"
+#include "Exceptions.hpp"
 
 namespace tannic {
 
@@ -103,8 +104,8 @@ public:
             elements += strides_[dimension] * (shape_[dimension] - 1);
         } 
         elements += 1;  
-        assert(elements == std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{})
-        && "Shape mismatch: view must preserve total number of elements");
+        if (elements != std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{} ))
+            throw Exception("Shape mismatch: view must preserve total number of elements");
     }
 
     /**

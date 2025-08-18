@@ -32,6 +32,7 @@
 
 #include <cassert> 
 #include "Concepts.hpp"
+#include "Exceptions.hpp"
 
 namespace tannic::indexing {
   
@@ -85,7 +86,8 @@ struct Range {
 template<Integral Index, Integral Size>
 constexpr inline Index normalize(Index index, Size bound) {
     if (index < 0) index += bound;
-    assert(index >= 0 && index < bound && "Index out of bounds");
+    if (index < 0 | index > bound)
+        throw Exception("Index out of bounds");
     return index;
 }  
 
@@ -119,6 +121,9 @@ template<Integral Size>
 constexpr inline Range normalize(Range range, Size size) {
     int start = range.start < 0 ? size + range.start : range.start;
     int stop = range.stop < 0 ? size + range.stop + 1 : range.stop;
+
+    if (start < 0 | start > size | stop < 0 | stop > size)
+        throw Exception("Range out of bounds");
     return {start, stop};
 }  
  

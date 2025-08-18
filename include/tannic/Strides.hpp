@@ -49,6 +49,7 @@
 #include "Concepts.hpp"
 #include "Shape.hpp" 
 #include "Indexing.hpp"
+#include "Exceptions.hpp"
 
 namespace tannic {
  
@@ -113,7 +114,8 @@ public:
     constexpr Strides(Sizes... sizes)
     :   sizes_{static_cast<size_type>(sizes)...}
     ,   rank_(sizeof...(sizes)) {
-        assert(rank_ <= limit && "Strides rank limit exceeded");
+        if (rank_ > limit) 
+            throw Exception("Strides rank limit exceeded"); 
     } 
 
     /**
@@ -140,7 +142,8 @@ public:
             sizes_[dimension++] = static_cast<size_type>(*iterator);
         }
         rank_ = dimension;
-        assert(rank_ <= limit && "Strides rank limit exceeded");
+        if (rank_ > limit) 
+            throw Exception("Strides rank limit exceeded"); 
     } 
     
     /**
@@ -163,7 +166,8 @@ public:
         for (int size = rank_ - 2; size >= 0; --size) {
             sizes_[size] = sizes_[size + 1] * shape[size + 1];
         }
-        assert(rank_ <= limit && "Strides rank limit exceeded");
+        if (rank_ > limit) 
+            throw Exception("Strides rank limit exceeded"); 
     }
 
 public:
@@ -261,7 +265,8 @@ public:
      * @param size The size of the dimension that will be added to the back of the strides. 
      */
     constexpr void expand(size_type size) { 
-        assert(rank_ < limit && "Rank limit exceeded");  
+        if (rank_ + 1 > limit) 
+            throw Exception("Strides rank limit exceeded"); 
         sizes_[rank_] = size;
         rank_ += 1; 
     } 

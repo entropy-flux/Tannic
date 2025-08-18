@@ -37,6 +37,7 @@
 #include "Traits.hpp"
 #include "Shape.hpp" 
 #include "Tensor.hpp" 
+#include "Exceptions.hpp"
 
 namespace tannic {
 
@@ -212,7 +213,8 @@ struct Composition {
      */
     constexpr static type promote(type inner, type outer) {
         type dtype = promotions[index(inner, outer)];
-        assert(dtype != none && "Unsuported dtypes");
+        if (dtype == none) 
+            throw Exception("Unsuported dtypes");
         return dtype;
     }
 
@@ -233,26 +235,29 @@ struct Composition {
     static constexpr Shape transform(Shape const& first, Shape const& second) {
         auto first_rank = first.rank();
         auto second_rank = second.rank();
-         
-        // Vector dot product
+          
         if (first_rank == 1 && second_rank == 1) {
-            assert(first[0] == second[0] && "Vector dimensions must match for dot product");
+            if (first_rank != 1 | second_rank != 1)
+                throw Exception("dimensions must match for dot product");
             return Shape{};  // Scalar result
         }
-         
-        // Matrix-vector multiplication
+          
         if (first_rank == 1 && second_rank == 2) {
-            assert(first[0] == second[1] && "Matrix inner dimensions do not match");
+            if (first[0] != second[0])
+                throw Exception("Matrix inner dimensions do not match");
+            if (first[0] != second[0])
             return Shape{second[0]};  // Vector result
         }
          
         // Vector-matrix multiplication
         if (first_rank == 2 && second_rank == 1) {
-            assert(first[1] == second[0] && "Matrix inner dimensions do not match");
+            if (first[1] != second[0])
+                throw Exception("Matrix inner dimensions do not match");
             return Shape{first[0]};  // Vector result
-        } 
-         
-        assert(first_rank >= 2 && second_rank >= 2 && "Inputs must have rank >= 2");
+        }  
+
+        if (first_rank < 2 | second_rank < 2) 
+            throw Exception("Inputs must have rank >= 2");
         
         // Handle batch dimensions
         Shape first_batches(first.begin(), first.end() - 2);
@@ -313,8 +318,8 @@ struct Outer {
      * Outer product is not defined here for tensors with rank > 1.
      */
     static constexpr Shape transform(Shape const& first, Shape const& second) {
-        assert(first.rank() == 1 && second.rank() == 1 && 
-               "Outer product of tensors with rank more than 1 not supported");
+        if(first.rank() != 1 | second.rank() != 1) 
+            throw Exception("Outer product of tensors with rank more than 1 not supported");
         return Shape(first[0], second[0]);
     }
  
@@ -366,8 +371,6 @@ struct Repetition {
  */
 struct Concatenation {
     int axis;
-
-
     /**
      * @brief Type promotion for concatenation.
      * 
@@ -378,7 +381,8 @@ struct Concatenation {
      * @return Data type (same as inputs).
      */
     constexpr auto promote(type first, type second) const {
-        assert(first == second && "Cannot concatenate tensors of different dtypes");
+        if(first != second)
+            throw Exception("Cannot concatenate tensors of different dtypes");
         return first;
     } 
 
@@ -400,8 +404,8 @@ struct Concatenation {
             if (dimension == axis) {
                 result[dimension] = first[dimension] + second[dimension];
             } else {
-                assert(first[dimension] == second[dimension] &&
-                    "All dimensions except concat axis must match");
+                if (first[dimension] != second[dimension])
+                    throw Exception("All dimensions except concat axis must match");
             }
         }
 

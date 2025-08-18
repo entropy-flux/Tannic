@@ -56,6 +56,7 @@
 #include "Shape.hpp" 
 #include "Tensor.hpp" 
 #include "Indexing.hpp"
+#include "Exceptions.hpp"
 
 namespace tannic { 
 
@@ -143,7 +144,9 @@ struct Argmax {
     } 
 
     constexpr Shape reduce(Shape const& shape) const {
-        assert(shape.rank() >= 1);
+        if (shape.rank() == 0) 
+            throw Exception("Cannot reduce scalar tensors");
+
         Shape out;
         for (size_t dim = 0; dim < shape.rank(); ++dim) {
             if (dim != static_cast<size_t>(axis)) out.expand(shape[dim]);
@@ -179,7 +182,9 @@ struct Argmin {
     }
  
     constexpr Shape reduce(Shape const& shape) const {
-        assert(shape.rank() >= 1); 
+        if (shape.rank() == 0) 
+            throw Exception("Cannot reduce scalar tensors");
+
         Shape reduced; 
         for (uint8_t dimension = 0; dimension < shape.rank(); ++dimension) {
             if (dimension != static_cast<uint8_t>(axis))

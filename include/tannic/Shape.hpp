@@ -50,6 +50,7 @@
  
 #include "Concepts.hpp" 
 #include "Indexing.hpp" 
+#include "Exceptions.hpp"
 
 namespace tannic { 
     
@@ -108,7 +109,8 @@ public:
         for (auto size : shape) {
             sizes_[dimension++] = size;
         } 
-        assert(rank_ <= limit && "Rank limit exceeded"); 
+        if (rank_> limit) 
+            throw Exception("Shape rank limit exceeded"); 
     } 
 
 
@@ -131,7 +133,8 @@ public:
     constexpr Shape(Sizes... sizes) 
     :   sizes_{static_cast<size_type>(sizes)...}
     ,   rank_(sizeof...(sizes)) {      
-        assert(rank_ <= limit && "Rank limit exceeded"); 
+        if (rank_> limit) 
+            throw Exception("Shape rank limit exceeded"); 
     }
 
 
@@ -147,7 +150,8 @@ public:
             sizes_[dimension++] = static_cast<size_type>(size);
         }
         rank_ = dimension; 
-        assert(rank_ <= limit && "Rank limit exceeded"); 
+        if (rank_> limit) 
+            throw Exception("Shape rank limit exceeded"); 
     } 
 
  
@@ -175,7 +179,8 @@ public:
             sizes_[dimension++] = static_cast<size_type>(*iterator);
         }
         rank_ = dimension;  
-        assert(rank_ <= limit && "Rank limit exceeded"); 
+        if (rank_> limit) 
+            throw Exception("Shape rank limit exceeded"); 
     }
 
 public:    
@@ -246,7 +251,8 @@ public:
      * @note Asserts if shape is empty.
      */
     constexpr auto back() const { 
-        assert(rank_ > 0 && "Cannot call back() on an empty Shape");
+        if (rank_ == 0) 
+            throw Exception("Cannot call back() on an empty Shape");  
         return sizes_[rank_ - 1];
     }       
 
@@ -278,7 +284,8 @@ public:
      * @param size The size of the dimension that will be added to the back of the shape. 
      */
     constexpr void expand(size_type size) { 
-        assert(rank_ < limit && "Rank limit exceeded");  
+        if (rank_ + 1 > limit) 
+            throw Exception("Shape rank limit exceeded"); 
         sizes_[rank_] = size;
         rank_ += 1; 
     }

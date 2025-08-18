@@ -101,7 +101,8 @@ public:
         switch (source.dtype()) {
             case float32: dtype_ = complex64; break;
             case float64: dtype_ = complex128; break;
-            default: assert(false && "Complex view error: source tensor dtype must be float32 or float64");
+            default: 
+                throw Exception("Complex view error: source tensor dtype must be float32 or float64");
         }  
 
         if (source.strides()[-1] == 1 && source.strides()[-2] == 2) { 
@@ -111,7 +112,7 @@ public:
             strides_ = Strides(source.strides().begin(), source.strides().end() - 1); 
             strides_[-1] = 1; 
         } else { 
-            assert(false &&
+            throw Exception(
                 "Complex view error: source tensor is not contiguous in last two dimensions. "
                 "Cannot create complex view safely."
             );
@@ -198,11 +199,14 @@ public:
     :   real(real)
     ,   imaginary(imaginary)
     {  
-        assert(real.shape() == imaginary.shape() &&     "Complexification error: real and imaginary part shapes must match");  
-        assert(real.strides() == imaginary.strides() && "Complexification error: real and imaginary part shapes must match");
+        if (real.shape() != imaginary.shape() | real.strides() != imaginary.strides()) 
+            throw Exception("Complexification error: real and imaginary part layouts must match");
+
         if (real.dtype() == float64 || imaginary.dtype() == float64) {
             dtype_ = complex128;
-        } else {
+        } 
+        
+        else {
             dtype_ = complex64;
         } 
     } 
@@ -310,7 +314,7 @@ public:
             strides_.expand(1);  
             strides_[-2] = 2;
         } else {
-            assert(false && "Real view error: source tensor is not in interleaved real/imag format");
+            throw Exception("Real view error: source tensor is not in interleaved real/imag format"); 
         }
 
     }

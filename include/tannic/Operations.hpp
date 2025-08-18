@@ -271,7 +271,7 @@ static constexpr Shape broadcast(Shape const& first, Shape const& second) {
         auto second_dimension = (dimension < rank - second_rank) ? 1 : second[dimension - (rank - second_rank)];
 
     if (!(first_dimension == second_dimension || first_dimension == 1 || second_dimension == 1)) {
-        throw std::invalid_argument("Shapes are not broadcast-compatible.");
+        throw Exception("Shapes are not broadcast-compatible.");
     }
         shape.expand(std::max(first_dimension, second_dimension));
     }

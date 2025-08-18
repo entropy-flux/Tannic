@@ -165,6 +165,7 @@ public:
         *this = expression.forward(); 
         return *this;
     } 
+ 
 
 public:  
     /// @name Metadata Access (May be constexpr in the future.)
@@ -207,13 +208,15 @@ public:
 
     /// Returns a reference to this tensor (const-qualified).
     Tensor& forward() { 
-        assert(is_initialized() && "Cannot perform computations with uninitialized tensors.");
+        if (!is_initialized())
+            initialize(); 
         return *this;
     } 
 
     /// Returns a reference to this tensor (non-const).
     Tensor const& forward() const {
-        assert(is_initialized() && "Cannot perform computations with uninitialized tensors."); 
+        if (!is_initialized())
+            initialize(); 
         return *this;
     } 
     /// @}
@@ -250,7 +253,8 @@ public:
      * @note Asserts if the tensor is not initialized.
      */
     Allocator const& allocator() const {
-        assert(buffer_ && "Cannot get resource of an initializer tensor.");
+        if (!is_initialized())
+            throw Exception("Cannot get resource of an initializer tensor."); 
         return buffer_->allocator();
     }   
     /// @}
@@ -284,7 +288,8 @@ public:
      */
     template<Integral Index>
     auto operator[](Index index) const {   
-        assert(is_initialized() && "Cannot slice uninitialized tensors."); 
+        if (!is_initialized())
+            initialize(); 
         return expression::Slice<Tensor, Index>(*this, std::make_tuple(index));
     }
 
@@ -303,7 +308,8 @@ public:
      * ```
      */
     auto operator[](indexing::Range range) const { 
-        assert(is_initialized() && "Cannot slice uninitialized tensors."); 
+        if (!is_initialized())
+            initialize(); 
         return expression::Slice<Tensor, indexing::Range>(*this, std::make_tuple(range));
     } 
 
@@ -326,7 +332,8 @@ public:
      */
     template<class ... Indexes>
     auto operator[](Indexes... indexes) const {
-        assert(is_initialized() && "Cannot slice uninitialized tensors."); 
+        if (!is_initialized())
+            initialize(); 
         return expression::Slice<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
     } 
 
@@ -338,7 +345,8 @@ public:
      * 
      */
     auto transpose(int first = -1, int second = -2) const {
-        assert(is_initialized() && "Cannot transpose uninitialized tensors."); 
+        if (!is_initialized())
+            initialize(); 
         return expression::Transpose<Tensor>(*this, std::make_pair<int, int>(std::move(first), std::move(second)));
     }  
 

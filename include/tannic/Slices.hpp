@@ -116,8 +116,7 @@ public:
                 using Argument = std::decay_t<decltype(argument)>;
                 if constexpr (std::is_same_v<Argument, indexing::Range>) { 
                     auto range = normalize(argument, source.shape()[dimension]);
-                    auto size = range.stop - range.start;
-                    assert(size >= 0);
+                    auto size = range.stop - range.start; 
                     shape[rank] = size;
                     strides[rank] = source.strides()[dimension]; 
                     offset_ += range.start * source.strides()[dimension] * dsizeof(dtype_); 
@@ -130,8 +129,8 @@ public:
                     dimension++;
                 } 
                 
-                else {
-                    static_assert(sizeof(Argument) == 0, "Unsupported index type in Slice");
+                else {         
+                    throw Exception("Unknown index type"); 
                 } 
             };
 
@@ -412,7 +411,9 @@ void Slice<Source, Indexes...>::operator=(T value) {
 template <Expression Source, class... Indexes>
 template <typename T>
 bool Slice<Source, Indexes...>::operator==(T value) const {    
-    assert(rank() == 0 && "Cannot compare an scalar to a non scalar slice");
+    if (rank() != 0)
+        throw Exception("Cannot compare an scalar to a non scalar slice");
+ 
     switch (dtype_) {
         case int8: {
             int8_t casted = value;
