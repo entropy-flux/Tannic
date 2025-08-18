@@ -43,187 +43,192 @@
 \DoxyCodeLine{00056\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Shape_8hpp}{Shape.hpp}}"{}}\ }
 \DoxyCodeLine{00057\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Tensor_8hpp}{Tensor.hpp}}"{}}\ }
 \DoxyCodeLine{00058\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Indexing_8hpp}{Indexing.hpp}}"{}}}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{\ }
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \textcolor{keyword}{namespace\ }expression\ \{}
-\DoxyCodeLine{00063\ \ }
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00074\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Reducer,\ Expression\ Operand>}
-\DoxyCodeLine{00075\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction}}\ \{}
-\DoxyCodeLine{00076\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{Reducer}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}};}
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operand>::Reference}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}};}
-\DoxyCodeLine{00079\ \ }
-\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a9e79399f2f9ba00d0d95b58653ae5d05}{Reduction}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{Reducer}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}},\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operand>::Reference}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}})}
-\DoxyCodeLine{00081\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}})}
-\DoxyCodeLine{00082\ \ \ \ \ ,\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}})}
-\DoxyCodeLine{00083\ \ \ \ \ ,\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}}.reduce(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}}.\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a490b9f5f332ad6df24ab82792af7e486}{dtype}}()))}
-\DoxyCodeLine{00084\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}}.reduce(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}}.\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad3ad6ef60474446a9df10985717c1af2}{shape}}()))}
-\DoxyCodeLine{00085\ \ \ \ \ ,\ \ \ strides\_(shape\_)\ \{\}}
-\DoxyCodeLine{00086\ \ }
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{type}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a490b9f5f332ad6df24ab82792af7e486}{dtype}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
-\DoxyCodeLine{00089\ \ \ \ \ \}}
-\DoxyCodeLine{00090\ \ }
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad3ad6ef60474446a9df10985717c1af2}{shape}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
-\DoxyCodeLine{00093\ \ \ \ \ \}\ }
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_adc8cbfb029055ea3a770e65e41efa48b}{strides}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
-\DoxyCodeLine{00097\ \ \ \ \ \}}
-\DoxyCodeLine{00098\ \ }
-\DoxyCodeLine{00099\ \ \ \ \ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a5fccaa5f3c597ec6caab4ec846c2a84a}{offset}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00101\ \ \ \ \ \}}
-\DoxyCodeLine{00102\ \ }
-\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{forward}}()\textcolor{keyword}{\ const\ }\{\ \ \ }
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}}.forward();}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{result}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a490b9f5f332ad6df24ab82792af7e486}{dtype}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad3ad6ef60474446a9df10985717c1af2}{shape}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_adc8cbfb029055ea3a770e65e41efa48b}{strides}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a5fccaa5f3c597ec6caab4ec846c2a84a}{offset}}());\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}}.forward(source,\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{result}});}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{result}};}
-\DoxyCodeLine{00108\ \ \ \ \ \}}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00110\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{type}}\ dtype\_;}
-\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
-\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
-\DoxyCodeLine{00114\ \};}
-\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Exceptions_8hpp}{Exceptions.hpp}}"{}}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{namespace\ }expression\ \{}
+\DoxyCodeLine{00064\ \ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Reducer,\ Expression\ Operand>}
+\DoxyCodeLine{00076\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction}}\ \{}
+\DoxyCodeLine{00077\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{Reducer}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}};}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operand>::Reference}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}};}
+\DoxyCodeLine{00080\ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a9e79399f2f9ba00d0d95b58653ae5d05}{Reduction}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{Reducer}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}},\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operand>::Reference}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}})}
+\DoxyCodeLine{00082\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}})}
+\DoxyCodeLine{00083\ \ \ \ \ ,\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}})}
+\DoxyCodeLine{00084\ \ \ \ \ ,\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}}.reduce(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}}.\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a490b9f5f332ad6df24ab82792af7e486}{dtype}}()))}
+\DoxyCodeLine{00085\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}}.reduce(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}}.\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad3ad6ef60474446a9df10985717c1af2}{shape}}()))}
+\DoxyCodeLine{00086\ \ \ \ \ ,\ \ \ strides\_(shape\_)\ \{\}}
+\DoxyCodeLine{00087\ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{type}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a490b9f5f332ad6df24ab82792af7e486}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad3ad6ef60474446a9df10985717c1af2}{shape}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
+\DoxyCodeLine{00094\ \ \ \ \ \}\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_adc8cbfb029055ea3a770e65e41efa48b}{strides}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ }
+\DoxyCodeLine{00100\ \ \ \ \ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a5fccaa5f3c597ec6caab4ec846c2a84a}{offset}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ }
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{forward}}()\textcolor{keyword}{\ const\ }\{\ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_af8fda61f8b519adfa6ad09670f39d570}{operand}}.forward();}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{result}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a490b9f5f332ad6df24ab82792af7e486}{dtype}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad3ad6ef60474446a9df10985717c1af2}{shape}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_adc8cbfb029055ea3a770e65e41efa48b}{strides}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a5fccaa5f3c597ec6caab4ec846c2a84a}{offset}}());\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ad538ecaf232c6ff457f46291497700c8}{reducer}}.forward(source,\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{result}});}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{result}};}
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{type}}\ dtype\_;}
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
+\DoxyCodeLine{00115\ \};}
 \DoxyCodeLine{00116\ }
-\DoxyCodeLine{00137\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax}{Argmax}}\ \{\ \ \ }
-\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676cd885d44b909}{axis}};\ }
-\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_a7877a8168a1c81b602ef1b4090b5a744}{keepdim}};\ \ \ }
-\DoxyCodeLine{00140\ }
-\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{type}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_af5565f57e72a903f23de86caa38357df}{reduce}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{type}}\ dtype)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{int64}};}
-\DoxyCodeLine{00143\ \ \ \ \ \}\ }
-\DoxyCodeLine{00144\ }
-\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ab6ca23ef9e519f7a40e979104e597b61}{reduce}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{assert}}(shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}()\ >=\ 1);}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{out}};}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{dim}}\ =\ 0;\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{dim}}\ <\ shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ ++\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{dim}})\ \{}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{dim}}\ !=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676cd885d44b909}{axis}}))\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{out}}.\mbox{\hyperlink{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6}{expand}}(shape[\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{dim}}]);}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_a7877a8168a1c81b602ef1b4090b5a744}{keepdim}})\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{out}}.expand(1);}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{out}};}
-\DoxyCodeLine{00153\ \ \ \ \ \}}
-\DoxyCodeLine{00154\ \ \ }
-\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{input}},\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{output}})\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00156\ \};\ }
-\DoxyCodeLine{00157\ }
-\DoxyCodeLine{00173\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin}{Argmin}}\ \{\ \ \ }
-\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e}{axis}};\ \ \ \ }
-\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a2c2eb8c098052a5cd70a6b755ec2dddf}{keepdim}};\ \ }
-\DoxyCodeLine{00176\ \ }
-\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{type}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_ab47d8cc3c5e2090f1ca2a07c71954070}{reduce}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{type}}\ dtype)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{int64}};}
-\DoxyCodeLine{00179\ \ \ \ \ \}}
-\DoxyCodeLine{00180\ \ }
-\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a8bd4f399aa919a343ccc815fba4568e8}{reduce}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{assert}}(shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}()\ >=\ 1);\ }
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{reduced}};\ }
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{uint8\_t}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{dimension}}\ =\ 0;\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{dimension}}\ <\ shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ ++\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{dimension}})\ \{}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{dimension}}\ !=\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{uint8\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e}{axis}}))}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{reduced}}.\mbox{\hyperlink{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6}{expand}}(shape[\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{dimension}}]);}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{reduced}};}
-\DoxyCodeLine{00189\ \ \ \ \ \}\ }
-\DoxyCodeLine{00190\ \ }
-\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};\ }
-\DoxyCodeLine{00192\ \};}
-\DoxyCodeLine{00193\ }
-\DoxyCodeLine{00194\ \ }
-\DoxyCodeLine{00213\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum}{Argsum}}\ \{}
-\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a79e75eb9ba3e4075ef14c36735d3ae04}{axis}};\ \ \ \ \ \ \ }
-\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a35cc26c059df57051eb2800a1d38a188}{keepdim}};\ \ }
-\DoxyCodeLine{00216\ \ \ \ \ }
-\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{type}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a64716b4c33e2ec4ee5d7e8055254f37d}{reduce}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{type}}\ dtype)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;\ \ \ }
-\DoxyCodeLine{00219\ \ \ \ \ \}}
-\DoxyCodeLine{00220\ }
-\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a33287265068ee818db6878d70753b574}{reduce}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{reduced}};}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{dim}}\ =\ 0;\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{dim}}\ <\ shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ ++\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{dim}})\ \{}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{dim}}\ !=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a79e75eb9ba3e4075ef14c36735d3ae04}{axis}}))\ \{}
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{reduced}}.\mbox{\hyperlink{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6}{expand}}(shape[\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{dim}}]);}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a35cc26c059df57051eb2800a1d38a188}{keepdim}})\ \{}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{reduced}}.expand(1);\ \ \textcolor{comment}{//\ Keep\ reduced\ dim\ as\ size\ 1}}
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{reduced}};}
-\DoxyCodeLine{00231\ \ \ \ \ \}\ }
-\DoxyCodeLine{00232\ }
-\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{input}},\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{output}})\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00234\ \};}
-\DoxyCodeLine{00235\ }
-\DoxyCodeLine{00236\ \ }
-\DoxyCodeLine{00252\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean}{Argmean}}\ \{}
-\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a7944f517159156416c133ccefbf3e0b7}{axis}};}
-\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a2433342825247ab024b0876a33e7f984}{keepdim}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00255\ \ \ \ \ }
-\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{type}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a32ddf3c89c13a43e954ac533e770377d}{reduce}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{type}}\ dtype)\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{assert}}(dtype\ ==\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{float32}}\ |\ dtype\ ==\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{float64}}\ \&\&\ \textcolor{stringliteral}{"{}Integral\ dtypes\ not\ supported."{}});}
-\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;}
-\DoxyCodeLine{00259\ \ \ \ \ \}}
-\DoxyCodeLine{00260\ }
-\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a41172422d762d18cf304bec44dd8f8b4}{reduce}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{reduced}};}
-\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{dim}}\ =\ 0;\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{dim}}\ <\ shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ ++\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{dim}})\ \{}
-\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{dim}}\ !=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a7944f517159156416c133ccefbf3e0b7}{axis}}))\ \{}
-\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{reduced}}.\mbox{\hyperlink{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6}{expand}}(shape[\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{dim}}]);}
-\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a2433342825247ab024b0876a33e7f984}{keepdim}})\ \{}
-\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{reduced}}.expand(1);}
-\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{reduced}};}
-\DoxyCodeLine{00271\ \ \ \ \ \}\ }
-\DoxyCodeLine{00272\ }
-\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{input}},\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{output}})\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00274\ \};}
-\DoxyCodeLine{00275\ }
-\DoxyCodeLine{00276\ \ }
-\DoxyCodeLine{00297\ \textcolor{keyword}{template}<Expression\ Source>}
-\DoxyCodeLine{00298\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{argmax}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1,\ \textcolor{keywordtype}{bool}\ keepdim\ =\ \textcolor{keyword}{false})\ \{\ \ }
-\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmax,\ Source>}}\{}
-\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank()),\ keepdim\},\ std::forward<Source>(source)\ }
-\DoxyCodeLine{00301\ \ \ \ \ \};}
-\DoxyCodeLine{00302\ \}}
-\DoxyCodeLine{00303\ \ }
-\DoxyCodeLine{00304\ }
-\DoxyCodeLine{00319\ \textcolor{keyword}{template}<Expression\ Source>}
-\DoxyCodeLine{00320\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3}{argmin}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1,\ \textcolor{keywordtype}{bool}\ keepdim\ =\ \textcolor{keyword}{false})\ \{\ \ }
-\DoxyCodeLine{00321\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmin,\ Source>}}\{\ }
-\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank()),\ keepdim\},\ std::forward<Source>(source)\ }
-\DoxyCodeLine{00323\ \ \ \ \ \};}
-\DoxyCodeLine{00324\ \}\ }
-\DoxyCodeLine{00325\ }
-\DoxyCodeLine{00346\ \textcolor{keyword}{template}<Expression\ Source>}
-\DoxyCodeLine{00347\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96}{sum}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1,\ \textcolor{keywordtype}{bool}\ keepdim\ =\ \textcolor{keyword}{false})\ \{}
-\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argsum,\ Source>}}\{}
-\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank()),\ keepdim\},}
-\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ std::forward<Source>(source)}
-\DoxyCodeLine{00351\ \ \ \ \ \};}
-\DoxyCodeLine{00352\ \}}
-\DoxyCodeLine{00353\ }
-\DoxyCodeLine{00374\ \textcolor{keyword}{template}<Expression\ Source>}
-\DoxyCodeLine{00375\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2}{mean}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1,\ \textcolor{keywordtype}{bool}\ keepdim\ =\ \textcolor{keyword}{false})\ \{}
-\DoxyCodeLine{00376\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmean,\ Source>}}\{}
-\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank()),\ keepdim\},}
-\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ std::forward<Source>(source)}
-\DoxyCodeLine{00379\ \ \ \ \ \};}
-\DoxyCodeLine{00380\ \}}
-\DoxyCodeLine{00381\ \ }
-\DoxyCodeLine{00382\ \}\ \textcolor{comment}{//\ namespace\ expression}}
-\DoxyCodeLine{00383\ \ }
-\DoxyCodeLine{00384\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{expression::argmax}};}
-\DoxyCodeLine{00385\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3}{expression::argmin}};}
-\DoxyCodeLine{00386\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96}{expression::sum}};}
-\DoxyCodeLine{00387\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2}{expression::mean}};}
-\DoxyCodeLine{00388\ }
-\DoxyCodeLine{00389\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00390\ }
-\DoxyCodeLine{00391\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REDUCTIONS\_HPP}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00138\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax}{Argmax}}\ \{\ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676cd885d44b909}{axis}};\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_a7877a8168a1c81b602ef1b4090b5a744}{keepdim}};\ \ \ }
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{type}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_af5565f57e72a903f23de86caa38357df}{reduce}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{type}}\ dtype)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{int64}};}
+\DoxyCodeLine{00144\ \ \ \ \ \}\ }
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ab6ca23ef9e519f7a40e979104e597b61}{reduce}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}()\ ==\ 0)\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Cannot\ reduce\ scalar\ tensors"{}});}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{out}};}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{dim}}\ =\ 0;\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{dim}}\ <\ shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ ++\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{dim}})\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{dim}}\ !=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676cd885d44b909}{axis}}))\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{out}}.\mbox{\hyperlink{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6}{expand}}(shape[\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{dim}}]);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_a7877a8168a1c81b602ef1b4090b5a744}{keepdim}})\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{out}}.expand(1);}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{out}};}
+\DoxyCodeLine{00156\ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{input}},\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{output}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00159\ \};\ }
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00176\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin}{Argmin}}\ \{\ \ \ }
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e}{axis}};\ \ \ \ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a2c2eb8c098052a5cd70a6b755ec2dddf}{keepdim}};\ \ }
+\DoxyCodeLine{00179\ \ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{type}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_ab47d8cc3c5e2090f1ca2a07c71954070}{reduce}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{type}}\ dtype)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{int64}};}
+\DoxyCodeLine{00182\ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a8bd4f399aa919a343ccc815fba4568e8}{reduce}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}()\ ==\ 0)\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Cannot\ reduce\ scalar\ tensors"{}});}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{reduced}};\ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{uint8\_t}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{dimension}}\ =\ 0;\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{dimension}}\ <\ shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ ++\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{dimension}})\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{dimension}}\ !=\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{uint8\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e}{axis}}))}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{reduced}}.\mbox{\hyperlink{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6}{expand}}(shape[\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{dimension}}]);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{reduced}};}
+\DoxyCodeLine{00194\ \ \ \ \ \}\ }
+\DoxyCodeLine{00195\ \ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00197\ \};}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ }
+\DoxyCodeLine{00218\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum}{Argsum}}\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a79e75eb9ba3e4075ef14c36735d3ae04}{axis}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a35cc26c059df57051eb2800a1d38a188}{keepdim}};\ \ }
+\DoxyCodeLine{00221\ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{type}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a64716b4c33e2ec4ee5d7e8055254f37d}{reduce}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{type}}\ dtype)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;\ \ \ }
+\DoxyCodeLine{00224\ \ \ \ \ \}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a33287265068ee818db6878d70753b574}{reduce}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{reduced}};}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{dim}}\ =\ 0;\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{dim}}\ <\ shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ ++\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{dim}})\ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{dim}}\ !=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a79e75eb9ba3e4075ef14c36735d3ae04}{axis}}))\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{reduced}}.\mbox{\hyperlink{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6}{expand}}(shape[\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{dim}}]);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a35cc26c059df57051eb2800a1d38a188}{keepdim}})\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{reduced}}.expand(1);\ \ \textcolor{comment}{//\ Keep\ reduced\ dim\ as\ size\ 1}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{reduced}};}
+\DoxyCodeLine{00236\ \ \ \ \ \}\ }
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{input}},\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{output}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00239\ \};}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ }
+\DoxyCodeLine{00257\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean}{Argmean}}\ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a7944f517159156416c133ccefbf3e0b7}{axis}};}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a2433342825247ab024b0876a33e7f984}{keepdim}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00260\ \ \ \ \ }
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{type}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a32ddf3c89c13a43e954ac533e770377d}{reduce}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{type}}\ dtype)\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{assert}}(dtype\ ==\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{float32}}\ |\ dtype\ ==\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{float64}}\ \&\&\ \textcolor{stringliteral}{"{}Integral\ dtypes\ not\ supported."{}});}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;}
+\DoxyCodeLine{00264\ \ \ \ \ \}}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a41172422d762d18cf304bec44dd8f8b4}{reduce}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{reduced}};}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{dim}}\ =\ 0;\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{dim}}\ <\ shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ ++\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{dim}})\ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{dim}}\ !=\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a7944f517159156416c133ccefbf3e0b7}{axis}}))\ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{reduced}}.\mbox{\hyperlink{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6}{expand}}(shape[\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{dim}}]);}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a2433342825247ab024b0876a33e7f984}{keepdim}})\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{reduced}}.expand(1);}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{reduced}};}
+\DoxyCodeLine{00276\ \ \ \ \ \}\ }
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{input}},\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{output}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00279\ \};}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ }
+\DoxyCodeLine{00302\ \textcolor{keyword}{template}<Expression\ Source>}
+\DoxyCodeLine{00303\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{argmax}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1,\ \textcolor{keywordtype}{bool}\ keepdim\ =\ \textcolor{keyword}{false})\ \{\ \ }
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmax,\ Source>}}\{}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank()),\ keepdim\},\ std::forward<Source>(source)\ }
+\DoxyCodeLine{00306\ \ \ \ \ \};}
+\DoxyCodeLine{00307\ \}}
+\DoxyCodeLine{00308\ \ }
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00324\ \textcolor{keyword}{template}<Expression\ Source>}
+\DoxyCodeLine{00325\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3}{argmin}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1,\ \textcolor{keywordtype}{bool}\ keepdim\ =\ \textcolor{keyword}{false})\ \{\ \ }
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmin,\ Source>}}\{\ }
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank()),\ keepdim\},\ std::forward<Source>(source)\ }
+\DoxyCodeLine{00328\ \ \ \ \ \};}
+\DoxyCodeLine{00329\ \}\ }
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00351\ \textcolor{keyword}{template}<Expression\ Source>}
+\DoxyCodeLine{00352\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96}{sum}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1,\ \textcolor{keywordtype}{bool}\ keepdim\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argsum,\ Source>}}\{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank()),\ keepdim\},}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ std::forward<Source>(source)}
+\DoxyCodeLine{00356\ \ \ \ \ \};}
+\DoxyCodeLine{00357\ \}}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00379\ \textcolor{keyword}{template}<Expression\ Source>}
+\DoxyCodeLine{00380\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2}{mean}}(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ axis\ =\ -\/1,\ \textcolor{keywordtype}{bool}\ keepdim\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction<Argmean,\ Source>}}\{}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank()),\ keepdim\},}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ std::forward<Source>(source)}
+\DoxyCodeLine{00384\ \ \ \ \ \};}
+\DoxyCodeLine{00385\ \}}
+\DoxyCodeLine{00386\ \ }
+\DoxyCodeLine{00387\ \}\ \textcolor{comment}{//\ namespace\ expression}}
+\DoxyCodeLine{00388\ \ }
+\DoxyCodeLine{00389\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{expression::argmax}};}
+\DoxyCodeLine{00390\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3}{expression::argmin}};}
+\DoxyCodeLine{00391\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96}{expression::sum}};}
+\DoxyCodeLine{00392\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2}{expression::mean}};}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00396\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REDUCTIONS\_HPP}}
 
 \end{DoxyCode}

@@ -24,35 +24,40 @@
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <cassert>}\ }
 \DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Concepts_8hpp}{Concepts.hpp}}"{}}}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1indexing}{tannic::indexing}}\ \{}
-\DoxyCodeLine{00037\ \ \ }
-\DoxyCodeLine{00055\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}}\ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f17531758183f6ce80}{start}}\ =\ 0;}
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range_ab25842dedc9b4f9987153cd0b4750872}{stop}}\ =\ -\/1;}
-\DoxyCodeLine{00058\ \};}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00085\ \textcolor{keyword}{template}<Integral\ Index,\ Integral\ Size>}
-\DoxyCodeLine{00086\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ Index\ \mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{normalize}}(Index\ index,\ Size\ bound)\ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ <\ 0)\ index\ +=\ bound;}
-\DoxyCodeLine{00088\ \ \ \ \ assert(index\ >=\ 0\ \&\&\ index\ <\ bound\ \&\&\ \textcolor{stringliteral}{"{}Index\ out\ of\ bounds"{}});}
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{return}\ index;}
-\DoxyCodeLine{00090\ \}\ \ }
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00118\ \textcolor{keyword}{template}<Integral\ Size>}
-\DoxyCodeLine{00119\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}}\ \mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{normalize}}(\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}},\ Size\ size)\ \{}
-\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{int}\ start\ =\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f17531758183f6ce80}{start}}\ <\ 0\ ?\ size\ +\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f17531758183f6ce80}{start}}\ :\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f17531758183f6ce80}{start}};}
-\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{int}\ stop\ =\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_ab25842dedc9b4f9987153cd0b4750872}{stop}}\ <\ 0\ ?\ size\ +\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_ab25842dedc9b4f9987153cd0b4750872}{stop}}\ +\ 1\ :\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_ab25842dedc9b4f9987153cd0b4750872}{stop}};}
-\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{return}\ \{start,\ stop\};}
-\DoxyCodeLine{00123\ \}\ \ }
-\DoxyCodeLine{00124\ \ }
-\DoxyCodeLine{00125\ \}\ \textcolor{comment}{//\ namespace\ TANNIC::indexing}}
-\DoxyCodeLine{00126\ }
-\DoxyCodeLine{00127\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00136\ \textcolor{keyword}{using\ }\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}\ =\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing::Range}};}
-\DoxyCodeLine{00137\ \}\ }
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INDEXING\_H}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Exceptions_8hpp}{Exceptions.hpp}}"{}}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1indexing}{tannic::indexing}}\ \{}
+\DoxyCodeLine{00038\ \ \ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}}\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f17531758183f6ce80}{start}}\ =\ 0;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range_ab25842dedc9b4f9987153cd0b4750872}{stop}}\ =\ -\/1;}
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{template}<Integral\ Index,\ Integral\ Size>}
+\DoxyCodeLine{00087\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ Index\ \mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{normalize}}(Index\ index,\ Size\ bound)\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ <\ 0)\ index\ +=\ bound;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ <\ 0\ |\ index\ >\ bound)}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Index\ out\ of\ bounds"{}});}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{return}\ index;}
+\DoxyCodeLine{00092\ \}\ \ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00120\ \textcolor{keyword}{template}<Integral\ Size>}
+\DoxyCodeLine{00121\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}}\ \mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{normalize}}(\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}},\ Size\ size)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{int}\ start\ =\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f17531758183f6ce80}{start}}\ <\ 0\ ?\ size\ +\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f17531758183f6ce80}{start}}\ :\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f17531758183f6ce80}{start}};}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{int}\ stop\ =\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_ab25842dedc9b4f9987153cd0b4750872}{stop}}\ <\ 0\ ?\ size\ +\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_ab25842dedc9b4f9987153cd0b4750872}{stop}}\ +\ 1\ :\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}.\mbox{\hyperlink{structtannic_1_1indexing_1_1Range_ab25842dedc9b4f9987153cd0b4750872}{stop}};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordflow}{if}\ (start\ <\ 0\ |\ start\ >\ size\ |\ stop\ <\ 0\ |\ stop\ >\ size)}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Range\ out\ of\ bounds"{}});}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{return}\ \{start,\ stop\};}
+\DoxyCodeLine{00128\ \}\ \ }
+\DoxyCodeLine{00129\ \ }
+\DoxyCodeLine{00130\ \}\ \textcolor{comment}{//\ namespace\ TANNIC::indexing}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{using\ }\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}\ =\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing::Range}};}
+\DoxyCodeLine{00142\ \}\ }
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ INDEXING\_H}}
 
 \end{DoxyCode}

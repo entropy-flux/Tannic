@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="358,5,545,31"/>
 <area shape="rect" id="Node000002" href="$df/da3/Callback_8hpp.html" title=" " alt="" coords="5,79,207,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="383,36,162,81,161,76,382,31"/>
-<area shape="rect" id="Node000003" href="$dc/d66/Functions_8hpp.html" title="Defines mathematical function operations for tensor expressions." alt="" coords="231,79,437,104"/>
+<area shape="rect" id="Node000003" href="$dc/d66/Functions_8hpp.html" title="Defines the excception types used in the library." alt="" coords="231,79,437,104"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="422,40,355,81,352,76,419,35"/>
 <area shape="rect" id="Node000004" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="461,79,679,104"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="484,35,552,76,549,81,481,40"/>

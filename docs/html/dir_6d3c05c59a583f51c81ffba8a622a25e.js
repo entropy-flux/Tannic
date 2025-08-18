@@ -4,6 +4,7 @@ var dir_6d3c05c59a583f51c81ffba8a622a25e =
     [ "Callback.hpp", "df/da3/Callback_8hpp.html", "df/da3/Callback_8hpp" ],
     [ "Complex.hpp", "d5/dae/Complex_8hpp.html", "d5/dae/Complex_8hpp" ],
     [ "Concepts.hpp", "d3/d84/Concepts_8hpp.html", "d3/d84/Concepts_8hpp" ],
+    [ "Exceptions.hpp", "d2/de9/Exceptions_8hpp.html", "d2/de9/Exceptions_8hpp" ],
     [ "Functions.hpp", "dc/d66/Functions_8hpp.html", "dc/d66/Functions_8hpp" ],
     [ "Graph.hpp", "d9/d69/Graph_8hpp.html", "d9/d69/Graph_8hpp" ],
     [ "Indexing.hpp", "d3/da7/Indexing_8hpp.html", "d3/da7/Indexing_8hpp" ],

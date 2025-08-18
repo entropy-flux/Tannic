@@ -54,6 +54,7 @@ var annotated_dup =
       [ "Callback", "d2/d24/classtannic_1_1Callback.html", "d2/d24/classtannic_1_1Callback" ],
       [ "Device", "d3/d46/classtannic_1_1Device.html", "d3/d46/classtannic_1_1Device" ],
       [ "Devices", "d9/dd4/classtannic_1_1Devices.html", "d9/dd4/classtannic_1_1Devices" ],
+      [ "Exception", "d9/d87/classtannic_1_1Exception.html", "d9/d87/classtannic_1_1Exception" ],
       [ "Host", "df/da7/classtannic_1_1Host.html", "df/da7/classtannic_1_1Host" ],
       [ "Node", "df/d85/structtannic_1_1Node.html", "df/d85/structtannic_1_1Node" ],
       [ "Shape", "db/da7/classtannic_1_1Shape.html", "db/da7/classtannic_1_1Shape" ],

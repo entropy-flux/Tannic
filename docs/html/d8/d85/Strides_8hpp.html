@@ -108,53 +108,61 @@ $(document).ready(function(){initNavTree('d8/d85/Strides_8hpp.html','../../'); i
 <code>#include &quot;<a class="el" href="../../d3/d84/Concepts_8hpp_source.html">Concepts.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/df8/Shape_8hpp_source.html">Shape.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d3/da7/Indexing_8hpp_source.html">Indexing.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/de9/Exceptions_8hpp_source.html">Exceptions.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Strides.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d54/Strides_8hpp__incl.png" border="0" usemap="#ainclude_2tannic_2Strides_8hpp" alt=""/></div>
 <map name="ainclude_2tannic_2Strides_8hpp" id="ainclude_2tannic_2Strides_8hpp">
-<area shape="rect" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="249,5,439,31"/>
-<area shape="rect" title=" " alt="" coords="111,152,167,177"/>
-<area shape="poly" title=" " alt="" coords="329,33,168,146,165,142,326,29"/>
-<area shape="rect" title=" " alt="" coords="465,79,535,104"/>
-<area shape="poly" title=" " alt="" coords="370,28,463,70,461,75,368,33"/>
-<area shape="rect" title=" " alt="" coords="559,79,646,104"/>
-<area shape="poly" title=" " alt="" coords="386,28,548,72,547,78,385,33"/>
-<area shape="rect" title=" " alt="" coords="191,152,267,177"/>
-<area shape="poly" title=" " alt="" coords="333,33,289,80,245,142,241,139,285,77,330,29"/>
-<area shape="rect" href="../../d3/d84/Concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="147,225,258,251"/>
-<area shape="poly" title=" " alt="" coords="292,33,242,49,189,73,139,108,118,129,101,153,97,163,98,173,109,190,130,205,155,218,153,223,127,210,105,194,93,174,92,163,96,151,114,126,136,104,186,69,241,44,290,28"/>
-<area shape="rect" href="../../d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="299,79,389,104"/>
-<area shape="poly" title=" " alt="" coords="347,31,347,65,341,65,341,31"/>
-<area shape="rect" href="../../d3/da7/Indexing_8hpp.html" title="Utilities for index normalization and slicing ranges in the Tannic Tensor Library." alt="" coords="645,152,752,177"/>
-<area shape="poly" title=" " alt="" coords="357,29,398,65,425,85,454,102,532,126,633,148,631,153,531,131,452,106,422,89,395,69,354,33"/>
-<area shape="rect" title=" " alt="" coords="12,299,92,324"/>
-<area shape="poly" title=" " alt="" coords="180,253,90,295,88,290,177,248"/>
-<area shape="rect" title=" " alt="" coords="117,299,187,324"/>
-<area shape="poly" title=" " alt="" coords="196,253,170,289,166,286,192,249"/>
-<area shape="rect" href="../../d5/d34/Types_8hpp.html" title="Core type system for the Tannic Tensor Library." alt="" coords="211,299,298,324"/>
-<area shape="poly" title=" " alt="" coords="213,249,240,286,236,289,209,253"/>
-<area shape="rect" title=" " alt="" coords="5,372,85,397"/>
-<area shape="poly" title=" " alt="" coords="222,327,93,370,92,365,220,321"/>
-<area shape="rect" title=" " alt="" coords="341,372,408,397"/>
-<area shape="poly" title=" " alt="" coords="275,322,344,362,342,367,273,326"/>
-<area shape="rect" title=" " alt="" coords="109,372,168,397"/>
-<area shape="poly" title=" " alt="" coords="237,326,171,367,168,362,235,322"/>
-<area shape="rect" title=" " alt="" coords="192,372,317,397"/>
-<area shape="poly" title=" " alt="" coords="257,324,257,358,252,358,252,324"/>
-<area shape="poly" title=" " alt="" coords="312,107,181,152,179,147,310,101"/>
-<area shape="poly" title=" " alt="" coords="327,106,261,147,258,142,324,102"/>
-<area shape="poly" title=" " alt="" coords="339,106,314,140,281,179,233,219,229,215,277,175,310,137,334,103"/>
-<area shape="poly" title=" " alt="" coords="348,104,375,358,369,358,343,104"/>
-<area shape="rect" title=" " alt="" coords="529,152,621,177"/>
-<area shape="poly" title=" " alt="" coords="382,101,525,145,524,151,380,107"/>
-<area shape="rect" title=" " alt="" coords="709,225,779,251"/>
-<area shape="poly" title=" " alt="" coords="390,95,612,121,716,137,766,150,774,166,774,183,762,215,757,213,768,182,768,167,762,154,715,142,612,126,389,100"/>
-<area shape="rect" title=" " alt="" coords="394,152,505,177"/>
-<area shape="poly" title=" " alt="" coords="362,102,422,142,420,147,359,106"/>
-<area shape="poly" title=" " alt="" coords="390,99,632,147,631,153,389,104"/>
-<area shape="poly" title=" " alt="" coords="646,178,634,180,272,231,271,225,633,175,645,173"/>
-<area shape="poly" title=" " alt="" coords="708,176,732,212,727,215,704,179"/>
+<area shape="rect" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="497,5,687,31"/>
+<area shape="rect" title=" " alt="" coords="84,152,140,177"/>
+<area shape="poly" title=" " alt="" coords="515,33,414,53,305,81,219,114,147,148,145,143,217,109,303,76,413,47,514,28"/>
+<area shape="rect" title=" " alt="" coords="902,79,973,104"/>
+<area shape="poly" title=" " alt="" coords="649,28,883,76,888,77,887,82,882,81,648,33"/>
+<area shape="rect" title=" " alt="" coords="997,79,1083,104"/>
+<area shape="poly" title=" " alt="" coords="677,28,983,76,983,81,676,33"/>
+<area shape="rect" title=" " alt="" coords="165,152,241,177"/>
+<area shape="poly" title=" " alt="" coords="534,33,453,53,365,81,293,114,234,147,231,143,291,109,363,76,451,48,533,28"/>
+<area shape="rect" href="../../d3/d84/Concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="135,225,246,251"/>
+<area shape="poly" title=" " alt="" coords="497,31,379,47,251,72,191,88,139,107,99,129,74,154,70,164,70,173,82,191,106,206,135,219,133,223,104,211,79,195,65,175,65,163,70,150,96,125,137,103,189,83,249,67,378,42,496,26"/>
+<area shape="rect" href="../../d2/df8/Shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="376,79,467,104"/>
+<area shape="poly" title=" " alt="" coords="566,33,463,76,461,71,564,28"/>
+<area shape="rect" href="../../d3/da7/Indexing_8hpp.html" title="Utilities for index normalization and slicing ranges in the Tannic Tensor Library." alt="" coords="669,152,776,177"/>
+<area shape="poly" title=" " alt="" coords="605,29,705,140,701,143,601,33"/>
+<area shape="rect" href="../../d2/de9/Exceptions_8hpp.html" title=" " alt="" coords="707,225,829,251"/>
+<area shape="poly" title=" " alt="" coords="634,28,678,45,728,70,775,105,795,127,812,151,816,168,812,186,793,217,788,214,808,184,811,168,807,153,791,130,771,109,725,75,676,50,632,33"/>
+<area shape="rect" title=" " alt="" coords="5,299,85,324"/>
+<area shape="poly" title=" " alt="" coords="168,253,82,295,80,290,166,248"/>
+<area shape="rect" title=" " alt="" coords="110,299,181,324"/>
+<area shape="poly" title=" " alt="" coords="185,252,162,289,158,286,181,250"/>
+<area shape="rect" href="../../d5/d34/Types_8hpp.html" title="Core type system for the Tannic Tensor Library." alt="" coords="205,299,291,324"/>
+<area shape="poly" title=" " alt="" coords="202,249,232,286,228,290,198,253"/>
+<area shape="rect" title=" " alt="" coords="63,372,143,397"/>
+<area shape="poly" title=" " alt="" coords="226,326,140,368,137,364,223,322"/>
+<area shape="rect" title=" " alt="" coords="316,372,383,397"/>
+<area shape="poly" title=" " alt="" coords="266,322,323,362,320,366,263,326"/>
+<area shape="rect" title=" " alt="" coords="500,372,559,397"/>
+<area shape="poly" title=" " alt="" coords="292,321,487,370,486,375,291,326"/>
+<area shape="rect" title=" " alt="" coords="167,372,292,397"/>
+<area shape="poly" title=" " alt="" coords="247,325,238,360,233,358,242,324"/>
+<area shape="poly" title=" " alt="" coords="376,104,154,154,153,149,375,99"/>
+<area shape="poly" title=" " alt="" coords="387,107,252,150,250,145,385,101"/>
+<area shape="poly" title=" " alt="" coords="399,106,312,154,219,219,216,214,309,150,397,102"/>
+<area shape="poly" title=" " alt="" coords="417,105,396,153,380,209,368,266,355,358,349,357,363,266,375,208,391,151,412,103"/>
+<area shape="rect" title=" " alt="" coords="418,152,510,177"/>
+<area shape="poly" title=" " alt="" coords="431,103,452,139,448,142,426,106"/>
+<area shape="rect" title=" " alt="" coords="513,225,583,251"/>
+<area shape="poly" title=" " alt="" coords="417,105,404,139,403,158,409,176,427,196,450,210,501,228,499,233,448,215,424,200,404,179,398,159,399,138,412,103"/>
+<area shape="rect" title=" " alt="" coords="534,152,645,177"/>
+<area shape="poly" title=" " alt="" coords="449,102,550,144,548,149,447,106"/>
+<area shape="poly" title=" " alt="" coords="468,101,661,146,660,151,466,106"/>
+<area shape="poly" title=" " alt="" coords="467,90,549,94,646,103,734,120,767,133,790,150,797,166,798,182,786,214,781,212,792,182,792,167,786,154,765,138,732,125,645,108,549,99,467,96"/>
+<area shape="poly" title=" " alt="" coords="670,178,658,180,440,210,260,232,259,226,439,204,657,175,669,173"/>
+<area shape="poly" title=" " alt="" coords="696,180,590,222,588,218,694,175"/>
+<area shape="poly" title=" " alt="" coords="732,176,756,212,751,215,728,179"/>
+<area shape="poly" title=" " alt="" coords="750,253,562,367,559,362,747,249"/>
+<area shape="rect" title=" " alt="" coords="725,299,811,324"/>
+<area shape="poly" title=" " alt="" coords="771,251,771,285,765,285,765,251"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -167,7 +175,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="poly" title=" " alt="" coords="426,36,171,81,170,76,425,30"/>
 <area shape="rect" href="../../db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="321,152,508,177"/>
 <area shape="poly" title=" " alt="" coords="401,36,322,54,292,66,273,80,267,92,267,103,274,113,285,122,318,138,357,149,356,154,317,143,282,126,270,116,262,105,261,91,269,77,289,62,321,49,400,30"/>
-<area shape="rect" href="../../dc/d66/Functions_8hpp.html" title="Defines mathematical function operations for tensor expressions." alt="" coords="837,225,1043,251"/>
+<area shape="rect" href="../../dc/d66/Functions_8hpp.html" title="Defines the excception types used in the library." alt="" coords="837,225,1043,251"/>
 <area shape="poly" title=" " alt="" coords="612,17,702,21,796,31,876,49,907,61,929,77,941,94,949,114,955,156,952,196,946,226,941,225,947,196,950,157,944,115,936,97,925,81,904,66,875,54,795,36,702,27,612,22"/>
 <area shape="rect" href="../../d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="283,79,499,104"/>
 <area shape="poly" title=" " alt="" coords="474,40,410,81,408,76,471,36"/>

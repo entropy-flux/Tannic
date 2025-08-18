@@ -30,137 +30,142 @@
 \DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Concepts_8hpp}{Concepts.hpp}}"{}}}
 \DoxyCodeLine{00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Shape_8hpp}{Shape.hpp}}"{}}\ }
 \DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Indexing_8hpp}{Indexing.hpp}}"{}}}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
-\DoxyCodeLine{00054\ \ }
-\DoxyCodeLine{00086\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \{}
-\DoxyCodeLine{00087\ \textcolor{keyword}{public}:\ \ }
-\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}}\ =\ 8;\ \ }
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{rank\_type}}\ =\ uint8\_t;\ \ \ \ \ \ }
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\ =\ int64\_t;\ \ }
-\DoxyCodeLine{00093\ \ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Exceptions_8hpp}{Exceptions.hpp}}"{}}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00055\ \ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \{}
+\DoxyCodeLine{00088\ \textcolor{keyword}{public}:\ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}}\ =\ 8;\ \ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{rank\_type}}\ =\ uint8\_t;\ \ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\ =\ int64\_t;\ \ }
 \DoxyCodeLine{00094\ \ }
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides_afe6a18768bd5261a71d0ebb8060d2bb0}{Strides}}()\ noexcept\ =\ default;\ }
-\DoxyCodeLine{00097\ \ \ }
-\DoxyCodeLine{00112\ \ \ \ \ template<\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}...\ Sizes>}
-\DoxyCodeLine{00113\ \ \ \ \ constexpr\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}(Sizes...\ sizes)}
-\DoxyCodeLine{00114\ \ \ \ \ :\ \ \ sizes\_\{\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\textcolor{keyword}{>}(sizes)...\}}
-\DoxyCodeLine{00115\ \ \ \ \ ,\ \ \ rank\_(\textcolor{keyword}{sizeof}...(sizes))\ \{}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ assert(rank\_\ <=\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}}\ \&\&\ \textcolor{stringliteral}{"{}Strides\ rank\ limit\ exceeded"{}});}
-\DoxyCodeLine{00117\ \ \ \ \ \}\ }
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keyword}{template}<Iterator\ Iterator>}
-\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides_a9cd1cf946883b39ae2abac208d895cd1}{Strides}}(\mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}\ \mbox{\hyperlink{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60}{begin}},\ \mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}\ \mbox{\hyperlink{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc}{end}})\ \{\ }
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\ dimension\ =\ 0;}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ iterator\ =\ \mbox{\hyperlink{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60}{begin}};\ iterator\ !=\ \mbox{\hyperlink{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc}{end}};\ ++iterator)\ \{}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ assert(dimension\ <\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}}\ \&\&\ \textcolor{stringliteral}{"{}Strides\ rank\ limit\ exceeded"{}});}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ sizes\_[dimension++]\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\textcolor{keyword}{>}(*iterator);}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ rank\_\ =\ dimension;}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ assert(rank\_\ <=\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}}\ \&\&\ \textcolor{stringliteral}{"{}Strides\ rank\ limit\ exceeded"{}});}
-\DoxyCodeLine{00144\ \ \ \ \ \}\ }
-\DoxyCodeLine{00145\ \ \ \ \ }
-\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides_a6c0207e7af3aa12a5cb9f9bb166d86a9}{Strides}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\&\ shape)\ \{\ }
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ rank\_\ =\ shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rank\_\ ==\ 0)\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ sizes\_[rank\_\ -\/\ 1]\ =\ 1;}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ size\ =\ rank\_\ -\/\ 2;\ size\ >=\ 0;\ -\/-\/size)\ \{}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ sizes\_[size]\ =\ sizes\_[size\ +\ 1]\ *\ shape[size\ +\ 1];}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ assert(rank\_\ <=\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}}\ \&\&\ \textcolor{stringliteral}{"{}Strides\ rank\ limit\ exceeded"{}});}
-\DoxyCodeLine{00167\ \ \ \ \ \}}
-\DoxyCodeLine{00168\ }
-\DoxyCodeLine{00169\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}*\ \mbox{\hyperlink{classtannic_1_1Strides_a34088bd2dac591cac53f2af4ac3064bd}{address}}()\ noexcept\ \{}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.data();}
-\DoxyCodeLine{00176\ \ \ \ \ \}}
-\DoxyCodeLine{00177\ }
-\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\ \textcolor{keyword}{const}*\ \mbox{\hyperlink{classtannic_1_1Strides_a402e5d9d7fce00964f66ad28e222752f}{address}}()\ const\ noexcept\ \{}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.data();}
-\DoxyCodeLine{00184\ \ \ \ \ \}}
-\DoxyCodeLine{00185\ }
-\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}()\ const\ noexcept\ \{\ }
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rank\_;\ }
-\DoxyCodeLine{00192\ \ \ \ \ \}\ }
-\DoxyCodeLine{00193\ }
-\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60}{begin}}()\ \{\ }
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.begin();\ }
-\DoxyCodeLine{00198\ \ \ \ \ \}}
-\DoxyCodeLine{00199\ \ \ \ \ }
-\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc}{end}}()\ \{\ }
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.begin()\ +\ rank\_;\ }
+\DoxyCodeLine{00095\ \ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides_afe6a18768bd5261a71d0ebb8060d2bb0}{Strides}}()\ noexcept\ =\ default;\ }
+\DoxyCodeLine{00098\ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ template<\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}...\ Sizes>}
+\DoxyCodeLine{00114\ \ \ \ \ constexpr\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}(Sizes...\ sizes)}
+\DoxyCodeLine{00115\ \ \ \ \ :\ \ \ sizes\_\{\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\textcolor{keyword}{>}(sizes)...\}}
+\DoxyCodeLine{00116\ \ \ \ \ ,\ \ \ rank\_(\textcolor{keyword}{sizeof}...(sizes))\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rank\_\ >\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}})\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Strides\ rank\ limit\ exceeded"{}});\ }
+\DoxyCodeLine{00119\ \ \ \ \ \}\ }
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{template}<Iterator\ Iterator>}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides_a9cd1cf946883b39ae2abac208d895cd1}{Strides}}(\mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}\ \mbox{\hyperlink{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60}{begin}},\ \mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}\ \mbox{\hyperlink{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc}{end}})\ \{\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\ dimension\ =\ 0;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ iterator\ =\ \mbox{\hyperlink{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60}{begin}};\ iterator\ !=\ \mbox{\hyperlink{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc}{end}};\ ++iterator)\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ assert(dimension\ <\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}}\ \&\&\ \textcolor{stringliteral}{"{}Strides\ rank\ limit\ exceeded"{}});}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ sizes\_[dimension++]\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\textcolor{keyword}{>}(*iterator);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ rank\_\ =\ dimension;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rank\_\ >\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}})\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Strides\ rank\ limit\ exceeded"{}});\ }
+\DoxyCodeLine{00147\ \ \ \ \ \}\ }
+\DoxyCodeLine{00148\ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides_a6c0207e7af3aa12a5cb9f9bb166d86a9}{Strides}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\&\ shape)\ \{\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ rank\_\ =\ shape.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rank\_\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ sizes\_[rank\_\ -\/\ 1]\ =\ 1;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ size\ =\ rank\_\ -\/\ 2;\ size\ >=\ 0;\ -\/-\/size)\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ sizes\_[size]\ =\ sizes\_[size\ +\ 1]\ *\ shape[size\ +\ 1];}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rank\_\ >\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}})\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Strides\ rank\ limit\ exceeded"{}});\ }
+\DoxyCodeLine{00171\ \ \ \ \ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}*\ \mbox{\hyperlink{classtannic_1_1Strides_a34088bd2dac591cac53f2af4ac3064bd}{address}}()\ noexcept\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.data();}
+\DoxyCodeLine{00180\ \ \ \ \ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\ \textcolor{keyword}{const}*\ \mbox{\hyperlink{classtannic_1_1Strides_a402e5d9d7fce00964f66ad28e222752f}{address}}()\ const\ noexcept\ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.data();}
+\DoxyCodeLine{00188\ \ \ \ \ \}}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}()\ const\ noexcept\ \{\ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rank\_;\ }
+\DoxyCodeLine{00196\ \ \ \ \ \}\ }
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a2cf3a00885beb9093058aa45904f9d60}{begin}}()\ \{\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.begin();\ }
 \DoxyCodeLine{00202\ \ \ \ \ \}}
-\DoxyCodeLine{00203\ }
-\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_ac175384bf933484f90557ac7f7e79084}{begin}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.begin();\ }
+\DoxyCodeLine{00203\ \ \ \ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_af52de355100616be17c46fb213a814dc}{end}}()\ \{\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.begin()\ +\ rank\_;\ }
 \DoxyCodeLine{00206\ \ \ \ \ \}}
-\DoxyCodeLine{00207\ \ \ \ \ }
-\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a3106697e9953c618f56ca6eef9e6e955}{end}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.begin()\ +\ rank\_;\ }
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_ac175384bf933484f90557ac7f7e79084}{begin}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.begin();\ }
 \DoxyCodeLine{00210\ \ \ \ \ \}}
-\DoxyCodeLine{00211\ }
-\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a3eb190825f87d2ef0a30aa62459187e7}{cbegin}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.cbegin();\ }
+\DoxyCodeLine{00211\ \ \ \ \ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a3106697e9953c618f56ca6eef9e6e955}{end}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.begin()\ +\ rank\_;\ }
 \DoxyCodeLine{00214\ \ \ \ \ \}}
-\DoxyCodeLine{00215\ \ \ \ \ }
-\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a11e2dc7323bb92b3ba8b19d9edd1eabc}{cend}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.cbegin()\ +\ rank\_;\ }
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a3eb190825f87d2ef0a30aa62459187e7}{cbegin}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.cbegin();\ }
 \DoxyCodeLine{00218\ \ \ \ \ \}}
-\DoxyCodeLine{00220\ }
-\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a6c6000fcf947fde44193535e9edff445}{front}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.front();\ }
-\DoxyCodeLine{00227\ \ \ \ \ \}}
-\DoxyCodeLine{00228\ }
-\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_ae12a35e163505895661333ff7f694162}{back}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_[rank\_];}
-\DoxyCodeLine{00235\ \ \ \ \ \}}
-\DoxyCodeLine{00236\ \ \ }
-\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keyword}{template}<Integral\ Index>}
-\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Strides_a18797dc00a0dadb4a0600ec408fd4409}{operator[]}}(Index\ index)\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_[\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(index,\ \mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}())];\ }
-\DoxyCodeLine{00246\ \ \ \ \ \}}
-\DoxyCodeLine{00247\ }
-\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keyword}{template}<Integral\ Index>}
-\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\&\ \mbox{\hyperlink{classtannic_1_1Strides_a729f3f25f2eb716b76bdea706e2bd9d3}{operator[]}}(Index\ index)\ \{}
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_[\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(index,\ \mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}())];\ }
-\DoxyCodeLine{00257\ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00258\ \ }
-\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Strides_aa19c88689f47e239b7dfb8a82c134e96}{expand}}(\mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\ size)\ \{\ }
-\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ assert(rank\_\ <\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}}\ \&\&\ \textcolor{stringliteral}{"{}Rank\ limit\ exceeded"{}});\ \ }
-\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ sizes\_[rank\_]\ =\ size;}
-\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ rank\_\ +=\ 1;\ }
-\DoxyCodeLine{00267\ \ \ \ \ \}\ }
-\DoxyCodeLine{00268\ \ \ \ \ }
-\DoxyCodeLine{00269\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00270\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{rank\_type}}\ rank\_\{0\};}
-\DoxyCodeLine{00271\ \ \ \ \ std::array<size\_type,\ limit>\ sizes\_\{\};}
-\DoxyCodeLine{00272\ \};}
-\DoxyCodeLine{00273\ }
-\DoxyCodeLine{00278\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacetannic_ab9024d05a23081306cb9f03929bd96d9}{operator==}}(\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ first,\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ second)\ \{}
-\DoxyCodeLine{00279\ \ \ \ \ \textcolor{keywordflow}{if}\ (first.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}()\ !=\ second.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{Strides::rank\_type}}\ dimension\ =\ 0;\ dimension\ <\ first.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}();\ ++dimension)\ \{}
-\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[dimension]\ !=\ second[dimension])\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00282\ \ \ \ \ \}}
-\DoxyCodeLine{00283\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00284\ \}}
-\DoxyCodeLine{00285\ }
-\DoxyCodeLine{00286\ \textcolor{keyword}{inline}\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ os,\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ strides)\ \{}
-\DoxyCodeLine{00287\ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Strides("{}};}
-\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{Strides::rank\_type}}\ dimension\ =\ 0;\ dimension\ <\ strides.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}();\ ++dimension)\ \{}
-\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ os\ <<\ static\_cast<unsigned\ int>(strides[dimension]);}
-\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dimension\ +\ 1\ <\ strides.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}())\ \{}
-\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
-\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00293\ \ \ \ \ \}}
-\DoxyCodeLine{00294\ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{})"{}};}
-\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
-\DoxyCodeLine{00296\ \}\ }
-\DoxyCodeLine{00297\ }
-\DoxyCodeLine{00298\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00299\ }
-\DoxyCodeLine{00300\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ STRIDES\_HPP}}
+\DoxyCodeLine{00219\ \ \ \ \ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a11e2dc7323bb92b3ba8b19d9edd1eabc}{cend}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.cbegin()\ +\ rank\_;\ }
+\DoxyCodeLine{00222\ \ \ \ \ \}}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_a6c6000fcf947fde44193535e9edff445}{front}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_.front();\ }
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Strides_ae12a35e163505895661333ff7f694162}{back}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_[rank\_];}
+\DoxyCodeLine{00239\ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ }
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keyword}{template}<Integral\ Index>}
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Strides_a18797dc00a0dadb4a0600ec408fd4409}{operator[]}}(Index\ index)\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_[\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(index,\ \mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}())];\ }
+\DoxyCodeLine{00250\ \ \ \ \ \}}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keyword}{template}<Integral\ Index>}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\&\ \mbox{\hyperlink{classtannic_1_1Strides_a729f3f25f2eb716b76bdea706e2bd9d3}{operator[]}}(Index\ index)\ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sizes\_[\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(index,\ \mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}())];\ }
+\DoxyCodeLine{00261\ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00262\ \ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Strides_aa19c88689f47e239b7dfb8a82c134e96}{expand}}(\mbox{\hyperlink{classtannic_1_1Strides_af23666c3ab8d1191d3cdbd2600529128}{size\_type}}\ size)\ \{\ }
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (rank\_\ +\ 1\ >\ \mbox{\hyperlink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{limit}})\ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Strides\ rank\ limit\ exceeded"{}});\ }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ sizes\_[rank\_]\ =\ size;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ rank\_\ +=\ 1;\ }
+\DoxyCodeLine{00272\ \ \ \ \ \}\ }
+\DoxyCodeLine{00273\ \ \ \ \ }
+\DoxyCodeLine{00274\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00275\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{rank\_type}}\ rank\_\{0\};}
+\DoxyCodeLine{00276\ \ \ \ \ std::array<size\_type,\ limit>\ sizes\_\{\};}
+\DoxyCodeLine{00277\ \};}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00283\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacetannic_ab9024d05a23081306cb9f03929bd96d9}{operator==}}(\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ first,\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ second)\ \{}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordflow}{if}\ (first.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}()\ !=\ second.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{Strides::rank\_type}}\ dimension\ =\ 0;\ dimension\ <\ first.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}();\ ++dimension)\ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[dimension]\ !=\ second[dimension])\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00287\ \ \ \ \ \}}
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00289\ \}}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00291\ \textcolor{keyword}{inline}\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ os,\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ strides)\ \{}
+\DoxyCodeLine{00292\ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Strides("{}};}
+\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{Strides::rank\_type}}\ dimension\ =\ 0;\ dimension\ <\ strides.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}();\ ++dimension)\ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ os\ <<\ static\_cast<unsigned\ int>(strides[dimension]);}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dimension\ +\ 1\ <\ strides.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}())\ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00298\ \ \ \ \ \}}
+\DoxyCodeLine{00299\ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00301\ \}\ }
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ STRIDES\_HPP}}
 
 \end{DoxyCode}

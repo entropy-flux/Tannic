@@ -123,7 +123,7 @@
 \DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ second\_dimension\ =\ (dimension\ <\ rank\ -\/\ second\_rank)\ ?\ 1\ :\ second[dimension\ -\/\ (rank\ -\/\ second\_rank)];}
 \DoxyCodeLine{00272\ }
 \DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(first\_dimension\ ==\ second\_dimension\ ||\ first\_dimension\ ==\ 1\ ||\ second\_dimension\ ==\ 1))\ \{}
-\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Shapes\ are\ not\ broadcast-\/compatible."{}});}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Shapes\ are\ not\ broadcast-\/compatible."{}});}
 \DoxyCodeLine{00275\ \ \ \ \ \}}
 \DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ shape.expand(std::max(first\_dimension,\ second\_dimension));}
 \DoxyCodeLine{00277\ \ \ \ \ \}}
