@@ -15,14 +15,14 @@ Below is a minimal example demonstrating tensor creation, initialization, basic 
 using namespace tannic;
 
 int main() { 
-    Tensor X(float32, {2,2}); X.initialize(); // or X.initialize(Device()) for CUDA support
+    Tensor X(float32, {2,2}); //  X.initialize(Device()) // for CUDA support
     
     X[0, range{0,-1}] = 1;  
     X[1,0] = 3;             
     X[1,1] = 4;           
     
-    Tensor Y(float32, {1,2}); Y.initialize();  // Explicit initialization required for now
-    Y[0,0] = 4;                                // but may be removed in the future.
+    Tensor Y(float32, {1,2}); //  Y.initialize(Device()) // for CUDA support
+    Y[0,0] = 4;                            
     Y[0,1] = 6;    
     
     Y = log(X) + Y * Y - exp(X) + matmul(X, Y.transpose()); // assign expressions dynamically like in python
@@ -62,6 +62,8 @@ Giving:
 tensor([[23.2817, 43.2817],
         [33.0131, 18.7881]])
 ```
+
+You can check full documentation [here](https://entropy-flux.github.io/Tannic/). All supported expressions, data structures and their respective details documented in the [class list](https://entropy-flux.github.io/Tannic/annotated.html) section. 
 
 ## Status
 
@@ -157,7 +159,6 @@ cmake .. -DTANNIC_ENABLE_CUDA=OFF
 ## License
 
 Tannic is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
- 
 
 ## Contributing
 

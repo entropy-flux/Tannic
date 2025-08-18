@@ -16,14 +16,14 @@ Below is a minimal example demonstrating tensor creation, initialization, basic 
 \DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{\ }
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X(float32,\ \{2,2\});\ X.\mbox{\hyperlink{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}{initialize}}();\ \textcolor{comment}{//\ or\ X.initialize(Device())\ for\ CUDA\ support}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X(float32,\ \{2,2\});\ \textcolor{comment}{//\ and\ X.initialize(Device())\ for\ CUDA\ support}}
 \DoxyCodeLine{\ \ \ \ }
 \DoxyCodeLine{\ \ \ \ X[0,\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}\{0,-\/1\}]\ =\ 1;\ \ }
 \DoxyCodeLine{\ \ \ \ X[1,0]\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\ \ \ \ X[1,1]\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\ \ \ \ }
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ Y(float32,\ \{1,2\});\ Y.\mbox{\hyperlink{classtannic_1_1Tensor_a4ee063da4965ea868081841b3d967882}{initialize}}();\ \ \textcolor{comment}{//\ Explicit\ initialization\ required\ for\ now}}
-\DoxyCodeLine{\ \ \ \ Y[0,0]\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ but\ may\ be\ removed\ in\ the\ future.}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ Y(float32,\ \{1,2\});\ }
+\DoxyCodeLine{\ \ \ \ Y[0,0]\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\ \ \ \ Y[0,1]\ =\ 6;\ \ \ \ }
 \DoxyCodeLine{\ \ \ \ }
 \DoxyCodeLine{\ \ \ \ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(X)\ +\ Y\ *\ Y\ -\/\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(X)\ +\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(X,\ Y.transpose());\ \textcolor{comment}{//\ assign\ expressions\ dynamically\ like\ in\ python}}
@@ -61,6 +61,16 @@ Equivalent Py\+Torch code for comparison\+:
 \DoxyCodeLine{Y[0,\ 1]\ =\ 6\ \ \ \ \ \ \ }
 \DoxyCodeLine{Y\ =\ torch.log(X)\ +\ Y\ *\ Y\ -\/\ torch.exp(X)\ +\ torch.matmul(X,\ Y.t())}
 \DoxyCodeLine{print(Y)\ }
+
+\end{DoxyCode}
+
+
+Giving\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{tensor([[23.2817,\ 43.2817],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ [33.0131,\ 18.7881]])}
 
 \end{DoxyCode}
 \hypertarget{index_autotoc_md61}{}\doxysection{\texorpdfstring{Status}{Status}}\label{index_autotoc_md61}
@@ -136,19 +146,9 @@ CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detecte
 \DoxyCodeLine{cmake\ ..\ -\/DTANNIC\_ENABLE\_CUDA=OFF}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md72}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{index_autotoc_md72}
-Contributions to Tannic are welcome! If you\textquotesingle{}d like to report bugs, request features, or submit pull requests, please follow these guidelines\+:
+\hypertarget{index_autotoc_md72}{}\doxysection{\texorpdfstring{License \& Attribution}{License \& Attribution}}\label{index_autotoc_md72}
+Tannic is licensed under the {\bfseries{Apache License 2.\+0}}, a permissive open-\/source license that allows you to use, modify, and distribute the code freely—even in commercial projects.
 
+By contributing, you agree that your contributions will also be licensed under Apache 2.\+0 and that proper attribution is appreciated.
 
-\begin{DoxyItemize}
-\item Fork the repository and create a new branch for your feature or bugfix.
-\item Include tests and documentation for new features or bug fixes.
-\item Open a pull request describing your changes and their purpose.
-\end{DoxyItemize}
-
-Tannic is licensed under the Apache License 2.\+0, a permissive open-\/source license that allows you to use, modify, and distribute the code freely—even in commercial projects.
-
-The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development.
-
-By contributing, you agree that your contributions will also be licensed under Apache 2.\+0 and that proper attribution is appreciated.\hypertarget{index_autotoc_md73}{}\doxysection{\texorpdfstring{License}{License}}\label{index_autotoc_md73}
-Tannic is licensed under the Apache License, Version 2.\+0. See the \mbox{[}LICENSE\mbox{]}(LICENSE) file for details. 
+The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development. 

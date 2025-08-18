@@ -103,21 +103,20 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="d0/d1a/namespacetannic.html">tannic</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() { </div>
-<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); X.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>(); <span class="comment">// or X.initialize(Device()) for CUDA support</span></div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); <span class="comment">// and X.initialize(Device()) for CUDA support</span></div>
 <div class="line">    </div>
 <div class="line">    X[0, <a class="code hl_struct" href="de/dea/structtannic_1_1indexing_1_1Range.html">range</a>{0,-1}] = 1;  </div>
 <div class="line">    X[1,0] = 3;             </div>
 <div class="line">    X[1,1] = 4;           </div>
 <div class="line">    </div>
-<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> Y(float32, {1,2}); Y.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>();  <span class="comment">// Explicit initialization required for now</span></div>
-<div class="line">    Y[0,0] = 4;                                <span class="comment">// but may be removed in the future.</span></div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> Y(float32, {1,2}); </div>
+<div class="line">    Y[0,0] = 4;                            </div>
 <div class="line">    Y[0,1] = 6;    </div>
 <div class="line">    </div>
 <div class="line">    Y = <a class="code hl_function" href="dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">log</a>(X) + Y * Y - <a class="code hl_function" href="dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">exp</a>(X) + <a class="code hl_function" href="d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">matmul</a>(X, Y.transpose()); <span class="comment">// assign expressions dynamically like in python</span></div>
 <div class="line">    std::cout &lt;&lt; Y; </div>
 <div class="line">}</div>
 <div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition</b> Tensor.hpp:104</div></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a4ee063da4965ea868081841b3d967882"><div class="ttname"><a href="da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Allocator allocator=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a1a8e818c37a5236e4481677e70ce6209"><div class="ttname"><a href="dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a></div><div class="ttdeci">constexpr auto exp(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated exponential function expression.</div><div class="ttdef"><b>Definition</b> Functions.hpp:250</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a9ec44a47e78a5e28b75b76573d98e06b"><div class="ttname"><a href="dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a></div><div class="ttdeci">constexpr auto log(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated natural logarithm expression.</div><div class="ttdef"><b>Definition</b> Functions.hpp:238</div></div>
 <div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition</b> Buffer.hpp:43</div></div>
@@ -141,6 +140,9 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="line">Y[0, 1] = 6       </div>
 <div class="line">Y = torch.log(X) + Y * Y - torch.exp(X) + torch.matmul(X, Y.t())</div>
 <div class="line">print(Y) </div>
+</div><!-- fragment --><p>Giving:</p>
+<div class="fragment"><div class="line">tensor([[23.2817, 43.2817],</div>
+<div class="line">        [33.0131, 18.7881]])</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md61"></a>
 Status</h1>
 <p>Note: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API—used to extend the library—is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.</p>
@@ -201,19 +203,10 @@ CUDA support</h2>
 <p>CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detected during configuration. If no CUDA installation is found, Tannic will automatically fall back to a CPU‑only build. You can explicitly disable CUDA with:</p>
 <div class="fragment"><div class="line">cmake .. -DTANNIC_ENABLE_CUDA=OFF</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md72"></a>
-Contributing</h1>
-<p>Contributions to Tannic are welcome! If you'd like to report bugs, request features, or submit pull requests, please follow these guidelines:</p>
-<ul>
-<li>Fork the repository and create a new branch for your feature or bugfix.</li>
-<li>Include tests and documentation for new features or bug fixes.</li>
-<li>Open a pull request describing your changes and their purpose.</li>
-</ul>
-<p>Tannic is licensed under the Apache License 2.0, a permissive open-source license that allows you to use, modify, and distribute the code freely—even in commercial projects.</p>
-<p>The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development.</p>
+License &amp; Attribution</h1>
+<p>Tannic is licensed under the <b>Apache License 2.0</b>, a permissive open-source license that allows you to use, modify, and distribute the code freely—even in commercial projects.</p>
 <p>By contributing, you agree that your contributions will also be licensed under Apache 2.0 and that proper attribution is appreciated.</p>
-<h1><a class="anchor" id="autotoc_md73"></a>
-License</h1>
-<p>Tannic is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details. </p>
+<p>The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

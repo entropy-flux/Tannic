@@ -15,14 +15,14 @@ Below is a minimal example demonstrating tensor creation, initialization, basic 
 using namespace tannic;
 
 int main() { 
-    Tensor X(float32, {2,2}); X.initialize(); // or X.initialize(Device()) for CUDA support
+    Tensor X(float32, {2,2}); // and X.initialize(Device()) for CUDA support
     
     X[0, range{0,-1}] = 1;  
     X[1,0] = 3;             
     X[1,1] = 4;           
     
-    Tensor Y(float32, {1,2}); Y.initialize();  // Explicit initialization required for now
-    Y[0,0] = 4;                                // but may be removed in the future.
+    Tensor Y(float32, {1,2}); 
+    Y[0,0] = 4;                            
     Y[0,1] = 6;    
     
     Y = log(X) + Y * Y - exp(X) + matmul(X, Y.transpose()); // assign expressions dynamically like in python
@@ -56,6 +56,12 @@ Y = torch.log(X) + Y * Y - torch.exp(X) + torch.matmul(X, Y.t())
 print(Y) 
 ```  
 
+Giving:
+
+```
+tensor([[23.2817, 43.2817],
+        [33.0131, 18.7881]])
+```
 
 ## Status
 
@@ -150,27 +156,12 @@ You can explicitly disable CUDA with:
 
 ```
 cmake .. -DTANNIC_ENABLE_CUDA=OFF
-```
+``` 
  
+## License & Attribution
 
-## Contributing
+Tannic is licensed under the **Apache License 2.0**, a permissive open-source license that allows you to use, modify, and distribute the code freely—even in commercial projects.
 
-Contributions to Tannic are welcome! If you'd like to report bugs, request features, or submit pull requests, please follow these guidelines:
-
-- Fork the repository and create a new branch for your feature or bugfix.
-
-- Include tests and documentation for new features or bug fixes.
-
-- Open a pull request describing your changes and their purpose. 
-
-Tannic is licensed under the Apache License 2.0, a permissive open-source license that allows you to use, modify, and distribute the code freely—even in commercial projects.
+By contributing, you agree that your contributions will also be licensed under Apache 2.0 and that proper attribution is appreciated. 
 
 The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development.
-
-By contributing, you agree that your contributions will also be licensed under Apache 2.0 and that proper attribution is appreciated.
- 
-
-## License
-
-Tannic is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
- 
