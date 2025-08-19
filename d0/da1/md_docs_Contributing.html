@@ -65,7 +65,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('d5/d0d/md_docs_CONTRIBUTING.html','../../'); initResizable(); });
+$(document).ready(function(){initNavTree('d0/da1/md_docs_Contributing.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('d5/d0d/md_docs_CONTRIBUTING.html','../
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Contributions to Tannic are welcome! Whether you’re reporting bugs, proposing features, improving documentation, or optimizing kernels, your help is greatly appreciated.</p>
-<h1><a class="anchor" id="autotoc_md74"></a>
+<h1><a class="anchor" id="autotoc_md76"></a>
 Ways to Contribute</h1>
 <ul>
 <li><b>Write new test cases to cover code that is not yet tested</b>. I’m using a test-driven approach to build the library, but some edge cases may still be missing.</li>
@@ -116,7 +116,7 @@ Ways to Contribute</h1>
 <li><b>Optimize kernels</b>. Kernels are currently unoptimized since I'm still focusing on builing necessary features. The kernels can be found on .cpp and .cu files inside src/cpu and src/cuda files.</li>
 <li><b>New features</b>. If you propose new features for the library, please ensure they align with the scope of a tensor library. For example, operations like tensor contractions would be a great addition, but machine learning components —such as neural network activation functions or attention mechanisms— are outside the scope. (Don’t worry—I'm building a separate neural networks library on top of this one!) That said, I’m always open to fresh ideas, so don’t hesitate to share your suggestions.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md75"></a>
+<h1><a class="anchor" id="autotoc_md77"></a>
 How to Contribute</h1>
 <p>Fork the repository and create a new branch for your feature or bug fix. Example:</p>
 <div class="fragment"><div class="line">git checkout -b metal/metal-backend</div>
@@ -126,7 +126,7 @@ How to Contribute</h1>
 <li>Implementation details if needed.</li>
 </ul>
 <p>Target branch: PRs for now should just target main till the library matures.</p>
-<h1><a class="anchor" id="autotoc_md76"></a>
+<h1><a class="anchor" id="autotoc_md78"></a>
 Project structure</h1>
 <p>The project is organized into the following main components:</p>
 <ul>
@@ -155,7 +155,7 @@ Project structure</h1>
 </li>
 </ul>
 <p>Currently what is in the src root folder is a mess, lot of code repetition and nasty helper functions with bunch of templates. I promise I will take the time to refactor this but after I find a way to dynamically add and remove nodes from a graph dynamically based on reference counting. This refactor won't change anything on the public API.</p>
-<h1><a class="anchor" id="autotoc_md77"></a>
+<h1><a class="anchor" id="autotoc_md79"></a>
 Creating new features.</h1>
 <p>The C++ frontend is based on templated expressions, this means that when you write an expression, for example:</p>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> expr = matmul(X, Y) + Z;</div>

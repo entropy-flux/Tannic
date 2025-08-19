@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tannic_0',['Tannic',['../index.html',1,'']]]
+  ['installation_0',['Installation',['../d0/d32/md_docs_Installation.html',1,'']]]
 ];

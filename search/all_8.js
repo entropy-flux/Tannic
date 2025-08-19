@@ -5,8 +5,10 @@ var searchData=
   ['index_2emd_2',['INDEX.md',['../d0/d7f/INDEX_8md.html',1,'']]],
   ['indexing_2ehpp_3',['Indexing.hpp',['../d3/da7/Indexing_8hpp.html',1,'']]],
   ['initialize_4',['initialize',['../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882',1,'tannic::Tensor']]],
-  ['instance_5',['instance',['../d9/dd4/classtannic_1_1Devices.html#a08e873a9357bba7615b7cd1f041d257c',1,'tannic::Devices']]],
-  ['is_5fassignable_6',['is_assignable',['../d1/d96/structtannic_1_1Trait.html#af2ea5857d5ac63c84cd0849a8a11cfa6',1,'tannic::Trait']]],
-  ['is_5fcomparable_7',['is_comparable',['../d1/d96/structtannic_1_1Trait.html#acfa95553b70aa62a6c29d4a59bf504c0',1,'tannic::Trait']]],
-  ['is_5finitialized_8',['is_initialized',['../da/d93/classtannic_1_1Tensor.html#a608af294e14a31a695a727931d236f2f',1,'tannic::Tensor']]]
+  ['installation_5',['Installation',['../d0/d32/md_docs_Installation.html',1,'']]],
+  ['installation_2emd_6',['Installation.md',['../d2/d2c/Installation_8md.html',1,'']]],
+  ['instance_7',['instance',['../d9/dd4/classtannic_1_1Devices.html#a08e873a9357bba7615b7cd1f041d257c',1,'tannic::Devices']]],
+  ['is_5fassignable_8',['is_assignable',['../d1/d96/structtannic_1_1Trait.html#af2ea5857d5ac63c84cd0849a8a11cfa6',1,'tannic::Trait']]],
+  ['is_5fcomparable_9',['is_comparable',['../d1/d96/structtannic_1_1Trait.html#acfa95553b70aa62a6c29d4a59bf504c0',1,'tannic::Trait']]],
+  ['is_5finitialized_10',['is_initialized',['../da/d93/classtannic_1_1Tensor.html#a608af294e14a31a695a727931d236f2f',1,'tannic::Tensor']]]
 ];
