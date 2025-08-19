@@ -5,6 +5,24 @@ Unlike monolithic frameworks, it provides only a minimal set of built‑in opera
 This approach keeps the library lightweight while enabling adaptation to a wide range of computational needs.
 
 This library is designed to serve as the foundational core for a neural network inference framework, but is equally suited to other domains such as classical ML or physics simulations—all without requiring Python. 
+ 
+📖 Full documentation: [API Reference](https://entropy-flux.github.io/Tannic/)   
+
+---
+
+## Table of Contents
+- [Quick Start](#quick-start)
+- [Features](#features)
+- [Roadmap](#roadmap)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## Quick Start
 
 Below is a minimal example demonstrating tensor creation, initialization, basic indexing, and arithmetic operations with Tannic:
 
@@ -62,9 +80,7 @@ Giving:
 tensor([[23.2817, 43.2817],
         [33.0131, 18.7881]])
 ```
-
-You can check full documentation [here](https://entropy-flux.github.io/Tannic/). All supported expressions, data structures and their respective details documented in the [class list](https://entropy-flux.github.io/Tannic/annotated.html) section. 
-
+ 
 ## Status
 
 Note: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API—used to extend the library—is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.
@@ -74,15 +90,15 @@ While the library is currently written in C++23, the arrival of C++26, is shapin
 
 ## Features
 
-- Dynamic typing: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization.
+- **Dynamic typing**: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization.
 
-- Broadcasting: NumPy‑style automatic shape expansion in arithmetic operations, enabling intuitive and efficient tensor computations across dimensions.
+- **Broadcasting**: NumPy‑style automatic shape expansion in arithmetic operations, enabling intuitive and efficient tensor computations across dimensions.
 
-- Advanced indexing and slicing: Intuitive multi-dimensional tensor access and manipulation.
+- **Indexing and slicing**: Intuitive multi-dimensional tensor access and manipulation.
 
-- Host–Device execution model: Unified support for CPU and CUDA-enabled GPU computation within the same codebase. While the device backend is currently developed in CUDA, the design is not tied to it and can support other backends in the future.
+- **Host–Device execution model**: Unified support for CPU and CUDA-enabled GPU computation within the same codebase. While the device backend is currently developed in CUDA, the design is not tied to it and can support other backends in the future.
 
-- Minimal core operators: Only essential built-in operations to keep the library lightweight and extensible. 
+- **Minimal core operators**: Only essential built-in math operations to keep the library lightweight and extensible. 
 
 
 ## What is comming...
@@ -112,7 +128,11 @@ While the library is currently written in C++23, the arrival of C++26, is shapin
 
 ## Installation
 
-Clone the repository and include `tannic.hpp` and build it as follows:
+Clone the repository:
+
+```bash
+git clone https://github.com/entropy-flux/Tannic.git
+```
 
 ### Debug build:
 Use this for development — includes extra checks, assertions, 
@@ -124,7 +144,6 @@ cmake .. -DCMAKE_BUILD_TYPE=Debug
 make -j$(nproc)
 ctest --output-on-failure
 ``` 
-
 
 ### Release build
 Use this for deployment or benchmarking — builds with full 
@@ -139,6 +158,7 @@ make -j$(nproc)
 ### Run the example
 You can run the example provided in the main.cpp from the build folder:
 ```bash
+cd build
 ./main
 ```
  
@@ -168,8 +188,8 @@ Contributions to Tannic are welcome! If you'd like to report bugs, request featu
 
 - Open a pull request describing your changes and their purpose. 
 
-Tannic is licensed under the Apache License 2.0, a permissive open-source license that allows you to use, modify, and distribute the code freely—even in commercial projects.
+Tannic is licensed under the Apache License 2.0, a permissive open-source license that allows you to use, modify, and distribute the code freely—even in commercial projects. The only thing I ask in return is proper credit to the project and its contributors.
 
-The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development.
+ Recognition helps the project grow and motivates continued development.
 
 By contributing, you agree that your contributions will also be licensed under Apache 2.0 and that proper attribution is appreciated.

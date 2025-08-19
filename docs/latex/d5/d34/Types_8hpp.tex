@@ -8,6 +8,7 @@ Core type system for the Tannic Tensor Library.
 {\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$cstdint$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$complex$>$}\newline
 {\ttfamily \#include "{}runtime/types.\+h"{}}\newline
 Include dependency graph for Types.\+hpp\+:\nopagebreak
 \begin{figure}[H]
@@ -39,6 +40,8 @@ constexpr uint8\+\_\+t \mbox{\hyperlink{namespacetannic_a7cc5a20569f733cb88c508e
 \begin{DoxyCompactList}\small\item\em Returns the numeric code used for serialization of a data type. \end{DoxyCompactList}\item 
 constexpr type \mbox{\hyperlink{namespacetannic_a6e357abf60406726c8b595658e93e110}{tannic\+::dtypeof}} (uint8\+\_\+t code)
 \begin{DoxyCompactList}\small\item\em Converts a numeric type code back to its corresponding type enum. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr type \mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{tannic\+::dtypeof}} ()
+\item 
 std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1c1a48f353ac51e8ae5affa4dccd2e4a}{tannic\+::operator$<$$<$}} (std\+::ostream \&ostream, type type)
 \end{DoxyCompactItemize}
 

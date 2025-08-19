@@ -25,24 +25,20 @@
 var NAVTREE =
 [
   [ "Tannic", "index.html", [
-    [ "Status", "index.html#autotoc_md61", null ],
-    [ "Features", "index.html#autotoc_md62", null ],
-    [ "What is comming...", "index.html#autotoc_md63", null ],
-    [ "Requirements", "index.html#autotoc_md65", null ],
-    [ "Installation", "index.html#autotoc_md66", [
-      [ "Debug build:", "index.html#autotoc_md67", null ],
-      [ "Release build", "index.html#autotoc_md68", null ],
-      [ "Run the example", "index.html#autotoc_md69", null ],
-      [ "Include Tannic in your project", "index.html#autotoc_md70", null ],
-      [ "CUDA support", "index.html#autotoc_md71", null ]
+    [ "Introduction", "index.html#autotoc_md61", null ],
+    [ "What is Tannic?", "index.html#autotoc_md62", null ],
+    [ "Status", "index.html#autotoc_md63", null ],
+    [ "Features", "index.html#autotoc_md64", null ],
+    [ "What is comming...", "index.html#autotoc_md65", null ],
+    [ "Installation", "d1/db8/md_docs_2Installation.html", null ],
+    [ "Usage", "d1/d37/md_docs_2Usage.html", null ],
+    [ "Contributing", "d6/de3/md_docs_2Contributing.html", [
+      [ "Ways to Contribute", "d6/de3/md_docs_2Contributing.html#autotoc_md76", null ],
+      [ "How to Contribute", "d6/de3/md_docs_2Contributing.html#autotoc_md77", null ],
+      [ "Project structure", "d6/de3/md_docs_2Contributing.html#autotoc_md78", null ],
+      [ "Creating new features.", "d6/de3/md_docs_2Contributing.html#autotoc_md79", null ]
     ] ],
-    [ "License & Attribution", "index.html#autotoc_md72", null ],
-    [ "Contributing", "de/dd4/md_docs_2CONTRIBUTING.html", [
-      [ "Ways to Contribute", "de/dd4/md_docs_2CONTRIBUTING.html#autotoc_md74", null ],
-      [ "How to Contribute", "de/dd4/md_docs_2CONTRIBUTING.html#autotoc_md75", null ],
-      [ "Project structure", "de/dd4/md_docs_2CONTRIBUTING.html#autotoc_md76", null ],
-      [ "Creating new features.", "de/dd4/md_docs_2CONTRIBUTING.html#autotoc_md77", null ]
-    ] ],
+    [ "License & Attribution", "d6/ded/md_docs_2License.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -73,9 +69,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/d6b/classtannic_1_1operation_1_1Binary.html",
-"db/da7/classtannic_1_1Shape.html#a43042ceabb1192091fc9900dfaf8a3af",
-"df/dc5/structtannic_1_1function_1_1Cosh.html#ae0a76306026dac893d5ae050c85fc894"
+"d7/d6b/classtannic_1_1operation_1_1Binary.html#a92f111ea2bc85a3c4496a7e0f38abef7",
+"db/d96/classtannic_1_1expression_1_1Realification.html#a37129d7c601d0fc5e8210d21854a07d8",
+"df/da7/classtannic_1_1Host.html#a239efbb9b09c9fa5a9b75643e2c7fa14"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

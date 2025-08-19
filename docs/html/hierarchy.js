@@ -24,7 +24,7 @@ var hierarchy =
     ] ],
     [ "tannic::function::Exp", "dc/da3/structtannic_1_1function_1_1Exp.html", null ],
     [ "tannic::operation::Exponentiation", "db/d23/structtannic_1_1operation_1_1Exponentiation.html", null ],
-    [ "tannic::function::Functor< Function, Argument >", "d0/d1d/classtannic_1_1function_1_1Functor.html", null ],
+    [ "tannic::function::Function< Functor, Argument >", "db/d37/classtannic_1_1function_1_1Function.html", null ],
     [ "tannic::Host", "df/da7/classtannic_1_1Host.html", null ],
     [ "tannic::function::Log", "d9/d67/structtannic_1_1function_1_1Log.html", null ],
     [ "tannic::operation::Multiplication", "d0/dcf/structtannic_1_1operation_1_1Multiplication.html", null ],

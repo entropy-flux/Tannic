@@ -29,6 +29,7 @@ var namespacetannic =
     [ "dcodeof", "d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363", null ],
     [ "dnameof", "d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e", null ],
     [ "dsizeof", "d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25", null ],
+    [ "dtypeof", "d0/d1a/namespacetannic.html#a3b772a18c1f497ea579f9e6ece4130f5", null ],
     [ "dtypeof", "d0/d1a/namespacetannic.html#a6e357abf60406726c8b595658e93e110", null ],
     [ "matmul", "d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6", null ],
     [ "operator<<", "d0/d1a/namespacetannic.html#a8b7066a546d8d6a8605b695788c479f0", null ],

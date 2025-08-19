@@ -1,0 +1,67 @@
+\chapter{Installation}
+\hypertarget{md_docs_2Installation}{}\label{md_docs_2Installation}\index{Installation@{Installation}}
+\label{md_docs_2Installation_autotoc_md66}%
+\Hypertarget{md_docs_2Installation_autotoc_md66}%
+ This guide is currently in a “works on my machine” state. If you encounter any issues while building Tannic, your feedback is greatly appreciated, please open an issue or submit a pull request. Contributions to improve this guide are also very welcome!\hypertarget{md_docs_2Installation_autotoc_md67}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{md_docs_2Installation_autotoc_md67}
+
+\begin{DoxyItemize}
+\item A C++23 compatible compiler.
+\item CMake 3.\+28+ ~\newline
+
+\item (Optional) Open\+BLAS\+: accelerates matrix multiplication ~\newline
+
+\item (Optional) CUDA Toolkit 12+\+: only required for GPU support
+\end{DoxyItemize}
+
+Other optional requirements may be added in the future. Also the arrival of C++26, is shaping up to be a huge and too significant to ignore. At some point, it may be requirement for Tannic.\hypertarget{md_docs_2Installation_autotoc_md68}{}\doxysubsection{\texorpdfstring{Clone the repository\+:}{Clone the repository:}}\label{md_docs_2Installation_autotoc_md68}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/entropy-\/flux/Tannic.git}
+\DoxyCodeLine{cd\ Tannic\ }
+
+\end{DoxyCode}
+\hypertarget{md_docs_2Installation_autotoc_md69}{}\doxysubsection{\texorpdfstring{Debug build\+:}{Debug build:}}\label{md_docs_2Installation_autotoc_md69}
+Use this for development — includes extra checks, assertions, and debug symbols for easier troubleshooting.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Debug}
+\DoxyCodeLine{make\ -\/j\$(nproc)}
+\DoxyCodeLine{ctest\ -\/-\/output-\/on-\/failure}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2Installation_autotoc_md70}{}\doxysubsection{\texorpdfstring{Release build}{Release build}}\label{md_docs_2Installation_autotoc_md70}
+Use this for deployment or benchmarking — builds with full compiler optimizations and without debug checks.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Release}
+\DoxyCodeLine{make\ -\/j\$(nproc)\ }
+
+\end{DoxyCode}
+\hypertarget{md_docs_2Installation_autotoc_md71}{}\doxysubsection{\texorpdfstring{Run the example}{Run the example}}\label{md_docs_2Installation_autotoc_md71}
+You can run the example provided in the main.\+cpp from the build folder\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ build}
+\DoxyCodeLine{./main}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2Installation_autotoc_md72}{}\doxysubsection{\texorpdfstring{Include Tannic in your project}{Include Tannic in your project}}\label{md_docs_2Installation_autotoc_md72}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <tannic.hpp>}}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2Installation_autotoc_md73}{}\doxysubsection{\texorpdfstring{CUDA support}{CUDA support}}\label{md_docs_2Installation_autotoc_md73}
+CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detected during configuration. If no CUDA installation is found, Tannic will automatically fall back to a CPU‑only build. You can explicitly disable CUDA with\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..\ -\/DTANNIC\_ENABLE\_CUDA=OFF}
+
+\end{DoxyCode}
+
+
+These defaults provide a fast setup for development with the current state of the library. As Tannic evolves, CUDA configuration options and behavior may change. 

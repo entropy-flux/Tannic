@@ -8,7 +8,7 @@ var searchData=
   ['broadcast_5',['broadcast',['../d9/da3/structtannic_1_1operation_1_1Addition.html#a7359d4d440448d0e9a1cc9c07acb897c',1,'tannic::operation::Addition::broadcast()'],['../d0/dcf/structtannic_1_1operation_1_1Multiplication.html#ae6c71ff9099ce111774a171651975354',1,'tannic::operation::Multiplication::broadcast()'],['../d6/de5/structtannic_1_1operation_1_1Subtraction.html#ab5950a49b85a9e14ae7a2387fbf970b9',1,'tannic::operation::Subtraction::broadcast()'],['../db/d23/structtannic_1_1operation_1_1Exponentiation.html#aae432626f42e4f17db8283098f321267',1,'tannic::operation::Exponentiation::broadcast()']]],
   ['buffer_6',['buffer',['../d4/d50/classtannic_1_1Buffer.html',1,'tannic::Buffer'],['../d4/d50/classtannic_1_1Buffer.html#a47e35c6f4d86bc2124dc547723439541',1,'tannic::Buffer::Buffer(Buffer &amp;&amp;other) noexcept'],['../d4/d50/classtannic_1_1Buffer.html#aa1d2f3b93cace356b84eeb19171f4cf4',1,'tannic::Buffer::Buffer(const Buffer &amp;)=delete'],['../d4/d50/classtannic_1_1Buffer.html#a983886240f76aa8492bd45ca81593c7e',1,'tannic::Buffer::Buffer(std::size_t nbytes, Allocator allocator=Host{})']]],
   ['buffer_2ehpp_7',['Buffer.hpp',['../d8/d36/Buffer_8hpp.html',1,'']]],
-  ['build_8',['Release build',['../index.html#autotoc_md68',1,'']]],
-  ['build_3a_9',['Debug build:',['../index.html#autotoc_md67',1,'']]],
+  ['build_8',['Release build',['../d1/db8/md_docs_2Installation.html#autotoc_md70',1,'']]],
+  ['build_3a_9',['Debug build:',['../d1/db8/md_docs_2Installation.html#autotoc_md69',1,'']]],
   ['bytes_10',['bytes',['../dd/d0f/classtannic_1_1expression_1_1Slice.html#a5d11cdc8bf08fd7cbfa7784dec7dadaa',1,'tannic::expression::Slice::bytes()'],['../dd/d0f/classtannic_1_1expression_1_1Slice.html#aa7d760dcd1a9f9e401308400f360427f',1,'tannic::expression::Slice::bytes() const'],['../da/d93/classtannic_1_1Tensor.html#a104cf81bd4da1b3e8e96e2ad2644f941',1,'tannic::Tensor::bytes()']]]
 ];

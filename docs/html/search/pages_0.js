@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['contributing_0',['Contributing',['../de/dd4/md_docs_2CONTRIBUTING.html',1,'']]]
+  ['attribution_0',['License &amp; Attribution',['../d6/ded/md_docs_2License.html',1,'']]]
 ];

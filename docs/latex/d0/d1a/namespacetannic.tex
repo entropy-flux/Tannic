@@ -89,6 +89,8 @@ constexpr uint8\+\_\+t \mbox{\hyperlink{namespacetannic_a7cc5a20569f733cb88c508e
 \begin{DoxyCompactList}\small\item\em Returns the numeric code used for serialization of a data type. \end{DoxyCompactList}\item 
 constexpr type \mbox{\hyperlink{namespacetannic_a6e357abf60406726c8b595658e93e110}{dtypeof}} (uint8\+\_\+t code)
 \begin{DoxyCompactList}\small\item\em Converts a numeric type code back to its corresponding type enum. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr type \mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}} ()
+\item 
 std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1c1a48f353ac51e8ae5affa4dccd2e4a}{operator$<$$<$}} (std\+::ostream \&ostream, type type)
 \end{DoxyCompactItemize}
 
@@ -209,10 +211,17 @@ For complex types\+:
 \DoxyCodeLine{\mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(complex64);\ \textcolor{comment}{//\ returns\ 8}}
 
 \end{DoxyCode}
- \Hypertarget{namespacetannic_a6e357abf60406726c8b595658e93e110}\label{namespacetannic_a6e357abf60406726c8b595658e93e110} 
+ \Hypertarget{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}\label{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5} 
 \index{tannic@{tannic}!dtypeof@{dtypeof}}
 \index{dtypeof@{dtypeof}!tannic@{tannic}}
-\doxysubsubsection{\texorpdfstring{dtypeof()}{dtypeof()}}
+\doxysubsubsection{\texorpdfstring{dtypeof()}{dtypeof()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr type tannic\+::dtypeof (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_a6e357abf60406726c8b595658e93e110}\label{namespacetannic_a6e357abf60406726c8b595658e93e110} 
+\index{tannic@{tannic}!dtypeof@{dtypeof}}
+\index{dtypeof@{dtypeof}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{dtypeof()}{dtypeof()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily constexpr type tannic\+::dtypeof (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 

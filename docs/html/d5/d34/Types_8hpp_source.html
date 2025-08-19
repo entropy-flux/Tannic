@@ -122,90 +122,106 @@ $(document).ready(function(){initNavTree('d5/d34/Types_8hpp_source.html','../../
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#include &lt;cstdint&gt;</span>  </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#include &lt;string&gt;</span>   </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#include &quot;runtime/types.h&quot;</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a> {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">   88</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> std::size_t <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a>(type type) {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">switch</span> (type) { </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">case</span> int8:      <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(int8_t);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">case</span> int16:     <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(int16_t);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">case</span> int32:     <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(int32_t);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">case</span> int64:     <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(int64_t);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">case</span> float32:   <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(float);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">case</span> float64:   <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(double);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">case</span> complex64: <span class="keywordflow">return</span> 2 * <span class="keyword">sizeof</span>(float);     </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">case</span> complex128:<span class="keywordflow">return</span> 2 * <span class="keyword">sizeof</span>(double);  </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">default</span>:        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    }</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#include &lt;complex&gt;</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#include &quot;runtime/types.h&quot;</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a> {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00089" data-start="{" data-end="}">
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">   89</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> std::size_t <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a>(type type) {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">switch</span> (type) { </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">case</span> int8:      <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(int8_t);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">case</span> int16:     <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(int16_t);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">case</span> int32:     <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(int32_t);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">case</span> int64:     <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(int64_t);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">case</span> float32:   <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(float);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">case</span> float64:   <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(double);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">case</span> complex64: <span class="keywordflow">return</span> 2 * <span class="keyword">sizeof</span>(float);     </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">case</span> complex128:<span class="keywordflow">return</span> 2 * <span class="keyword">sizeof</span>(double);  </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">default</span>:        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
 </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="foldopen" id="foldopen00114" data-start="{" data-end="}">
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">  114</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> std::string <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(type type) {</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordflow">switch</span> (type) { </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">case</span> int8:       <span class="keywordflow">return</span> <span class="stringliteral">&quot;int8&quot;</span>;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">case</span> int16:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;int16&quot;</span>;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">case</span> int32:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;int32&quot;</span>;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordflow">case</span> int64:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;int64&quot;</span>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">case</span> float32:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;float32&quot;</span>;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">case</span> float64:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;float64&quot;</span>;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">case</span> complex64:  <span class="keywordflow">return</span> <span class="stringliteral">&quot;complex64&quot;</span>;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">case</span> complex128: <span class="keywordflow">return</span> <span class="stringliteral">&quot;complex128&quot;</span>;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">default</span>:         <span class="keywordflow">return</span> <span class="stringliteral">&quot;none&quot;</span>;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>} </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">  115</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> std::string <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(type type) {</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordflow">switch</span> (type) { </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">case</span> int8:       <span class="keywordflow">return</span> <span class="stringliteral">&quot;int8&quot;</span>;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">case</span> int16:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;int16&quot;</span>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordflow">case</span> int32:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;int32&quot;</span>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">case</span> int64:      <span class="keywordflow">return</span> <span class="stringliteral">&quot;int64&quot;</span>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">case</span> float32:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;float32&quot;</span>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">case</span> float64:    <span class="keywordflow">return</span> <span class="stringliteral">&quot;float64&quot;</span>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">case</span> complex64:  <span class="keywordflow">return</span> <span class="stringliteral">&quot;complex64&quot;</span>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">case</span> complex128: <span class="keywordflow">return</span> <span class="stringliteral">&quot;complex128&quot;</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">default</span>:         <span class="keywordflow">return</span> <span class="stringliteral">&quot;none&quot;</span>;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>} </div>
 </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="foldopen" id="foldopen00149" data-start="{" data-end="}">
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363">  149</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363">dcodeof</a>(type type) {</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">switch</span> (type) { </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">case</span> int8:      <span class="keywordflow">return</span> 12;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">case</span> int16:     <span class="keywordflow">return</span> 13;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">case</span> int32:     <span class="keywordflow">return</span> 14;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">case</span> int64:     <span class="keywordflow">return</span> 15;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">case</span> float32:   <span class="keywordflow">return</span> 24;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordflow">case</span> float64:   <span class="keywordflow">return</span> 25;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordflow">case</span> complex64: <span class="keywordflow">return</span> 35;     </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">case</span> complex128:<span class="keywordflow">return</span> 36;  </div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordflow">default</span>:        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>}</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="foldopen" id="foldopen00150" data-start="{" data-end="}">
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363">  150</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> uint8_t <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363">dcodeof</a>(type type) {</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keywordflow">switch</span> (type) { </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">case</span> int8:      <span class="keywordflow">return</span> 12;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">case</span> int16:     <span class="keywordflow">return</span> 13;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">case</span> int32:     <span class="keywordflow">return</span> 14;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">case</span> int64:     <span class="keywordflow">return</span> 15;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordflow">case</span> float32:   <span class="keywordflow">return</span> 24;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordflow">case</span> float64:   <span class="keywordflow">return</span> 25;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">case</span> complex64: <span class="keywordflow">return</span> 35;     </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordflow">case</span> complex128:<span class="keywordflow">return</span> 36;  </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordflow">default</span>:        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    }</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>}</div>
 </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="foldopen" id="foldopen00174" data-start="{" data-end="}">
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a6e357abf60406726c8b595658e93e110">  174</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> type <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a6e357abf60406726c8b595658e93e110">dtypeof</a>(uint8_t code) {</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordflow">switch</span> (code) {</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        <span class="keywordflow">case</span> 12: <span class="keywordflow">return</span> int8;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="keywordflow">case</span> 13: <span class="keywordflow">return</span> int16;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keywordflow">case</span> 14: <span class="keywordflow">return</span> int32;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keywordflow">case</span> 15: <span class="keywordflow">return</span> int64;</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordflow">case</span> 24: <span class="keywordflow">return</span> float32;</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <span class="keywordflow">case</span> 25: <span class="keywordflow">return</span> float64;</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keywordflow">case</span> 35: <span class="keywordflow">return</span> complex64;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <span class="keywordflow">case</span> 36: <span class="keywordflow">return</span> complex128;</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keywordflow">default</span>: <span class="keywordflow">return</span> none;</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    }</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>}</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="foldopen" id="foldopen00175" data-start="{" data-end="}">
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a6e357abf60406726c8b595658e93e110">  175</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> type <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a3b772a18c1f497ea579f9e6ece4130f5">dtypeof</a>(uint8_t code) {</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">switch</span> (code) {</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="keywordflow">case</span> 12: <span class="keywordflow">return</span> int8;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keywordflow">case</span> 13: <span class="keywordflow">return</span> int16;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keywordflow">case</span> 14: <span class="keywordflow">return</span> int32;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="keywordflow">case</span> 15: <span class="keywordflow">return</span> int64;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        <span class="keywordflow">case</span> 24: <span class="keywordflow">return</span> float32;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keywordflow">case</span> 25: <span class="keywordflow">return</span> float64;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <span class="keywordflow">case</span> 35: <span class="keywordflow">return</span> complex64;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keywordflow">case</span> 36: <span class="keywordflow">return</span> complex128;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="keywordflow">default</span>: <span class="keywordflow">return</span> none;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    }</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>}</div>
 </div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="foldopen" id="foldopen00188" data-start="{" data-end="}">
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a1c1a48f353ac51e8ae5affa4dccd2e4a">  188</a></span><span class="keyword">inline</span> std::ostream&amp; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a8b7066a546d8d6a8605b695788c479f0">operator&lt;&lt;</a>(std::ostream&amp; ostream, type type) {</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordflow">return</span> ostream &lt;&lt; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(type);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>} </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>  </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00190" data-start="{" data-end="}">
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a3b772a18c1f497ea579f9e6ece4130f5">  190</a></span><span class="keyword">constexpr</span> <span class="keyword">inline</span> type <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a3b772a18c1f497ea579f9e6ece4130f5">dtypeof</a>() {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, int8_t&gt;)      <span class="keywordflow">return</span> int8;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, int16_t&gt;) <span class="keywordflow">return</span> int16;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, int32_t&gt;) <span class="keywordflow">return</span> int32;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, int64_t&gt;) <span class="keywordflow">return</span> int64;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, float&gt;)   <span class="keywordflow">return</span> float32;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, double&gt;)  <span class="keywordflow">return</span> float64;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, std::complex&lt;float&gt;&gt;)  <span class="keywordflow">return</span> complex64;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (std::is_same_v&lt;T, std::complex&lt;double&gt;&gt;) <span class="keywordflow">return</span> complex128;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordflow">else</span>                                           <span class="keywordflow">return</span> none;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>}</div>
 </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>} <span class="comment">// namespace tannic</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="preprocessor">#endif </span><span class="comment">// TYPES_HPP</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="foldopen" id="foldopen00202" data-start="{" data-end="}">
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="../../d0/d1a/namespacetannic.html#a1c1a48f353ac51e8ae5affa4dccd2e4a">  202</a></span><span class="keyword">inline</span> std::ostream&amp; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a8b7066a546d8d6a8605b695788c479f0">operator&lt;&lt;</a>(std::ostream&amp; ostream, type type) {</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordflow">return</span> ostream &lt;&lt; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(type);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>} </div>
+</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>} <span class="comment">// namespace tannic</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="preprocessor">#endif </span><span class="comment">// TYPES_HPP</span></div>
 <div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition</b> Buffer.hpp:43</div></div>
-<div class="ttc" id="anamespacetannic_html_a1f6a29013277d9209efa113453cf0b2e"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a></div><div class="ttdeci">constexpr std::string dnameof(type type)</div><div class="ttdoc">Returns the string name of a given tensor data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:114</div></div>
-<div class="ttc" id="anamespacetannic_html_a6e357abf60406726c8b595658e93e110"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a6e357abf60406726c8b595658e93e110">tannic::dtypeof</a></div><div class="ttdeci">constexpr type dtypeof(uint8_t code)</div><div class="ttdoc">Converts a numeric type code back to its corresponding type enum.</div><div class="ttdef"><b>Definition</b> Types.hpp:174</div></div>
-<div class="ttc" id="anamespacetannic_html_a7cc5a20569f733cb88c508ebb9119363"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363">tannic::dcodeof</a></div><div class="ttdeci">constexpr uint8_t dcodeof(type type)</div><div class="ttdoc">Returns the numeric code used for serialization of a data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:149</div></div>
+<div class="ttc" id="anamespacetannic_html_a1f6a29013277d9209efa113453cf0b2e"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a></div><div class="ttdeci">constexpr std::string dnameof(type type)</div><div class="ttdoc">Returns the string name of a given tensor data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:115</div></div>
+<div class="ttc" id="anamespacetannic_html_a3b772a18c1f497ea579f9e6ece4130f5"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a3b772a18c1f497ea579f9e6ece4130f5">tannic::dtypeof</a></div><div class="ttdeci">constexpr type dtypeof()</div><div class="ttdef"><b>Definition</b> Types.hpp:190</div></div>
+<div class="ttc" id="anamespacetannic_html_a7cc5a20569f733cb88c508ebb9119363"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363">tannic::dcodeof</a></div><div class="ttdeci">constexpr uint8_t dcodeof(type type)</div><div class="ttdoc">Returns the numeric code used for serialization of a data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:150</div></div>
 <div class="ttc" id="anamespacetannic_html_a8b7066a546d8d6a8605b695788c479f0"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a8b7066a546d8d6a8605b695788c479f0">tannic::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, Shape const &amp;shape)</div><div class="ttdef"><b>Definition</b> Shape.hpp:313</div></div>
-<div class="ttc" id="anamespacetannic_html_aee5ef48cb75e37f65cc11ef67fbb9d25"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a></div><div class="ttdeci">constexpr std::size_t dsizeof(type type)</div><div class="ttdoc">Returns the size in bytes of a given tensor data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:88</div></div>
+<div class="ttc" id="anamespacetannic_html_aee5ef48cb75e37f65cc11ef67fbb9d25"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a></div><div class="ttdeci">constexpr std::size_t dsizeof(type type)</div><div class="ttdoc">Returns the size in bytes of a given tensor data type.</div><div class="ttdef"><b>Definition</b> Types.hpp:89</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -4,7 +4,7 @@ var namespacetannic_1_1function =
     [ "Cos", "d1/dd6/structtannic_1_1function_1_1Cos.html", "d1/dd6/structtannic_1_1function_1_1Cos" ],
     [ "Cosh", "df/dc5/structtannic_1_1function_1_1Cosh.html", "df/dc5/structtannic_1_1function_1_1Cosh" ],
     [ "Exp", "dc/da3/structtannic_1_1function_1_1Exp.html", "dc/da3/structtannic_1_1function_1_1Exp" ],
-    [ "Functor", "d0/d1d/classtannic_1_1function_1_1Functor.html", "d0/d1d/classtannic_1_1function_1_1Functor" ],
+    [ "Function", "db/d37/classtannic_1_1function_1_1Function.html", "db/d37/classtannic_1_1function_1_1Function" ],
     [ "Log", "d9/d67/structtannic_1_1function_1_1Log.html", "d9/d67/structtannic_1_1function_1_1Log" ],
     [ "Rsqrt", "dc/db8/structtannic_1_1function_1_1Rsqrt.html", "dc/db8/structtannic_1_1function_1_1Rsqrt" ],
     [ "Sin", "d5/d31/structtannic_1_1function_1_1Sin.html", "d5/d31/structtannic_1_1function_1_1Sin" ],

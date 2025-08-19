@@ -3,7 +3,7 @@ var searchData=
   ['end_0',['end',['../db/da7/classtannic_1_1Shape.html#aa03bdbd1a3b17fff0c03a364c5a46d83',1,'tannic::Shape::end()'],['../db/da7/classtannic_1_1Shape.html#a30d47aff4d631626c97754261ab13490',1,'tannic::Shape::end() const'],['../dc/deb/classtannic_1_1Strides.html#af52de355100616be17c46fb213a814dc',1,'tannic::Strides::end()'],['../dc/deb/classtannic_1_1Strides.html#a3106697e9953c618f56ca6eef9e6e955',1,'tannic::Strides::end() const']]],
   ['epsilon_1',['epsilon',['../dc/db8/structtannic_1_1function_1_1Rsqrt.html#a572b1b2cde53573fa993af694e87e074',1,'tannic::function::Rsqrt']]],
   ['evaluation_20mode_3a_2',['Evaluation Mode:',['../da/d93/classtannic_1_1Tensor.html#autotoc_md49',1,'']]],
-  ['example_3',['example',['../d5/d34/Types_8hpp.html#autotoc_md57',1,'Example'],['../index.html#autotoc_md69',1,'Run the example']]],
+  ['example_3',['example',['../d5/d34/Types_8hpp.html#autotoc_md57',1,'Example'],['../d1/db8/md_docs_2Installation.html#autotoc_md71',1,'Run the example']]],
   ['example_20contiguous_20layout_20_3a_4',['Example (Contiguous Layout):',['../dc/deb/classtannic_1_1Strides.html#autotoc_md44',1,'']]],
   ['example_20custom_20strides_20_3a_5',['Example (Custom Strides):',['../dc/deb/classtannic_1_1Strides.html#autotoc_md45',1,'']]],
   ['example_20numpy_20pytorch_20behavior_20_3a_6',['Example (NumPy/PyTorch behavior):',['../df/d20/structtannic_1_1expression_1_1Argsum.html#autotoc_md34',1,'']]],

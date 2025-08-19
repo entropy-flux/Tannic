@@ -1,5 +1,15 @@
 # Tannic 
  
+## Introduction
+
+While exploring the most recent models, I began noticing some weird patterns, CUDA kernels hardcoded as strings, pointers, and constexpr hacks embedded in Python sublanguages. I’m not saying this approach is inherently bad, but I couldn’t shake the feeling that it would be far cleaner and more maintainable to rewrite everything directly in C++ using those features directly.
+
+On the other hand, many existing C++ frameworks, while fully native, are low-level and hard to use or extend. They often force developers to manage complex memory layouts or backend-specific details using macros, which makes adding new operations or integrating new hardware backends cumbersome.
+
+This insight led me to create Tannic, a lightweight, fully C++ tensor library designed from the ground up for clarity, composability, and extensibility. It maintains a Python-like API feel, so developers can enjoy familiar, intuitive syntax while working entirely in C++. The library is designed to be easy to adopt, easy to extend, and consistent in its behavior—even as new operations, data types, or backends are added.
+
+## What is Tannic?
+
 **Tannic** is an extensible C++ tensor library built around a host–device execution model.
 Unlike monolithic frameworks, it provides only a minimal set of built‑in operators, focusing on a flexible architecture where new operations, data types, and backends can be added easily.
 This approach keeps the library lightweight while enabling adaptation to a wide range of computational needs.
@@ -98,70 +108,4 @@ While the library is currently written in C++23, the arrival of C++26, is shapin
 
 - **Additional backends**: Expansion beyond CUDA to support other device backends is planned. Host-Device computational model can be used as well with other hardware vendors.
 
-- **Multi GPU support**. Unfortunately I don't have either the expertise or the resources to add multigpu support, but the whole library was build taking this in mind so it won't be a breaking change when added.  
-
-
----
-
-## Requirements
-
-- C++23 compiler: A compiler with C++23 support is required to build and run Tannic. 
-
-- OpenBLAS (optional): If installed on your system, OpenBLAS will accelerate matrix multiplication.
-
-- CUDA Toolkit (optional): CUDA 12+ is required only if you want GPU support. If not installed, Tannic will build and run with CPU-only support.
- 
-
-## Installation
-
-Clone the repository and include `tannic.hpp` and build it as follows:
-
-### Debug build:
-Use this for development — includes extra checks, assertions, 
-and debug symbols for easier troubleshooting.
-
-```bash
-mkdir build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Debug
-make -j$(nproc)
-ctest --output-on-failure
-``` 
-
-
-### Release build
-Use this for deployment or benchmarking — builds with full 
-compiler optimizations and without debug checks.
-
-```bash 
-mkdir build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j$(nproc) 
-```
-
-### Run the example
-You can run the example provided in the main.cpp from the build folder:
-```bash
-./main
-```
- 
-### Include Tannic in your project
-```cpp
-#include <tannic.hpp>
-``` 
-
-### CUDA support
-CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detected during configuration.
-If no CUDA installation is found, Tannic will automatically fall back to a CPU‑only build.
-You can explicitly disable CUDA with:
-
-```
-cmake .. -DTANNIC_ENABLE_CUDA=OFF
-``` 
- 
-## License & Attribution
-
-Tannic is licensed under the **Apache License 2.0**, a permissive open-source license that allows you to use, modify, and distribute the code freely—even in commercial projects.
-
-By contributing, you agree that your contributions will also be licensed under Apache 2.0 and that proper attribution is appreciated. 
-
-The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development.
+- **Multi GPU support**. Unfortunately I don't have either the expertise or the resources to add multigpu support, but the whole library was build taking this in mind so it won't be a breaking change when added.   
