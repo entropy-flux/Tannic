@@ -34,7 +34,7 @@
  * ```cpp
  * Tensor X(float32, {2, 3}); X.initialize();
  * 
- * // Reshape from (2, 3) to (3, 2)
+ * // View from (2, 3) to (3, 2)
  * auto Y = view(X, 3, 2);
  * std::cout << Y.shape() << std::endl; // (3, 2)
  *
@@ -63,12 +63,12 @@ class Tensor;
 namespace expression {   
    
 /**
- * @class Reshape
+ * @class View
  * @brief Expression template for viewing a tensor with a new shape.
  *
  * @tparam Source The expression or tensor type being reshaped.
  *
- * The `Reshape` view changes how the elements of a tensor are indexed
+ * The `View` view changes how the elements of a tensor are indexed
  * by updating its shape and recomputing its strides without moving data.
  *
  * This operation requires that the total number of elements in the new
@@ -81,7 +81,7 @@ namespace expression {
  * ```
  */
 template<Expression Source>
-class Reshape {
+class View {
 public:  
 
     /**
@@ -95,7 +95,7 @@ public:
      *         does not match the number of elements in the source.
      */
     template<Integral... Indexes>  
-    constexpr Reshape(Trait<Source>::Reference source, Indexes... indexes)
+    constexpr View(Trait<Source>::Reference source, Indexes... indexes)
     :   shape_(indexes...) 
     ,   strides_(shape_)
     ,   source_(source) {
@@ -356,11 +356,11 @@ private:
  * @tparam Indexes New shape dimensions (integral values).
  * @param source The source expression.
  * @param indexes Dimension sizes for the new shape.
- * @return A `Reshape` view expression.
+ * @return A `View` view expression.
  */
 template<Expression Source, Integral ... Indexes>
 constexpr auto view(Source&& source, Indexes ... indexes) {
-    return Reshape<Source>(
+    return View<Source>(
         std::forward<Source>(source), indexes...
     );
 } 

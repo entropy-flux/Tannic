@@ -180,6 +180,11 @@ public:
         return dtype_; 
     } 
 
+    /// Returns the number of dimensions (rank) of the tensor.
+    rank_type rank() const { 
+        return shape_.rank(); 
+    }          
+
     /// Returns the tensor's shape (dimension sizes per dimension).
     Shape const& shape() const {  
         return shape_; 
@@ -204,12 +209,12 @@ public:
     std::size_t nbytes() const { 
         return nbytes_;
     } 
-    
-    /// Returns the number of dimensions (rank) of the tensor.
-    rank_type rank() const { 
-        return shape_.rank(); 
-    }          
 
+    /// Returns whether the tensor's elements are in contiguous layout or not.
+    bool is_contiguous() const {
+        return is_contiguous_;
+    }
+      
     /// Returns a reference to this tensor (const-qualified).
     Tensor& forward() { 
         if (!is_initialized())
@@ -561,7 +566,6 @@ public:
         return expression::Permutation<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
     } 
 
-
     /// @}
 
 public:
@@ -610,7 +614,7 @@ protected:
     friend class expression::Transpose;
 
     template <Expression Source>
-    friend class expression::Reshape;
+    friend class expression::View;
 
     template <Expression Source, Integral... Indexes> 
     friend class expression::Permutation;
@@ -631,7 +635,7 @@ public:
     } 
 
 private:
-    // Note: I didn't decide yet if put all this inside node.
+    // Note: I didn't decide yet if put all this inside Node.
     // That will speed tensor copies but disallow make the tensors
     // only runtime since shared ptrs don't support constexpr.
     // For now kernel optimization is more important. 
@@ -669,7 +673,7 @@ Tensor operation::Binary<Operation, Operand, Cooperand>::forward() const {
 }  
 
 template<Expression Source>
-Tensor expression::Reshape<Source>::forward() const { 
+Tensor expression::View<Source>::forward() const { 
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }

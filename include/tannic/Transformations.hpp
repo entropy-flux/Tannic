@@ -538,6 +538,21 @@ constexpr auto repack(Source&& source) {
         std::forward<Source>(source)
     ); 
 }
+ 
+/**
+ * @brief Creates a view but always repacks the tensor 
+ * into a contiguous layout. 
+ *
+ * @tparam Source Source tensor expression type.
+ * @param source Tensor to be reshaped.
+ * @return Transformation expression representing reshape.
+ */
+template<Expression Source, Integral ... Indexes>
+constexpr auto reshape(Source&& source, Indexes ... indexes) {
+    return expression::View<Transformation<Repack, Source>>(
+        repack(source), indexes...
+    );
+} 
 
 } // namespace transformation
 
@@ -545,6 +560,7 @@ using transformation::outer;
 using transformation::repeat;
 using transformation::concatenate;
 using transformation::repack;
+using transformation::reshape; 
 
 /**
  * @brief Matrix multiplication convenience function
