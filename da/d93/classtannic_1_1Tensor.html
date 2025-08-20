@@ -205,6 +205,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2970d79712c97bca7c781c3d7987fb0b"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a2970d79712c97bca7c781c3d7987fb0b">transpose</a> (int first=-1, int second=-2) const</td></tr>
 <tr class="memdesc:a2970d79712c97bca7c781c3d7987fb0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a view of the tensor with two dimensions transposed.  <br /></td></tr>
 <tr class="separator:a2970d79712c97bca7c781c3d7987fb0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd011ab0b62713d6f0b0b807db52d2c6"><td class="memTemplParams" colspan="2">template&lt;class ... Indexes&gt; </td></tr>
+<tr class="memitem:abd011ab0b62713d6f0b0b807db52d2c6"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#abd011ab0b62713d6f0b0b807db52d2c6">permute</a> (Indexes... indexes) const</td></tr>
+<tr class="memdesc:abd011ab0b62713d6f0b0b807db52d2c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a view of the tensor with dimensions permuted.  <br /></td></tr>
+<tr class="separator:abd011ab0b62713d6f0b0b807db52d2c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -224,6 +228,9 @@ Friends</h2></td></tr>
 <tr class="memitem:a5386dee168164fdecd9162f1234534f7"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
 <tr class="memitem:a5386dee168164fdecd9162f1234534f7"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a5386dee168164fdecd9162f1234534f7">expression::Reshape</a></td></tr>
 <tr class="separator:a5386dee168164fdecd9162f1234534f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac476c46f4bf3abbf4777f81f5cd19a78"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral... Indexes&gt; </td></tr>
+<tr class="memitem:ac476c46f4bf3abbf4777f81f5cd19a78"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78">expression::Permutation</a></td></tr>
+<tr class="separator:ac476c46f4bf3abbf4777f81f5cd19a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34c3e1f41aa63bf22aacd96cc66d9075"><td class="memTemplParams" colspan="2">template&lt;class Coordinates , Expression... Sources&gt; </td></tr>
 <tr class="memitem:a34c3e1f41aa63bf22aacd96cc66d9075"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a34c3e1f41aa63bf22aacd96cc66d9075">expression::Complexification</a></td></tr>
 <tr class="separator:a34c3e1f41aa63bf22aacd96cc66d9075"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1229,6 +1236,43 @@ Example:</h4>
 </div><!-- fragment --> 
 </div>
 </div>
+<a id="abd011ab0b62713d6f0b0b807db52d2c6" name="abd011ab0b62713d6f0b0b807db52d2c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd011ab0b62713d6f0b0b807db52d2c6">&#9670;&#160;</a></span>permute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class ... Indexes&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto tannic::Tensor::permute </td>
+          <td>(</td>
+          <td class="paramtype">Indexes...&#160;</td>
+          <td class="paramname"><em>indexes</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a view of the tensor with dimensions permuted. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indexes</td><td>Indices to permute </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Permutation expression. </dd></dl>
+
+</div>
+</div>
 <a id="a36f544f8a69e20e944cbec6aec0beefa" name="a36f544f8a69e20e944cbec6aec0beefa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36f544f8a69e20e944cbec6aec0beefa">&#9670;&#160;</a></span>rank()</h2>
 
@@ -1398,6 +1442,30 @@ template&lt;class Coordinates , Expression... Sources&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">friend class <a class="el" href="../../d3/d42/classtannic_1_1expression_1_1Complexification.html">expression::Complexification</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac476c46f4bf3abbf4777f81f5cd19a78" name="ac476c46f4bf3abbf4777f81f5cd19a78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac476c46f4bf3abbf4777f81f5cd19a78">&#9670;&#160;</a></span>expression::Permutation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression Source, Integral... Indexes&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">expression::Permutation</a></td>
         </tr>
       </table>
   </td>

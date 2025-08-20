@@ -31,6 +31,7 @@ var hierarchy =
     [ "tannic::operation::Negation", "d6/deb/structtannic_1_1operation_1_1Negation.html", null ],
     [ "tannic::Node", "df/d85/structtannic_1_1Node.html", null ],
     [ "tannic::transformation::Outer", "de/d42/structtannic_1_1transformation_1_1Outer.html", null ],
+    [ "tannic::expression::Permutation< Source, Indexes >", "d0/d42/classtannic_1_1expression_1_1Permutation.html", null ],
     [ "tannic::expression::Polar", "d3/dd3/structtannic_1_1expression_1_1Polar.html", null ],
     [ "tannic::indexing::Range", "de/dea/structtannic_1_1indexing_1_1Range.html", null ],
     [ "Realification", "d6/d98/classRealification.html", null ],
