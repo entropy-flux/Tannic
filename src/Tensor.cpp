@@ -4,10 +4,9 @@
 #include "runtime/streams.h"   
 #include <ostream>
 #include <cstring>
-#include <functional>
-
+#include <functional> 
 #ifdef CUDA
-#include "cuda/mem.cuh"
+#include "cuda/mem.cuh" 
 #else 
 namespace cuda {
 using tannic::tensor_t;

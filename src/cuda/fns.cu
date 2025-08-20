@@ -63,6 +63,13 @@ status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args.
     return SUCCESS;
 } 
  
+struct Idn { 
+    template<class A>
+    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(a)) {
+        return a;
+    }
+};
+
 struct Log { 
     template<class A>
     __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(log(a))) {
@@ -147,6 +154,25 @@ struct Tanh {
 };    
 
 } namespace cuda {
+
+status idn(const tensor_t* src, tensor_t* dst, stream_t stream) {
+    switch (src->dtype) {
+        case int8:
+            return launchFnKernel<int8_t, int8_t, Idn>(src, dst, stream);
+        case int16:
+            return launchFnKernel<int16_t, int16_t, Idn>(src, dst, stream); 
+        case int32:
+            return launchFnKernel<int32_t, int32_t, Idn>(src, dst, stream); 
+        case int64:
+            return launchFnKernel<int64_t, int64_t, Idn>(src, dst, stream); 
+        case float32:
+            return launchFnKernel<float, float, Idn>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Idn>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
+} 
 
 status log(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {

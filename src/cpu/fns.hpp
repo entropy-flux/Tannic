@@ -6,7 +6,8 @@
 using namespace tannic;
 
 namespace cpu { 
- 
+
+status idn(tensor_t  const*, tensor_t*); 
 status log(tensor_t  const*, tensor_t*); 
 status exp(tensor_t  const*, tensor_t*); 
 status sqrt(tensor_t const*, tensor_t*); 

@@ -7,12 +7,14 @@
 #include "cpu/outer.hpp"
 #include "cpu/reps.hpp"
 #include "cpu/concat.hpp"
+#include "cpu/fns.hpp"
 
 #ifdef CUDA
 #include "cuda/gemm.cuh"   
 #include "cuda/outer.cuh"
 #include "cuda/reps.cuh"
 #include "cuda/concat.cuh"
+#include "cuda/fns.cuh"
 #else   
 namespace cuda {  
 using tannic::tensor_t;
@@ -22,6 +24,7 @@ inline status gemm(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { thro
 inline status outer(tensor_t const*, tensor_t const*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
 inline status repeat(const tensor_t*, tensor_t*, int, int, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
 inline status concat(const tensor_t*, const tensor_t*, tensor_t*, stream_t, int)  { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
+inline status idn (const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
 } // namespace cuda
 #endif
 
@@ -58,5 +61,10 @@ void Concatenation::forward(Tensor const& first, Tensor const& second, Tensor& o
     );
     callback(first, second, output);
 } 
+
+void Repack::forward(Tensor const& input, Tensor& output) const {
+    Callback callback(cpu::idn, cuda::idn);
+    callback(input, output);
+}
 
 } // namespace tannic::transformation

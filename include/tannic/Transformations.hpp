@@ -415,6 +415,39 @@ struct Concatenation {
     void forward(Tensor const&, Tensor const&, Tensor&) const;
 };
 
+/**
+ * @brief Repack operation (makes a tensor contiguous in memory)
+ *
+ * Ensures the tensor is stored contiguously (row-major order).
+ * Does not change shape or dtype.
+ */
+struct Repack {
+    /**
+     * @brief Type promotion for repack.
+     * 
+     * Repack does not change dtype.
+     */
+    constexpr type promote(type dtype) const {
+        return dtype;
+    }
+
+    /**
+     * @brief Computes output shape after repack.
+     *
+     * Repack does not change the shape.
+     */
+    constexpr Shape transform(Shape const& shape) const {
+        return shape;
+    }
+
+    /**
+     * @brief Copies the tensor data to a contiguous layout if needed.
+     * 
+     * @param source Input tensor.
+     * @param result Output tensor with contiguous layout.
+     */
+    void forward(Tensor const& source, Tensor& result) const;
+}; 
 
 /**
  * @brief Creates a composition (matrix multiplication) expression
@@ -489,11 +522,29 @@ constexpr auto concatenate(First&& first, Second&& second, int axis = 0) {
     ); 
 }
 
+/**
+ * @brief Creates a repack transformation. 
+ * Ensures the tensor is stored contiguously (row-major order).
+ * Does not change shape or dtype.
+ *
+ * @tparam Source Source tensor expression type.
+ * @param source Tensor to be repacked.
+ * @return Transformation expression representing repack.
+ */
+template<Expression Source>
+constexpr auto repack(Source&& source) {
+    return Transformation<Repack, Source>(
+        {},
+        std::forward<Source>(source)
+    ); 
+}
+
 } // namespace transformation
 
 using transformation::outer;
 using transformation::repeat;
 using transformation::concatenate;
+using transformation::repack;
 
 /**
  * @brief Matrix multiplication convenience function

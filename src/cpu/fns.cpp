@@ -6,6 +6,13 @@
  
 namespace { 
 
+struct Idn { 
+    template<class A>
+    auto operator()(A&& a) const noexcept(noexcept(a)) {
+        return a;
+    }
+};
+
 struct Log { 
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::log(a))) {
@@ -143,6 +150,25 @@ status launchFnKernel(const tensor_t* src, tensor_t* dst, Args... args) {
 }        
 
 } namespace cpu {
+
+status idn(const tensor_t* src, tensor_t* dst) {
+    switch (src->dtype) {
+        case int8:
+            return launchFnKernel<int8_t, int8_t, Idn>(src, dst);
+        case int16:
+            return launchFnKernel<int16_t, int16_t, Idn>(src, dst); 
+        case int32:
+            return launchFnKernel<int32_t, int32_t, Idn>(src, dst); 
+        case int64:
+            return launchFnKernel<int64_t, int64_t, Idn>(src, dst); 
+        case float32:
+            return launchFnKernel<float, float, Idn>(src, dst);
+        case float64:
+            return launchFnKernel<double, double, Idn>(src, dst);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
+} 
 
 status log(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {

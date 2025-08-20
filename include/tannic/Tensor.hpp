@@ -131,15 +131,19 @@ public:
     :   dtype_(dtype)
     ,   shape_(shape) 
     ,   strides_(strides) 
-    ,   offset_(offset)  {  
+    ,   offset_(offset)  {   
         if (rank() == 0) {
             nbytes_ = dsizeof(dtype_);
         }
         else {
-            std::size_t nbytes = 0;
-            std::size_t expected = 0;
+            std::size_t nbytes = 0; 
+            std::size_t expected = 1;
             for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
-                nbytes += strides_[dimension] * (shape_[dimension] - 1);
+                nbytes += strides_[dimension] * (shape_[dimension] - 1); 
+                if (strides_[dimension] != expected) {
+                    is_contiguous_ = false;
+                }
+                expected *= shape_[dimension];
             } 
             nbytes_ = (nbytes + 1) * dsizeof(dtype_);
         }
@@ -342,6 +346,79 @@ public:
         }
     }   
  
+
+    /**
+     * @brief Constructs a 4D tensor from a quadruple-nested initializer list.
+     *
+     * @tparam T Element type (deduced from the nested lists).
+     * @param values A quadruple-nested list of values (tensors) to populate the 4D tensor.
+     *
+     * @details
+     * This constructor allows **direct construction of 4D tensors**:
+     *
+     * ```cpp
+     * Tensor W = {
+     *     {
+     *         {
+     *             {1.0f, 2.0f},
+     *             {3.0f, 4.0f}
+     *         },
+     *         {
+     *             {5.0f, 6.0f},
+     *             {7.0f, 8.0f}
+     *         }
+     *     },
+     *     {
+     *         {
+     *             {9.0f, 10.0f},
+     *             {11.0f, 12.0f}
+     *         },
+     *         {
+     *             {13.0f, 14.0f},
+     *             {15.0f, 16.0f}
+     *         }
+     *     }
+     * };  // 4D tensor of shape {2,2,2,2}, dtype=float32
+     * ```
+     *
+     * All inner tensors must have consistent dimensions. The tensor is contiguous in memory.
+     */
+    template<typename T>
+    Tensor(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const& values)
+        : dtype_(dtypeof<T>())
+        , shape_({
+            values.size(),
+            values.begin()->size(),
+            values.begin()->begin()->size(),
+            values.begin()->begin()->begin()->size()
+        })
+        , strides_(shape_)
+        , offset_(0)
+    {
+        // compute total number of bytes
+        nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
+        initialize();
+
+        size_t index = 0;
+        for (auto const& tensor3D : values) {
+            if (tensor3D.size() != shape_[1])
+                throw Exception("All 3D tensors must have the same number of matrices");
+            for (auto const& matrix : tensor3D) {
+                if (matrix.size() != shape_[2])
+                    throw Exception("All matrices must have the same number of rows");
+                for (auto const& row : matrix) {
+                    if (row.size() != shape_[3])
+                        throw Exception("All rows must have the same number of columns");
+                    for (auto const& value : row) {
+                        assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                        ++index;
+                    }
+                }
+            }
+        }
+    }
+
+
 public:   
     /// @name Memory Management (Always runtime.)
     /// @{
@@ -496,6 +573,7 @@ public:
     ,   offset_(offset)   
     ,   buffer_(std::move(storage)) 
     {
+        nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
         node_ = std::make_shared<Node>(*this);
     }
 
@@ -506,6 +584,21 @@ public:
     ,   offset_(offset)   
     ,   buffer_(std::move(storage)) 
     {
+        if (rank() == 0) {
+            nbytes_ = dsizeof(dtype_);
+        }
+        else {
+            std::size_t nbytes = 0; 
+            std::size_t expected = 1;
+            for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
+                nbytes += strides_[dimension] * (shape_[dimension] - 1); 
+                if (strides_[dimension] != expected) {
+                    is_contiguous_ = false;
+                }
+                expected *= shape_[dimension];
+            } 
+            nbytes_ = (nbytes + 1) * dsizeof(dtype_);
+        }
         node_ = std::make_shared<Node>(*this);
     }
 
@@ -541,8 +634,7 @@ private:
     // Note: I didn't decide yet if put all this inside node.
     // That will speed tensor copies but disallow make the tensors
     // only runtime since shared ptrs don't support constexpr.
-    // For now kernel optimization is more important.
-     
+    // For now kernel optimization is more important. 
     type dtype_;
     Shape shape_; 
     Strides strides_; 
@@ -550,6 +642,7 @@ private:
     std::ptrdiff_t offset_ = 0;    
     mutable std::shared_ptr<Buffer> buffer_ = nullptr;
     mutable std::shared_ptr<Node> node_ = nullptr;
+    bool is_contiguous_ = true;
 };    
 
 std::ostream& operator<<(std::ostream& ostream, Tensor const& tensor);  
