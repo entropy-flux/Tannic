@@ -37,6 +37,7 @@ var hierarchy =
     [ "Realification", "d6/d98/classRealification.html", null ],
     [ "tannic::expression::Realification< Source >", "db/d96/classtannic_1_1expression_1_1Realification.html", null ],
     [ "tannic::expression::Reduction< Reducer, Operand >", "da/dc5/classtannic_1_1expression_1_1Reduction.html", null ],
+    [ "tannic::transformation::Repack", "d8/d0a/structtannic_1_1transformation_1_1Repack.html", null ],
     [ "tannic::transformation::Repetition", "da/d5d/structtannic_1_1transformation_1_1Repetition.html", null ],
     [ "tannic::expression::Reshape< Source >", "d2/dd8/classtannic_1_1expression_1_1Reshape.html", null ],
     [ "tannic::function::Rsqrt", "dc/db8/structtannic_1_1function_1_1Rsqrt.html", null ],

@@ -143,6 +143,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a41160801d006d080557931a56cff88cd"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a41160801d006d080557931a56cff88cd">Tensor</a> (std::initializer_list&lt; std::initializer_list&lt; std::initializer_list&lt; T &gt; &gt; &gt; const &amp;values)</td></tr>
 <tr class="memdesc:a41160801d006d080557931a56cff88cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a 3D tensor from a triple-nested initializer list.  <br /></td></tr>
 <tr class="separator:a41160801d006d080557931a56cff88cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92c11fcadbe1de00ae8a3aa51987e195"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a92c11fcadbe1de00ae8a3aa51987e195"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a92c11fcadbe1de00ae8a3aa51987e195">Tensor</a> (std::initializer_list&lt; std::initializer_list&lt; std::initializer_list&lt; std::initializer_list&lt; T &gt; &gt; &gt; &gt; const &amp;values)</td></tr>
+<tr class="memdesc:a92c11fcadbe1de00ae8a3aa51987e195"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a 4D tensor from a quadruple-nested initializer list.  <br /></td></tr>
+<tr class="separator:a92c11fcadbe1de00ae8a3aa51987e195"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade301df08b17e0660280c62d9cdd4fe7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ade301df08b17e0660280c62d9cdd4fe7">Tensor</a> (type <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ae2ed5e8543bccbf5a65a6a38f9b0aaea">dtype</a>, <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a81394f7df9e3334bad0cad7a890d090e">shape</a>, std::ptrdiff_t <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a64e1ab26b63bda193b0252b840aacc5a">offset</a>, std::shared_ptr&lt; <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &gt; storage)</td></tr>
 <tr class="separator:ade301df08b17e0660280c62d9cdd4fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace47b4a9fcb1068b6a5084b2816e4e7f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ace47b4a9fcb1068b6a5084b2816e4e7f">Tensor</a> (type <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ae2ed5e8543bccbf5a65a6a38f9b0aaea">dtype</a>, <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a81394f7df9e3334bad0cad7a890d090e">shape</a>, <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a9ddcd9641feaa0640993c593a184f302">strides</a>, std::ptrdiff_t <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a64e1ab26b63bda193b0252b840aacc5a">offset</a>, std::shared_ptr&lt; <a class="el" href="../../d4/d50/classtannic_1_1Buffer.html">Buffer</a> &gt; storage)</td></tr>
@@ -272,7 +276,7 @@ Example:</h4>
 <div class="ttc" id="anamespacetannic_1_1function_html_a1a8e818c37a5236e4481677e70ce6209"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a></div><div class="ttdeci">constexpr auto exp(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated exponential function expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:249</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a9ec44a47e78a5e28b75b76573d98e06b"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a></div><div class="ttdeci">constexpr auto log(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated natural logarithm expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:237</div></div>
 <div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition:</b> Buffer.hpp:43</div></div>
-<div class="ttc" id="anamespacetannic_html_a3681656aa208b88dfc79a1806cf669b6"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> Transformations.hpp:507</div></div>
+<div class="ttc" id="anamespacetannic_html_a3681656aa208b88dfc79a1806cf669b6"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> Transformations.hpp:558</div></div>
 <div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="../../de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdoc">Represents a half-open interval [start, stop) for slicing.</div><div class="ttdef"><b>Definition:</b> Indexing.hpp:56</div></div>
 </div><!-- fragment --><p>This example demonstrates eager initialization, advanced indexing, broadcasting, and composite expression evaluation.</p>
 <dl class="section warning"><dt>Warning</dt><dd>: Explicit inialization required for now but maybe removed in the future. If not properly initialized the tensors may segfault instead of throwing assertion error. This will be fixed when resources can be infered at the end of a templated expression. </dd></dl>
@@ -311,7 +315,7 @@ Example:</h4>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a432bc6e8f152fe13c47fc7a7c97a7f67" name="a432bc6e8f152fe13c47fc7a7c97a7f67"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a432bc6e8f152fe13c47fc7a7c97a7f67">&#9670;&#160;</a></span>Tensor() <span class="overload">[1/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a432bc6e8f152fe13c47fc7a7c97a7f67">&#9670;&#160;</a></span>Tensor() <span class="overload">[1/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -356,7 +360,7 @@ Example:</h4>
 </div>
 </div>
 <a id="a3410eb0c4a1e751e40a7df2153be804c" name="a3410eb0c4a1e751e40a7df2153be804c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3410eb0c4a1e751e40a7df2153be804c">&#9670;&#160;</a></span>Tensor() <span class="overload">[2/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3410eb0c4a1e751e40a7df2153be804c">&#9670;&#160;</a></span>Tensor() <span class="overload">[2/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -415,7 +419,7 @@ Example:</h4>
 </div>
 </div>
 <a id="ad7d3de73d311b6f56db0f177b55f816c" name="ad7d3de73d311b6f56db0f177b55f816c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7d3de73d311b6f56db0f177b55f816c">&#9670;&#160;</a></span>Tensor() <span class="overload">[3/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7d3de73d311b6f56db0f177b55f816c">&#9670;&#160;</a></span>Tensor() <span class="overload">[3/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -457,7 +461,7 @@ template&lt;Expression Expression&gt; </div>
 </div>
 </div>
 <a id="ad8ad3467f72373f252ae508db497dba5" name="ad8ad3467f72373f252ae508db497dba5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8ad3467f72373f252ae508db497dba5">&#9670;&#160;</a></span>Tensor() <span class="overload">[4/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8ad3467f72373f252ae508db497dba5">&#9670;&#160;</a></span>Tensor() <span class="overload">[4/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -502,7 +506,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <a id="a2b68f74f33c3fef0994ed0e1b2ab7ea6" name="a2b68f74f33c3fef0994ed0e1b2ab7ea6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b68f74f33c3fef0994ed0e1b2ab7ea6">&#9670;&#160;</a></span>Tensor() <span class="overload">[5/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b68f74f33c3fef0994ed0e1b2ab7ea6">&#9670;&#160;</a></span>Tensor() <span class="overload">[5/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -550,7 +554,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <a id="a41160801d006d080557931a56cff88cd" name="a41160801d006d080557931a56cff88cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41160801d006d080557931a56cff88cd">&#9670;&#160;</a></span>Tensor() <span class="overload">[6/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a41160801d006d080557931a56cff88cd">&#9670;&#160;</a></span>Tensor() <span class="overload">[6/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -603,8 +607,74 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a92c11fcadbe1de00ae8a3aa51987e195" name="a92c11fcadbe1de00ae8a3aa51987e195"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92c11fcadbe1de00ae8a3aa51987e195">&#9670;&#160;</a></span>Tensor() <span class="overload">[7/9]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">tannic::Tensor::Tensor </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; std::initializer_list&lt; std::initializer_list&lt; std::initializer_list&lt; T &gt; &gt; &gt; &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>values</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs a 4D tensor from a quadruple-nested initializer list. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Element type (deduced from the nested lists). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">values</td><td>A quadruple-nested list of values (tensors) to populate the 4D tensor.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This constructor allows <b>direct construction of 4D tensors</b>:</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> W = {</div>
+<div class="line">    {</div>
+<div class="line">        {</div>
+<div class="line">            {1.0f, 2.0f},</div>
+<div class="line">            {3.0f, 4.0f}</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">            {5.0f, 6.0f},</div>
+<div class="line">            {7.0f, 8.0f}</div>
+<div class="line">        }</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">        {</div>
+<div class="line">            {9.0f, 10.0f},</div>
+<div class="line">            {11.0f, 12.0f}</div>
+<div class="line">        },</div>
+<div class="line">        {</div>
+<div class="line">            {13.0f, 14.0f},</div>
+<div class="line">            {15.0f, 16.0f}</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">};  <span class="comment">// 4D tensor of shape {2,2,2,2}, dtype=float32</span></div>
+</div><!-- fragment --><p>All inner tensors must have consistent dimensions. The tensor is contiguous in memory. </p>
+
+</div>
+</div>
 <a id="ade301df08b17e0660280c62d9cdd4fe7" name="ade301df08b17e0660280c62d9cdd4fe7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade301df08b17e0660280c62d9cdd4fe7">&#9670;&#160;</a></span>Tensor() <span class="overload">[7/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ade301df08b17e0660280c62d9cdd4fe7">&#9670;&#160;</a></span>Tensor() <span class="overload">[8/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -652,7 +722,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <a id="ace47b4a9fcb1068b6a5084b2816e4e7f" name="ace47b4a9fcb1068b6a5084b2816e4e7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace47b4a9fcb1068b6a5084b2816e4e7f">&#9670;&#160;</a></span>Tensor() <span class="overload">[8/8]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ace47b4a9fcb1068b6a5084b2816e4e7f">&#9670;&#160;</a></span>Tensor() <span class="overload">[9/9]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
