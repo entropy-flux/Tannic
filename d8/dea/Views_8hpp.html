@@ -163,8 +163,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd8/classtannic_1_1expression_1_1Reshape.html">tannic::expression::Reshape&lt; Source &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for viewing a tensor with a new shape.  <a href="../../d2/dd8/classtannic_1_1expression_1_1Reshape.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9f/classtannic_1_1expression_1_1View.html">tannic::expression::View&lt; Source &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for viewing a tensor with a new shape.  <a href="../../d2/d9f/classtannic_1_1expression_1_1View.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html">tannic::expression::Transpose&lt; Source &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for transposing two dimensions of a tensor.  <a href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#details">More...</a><br /></td></tr>
@@ -204,7 +204,7 @@ Functions</h2></td></tr>
 <p>Example usage:</p>
 <div class="fragment"><div class="line">Tensor X(float32, {2, 3}); X.initialize();</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// Reshape from (2, 3) to (3, 2)</span></div>
+<div class="line"><span class="comment">// View from (2, 3) to (3, 2)</span></div>
 <div class="line"><span class="keyword">auto</span> Y = view(X, 3, 2);</div>
 <div class="line">std::cout &lt;&lt; Y.shape() &lt;&lt; std::endl; <span class="comment">// (3, 2)</span></div>
 <div class="line"> </div>

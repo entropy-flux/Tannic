@@ -141,6 +141,10 @@ Functions</h2></td></tr>
 <tr class="memitem:aebf273f7681ac116ae0eaa4eec3c83f6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aebf273f7681ac116ae0eaa4eec3c83f6">repack</a> (Source &amp;&amp;source)</td></tr>
 <tr class="memdesc:aebf273f7681ac116ae0eaa4eec3c83f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a repack transformation.  <br /></td></tr>
 <tr class="separator:aebf273f7681ac116ae0eaa4eec3c83f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2c2984309895146427e0685322baef0"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral ... Indexes&gt; </td></tr>
+<tr class="memitem:aa2c2984309895146427e0685322baef0"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aa2c2984309895146427e0685322baef0">reshape</a> (Source &amp;&amp;source, Indexes ... indexes)</td></tr>
+<tr class="memdesc:aa2c2984309895146427e0685322baef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a view but always repacks the tensor into a contiguous layout.  <br /></td></tr>
+<tr class="separator:aa2c2984309895146427e0685322baef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a305bc5073fd7fbb2f1948a77c5e5a969" name="a305bc5073fd7fbb2f1948a77c5e5a969"></a>
@@ -417,6 +421,59 @@ template&lt;Expression Source&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> expression representing repetition. </dd></dl>
+
+</div>
+</div>
+<a id="aa2c2984309895146427e0685322baef0" name="aa2c2984309895146427e0685322baef0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2c2984309895146427e0685322baef0">&#9670;&#160;</a></span>reshape()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression Source, Integral ... Indexes&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::transformation::reshape </td>
+          <td>(</td>
+          <td class="paramtype">Source &amp;&amp;&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Indexes ...&#160;</td>
+          <td class="paramname"><em>indexes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a view but always repacks the tensor into a contiguous layout. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Source</td><td>Source tensor expression type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td><a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a> to be reshaped. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> expression representing reshape. </dd></dl>
 
 </div>
 </div>

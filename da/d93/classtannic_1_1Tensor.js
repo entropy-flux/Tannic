@@ -19,6 +19,7 @@ var classtannic_1_1Tensor =
     [ "forward", "da/d93/classtannic_1_1Tensor.html#a24efaf36c2ec793288c470e5e92ad397", null ],
     [ "forward", "da/d93/classtannic_1_1Tensor.html#afa045be0c377ee3127a5a9d97c5b1fcb", null ],
     [ "initialize", "da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882", null ],
+    [ "is_contiguous", "da/d93/classtannic_1_1Tensor.html#aaa9f6eae57c44e544cad56e2553923c0", null ],
     [ "is_initialized", "da/d93/classtannic_1_1Tensor.html#a608af294e14a31a695a727931d236f2f", null ],
     [ "nbytes", "da/d93/classtannic_1_1Tensor.html#a4064f4b6e988d2ccdff1a4c5f7357f43", null ],
     [ "node", "da/d93/classtannic_1_1Tensor.html#a451eebfea1fb68557e20d8b91fdd7876", null ],
@@ -36,7 +37,7 @@ var classtannic_1_1Tensor =
     [ "expression::Complexification", "da/d93/classtannic_1_1Tensor.html#a34c3e1f41aa63bf22aacd96cc66d9075", null ],
     [ "expression::Permutation", "da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78", null ],
     [ "expression::Realification", "da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082", null ],
-    [ "expression::Reshape", "da/d93/classtannic_1_1Tensor.html#a5386dee168164fdecd9162f1234534f7", null ],
     [ "expression::Slice", "da/d93/classtannic_1_1Tensor.html#acd979f317f147e5b65290548bed8fa45", null ],
-    [ "expression::Transpose", "da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9", null ]
+    [ "expression::Transpose", "da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9", null ],
+    [ "expression::View", "da/d93/classtannic_1_1Tensor.html#a7f7618fb8029f94419961726b789b0c3", null ]
 ];

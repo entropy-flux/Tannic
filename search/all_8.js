@@ -8,5 +8,6 @@ var searchData=
   ['instance_5',['instance',['../d9/dd4/classtannic_1_1Devices.html#a08e873a9357bba7615b7cd1f041d257c',1,'tannic::Devices']]],
   ['is_5fassignable_6',['is_assignable',['../d1/d96/structtannic_1_1Trait.html#af2ea5857d5ac63c84cd0849a8a11cfa6',1,'tannic::Trait']]],
   ['is_5fcomparable_7',['is_comparable',['../d1/d96/structtannic_1_1Trait.html#acfa95553b70aa62a6c29d4a59bf504c0',1,'tannic::Trait']]],
-  ['is_5finitialized_8',['is_initialized',['../da/d93/classtannic_1_1Tensor.html#a608af294e14a31a695a727931d236f2f',1,'tannic::Tensor']]]
+  ['is_5fcontiguous_8',['is_contiguous',['../da/d93/classtannic_1_1Tensor.html#aaa9f6eae57c44e544cad56e2553923c0',1,'tannic::Tensor']]],
+  ['is_5finitialized_9',['is_initialized',['../da/d93/classtannic_1_1Tensor.html#a608af294e14a31a695a727931d236f2f',1,'tannic::Tensor']]]
 ];

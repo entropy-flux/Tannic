@@ -11,7 +11,7 @@ var searchData=
   ['exponentiation_8',['Exponentiation',['../db/d23/structtannic_1_1operation_1_1Exponentiation.html',1,'tannic::operation']]],
   ['permutation_9',['Permutation',['../da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78',1,'tannic::Tensor']]],
   ['realification_10',['Realification',['../da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082',1,'tannic::Tensor']]],
-  ['reshape_11',['Reshape',['../da/d93/classtannic_1_1Tensor.html#a5386dee168164fdecd9162f1234534f7',1,'tannic::Tensor']]],
-  ['slice_12',['Slice',['../da/d93/classtannic_1_1Tensor.html#acd979f317f147e5b65290548bed8fa45',1,'tannic::Tensor']]],
-  ['transpose_13',['Transpose',['../da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9',1,'tannic::Tensor']]]
+  ['slice_11',['Slice',['../da/d93/classtannic_1_1Tensor.html#acd979f317f147e5b65290548bed8fa45',1,'tannic::Tensor']]],
+  ['transpose_12',['Transpose',['../da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9',1,'tannic::Tensor']]],
+  ['view_13',['View',['../da/d93/classtannic_1_1Tensor.html#a7f7618fb8029f94419961726b789b0c3',1,'tannic::Tensor']]]
 ];

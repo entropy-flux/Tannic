@@ -157,6 +157,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae2ed5e8543bccbf5a65a6a38f9b0aaea"><td class="memItemLeft" align="right" valign="top">type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ae2ed5e8543bccbf5a65a6a38f9b0aaea">dtype</a> () const</td></tr>
 <tr class="memdesc:ae2ed5e8543bccbf5a65a6a38f9b0aaea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tensor's data type.  <br /></td></tr>
 <tr class="separator:ae2ed5e8543bccbf5a65a6a38f9b0aaea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36f544f8a69e20e944cbec6aec0beefa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ab57635886a913849763fd6f8a3681239">rank_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a36f544f8a69e20e944cbec6aec0beefa">rank</a> () const</td></tr>
+<tr class="memdesc:a36f544f8a69e20e944cbec6aec0beefa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of dimensions (rank) of the tensor.  <br /></td></tr>
+<tr class="separator:a36f544f8a69e20e944cbec6aec0beefa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81394f7df9e3334bad0cad7a890d090e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a81394f7df9e3334bad0cad7a890d090e">shape</a> () const</td></tr>
 <tr class="memdesc:a81394f7df9e3334bad0cad7a890d090e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tensor's shape (dimension sizes per dimension).  <br /></td></tr>
 <tr class="separator:a81394f7df9e3334bad0cad7a890d090e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,9 +175,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4064f4b6e988d2ccdff1a4c5f7357f43"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a4064f4b6e988d2ccdff1a4c5f7357f43">nbytes</a> () const</td></tr>
 <tr class="memdesc:a4064f4b6e988d2ccdff1a4c5f7357f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total number of bytes occupied by the tensor's elements.  <br /></td></tr>
 <tr class="separator:a4064f4b6e988d2ccdff1a4c5f7357f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36f544f8a69e20e944cbec6aec0beefa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ab57635886a913849763fd6f8a3681239">rank_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a36f544f8a69e20e944cbec6aec0beefa">rank</a> () const</td></tr>
-<tr class="memdesc:a36f544f8a69e20e944cbec6aec0beefa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of dimensions (rank) of the tensor.  <br /></td></tr>
-<tr class="separator:a36f544f8a69e20e944cbec6aec0beefa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa9f6eae57c44e544cad56e2553923c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#aaa9f6eae57c44e544cad56e2553923c0">is_contiguous</a> () const</td></tr>
+<tr class="memdesc:aaa9f6eae57c44e544cad56e2553923c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the tensor's elements are in contiguous layout or not.  <br /></td></tr>
+<tr class="separator:aaa9f6eae57c44e544cad56e2553923c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24efaf36c2ec793288c470e5e92ad397"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a24efaf36c2ec793288c470e5e92ad397">forward</a> ()</td></tr>
 <tr class="memdesc:a24efaf36c2ec793288c470e5e92ad397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to this tensor (const-qualified).  <br /></td></tr>
 <tr class="separator:a24efaf36c2ec793288c470e5e92ad397"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -229,9 +232,9 @@ Friends</h2></td></tr>
 <tr class="memitem:ae69fa951d7e1f4c2e93eabef4dc136d9"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
 <tr class="memitem:ae69fa951d7e1f4c2e93eabef4dc136d9"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9">expression::Transpose</a></td></tr>
 <tr class="separator:ae69fa951d7e1f4c2e93eabef4dc136d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5386dee168164fdecd9162f1234534f7"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
-<tr class="memitem:a5386dee168164fdecd9162f1234534f7"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a5386dee168164fdecd9162f1234534f7">expression::Reshape</a></td></tr>
-<tr class="separator:a5386dee168164fdecd9162f1234534f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7618fb8029f94419961726b789b0c3"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
+<tr class="memitem:a7f7618fb8029f94419961726b789b0c3"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a7f7618fb8029f94419961726b789b0c3">expression::View</a></td></tr>
+<tr class="separator:a7f7618fb8029f94419961726b789b0c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac476c46f4bf3abbf4777f81f5cd19a78"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral... Indexes&gt; </td></tr>
 <tr class="memitem:ac476c46f4bf3abbf4777f81f5cd19a78"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78">expression::Permutation</a></td></tr>
 <tr class="separator:ac476c46f4bf3abbf4777f81f5cd19a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -276,7 +279,7 @@ Example:</h4>
 <div class="ttc" id="anamespacetannic_1_1function_html_a1a8e818c37a5236e4481677e70ce6209"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a></div><div class="ttdeci">constexpr auto exp(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated exponential function expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:249</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a9ec44a47e78a5e28b75b76573d98e06b"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a></div><div class="ttdeci">constexpr auto log(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated natural logarithm expression.</div><div class="ttdef"><b>Definition:</b> Functions.hpp:237</div></div>
 <div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition:</b> Buffer.hpp:43</div></div>
-<div class="ttc" id="anamespacetannic_html_a3681656aa208b88dfc79a1806cf669b6"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> Transformations.hpp:558</div></div>
+<div class="ttc" id="anamespacetannic_html_a3681656aa208b88dfc79a1806cf669b6"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> Transformations.hpp:574</div></div>
 <div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="../../de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdoc">Represents a half-open interval [start, stop) for slicing.</div><div class="ttdef"><b>Definition:</b> Indexing.hpp:56</div></div>
 </div><!-- fragment --><p>This example demonstrates eager initialization, advanced indexing, broadcasting, and composite expression evaluation.</p>
 <dl class="section warning"><dt>Warning</dt><dd>: Explicit inialization required for now but maybe removed in the future. If not properly initialized the tensors may segfault instead of throwing assertion error. This will be fixed when resources can be infered at the end of a templated expression. </dd></dl>
@@ -1012,6 +1015,33 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="aaa9f6eae57c44e544cad56e2553923c0" name="aaa9f6eae57c44e544cad56e2553923c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa9f6eae57c44e544cad56e2553923c0">&#9670;&#160;</a></span>is_contiguous()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tannic::Tensor::is_contiguous </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns whether the tensor's elements are in contiguous layout or not. </p>
+
+</div>
+</div>
 <a id="a608af294e14a31a695a727931d236f2f" name="a608af294e14a31a695a727931d236f2f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a608af294e14a31a695a727931d236f2f">&#9670;&#160;</a></span>is_initialized()</h2>
 
@@ -1571,30 +1601,6 @@ template&lt;Expression Source&gt; </div>
 
 </div>
 </div>
-<a id="a5386dee168164fdecd9162f1234534f7" name="a5386dee168164fdecd9162f1234534f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5386dee168164fdecd9162f1234534f7">&#9670;&#160;</a></span>expression::Reshape</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;Expression Source&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">friend class <a class="el" href="../../d2/dd8/classtannic_1_1expression_1_1Reshape.html">expression::Reshape</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="acd979f317f147e5b65290548bed8fa45" name="acd979f317f147e5b65290548bed8fa45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acd979f317f147e5b65290548bed8fa45">&#9670;&#160;</a></span>expression::Slice</h2>
 
@@ -1632,6 +1638,30 @@ template&lt;Expression Source&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">friend class <a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html">expression::Transpose</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f7618fb8029f94419961726b789b0c3" name="a7f7618fb8029f94419961726b789b0c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f7618fb8029f94419961726b789b0c3">&#9670;&#160;</a></span>expression::View</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression Source&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="../../d2/d9f/classtannic_1_1expression_1_1View.html">expression::View</a></td>
         </tr>
       </table>
   </td>

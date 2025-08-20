@@ -39,7 +39,6 @@ var hierarchy =
     [ "tannic::expression::Reduction< Reducer, Operand >", "da/dc5/classtannic_1_1expression_1_1Reduction.html", null ],
     [ "tannic::transformation::Repack", "d8/d0a/structtannic_1_1transformation_1_1Repack.html", null ],
     [ "tannic::transformation::Repetition", "da/d5d/structtannic_1_1transformation_1_1Repetition.html", null ],
-    [ "tannic::expression::Reshape< Source >", "d2/dd8/classtannic_1_1expression_1_1Reshape.html", null ],
     [ "tannic::function::Rsqrt", "dc/db8/structtannic_1_1function_1_1Rsqrt.html", null ],
     [ "tannic::Shape", "db/da7/classtannic_1_1Shape.html", null ],
     [ "tannic::function::Sin", "d5/d31/structtannic_1_1function_1_1Sin.html", null ],
@@ -60,5 +59,6 @@ var hierarchy =
     [ "tannic::Trait< Source >", "d1/d96/structtannic_1_1Trait.html", null ],
     [ "tannic::transformation::Transformation< Operation, Operands >", "d9/d4d/classtannic_1_1transformation_1_1Transformation.html", null ],
     [ "tannic::expression::Transpose< Source >", "d0/dd9/classtannic_1_1expression_1_1Transpose.html", null ],
-    [ "tannic::operation::Unary< Operation, Operand >", "d7/d26/classtannic_1_1operation_1_1Unary.html", null ]
+    [ "tannic::operation::Unary< Operation, Operand >", "d7/d26/classtannic_1_1operation_1_1Unary.html", null ],
+    [ "tannic::expression::View< Source >", "d2/d9f/classtannic_1_1expression_1_1View.html", null ]
 ];

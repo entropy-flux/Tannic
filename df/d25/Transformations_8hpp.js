@@ -11,5 +11,6 @@ var Transformations_8hpp =
     [ "matmul", "df/d25/Transformations_8hpp.html#a3681656aa208b88dfc79a1806cf669b6", null ],
     [ "outer", "df/d25/Transformations_8hpp.html#aae536af65f2dee7cb7279c58f82b2e2d", null ],
     [ "repack", "df/d25/Transformations_8hpp.html#aebf273f7681ac116ae0eaa4eec3c83f6", null ],
-    [ "repeat", "df/d25/Transformations_8hpp.html#a4f49aca0f8b48ceb6f1992c5f34ab6fb", null ]
+    [ "repeat", "df/d25/Transformations_8hpp.html#a4f49aca0f8b48ceb6f1992c5f34ab6fb", null ],
+    [ "reshape", "df/d25/Transformations_8hpp.html#aa2c2984309895146427e0685322baef0", null ]
 ];

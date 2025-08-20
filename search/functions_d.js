@@ -7,6 +7,6 @@ var searchData=
   ['reduction_4',['Reduction',['../da/dc5/classtannic_1_1expression_1_1Reduction.html#a9e79399f2f9ba00d0d95b58653ae5d05',1,'tannic::expression::Reduction']]],
   ['repack_5',['repack',['../de/d75/namespacetannic_1_1transformation.html#aebf273f7681ac116ae0eaa4eec3c83f6',1,'tannic::transformation']]],
   ['repeat_6',['repeat',['../de/d75/namespacetannic_1_1transformation.html#a4f49aca0f8b48ceb6f1992c5f34ab6fb',1,'tannic::transformation']]],
-  ['reshape_7',['Reshape',['../d2/dd8/classtannic_1_1expression_1_1Reshape.html#abab1d866ae98f6110ccf0c2a562ee1a8',1,'tannic::expression::Reshape']]],
+  ['reshape_7',['reshape',['../de/d75/namespacetannic_1_1transformation.html#aa2c2984309895146427e0685322baef0',1,'tannic::transformation']]],
   ['rsqrt_8',['rsqrt',['../dd/d74/namespacetannic_1_1function.html#ae57777f5110c12a46eedfeb0e8bb10b8',1,'tannic::function']]]
 ];

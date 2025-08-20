@@ -14,9 +14,9 @@ var annotated_dup =
         [ "Polar", "d3/dd3/structtannic_1_1expression_1_1Polar.html", null ],
         [ "Realification", "db/d96/classtannic_1_1expression_1_1Realification.html", "db/d96/classtannic_1_1expression_1_1Realification" ],
         [ "Reduction", "da/dc5/classtannic_1_1expression_1_1Reduction.html", "da/dc5/classtannic_1_1expression_1_1Reduction" ],
-        [ "Reshape", "d2/dd8/classtannic_1_1expression_1_1Reshape.html", "d2/dd8/classtannic_1_1expression_1_1Reshape" ],
         [ "Slice", "dd/d0f/classtannic_1_1expression_1_1Slice.html", "dd/d0f/classtannic_1_1expression_1_1Slice" ],
-        [ "Transpose", "d0/dd9/classtannic_1_1expression_1_1Transpose.html", "d0/dd9/classtannic_1_1expression_1_1Transpose" ]
+        [ "Transpose", "d0/dd9/classtannic_1_1expression_1_1Transpose.html", "d0/dd9/classtannic_1_1expression_1_1Transpose" ],
+        [ "View", "d2/d9f/classtannic_1_1expression_1_1View.html", "d2/d9f/classtannic_1_1expression_1_1View" ]
       ] ],
       [ "function", "dd/d74/namespacetannic_1_1function.html", [
         [ "Abs", "da/de6/structtannic_1_1function_1_1Abs.html", "da/de6/structtannic_1_1function_1_1Abs" ],
