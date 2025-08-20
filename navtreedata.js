@@ -30,15 +30,23 @@ var NAVTREE =
     [ "Status", "index.html#autotoc_md63", null ],
     [ "Features", "index.html#autotoc_md64", null ],
     [ "What is comming...", "index.html#autotoc_md65", null ],
-    [ "Installation", "d0/d32/md_docs_Installation.html", null ],
-    [ "Usage", "d0/da1/md_docs_Usage.html", null ],
-    [ "Contributing", "d0/da1/md_docs_Contributing.html", [
-      [ "Ways to Contribute", "d0/da1/md_docs_Contributing.html#autotoc_md76", null ],
-      [ "How to Contribute", "d0/da1/md_docs_Contributing.html#autotoc_md77", null ],
-      [ "Project structure", "d0/da1/md_docs_Contributing.html#autotoc_md78", null ],
-      [ "Creating new features.", "d0/da1/md_docs_Contributing.html#autotoc_md79", null ]
+    [ "Installation", "index.html#autotoc_md66", [
+      [ "Requirements", "index.html#autotoc_md67", null ],
+      [ "Clone the repository:", "index.html#autotoc_md68", null ],
+      [ "Debug build:", "index.html#autotoc_md69", null ],
+      [ "Release build", "index.html#autotoc_md70", null ],
+      [ "Run the example", "index.html#autotoc_md71", null ],
+      [ "Include Tannic in your project", "index.html#autotoc_md72", null ],
+      [ "CUDA support", "index.html#autotoc_md73", null ]
     ] ],
-    [ "License & Attribution", "d1/d11/md_docs_License.html", null ],
+    [ "Usage", "index.html#autotoc_md74", null ],
+    [ "Contributing", "index.html#autotoc_md75", null ],
+    [ "Ways to Contribute", "index.html#autotoc_md76", null ],
+    [ "How to Contribute", "index.html#autotoc_md77", null ],
+    [ "Project structure", "index.html#autotoc_md78", null ],
+    [ "Creating new features.", "index.html#autotoc_md79", [
+      [ "License & Attribution", "index.html#autotoc_md80", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -69,9 +77,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/d32/structtannic_1_1expression_1_1Argmin.html#a9511d56e6095709027e779343814190e",
-"db/d37/classtannic_1_1function_1_1Function.html#a4fadaef6215872de7b9ad0aa15071455",
-"df/d85/structtannic_1_1Node.html#a32049b80b7cabdac7563b22f13d51ceb"
+"d7/d6b/classtannic_1_1operation_1_1Binary.html#a0a864c0103c2a1c28564f1cec4e6aad6",
+"db/d37/classtannic_1_1function_1_1Function.html#ab325ad3f1e53692e3172ab1a77edabef",
+"df/d85/structtannic_1_1Node.html#aa5a6d8ef7392c47b27d32578a329b69d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

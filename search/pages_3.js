@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tannic_0',['Tannic',['../index.html',1,'']]]
+  ['license_20attribution_0',['License &amp; Attribution',['../d6/ded/md_docs_2License.html',1,'']]]
 ];
