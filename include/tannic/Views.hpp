@@ -89,18 +89,18 @@ public:
      *
      * @tparam Indexes Integral dimension sizes of the new shape.
      * @param source Reference to the source expression or tensor.
-     * @param indexes Dimension sizes for the reshaped view.
+     * @param sizes Dimension sizes for the reshaped view.
      *
      * @throws Assertion failure if the number of elements in the new shape
      *         does not match the number of elements in the source.
      */
-    template<Integral... Indexes>  
-    constexpr View(Trait<Source>::Reference source, Indexes... indexes)
-    :   shape_(indexes...) 
+    template<Integral... Sizes>  
+    constexpr View(Trait<Source>::Reference source, Sizes... sizes)
+    :   shape_(sizes...) 
     ,   strides_(shape_)
     ,   source_(source) {
         std::size_t elements = 0;
-        for (std::size_t dimension = 0; dimension < sizeof...(indexes); ++dimension) {
+        for (std::size_t dimension = 0; dimension < sizeof...(sizes); ++dimension) {
             elements += strides_[dimension] * (shape_[dimension] - 1);
         } 
         elements += 1;  

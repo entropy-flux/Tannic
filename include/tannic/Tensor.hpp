@@ -540,6 +540,8 @@ public:
         return expression::Slice<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
     } 
 
+
+
     /**
      * @brief Returns a view of the tensor with two dimensions transposed.
      * @param first First dimension to swap (default: -1).
@@ -559,11 +561,24 @@ public:
      * @return Permutation expression.
      * 
      */
-    template<class ... Indexes>
+    template<Integral ... Indexes>
     auto permute(Indexes... indexes) const {
         if (!is_initialized())
             initialize(); 
         return expression::Permutation<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
+    } 
+
+     /**
+     * @brief Returns a view of the tensor with given sizes.
+     * @param sizes sizes of the new shape of the tensor
+     * @return View expression.
+     * 
+     */
+    template<Integral ... Sizes>
+    auto view(Sizes... sizes) const {
+        if (!is_initialized())
+            initialize(); 
+        return expression::View<Tensor>(*this, sizes...);
     } 
 
     /// @}
