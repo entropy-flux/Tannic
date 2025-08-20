@@ -285,7 +285,7 @@ public:
      * and then expands the `shape_` and `strides_` of the permuted view accordingly.
      */
     constexpr Permutation(typename Trait<Source>::Reference source, std::tuple<Indexes...> indexes) 
-        : source_(source)
+    :   source_(source)
     {
         if (sizeof...(Indexes) != source_.shape().rank()) {
             throw Exception("Permutation rank must equal tensor rank");
