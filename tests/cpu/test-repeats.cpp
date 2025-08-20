@@ -2,6 +2,7 @@
  
 #include "Tensor.hpp"   
 #include "Transformations.hpp"
+#include "Views.hpp"
 
 using namespace tannic;
 
@@ -48,4 +49,33 @@ TEST(TestRepeats, TestRepeatDim1) {
     ASSERT_EQ(Y[1][1], 3);
     ASSERT_EQ(Y[1][2], 4);
     ASSERT_EQ(Y[1][3], 4);
+}
+
+
+TEST(TestPermute, TestPermute234to423) {
+    Tensor X(float32, {2,3,4});
+    X.initialize();
+ 
+    int val = 1;
+    for (size_t i = 0; i < 2; i++)
+        for (size_t j = 0; j < 3; j++)
+            for (size_t k = 0; k < 4; k++)
+                X[i][j][k] = val++;
+
+    Tensor Y = permute(X, 2,0,1);   
+ 
+    ASSERT_EQ(Y.shape()[0], 4);
+    ASSERT_EQ(Y.shape()[1], 2);
+    ASSERT_EQ(Y.shape()[2], 3);
+ 
+    int expected;
+    for (size_t i = 0; i < 4; i++) {
+        for (size_t j = 0; j < 2; j++) {
+            for (size_t k = 0; k < 3; k++) { 
+                expected = 1 + j*12 + k*4 + i;  
+                EXPECT_EQ(Y[i][j][k], expected)
+                    << "Mismatch at Y[" << i << "][" << j << "][" << k << "]";
+            }
+        }
+    }
 }

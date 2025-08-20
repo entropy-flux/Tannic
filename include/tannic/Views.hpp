@@ -158,23 +158,7 @@ private:
     Shape shape_;
     Strides strides_;
     typename Trait<Source>::Reference source_;                
-};  
-
-/**
- * @brief Creates a reshaped view of a tensor or expression.
- *
- * @tparam Source The expression or tensor type.
- * @tparam Indexes New shape dimensions (integral values).
- * @param source The source expression.
- * @param indexes Dimension sizes for the new shape.
- * @return A `Reshape` view expression.
- */
-template<Expression Source, Integral ... Indexes>
-constexpr auto view(Source&& source, Indexes ... indexes) {
-    return Reshape<Source>(
-        std::forward<Source>(source), indexes...
-    );
-} 
+};   
 
 
 /**
@@ -263,7 +247,123 @@ private:
     Strides strides_;
     typename Trait<Source>::Reference source_; 
     std::pair<int, int> dimensions_;
-};  
+};   
+
+
+/**
+ * @class Permutation
+ * @brief Expression template for reordering tensor dimensions according to a specified permutation.
+ *
+ * @tparam Source The expression or tensor type being permuted.
+ * @tparam Indexes A parameter pack of integral indices defining the permutation order.
+ *
+ * The `Permutation` view reorders the dimensions of a tensor according to a
+ * user-specified sequence of indices. This changes how elements are accessed
+ * along each axis, but does not move the underlying data in memory.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {2, 3, 4});
+ * auto Y = permute(X, 2, 0, 1); // shape becomes (4, 2, 3)
+ * ```
+ *
+ * @note The number of indices in the permutation must match the rank of the tensor.
+ *       Otherwise, an exception is thrown.
+ */
+template<Expression Source, Integral ... Indexes>
+class Permutation {
+public:
+    /**
+     * @brief Constructs a permuted view of the source tensor.
+     *
+     * @param source Reference to the source expression or tensor.
+     * @param indexes A tuple of dimension indices specifying the new order.
+     *
+     * @throws Exception if the number of indices does not match the source tensor's rank.
+     *
+     * This constructor normalizes the indices to ensure they are valid for the tensor's rank,
+     * and then expands the `shape_` and `strides_` of the permuted view accordingly.
+     */
+    constexpr Permutation(typename Trait<Source>::Reference source, std::tuple<Indexes...> indexes) 
+        : source_(source)
+    {
+        if (sizeof...(Indexes) != source_.shape().rank()) {
+            throw Exception("Permutation rank must equal tensor rank");
+        }
+
+        std::apply([&](auto... indexes) {
+            (([&]{
+                int dimension = indexing::normalize(indexes, source_.shape().rank());
+                shape_.expand(source_.shape()[dimension]);
+                strides_.expand(source_.strides()[dimension]);
+            }()), ...);
+        }, indexes);
+    }
+
+    /**
+     * @return The data type of the tensor elements.
+     *
+     * The element type remains the same as the source tensor.
+     */
+    constexpr type dtype() const { 
+        return source_.dtype(); 
+    }
+
+    /**
+     * @return The shape of the permuted view.
+     *
+     * The shape is reordered according to the permutation indices provided
+     * in the constructor.
+     */
+    constexpr Shape const& shape() const { 
+        return shape_; 
+    }
+
+    /**
+     * @return The strides of the permuted view.
+     *
+     * Strides are reordered to match the permuted axes, ensuring that
+     * element access corresponds to the new dimension order.
+     */
+    constexpr Strides const& strides() const { 
+        return strides_; 
+    }
+
+    /**
+     * @return The byte offset of the permuted view from the start of the storage.
+     *
+     * This forwards directly from the source tensor. The data buffer is not
+     * moved, so the offset remains the same.
+     */
+    std::ptrdiff_t offset() const { 
+        return source_.offset(); 
+    } 
+
+    Tensor forward() const;
+
+private:
+    Shape shape_{};
+    Strides strides_{};
+    typename Trait<Source>::Reference source_;              
+};
+
+
+
+/**
+ * @brief Creates a reshaped view of a tensor or expression.
+ *
+ * @tparam Source The expression or tensor type.
+ * @tparam Indexes New shape dimensions (integral values).
+ * @param source The source expression.
+ * @param indexes Dimension sizes for the new shape.
+ * @return A `Reshape` view expression.
+ */
+template<Expression Source, Integral ... Indexes>
+constexpr auto view(Source&& source, Indexes ... indexes) {
+    return Reshape<Source>(
+        std::forward<Source>(source), indexes...
+    );
+} 
 
 
 /**
@@ -283,12 +383,35 @@ constexpr auto transpose(Source&& source, int first, int second) {
     );
 } 
 
-/*----------------------------------------------------------------*/ 
+/**
+ * @brief Creates a permuted view of a tensor or expression.
+ *
+ * @tparam Source The expression or tensor type.
+ * @tparam Indexes Integral indices specifying the permutation order.
+ * @param source The source expression.
+ * @param indexes Sequence of dimension indices indicating the new axis order.
+ * @return A `Permutation` view expression.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {2, 3, 4});
+ * auto Y = permute(X, 2, 0, 1); // shape becomes (4, 2, 3)
+ * ```
+ */
+template<Expression Source, Integral ... Indexes>
+constexpr auto permute(Source&& source, Indexes... indexes) {
+    return Permutation<Source, Indexes...>(
+        std::forward<Source>(source), 
+        std::make_tuple(indexes...)
+    );
+}
+  
 
 } // namespace expression
 
 using expression::view;
 using expression::transpose;
+using expression::permute;
 
 } // namespace tannic
 

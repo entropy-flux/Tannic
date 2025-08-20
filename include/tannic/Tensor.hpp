@@ -470,6 +470,20 @@ public:
             initialize(); 
         return expression::Transpose<Tensor>(*this, std::make_pair<int, int>(std::move(first), std::move(second)));
     }  
+ 
+    /**
+     * @brief Returns a view of the tensor with dimensions permuted.
+     * @param indexes Indices to permute
+     * @return Permutation expression.
+     * 
+     */
+    template<class ... Indexes>
+    auto permute(Indexes... indexes) const {
+        if (!is_initialized())
+            initialize(); 
+        return expression::Permutation<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
+    } 
+
 
     /// @}
 
@@ -504,6 +518,9 @@ protected:
 
     template <Expression Source>
     friend class expression::Reshape;
+
+    template <Expression Source, Integral... Indexes> 
+    friend class expression::Permutation;
 
     template <class Coordinates, Expression... Sources>
     friend class expression::Complexification;
@@ -563,6 +580,12 @@ Tensor expression::Reshape<Source>::forward() const {
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
+
+template<Expression Source, Integral... Indexes>
+Tensor expression::Permutation<Source, Indexes...>::forward() const {   
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
+}         
  
 template<Expression Source>
 Tensor expression::Transpose<Source>::forward() const { 
