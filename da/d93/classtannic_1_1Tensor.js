@@ -34,6 +34,7 @@ var classtannic_1_1Tensor =
     [ "size", "da/d93/classtannic_1_1Tensor.html#a575b57c01f3b63ca0edbaa18964fbe10", null ],
     [ "strides", "da/d93/classtannic_1_1Tensor.html#a9ddcd9641feaa0640993c593a184f302", null ],
     [ "transpose", "da/d93/classtannic_1_1Tensor.html#a2970d79712c97bca7c781c3d7987fb0b", null ],
+    [ "view", "da/d93/classtannic_1_1Tensor.html#ad8a06c269d4e7f3c806a40f509435b34", null ],
     [ "expression::Complexification", "da/d93/classtannic_1_1Tensor.html#a34c3e1f41aa63bf22aacd96cc66d9075", null ],
     [ "expression::Permutation", "da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78", null ],
     [ "expression::Realification", "da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082", null ],
