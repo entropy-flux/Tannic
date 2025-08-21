@@ -142,6 +142,8 @@ static constexpr auto index(type first, type second) {
  * - Support for vectors, matrices, and higher-rank tensors
  */ 
 struct Composition {    
+    double scale = 1.0;
+
     /**
      * @brief Type promotion rules table
      *
@@ -458,9 +460,9 @@ struct Repack {
  * @return Transformation expression representing the composition
  */
 template<Expression Outer, Expression Inner>
-constexpr auto composition(Outer&& outer, Inner&& inner) {
+constexpr auto composition(Outer&& outer, Inner&& inner, double scale) {
     return Transformation<Composition, Outer, Inner>{
-        {}, 
+        {scale}, 
         std::forward<Outer>(outer), 
         std::forward<Inner>(inner)
     };
@@ -514,7 +516,9 @@ constexpr auto repeat(Source&& source, int repeats, int axis = 0) {
  */
 template<Expression First, Expression Second>
 constexpr auto concatenate(First&& first, Second&& second, int axis = 0) {
-    assert(axis >= 0 && "Negative index not supported in concat");
+    if(axis < 0) 
+        throw Exception("Negative index not supported in concat");
+        
     return Transformation<Concatenation, First, Second>(
         {axis},
         std::forward<First>(first),
@@ -571,10 +575,11 @@ using transformation::reshape;
  * @return Transformation expression representing matrix multiplication
  */
 template<Expression Multiplicand, Expression Multiplier>
-constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier) {
+constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier, double scale = 1.0) {
     return transformation::composition(
         std::forward<Multiplicand>(multiplicand),
-        std::forward<Multiplier>(multiplier)
+        std::forward<Multiplier>(multiplier),
+        scale
     );
 }
 

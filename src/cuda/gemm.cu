@@ -13,7 +13,8 @@ __global__ void gemmKernel(
     const S1* __restrict__ B_ptr,
     D* __restrict__ C_ptr,
     size_t M, size_t N, size_t K,
-    size_t A_ld, size_t B_ld, size_t C_ld  
+    size_t A_ld, size_t B_ld, size_t C_ld,
+    D alpha
 ) {
     size_t i = blockIdx.y * blockDim.y + threadIdx.y;
     size_t j = blockIdx.x * blockDim.x + threadIdx.x;
@@ -24,7 +25,7 @@ __global__ void gemmKernel(
         size_t B_idx = B_trans ? j * B_ld + k : k * B_ld + j;
         sum += static_cast<D>(A_ptr[A_idx]) * static_cast<D>(B_ptr[B_idx]);
     }   
-    C_ptr[i * C_ld + j] = sum;
+    C_ptr[i * C_ld + j] = alpha * sum;
 }
 
 static bool isTransposed(const tensor_t* tensor) {
@@ -60,10 +61,8 @@ void computeOffsets(
     }
 }
 
-
-
 template<typename S0, typename S1, typename D>
-status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream) {  
+status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream, double alpha) {  
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
     size_t M = dst->shape.sizes[dst->rank - 2];
     size_t N = dst->shape.sizes[dst->rank - 1];
@@ -97,7 +96,8 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
                 A_trans, B_trans,
                 A_ptr, B_ptr, C_ptr,
                 M, N, K,
-                A_ld, B_ld, C_ld
+                A_ld, B_ld, C_ld,
+                alpha
             );
         } 
     }
@@ -112,18 +112,19 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
             A_trans, B_trans,
             A_ptr, B_ptr, C_ptr,
             M, N, K,
-            A_ld, B_ld, C_ld
+            A_ld, B_ld, C_ld,
+            alpha
         );
     }
 
     return SUCCESS;
 }
 
-constexpr static status defaultKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t) {
+constexpr static status defaultKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t, double) {
     return UNSUPPORTED_DTYPE;
 };
 
-using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*, stream_t);        
+using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*, stream_t, double alpha);        
  
 constexpr static inline auto index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
@@ -166,8 +167,8 @@ constexpr auto dispatchGemm = []() {
 
 } namespace cuda {
   
-status gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream) {    
-    return dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst, stream);  
+status gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream, double alpha) {    
+    return dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst, stream, alpha);  
 } 
 
 } 
