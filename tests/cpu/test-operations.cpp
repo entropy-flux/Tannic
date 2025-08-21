@@ -215,6 +215,39 @@ TEST_F(TestBinaryOps, Power) {
     }
 }
 
+TEST_F(TestBinaryOps, BroadcastMultiplyAdd) { 
+    Tensor X(float32, {2, 3}); X.initialize();
+    float* X_data = reinterpret_cast<float*>(X.bytes());
+    X_data[0] = -1.22474f; X_data[1] = 0.f; X_data[2] = 1.22474f;
+    X_data[3] = -1.22474f; X_data[4] = 0.f; X_data[5] = 1.22474f;
+
+    Tensor W(float32, {3}); W.initialize();
+    float* W_data = reinterpret_cast<float*>(W.bytes());
+    W_data[0] = 0.5f; W_data[1] = 1.0f; W_data[2] = 1.5f;
+
+    Tensor b(float32, {3}); b.initialize();
+    float* b_data = reinterpret_cast<float*>(b.bytes());
+    b_data[0] = 0.0f; b_data[1] = 0.1f; b_data[2] = 0.2f;
+ 
+    Tensor C = X * W + b;
+ 
+    float expected[2][3] = {
+        {-0.61237f, 0.1f, 2.03711f},
+        {-0.61237f, 0.1f, 2.03711f}
+    };
+
+    float* C_data = reinterpret_cast<float*>(C.bytes());
+    for (int i = 0; i < 2; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            int idx = i * 3 + j;
+            EXPECT_NEAR(C_data[idx], expected[i][j], 1e-5)
+                << "Mismatch at C[" << i << "][" << j << "]";
+        }
+    }
+}
+
+
+
 
 /* 
 

@@ -155,5 +155,33 @@ TEST_F(TestCUDAOperations, Complex_CUDA) {
     ASSERT_NEAR(Z_host[3], 10.78, 0.001);
 }
 
+TEST_F(TestCUDAOperations, LinearCombination) { 
+    Tensor X(float32, {2,3});
+    X.initialize(Device());
+    float X_host[6] = { -1.22474f, 0.f, 1.22474f, -1.22474f, 0.f, 1.22474f };
+    cudaMemcpy(X.bytes(), X_host, 6 * sizeof(float), cudaMemcpyHostToDevice);
+ 
+    Tensor W(float32, {3});
+    W.initialize(Device());
+    float W_host[3] = { 0.5f, 1.0f, 1.5f };
+    cudaMemcpy(W.bytes(), W_host, 3 * sizeof(float), cudaMemcpyHostToDevice); 
+
+    Tensor b(float32, {3});
+    b.initialize(Device());
+    float b_host[3] = { 0.f, 0.1f, 0.2f };
+    cudaMemcpy(b.bytes(), b_host, 3 * sizeof(float), cudaMemcpyHostToDevice);
+ 
+    Tensor Y = X * W + b;
+
+    float expected[6] = { -0.61237f, 0.1f, 2.03711f, -0.61237f, 0.1f, 2.03711f };
+    float Y_host[6];
+
+    cudaMemcpy(Y_host, Y.bytes(), 6 * sizeof(float), cudaMemcpyDeviceToHost);
+
+    for (int i = 0; i < 6; ++i) {
+        EXPECT_NEAR(Y_host[i], expected[i], 1e-5) 
+            << "Mismatch at index " << i;
+    }
+}
 
 #endif

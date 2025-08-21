@@ -51,38 +51,41 @@ void batchedUnaryOpKernel(
 
 template<typename S0, typename S1, typename D, class Op>
 void batchedBinaryOpKernel(
-    const S0* src0_ptr, const shape_t&  src0_shape, const strides_t& src0_ne,
-    const S1* src1_ptr, const shape_t&  src1_shape, const strides_t& src1_ne,
-    D* dst_ptr, const shape_t&  dst_shape, const strides_t& dst_strides,
-    uint8_t rank
-) { 
+    const S0* src0_ptr, const shape_t& src0_shape, const strides_t& src0_strides, uint8_t src0_rank,
+    const S1* src1_ptr, const shape_t& src1_shape, const strides_t& src1_strides, uint8_t src1_rank,
+    D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides, uint8_t dst_rank
+) {
     Op op{};
-    size_t cnt[8] = {0}; 
+    size_t cnt[8] = {0};  // assuming max rank 8, adjust if needed
+
     for (size_t idx = 0;; ++idx) {
         size_t offs0 = 0, offs1 = 0;
 
-        for (uint8_t i = 0; i < rank; ++i) { 
-            size_t idx0 = (src0_shape.sizes[i] == 1) ? 0 : cnt[i];
-            size_t idx1 = (src1_shape.sizes[i] == 1) ? 0 : cnt[i];
-            
-            offs0 += idx0 * src0_ne.sizes[i];
-            offs1 += idx1 * src1_ne.sizes[i];
+        for (uint8_t i = 0; i < dst_rank; ++i) { 
+            int dim0 = i + src0_rank - dst_rank;
+            int dim1 = i + src1_rank - dst_rank;
+
+            size_t idx0 = (dim0 >= 0 && src0_shape.sizes[dim0] > 1) ? cnt[i] : 0;
+            size_t idx1 = (dim1 >= 0 && src1_shape.sizes[dim1] > 1) ? cnt[i] : 0;
+
+            if (dim0 >= 0) offs0 += idx0 * src0_strides.sizes[dim0];
+            if (dim1 >= 0) offs1 += idx1 * src1_strides.sizes[dim1];
         }
 
         dst_ptr[idx] = op(src0_ptr[offs0], src1_ptr[offs1]);
-
+ 
         bool done = false;
-        for (int i = rank - 1; i >= 0; --i) {
+        for (int i = dst_rank - 1; i >= 0; --i) {
             if (++cnt[i] < dst_shape.sizes[i])
                 break;
             if (i == 0)
                 done = true;
             cnt[i] = 0;
         }
-
         if (done) break;
     }
-}   
+}
+
 
 template<typename S, typename D, class Op>
 status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
@@ -117,17 +120,16 @@ status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t
             (D*)(dst->address)
         ); 
     } 
-    
     else {     
         batchedBinaryOpKernel<S0, S1, D, Op>(
-            (const S0*)(src0->address), src0->shape, src0->strides,
-            (const S1*)(src1->address), src1->shape, src1->strides,
-            (D*)(dst->address), dst->shape, dst->strides,
-            dst->rank
+            (const S0*)(src0->address), src0->shape, src0->strides, src0->rank,
+            (const S1*)(src1->address), src1->shape, src1->strides, src1->rank,
+            (D*)(dst->address), dst->shape, dst->strides, dst->rank
         ); 
     } 
     return SUCCESS;
-}       
+}
+
   
 struct Neg { 
     template<class A>

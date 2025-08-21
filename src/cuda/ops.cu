@@ -76,35 +76,38 @@ __global__ void scalarBinaryOpKernel(const S0* src0, const S1* src1, D* dst) {
 
 template<typename S0, typename S1, typename D, class Op>
 __global__ void batchedBinaryOpKernel(
-    const S0* src0_ptr, shape_t src0_shape, strides_t src0_strides,
-    const S1* src1_ptr, shape_t src1_shape, strides_t src1_strides,
-    D* __restrict__ dst_ptr, shape_t dst_shape, strides_t dst_strides,
-    uint8_t rank, size_t ne
+    const S0* src0_ptr, shape_t src0_shape, strides_t src0_strides, uint8_t src0_rank,
+    const S1* src1_ptr, shape_t src1_shape, strides_t src1_strides, uint8_t src1_rank,
+    D* dst_ptr, shape_t dst_shape, strides_t dst_strides, uint8_t dst_rank,
+    size_t ne
 ) {
-    Op op{};  
-    for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne;  idx += blockDim.x * gridDim.x) {
-        size_t cnt[8] = {0};
+    Op op{};
+    
+    for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) {
+        size_t cnt[8] = {0};  
         size_t remaining = idx;
-         
-        for (uint8_t i = rank - 1; i > 0; --i) {
+ 
+        for (int i = dst_rank - 1; i >= 0; --i) {
             cnt[i] = remaining % dst_shape.sizes[i];
             remaining /= dst_shape.sizes[i];
         }
-        cnt[0] = remaining;
-         
+
         size_t offs0 = 0, offs1 = 0;
-        for (uint8_t i = 0; i < rank; ++i) {
-            size_t idx0 = (src0_shape.sizes[i] == 1) ? 0 : cnt[i];
-            size_t idx1 = (src1_shape.sizes[i] == 1) ? 0 : cnt[i];
-            
-            offs0 += idx0 * src0_strides.sizes[i];
-            offs1 += idx1 * src1_strides.sizes[i];
+        for (uint8_t i = 0; i < dst_rank; ++i) { 
+            int dim0 = i + src0_rank - dst_rank;
+            int dim1 = i + src1_rank - dst_rank;
+
+            size_t idx0 = (dim0 >= 0 && src0_shape.sizes[dim0] > 1) ? cnt[i] : 0;
+            size_t idx1 = (dim1 >= 0 && src1_shape.sizes[dim1] > 1) ? cnt[i] : 0;
+
+            if (dim0 >= 0) offs0 += idx0 * src0_strides.sizes[dim0];
+            if (dim1 >= 0) offs1 += idx1 * src1_strides.sizes[dim1];
         }
-         
+
         dst_ptr[idx] = op(src0_ptr[offs0], src1_ptr[offs1]);
     }
 }
-  
+
  
 template<typename S, typename D, class Op>
 status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream) {
@@ -134,9 +137,11 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream) 
     return SUCCESS;
 }         
  
+
 template<typename S0, typename S1, typename D, class Op>
 status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream) {
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
+
     if (dst->rank == 0) {
         scalarBinaryOpKernel<S0, S1, D, Op><<<1, 1, 0, cudaStream>>>(
             (const S0*)(src0->address), 
@@ -144,8 +149,8 @@ status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t
             (D*)(dst->address)
         );   
     } 
-    
     else {     
+        // total number of elements in dst
         size_t ne = 1;
         for (uint8_t dim = 0; dim < dst->rank; ++dim) {
             ne *= dst->shape.sizes[dim];
@@ -155,15 +160,15 @@ status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t
         int gridSize = (ne + blockSize - 1) / blockSize;
 
         batchedBinaryOpKernel<S0, S1, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
-            (const S0*)(src0->address), src0->shape, src0->strides,
-            (const S1*)(src1->address), src1->shape, src1->strides,
-            (D*)(dst->address), dst->shape, dst->strides,
-            dst->rank, ne
+            (const S0*)(src0->address), src0->shape, src0->strides, src0->rank,
+            (const S1*)(src1->address), src1->shape, src1->strides, src1->rank,
+            (D*)(dst->address), dst->shape, dst->strides, dst->rank,
+            ne
         ); 
     } 
-    return SUCCESS;
-}         
 
+    return SUCCESS;
+} 
 
 constexpr static status launchDefaultUnaryOpKernel(const tensor_t*, tensor_t*, stream_t) {
     return UNSUPPORTED_DTYPE;
