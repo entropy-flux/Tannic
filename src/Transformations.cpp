@@ -20,7 +20,7 @@ namespace cuda {
 using tannic::tensor_t;
 using tannic::stream_t;
 using tannic::device_t;
-inline status gemm(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }
+inline status gemm(const tensor_t*, const tensor_t*, tensor_t*, stream_t, double) { throw std::runtime_error("CUDA gemm called without CUDA support"); }
 inline status outer(tensor_t const*, tensor_t const*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
 inline status repeat(const tensor_t*, tensor_t*, int, int, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
 inline status concat(const tensor_t*, const tensor_t*, tensor_t*, stream_t, int)  { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
