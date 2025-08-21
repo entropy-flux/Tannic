@@ -7,11 +7,12 @@ var searchData=
   ['exceptions_2ehpp_4',['Exceptions.hpp',['../d2/de9/Exceptions_8hpp.html',1,'']]],
   ['exp_5',['exp',['../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209',1,'tannic::function']]],
   ['exp_6',['Exp',['../dc/da3/structtannic_1_1function_1_1Exp.html',1,'tannic::function']]],
-  ['expand_7',['expand',['../db/da7/classtannic_1_1Shape.html#a936a0809e4f31f6c9a32f25dd7ce1be6',1,'tannic::Shape::expand()'],['../dc/deb/classtannic_1_1Strides.html#aa19c88689f47e239b7dfb8a82c134e96',1,'tannic::Strides::expand()']]],
-  ['exponentiation_8',['Exponentiation',['../db/d23/structtannic_1_1operation_1_1Exponentiation.html',1,'tannic::operation']]],
-  ['permutation_9',['Permutation',['../da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78',1,'tannic::Tensor']]],
-  ['realification_10',['Realification',['../da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082',1,'tannic::Tensor']]],
-  ['slice_11',['Slice',['../da/d93/classtannic_1_1Tensor.html#acd979f317f147e5b65290548bed8fa45',1,'tannic::Tensor']]],
-  ['transpose_12',['Transpose',['../da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9',1,'tannic::Tensor']]],
-  ['view_13',['View',['../da/d93/classtannic_1_1Tensor.html#a7f7618fb8029f94419961726b789b0c3',1,'tannic::Tensor']]]
+  ['expand_7',['expand',['../d9/dd9/namespacetannic_1_1expression.html#a3e153f6fc540062b27409ba60926e869',1,'tannic::expression::expand()'],['../dc/deb/classtannic_1_1Strides.html#aa19c88689f47e239b7dfb8a82c134e96',1,'tannic::Strides::expand()'],['../db/da7/classtannic_1_1Shape.html#a936a0809e4f31f6c9a32f25dd7ce1be6',1,'tannic::Shape::expand()']]],
+  ['expansion_8',['Expansion',['../d0/d10/classtannic_1_1expression_1_1Expansion.html#a84219829dc2ee73283f61320ea99474f',1,'tannic::expression::Expansion::Expansion()'],['../da/d93/classtannic_1_1Tensor.html#a830bdb67badcbd6222aea8106b4919bc',1,'tannic::Tensor::Expansion()'],['../d0/d10/classtannic_1_1expression_1_1Expansion.html',1,'tannic::expression::Expansion&lt; Source &gt;']]],
+  ['exponentiation_9',['Exponentiation',['../db/d23/structtannic_1_1operation_1_1Exponentiation.html',1,'tannic::operation']]],
+  ['permutation_10',['Permutation',['../da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78',1,'tannic::Tensor']]],
+  ['realification_11',['Realification',['../da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082',1,'tannic::Tensor']]],
+  ['slice_12',['Slice',['../da/d93/classtannic_1_1Tensor.html#acd979f317f147e5b65290548bed8fa45',1,'tannic::Tensor']]],
+  ['transpose_13',['Transpose',['../da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9',1,'tannic::Tensor']]],
+  ['view_14',['View',['../da/d93/classtannic_1_1Tensor.html#a7f7618fb8029f94419961726b789b0c3',1,'tannic::Tensor']]]
 ];

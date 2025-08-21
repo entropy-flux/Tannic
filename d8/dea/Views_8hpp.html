@@ -172,6 +172,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation&lt; Source, Indexes &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for reordering tensor dimensions according to a specified permutation.  <a href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d10/classtannic_1_1expression_1_1Expansion.html">tannic::expression::Expansion&lt; Source &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for expanding (broadcasting) singleton dimensions of a tensor.  <a href="../../d0/d10/classtannic_1_1expression_1_1Expansion.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -194,6 +197,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a1f1dde31ec629ed3d6b2b979221cf802"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a1f1dde31ec629ed3d6b2b979221cf802">tannic::expression::permute</a> (Source &amp;&amp;source, Indexes... indexes)</td></tr>
 <tr class="memdesc:a1f1dde31ec629ed3d6b2b979221cf802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a permuted view of a tensor or expression.  <br /></td></tr>
 <tr class="separator:a1f1dde31ec629ed3d6b2b979221cf802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e153f6fc540062b27409ba60926e869"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral... Sizes&gt; </td></tr>
+<tr class="memitem:a3e153f6fc540062b27409ba60926e869"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a3e153f6fc540062b27409ba60926e869">tannic::expression::expand</a> (Source &amp;&amp;source, Sizes... sizes)</td></tr>
+<tr class="memdesc:a3e153f6fc540062b27409ba60926e869"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an expanded view of a tensor, broadcasting singleton dimensions.  <br /></td></tr>
+<tr class="separator:a3e153f6fc540062b27409ba60926e869"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implements views for tensors in the Tannic Tensor Library. </p>
