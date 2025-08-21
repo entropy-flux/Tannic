@@ -350,6 +350,116 @@ private:
 
 
 /**
+ * @class Expansion
+ * @brief Expression template for expanding (broadcasting) singleton dimensions of a tensor.
+ *
+ * @tparam Source The expression or tensor type being expanded.
+ *
+ * The `Expansion` view allows a tensor to be broadcast along dimensions where the original
+ * size is 1, enabling operations with larger tensors without copying data. Only dimensions
+ * with size 1 in the source tensor can be expanded; other dimensions must match the target shape.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {1, 3});
+ * auto Y = expand(X, 4, 3); // shape becomes (4, 3)
+ * ```
+ */
+template<Expression Source>
+class Expansion {
+public:
+
+
+    /**
+     * @brief Construct an expansion view.
+     *
+     * Stores reference to the source tensor and the requested target sizes. 
+     *
+     * @tparam Sizes Integral dimension sizes of the target shape.
+     * @param source Reference to the source tensor or expression.
+     * @param sizes Dimension sizes for the expanded view.
+     */
+    template<Integral... Sizes>
+    constexpr Expansion(typename Trait<Source>::Reference source, Sizes... sizes)
+    : source_(source)
+    , shape_(sizes...)
+    , strides_(source.strides()) {
+        if (sizeof...(sizes) != source.rank())
+            throw Exception("Expansion requires same rank as source");
+
+        for (uint8_t dimension = 0; dimension < source.rank(); ++dimension) {
+            if (source.shape()[dimension] == 1 && shape_[dimension] > 1) {
+                strides_[dimension] = 0;
+            } 
+            
+            else if (source.shape()[dimension] != shape_[dimension]) {
+                throw Exception("Expansion only allows broadcasting singleton dimensions");
+            }
+        }
+    }
+
+
+    /**
+     * @return The data type of the tensor elements.
+     *
+     * Broadcasting does not change the element type, so the dtype
+     * is forwarded from the source tensor.
+     */
+    constexpr type dtype() const { 
+        return source_.dtype(); 
+    }
+
+    /**
+     * @return The shape of the expanded view.
+     *
+     * Calculation:
+     * - Returns the requested target shape stored in the constructor.
+     * - Validates that non-singleton dimensions of the source match the requested size.
+     *
+     * @throws Exception if a non-singleton dimension in the source does not match the target.
+     */
+    constexpr Shape const& shape() const { 
+        return shape_; 
+    }
+
+
+    /**
+     * @return The strides of the expanded view.
+     *
+     * Calculation:
+     * - Copy the source strides.
+     * - For each dimension where the source size is 1 and target size > 1, set stride to 0.
+     *   This ensures the same memory element is repeated along expanded dimensions.
+     */
+    constexpr Strides const& strides() const { 
+        return strides_; 
+    }
+
+    /**
+     * @return The byte offset of the expanded view from the start of the storage.
+     *
+     * The offset is the same as the source tensor, because broadcasting
+     * does not change the underlying data location.
+     */
+    std::ptrdiff_t offset() const { 
+        return source_.offset(); 
+    }
+
+    Tensor forward() const;
+
+private:
+    Shape shape_;
+    Strides strides_;
+    typename Trait<Source>::Reference source_;
+};
+
+  
+/*
+----------------------------------------------------------------------------------------------------
+*/
+
+
+/**
  * @brief Creates a reshaped view of a tensor or expression.
  *
  * @tparam Source The expression or tensor type.
@@ -405,13 +515,45 @@ constexpr auto permute(Source&& source, Indexes... indexes) {
         std::make_tuple(indexes...)
     );
 }
+
   
+/**
+ * @brief Creates an expanded view of a tensor, broadcasting singleton dimensions.
+ *
+ * This function returns an `Expansion` expression that allows a tensor to be 
+ * “expanded” along dimensions of size 1 without copying data. Expansion is only 
+ * allowed along singleton dimensions; other dimensions must match the requested size.
+ *
+ * @tparam Source The tensor or expression type to expand.
+ * @tparam Sizes Integral dimension sizes for the expanded view.
+ * @param source The source tensor or expression.
+ * @param sizes The target shape for the expanded view.
+ * @return An `Expansion` object representing the broadcasted view.
+ *
+ * @throws Exception if:
+ *   - The number of dimensions does not match the source rank.
+ *   - A non-singleton dimension in the source does not match the requested size.
+ *
+ * Example usage:
+ * ```cpp
+ * Tensor X(float32, {1, 3}); // shape: (1, 3)
+ * auto Y = expand(X, 4, 3);  // shape: (4, 3), broadcasts along the first dimension
+ *
+ * std::cout << Y.shape() << std::endl;   // prints (4, 3)
+ * std::cout << Y.strides() << std::endl; // prints (0, original_stride[1])
+ * ```
+ */
+template<Expression Source, Integral... Sizes>
+constexpr auto expand(Source&& source, Sizes... sizes) {
+    return Expansion<Source>(std::forward<Source>(source), sizes...);
+}
 
 } // namespace expression
 
 using expression::view;
 using expression::transpose;
 using expression::permute;
+using expression::expand;
 
 } // namespace tannic
 
