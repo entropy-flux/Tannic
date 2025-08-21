@@ -46,7 +46,7 @@ public:
     std::string message;
     
     explicit Exception(const std::string& what)
-    :   message("what") {}
+    :   message(what) {}
 
     const char* what() const noexcept override {
         return message.c_str();
