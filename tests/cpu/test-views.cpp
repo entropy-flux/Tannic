@@ -13,7 +13,7 @@ TEST(TestTensorView, TestBasicView) {
         for (size_t j = 0; j < 3; j++)
             X[i][j] = val++;
  
-    Tensor Y = view(X, 3, 2);
+    Tensor Y = X.view(3, 2);
  
     ASSERT_EQ(Y.shape()[0], 3);
     ASSERT_EQ(Y.shape()[1], 2);
