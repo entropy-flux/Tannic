@@ -7,7 +7,7 @@ var searchData=
   ['complex_4',['complex',['../d9/dd9/namespacetannic_1_1expression.html#a79760dbb305bbb78577f24479457c383',1,'tannic::expression']]],
   ['complexification_5',['Complexification',['../df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4.html#ac9d1c88b57dd2a9637ee47b9e64c1464',1,'tannic::expression::Complexification&lt; Coordinates, Source &gt;::Complexification()'],['../d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html#ab6247b4de7a0d49d82072b52a3386cb0',1,'tannic::expression::Complexification&lt; Coordinates, Real, Imaginary &gt;::Complexification()']]],
   ['complexify_6',['complexify',['../d9/dd9/namespacetannic_1_1expression.html#ab9732ede6a977fed3895bf928a67748f',1,'tannic::expression']]],
-  ['composition_7',['composition',['../de/d75/namespacetannic_1_1transformation.html#a305bc5073fd7fbb2f1948a77c5e5a969',1,'tannic::transformation']]],
+  ['composition_7',['composition',['../de/d75/namespacetannic_1_1transformation.html#ac79cd681ae5e04a088cff5347d2ee8f8',1,'tannic::transformation']]],
   ['concatenate_8',['concatenate',['../de/d75/namespacetannic_1_1transformation.html#adb2680136e1491dededb15e6f6169f77',1,'tannic::transformation']]],
   ['cos_9',['cos',['../dd/d74/namespacetannic_1_1function.html#a4ee4a5baeff864c9605cc1c088ef9895',1,'tannic::function']]],
   ['cosh_10',['cosh',['../dd/d74/namespacetannic_1_1function.html#a8419d8c9fe7bcb9ac418842fb3d726bd',1,'tannic::function']]],

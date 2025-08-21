@@ -12,7 +12,7 @@ var searchData=
   ['complexification_3c_20coordinates_2c_20real_2c_20imaginary_20_3e_9',['Complexification&lt; Coordinates, Real, Imaginary &gt;',['../d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html',1,'tannic::expression']]],
   ['complexification_3c_20coordinates_2c_20source_20_3e_10',['Complexification&lt; Coordinates, Source &gt;',['../df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4.html',1,'tannic::expression']]],
   ['complexify_11',['complexify',['../d9/dd9/namespacetannic_1_1expression.html#ab9732ede6a977fed3895bf928a67748f',1,'tannic::expression']]],
-  ['composition_12',['composition',['../de/d75/namespacetannic_1_1transformation.html#a305bc5073fd7fbb2f1948a77c5e5a969',1,'tannic::transformation']]],
+  ['composition_12',['composition',['../de/d75/namespacetannic_1_1transformation.html#ac79cd681ae5e04a088cff5347d2ee8f8',1,'tannic::transformation']]],
   ['composition_13',['Composition',['../d4/d53/structtannic_1_1transformation_1_1Composition.html',1,'tannic::transformation']]],
   ['concatenate_14',['concatenate',['../de/d75/namespacetannic_1_1transformation.html#adb2680136e1491dededb15e6f6169f77',1,'tannic::transformation']]],
   ['concatenation_15',['Concatenation',['../dd/d77/structtannic_1_1transformation_1_1Concatenation.html',1,'tannic::transformation']]],

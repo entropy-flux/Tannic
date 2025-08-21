@@ -121,10 +121,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="memTemplParams" colspan="2">template&lt;Expression Outer, Expression Inner&gt; </td></tr>
-<tr class="memitem:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a305bc5073fd7fbb2f1948a77c5e5a969">composition</a> (<a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html">Outer</a> &amp;&amp;<a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d">outer</a>, Inner &amp;&amp;inner)</td></tr>
-<tr class="memdesc:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a composition (matrix multiplication) expression.  <br /></td></tr>
-<tr class="separator:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memTemplParams" colspan="2">template&lt;Expression Outer, Expression Inner&gt; </td></tr>
+<tr class="memitem:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#ac79cd681ae5e04a088cff5347d2ee8f8">composition</a> (<a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html">Outer</a> &amp;&amp;<a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d">outer</a>, Inner &amp;&amp;inner, double scale)</td></tr>
+<tr class="memdesc:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a composition (matrix multiplication) expression.  <br /></td></tr>
+<tr class="separator:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memTemplParams" colspan="2">template&lt;Expression First, Expression Second&gt; </td></tr>
 <tr class="memitem:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d">outer</a> (First &amp;&amp;first, Second &amp;&amp;second)</td></tr>
 <tr class="memdesc:aae536af65f2dee7cb7279c58f82b2e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an outer product expression.  <br /></td></tr>
@@ -147,8 +147,8 @@ Functions</h2></td></tr>
 <tr class="separator:aa2c2984309895146427e0685322baef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a305bc5073fd7fbb2f1948a77c5e5a969" name="a305bc5073fd7fbb2f1948a77c5e5a969"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a305bc5073fd7fbb2f1948a77c5e5a969">&#9670;&#160;</a></span>composition()</h2>
+<a id="ac79cd681ae5e04a088cff5347d2ee8f8" name="ac79cd681ae5e04a088cff5347d2ee8f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac79cd681ae5e04a088cff5347d2ee8f8">&#9670;&#160;</a></span>composition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,7 +168,13 @@ template&lt;Expression Outer, Expression Inner&gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Inner &amp;&amp;&#160;</td>
-          <td class="paramname"><em>inner</em>&#160;</td>
+          <td class="paramname"><em>inner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>scale</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

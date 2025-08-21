@@ -200,10 +200,10 @@ Functions</h2></td></tr>
 <tr class="memitem:abd01ed73f7e0facffaec36ce3e22cfd9"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
 <tr class="memitem:abd01ed73f7e0facffaec36ce3e22cfd9"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#abd01ed73f7e0facffaec36ce3e22cfd9">operator&lt;&lt;</a> (std::ostream &amp;ostream, Source source)</td></tr>
 <tr class="separator:abd01ed73f7e0facffaec36ce3e22cfd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3681656aa208b88dfc79a1806cf669b6"><td class="memTemplParams" colspan="2">template&lt;Expression Multiplicand, Expression Multiplier&gt; </td></tr>
-<tr class="memitem:a3681656aa208b88dfc79a1806cf669b6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">matmul</a> (Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</td></tr>
-<tr class="memdesc:a3681656aa208b88dfc79a1806cf669b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix multiplication convenience function.  <br /></td></tr>
-<tr class="separator:a3681656aa208b88dfc79a1806cf669b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe303690a4d7ad0383f88855f6f0fce6"><td class="memTemplParams" colspan="2">template&lt;Expression Multiplicand, Expression Multiplier&gt; </td></tr>
+<tr class="memitem:abe303690a4d7ad0383f88855f6f0fce6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">matmul</a> (Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier, double scale=1.0)</td></tr>
+<tr class="memdesc:abe303690a4d7ad0383f88855f6f0fce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix multiplication convenience function.  <br /></td></tr>
+<tr class="separator:abe303690a4d7ad0383f88855f6f0fce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a> (type type)</td></tr>
 <tr class="memdesc:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size in bytes of a given tensor data type.  <br /></td></tr>
 <tr class="separator:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -454,8 +454,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a3681656aa208b88dfc79a1806cf669b6" name="a3681656aa208b88dfc79a1806cf669b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3681656aa208b88dfc79a1806cf669b6">&#9670;&#160;</a></span>matmul()</h2>
+<a id="abe303690a4d7ad0383f88855f6f0fce6" name="abe303690a4d7ad0383f88855f6f0fce6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe303690a4d7ad0383f88855f6f0fce6">&#9670;&#160;</a></span>matmul()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -475,7 +475,13 @@ template&lt;Expression Multiplicand, Expression Multiplier&gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Multiplier &amp;&amp;&#160;</td>
-          <td class="paramname"><em>multiplier</em>&#160;</td>
+          <td class="paramname"><em>multiplier</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>scale</em> = <code>1.0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

@@ -190,10 +190,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="memTemplParams" colspan="2">template&lt;Expression Outer, Expression Inner&gt; </td></tr>
-<tr class="memitem:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a305bc5073fd7fbb2f1948a77c5e5a969">tannic::transformation::composition</a> (Outer &amp;&amp;outer, Inner &amp;&amp;inner)</td></tr>
-<tr class="memdesc:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a composition (matrix multiplication) expression.  <br /></td></tr>
-<tr class="separator:a305bc5073fd7fbb2f1948a77c5e5a969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memTemplParams" colspan="2">template&lt;Expression Outer, Expression Inner&gt; </td></tr>
+<tr class="memitem:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#ac79cd681ae5e04a088cff5347d2ee8f8">tannic::transformation::composition</a> (Outer &amp;&amp;outer, Inner &amp;&amp;inner, double scale)</td></tr>
+<tr class="memdesc:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a composition (matrix multiplication) expression.  <br /></td></tr>
+<tr class="separator:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memTemplParams" colspan="2">template&lt;Expression First, Expression Second&gt; </td></tr>
 <tr class="memitem:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d">tannic::transformation::outer</a> (First &amp;&amp;first, Second &amp;&amp;second)</td></tr>
 <tr class="memdesc:aae536af65f2dee7cb7279c58f82b2e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an outer product expression.  <br /></td></tr>
@@ -214,10 +214,10 @@ Functions</h2></td></tr>
 <tr class="memitem:aa2c2984309895146427e0685322baef0"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aa2c2984309895146427e0685322baef0">tannic::transformation::reshape</a> (Source &amp;&amp;source, Indexes ... indexes)</td></tr>
 <tr class="memdesc:aa2c2984309895146427e0685322baef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a view but always repacks the tensor into a contiguous layout.  <br /></td></tr>
 <tr class="separator:aa2c2984309895146427e0685322baef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3681656aa208b88dfc79a1806cf669b6"><td class="memTemplParams" colspan="2">template&lt;Expression Multiplicand, Expression Multiplier&gt; </td></tr>
-<tr class="memitem:a3681656aa208b88dfc79a1806cf669b6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a3681656aa208b88dfc79a1806cf669b6">tannic::matmul</a> (Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</td></tr>
-<tr class="memdesc:a3681656aa208b88dfc79a1806cf669b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix multiplication convenience function.  <br /></td></tr>
-<tr class="separator:a3681656aa208b88dfc79a1806cf669b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe303690a4d7ad0383f88855f6f0fce6"><td class="memTemplParams" colspan="2">template&lt;Expression Multiplicand, Expression Multiplier&gt; </td></tr>
+<tr class="memitem:abe303690a4d7ad0383f88855f6f0fce6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">tannic::matmul</a> (Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier, double scale=1.0)</td></tr>
+<tr class="memdesc:abe303690a4d7ad0383f88855f6f0fce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix multiplication convenience function.  <br /></td></tr>
+<tr class="separator:abe303690a4d7ad0383f88855f6f0fce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines tensor transformation operations. </p>

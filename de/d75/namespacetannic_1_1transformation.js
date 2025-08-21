@@ -6,7 +6,7 @@ var namespacetannic_1_1transformation =
     [ "Repack", "d8/d0a/structtannic_1_1transformation_1_1Repack.html", "d8/d0a/structtannic_1_1transformation_1_1Repack" ],
     [ "Repetition", "da/d5d/structtannic_1_1transformation_1_1Repetition.html", "da/d5d/structtannic_1_1transformation_1_1Repetition" ],
     [ "Transformation", "d9/d4d/classtannic_1_1transformation_1_1Transformation.html", "d9/d4d/classtannic_1_1transformation_1_1Transformation" ],
-    [ "composition", "de/d75/namespacetannic_1_1transformation.html#a305bc5073fd7fbb2f1948a77c5e5a969", null ],
+    [ "composition", "de/d75/namespacetannic_1_1transformation.html#ac79cd681ae5e04a088cff5347d2ee8f8", null ],
     [ "concatenate", "de/d75/namespacetannic_1_1transformation.html#adb2680136e1491dededb15e6f6169f77", null ],
     [ "outer", "de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d", null ],
     [ "repack", "de/d75/namespacetannic_1_1transformation.html#aebf273f7681ac116ae0eaa4eec3c83f6", null ],
