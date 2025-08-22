@@ -176,6 +176,7 @@ TEST(TestConvolution, Stride2) {
     ASSERT_EQ(output.shape(), Shape({1,1,2,2}));
 }
  
+
 TEST(TestConvolution, Padding1) {
     Tensor input(float32, {1,1,3,3});
     input.initialize();
