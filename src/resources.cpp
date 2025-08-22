@@ -1,8 +1,8 @@
 #include <stdexcept>
 #include <cassert> 
 #include <cstring>  
-#include "Resources.hpp"
-#include "Bindings.hpp" 
+#include "resources.hpp"
+#include "bindings.hpp" 
 #include "runtime/streams.h"
 #include "runtime/resources.h"
 #ifdef CUDA

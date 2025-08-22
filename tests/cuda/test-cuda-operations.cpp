@@ -4,7 +4,7 @@
 #include <cmath>
 #include <cstring>
 #include <cuda_runtime.h>  
-#include "Tensor.hpp" 
+#include "tensor.hpp" 
 
 using namespace tannic;
 

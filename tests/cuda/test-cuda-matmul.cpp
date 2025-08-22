@@ -5,8 +5,8 @@
 #include <cmath>
 #include <cuda_runtime.h>
 
-#include "Tensor.hpp"
-#include "Transformations.hpp"
+#include "tensor.hpp"
+#include "transformations.hpp"
 
 using namespace tannic;
 

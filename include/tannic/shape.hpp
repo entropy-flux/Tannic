@@ -48,9 +48,9 @@
 #include <initializer_list>
 #include <ostream>
  
-#include "Concepts.hpp" 
-#include "Indexing.hpp" 
-#include "Exceptions.hpp"
+#include "concepts.hpp" 
+#include "indexing.hpp" 
+#include "exceptions.hpp"
 
 namespace tannic { 
     

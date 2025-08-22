@@ -1,6 +1,6 @@
 #include <iostream>
 #include <tannic.hpp>
-#include <tannic/Convolutions.hpp>
+#include <tannic/convolutions.hpp>
 
 using namespace tannic;
 

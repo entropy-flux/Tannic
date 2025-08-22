@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "Shape.hpp" 
-#include "Strides.hpp" 
+#include "shape.hpp" 
+#include "strides.hpp" 
 
 using namespace tannic;
 

@@ -1,6 +1,6 @@
-#include "Tensor.hpp" 
-#include "Convolutions.hpp"  
-#include "Callback.hpp" 
+#include "tensor.hpp" 
+#include "convolutions.hpp"  
+#include "callback.hpp" 
 #include "cpu/conv.hpp"    
 #ifdef CUDA
 #include "cuda/conv.cuh"    

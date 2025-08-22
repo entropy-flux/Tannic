@@ -1,9 +1,9 @@
 #include <vector>
 #include <ostream>
-#include "Bindings.hpp"
+#include "bindings.hpp"
 #include "runtime/streams.h"
-#include "Types.hpp"
-#include "Tensor.hpp"   
+#include "types.hpp"
+#include "tensor.hpp"   
 
 namespace tannic {  
 

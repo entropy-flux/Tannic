@@ -1,7 +1,7 @@
-#include "Bindings.hpp"
-#include "Operations.hpp"
-#include "Tensor.hpp" 
-#include "Callback.hpp"
+#include "bindings.hpp"
+#include "operations.hpp"
+#include "tensor.hpp" 
+#include "callback.hpp"
 #include "runtime/streams.h"
 #include "cpu/ops.hpp"  
 #ifdef CUDA

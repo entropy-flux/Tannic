@@ -32,13 +32,13 @@
 #include <vector>
 #include <cassert>
 
-#include "Concepts.hpp"
-#include "Types.hpp"
-#include "Traits.hpp"
-#include "Shape.hpp" 
-#include "Tensor.hpp" 
-#include "Exceptions.hpp"
-#include "Transformations.hpp"
+#include "concepts.hpp"
+#include "types.hpp"
+#include "traits.hpp"
+#include "shape.hpp" 
+#include "tensor.hpp" 
+#include "exceptions.hpp"
+#include "transformations.hpp"
 
 namespace tannic {
 
@@ -267,7 +267,7 @@ constexpr auto convolve(Signal&& signal, Kernel&& kernel, std::array<std::size_t
  
 } // namespace transformation
  
-using transformation::convolve;
+using transformation::convolve; 
 
 } // namespace tannic
 

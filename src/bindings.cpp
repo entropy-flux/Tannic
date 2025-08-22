@@ -1,5 +1,5 @@
-#include "Bindings.hpp"
-#include "Tensor.hpp"
+#include "bindings.hpp"
+#include "tensor.hpp"
 #include "runtime/tensor.h"
 #include "runtime/resources.h"
 #include "runtime/streams.h"

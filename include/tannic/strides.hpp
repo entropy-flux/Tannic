@@ -46,10 +46,10 @@
 #include <stdexcept>
 #include <ostream>
  
-#include "Concepts.hpp"
-#include "Shape.hpp" 
-#include "Indexing.hpp"
-#include "Exceptions.hpp"
+#include "concepts.hpp"
+#include "shape.hpp" 
+#include "indexing.hpp"
+#include "exceptions.hpp"
 
 namespace tannic {
  

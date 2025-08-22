@@ -49,12 +49,12 @@
 #include <numeric>
 #include <vector>
 
-#include "Types.hpp"
-#include "Traits.hpp"
-#include "Shape.hpp"
-#include "Strides.hpp"
-#include "Concepts.hpp"
-#include "Exceptions.hpp"
+#include "types.hpp"
+#include "traits.hpp"
+#include "shape.hpp"
+#include "strides.hpp"
+#include "concepts.hpp"
+#include "exceptions.hpp"
 
 namespace tannic {
 

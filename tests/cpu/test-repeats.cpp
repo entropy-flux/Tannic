@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
  
-#include "Tensor.hpp"   
-#include "Transformations.hpp"
-#include "Views.hpp"
+#include "tensor.hpp"   
+#include "transformations.hpp"
+#include "views.hpp"
 
 using namespace tannic;
 

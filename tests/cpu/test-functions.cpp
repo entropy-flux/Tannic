@@ -2,8 +2,8 @@
 #include <vector>
 #include <cmath>
 #include <cstring>
-#include "Tensor.hpp"
-#include "Functions.hpp"
+#include "tensor.hpp"
+#include "functions.hpp"
 
 using namespace tannic;
 

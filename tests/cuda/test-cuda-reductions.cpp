@@ -5,8 +5,8 @@
 #include <cstring>
 #include <cuda_runtime.h>  
  
-#include "Tensor.hpp"   
-#include "Reductions.hpp"
+#include "tensor.hpp"   
+#include "reductions.hpp"
 
 using namespace tannic;
 

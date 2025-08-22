@@ -44,11 +44,11 @@
  * Part of the Tannic Tensor Library.
  */
 
-#include "Concepts.hpp"
-#include "Traits.hpp" 
-#include "Shape.hpp"
-#include "Strides.hpp"
-#include "Tensor.hpp" 
+#include "concepts.hpp"
+#include "traits.hpp" 
+#include "shape.hpp"
+#include "strides.hpp"
+#include "tensor.hpp" 
 
 namespace tannic {
   

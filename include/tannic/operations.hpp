@@ -39,11 +39,11 @@
 #include <utility>      
 #include <type_traits> 
  
-#include "Concepts.hpp"
-#include "Types.hpp"
-#include "Shape.hpp"
-#include "Strides.hpp"   
-#include "Traits.hpp"
+#include "concepts.hpp"
+#include "types.hpp"
+#include "shape.hpp"
+#include "strides.hpp"   
+#include "traits.hpp"
  
 namespace tannic {
 

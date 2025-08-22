@@ -16,11 +16,6 @@
 #ifndef TANNIC_HPP
 #define TANNIC_HPP
 
-#include "tannic/Tensor.hpp" 
-#include "tannic/Functions.hpp"
-#include "tannic/Transformations.hpp"
-#include "tannic/Reductions.hpp"
-#include "tannic/Views.hpp"
-#include "tannic/Complex.hpp"
+#include "tannic/tensor.hpp"  
 
 #endif

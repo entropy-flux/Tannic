@@ -3,7 +3,7 @@
 #include <numeric>
 #include <cmath>
  
-#include "Tensor.hpp"   
+#include "tensor.hpp"   
 
 using namespace tannic; 
 

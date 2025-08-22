@@ -19,7 +19,7 @@
 #define TRAITS_HPP
 
 #include <type_traits>
-#include "Concepts.hpp"
+#include "concepts.hpp"
 
 namespace tannic {
   

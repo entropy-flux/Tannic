@@ -3,8 +3,8 @@
 #include <numeric>
 #include <cmath>
 
-#include "Tensor.hpp"
-#include "Transformations.hpp"
+#include "tensor.hpp"
+#include "transformations.hpp"
 
 using namespace tannic;
 

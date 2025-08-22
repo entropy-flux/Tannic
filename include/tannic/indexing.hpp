@@ -31,8 +31,8 @@
  */
 
 #include <cassert> 
-#include "Concepts.hpp"
-#include "Exceptions.hpp"
+#include "concepts.hpp"
+#include "exceptions.hpp"
 
 namespace tannic::indexing {
   

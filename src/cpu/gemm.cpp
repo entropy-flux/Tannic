@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <array>
 #include "cpu/gemm.hpp" 
-#include "Types.hpp" 
+#include "runtime/types.h"
 
 namespace cpu {
  
@@ -206,9 +206,7 @@ constexpr auto dispatchGemm = []() {
     table[index(float64, float32)] = launchGemmKernel<double, float, double>;
     table[index(float64, float64)] = launchGemmKernel<double, double, double>;
     return table;
-}(); 
-
-using tannic::dsizeof;
+}();  
 
 status gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, double alpha) {   
     return dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst, alpha); 

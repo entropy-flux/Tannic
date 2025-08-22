@@ -4,8 +4,8 @@
 #include <cmath>
 #include <cstring>
 #include <cuda_runtime.h>  // For CUDA memory operations
-#include "Tensor.hpp"
-#include "Functions.hpp"
+#include "tensor.hpp"
+#include "functions.hpp"
 
 using namespace tannic;
 

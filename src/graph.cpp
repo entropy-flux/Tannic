@@ -1,8 +1,8 @@
 #include "runtime/graph.h"
 #include "runtime/tensor.h"
 #include "runtime/resources.h"
-#include "Graph.hpp"
-#include "Tensor.hpp"
+#include "graph.hpp"
+#include "tensor.hpp"
 
 namespace tannic { 
 

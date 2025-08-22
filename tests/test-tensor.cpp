@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "Tensor.hpp"  
+#include "tensor.hpp"  
 
 using namespace tannic;
 

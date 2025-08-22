@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Resources.hpp" 
-#include "Tensor.hpp"
+#include "resources.hpp" 
+#include "tensor.hpp"
 #include "runtime/tensor.h"
 #include "runtime/resources.h" 
 #include "runtime/status.h" 

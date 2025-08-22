@@ -54,11 +54,11 @@
 #include <cstddef>
 #include <vector>
  
-#include "Types.hpp" 
-#include "Traits.hpp"
-#include "Shape.hpp"
-#include "Strides.hpp"
-#include "Indexing.hpp"  
+#include "types.hpp" 
+#include "traits.hpp"
+#include "shape.hpp"
+#include "strides.hpp"
+#include "indexing.hpp"  
 
 namespace tannic {
 class Tensor;

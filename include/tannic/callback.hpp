@@ -22,7 +22,7 @@
 #include "runtime/graph.h"
 #include "runtime/streams.h"
 #include "runtime/resources.h"
-#include "Tensor.hpp"
+#include "tensor.hpp"
 
 namespace tannic {
 

@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <sstream>
-#include "Types.hpp"
+#include "types.hpp"
 
 using namespace tannic;
 

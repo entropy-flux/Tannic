@@ -50,13 +50,13 @@
 #include <array> 
 #include <cassert>
 
-#include "Concepts.hpp"
-#include "Types.hpp"
-#include "Traits.hpp"
-#include "Shape.hpp" 
-#include "Tensor.hpp" 
-#include "Indexing.hpp"
-#include "Exceptions.hpp"
+#include "concepts.hpp"
+#include "types.hpp"
+#include "traits.hpp"
+#include "shape.hpp" 
+#include "tensor.hpp" 
+#include "indexing.hpp"
+#include "exceptions.hpp"
 
 namespace tannic { 
 

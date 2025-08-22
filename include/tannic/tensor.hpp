@@ -47,15 +47,15 @@
 #include <utility> 
 #include <initializer_list> 
  
-#include "Types.hpp"
-#include "Shape.hpp" 
-#include "Strides.hpp" 
-#include "Buffer.hpp"
-#include "Slices.hpp" 
-#include "Views.hpp"
-#include "Operations.hpp" 
-#include "Complex.hpp"
-#include "Graph.hpp"
+#include "types.hpp"
+#include "shape.hpp" 
+#include "strides.hpp" 
+#include "buffer.hpp"
+#include "slices.hpp" 
+#include "views.hpp"
+#include "operations.hpp" 
+#include "complex.hpp"
+#include "graph.hpp"
 
 namespace tannic {  
 

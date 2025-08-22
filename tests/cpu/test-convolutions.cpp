@@ -1,12 +1,12 @@
 #include <gtest/gtest.h>
-#include "Tensor.hpp"
-#include "Convolutions.hpp"
+#include "tensor.hpp"
+#include "convolutions.hpp"
 
 using namespace tannic;
 
 #include <gtest/gtest.h>
-#include "Tensor.hpp"
-#include "Convolutions.hpp"
+#include "tensor.hpp"
+#include "convolutions.hpp"
 
 using namespace tannic;
 

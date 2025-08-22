@@ -1,7 +1,7 @@
 #ifdef CUDA
 #include <gtest/gtest.h>
-#include "Tensor.hpp"
-#include "Convolutions.hpp"
+#include "tensor.hpp"
+#include "convolutions.hpp"
 #include <cuda_runtime.h>
 #include <cstring>
 

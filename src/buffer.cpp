@@ -2,8 +2,8 @@
 #include <cstddef>
 #include <utility>
 
-#include "Bindings.hpp"
-#include "Buffer.hpp" 
+#include "bindings.hpp"
+#include "buffer.hpp" 
 
 namespace tannic {
 
