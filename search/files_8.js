@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['shape_2ehpp_0',['Shape.hpp',['../d2/df8/Shape_8hpp.html',1,'']]],
-  ['slices_2ehpp_1',['Slices.hpp',['../d2/d6a/Slices_8hpp.html',1,'']]],
-  ['strides_2ehpp_2',['Strides.hpp',['../d8/d85/Strides_8hpp.html',1,'']]]
+  ['shape_2ehpp_0',['shape.hpp',['../d3/d30/shape_8hpp.html',1,'']]],
+  ['slices_2ehpp_1',['slices.hpp',['../d4/d71/slices_8hpp.html',1,'']]],
+  ['strides_2ehpp_2',['strides.hpp',['../d7/d08/strides_8hpp.html',1,'']]]
 ];

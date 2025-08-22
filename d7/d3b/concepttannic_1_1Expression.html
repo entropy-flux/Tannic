@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('d7/d3b/concepttannic_1_1Expression.htm
 <p>Defines the core protocol for all expression-like types in the Tannic Tensor Library.  
 <a href="../../d7/d3b/concepttannic_1_1Expression.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="../../d3/d84/Concepts_8hpp_source.html">Concepts.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="../../d7/dd8/concepts_8hpp_source.html">concepts.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="../../d7/d3b/concepttannic_1_1Expression.html">tannic::Expression</a> =  <span class="keyword">requires</span>(<span class="keyword">const</span> T expression) {</div>
@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('d7/d3b/concepttannic_1_1Expression.htm
 <div class="line">      expression.offset();</div>
 <div class="line">      expression.forward();</div>
 <div class="line">}</div>
-<div class="ttc" id="aconcepttannic_1_1Expression_html"><div class="ttname"><a href="../../d7/d3b/concepttannic_1_1Expression.html">tannic::Expression</a></div><div class="ttdoc">Defines the core protocol for all expression-like types in the Tannic Tensor Library.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:86</div></div>
+<div class="ttc" id="aconcepttannic_1_1Expression_html"><div class="ttname"><a href="../../d7/d3b/concepttannic_1_1Expression.html">tannic::Expression</a></div><div class="ttdoc">Defines the core protocol for all expression-like types in the Tannic Tensor Library.</div><div class="ttdef"><b>Definition:</b> concepts.hpp:86</div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines the core protocol for all expression-like types in the Tannic Tensor Library. </p>
 <p>This concept specifies the interface required to participate in tensor operations such as broadcasting, slicing, evaluation, and composition. Any type that satisfies this concept is considered a valid expression—this includes tensors, views, lazy expressions, and future compile-time tensor constructs.</p>

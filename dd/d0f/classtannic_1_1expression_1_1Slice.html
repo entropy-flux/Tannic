@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('dd/d0f/classtannic_1_1expression_1_1Sl
 <p>Expression template representing a tensor slice or subview.  
  <a href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="../../d2/d6a/Slices_8hpp_source.html">Slices.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="../../d4/d71/slices_8hpp_source.html">slices.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -463,7 +463,7 @@ template&lt;typename T &gt; </div>
 This operation modifies the underlying tensor/expression in-place.</dd></dl>
 <div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> tensor({3, 3}); tensor.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>();</div>
 <div class="line">tensor[{0,2}][1] = 42; <span class="comment">// assign 42 to elements in rows 0..1, column 1</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> Tensor.hpp:105</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:105</div></div>
 <div class="ttc" id="aclasstannic_1_1Tensor_html_a4ee063da4965ea868081841b3d967882"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Allocator allocator=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
 </div><!-- fragment --> 
 </div>
@@ -666,7 +666,7 @@ template&lt;Expression Source, class... Indexes&gt; </div>
 <p>Example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X({4,3,2});  <span class="comment">// shape [4,3,2]</span></div>
 <div class="line"><span class="keyword">auto</span> slice = X[<a class="code hl_typedef" href="../../d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024">range</a>(1,3)][1]; </div>
 <div class="line"><span class="comment">// Resulting shape: [2, 2] (from range(1,3) and preserving last dimension)</span></div>
-<div class="ttc" id="anamespacetannic_html_affef8090e8f7ba383c67e15135664024"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024">tannic::range</a></div><div class="ttdeci">indexing::Range range</div><div class="ttdoc">Convenience alias for tannic::indexing::Range.</div><div class="ttdef"><b>Definition:</b> Indexing.hpp:141</div></div>
+<div class="ttc" id="anamespacetannic_html_affef8090e8f7ba383c67e15135664024"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024">tannic::range</a></div><div class="ttdeci">indexing::Range range</div><div class="ttdoc">Convenience alias for tannic::indexing::Range.</div><div class="ttdef"><b>Definition:</b> indexing.hpp:141</div></div>
 </div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>A constant reference to the <code><a class="el" href="../../db/da7/classtannic_1_1Shape.html" title="Represents the shape (dimensions) of an tensor-like expression.">Shape</a></code> object describing this slice. </dd></dl>
 
 </div>
@@ -717,8 +717,8 @@ template&lt;Expression Source, class... Indexes&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>include/tannic/<a class="el" href="../../d2/d6a/Slices_8hpp_source.html">Slices.hpp</a></li>
-<li>include/tannic/<a class="el" href="../../db/d10/Tensor_8hpp_source.html">Tensor.hpp</a></li>
+<li>include/tannic/<a class="el" href="../../d4/d71/slices_8hpp_source.html">slices.hpp</a></li>
+<li>include/tannic/<a class="el" href="../../d3/d8b/tensor_8hpp_source.html">tensor.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

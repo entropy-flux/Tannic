@@ -10,7 +10,7 @@ var searchData=
   ['reduce_7',['reduce',['../df/d20/structtannic_1_1expression_1_1Argsum.html#a64716b4c33e2ec4ee5d7e8055254f37d',1,'tannic::expression::Argsum::reduce(type dtype) const'],['../df/d20/structtannic_1_1expression_1_1Argsum.html#a33287265068ee818db6878d70753b574',1,'tannic::expression::Argsum::reduce(Shape const &amp;shape) const'],['../d8/d27/structtannic_1_1expression_1_1Argmean.html#a32ddf3c89c13a43e954ac533e770377d',1,'tannic::expression::Argmean::reduce(type dtype) const'],['../d8/d27/structtannic_1_1expression_1_1Argmean.html#a41172422d762d18cf304bec44dd8f8b4',1,'tannic::expression::Argmean::reduce(Shape const &amp;shape) const'],['../dc/d3e/structtannic_1_1expression_1_1Argmax.html#af5565f57e72a903f23de86caa38357df',1,'tannic::expression::Argmax::reduce()'],['../d7/d32/structtannic_1_1expression_1_1Argmin.html#a8bd4f399aa919a343ccc815fba4568e8',1,'tannic::expression::Argmin::reduce(Shape const &amp;shape) const'],['../d7/d32/structtannic_1_1expression_1_1Argmin.html#ab47d8cc3c5e2090f1ca2a07c71954070',1,'tannic::expression::Argmin::reduce(type dtype) const'],['../dc/d3e/structtannic_1_1expression_1_1Argmax.html#ab6ca23ef9e519f7a40e979104e597b61',1,'tannic::expression::Argmax::reduce()']]],
   ['reducer_8',['reducer',['../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad538ecaf232c6ff457f46291497700c8',1,'tannic::expression::Reduction']]],
   ['reduction_9',['Reduction',['../da/dc5/classtannic_1_1expression_1_1Reduction.html#a9e79399f2f9ba00d0d95b58653ae5d05',1,'tannic::expression::Reduction::Reduction()'],['../da/dc5/classtannic_1_1expression_1_1Reduction.html',1,'tannic::expression::Reduction&lt; Reducer, Operand &gt;']]],
-  ['reductions_2ehpp_10',['Reductions.hpp',['../db/db8/Reductions_8hpp.html',1,'']]],
+  ['reductions_2ehpp_10',['reductions.hpp',['../d1/d01/reductions_8hpp.html',1,'']]],
   ['reference_11',['Reference',['../d1/d96/structtannic_1_1Trait.html#a9129038f382bd1ddae5bc8d9d4c255d5',1,'tannic::Trait']]],
   ['repack_12',['repack',['../de/d75/namespacetannic_1_1transformation.html#aebf273f7681ac116ae0eaa4eec3c83f6',1,'tannic::transformation']]],
   ['repack_13',['Repack',['../d8/d0a/structtannic_1_1transformation_1_1Repack.html',1,'tannic::transformation']]],
@@ -18,7 +18,7 @@ var searchData=
   ['repeats_15',['repeats',['../da/d5d/structtannic_1_1transformation_1_1Repetition.html#ad81145fd3afc10df86f8947523ed638f',1,'tannic::transformation::Repetition']]],
   ['repetition_16',['Repetition',['../da/d5d/structtannic_1_1transformation_1_1Repetition.html',1,'tannic::transformation']]],
   ['reshape_17',['reshape',['../de/d75/namespacetannic_1_1transformation.html#aa2c2984309895146427e0685322baef0',1,'tannic::transformation']]],
-  ['resources_2ehpp_18',['Resources.hpp',['../d6/ddc/Resources_8hpp.html',1,'']]],
+  ['resources_2ehpp_18',['resources.hpp',['../d1/dee/resources_8hpp.html',1,'']]],
   ['rsqrt_19',['rsqrt',['../dd/d74/namespacetannic_1_1function.html#ae57777f5110c12a46eedfeb0e8bb10b8',1,'tannic::function']]],
   ['rsqrt_20',['Rsqrt',['../dc/db8/structtannic_1_1function_1_1Rsqrt.html',1,'tannic::function']]]
 ];

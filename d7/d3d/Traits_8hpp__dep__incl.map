@@ -1,13 +1,27 @@
 <map id="include/tannic/Traits.hpp" name="include/tannic/Traits.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="450,5,630,31"/>
-<area shape="rect" id="node2" href="$d5/dae/Complex_8hpp.html" title="Complex number operations for the Tannic Tensor Library." alt="" coords="94,79,296,104"/>
-<area shape="rect" id="node5" href="$d4/de2/Convolutions_8hpp.html" title="Defines tensor convolutional operations." alt="" coords="100,299,330,324"/>
-<area shape="rect" id="node6" href="$dc/d66/Functions_8hpp.html" title="Defines the excception types used in the library." alt="" coords="676,225,882,251"/>
-<area shape="rect" id="node7" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="924,225,1141,251"/>
-<area shape="rect" id="node8" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="90,225,340,251"/>
-<area shape="rect" id="node9" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="320,79,536,104"/>
-<area shape="rect" id="node10" href="$d2/d6a/Slices_8hpp.html" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="561,79,744,104"/>
-<area shape="rect" id="node11" href="$d8/dea/Views_8hpp.html" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="768,79,952,104"/>
-<area shape="rect" id="node3" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="535,152,722,177"/>
-<area shape="rect" id="node4" href="$df/da3/Callback_8hpp.html" title=" " alt="" coords="389,225,590,251"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="480,5,660,31"/>
+<area shape="rect" id="Node000002" href="$d5/dae/Complex_8hpp.html" title="Complex number operations for the Tannic Tensor Library." alt="" coords="686,79,888,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="619,32,753,76,751,81,617,37"/>
+<area shape="rect" id="Node000005" href="$dc/d66/Functions_8hpp.html" title="Defines the excception types used in the library." alt="" coords="21,225,228,251"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="466,26,336,33,196,44,79,60,40,70,20,81,10,99,10,118,18,138,32,159,71,196,108,223,105,227,67,200,28,162,13,141,4,119,4,97,16,77,38,65,78,55,196,38,336,27,466,20"/>
+<area shape="rect" id="Node000006" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="609,225,826,251"/>
+<area shape="poly" id="edge10_Node000001_Node000006" title=" " alt="" coords="674,21,742,28,809,38,866,54,887,65,902,77,914,102,911,126,896,148,872,169,811,203,752,228,750,223,809,199,869,164,892,145,906,124,909,103,898,80,885,69,864,59,808,43,741,33,673,26"/>
+<area shape="rect" id="Node000007" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="851,225,1102,251"/>
+<area shape="poly" id="edge13_Node000001_Node000007" title=" " alt="" coords="674,22,746,29,820,40,883,55,908,65,926,77,942,93,954,112,970,154,977,195,979,225,974,225,972,195,964,156,949,115,937,96,923,81,906,70,882,60,819,45,746,35,673,28"/>
+<area shape="rect" id="Node000008" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="30,79,246,104"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="487,36,208,81,207,76,486,30"/>
+<area shape="rect" id="Node000009" href="$d2/d6a/Slices_8hpp.html" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="270,79,453,104"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="524,38,396,81,395,76,522,33"/>
+<area shape="rect" id="Node000010" href="$d8/dea/Views_8hpp.html" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="478,79,662,104"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="572,44,572,79,567,79,567,44"/>
+<area shape="rect" id="Node000003" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="434,152,620,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="733,110,570,154,568,149,731,105"/>
+<area shape="rect" id="Node000004" href="$df/da3/Callback_8hpp.html" title=" " alt="" coords="384,225,585,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="515,191,494,227,489,224,511,188"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="450,182,190,228,189,223,449,177"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="571,180,687,223,686,228,570,185"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="613,177,904,223,904,228,612,182"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="214,104,464,149,464,155,213,109"/>
+<area shape="poly" id="edge12_Node000009_Node000003" title=" " alt="" coords="402,107,501,149,499,154,400,112"/>
+<area shape="poly" id="edge15_Node000010_Node000003" title=" " alt="" coords="558,117,536,153,532,151,553,114"/>
 </map>
