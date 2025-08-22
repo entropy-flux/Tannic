@@ -1,0 +1,76 @@
+\doxysection{serialization.\+hpp}
+\hypertarget{serialization_8hpp_source}{}\label{serialization_8hpp_source}\index{include/tannic/serialization.hpp@{include/tannic/serialization.hpp}}
+\mbox{\hyperlink{serialization_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2025\ Eric\ Hermosis}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ This\ file\ is\ part\ of\ the\ Tannic\ Tensor\ Library.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ SERIALIZATION\_HPP}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ SERIALIZATION\_HPP}}
+\DoxyCodeLine{00020\ \ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tensor_8hpp}{tensor.hpp}}"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{constexpr}\ uint32\_t\ \mbox{\hyperlink{namespacetannic_af5d559718f5807bf195a1845948fa3f1}{MAGIC}}\ =\ 0x43495245;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#pragma\ pack(push,\ 1)\ \ }}
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1Header}{Header}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structtannic_1_1Header_a37f941716d16d127c74680486ead2b57}{magic}};\ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{structtannic_1_1Header_a4b5bcb689f2d209f246b3937f204e76f}{version}};\ }
+\DoxyCodeLine{00032\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structtannic_1_1Header_add95b83c0f46a7f8ea9676f230e24b7b}{checksum}};}
+\DoxyCodeLine{00033\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structtannic_1_1Header_a28670721388b16d66d7e5cc7a05a6eb5}{nbytes}};\ }
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#pragma\ pack(pop)\ }}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Object>\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1Metadata}{Metadata}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#pragma\ pack(push,\ 1)}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00042\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1Metadata}{Metadata}}<\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}>\ \{\ }
+\DoxyCodeLine{00043\ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{structtannic_1_1Metadata_3_01Tensor_01_4_adbf5ea7e7e4501ff4f40eccf751e13bd}{dcode}};\ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \mbox{\hyperlink{structtannic_1_1Metadata_3_01Tensor_01_4_ad42cc10918d6d85338bd85a4a6570b00}{offset}};\ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \ \ \mbox{\hyperlink{structtannic_1_1Metadata_3_01Tensor_01_4_a95973d9032438a1071432993d9e06ad2}{nbytes}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{structtannic_1_1Metadata_3_01Tensor_01_4_a470f184f4c9e0270afccfea49b3ed131}{rank}};\ \ \ \ }
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#pragma\ pack(pop)\ }}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structtannic_1_1Header}{Header}}\ \mbox{\hyperlink{namespacetannic_aa966b765f458a1a30f3baf663db8ad5e}{headerof}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ tensor)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1Header}{Header}}\{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{structtannic_1_1Header_a37f941716d16d127c74680486ead2b57}{magic}}=\mbox{\hyperlink{namespacetannic_af5d559718f5807bf195a1845948fa3f1}{MAGIC}},}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ .version=1,\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ .checksum=0xABCD,}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ .nbytes=tensor.\mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}}()\ +\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structtannic_1_1Metadata}{Metadata<Tensor>}})\ +\ tensor.\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ *\ \textcolor{keyword}{sizeof}(size\_t)}
+\DoxyCodeLine{00056\ \ \ \ \ \};}
+\DoxyCodeLine{00057\ \}\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{structtannic_1_1Metadata}{Metadata<Tensor>}}\ \mbox{\hyperlink{namespacetannic_a86aef25866193018eadfb21fa69465f7}{metadataof}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ tensor)\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structtannic_1_1Metadata}{Metadata<Tensor>}}\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ .dcode\ =\ \mbox{\hyperlink{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}{dcodeof}}(tensor.\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}()),}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ .offset\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(tensor.\mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}}()),}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ .nbytes\ =\ tensor.\mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}}(),}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ .rank\ =\ tensor.\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ \}\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \}\ \textcolor{comment}{//\ namespace\ TANNIC}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SERIALIZATION\_HPP}}
+
+\end{DoxyCode}

@@ -1,0 +1,31 @@
+<map id="include/tannic/strides.hpp" name="include/tannic/strides.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="599,5,789,31"/>
+<area shape="rect" id="Node000002" href="$db/dd8/complex_8hpp.html" title=" " alt="" coords="199,79,400,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="618,36,364,81,363,76,617,30"/>
+<area shape="rect" id="Node000003" href="$d3/d8b/tensor_8hpp.html" title=" " alt="" coords="491,152,676,177"/>
+<area shape="poly" id="edge15_Node000001_Node000003" title=" " alt="" coords="593,36,515,54,484,66,465,80,460,91,461,102,467,111,477,121,507,137,541,149,540,154,505,142,474,125,463,115,456,103,455,90,461,77,482,62,513,49,592,30"/>
+<area shape="rect" id="Node000006" href="$db/d1a/functions_8hpp.html" title=" " alt="" coords="1039,225,1245,251"/>
+<area shape="poly" id="edge10_Node000001_Node000006" title=" " alt="" coords="803,18,892,22,985,32,1066,50,1097,62,1118,77,1132,94,1141,113,1150,156,1150,196,1147,225,1142,225,1145,195,1145,156,1136,115,1127,97,1115,81,1094,66,1064,55,984,38,892,28,802,23"/>
+<area shape="rect" id="Node000010" href="$d6/d00/operations_8hpp.html" title=" " alt="" coords="476,79,691,104"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="666,40,603,81,600,76,663,36"/>
+<area shape="rect" id="Node000011" href="$d4/d71/slices_8hpp.html" title=" " alt="" coords="715,79,897,104"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="725,36,789,76,786,81,722,40"/>
+<area shape="rect" id="Node000012" href="$de/d49/views_8hpp.html" title=" " alt="" coords="921,79,1104,104"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="759,31,962,76,960,81,758,36"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="359,105,538,149,537,154,357,110"/>
+<area shape="rect" id="Node000004" href="$da/db7/callback_8hpp.html" title=" " alt="" coords="5,225,204,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="493,182,182,228,181,223,493,177"/>
+<area shape="rect" id="Node000005" href="$d6/dba/convolutions_8hpp.html" title=" " alt="" coords="451,299,679,324"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="477,174,414,181,351,192,300,207,281,216,268,227,263,238,268,249,295,267,340,282,394,292,451,299,450,305,393,297,339,287,293,272,264,252,258,238,264,224,278,212,298,202,350,186,413,176,477,169"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="687,176,1052,223,1052,228,687,182"/>
+<area shape="rect" id="Node000007" href="$d1/d01/reductions_8hpp.html" title=" " alt="" coords="278,225,491,251"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="539,184,418,228,416,223,538,179"/>
+<area shape="rect" id="Node000008" href="$d8/d21/serialization_8hpp.html" title=" " alt="" coords="516,225,741,251"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="600,188,624,224,619,227,596,191"/>
+<area shape="rect" id="Node000009" href="$d8/d71/transformations_8hpp.html" title=" " alt="" coords="765,225,1015,251"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="646,178,841,223,840,228,645,183"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="825,256,618,301,617,296,824,251"/>
+<area shape="poly" id="edge12_Node000010_Node000003" title=" " alt="" coords="586,118,586,152,581,152,581,118"/>
+<area shape="poly" id="edge14_Node000011_Node000003" title=" " alt="" coords="758,111,620,154,619,149,757,106"/>
+<area shape="poly" id="edge17_Node000012_Node000003" title=" " alt="" coords="931,109,653,155,652,149,930,104"/>
+</map>

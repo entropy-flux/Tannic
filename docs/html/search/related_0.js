@@ -1,0 +1,10 @@
+var searchData=
+[
+  ['expression_3a_3acomplexification_0',['Complexification',['../da/d93/classtannic_1_1Tensor.html#a34c3e1f41aa63bf22aacd96cc66d9075',1,'tannic::Tensor']]],
+  ['expression_3a_3aexpansion_1',['Expansion',['../da/d93/classtannic_1_1Tensor.html#a830bdb67badcbd6222aea8106b4919bc',1,'tannic::Tensor']]],
+  ['expression_3a_3apermutation_2',['Permutation',['../da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78',1,'tannic::Tensor']]],
+  ['expression_3a_3arealification_3',['Realification',['../da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082',1,'tannic::Tensor']]],
+  ['expression_3a_3aslice_4',['Slice',['../da/d93/classtannic_1_1Tensor.html#acd979f317f147e5b65290548bed8fa45',1,'tannic::Tensor']]],
+  ['expression_3a_3atranspose_5',['Transpose',['../da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9',1,'tannic::Tensor']]],
+  ['expression_3a_3aview_6',['View',['../da/d93/classtannic_1_1Tensor.html#a7f7618fb8029f94419961726b789b0c3',1,'tannic::Tensor']]]
+];

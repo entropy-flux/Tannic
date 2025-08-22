@@ -1,0 +1,172 @@
+\doxysection{tannic\+::operation\+::Unary\texorpdfstring{$<$}{<} Operation, Operand \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1operation_1_1Unary}{}\label{classtannic_1_1operation_1_1Unary}\index{tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}}
+
+
+Expression template for a unary tensor aritmetic operation.  
+
+
+
+
+{\ttfamily \#include $<$operations.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{constexpr}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_ace5f518adcde5db1bfe65444a5e687b6}{Unary}} (Operation \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_ab92fce23dc41990144a8013faf71ff5b}{operation}}, \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a00bf166cc4f53a3a87107c5b07d22743}{operand}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classtannic_1_1operation_1_1Unary}{Unary} expression. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{constexpr}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{type}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a2c3dfdc2be0d9ef45e8a1b1aa7142d83}{dtype}} () \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the data type of the result. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{const}} \& \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_ad544c6e95f46946ee7220818ccd16232}{shape}} () \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the shape of the result. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{const}} \& \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a486cbdbfcc58767ac1690239ef58251f}{strides}} () \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the strides of the result. \end{DoxyCompactList}\item 
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_ab0fe9d6edb45a459ecc2f0ca410f4377}{offset}} () \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the offset of the expression. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{forward}} () const
+\begin{DoxyCompactList}\small\item\em Evaluates the unary expression and returns a \doxylink{classtannic_1_1Tensor}{Tensor}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Operation \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_ab92fce23dc41990144a8013faf71ff5b}{operation}}
+\item 
+\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a00bf166cc4f53a3a87107c5b07d22743}{operand}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{class}} Operation, Expression Operand$>$\newline
+class tannic\+::operation\+::\+Unary$<$ Operation, Operand $>$}
+Expression template for a unary tensor aritmetic operation. 
+
+Represents a lazily evaluated unary operation applied to a single tensor-\/like operand. This template enables deferred execution and composability at compile time.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Operation} & A stateless operation implementing {\ttfamily void forward(\doxylink{classtannic_1_1Tensor}{Tensor} const\&, \doxylink{classtannic_1_1Tensor}{Tensor}\&)}. \\
+\hline
+{\em Operand} & An expression type satisfying the {\ttfamily Expression} concept. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1operation_1_1Unary_ace5f518adcde5db1bfe65444a5e687b6}\label{classtannic_1_1operation_1_1Unary_ace5f518adcde5db1bfe65444a5e687b6} 
+\index{tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}!Unary@{Unary}}
+\index{Unary@{Unary}!tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{Unary()}{Unary()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{class}} Operation , Expression Operand$>$ \\
+\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{constexpr}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{tannic\+::operation\+::\+Unary}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}} $>$\+::\+Unary (\begin{DoxyParamCaption}\item[{Operation}]{operation,  }\item[{\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}} $>$\+::\+Reference}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Constructs a \doxylink{classtannic_1_1operation_1_1Unary}{Unary} expression. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em operation} & Operation functor (e.\+g., {\ttfamily \doxylink{structtannic_1_1operation_1_1Negation}{Negation}}). \\
+\hline
+{\em operand} & Operand expression. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1operation_1_1Unary_a2c3dfdc2be0d9ef45e8a1b1aa7142d83}\label{classtannic_1_1operation_1_1Unary_a2c3dfdc2be0d9ef45e8a1b1aa7142d83} 
+\index{tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{class}} Operation , Expression Operand$>$ \\
+\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{constexpr}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{type}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{tannic\+::operation\+::\+Unary}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the data type of the result. 
+
+Since the unary operation acts element-\/wise and does not change type, this returns the same type as the operand.
+
+\begin{DoxyReturn}{Returns}
+Data type of the operand. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}\label{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a} 
+\index{tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$class Operation , Expression Operand$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{tannic\+::operation\+::\+Unary}}$<$ Operation, Operand $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Evaluates the unary expression and returns a \doxylink{classtannic_1_1Tensor}{Tensor}. 
+
+\begin{DoxyReturn}{Returns}
+Resulting \doxylink{classtannic_1_1Tensor}{Tensor} after applying the unary operation. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1operation_1_1Unary_ab0fe9d6edb45a459ecc2f0ca410f4377}\label{classtannic_1_1operation_1_1Unary_ab0fe9d6edb45a459ecc2f0ca410f4377} 
+\index{tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{class}} Operation , Expression Operand$>$ \\
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{tannic\+::operation\+::\+Unary}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the offset of the expression. 
+
+\begin{DoxyReturn}{Returns}
+Always returns operand offset. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1operation_1_1Unary_ad544c6e95f46946ee7220818ccd16232}\label{classtannic_1_1operation_1_1Unary_ad544c6e95f46946ee7220818ccd16232} 
+\index{tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{class}} Operation , Expression Operand$>$ \\
+\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{const}}  \& \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{tannic\+::operation\+::\+Unary}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the shape of the result. 
+
+The output of a unary operation has the exact same shape as the operand.
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1Shape}{Shape} of the operand. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1operation_1_1Unary_a486cbdbfcc58767ac1690239ef58251f}\label{classtannic_1_1operation_1_1Unary_a486cbdbfcc58767ac1690239ef58251f} 
+\index{tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{class}} Operation , Expression Operand$>$ \\
+\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{const}}  \& \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{tannic\+::operation\+::\+Unary}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the strides of the result. 
+
+The output tensor has the same memory layout as the operand, so the strides are forwarded directly.
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classtannic_1_1Strides}{Strides} of the operand. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classtannic_1_1operation_1_1Unary_a00bf166cc4f53a3a87107c5b07d22743}\label{classtannic_1_1operation_1_1Unary_a00bf166cc4f53a3a87107c5b07d22743} 
+\index{tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}!operand@{operand}}
+\index{operand@{operand}!tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{operand}{operand}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{class}} Operation , Expression Operand$>$ \\
+\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}}$>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{tannic\+::operation\+::\+Unary}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}} $>$\+::operand}
+
+\Hypertarget{classtannic_1_1operation_1_1Unary_ab92fce23dc41990144a8013faf71ff5b}\label{classtannic_1_1operation_1_1Unary_ab92fce23dc41990144a8013faf71ff5b} 
+\index{tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}!operation@{operation}}
+\index{operation@{operation}!tannic::operation::Unary$<$ Operation, Operand $>$@{tannic::operation::Unary$<$ Operation, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{operation}{operation}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{class}} Operation , Expression Operand$>$ \\
+Operation \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{tannic\+::operation\+::\+Unary}}$<$ Operation, \mbox{\hyperlink{classtannic_1_1operation_1_1Unary_a642a2cd62b03ec15def11b5fb59a4e5a}{Operand}} $>$\+::operation}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{operations_8hpp}{operations.\+hpp}}\item 
+include/tannic/\mbox{\hyperlink{tensor_8hpp}{tensor.\+hpp}}\end{DoxyCompactItemize}

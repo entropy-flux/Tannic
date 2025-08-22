@@ -1,0 +1,72 @@
+\doxysection{tannic\+::operation\+::Exponentiation Struct Reference}
+\hypertarget{structtannic_1_1operation_1_1Exponentiation}{}\label{structtannic_1_1operation_1_1Exponentiation}\index{tannic::operation::Exponentiation@{tannic::operation::Exponentiation}}
+
+
+\doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise exponentiation of two tensor expressions.  
+
+
+
+
+{\ttfamily \#include $<$operations.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{constexpr}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_ab4cbaf6770de4fc80dc62ef0d934a66b}{promote}} (\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{first}}, \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{second}})
+\item 
+\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_aae432626f42e4f17db8283098f321267}{broadcast}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{const}} \&\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{first}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{const}} \&\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{second}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise exponentiation of two tensor expressions. 
+
+Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1_1Binary}{Binary}\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Exponentiation}{Exponentiation}, Base, Exponent\texorpdfstring{$>$}{>}} expression. The result shape is determined via broadcasting rules, and the result type is chosen according to type promotion rules between the base and exponent.
+
+Computation is {\bfseries{deferred}} until {\ttfamily \doxylink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{forward()}} is called or the expression is assigned to a {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}}, meaning it can be composed into larger expression graphs without incurring immediate cost.\hypertarget{structtannic_1_1operation_1_1Exponentiation_autotoc_md30}{}\doxyparagraph{\texorpdfstring{Example\+: Exponentiation}{Example: Exponentiation}}\label{structtannic_1_1operation_1_1Exponentiation_autotoc_md30}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{A}}(\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{float32}},\ \{2,\ 2\});\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{A}}.initialize();}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{A}}[0,\ 0]\ =\ 2;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{A}}[0,\ 1]\ =\ 3;}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{A}}[1,\ 0]\ =\ 4;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{A}}[1,\ 1]\ =\ 5;}
+\DoxyCodeLine{}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{B}}(\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{float32}},\ \{2,\ 2\});\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{B}}.initialize();}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{B}}[0,\ 0]\ =\ 3;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{B}}[0,\ 1]\ =\ 2;}
+\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{B}}[1,\ 0]\ =\ 1;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{B}}[1,\ 1]\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{C}}\ =\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{A}}\ \string^\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{B}};}
+\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{C}}.forward();}
+\DoxyCodeLine{\textcolor{comment}{//\ Output:\ [[8,\ 9],\ [4,\ 1]]}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structtannic_1_1operation_1_1Exponentiation_aae432626f42e4f17db8283098f321267}\label{structtannic_1_1operation_1_1Exponentiation_aae432626f42e4f17db8283098f321267} 
+\index{tannic::operation::Exponentiation@{tannic::operation::Exponentiation}!broadcast@{broadcast}}
+\index{broadcast@{broadcast}!tannic::operation::Exponentiation@{tannic::operation::Exponentiation}}
+\doxysubsubsection{\texorpdfstring{broadcast()}{broadcast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::operation\+::\+Exponentiation\+::broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{const}} \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{const}} \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}\label{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5} 
+\index{tannic::operation::Exponentiation@{tannic::operation::Exponentiation}!forward@{forward}}
+\index{forward@{forward}!tannic::operation::Exponentiation@{tannic::operation::Exponentiation}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily void tannic\+::operation\+::\+Exponentiation\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structtannic_1_1operation_1_1Exponentiation_ab4cbaf6770de4fc80dc62ef0d934a66b}\label{structtannic_1_1operation_1_1Exponentiation_ab4cbaf6770de4fc80dc62ef0d934a66b} 
+\index{tannic::operation::Exponentiation@{tannic::operation::Exponentiation}!promote@{promote}}
+\index{promote@{promote}!tannic::operation::Exponentiation@{tannic::operation::Exponentiation}}
+\doxysubsubsection{\texorpdfstring{promote()}{promote()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{constexpr}} \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{type}} tannic\+::operation\+::\+Exponentiation\+::promote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{type}}}]{first,  }\item[{\mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation_a87920ea96156ec1c169e8c66304a69a5}{type}}}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{operations_8hpp}{operations.\+hpp}}\end{DoxyCompactItemize}

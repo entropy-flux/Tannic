@@ -1,0 +1,20 @@
+<map id="include/tannic/resources.hpp" name="include/tannic/resources.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="393,5,601,31"/>
+<area shape="rect" id="Node000002" href="$da/d1d/buffer_8hpp.html" title=" " alt="" coords="405,79,588,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="499,44,499,79,494,79,494,44"/>
+<area shape="rect" id="Node000003" href="$d3/d8b/tensor_8hpp.html" title=" " alt="" coords="404,152,589,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="499,118,499,152,494,152,494,118"/>
+<area shape="rect" id="Node000004" href="$da/db7/callback_8hpp.html" title=" " alt="" coords="5,225,204,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="421,182,169,228,168,223,420,177"/>
+<area shape="rect" id="Node000005" href="$d6/dba/convolutions_8hpp.html" title=" " alt="" coords="565,299,793,324"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="390,175,332,184,284,199,268,209,259,220,259,233,268,249,287,263,314,275,390,293,478,303,565,307,565,312,478,308,389,298,313,281,284,268,264,252,253,234,254,218,264,205,282,194,331,179,390,170"/>
+<area shape="rect" id="Node000006" href="$db/d1a/functions_8hpp.html" title=" " alt="" coords="278,225,483,251"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="468,187,401,227,398,223,465,182"/>
+<area shape="rect" id="Node000007" href="$d1/d01/reductions_8hpp.html" title=" " alt="" coords="507,225,721,251"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="529,182,596,223,593,227,526,187"/>
+<area shape="rect" id="Node000008" href="$d8/d21/serialization_8hpp.html" title=" " alt="" coords="745,225,971,251"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="568,177,800,223,799,228,567,183"/>
+<area shape="rect" id="Node000009" href="$d8/d71/transformations_8hpp.html" title=" " alt="" coords="995,225,1244,251"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="603,175,1019,223,1019,228,603,181"/>
+<area shape="poly" id="edge9_Node000009_Node000005" title=" " alt="" coords="1036,255,751,301,750,296,1035,250"/>
+</map>

@@ -1,0 +1,62 @@
+\doxysection{include/tannic/operations.hpp File Reference}
+\hypertarget{operations_8hpp}{}\label{operations_8hpp}\index{include/tannic/operations.hpp@{include/tannic/operations.hpp}}
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \#include "{}concepts.\+hpp"{}}\newline
+{\ttfamily \#include "{}types.\+hpp"{}}\newline
+{\ttfamily \#include "{}shape.\+hpp"{}}\newline
+{\ttfamily \#include "{}strides.\+hpp"{}}\newline
+{\ttfamily \#include "{}traits.\+hpp"{}}\newline
+Include dependency graph for operations.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/d1f/operations_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d2a/operations_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtannic_1_1operation_1_1Unary}{tannic\+::operation\+::\+Unary$<$ Operation, Operand $>$}}
+\begin{DoxyCompactList}\small\item\em Expression template for a unary tensor aritmetic operation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1operation_1_1Binary}{tannic\+::operation\+::\+Binary$<$ Operation, Operand, Cooperand $>$}}
+\begin{DoxyCompactList}\small\item\em Expression template for a binary tensor operation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1operation_1_1Negation}{tannic\+::operation\+::\+Negation}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1operation_1_1Unary}{Unary} element-\/wise negation of a tensor expression. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1operation_1_1Addition}{tannic\+::operation\+::\+Addition}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise addition of two tensor expressions. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication}{tannic\+::operation\+::\+Multiplication}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise multiplication of two tensor expressions. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction}{tannic\+::operation\+::\+Subtraction}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise subtraction of two tensor expressions. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation}{tannic\+::operation\+::\+Exponentiation}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise exponentiation of two tensor expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1operation}{tannic\+::operation}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_acf566907df5853e93fe6b49872ed6b01}{tannic\+::operation\+::operator-\/}} (Operand \&\&operand)
+\begin{DoxyCompactList}\small\item\em Element-\/wise negation of a tensor expression. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Augend, Expression Addend$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_ac0ecafc7bebd99d7498fd2b815539040}{tannic\+::operation\+::operator+}} (Augend \&\&augend, Addend \&\&addend)
+\begin{DoxyCompactList}\small\item\em Element-\/wise addition of two tensor expressions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Subtrahend, Expression Minuend$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_a179b2c13fdccd0a5c6ec02d3800abfb6}{tannic\+::operation\+::operator-\/}} (Subtrahend \&\&subtrahend, Minuend \&\&minuend)
+\begin{DoxyCompactList}\small\item\em Element-\/wise subtraction of two tensor expressions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Multiplicand, Expression Multiplier$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_a5590027235472667a74b3a2740101b30}{tannic\+::operation\+::operator\texorpdfstring{$\ast$}{*}}} (Multiplicand \&\&multiplicand, Multiplier \&\&multiplier)
+\begin{DoxyCompactList}\small\item\em Element-\/wise multiplication of two tensor expressions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Base, Expression Exponent$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_a22f701767e5ab9dd10789ae8933d25a6}{tannic\+::operation\+::operator\texorpdfstring{$^\wedge$}{\string^}}} (Base \&\&base, Exponent \&\&exponent)
+\begin{DoxyCompactList}\small\item\em Element-\/wise exponentiation of two tensor expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}

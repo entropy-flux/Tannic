@@ -1,0 +1,18 @@
+<map id="include/tannic/buffer.hpp" name="include/tannic/buffer.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="405,5,588,31"/>
+<area shape="rect" id="Node000002" href="$d3/d8b/tensor_8hpp.html" title=" " alt="" coords="404,79,589,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="499,44,499,79,494,79,494,44"/>
+<area shape="rect" id="Node000003" href="$da/db7/callback_8hpp.html" title=" " alt="" coords="5,152,204,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="421,109,169,155,168,149,420,104"/>
+<area shape="rect" id="Node000004" href="$d6/dba/convolutions_8hpp.html" title=" " alt="" coords="565,225,793,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="390,102,332,111,284,126,268,136,259,147,259,160,268,176,287,190,314,202,390,220,478,229,565,234,565,239,478,235,389,225,313,207,284,195,264,179,253,161,254,145,264,132,282,121,331,106,390,97"/>
+<area shape="rect" id="Node000005" href="$db/d1a/functions_8hpp.html" title=" " alt="" coords="278,152,483,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="468,113,401,154,398,149,465,109"/>
+<area shape="rect" id="Node000006" href="$d1/d01/reductions_8hpp.html" title=" " alt="" coords="507,152,721,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="529,109,596,149,593,154,526,113"/>
+<area shape="rect" id="Node000007" href="$d8/d21/serialization_8hpp.html" title=" " alt="" coords="745,152,971,177"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="568,104,800,149,799,155,567,109"/>
+<area shape="rect" id="Node000008" href="$d8/d71/transformations_8hpp.html" title=" " alt="" coords="995,152,1244,177"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="603,102,1019,149,1019,155,603,107"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="1036,182,751,228,750,223,1035,177"/>
+</map>

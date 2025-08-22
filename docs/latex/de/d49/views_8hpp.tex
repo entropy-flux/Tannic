@@ -1,0 +1,57 @@
+\doxysection{include/tannic/views.hpp File Reference}
+\hypertarget{views_8hpp}{}\label{views_8hpp}\index{include/tannic/views.hpp@{include/tannic/views.hpp}}
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}types.\+hpp"{}}\newline
+{\ttfamily \#include "{}traits.\+hpp"{}}\newline
+{\ttfamily \#include "{}shape.\+hpp"{}}\newline
+{\ttfamily \#include "{}strides.\+hpp"{}}\newline
+{\ttfamily \#include "{}concepts.\+hpp"{}}\newline
+{\ttfamily \#include "{}exceptions.\+hpp"{}}\newline
+Include dependency graph for views.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d76/views_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d92/views_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View$<$ Source $>$}}
+\begin{DoxyCompactList}\small\item\em Expression template for viewing a tensor with a new shape. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose$<$ Source $>$}}
+\begin{DoxyCompactList}\small\item\em Expression template for transposing two dimensions of a tensor. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation$<$ Source, Indexes $>$}}
+\begin{DoxyCompactList}\small\item\em Expression template for reordering tensor dimensions according to a specified permutation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{tannic\+::expression\+::\+Expansion$<$ Source $>$}}
+\begin{DoxyCompactList}\small\item\em Expression template for expanding (broadcasting) singleton dimensions of a tensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Expression Source, Integral ... Indexes$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}{tannic\+::expression\+::view}} (Source \&\&source, Indexes ... indexes)
+\begin{DoxyCompactList}\small\item\em Creates a reshaped view of a tensor or expression. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}{tannic\+::expression\+::transpose}} (Source \&\&source, int first, int second)
+\begin{DoxyCompactList}\small\item\em Creates a transposed view of a tensor or expression by swapping two dimensions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Source, Integral ... Indexes$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a1f1dde31ec629ed3d6b2b979221cf802}{tannic\+::expression\+::permute}} (Source \&\&source, Indexes... indexes)
+\begin{DoxyCompactList}\small\item\em Creates a permuted view of a tensor or expression. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Source, Integral... Sizes$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a3e153f6fc540062b27409ba60926e869}{tannic\+::expression\+::expand}} (Source \&\&source, Sizes... sizes)
+\begin{DoxyCompactList}\small\item\em Creates an expanded view of a tensor, broadcasting singleton dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}

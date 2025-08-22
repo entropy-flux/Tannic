@@ -1,0 +1,48 @@
+\doxysection{graph.\+hpp}
+\hypertarget{graph_8hpp_source}{}\label{graph_8hpp_source}\index{include/tannic/graph.hpp@{include/tannic/graph.hpp}}
+\mbox{\hyperlink{graph_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2025\ Eric\ Hermosis}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ This\ file\ is\ part\ of\ the\ Tannic\ Tensor\ Library.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ GRAPH\_HPP}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ GRAPH\_HPP\ \ }}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <cstdint>}\ \ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }Tensor;\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ WARNING:\ THIS\ FILE\ IS\ UNDER\ ACTIVE\ DEVELOPMENT!.}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1Node}{Node}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ uintptr\_t\ \textcolor{keywordtype}{id}\ =\ 0;}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1Node_ad62ca85f8cefbb34228233a7844e8bac}{Node}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&);}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1Node_a94744396f5f2071630eecf560d1e9c04}{\string~Node}}();}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1Node_a7255ee5cd9e1ccbc60a004175a178f31}{Node}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structtannic_1_1Node}{Node}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1Node}{Node}}\&\ \mbox{\hyperlink{structtannic_1_1Node_ae28cff8fc42232f6bb3c041e556feeaf}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structtannic_1_1Node}{Node}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00035\ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1Node_a7580011f85d2a5de6a5abea0c053a6e0}{Node}}(\mbox{\hyperlink{structtannic_1_1Node}{Node}}\&\&\ other)\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1Node}{Node}}\&\ \mbox{\hyperlink{structtannic_1_1Node_a32049b80b7cabdac7563b22f13d51ceb}{operator=}}(\mbox{\hyperlink{structtannic_1_1Node}{Node}}\&\&\ other)\ \textcolor{keyword}{noexcept};\ }
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \}\ \textcolor{comment}{//\ namespace\ TANNIC}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GRAPH\_HPP}}
+
+\end{DoxyCode}

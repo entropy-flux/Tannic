@@ -1,0 +1,372 @@
+\doxysection{tannic Namespace Reference}
+\hypertarget{namespacetannic}{}\label{namespacetannic}\index{tannic@{tannic}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1expression}{expression}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1function}{function}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1indexing}{indexing}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1operation}{operation}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1transformation}{transformation}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}}
+\begin{DoxyCompactList}\small\item\em Managed memory buffer with explicit ownership. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1Callback}{Callback}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1Device}{Device}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Device}{Device} memory domain. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Device}{Device} enumeration singleton. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}
+\begin{DoxyCompactList}\small\item\em A simple generic exception type for the Tannic \doxylink{classtannic_1_1Tensor}{Tensor} Library. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1Header}{Header}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1Host}{Host}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Host}{Host} memory domain. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1Metadata}{Metadata}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1Metadata_3_01Tensor_01_4}{Metadata$<$ Tensor $>$}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1Node}{Node}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}
+\begin{DoxyCompactList}\small\item\em Represents the shape (dimensions) of an tensor-\/like expression. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}
+\begin{DoxyCompactList}\small\item\em Represents the memory strides associated with a tensor shape. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}
+\begin{DoxyCompactList}\small\item\em A multidimensional, strided tensor data structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Concepts}
+\begin{DoxyCompactItemize}
+\item 
+concept \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}
+\begin{DoxyCompactList}\small\item\em Defines the core protocol for all expression-\/like types in the Tannic Tensor Library. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Operator}{Operator}}
+\begin{DoxyCompactList}\small\item\em Concept defining requirements for tensor operation types. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Functional}{Functional}}
+\begin{DoxyCompactList}\small\item\em Concept for unary mathematical function operations. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Iterable}{Iterable}}
+\begin{DoxyCompactList}\small\item\em Requires a type to be iterable via {\ttfamily std\+::begin} and {\ttfamily std\+::end}. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}
+\begin{DoxyCompactList}\small\item\em Requires a type to satisfy the C++20 {\ttfamily std\+::input\+\_\+iterator} concept. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}
+\begin{DoxyCompactList}\small\item\em Requires a type to be an integral type (e.\+g., {\ttfamily int}, {\ttfamily std\+::size\+\_\+t}). \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Assignable}{Assignable}}
+\begin{DoxyCompactList}\small\item\em Concept for types that can assign values. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Comparable}{Comparable}}
+\begin{DoxyCompactList}\small\item\em Concept for types that can compare their value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{range}} = \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}
+\begin{DoxyCompactList}\small\item\em Convenience alias for {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{tannic\+::indexing\+::\+Range}}. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}} = std\+::variant$<$ \mbox{\hyperlink{classtannic_1_1Host}{Host}}, \mbox{\hyperlink{classtannic_1_1Device}{Device}} $>$
+\begin{DoxyCompactList}\small\item\em Memory environment variant type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1Header}{Header}} \mbox{\hyperlink{namespacetannic_aa966b765f458a1a30f3baf663db8ad5e}{headerof}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&tensor)
+\item 
+\mbox{\hyperlink{structtannic_1_1Metadata}{Metadata}}$<$ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} $>$ \mbox{\hyperlink{namespacetannic_a86aef25866193018eadfb21fa69465f7}{metadataof}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&tensor)
+\item 
+constexpr bool \mbox{\hyperlink{namespacetannic_ab9024d05a23081306cb9f03929bd96d9}{operator==}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&first, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&second)
+\begin{DoxyCompactList}\small\item\em Equality comparison operator for shapes. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&shape)
+\item 
+constexpr bool \mbox{\hyperlink{namespacetannic_a1c8ec7747a2d4ba830533d01fdeb35b2}{operator==}} (\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&first, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&second)
+\begin{DoxyCompactList}\small\item\em Equality comparison for strides. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{namespacetannic_a78e6118242dbf100a05da89b391dedb4}{operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&strides)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1a847102d1be0f3bdc61821df66844c0}{operator$<$$<$}} (std\+::ostream \&ostream, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&tensor)
+\item 
+{\footnotesize template$<$Expression Source$>$ }\\std\+::ostream \& \mbox{\hyperlink{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9}{operator$<$$<$}} (std\+::ostream \&ostream, Source source)
+\item 
+{\footnotesize template$<$Expression Multiplicand, Expression Multiplier$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}} (Multiplicand \&\&multiplicand, Multiplier \&\&multiplier, double scale=1.\+0)
+\begin{DoxyCompactList}\small\item\em Matrix multiplication convenience function. \end{DoxyCompactList}\item 
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}} (type type)
+\begin{DoxyCompactList}\small\item\em Returns the size in bytes of a given tensor data type. \end{DoxyCompactList}\item 
+constexpr std\+::string \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}} (type type)
+\begin{DoxyCompactList}\small\item\em Returns the string name of a given tensor data type. \end{DoxyCompactList}\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}{dcodeof}} (type type)
+\begin{DoxyCompactList}\small\item\em Returns the numeric code used for serialization of a data type. \end{DoxyCompactList}\item 
+constexpr type \mbox{\hyperlink{namespacetannic_a6e357abf60406726c8b595658e93e110}{dtypeof}} (uint8\+\_\+t code)
+\begin{DoxyCompactList}\small\item\em Converts a numeric type code back to its corresponding type enum. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr type \mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}} ()
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1c1a48f353ac51e8ae5affa4dccd2e4a}{operator$<$$<$}} (std\+::ostream \&ostream, type type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr uint32\+\_\+t \mbox{\hyperlink{namespacetannic_af5d559718f5807bf195a1845948fa3f1}{MAGIC}} = 0x43495245
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}\label{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43} 
+\index{tannic@{tannic}!Environment@{Environment}}
+\index{Environment@{Environment}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{Environment}{Environment}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{tannic\+::\+Environment}} = typedef std\+::variant$<$\mbox{\hyperlink{classtannic_1_1Host}{Host}}, \mbox{\hyperlink{classtannic_1_1Device}{Device}}$>$}
+
+
+
+Memory environment variant type. 
+
+Type-\/safe union of host and device memory environments. \Hypertarget{namespacetannic_affef8090e8f7ba383c67e15135664024}\label{namespacetannic_affef8090e8f7ba383c67e15135664024} 
+\index{tannic@{tannic}!range@{range}}
+\index{range@{range}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{range}{range}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{tannic\+::range}}}
+
+
+
+Convenience alias for {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{tannic\+::indexing\+::\+Range}}. 
+
+This alias allows using {\ttfamily \doxylink{namespacetannic_affef8090e8f7ba383c67e15135664024}{tannic\+::range}} directly when declaring slices without fully qualifying the {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}} type. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}\label{namespacetannic_a7cc5a20569f733cb88c508ebb9119363} 
+\index{tannic@{tannic}!dcodeof@{dcodeof}}
+\index{dcodeof@{dcodeof}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{dcodeof()}{dcodeof()}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t tannic\+::dcodeof (\begin{DoxyParamCaption}\item[{type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the numeric code used for serialization of a data type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The data type to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Unique numeric code (0 for {\ttfamily none})
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Code values follow simple pattern\+:
+\end{DoxyNote}
+
+\begin{DoxyItemize}
+\item Integers\+: 10-\/19 (integer dtypes)
+\item Floats\+: 20-\/29 (floating point dtypes)
+\item Complex\+: 30-\/39 (complex)
+\end{DoxyItemize}
+
+While this grouping is intentional, it\textquotesingle{}s not strictly enforced. When adding new types\+:
+
+
+\begin{DoxyEnumerate}
+\item Maintain this pattern where possible
+\item Document any deviations
+\item Keep codes unique across all types 
+\end{DoxyEnumerate}\Hypertarget{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}\label{namespacetannic_a1f6a29013277d9209efa113453cf0b2e} 
+\index{tannic@{tannic}!dnameof@{dnameof}}
+\index{dnameof@{dnameof}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{dnameof()}{dnameof()}}
+{\footnotesize\ttfamily constexpr std\+::string tannic\+::dnameof (\begin{DoxyParamCaption}\item[{type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the string name of a given tensor data type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The data type to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Human-\/readable type name ("{}none"{} for invalid types)
+\end{DoxyReturn}
+\hypertarget{namespacetannic_autotoc_md59}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md59}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(int32)\ <<\ std::endl\ \ \ \textcolor{comment}{//\ prints\ "{}int32"{}}}
+\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(complex128);\ \textcolor{comment}{//\ prints\ "{}complex128"{}}}
+
+\end{DoxyCode}
+ \Hypertarget{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}\label{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25} 
+\index{tannic@{tannic}!dsizeof@{dsizeof}}
+\index{dsizeof@{dsizeof}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{dsizeof()}{dsizeof()}}
+{\footnotesize\ttfamily constexpr std\+::size\+\_\+t tannic\+::dsizeof (\begin{DoxyParamCaption}\item[{type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the size in bytes of a given tensor data type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The data type to query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size of the type in bytes (0 for {\ttfamily none})
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+For complex types\+:
+\begin{DoxyItemize}
+\item {\ttfamily complex64} returns 8 (2 × float32)
+\item {\ttfamily complex128} returns 16 (2 × float64)
+\end{DoxyItemize}
+\end{DoxyNote}
+\hypertarget{namespacetannic_autotoc_md58}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md58}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(float32);\ \ \textcolor{comment}{//\ returns\ 4}}
+\DoxyCodeLine{\mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(complex64);\ \textcolor{comment}{//\ returns\ 8}}
+
+\end{DoxyCode}
+ \Hypertarget{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}\label{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5} 
+\index{tannic@{tannic}!dtypeof@{dtypeof}}
+\index{dtypeof@{dtypeof}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{dtypeof()}{dtypeof()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr type tannic\+::dtypeof (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_a6e357abf60406726c8b595658e93e110}\label{namespacetannic_a6e357abf60406726c8b595658e93e110} 
+\index{tannic@{tannic}!dtypeof@{dtypeof}}
+\index{dtypeof@{dtypeof}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{dtypeof()}{dtypeof()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily constexpr type tannic\+::dtypeof (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Converts a numeric type code back to its corresponding type enum. 
+
+Used for deserialization. 
+\begin{DoxyParams}{Parameters}
+{\em code} & The numeric type code to convert (as returned by \doxylink{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}{dcodeof()}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Corresponding type enum value (none for invalid codes)
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This is the inverse operation of \doxylink{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}{dcodeof()}. The code values follow the same pattern.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}{dcodeof()} for the reverse conversion 
+\end{DoxySeeAlso}
+\Hypertarget{namespacetannic_aa966b765f458a1a30f3baf663db8ad5e}\label{namespacetannic_aa966b765f458a1a30f3baf663db8ad5e} 
+\index{tannic@{tannic}!headerof@{headerof}}
+\index{headerof@{headerof}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{headerof()}{headerof()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1Header}{Header}} tannic\+::headerof (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{tensor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}\label{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6} 
+\index{tannic@{tannic}!matmul@{matmul}}
+\index{matmul@{matmul}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{matmul()}{matmul()}}
+{\footnotesize\ttfamily template$<$Expression Multiplicand, Expression Multiplier$>$ \\
+constexpr auto tannic\+::matmul (\begin{DoxyParamCaption}\item[{Multiplicand \&\&}]{multiplicand,  }\item[{Multiplier \&\&}]{multiplier,  }\item[{double}]{scale = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Matrix multiplication convenience function. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Multiplicand} & Left tensor expression type \\
+\hline
+{\em Multiplier} & Right tensor expression type \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em multiplicand} & Left tensor operand \\
+\hline
+{\em multiplier} & Right tensor operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Transformation expression representing matrix multiplication 
+\end{DoxyReturn}
+\Hypertarget{namespacetannic_a86aef25866193018eadfb21fa69465f7}\label{namespacetannic_a86aef25866193018eadfb21fa69465f7} 
+\index{tannic@{tannic}!metadataof@{metadataof}}
+\index{metadataof@{metadataof}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{metadataof()}{metadataof()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1Metadata}{Metadata}}$<$ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} $>$ tannic\+::metadataof (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{tensor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}\label{namespacetannic_a8b7066a546d8d6a8605b695788c479f0} 
+\index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily std\+::ostream \& tannic\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacetannic_a78e6118242dbf100a05da89b391dedb4}\label{namespacetannic_a78e6118242dbf100a05da89b391dedb4} 
+\index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily std\+::ostream \& tannic\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&}]{strides }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9}\label{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9} 
+\index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+std\+::ostream \& tannic\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{ostream,  }\item[{Source}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacetannic_a1a847102d1be0f3bdc61821df66844c0}\label{namespacetannic_a1a847102d1be0f3bdc61821df66844c0} 
+\index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily std\+::ostream \& tannic\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{ostream,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{tensor }\end{DoxyParamCaption})}
+
+\Hypertarget{namespacetannic_a1c1a48f353ac51e8ae5affa4dccd2e4a}\label{namespacetannic_a1c1a48f353ac51e8ae5affa4dccd2e4a} 
+\index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily std\+::ostream \& tannic\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{ostream,  }\item[{type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacetannic_ab9024d05a23081306cb9f03929bd96d9}\label{namespacetannic_ab9024d05a23081306cb9f03929bd96d9} 
+\index{tannic@{tannic}!operator==@{operator==}}
+\index{operator==@{operator==}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily constexpr bool tannic\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Equality comparison operator for shapes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & First shape. \\
+\hline
+{\em second} & Second shape. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if both shapes have the same rank and sizes, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{namespacetannic_a1c8ec7747a2d4ba830533d01fdeb35b2}\label{namespacetannic_a1c8ec7747a2d4ba830533d01fdeb35b2} 
+\index{tannic@{tannic}!operator==@{operator==}}
+\index{operator==@{operator==}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily constexpr bool tannic\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Equality comparison for strides. 
+
+\begin{DoxyReturn}{Returns}
+True if all stride sizes are equal for each dimension. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacetannic_af5d559718f5807bf195a1845948fa3f1}\label{namespacetannic_af5d559718f5807bf195a1845948fa3f1} 
+\index{tannic@{tannic}!MAGIC@{MAGIC}}
+\index{MAGIC@{MAGIC}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{MAGIC}{MAGIC}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t tannic\+::\+MAGIC = 0x43495245\hspace{0.3cm}{\ttfamily [constexpr]}}
+

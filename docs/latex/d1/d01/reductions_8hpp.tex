@@ -1,0 +1,50 @@
+\doxysection{include/tannic/reductions.hpp File Reference}
+\hypertarget{reductions_8hpp}{}\label{reductions_8hpp}\index{include/tannic/reductions.hpp@{include/tannic/reductions.hpp}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include "{}concepts.\+hpp"{}}\newline
+{\ttfamily \#include "{}types.\+hpp"{}}\newline
+{\ttfamily \#include "{}traits.\+hpp"{}}\newline
+{\ttfamily \#include "{}shape.\+hpp"{}}\newline
+{\ttfamily \#include "{}tensor.\+hpp"{}}\newline
+{\ttfamily \#include "{}indexing.\+hpp"{}}\newline
+{\ttfamily \#include "{}exceptions.\+hpp"{}}\newline
+Include dependency graph for reductions.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/d9d/reductions_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::expression\+::\+Reduction$<$ Reducer, Operand $>$}}
+\begin{DoxyCompactList}\small\item\em Lazy reduction expression. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax}{tannic\+::expression\+::\+Argmax}}
+\begin{DoxyCompactList}\small\item\em Finds the {\bfseries{indices of maximum values}} along an axis. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin}{tannic\+::expression\+::\+Argmin}}
+\begin{DoxyCompactList}\small\item\em Finds the {\bfseries{indexes of minimum values}} along an axis. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum}{tannic\+::expression\+::\+Argsum}}
+\begin{DoxyCompactList}\small\item\em Sums tensor values along an axis. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean}{tannic\+::expression\+::\+Argmean}}
+\begin{DoxyCompactList}\small\item\em Computes the {\bfseries{mean}} along an axis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{tannic\+::expression\+::argmax}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+\begin{DoxyCompactList}\small\item\em Creates an \doxylink{structtannic_1_1expression_1_1Argmax}{Argmax} reduction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3}{tannic\+::expression\+::argmin}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+\begin{DoxyCompactList}\small\item\em Creates an \doxylink{structtannic_1_1expression_1_1Argmin}{Argmin} reduction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96}{tannic\+::expression\+::sum}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+\begin{DoxyCompactList}\small\item\em Creates a sum reduction. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2}{tannic\+::expression\+::mean}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+\begin{DoxyCompactList}\small\item\em Creates a mean reduction. \end{DoxyCompactList}\end{DoxyCompactItemize}

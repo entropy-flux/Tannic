@@ -1,0 +1,70 @@
+\doxysection{tannic\+::transformation\+::Repack Struct Reference}
+\hypertarget{structtannic_1_1transformation_1_1Repack}{}\label{structtannic_1_1transformation_1_1Repack}\index{tannic::transformation::Repack@{tannic::transformation::Repack}}
+
+
+\doxylink{structtannic_1_1transformation_1_1Repack}{Repack} operation (makes a tensor contiguous in memory)  
+
+
+
+
+{\ttfamily \#include $<$transformations.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{constexpr}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{type}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_ad03d6ef2902b6b2987ca5d432ecec137}{promote}} (\mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{type}} dtype) \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{const}}
+\begin{DoxyCompactList}\small\item\em Type promotion for repack. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_ae66efdb3d4928e030e5aea81cbfbbeed}{transform}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{const}} \&shape) \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{const}}
+\begin{DoxyCompactList}\small\item\em Computes output shape after repack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&source, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&result) const
+\begin{DoxyCompactList}\small\item\em Copies the tensor data to a contiguous layout if needed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{structtannic_1_1transformation_1_1Repack}{Repack} operation (makes a tensor contiguous in memory) 
+
+Ensures the tensor is stored contiguously (row-\/major order). Does not change shape or dtype. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}\label{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631} 
+\index{tannic::transformation::Repack@{tannic::transformation::Repack}!forward@{forward}}
+\index{forward@{forward}!tannic::transformation::Repack@{tannic::transformation::Repack}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily void tannic\+::transformation\+::\+Repack\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{result }\end{DoxyParamCaption}) const}
+
+
+
+Copies the tensor data to a contiguous layout if needed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Input tensor. \\
+\hline
+{\em result} & Output tensor with contiguous layout. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{structtannic_1_1transformation_1_1Repack_ad03d6ef2902b6b2987ca5d432ecec137}\label{structtannic_1_1transformation_1_1Repack_ad03d6ef2902b6b2987ca5d432ecec137} 
+\index{tannic::transformation::Repack@{tannic::transformation::Repack}!promote@{promote}}
+\index{promote@{promote}!tannic::transformation::Repack@{tannic::transformation::Repack}}
+\doxysubsubsection{\texorpdfstring{promote()}{promote()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{constexpr}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{type}} tannic\+::transformation\+::\+Repack\+::promote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{type}}}]{dtype }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Type promotion for repack. 
+
+\doxylink{structtannic_1_1transformation_1_1Repack}{Repack} does not change dtype. \Hypertarget{structtannic_1_1transformation_1_1Repack_ae66efdb3d4928e030e5aea81cbfbbeed}\label{structtannic_1_1transformation_1_1Repack_ae66efdb3d4928e030e5aea81cbfbbeed} 
+\index{tannic::transformation::Repack@{tannic::transformation::Repack}!transform@{transform}}
+\index{transform@{transform}!tannic::transformation::Repack@{tannic::transformation::Repack}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::transformation\+::\+Repack\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1transformation_1_1Repack_a3d33fee070f3587cf96cc6e749324631}{const}} \&}]{shape }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Computes output shape after repack. 
+
+\doxylink{structtannic_1_1transformation_1_1Repack}{Repack} does not change the shape. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{transformations_8hpp}{transformations.\+hpp}}\end{DoxyCompactItemize}

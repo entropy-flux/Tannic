@@ -1,0 +1,42 @@
+\doxysection{include/tannic/convolutions.hpp File Reference}
+\hypertarget{convolutions_8hpp}{}\label{convolutions_8hpp}\index{include/tannic/convolutions.hpp@{include/tannic/convolutions.hpp}}
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include "{}concepts.\+hpp"{}}\newline
+{\ttfamily \#include "{}types.\+hpp"{}}\newline
+{\ttfamily \#include "{}traits.\+hpp"{}}\newline
+{\ttfamily \#include "{}shape.\+hpp"{}}\newline
+{\ttfamily \#include "{}tensor.\+hpp"{}}\newline
+{\ttfamily \#include "{}exceptions.\+hpp"{}}\newline
+{\ttfamily \#include "{}transformations.\+hpp"{}}\newline
+Include dependency graph for convolutions.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/d77/convolutions_8hpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_011_01_4}{tannic\+::transformation\+::\+Convolution$<$ 1 $>$}}
+\begin{DoxyCompactList}\small\item\em Expression template for 1D convolution operations. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_012_01_4}{tannic\+::transformation\+::\+Convolution$<$ 2 $>$}}
+\begin{DoxyCompactList}\small\item\em Expression template for 2D convolution operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1transformation}{tannic\+::transformation}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$auto Dimension, Expression Signal, Expression Kernel$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a1298ce7dc6434ea0905a4eec46f4f2c3}{tannic\+::transformation\+::convolve}} (Signal \&\&signal, Kernel \&\&kernel, std\+::size\+\_\+t strides, std\+::size\+\_\+t padding)
+\begin{DoxyCompactList}\small\item\em Creates a 1D or 2D convolution expression with uniform strides and padding. \end{DoxyCompactList}\item 
+{\footnotesize template$<$auto Dimension, Expression Signal, Expression Kernel$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a7749a6d3ab09071315cb86b83b6dd379}{tannic\+::transformation\+::convolve}} (Signal \&\&signal, Kernel \&\&kernel, std\+::array$<$ std\+::size\+\_\+t, Dimension $>$ strides, std\+::array$<$ std\+::size\+\_\+t, Dimension $>$ padding)
+\begin{DoxyCompactList}\small\item\em Creates a 1D or 2D convolution expression with dimension-\/specific strides and padding. \end{DoxyCompactList}\end{DoxyCompactItemize}

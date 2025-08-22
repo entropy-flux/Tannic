@@ -1,0 +1,418 @@
+\doxysection{tannic\+::Shape Class Reference}
+\hypertarget{classtannic_1_1Shape}{}\label{classtannic_1_1Shape}\index{tannic::Shape@{tannic::Shape}}
+
+
+Represents the shape (dimensions) of an tensor-\/like expression.  
+
+
+
+
+{\ttfamily \#include $<$shape.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classtannic_1_1Shape_af6f328b8e11d001e234f78e1c634f4fc}{rank\+\_\+type}} = uint8\+\_\+t
+\begin{DoxyCompactList}\small\item\em Type used for rank (number of dimensions). \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{size\+\_\+type}} = size\+\_\+t
+\begin{DoxyCompactList}\small\item\em Type used for size and shape dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape_aa4ee03251e1c92a230b060290086a0ac}{Shape}} () noexcept=default
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape_a887ad192d9ebd596cd81251a10e8b218}{Shape}} (std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{size\+\_\+type}} $>$ shape)
+\begin{DoxyCompactList}\small\item\em Constructs a shape from an initializer list of dimension sizes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Integral... Sizes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1Shape_a43042ceabb1192091fc9900dfaf8a3af}{Shape}} (Sizes... sizes)
+\begin{DoxyCompactList}\small\item\em Constructs a shape from a list of size arguments. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Iterable Sizes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1Shape_adbdbaaef585952714d0c5175ebdd4002}{Shape}} (Sizes \&\&sizes)
+\begin{DoxyCompactList}\small\item\em Constructs a shape from any iterable container of sizes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Iterator Iterator$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1Shape_a490aca8afc8004acc7f39dd985238201}{Shape}} (Iterator \mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}}, Iterator \mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}})
+\begin{DoxyCompactList}\small\item\em Constructs a shape from a pair of iterators. \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{size\+\_\+type}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1Shape_a9bb30398c511be1818579c7df286dd9e}{address}} () noexcept
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the internal size data (non-\/const). \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{size\+\_\+type}} const \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1Shape_afc31591f102622f5093f1d889bd44445}{address}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the internal size data (const). \end{DoxyCompactList}\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape_af6f328b8e11d001e234f78e1c634f4fc}{rank\+\_\+type}} \mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns the number of dimensions (rank). \end{DoxyCompactList}\item 
+constexpr auto \mbox{\hyperlink{classtannic_1_1Shape_ab838e93c0984f4f0d1ddfac4d20fd12e}{front}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Returns the first dimension size. \end{DoxyCompactList}\item 
+constexpr auto \mbox{\hyperlink{classtannic_1_1Shape_ad237b86bacac91ea72dfbac85930e190}{back}} () const
+\begin{DoxyCompactList}\small\item\em Returns the last dimension size. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Integral Index$>$ }\\constexpr auto const \& \mbox{\hyperlink{classtannic_1_1Shape_a75f342d708afeb26912871a6ec1dd5b4}{operator\mbox{[}$\,$\mbox{]}}} (Index index) const
+\begin{DoxyCompactList}\small\item\em Accesses a dimension by index (const). \end{DoxyCompactList}\item 
+{\footnotesize template$<$Integral Index$>$ }\\constexpr auto \& \mbox{\hyperlink{classtannic_1_1Shape_ad18791f179ce8634d8254f955b066887}{operator\mbox{[}$\,$\mbox{]}}} (Index index)
+\begin{DoxyCompactList}\small\item\em Accesses a dimension by index (non-\/const). \end{DoxyCompactList}\item 
+constexpr void \mbox{\hyperlink{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6}{expand}} (\mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{size\+\_\+type}} size)
+\begin{DoxyCompactList}\small\item\em Expands the shape\textquotesingle{}s last dimension with a given size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Iterators}\par
+\begin{DoxyCompactItemize}
+\item 
+constexpr auto \mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}} ()
+\item 
+constexpr auto \mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}} ()
+\item 
+constexpr auto \mbox{\hyperlink{classtannic_1_1Shape_ac79a4a75e5130c2524d562f8e37ace6a}{begin}} () const
+\item 
+constexpr auto \mbox{\hyperlink{classtannic_1_1Shape_a30d47aff4d631626c97754261ab13490}{end}} () const
+\item 
+constexpr auto \mbox{\hyperlink{classtannic_1_1Shape_a4d8a4fa2c7447a56b051bcb122449bb6}{cbegin}} () const
+\item 
+constexpr auto \mbox{\hyperlink{classtannic_1_1Shape_a503031effa03b129773a9ca011890784}{cend}} () const
+\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr uint8\+\_\+t \mbox{\hyperlink{classtannic_1_1Shape_af8a4b0f86d77384fd7d4b9e768178a52}{limit}} = 8
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the shape (dimensions) of an tensor-\/like expression. 
+
+The {\ttfamily \doxylink{classtannic_1_1Shape}{Shape}} class provides a constexpr-\/friendly abstraction over an expression shape and provides constructors and accessors for tensor shapes, including support for initializer lists, iterators, and iterable containers.
+
+Shapes are limited to a maximum rank of 8 dimensions.\hypertarget{classtannic_1_1Shape_autotoc_md40}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Shape_autotoc_md40}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ s1(2,\ 3,\ 4);}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ s2(2,\ 3,\ 4);}
+\DoxyCodeLine{\textcolor{keyword}{static\_assert}(s1\ ==\ s2);}
+\DoxyCodeLine{std::cout\ <<\ s1\ <<\ std::endl;\ \textcolor{comment}{//\ Shape(2,3,4)}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{classtannic_1_1Shape_af6f328b8e11d001e234f78e1c634f4fc}\label{classtannic_1_1Shape_af6f328b8e11d001e234f78e1c634f4fc} 
+\index{tannic::Shape@{tannic::Shape}!rank\_type@{rank\_type}}
+\index{rank\_type@{rank\_type}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{rank\_type}{rank\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classtannic_1_1Shape_af6f328b8e11d001e234f78e1c634f4fc}{tannic\+::\+Shape\+::rank\+\_\+type}} =  uint8\+\_\+t}
+
+
+
+Type used for rank (number of dimensions). 
+
+\Hypertarget{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}\label{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6} 
+\index{tannic::Shape@{tannic::Shape}!size\_type@{size\_type}}
+\index{size\_type@{size\_type}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{size\_type}{size\_type}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{tannic\+::\+Shape\+::size\+\_\+type}} =  size\+\_\+t}
+
+
+
+Type used for size and shape dimensions. 
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1Shape_aa4ee03251e1c92a230b060290086a0ac}\label{classtannic_1_1Shape_aa4ee03251e1c92a230b060290086a0ac} 
+\index{tannic::Shape@{tannic::Shape}!Shape@{Shape}}
+\index{Shape@{Shape}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{Shape()}{Shape()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily constexpr tannic\+::\+Shape\+::\+Shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}, {\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+
+
+Default constructor. 
+
+Initializes a shape of rank 0 and size 1 (shape of scalars). \Hypertarget{classtannic_1_1Shape_a887ad192d9ebd596cd81251a10e8b218}\label{classtannic_1_1Shape_a887ad192d9ebd596cd81251a10e8b218} 
+\index{tannic::Shape@{tannic::Shape}!Shape@{Shape}}
+\index{Shape@{Shape}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{Shape()}{Shape()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily constexpr tannic\+::\+Shape\+::\+Shape (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{size\+\_\+type}} $>$}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Constructs a shape from an initializer list of dimension sizes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & An initializer list of dimension sizes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Asserts if the number of dimensions exceeds {\ttfamily limit}.
+\end{DoxyNote}
+\hypertarget{classtannic_1_1Shape_autotoc_md41}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Shape_autotoc_md41}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Shape_aa4ee03251e1c92a230b060290086a0ac}{Shape}}\ shape(\{2,\ 3,\ 4\});}
+\DoxyCodeLine{std::cout\ <<\ shape;\ \ \textcolor{comment}{//\ Output:\ Shape(2,\ 3,\ 4)}}
+
+\end{DoxyCode}
+ ~\newline
+ \Hypertarget{classtannic_1_1Shape_a43042ceabb1192091fc9900dfaf8a3af}\label{classtannic_1_1Shape_a43042ceabb1192091fc9900dfaf8a3af} 
+\index{tannic::Shape@{tannic::Shape}!Shape@{Shape}}
+\index{Shape@{Shape}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{Shape()}{Shape()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily template$<$Integral... Sizes$>$ \\
+constexpr tannic\+::\+Shape\+::\+Shape (\begin{DoxyParamCaption}\item[{Sizes...}]{sizes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Constructs a shape from a list of size arguments. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Sizes} & Variadic list of integral size arguments. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sizes} & Sizes of each dimension.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Asserts if the number of dimensions exceeds {\ttfamily limit}.
+\end{DoxyNote}
+\hypertarget{classtannic_1_1Shape_autotoc_md42}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Shape_autotoc_md42}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Shape_aa4ee03251e1c92a230b060290086a0ac}{Shape}}\ shape(2,\ 3,\ 4);}
+\DoxyCodeLine{std::cout\ <<\ shape;\ \ \textcolor{comment}{//\ Output:\ Shape(2,\ 3,\ 4)}}
+
+\end{DoxyCode}
+ \Hypertarget{classtannic_1_1Shape_adbdbaaef585952714d0c5175ebdd4002}\label{classtannic_1_1Shape_adbdbaaef585952714d0c5175ebdd4002} 
+\index{tannic::Shape@{tannic::Shape}!Shape@{Shape}}
+\index{Shape@{Shape}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{Shape()}{Shape()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily template$<$Iterable Sizes$>$ \\
+constexpr tannic\+::\+Shape\+::\+Shape (\begin{DoxyParamCaption}\item[{Sizes \&\&}]{sizes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Constructs a shape from any iterable container of sizes. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Sizes} & An iterable with \doxylink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin()} and \doxylink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end()} methods. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em sizes} & Container of dimension sizes. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classtannic_1_1Shape_a490aca8afc8004acc7f39dd985238201}\label{classtannic_1_1Shape_a490aca8afc8004acc7f39dd985238201} 
+\index{tannic::Shape@{tannic::Shape}!Shape@{Shape}}
+\index{Shape@{Shape}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{Shape()}{Shape()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily template$<$Iterator Iterator$>$ \\
+constexpr tannic\+::\+Shape\+::\+Shape (\begin{DoxyParamCaption}\item[{Iterator}]{begin,  }\item[{Iterator}]{end }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Constructs a shape from a pair of iterators. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Iterator} & Type of the iterator (must satisfy the Iterator concept). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em begin} & Iterator to the beginning of dimension sizes. \\
+\hline
+{\em end} & Iterator to the end of dimension sizes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Asserts if the number of dimensions exceeds {\ttfamily limit}.
+\end{DoxyNote}
+\hypertarget{classtannic_1_1Shape_autotoc_md43}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Shape_autotoc_md43}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::vector<std::size\_t>\ dims\ =\ \{2,\ 3,\ 4\};}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Shape_aa4ee03251e1c92a230b060290086a0ac}{Shape}}\ shape(dims.begin(),\ dims.end());}
+\DoxyCodeLine{std::cout\ <<\ shape;\ \ \textcolor{comment}{//\ Output:\ Shape(2,\ 3,\ 4)}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1Shape_afc31591f102622f5093f1d889bd44445}\label{classtannic_1_1Shape_afc31591f102622f5093f1d889bd44445} 
+\index{tannic::Shape@{tannic::Shape}!address@{address}}
+\index{address@{address}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{address()}{address()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{size\+\_\+type}} const  \texorpdfstring{$\ast$}{*} tannic\+::\+Shape\+::address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Returns a pointer to the internal size data (const). 
+
+\begin{DoxyReturn}{Returns}
+Const pointer to the first element of the sizes array. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Shape_a9bb30398c511be1818579c7df286dd9e}\label{classtannic_1_1Shape_a9bb30398c511be1818579c7df286dd9e} 
+\index{tannic::Shape@{tannic::Shape}!address@{address}}
+\index{address@{address}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{address()}{address()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{size\+\_\+type}} \texorpdfstring{$\ast$}{*} tannic\+::\+Shape\+::address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Returns a pointer to the internal size data (non-\/const). 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the first element of the sizes array. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Shape_ad237b86bacac91ea72dfbac85930e190}\label{classtannic_1_1Shape_ad237b86bacac91ea72dfbac85930e190} 
+\index{tannic::Shape@{tannic::Shape}!back@{back}}
+\index{back@{back}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{back()}{back()}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Shape\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the last dimension size. 
+
+\begin{DoxyReturn}{Returns}
+Size of the last dimension. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Asserts if shape is empty. 
+\end{DoxyNote}
+\Hypertarget{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}\label{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26} 
+\index{tannic::Shape@{tannic::Shape}!begin@{begin}}
+\index{begin@{begin}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Shape\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Shape_ac79a4a75e5130c2524d562f8e37ace6a}\label{classtannic_1_1Shape_ac79a4a75e5130c2524d562f8e37ace6a} 
+\index{tannic::Shape@{tannic::Shape}!begin@{begin}}
+\index{begin@{begin}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Shape\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Shape_a4d8a4fa2c7447a56b051bcb122449bb6}\label{classtannic_1_1Shape_a4d8a4fa2c7447a56b051bcb122449bb6} 
+\index{tannic::Shape@{tannic::Shape}!cbegin@{cbegin}}
+\index{cbegin@{cbegin}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{cbegin()}{cbegin()}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Shape\+::cbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Shape_a503031effa03b129773a9ca011890784}\label{classtannic_1_1Shape_a503031effa03b129773a9ca011890784} 
+\index{tannic::Shape@{tannic::Shape}!cend@{cend}}
+\index{cend@{cend}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{cend()}{cend()}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Shape\+::cend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}\label{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83} 
+\index{tannic::Shape@{tannic::Shape}!end@{end}}
+\index{end@{end}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Shape\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Shape_a30d47aff4d631626c97754261ab13490}\label{classtannic_1_1Shape_a30d47aff4d631626c97754261ab13490} 
+\index{tannic::Shape@{tannic::Shape}!end@{end}}
+\index{end@{end}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Shape\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6}\label{classtannic_1_1Shape_a936a0809e4f31f6c9a32f25dd7ce1be6} 
+\index{tannic::Shape@{tannic::Shape}!expand@{expand}}
+\index{expand@{expand}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{expand()}{expand()}}
+{\footnotesize\ttfamily constexpr void tannic\+::\+Shape\+::expand (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{size\+\_\+type}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Expands the shape\textquotesingle{}s last dimension with a given size. 
+
+Increments the rank by one. 
+\begin{DoxyParams}{Parameters}
+{\em size} & The size of the dimension that will be added to the back of the shape. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classtannic_1_1Shape_ab838e93c0984f4f0d1ddfac4d20fd12e}\label{classtannic_1_1Shape_ab838e93c0984f4f0d1ddfac4d20fd12e} 
+\index{tannic::Shape@{tannic::Shape}!front@{front}}
+\index{front@{front}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{front()}{front()}}
+{\footnotesize\ttfamily constexpr auto tannic\+::\+Shape\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Returns the first dimension size. 
+
+\begin{DoxyReturn}{Returns}
+Size of the first dimension. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Shape_ad18791f179ce8634d8254f955b066887}\label{classtannic_1_1Shape_ad18791f179ce8634d8254f955b066887} 
+\index{tannic::Shape@{tannic::Shape}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$Integral Index$>$ \\
+constexpr auto \& tannic\+::\+Shape\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{Index}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Accesses a dimension by index (non-\/const). 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index} & Integral index type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of the dimension to access (supports negative indexing). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to the dimension size at the given index. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Shape_a75f342d708afeb26912871a6ec1dd5b4}\label{classtannic_1_1Shape_a75f342d708afeb26912871a6ec1dd5b4} 
+\index{tannic::Shape@{tannic::Shape}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$Integral Index$>$ \\
+constexpr auto const  \& tannic\+::\+Shape\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{Index}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Accesses a dimension by index (const). 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index} & Integral index type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of the dimension to access (supports negative indexing). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size of the dimension at the given index. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}\label{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522} 
+\index{tannic::Shape@{tannic::Shape}!rank@{rank}}
+\index{rank@{rank}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{rank()}{rank()}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classtannic_1_1Shape_af6f328b8e11d001e234f78e1c634f4fc}{rank\+\_\+type}} tannic\+::\+Shape\+::rank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Returns the number of dimensions (rank). 
+
+\begin{DoxyReturn}{Returns}
+Rank of the shape. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classtannic_1_1Shape_af8a4b0f86d77384fd7d4b9e768178a52}\label{classtannic_1_1Shape_af8a4b0f86d77384fd7d4b9e768178a52} 
+\index{tannic::Shape@{tannic::Shape}!limit@{limit}}
+\index{limit@{limit}!tannic::Shape@{tannic::Shape}}
+\doxysubsubsection{\texorpdfstring{limit}{limit}}
+{\footnotesize\ttfamily constexpr uint8\+\_\+t tannic\+::\+Shape\+::limit = 8\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{shape_8hpp}{shape.\+hpp}}\end{DoxyCompactItemize}

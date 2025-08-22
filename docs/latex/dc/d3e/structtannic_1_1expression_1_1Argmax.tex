@@ -1,0 +1,89 @@
+\doxysection{tannic\+::expression\+::Argmax Struct Reference}
+\hypertarget{structtannic_1_1expression_1_1Argmax}{}\label{structtannic_1_1expression_1_1Argmax}\index{tannic::expression::Argmax@{tannic::expression::Argmax}}
+
+
+Finds the {\bfseries{indices of maximum values}} along an axis.  
+
+
+
+
+{\ttfamily \#include $<$reductions.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{constexpr}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{type}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_af5565f57e72a903f23de86caa38357df}{reduce}} (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{type}} dtype) \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{const}}
+\item 
+\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ab6ca23ef9e519f7a40e979104e597b61}{reduce}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{const}} \&shape) \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{const}}
+\item 
+void \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&input, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&output) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{int}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676cd885d44b909}{axis}}
+\item 
+\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{bool}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_a7877a8168a1c81b602ef1b4090b5a744}{keepdim}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Finds the {\bfseries{indices of maximum values}} along an axis. 
+
+Output dtype is always {\ttfamily int64}. The reduced axis is removed by default ({\ttfamily keepdim=false}).\hypertarget{structtannic_1_1expression_1_1Argmax_autotoc_md32}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{structtannic_1_1expression_1_1Argmax_autotoc_md32}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{X}}\ =\ \{\{3,\ 1,\ 4\},\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 5,\ 9\}\};\ \ \textcolor{comment}{//\ shape(2,\ 3)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{Y}}\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{argmax}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{X}},\ 0);\ \ \textcolor{comment}{//\ Reduce\ axis\ 0\ (rows)}}
+\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{Y}}\ <<\ std::endl;}
+\DoxyCodeLine{\textcolor{comment}{//\ Y\ =\ [0,\ 1,\ 1]\ \ \ \ \ \ \ \ \ \ //\ Indexes\ of\ max\ values\ per\ column}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{Z}}\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{argmax}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{X}},\ 1,\ \textcolor{comment}{/*keepdim=*\ /true);\ \ //\ Reduce\ axis\ 1\ (columns),\ keep\ dims}}
+\DoxyCodeLine{\textcolor{comment}{std::cout\ <<\ Z\ <<\ std::endl;}}
+\DoxyCodeLine{\textcolor{comment}{//\ Z\ =\ [[2],}}
+\DoxyCodeLine{\textcolor{comment}{//\ \ \ \ \ \ [2]]\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Indexes\ of\ max\ values\ per\ row}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}\label{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a} 
+\index{tannic::expression::Argmax@{tannic::expression::Argmax}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Argmax@{tannic::expression::Argmax}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily void tannic\+::expression\+::\+Argmax\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{input,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{output }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structtannic_1_1expression_1_1Argmax_ab6ca23ef9e519f7a40e979104e597b61}\label{structtannic_1_1expression_1_1Argmax_ab6ca23ef9e519f7a40e979104e597b61} 
+\index{tannic::expression::Argmax@{tannic::expression::Argmax}!reduce@{reduce}}
+\index{reduce@{reduce}!tannic::expression::Argmax@{tannic::expression::Argmax}}
+\doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::expression\+::\+Argmax\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{const}} \&}]{shape }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structtannic_1_1expression_1_1Argmax_af5565f57e72a903f23de86caa38357df}\label{structtannic_1_1expression_1_1Argmax_af5565f57e72a903f23de86caa38357df} 
+\index{tannic::expression::Argmax@{tannic::expression::Argmax}!reduce@{reduce}}
+\index{reduce@{reduce}!tannic::expression::Argmax@{tannic::expression::Argmax}}
+\doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{constexpr}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{type}} tannic\+::expression\+::\+Argmax\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{type}}}]{dtype }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676cd885d44b909}\label{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676cd885d44b909} 
+\index{tannic::expression::Argmax@{tannic::expression::Argmax}!axis@{axis}}
+\index{axis@{axis}!tannic::expression::Argmax@{tannic::expression::Argmax}}
+\doxysubsubsection{\texorpdfstring{axis}{axis}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{int}} tannic\+::expression\+::\+Argmax\+::axis}
+
+\Hypertarget{structtannic_1_1expression_1_1Argmax_a7877a8168a1c81b602ef1b4090b5a744}\label{structtannic_1_1expression_1_1Argmax_a7877a8168a1c81b602ef1b4090b5a744} 
+\index{tannic::expression::Argmax@{tannic::expression::Argmax}!keepdim@{keepdim}}
+\index{keepdim@{keepdim}!tannic::expression::Argmax@{tannic::expression::Argmax}}
+\doxysubsubsection{\texorpdfstring{keepdim}{keepdim}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}{bool}} tannic\+::expression\+::\+Argmax\+::keepdim}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{reductions_8hpp}{reductions.\+hpp}}\end{DoxyCompactItemize}

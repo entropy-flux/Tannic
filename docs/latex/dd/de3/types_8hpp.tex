@@ -1,0 +1,43 @@
+\doxysection{include/tannic/types.hpp File Reference}
+\hypertarget{types_8hpp}{}\label{types_8hpp}\index{include/tannic/types.hpp@{include/tannic/types.hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$complex$>$}\newline
+{\ttfamily \#include "{}runtime/types.\+h"{}}\newline
+Include dependency graph for types.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/d3a/types_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d07/types_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{tannic\+::dsizeof}} (type type)
+\begin{DoxyCompactList}\small\item\em Returns the size in bytes of a given tensor data type. \end{DoxyCompactList}\item 
+constexpr std\+::string \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{tannic\+::dnameof}} (type type)
+\begin{DoxyCompactList}\small\item\em Returns the string name of a given tensor data type. \end{DoxyCompactList}\item 
+constexpr uint8\+\_\+t \mbox{\hyperlink{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}{tannic\+::dcodeof}} (type type)
+\begin{DoxyCompactList}\small\item\em Returns the numeric code used for serialization of a data type. \end{DoxyCompactList}\item 
+constexpr type \mbox{\hyperlink{namespacetannic_a6e357abf60406726c8b595658e93e110}{tannic\+::dtypeof}} (uint8\+\_\+t code)
+\begin{DoxyCompactList}\small\item\em Converts a numeric type code back to its corresponding type enum. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr type \mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{tannic\+::dtypeof}} ()
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1c1a48f353ac51e8ae5affa4dccd2e4a}{tannic\+::operator$<$$<$}} (std\+::ostream \&ostream, type type)
+\end{DoxyCompactItemize}

@@ -1,0 +1,63 @@
+\doxysection{tannic\+::Exception Class Reference}
+\hypertarget{classtannic_1_1Exception}{}\label{classtannic_1_1Exception}\index{tannic::Exception@{tannic::Exception}}
+
+
+A simple generic exception type for the Tannic \doxylink{classtannic_1_1Tensor}{Tensor} Library.  
+
+
+
+
+{\ttfamily \#include $<$exceptions.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1Exception_aee6f6175c79bb169dea234ed56ce6039}{Exception}} (const std\+::string \&\mbox{\hyperlink{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}{what}})
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}{what}} () const noexcept override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classtannic_1_1Exception_acc4253823005b369cfbfbcb0596ad7ee}{message}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A simple generic exception type for the Tannic \doxylink{classtannic_1_1Tensor}{Tensor} Library. 
+
+This class provides a lightweight generic exception mechanism during for the frontend of the library. ~\newline
+
+
+This class is a simple generic \doxylink{classtannic_1_1Exception}{Exception} to avoid overengineering during initial development. As the library matures, this may be extended or replaced with more specialized exception types. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1Exception_aee6f6175c79bb169dea234ed56ce6039}\label{classtannic_1_1Exception_aee6f6175c79bb169dea234ed56ce6039} 
+\index{tannic::Exception@{tannic::Exception}!Exception@{Exception}}
+\index{Exception@{Exception}!tannic::Exception@{tannic::Exception}}
+\doxysubsubsection{\texorpdfstring{Exception()}{Exception()}}
+{\footnotesize\ttfamily tannic\+::\+Exception\+::\+Exception (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{what }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}\label{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970} 
+\index{tannic::Exception@{tannic::Exception}!what@{what}}
+\index{what@{what}!tannic::Exception@{tannic::Exception}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} tannic\+::\+Exception\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classtannic_1_1Exception_acc4253823005b369cfbfbcb0596ad7ee}\label{classtannic_1_1Exception_acc4253823005b369cfbfbcb0596ad7ee} 
+\index{tannic::Exception@{tannic::Exception}!message@{message}}
+\index{message@{message}!tannic::Exception@{tannic::Exception}}
+\doxysubsubsection{\texorpdfstring{message}{message}}
+{\footnotesize\ttfamily std\+::string tannic\+::\+Exception\+::message}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{exceptions_8hpp}{exceptions.\+hpp}}\end{DoxyCompactItemize}

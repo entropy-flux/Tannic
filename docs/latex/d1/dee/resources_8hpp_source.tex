@@ -1,0 +1,112 @@
+\doxysection{resources.\+hpp}
+\hypertarget{resources_8hpp_source}{}\label{resources_8hpp_source}\index{include/tannic/resources.hpp@{include/tannic/resources.hpp}}
+\mbox{\hyperlink{resources_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2025\ Eric\ Hermosis}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ This\ file\ is\ part\ of\ the\ Tannic\ Tensor\ Library.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ RESOURCES\_HPP}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ RESOURCES\_HPP\ }}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ <span>}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#include\ <variant>}\ \ \ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Host}{Host}}\ \{}
+\DoxyCodeLine{00061\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Host_a1830de43bc0b0ca2dfef20ffad434596}{Host}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00068\ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classtannic_1_1Host_a74e48a6b533e9dbaf1321f02734f0343}{allocate}}(std::size\_t\ nbytes)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Host_a4d32bc66b1bc6f2cfa91448ee7ac1af8}{deallocate}}(\textcolor{keywordtype}{void}*\ address,\ std::size\_t\ nbytes)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtannic_1_1Host_a44d3fb44daeda17f43cce11ca2452eee}{id}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ -\/1;\ \}\ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Host_a38d315c3ea9734e1e75bba2bea97a7ba}{pageable}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pageable\_;}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Host_a239efbb9b09c9fa5a9b75643e2c7fa14}{pinned}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pinned\_;}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{bool}\ pageable\_\ =\ \textcolor{keyword}{true};\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{bool}\ pinned\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00104\ \};\ \ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00120\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\ \{}
+\DoxyCodeLine{00121\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{int}\ count\_\ =\ 0;\ }
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}();}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices_a3dc88507dd999c24aed489873abc14a7}{Devices}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\ \mbox{\hyperlink{classtannic_1_1Devices_a91648e0b5043f0367b4515cb6d7db610}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00128\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices_a664aa3b09953063a4ded7c4c6eea91fc}{Devices}}(\mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\ \mbox{\hyperlink{classtannic_1_1Devices_a7067012a93a225b5c46fedd547ea1984}{operator=}}(\mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\&)\ =\ \textcolor{keyword}{delete};\ }
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices_a513783c8846b32def70425c651f08c1d}{\string~Devices}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\ \mbox{\hyperlink{classtannic_1_1Devices_a08e873a9357bba7615b7cd1f041d257c}{instance}}()\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\ \mbox{\hyperlink{classtannic_1_1Devices_a08e873a9357bba7615b7cd1f041d257c}{instance}};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Devices_a08e873a9357bba7615b7cd1f041d257c}{instance}};}
+\DoxyCodeLine{00135\ \ \ \ \ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtannic_1_1Devices_a5f0a34f7a26f78f7328c3af3a188528e}{count}}()\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}\&\ devices\ =\ \mbox{\hyperlink{classtannic_1_1Devices_a08e873a9357bba7615b7cd1f041d257c}{instance}}();}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ devices.count\_;}
+\DoxyCodeLine{00140\ \ \ \ \ \}\ }
+\DoxyCodeLine{00141\ \};\ }
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00156\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Device}{Device}}\ \{}
+\DoxyCodeLine{00157\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Device_a5374d28b26368e2cefff11e0ba7c5ea8}{Device}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ =\ 0,\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Device_a0b7fbf3b87b59800b7f6689070aa92cc}{blocking}}\ =\ \textcolor{keyword}{false});\ }
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classtannic_1_1Device_a9e0d621df0e3e6dcb174fdd5dd231db6}{allocate}}(std::size\_t\ nbytes)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Device_a8f0b1404caa8e124f7aec4ee1b5c3048}{deallocate}}(\textcolor{keywordtype}{void}*\ address,\ std::size\_t\ nbytes)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classtannic_1_1Device_a30fa398c0cec1af2dd802fb3c5002ff0}{id}}()\ const\ noexcept\ \{\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ id\_;\ }
+\DoxyCodeLine{00187\ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Device_a0b7fbf3b87b59800b7f6689070aa92cc}{blocking}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ blocking\_;}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{int}\ id\_\ =\ 0;}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{bool}\ blocking\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00196\ \};}
+\DoxyCodeLine{00197\ \ }
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00204\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ =\ std::variant<Host,\ Device>;}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ RESOURCES\_HPP}}
+
+\end{DoxyCode}

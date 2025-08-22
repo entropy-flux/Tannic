@@ -1,0 +1,101 @@
+\doxysection{tannic\+::Devices Class Reference}
+\hypertarget{classtannic_1_1Devices}{}\label{classtannic_1_1Devices}\index{tannic::Devices@{tannic::Devices}}
+
+
+\doxylink{classtannic_1_1Device}{Device} enumeration singleton.  
+
+
+
+
+{\ttfamily \#include $<$resources.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1Devices_a3dc88507dd999c24aed489873abc14a7}{Devices}} (const \mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \&)=delete
+\item 
+\mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \& \mbox{\hyperlink{classtannic_1_1Devices_a91648e0b5043f0367b4515cb6d7db610}{operator=}} (const \mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \&)=delete
+\item 
+\mbox{\hyperlink{classtannic_1_1Devices_a664aa3b09953063a4ded7c4c6eea91fc}{Devices}} (\mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \&\&)=delete
+\item 
+\mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \& \mbox{\hyperlink{classtannic_1_1Devices_a7067012a93a225b5c46fedd547ea1984}{operator=}} (\mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \&\&)=delete
+\item 
+\mbox{\hyperlink{classtannic_1_1Devices_a513783c8846b32def70425c651f08c1d}{\texorpdfstring{$\sim$}{\string~}\+Devices}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \& \mbox{\hyperlink{classtannic_1_1Devices_a08e873a9357bba7615b7cd1f041d257c}{instance}} ()
+\item 
+static int \mbox{\hyperlink{classtannic_1_1Devices_a5f0a34f7a26f78f7328c3af3a188528e}{count}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classtannic_1_1Device}{Device} enumeration singleton. 
+
+
+\begin{DoxyItemize}
+\item Maintains global knowledge of available compute domains ~\newline
+
+\item Provides immutable count of attached devices
+\item Follows Meyer\textquotesingle{}s singleton pattern for thread-\/safe initialization
+\item Exists as a single instance per process
+\end{DoxyItemize}
+
+\begin{DoxyWarning}{Warning}
+\doxylink{classtannic_1_1Device}{Device} memory management is highly likely to change as the backend evolves. 
+\end{DoxyWarning}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1Devices_a3dc88507dd999c24aed489873abc14a7}\label{classtannic_1_1Devices_a3dc88507dd999c24aed489873abc14a7} 
+\index{tannic::Devices@{tannic::Devices}!Devices@{Devices}}
+\index{Devices@{Devices}!tannic::Devices@{tannic::Devices}}
+\doxysubsubsection{\texorpdfstring{Devices()}{Devices()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily tannic\+::\+Devices\+::\+Devices (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classtannic_1_1Devices_a664aa3b09953063a4ded7c4c6eea91fc}\label{classtannic_1_1Devices_a664aa3b09953063a4ded7c4c6eea91fc} 
+\index{tannic::Devices@{tannic::Devices}!Devices@{Devices}}
+\index{Devices@{Devices}!tannic::Devices@{tannic::Devices}}
+\doxysubsubsection{\texorpdfstring{Devices()}{Devices()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily tannic\+::\+Devices\+::\+Devices (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classtannic_1_1Devices_a513783c8846b32def70425c651f08c1d}\label{classtannic_1_1Devices_a513783c8846b32def70425c651f08c1d} 
+\index{tannic::Devices@{tannic::Devices}!````~Devices@{\texorpdfstring{$\sim$}{\string~}Devices}}
+\index{````~Devices@{\texorpdfstring{$\sim$}{\string~}Devices}!tannic::Devices@{tannic::Devices}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Devices()}{\string~Devices()}}
+{\footnotesize\ttfamily tannic\+::\+Devices\+::\texorpdfstring{$\sim$}{\string~}\+Devices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1Devices_a5f0a34f7a26f78f7328c3af3a188528e}\label{classtannic_1_1Devices_a5f0a34f7a26f78f7328c3af3a188528e} 
+\index{tannic::Devices@{tannic::Devices}!count@{count}}
+\index{count@{count}!tannic::Devices@{tannic::Devices}}
+\doxysubsubsection{\texorpdfstring{count()}{count()}}
+{\footnotesize\ttfamily static int tannic\+::\+Devices\+::count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classtannic_1_1Devices_a08e873a9357bba7615b7cd1f041d257c}\label{classtannic_1_1Devices_a08e873a9357bba7615b7cd1f041d257c} 
+\index{tannic::Devices@{tannic::Devices}!instance@{instance}}
+\index{instance@{instance}!tannic::Devices@{tannic::Devices}}
+\doxysubsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \& tannic\+::\+Devices\+::instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\Hypertarget{classtannic_1_1Devices_a91648e0b5043f0367b4515cb6d7db610}\label{classtannic_1_1Devices_a91648e0b5043f0367b4515cb6d7db610} 
+\index{tannic::Devices@{tannic::Devices}!operator=@{operator=}}
+\index{operator=@{operator=}!tannic::Devices@{tannic::Devices}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \& tannic\+::\+Devices\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\Hypertarget{classtannic_1_1Devices_a7067012a93a225b5c46fedd547ea1984}\label{classtannic_1_1Devices_a7067012a93a225b5c46fedd547ea1984} 
+\index{tannic::Devices@{tannic::Devices}!operator=@{operator=}}
+\index{operator=@{operator=}!tannic::Devices@{tannic::Devices}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \& tannic\+::\+Devices\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Devices}{Devices}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{resources_8hpp}{resources.\+hpp}}\end{DoxyCompactItemize}

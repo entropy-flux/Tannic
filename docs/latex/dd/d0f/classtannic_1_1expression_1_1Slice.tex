@@ -1,0 +1,390 @@
+\doxysection{tannic\+::expression\+::Slice\texorpdfstring{$<$}{<} Source, Indexes \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1expression_1_1Slice}{}\label{classtannic_1_1expression_1_1Slice}\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+
+
+Expression template representing a tensor slice or subview.  
+
+
+
+
+{\ttfamily \#include $<$slices.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a0c907b6d34d55ff79e61061e839cda11}{Slice}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}} $>$\+::\+Reference source, std\+::tuple$<$ Indexes... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{indexes}})
+\begin{DoxyCompactList}\small\item\em Create a slice from a source expression and an index tuple. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Integral Index$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_aaf1d76bb5095e8708b0e4beffc051b97}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Index}} index) \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}
+\begin{DoxyCompactList}\small\item\em Index into the slice with an integer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a4fbfd61857c6b31365fc5875e834899c}{operator\mbox{[}$\,$\mbox{]}}} (\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}} \mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{range}}) \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}
+\begin{DoxyCompactList}\small\item\em Index into the slice with a range. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{typename}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{T}} $>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{void}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1363daf8cf6b563ec0f640ee58e1a6dc}{operator=}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{T}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{value}})
+\begin{DoxyCompactList}\small\item\em Assigns a scalar value to all elements in the slice. \end{DoxyCompactList}\item 
+{\footnotesize template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{typename}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{T}} $>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{bool}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a9e653d07b5d7008251b318f05552911a}{operator==}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{T}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{value}}) \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}
+\begin{DoxyCompactList}\small\item\em Compares a scalar value to the element in a rank-\/0 slice. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_afa2df373f05dc00ef730ba208f118cf0}{dtype}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the runtime data type of elements in this slice. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a9bb289f510cb0da3d400293a265bd800}{rank}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the number of dimensions in this slice. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a22354e0b8625915115eb4e25a6521773}{shape}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the shape (size in each dimension) of this slice. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_ae404ecb0e0b72a642499a387ec2e708b}{strides}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the memory strides for this slice. \end{DoxyCompactList}\item 
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}{offset}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the byte offset from the source tensor\textquotesingle{}s data pointer. \end{DoxyCompactList}\item 
+std\+::byte \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a5d11cdc8bf08fd7cbfa7784dec7dadaa}{bytes}} ()
+\item 
+std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_aa7d760dcd1a9f9e401308400f360427f}{bytes}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{forward}} () const
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{void}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff}{assign}} (std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{value}}, std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}{offset}})
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{bool}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a}{compare}} (std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{value}}, std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}{offset}}) \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$Expression Source, class... Indexes$>$\newline
+class tannic\+::expression\+::\+Slice$<$ Source, Indexes $>$}
+Expression template representing a tensor slice or subview. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Source} & The expression type from which the slice is taken (e.\+g., a \doxylink{classtannic_1_1Tensor}{Tensor}). \\
+\hline
+{\em Indexes} & Variadic list of index types (integer or {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}).\\
+\hline
+\end{DoxyTemplParams}
+A {\ttfamily \doxylink{classtannic_1_1expression_1_1Slice}{Slice}} stores\+:
+\begin{DoxyItemize}
+\item The source expression reference.
+\item A tuple of index specifications.
+\item The computed shape, strides, and offset for the slice.
+\end{DoxyItemize}
+
+It supports further slicing through {\ttfamily operator\mbox{[}\mbox{]}}, element assignment, and scalar comparison for rank-\/0 slices.
+
+This class does not own the underlying data; it merely refers to a subset of it. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Slice_a0c907b6d34d55ff79e61061e839cda11}\label{classtannic_1_1expression_1_1Slice_a0c907b6d34d55ff79e61061e839cda11} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!Slice@{Slice}}
+\index{Slice@{Slice}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{Slice()}{Slice()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\+::\+Slice (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}} $>$\+::\+Reference}]{source,  }\item[{std\+::tuple$<$ Indexes... $>$}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Create a slice from a source expression and an index tuple. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Reference to the source expression. \\
+\hline
+{\em indexes} & Tuple containing integer indices or ranges.\\
+\hline
+\end{DoxyParams}
+The constructor computes the resulting shape, strides, and byte offset based on the given indexes. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff}\label{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!assign@{assign}}
+\index{assign@{assign}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{void}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\+::assign (\begin{DoxyParamCaption}\item[{std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}} \texorpdfstring{$\ast$}{*}}]{value,  }\item[{std\+::ptrdiff\+\_\+t}]{offset }\end{DoxyParamCaption})}
+
+\Hypertarget{classtannic_1_1expression_1_1Slice_a5d11cdc8bf08fd7cbfa7784dec7dadaa}\label{classtannic_1_1expression_1_1Slice_a5d11cdc8bf08fd7cbfa7784dec7dadaa} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!bytes@{bytes}}
+\index{bytes@{bytes}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{bytes()}{bytes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+std\+::byte \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\+::bytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Slice_aa7d760dcd1a9f9e401308400f360427f}\label{classtannic_1_1expression_1_1Slice_aa7d760dcd1a9f9e401308400f360427f} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!bytes@{bytes}}
+\index{bytes@{bytes}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{bytes()}{bytes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}  \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\+::bytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a}\label{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!compare@{compare}}
+\index{compare@{compare}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{compare()}{compare()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{bool}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\+::compare (\begin{DoxyParamCaption}\item[{std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}} \texorpdfstring{$\ast$}{*}}]{value,  }\item[{std\+::ptrdiff\+\_\+t}]{offset }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classtannic_1_1expression_1_1Slice_afa2df373f05dc00ef730ba208f118cf0}\label{classtannic_1_1expression_1_1Slice_afa2df373f05dc00ef730ba208f118cf0} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the runtime data type of elements in this slice. 
+
+The data type ({\ttfamily dtype\+\_\+}) is determined from the source expression or tensor at construction and remains constant for the lifetime of the slice.
+
+\begin{DoxyReturn}{Returns}
+The data type of the elements as a {\ttfamily type} enum.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This is a runtime property, not a compile-\/time type. 
+\end{DoxyNote}
+\Hypertarget{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}\label{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ Source, Indexes $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251}\label{classtannic_1_1expression_1_1Slice_a1fb492ca0fdc06c3730561a30c66e251} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the byte offset from the source tensor\textquotesingle{}s data pointer. 
+
+The offset is calculated as\+:
+\begin{DoxyEnumerate}
+\item Initialized to 0
+\item For each index\+:
+\begin{DoxyItemize}
+\item If it\textquotesingle{}s a range\+:
+\begin{DoxyItemize}
+\item Add {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f17531758183f6ce80}{range.\+start} \texorpdfstring{$\ast$}{*} source\+\_\+stride \texorpdfstring{$\ast$}{*} element\+\_\+size} to offset
+\end{DoxyItemize}
+\item If it\textquotesingle{}s an integer index\+:
+\begin{DoxyItemize}
+\item Add {\ttfamily index \texorpdfstring{$\ast$}{*} source\+\_\+stride \texorpdfstring{$\ast$}{*} element\+\_\+size} to offset
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item The offset is relative to the source tensor\textquotesingle{}s data pointer
+\end{DoxyEnumerate}
+
+This represents the starting memory position of the slice within the original tensor\textquotesingle{}s storage.
+
+\begin{DoxyReturn}{Returns}
+The byte offset from the source tensor\textquotesingle{}s data pointer. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1expression_1_1Slice_a1363daf8cf6b563ec0f640ee58e1a6dc}\label{classtannic_1_1expression_1_1Slice_a1363daf8cf6b563ec0f640ee58e1a6dc} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{typename}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{T}} $>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{void}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{\+::operator}}= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{T}}}]{value }\end{DoxyParamCaption})}
+
+
+
+Assigns a scalar value to all elements in the slice. 
+
+This method writes the given value into every element referenced by the slice. If the slice has rank 0 (scalar), it directly assigns the value to the single element. If the slice has higher rank, it iterates over all elements in the slice and assigns the value.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & A type convertible to the underlying element type of the tensor. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The scalar value to assign.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The value is cast to the slice\textquotesingle{}s runtime {\ttfamily dtype\+\_\+} before assignment. 
+
+This operation modifies the underlying tensor/expression in-\/place.
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{tensor}}(\{3,\ 3\});\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{tensor}}.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{tensor}}[\{0,2\}][1]\ =\ 42;\ \textcolor{comment}{//\ assign\ 42\ to\ elements\ in\ rows\ 0..1,\ column\ 1}}
+
+\end{DoxyCode}
+ \Hypertarget{classtannic_1_1expression_1_1Slice_a9e653d07b5d7008251b318f05552911a}\label{classtannic_1_1expression_1_1Slice_a9e653d07b5d7008251b318f05552911a} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{typename}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{T}} $>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{bool}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{\+::operator}}== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{T}}}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Compares a scalar value to the element in a rank-\/0 slice. 
+
+This method checks if the scalar stored in the slice equals the given value. It only works for rank-\/0 (scalar) slices; otherwise, an assertion will fail.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & A type convertible to the underlying element type of the tensor. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The scalar value to compare against. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the value matches the element in the slice, {\ttfamily false} otherwise.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Will assert if called on a slice with {\ttfamily \doxylink{classtannic_1_1expression_1_1Slice_a9bb289f510cb0da3d400293a265bd800}{rank()} \texorpdfstring{$>$}{>} 0}.
+\end{DoxyWarning}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{tensor}}[1][2]\ ==\ 5)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Element\ at\ (1,\ 2)\ is\ equal\ to\ 5}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{tensor}}[1,1]\ ==\ 3)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Element\ at\ (1,1)\ is\ equal\ to\ 3}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \Hypertarget{classtannic_1_1expression_1_1Slice_aaf1d76bb5095e8708b0e4beffc051b97}\label{classtannic_1_1expression_1_1Slice_aaf1d76bb5095e8708b0e4beffc051b97} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+template$<$Integral Index$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{\+::operator}}\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Index}}}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Index into the slice with an integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index into the current slice\textquotesingle{}s first dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new {\ttfamily \doxylink{classtannic_1_1expression_1_1Slice}{Slice}} object with the updated index tuple. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1expression_1_1Slice_a4fbfd61857c6b31365fc5875e834899c}\label{classtannic_1_1expression_1_1Slice_a4fbfd61857c6b31365fc5875e834899c} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{\+::operator}}\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}}}]{range }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Index into the slice with a range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em range} & The range to select from the current slice\textquotesingle{}s first dimension. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new {\ttfamily \doxylink{classtannic_1_1expression_1_1Slice}{Slice}} object with the updated index tuple. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1expression_1_1Slice_a9bb289f510cb0da3d400293a265bd800}\label{classtannic_1_1expression_1_1Slice_a9bb289f510cb0da3d400293a265bd800} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!rank@{rank}}
+\index{rank@{rank}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{rank()}{rank()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\+::rank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the number of dimensions in this slice. 
+
+The rank is computed after applying all indexing operations (ranges and/or integer indices) to the source tensor. Integral index removes the corresponding dimension from the rank while range based slices may preserve it.
+
+\begin{DoxyReturn}{Returns}
+The rank (number of dimensions) of the slice.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Scalar slices have rank 0. 
+\end{DoxyNote}
+\Hypertarget{classtannic_1_1expression_1_1Slice_a22354e0b8625915115eb4e25a6521773}\label{classtannic_1_1expression_1_1Slice_a22354e0b8625915115eb4e25a6521773} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the shape (size in each dimension) of this slice. 
+
+The shape is derived from the source tensor after applying the given indexes according to these rules\+:
+\begin{DoxyEnumerate}
+\item For each index in the index tuple\+:
+\begin{DoxyItemize}
+\item If it\textquotesingle{}s a range ({\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}})\+:
+\begin{DoxyItemize}
+\item The dimension size becomes {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range_ab25842dedc9b4f9987153cd0b4750872}{range.\+stop} -\/ \doxylink{structtannic_1_1indexing_1_1Range_aa31ebd72934a95f17531758183f6ce80}{range.\+start}}
+\item This dimension is preserved in the output shape
+\end{DoxyItemize}
+\item If it\textquotesingle{}s an integer index\+:
+\begin{DoxyItemize}
+\item The dimension is eliminated (not included in output shape)
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item Any remaining dimensions from the source tensor (after processing all indices) are preserved with their original sizes
+\end{DoxyEnumerate}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{X}}(\{4,3,2\});\ \ \textcolor{comment}{//\ shape\ [4,3,2]}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{slice}}\ =\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{X}}[\mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{range}}(1,3)][1];\ }
+\DoxyCodeLine{\textcolor{comment}{//\ Resulting\ shape:\ [2,\ 2]\ (from\ range(1,3)\ and\ preserving\ last\ dimension)}}
+
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the {\ttfamily \doxylink{classtannic_1_1Shape}{Shape}} object describing this slice. 
+\end{DoxyReturn}
+\Hypertarget{classtannic_1_1expression_1_1Slice_ae404ecb0e0b72a642499a387ec2e708b}\label{classtannic_1_1expression_1_1Slice_ae404ecb0e0b72a642499a387ec2e708b} 
+\index{tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::expression::Slice$<$ Source, Indexes $>$@{tannic::expression::Slice$<$ Source, Indexes $>$}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily template$<$Expression Source, class... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{tannic\+::expression\+::\+Slice}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Source}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{Indexes}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the memory strides for this slice. 
+
+\doxylink{classtannic_1_1Strides}{Strides} represent the number of elements to skip in each dimension to move to the next element along that axis. They are computed as\+:
+\begin{DoxyEnumerate}
+\item For each index in the tuple\+:
+\begin{DoxyItemize}
+\item If it\textquotesingle{}s a range\+:
+\begin{DoxyItemize}
+\item The stride for this dimension is copied from the source tensor
+\end{DoxyItemize}
+\item If it\textquotesingle{}s an integer index\+:
+\begin{DoxyItemize}
+\item No stride is recorded (dimension is eliminated)
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item Remaining dimensions keep their original strides
+\end{DoxyEnumerate}
+
+The strides are always computed in elements (not bytes) and are relative to the original tensor\textquotesingle{}s memory layout.
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the {\ttfamily \doxylink{classtannic_1_1Strides}{Strides}} object for this slice. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{slices_8hpp}{slices.\+hpp}}\item 
+include/tannic/\mbox{\hyperlink{tensor_8hpp}{tensor.\+hpp}}\end{DoxyCompactItemize}

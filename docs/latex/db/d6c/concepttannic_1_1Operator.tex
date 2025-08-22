@@ -1,0 +1,41 @@
+\doxysection{tannic\+::Operator Concept Reference}
+\hypertarget{concepttannic_1_1Operator}{}\label{concepttannic_1_1Operator}\index{tannic::Operator@{tannic::Operator}}
+
+
+Concept defining requirements for tensor operation types.  
+
+
+
+
+{\ttfamily \#include $<$concepts.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Operator}{tannic::Operator}}\ =\ \ \textcolor{keyword}{requires}(T\ operation,\ \textcolor{keyword}{const}\ Shape\&\ first,\ \textcolor{keyword}{const}\ Shape\&\ second)\ \{}
+\DoxyCodeLine{\ \ \ \ \{\ T::promote(type\{\},\ type\{\})\ \}\ -\/>\ std::same\_as<type>;}
+\DoxyCodeLine{\ \ \ \ \{\ T::broadcast(first,\ second)\ \}\ -\/>\ std::same\_as<Shape>;\ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+Concept defining requirements for tensor operation types. 
+
+This concept specifies the interface that all tensor operators must implement\+:
+\begin{DoxyItemize}
+\item Type promotion rules between operands
+\item Shape broadcasting behavior
+\end{DoxyItemize}
+
+A type satisfies the Operator concept if it provides\+:
+\begin{DoxyEnumerate}
+\item A static {\ttfamily promote} method that determines the result type from two input types
+\item A static {\ttfamily broadcast} method that computes the output shape from two input shapes
+\end{DoxyEnumerate}
+
+\begin{DoxySeeAlso}{See also}
+Operations.\+hpp (tensor operations) 
+\end{DoxySeeAlso}

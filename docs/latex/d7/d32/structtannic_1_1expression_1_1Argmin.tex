@@ -1,0 +1,83 @@
+\doxysection{tannic\+::expression\+::Argmin Struct Reference}
+\hypertarget{structtannic_1_1expression_1_1Argmin}{}\label{structtannic_1_1expression_1_1Argmin}\index{tannic::expression::Argmin@{tannic::expression::Argmin}}
+
+
+Finds the {\bfseries{indexes of minimum values}} along an axis.  
+
+
+
+
+{\ttfamily \#include $<$reductions.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{constexpr}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{type}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_ab47d8cc3c5e2090f1ca2a07c71954070}{reduce}} (\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{type}} dtype) \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{const}}
+\item 
+\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a8bd4f399aa919a343ccc815fba4568e8}{reduce}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{const}} \&shape) \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{const}}
+\item 
+void \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{int}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e}{axis}}
+\item 
+\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{bool}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a2c2eb8c098052a5cd70a6b755ec2dddf}{keepdim}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Finds the {\bfseries{indexes of minimum values}} along an axis. 
+
+Identical to {\ttfamily \doxylink{structtannic_1_1expression_1_1Argmax}{Argmax}} but for minima. Output dtype is {\ttfamily int64}. Use {\ttfamily keepdim=true} to maintain shape for broadcasting.\hypertarget{structtannic_1_1expression_1_1Argmin_autotoc_md33}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{structtannic_1_1expression_1_1Argmin_autotoc_md33}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{X}}\ =\ \{\{3,\ 1,\ 4\},\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 5,\ 9\}\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{Y}}\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3}{argmin}}(\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{X}},\ 1);}
+\DoxyCodeLine{\textcolor{comment}{//\ Y\ =\ [1,\ 0]\ \ //\ Min\ indexes\ per\ row}}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}\label{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819} 
+\index{tannic::expression::Argmin@{tannic::expression::Argmin}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Argmin@{tannic::expression::Argmin}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily void tannic\+::expression\+::\+Argmin\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{structtannic_1_1expression_1_1Argmin_a8bd4f399aa919a343ccc815fba4568e8}\label{structtannic_1_1expression_1_1Argmin_a8bd4f399aa919a343ccc815fba4568e8} 
+\index{tannic::expression::Argmin@{tannic::expression::Argmin}!reduce@{reduce}}
+\index{reduce@{reduce}!tannic::expression::Argmin@{tannic::expression::Argmin}}
+\doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::expression\+::\+Argmin\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{const}} \&}]{shape }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structtannic_1_1expression_1_1Argmin_ab47d8cc3c5e2090f1ca2a07c71954070}\label{structtannic_1_1expression_1_1Argmin_ab47d8cc3c5e2090f1ca2a07c71954070} 
+\index{tannic::expression::Argmin@{tannic::expression::Argmin}!reduce@{reduce}}
+\index{reduce@{reduce}!tannic::expression::Argmin@{tannic::expression::Argmin}}
+\doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{constexpr}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{type}} tannic\+::expression\+::\+Argmin\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{type}}}]{dtype }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e}\label{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e779343814190e} 
+\index{tannic::expression::Argmin@{tannic::expression::Argmin}!axis@{axis}}
+\index{axis@{axis}!tannic::expression::Argmin@{tannic::expression::Argmin}}
+\doxysubsubsection{\texorpdfstring{axis}{axis}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{int}} tannic\+::expression\+::\+Argmin\+::axis}
+
+\Hypertarget{structtannic_1_1expression_1_1Argmin_a2c2eb8c098052a5cd70a6b755ec2dddf}\label{structtannic_1_1expression_1_1Argmin_a2c2eb8c098052a5cd70a6b755ec2dddf} 
+\index{tannic::expression::Argmin@{tannic::expression::Argmin}!keepdim@{keepdim}}
+\index{keepdim@{keepdim}!tannic::expression::Argmin@{tannic::expression::Argmin}}
+\doxysubsubsection{\texorpdfstring{keepdim}{keepdim}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}{bool}} tannic\+::expression\+::\+Argmin\+::keepdim}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{reductions_8hpp}{reductions.\+hpp}}\end{DoxyCompactItemize}

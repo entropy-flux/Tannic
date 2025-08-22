@@ -1,0 +1,151 @@
+\doxysection{convolutions.\+hpp}
+\hypertarget{convolutions_8hpp_source}{}\label{convolutions_8hpp_source}\index{include/tannic/convolutions.hpp@{include/tannic/convolutions.hpp}}
+\mbox{\hyperlink{convolutions_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2025\ Eric\ Hermosis}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ CONVOLUTIONS\_HPP}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ CONVOLUTIONS\_HPP\ }}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{concepts_8hpp}{concepts.hpp}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{types_8hpp}{types.hpp}}"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{traits_8hpp}{traits.hpp}}"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shape_8hpp}{shape.hpp}}"{}}\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tensor_8hpp}{tensor.hpp}}"{}}\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exceptions_8hpp}{exceptions.hpp}}"{}}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{transformations_8hpp}{transformations.hpp}}"{}}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{class\ }Tensor;\ \ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{namespace\ }transformation\ \{}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{template}<auto\ Dimension>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution}{Convolution}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00063\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution}{Convolution}}<1>\ \{}
+\DoxyCodeLine{00064\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00065\ \ \ \ \ std::array<std::size\_t,\ 1>\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_011_01_4_adb8a62958fec5bac0820aae5109f5987}{strides}};\ \ }
+\DoxyCodeLine{00066\ \ \ \ \ std::array<std::size\_t,\ 1>\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_011_01_4_ab88eb307ab7a74858de78c9ae3687a17}{padding}};\ \ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_011_01_4_a03c30578dade6978b3dc7f6ecf6f78a3}{promote}}(type\ signal,\ type\ kernel)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (signal\ !=\ kernel)}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Dtypes\ must\ match\ in\ convolutions."{}});}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ signal;}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_011_01_4_ad5872c5c15c073f15e4ec59de85eae48}{transform}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ signal,\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ kernel)\textcolor{keyword}{\ const\ }\{\ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (signal.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}()\ !=\ 3\ ||\ kernel.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}()\ !=\ 3)}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Only\ rank\ 3\ tensors\ supported\ for\ Conv1D."{}});\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ std::size\_t\ N\ \ \ \ \ =\ signal[0];\ \ \ \ \ \textcolor{comment}{//\ Batch\ size}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ std::size\_t\ C\_in\ \ =\ signal[1];\ \ \ \ \ \textcolor{comment}{//\ Input\ channels}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ std::size\_t\ L\_in\ \ =\ signal[2];\ \ \ \ \ \textcolor{comment}{//\ Input\ length}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ std::size\_t\ C\_out\ =\ kernel[0];\ \ \ \ \ \textcolor{comment}{//\ Output\ channels}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ std::size\_t\ K\_in\ \ =\ kernel[1];\ \ \ \ \ \textcolor{comment}{//\ Kernel\ input\ channels}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ std::size\_t\ K\_len\ =\ kernel[2];\ \ \ \ \ \textcolor{comment}{//\ Kernel\ length}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (C\_in\ !=\ K\_in)}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Input\ channels\ must\ match\ kernel\ channels."{}});}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ std::size\_t\ L\_out\ =\ (L\_in\ +\ 2\ *\ padding[0]\ -\/\ K\_len)\ /\ strides[0]\ +\ 1;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\{N,\ C\_out,\ L\_out\};}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_011_01_4_a00ffe5588dea57e15f7f1e6b0cd16ef3}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ signal,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ kernel,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ result)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00142\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution}{Convolution}}<2>\ \{}
+\DoxyCodeLine{00143\ \textcolor{keyword}{public}:\ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ std::array<std::size\_t,\ 2>\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_012_01_4_a7636108669bdb7b23671a42c9100e60b}{strides}};\ \ }
+\DoxyCodeLine{00145\ \ \ \ \ std::array<std::size\_t,\ 2>\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_012_01_4_a3ab1c23d23e2b426592ef2efb9ad5347}{padding}};\ \ }
+\DoxyCodeLine{00146\ \ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_012_01_4_a0b8e8ade261d5195daa46003c5de28e7}{promote}}(type\ signal,\ type\ kernel)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (signal\ !=\ kernel)}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Dtypes\ must\ match\ in\ convolutions."{}});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ signal;}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_012_01_4_ae686f8d65be7f679118944215c4fb0c7}{transform}}(\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ signal,\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ kernel)\textcolor{keyword}{\ const\ }\{\ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (signal.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}()\ !=\ 4\ |\ kernel.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}()\ !=\ 4)\ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Only\ rank\ 4\ tensors\ supported."{}});\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ std::size\_t\ N\ \ \ \ \ =\ signal[0];\ \ \ \ \ \textcolor{comment}{//\ Batch\ size}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ std::size\_t\ C\_in\ \ =\ signal[1];\ \ \ \ \ \textcolor{comment}{//\ Input\ channels}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ std::size\_t\ H\_in\ \ =\ signal[2];\ \ \ \ \ \textcolor{comment}{//\ Input\ height}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ std::size\_t\ W\_in\ \ =\ signal[3];\ \ \ \ \ \textcolor{comment}{//\ Input\ width}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ std::size\_t\ C\_out\ =\ kernel[0];\ \ \ \ \ \textcolor{comment}{//\ Output\ channels}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ std::size\_t\ K\_in\ \ =\ kernel[1];\ \ \ \ \ \textcolor{comment}{//\ Kernel\ input\ channels}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ std::size\_t\ K\_h\ \ \ =\ kernel[2];\ \ \ \ \ \textcolor{comment}{//\ Kernel\ height}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ std::size\_t\ K\_w\ \ \ =\ kernel[3];\ \ \ \ \ \textcolor{comment}{//\ Kernel\ width}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (C\_in\ !=\ K\_in)}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Input\ channels\ must\ match\ kernel\ channels."{}});}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ std::size\_t\ H\_out\ =\ (H\_in\ +\ 2\ *\ padding[0]\ -\/\ K\_h)\ /\ strides[0]\ +\ 1;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ std::size\_t\ W\_out\ =\ (W\_in\ +\ 2\ *\ padding[1]\ -\/\ K\_w)\ /\ strides[1]\ +\ 1;}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\{N,\ C\_out,\ H\_out,\ W\_out\};}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_012_01_4_a8ab1bbe9fde298fc2082ca2c0d4c4ebf}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ signal,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ kernel,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ result)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00214\ \};}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00229\ \textcolor{keyword}{template}<auto\ Dimension,\ Expression\ Signal,\ Expression\ Kernel>}
+\DoxyCodeLine{00230\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1transformation_a1298ce7dc6434ea0905a4eec46f4f2c3}{convolve}}(Signal\&\&\ signal,\ Kernel\&\&\ kernel,\ std::size\_t\ strides,\ std::size\_t\ padding)\ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keywordflow}{if}\ (strides\ ==\ 0)\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Strides\ should\ be\ non\ zero."{}});}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{Transformation<Convolution<Dimension>}},\ Signal,\ Kernel>(}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \{\{strides\},\ \{padding\}\},\ }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ std::forward<Signal>(signal),\ }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ std::forward<Kernel>(kernel)}
+\DoxyCodeLine{00238\ \ \ \ \ );}
+\DoxyCodeLine{00239\ \}\ }
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00254\ \textcolor{keyword}{template}<auto\ Dimension,\ Expression\ Signal,\ Expression\ Kernel>}
+\DoxyCodeLine{00255\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1transformation_a1298ce7dc6434ea0905a4eec46f4f2c3}{convolve}}(Signal\&\&\ signal,\ Kernel\&\&\ kernel,\ std::array<std::size\_t,\ Dimension>\ strides,\ std::array<std::size\_t,\ Dimension>\ padding)\ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ i\ =\ 0;\ i\ <\ Dimension;\ ++i)\ \{}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strides[i]\ ==\ 0)\ }
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Strides\ should\ be\ non\ zero."{}});}
+\DoxyCodeLine{00259\ \ \ \ \ \}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1transformation_1_1Transformation}{Transformation<Convolution<Dimension>}},\ Signal,\ Kernel>(}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \{strides,\ padding\},\ }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ std::forward<Signal>(signal),\ }
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ std::forward<Kernel>(kernel)}
+\DoxyCodeLine{00265\ \ \ \ \ );}
+\DoxyCodeLine{00266\ \}\ }
+\DoxyCodeLine{00267\ \ }
+\DoxyCodeLine{00268\ \}\ \textcolor{comment}{//\ namespace\ transformation}}
+\DoxyCodeLine{00269\ \ }
+\DoxyCodeLine{00270\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1transformation_a1298ce7dc6434ea0905a4eec46f4f2c3}{transformation::convolve}};\ }
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00272\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONVOLUTIONS\_HPP}}
+
+\end{DoxyCode}

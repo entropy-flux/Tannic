@@ -1,0 +1,158 @@
+\doxysection{tannic\+::function\+::Function\texorpdfstring{$<$}{<} Functor, Argument \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1function_1_1Function}{}\label{classtannic_1_1function_1_1Function}\index{tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}}
+
+
+Expression template for mathematical function operations.  
+
+
+
+
+{\ttfamily \#include $<$functions.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a13e99f863007bf2e19e9e624ab97c049}{Function}} (Functor \mbox{\hyperlink{classtannic_1_1function_1_1Function_a8442b2458ca0484f44fd2661ca82a194}{functor}}, \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1function_1_1Function_a5bb91bcbacc07c73270b61669e1f9dc5}{argument}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classtannic_1_1function_1_1Function}{Function} expression. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{type}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a56566c75ae588b08e6df418b92d7213c}{dtype}} () \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the data type of the result. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{const}} \& \mbox{\hyperlink{classtannic_1_1function_1_1Function_a10e72beb9e126384bba4d0e7307b188f}{shape}} () \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the shape of the result. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{const}} \& \mbox{\hyperlink{classtannic_1_1function_1_1Function_ad1c956735cdbe1129b2222e80cd5d929}{strides}} () \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the strides of the result. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{auto}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_ab325ad3f1e53692e3172ab1a77edabef}{offset}} () \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{const}}
+\begin{DoxyCompactList}\small\item\em Returns the offset of the result. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{forward}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Functor \mbox{\hyperlink{classtannic_1_1function_1_1Function_a8442b2458ca0484f44fd2661ca82a194}{functor}}
+\item 
+\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1function_1_1Function_a5bb91bcbacc07c73270b61669e1f9dc5}{argument}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$Functional Functor, Expression Argument$>$\newline
+class tannic\+::function\+::\+Function$<$ Functor, Argument $>$}
+Expression template for mathematical function operations. 
+
+Represents a lazily evaluated unary function that takes a functor as argument and maps it to an argument. The actual computation is deferred until {\ttfamily \doxylink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{forward()}} is called.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Functor} & A mathematical functor satisfying the Functional concept \\
+\hline
+{\em Argument} & An expression type satisfying the {\ttfamily Expression} concept \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1function_1_1Function_a13e99f863007bf2e19e9e624ab97c049}\label{classtannic_1_1function_1_1Function_a13e99f863007bf2e19e9e624ab97c049} 
+\index{tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}!Function@{Function}}
+\index{Function@{Function}!tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{Function()}{Function()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Expression Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ Functor, \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}} $>$\+::\+Function (\begin{DoxyParamCaption}\item[{Functor}]{functor,  }\item[{\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}} $>$\+::\+Reference}]{argument }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Constructs a \doxylink{classtannic_1_1function_1_1Function}{Function} expression. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em functor} & The functor (e.\+g., \doxylink{structtannic_1_1function_1_1Log}{Log}, \doxylink{structtannic_1_1function_1_1Exp}{Exp}) \\
+\hline
+{\em argument} & The input tensor expression \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1function_1_1Function_a56566c75ae588b08e6df418b92d7213c}\label{classtannic_1_1function_1_1Function_a56566c75ae588b08e6df418b92d7213c} 
+\index{tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Expression Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{constexpr}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{type}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ Functor, \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the data type of the result. 
+
+\begin{DoxyReturn}{Returns}
+The data type of the underlying argument.
+\end{DoxyReturn}
+Functors in this expression template system are type-\/preserving — applying them element-\/wise does not change the scalar type (e.\+g., applying {\ttfamily exp()} to a {\ttfamily float32} tensor produces {\ttfamily float32} output). Therefore, we can directly query and return the argument\textquotesingle{}s dtype. \Hypertarget{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}\label{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455} 
+\index{tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Expression Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ Functor, Argument $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classtannic_1_1function_1_1Function_ab325ad3f1e53692e3172ab1a77edabef}\label{classtannic_1_1function_1_1Function_ab325ad3f1e53692e3172ab1a77edabef} 
+\index{tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Expression Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{auto}} \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ Functor, \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the offset of the result. 
+
+\begin{DoxyReturn}{Returns}
+The offset (in elements) into the underlying tensor storage.
+\end{DoxyReturn}
+Since element-\/wise functors do not change the memory location of the data, the offset is taken directly from the argument. \Hypertarget{classtannic_1_1function_1_1Function_a10e72beb9e126384bba4d0e7307b188f}\label{classtannic_1_1function_1_1Function_a10e72beb9e126384bba4d0e7307b188f} 
+\index{tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Expression Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{const}}  \& \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ Functor, \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the shape of the result. 
+
+\begin{DoxyReturn}{Returns}
+A const reference to the shape of the underlying argument.
+\end{DoxyReturn}
+The shape is returned as {\ttfamily const\&} to avoid copying the shape object, and because element-\/wise functors do not alter tensor dimensions. \Hypertarget{classtannic_1_1function_1_1Function_ad1c956735cdbe1129b2222e80cd5d929}\label{classtannic_1_1function_1_1Function_ad1c956735cdbe1129b2222e80cd5d929} 
+\index{tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Expression Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{const}}  \& \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ Functor, \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the strides of the result. 
+
+\begin{DoxyReturn}{Returns}
+A const reference to the strides of the underlying argument.
+\end{DoxyReturn}
+\doxylink{classtannic_1_1Strides}{Strides} describe memory layout, and for pure element-\/wise operations they remain identical to those of the input tensor. Returning {\ttfamily const\&} avoids copying and preserves the original stride information. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classtannic_1_1function_1_1Function_a5bb91bcbacc07c73270b61669e1f9dc5}\label{classtannic_1_1function_1_1Function_a5bb91bcbacc07c73270b61669e1f9dc5} 
+\index{tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}!argument@{argument}}
+\index{argument@{argument}!tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{argument}{argument}}
+{\footnotesize\ttfamily template$<$Functional Functor, Expression Argument$>$ \\
+\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$\mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}}$>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ Functor, \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}} $>$\+::argument}
+
+\Hypertarget{classtannic_1_1function_1_1Function_a8442b2458ca0484f44fd2661ca82a194}\label{classtannic_1_1function_1_1Function_a8442b2458ca0484f44fd2661ca82a194} 
+\index{tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}!functor@{functor}}
+\index{functor@{functor}!tannic::function::Function$<$ Functor, Argument $>$@{tannic::function::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{functor}{functor}}
+{\footnotesize\ttfamily template$<$Functional Functor, Expression Argument$>$ \\
+Functor \mbox{\hyperlink{classtannic_1_1function_1_1Function}{tannic\+::function\+::\+Function}}$<$ Functor, \mbox{\hyperlink{classtannic_1_1function_1_1Function_a4fadaef6215872de7b9ad0aa15071455}{Argument}} $>$\+::functor}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{functions_8hpp}{functions.\+hpp}}\end{DoxyCompactItemize}
