@@ -99,27 +99,48 @@ $(document).ready(function(){initNavTree('db/d2b/classtannic_1_1transformation_1
 </div><!--header-->
 <div class="contents">
 
+<p>Expression template for 2D convolution operations.  
+ <a href="../../db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d4/de2/Convolutions_8hpp_source.html">Convolutions.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0b8e8ade261d5195daa46003c5de28e7"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html#a0b8e8ade261d5195daa46003c5de28e7">promote</a> (type signal, type kernel) const</td></tr>
+<tr class="memdesc:a0b8e8ade261d5195daa46003c5de28e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type promotion for 2D convolution.  <br /></td></tr>
 <tr class="separator:a0b8e8ade261d5195daa46003c5de28e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae686f8d65be7f679118944215c4fb0c7"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html#ae686f8d65be7f679118944215c4fb0c7">transform</a> (<a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;signal, <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;kernel) const</td></tr>
+<tr class="memdesc:ae686f8d65be7f679118944215c4fb0c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes output shape for 2D convolution.  <br /></td></tr>
 <tr class="separator:ae686f8d65be7f679118944215c4fb0c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e6b847077ceaf110013321169ee4125"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html#a9e6b847077ceaf110013321169ee4125">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;) const</td></tr>
-<tr class="separator:a9e6b847077ceaf110013321169ee4125"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab1bbe9fde298fc2082ca2c0d4c4ebf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html#a8ab1bbe9fde298fc2082ca2c0d4c4ebf">forward</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;signal, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;kernel, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;result) const</td></tr>
+<tr class="memdesc:a8ab1bbe9fde298fc2082ca2c0d4c4ebf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the forward pass of 2D convolution.  <br /></td></tr>
+<tr class="separator:a8ab1bbe9fde298fc2082ca2c0d4c4ebf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a7636108669bdb7b23671a42c9100e60b"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::size_t, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html#a7636108669bdb7b23671a42c9100e60b">strides</a></td></tr>
+<tr class="memdesc:a7636108669bdb7b23671a42c9100e60b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stride values for height and width dimensions.  <br /></td></tr>
 <tr class="separator:a7636108669bdb7b23671a42c9100e60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ab1c23d23e2b426592ef2efb9ad5347"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::size_t, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html#a3ab1c23d23e2b426592ef2efb9ad5347">padding</a></td></tr>
+<tr class="memdesc:a3ab1c23d23e2b426592ef2efb9ad5347"><td class="mdescLeft">&#160;</td><td class="mdescRight">Padding values for height and width dimensions.  <br /></td></tr>
 <tr class="separator:a3ab1c23d23e2b426592ef2efb9ad5347"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9e6b847077ceaf110013321169ee4125" name="a9e6b847077ceaf110013321169ee4125"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e6b847077ceaf110013321169ee4125">&#9670;&#160;</a></span>forward()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Expression template for 2D convolution operations. </p>
+<p>Implements 2D convolution with:</p><ul>
+<li>Input and kernel dtype validation</li>
+<li>Automatic output shape calculation</li>
+<li>Support for strides and padding in both spatial dimensions</li>
+</ul>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Dimension</td><td>Template parameter fixed to 2 for 2D convolution </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8ab1bbe9fde298fc2082ca2c0d4c4ebf" name="a8ab1bbe9fde298fc2082ca2c0d4c4ebf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ab1bbe9fde298fc2082ca2c0d4c4ebf">&#9670;&#160;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -128,19 +149,19 @@ Public Attributes</h2></td></tr>
           <td class="memname">void <a class="el" href="../../d9/d3b/classtannic_1_1transformation_1_1Convolution.html">tannic::transformation::Convolution</a>&lt; 2 &gt;::forward </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>signal</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>kernel</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -149,6 +170,16 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Performs the forward pass of 2D convolution. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signal</td><td>Input signal tensor </td></tr>
+    <tr><td class="paramname">kernel</td><td><a class="el" href="../../d9/d3b/classtannic_1_1transformation_1_1Convolution.html">Convolution</a> kernel tensor </td></tr>
+    <tr><td class="paramname">result</td><td>Output tensor to store convolution result </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -186,6 +217,23 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Type promotion for 2D convolution. </p>
+<p>Requires both signal and kernel to have identical data types.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signal</td><td>Data type of the input signal tensor </td></tr>
+    <tr><td class="paramname">kernel</td><td>Data type of the kernel tensor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Data type (same as inputs) </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="../../d9/d87/classtannic_1_1Exception.html" title="A simple generic exception type for the Tannic Tensor Library.">Exception</a></td><td>if signal and kernel dtypes don't match </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ae686f8d65be7f679118944215c4fb0c7" name="ae686f8d65be7f679118944215c4fb0c7"></a>
@@ -222,6 +270,32 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Computes output shape for 2D convolution. </p>
+<p>Calculates the output shape based on input signal shape, kernel shape, strides, and padding using the standard 2D convolution formula.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signal</td><td><a class="el" href="../../db/da7/classtannic_1_1Shape.html" title="Represents the shape (dimensions) of an tensor-like expression.">Shape</a> of the input signal tensor (N, C_in, H_in, W_in) </td></tr>
+    <tr><td class="paramname">kernel</td><td><a class="el" href="../../db/da7/classtannic_1_1Shape.html" title="Represents the shape (dimensions) of an tensor-like expression.">Shape</a> of the kernel tensor (C_out, K_in, K_h, K_w) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Output shape after 2D convolution (N, C_out, H_out, W_out) </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="../../d9/d87/classtannic_1_1Exception.html" title="A simple generic exception type for the Tannic Tensor Library.">Exception</a></td><td>if input ranks are not 4 or channel dimensions don't match</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Expected input shapes:</p><ul>
+<li>Signal: [batch_size, input_channels, height, width]</li>
+<li>Kernel: [output_channels, input_channels, kernel_height, kernel_width]</li>
+<li>Output: [batch_size, output_channels, output_height, output_width]</li>
+</ul>
+<p>Output dimension formulas:</p><ul>
+<li>H_out = (H_in + 2*padding_h - K_h) / stride_h + 1</li>
+<li>W_out = (W_in + 2*padding_w - K_w) / stride_w + 1 </li>
+</ul>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -237,6 +311,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Padding values for height and width dimensions. </p>
+
 </div>
 </div>
 <a id="a7636108669bdb7b23671a42c9100e60b" name="a7636108669bdb7b23671a42c9100e60b"></a>
@@ -250,6 +326,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Stride values for height and width dimensions. </p>
 
 </div>
 </div>
