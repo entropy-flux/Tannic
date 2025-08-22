@@ -43,9 +43,9 @@ public:
     ,   device_fn(device) {}
 
     void operator()(Tensor const& input, Tensor& output) const {    
-        output.initialize(input.allocator());  
+        output.initialize(input.environment());  
 
-        if (std::holds_alternative<Host>(output.allocator())) {
+        if (std::holds_alternative<Host>(output.environment())) {
             tensor_t* src = get_tensor(input.node()->id);
             tensor_t* dst = get_tensor(output.node()->id);
             auto status = host_fn(src, dst);
@@ -55,7 +55,7 @@ public:
         }
 
         else {  
-            Device const& resource = std::get<Device>(output.allocator());
+            Device const& resource = std::get<Device>(output.environment());
             device_t dvc{resource.id(), resource.blocking() ? SYNC : ASYNC};
             tensor_t* src = get_tensor(input.node()->id);
             tensor_t* dst = get_tensor(output.node()->id);
@@ -71,14 +71,14 @@ public:
     void operator()(Tensor const& first, Tensor const& second, Tensor& output){   
         tensor_t* src0 = get_tensor(first.node()->id);
         tensor_t* src1 = get_tensor(second.node()->id);
-        allocator_t allocator;
-        auto status = resolve_allocator(&src0->allocator, &src1->allocator, &allocator);
+        environment_t environment;
+        auto status = resolve_environment(&src0->environment, &src1->environment, &environment);
         if(status != SUCCESS) {
-            throw std::runtime_error("Allocator issue!");
+            throw std::runtime_error("Environment issue!");
         }
-        switch (allocator.environment) {
+        switch (environment.environment) {
             case HOST: {
-                host_t resource = allocator.resource.host;
+                host_t resource = environment.resource.host;
                 output.initialize(Host());  
                 tensor_t* dst = get_tensor(output.node()->id);
                 auto status = host_fn(src0, src1, dst);    
@@ -89,7 +89,7 @@ public:
             } 
 
             case DEVICE: { 
-                device_t dvc = allocator.resource.device; 
+                device_t dvc = environment.resource.device; 
                 output.initialize(Device(dvc.id));  
                 stream_t stream = pop_stream(&dvc);
                 tensor_t* dst = get_tensor(output.node()->id);

@@ -56,7 +56,7 @@ struct tensor_t {
     struct shape_t shape;
     struct strides_t strides;  
     enum type dtype; 
-    struct allocator_t allocator;
+    struct environment_t environment;
 };    
 
 #ifdef __cplusplus

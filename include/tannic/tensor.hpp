@@ -75,7 +75,7 @@ namespace tannic {
  *
  * #### Memory:
  *  
- * - Host and Device (e.g., CUDA) allocations are supported using allocators like `Host()` or `Device()`.
+ * - Host and Device (e.g., CUDA) allocations are supported using environments like `Host()` or `Device()`.
  * - Memory must be explicitly allocated via `initialize(Host())` or initialize(Device())  but maybe removed in the future.
  *
  * #### Example:
@@ -430,9 +430,9 @@ public:
 
     /**
      * @brief Allocates the memory buffer for the tensor.
-     * @param allocator Memory allocator (defaults to `Host{}`).
+     * @param environment Memory environment (defaults to `Host{}`).
      */
-    void initialize(Allocator allocator = Host{}) const;
+    void initialize(Environment environment = Host{}) const;
    
     /**
      * @brief Returns a pointer to the beginning of the tensor's data (accounting for offset).
@@ -451,14 +451,14 @@ public:
     } 
 
     /**
-     * @brief Returns a reference to the allocator variant used to allocate this tensor's buffer.
-     * @return Allocator reference.
+     * @brief Returns a reference to the environment variant used to allocate this tensor's buffer.
+     * @return Environment reference.
      * @note Asserts if the tensor is not initialized.
      */
-    Allocator const& allocator() const {
+    Environment const& environment() const {
         if (!is_initialized())
             throw Exception("Cannot get resource of an initializer tensor."); 
-        return buffer_->allocator();
+        return buffer_->environment();
     }   
     /// @}
    

@@ -18,17 +18,17 @@ Node::Node(Tensor const& target) {
         strides.sizes[dim] = target.strides()[dim];
     }
  
-    const Allocator& allocator = target.allocator();
+    const Environment& environment = target.environment();
 
-    if (std::holds_alternative<Host>(allocator)) {
-        Host const& resource = std::get<Host>(allocator);
+    if (std::holds_alternative<Host>(environment)) {
+        Host const& resource = std::get<Host>(environment);
         node->target = new tensor_t {
             .address = (void*)(target.bytes()),
             .rank = target.rank(),
             .shape = shape,
             .strides = strides,
             .dtype = target.dtype(),
-            .allocator = {
+            .environment = {
                 .environment = HOST,
                 .resource = {
                     .host = host_t {.traits = resource.pinned() ? PINNED : PAGEABLE }
@@ -38,14 +38,14 @@ Node::Node(Tensor const& target) {
     } 
     
     else {
-        Device const& resource = std::get<Device>(allocator);
+        Device const& resource = std::get<Device>(environment);
         node->target = new tensor_t{
             .address = (void*)(target.bytes()),
             .rank = target.rank(),
             .shape = shape,
             .strides = strides,
             .dtype = target.dtype(),
-            .allocator = {
+            .environment = {
                 .environment = DEVICE,
                 .resource = {
                     .device = device_t {

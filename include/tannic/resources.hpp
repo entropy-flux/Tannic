@@ -61,7 +61,7 @@ class Host {
 public: 
 
     /**
-     * @brief Constructs a host memory allocator  
+     * @brief Constructs a host memory environment  
      * @post Defaults to pageable allocation strategy
      */
     Host() = default;
@@ -80,7 +80,7 @@ public:
      * @param address Base pointer of allocation
      * @param nbytes Size of original allocation (for accounting)
      * @pre address points to valid host allocation
-     * @post Memory is returned to host allocator
+     * @post Memory is returned to host environment
      */
     void deallocate(void* address, std::size_t nbytes) const; 
 
@@ -157,7 +157,7 @@ class Device {
 public: 
 
     /**
-     * @brief Constructs a device memory allocator
+     * @brief Constructs a device memory environment
      * @param id Target device identifier (0-based)
      * @param blocking Enable synchronous operation mode
      */
@@ -197,11 +197,11 @@ private:
  
 
 /**
- * @brief Memory allocator variant type.
+ * @brief Memory environment variant type.
  *
- * Type-safe union of host and device memory allocators. 
+ * Type-safe union of host and device memory environments. 
  */
-using Allocator = std::variant<Host, Device>;
+using Environment = std::variant<Host, Device>;
 
 } // namespace tannic
 

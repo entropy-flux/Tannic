@@ -56,17 +56,17 @@ device_t structure(Device const& resource) {
     };
 }
 
-allocator_t structure(Allocator const& allocator) {
+environment_t structure(Environment const& environment) {
     // OLD FUNCTION TO BE DELETED.
-    if (std::holds_alternative<Host>(allocator)) {
-        Host const& resource = std::get<Host>(allocator);
-        return allocator_t{
+    if (std::holds_alternative<Host>(environment)) {
+        Host const& resource = std::get<Host>(environment);
+        return environment_t{
             .environment = HOST,
             .resource = {.host = structure(resource)},
         };
     } else {
-        Device const& resource = std::get<Device>(allocator);
-        return allocator_t{
+        Device const& resource = std::get<Device>(environment);
+        return environment_t{
             .environment = DEVICE,
             .resource = {.device = structure(resource)},
         };
@@ -75,7 +75,7 @@ allocator_t structure(Allocator const& allocator) {
 
 tensor_t structure(Tensor const& tensor) {
     // OLD FUNCTION TO BE DELETED.
-    const Allocator& alloc = tensor.allocator();
+    const Environment& alloc = tensor.environment();
     shape_t shape{};
     strides_t strides{};
     for (int dimension = 0; dimension < tensor.rank(); ++dimension) {
@@ -91,7 +91,7 @@ tensor_t structure(Tensor const& tensor) {
             .shape = shape,
             .strides = strides,
             .dtype = tensor.dtype(),
-            .allocator = {
+            .environment = {
                 .environment = HOST,
                 .resource = {.host = structure(resource)},
             }
@@ -104,7 +104,7 @@ tensor_t structure(Tensor const& tensor) {
             .shape = shape,
             .strides = strides,
             .dtype = tensor.dtype(),
-            .allocator = {
+            .environment = {
                 .environment = DEVICE,
                 .resource = {.device = structure(resource)},
             }
@@ -112,7 +112,7 @@ tensor_t structure(Tensor const& tensor) {
     }
 }
 
-status resolve_allocator(const allocator_t* a, const allocator_t* b, allocator_t* result_out) {
+status resolve_environment(const environment_t* a, const environment_t* b, environment_t* result_out) {
     if (!a || !b || !result_out) {
         return NULL_ALLOCATOR;
     }

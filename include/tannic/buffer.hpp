@@ -28,13 +28,11 @@
  * 
  * - Manages allocation and ownership of raw memory
  * 
- * - Supports both host and device memory through allocators
+ * - Supports both host and device memory through environments
  * 
  * - Enforces move-only semantics for clear ownership
  * 
- * - Tracks memory region size and location
- * 
- * @see Allocator.hpp (supported allocators)
+ * - Tracks memory region size and location 
  */
  
 #include <cstddef>   
@@ -49,7 +47,7 @@ namespace tannic {
  * 
  * - Size tracking
  * 
- * - Allocator awareness  
+ * - Environment awareness  
  * 
  * - Move semantics for ownership transfer
  * 
@@ -59,11 +57,11 @@ class Buffer {
 public:   
 
     /**
-     * @brief Constructs a buffer with specified size and allocator
+     * @brief Constructs a buffer with specified size and environment
      * @param nbytes Size of memory region in bytes
-     * @param allocator Allocator to use (defaults to Host)
+     * @param environment Environment to use (defaults to Host)
      */
-    Buffer(std::size_t nbytes, Allocator allocator = Host{}); 
+    Buffer(std::size_t nbytes, Environment environment = Host{}); 
 
     // Non-copyable to maintain clear ownership
     Buffer(const Buffer&) = delete;
@@ -106,15 +104,15 @@ public:
     std::size_t nbytes() const; 
     
     /**
-     * @brief Gets the allocator used for this buffer
-     * @return Reference to the allocator instance
+     * @brief Gets the environment used for this buffer
+     * @return Reference to the environment instance
      */
-    Allocator const& allocator() const; 
+    Environment const& environment() const; 
 
 private:  
     void* address_ = nullptr;
     std::size_t nbytes_ = 0;
-    Allocator allocator_ = Host{};
+    Environment environment_ = Host{};
 };
 
 } // namespace TANNIC

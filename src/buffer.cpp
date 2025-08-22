@@ -7,17 +7,17 @@
 
 namespace tannic {
 
-Buffer::Buffer(std::size_t nbytes, Allocator allocator)
+Buffer::Buffer(std::size_t nbytes, Environment environment)
 :   nbytes_(nbytes)
-,   allocator_(allocator) {
+,   environment_(environment) {
     address_ = std::visit([&](auto& variant) -> void* {
         return variant.allocate(nbytes_);
-    }, allocator_);
+    }, environment_);
 } 
 
 Buffer::Buffer(Buffer&& other) noexcept 
 :   nbytes_(std::exchange(other.nbytes_, 0))
-,   allocator_(std::move(other.allocator_))
+,   environment_(std::move(other.environment_))
 ,   address_(std::exchange(other.address_, nullptr)) {}
 
 
@@ -25,9 +25,9 @@ Buffer& Buffer::operator=(Buffer&& other) noexcept {
     if (this != &other) { 
         std::visit([&](auto& variant) {
             variant.deallocate(address_, nbytes_);
-        }, allocator_);
+        }, environment_);
         nbytes_ = std::exchange(other.nbytes_, 0);
-        allocator_ = std::move(other.allocator_);
+        environment_ = std::move(other.environment_);
         address_ = std::exchange(other.address_, nullptr);
     }
     return *this;
@@ -36,7 +36,7 @@ Buffer& Buffer::operator=(Buffer&& other) noexcept {
 Buffer::~Buffer() {  
     std::visit([&](auto& alloc) {
         alloc.deallocate(address_, nbytes_);
-    }, allocator_); 
+    }, environment_); 
     address_ = nullptr;
     nbytes_ = 0;
 }
@@ -53,8 +53,8 @@ std::size_t Buffer::nbytes() const {
     return nbytes_; 
 }
 
-Allocator const& Buffer::allocator() const { 
-    return allocator_; 
+Environment const& Buffer::environment() const { 
+    return environment_; 
 }  
 
 } // namespace TANNIC 

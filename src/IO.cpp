@@ -106,8 +106,8 @@ std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
 
 std::ostream& operator<<(std::ostream& ostream, Tensor const& tensor) {
     tensor_t printable = structure(tensor); 
-    allocator_t allocator = structure(tensor.allocator());
-    if(allocator.environment == HOST) {
+    environment_t environment = structure(tensor.environment());
+    if(environment.environment == HOST) {
         ostream << &printable; 
     } 
 

@@ -57,7 +57,7 @@ struct device_t {
     enum device traits;
 }; 
 
-struct allocator_t { 
+struct environment_t { 
     enum environment environment;
     union {
         struct host_t host;
@@ -65,7 +65,7 @@ struct allocator_t {
     } resource;
 };
 
-status resolve_allocator(const allocator_t*, const allocator_t*, allocator_t*); 
+status resolve_environment(const environment_t*, const environment_t*, environment_t*); 
 
 #ifdef __cplusplus
 }

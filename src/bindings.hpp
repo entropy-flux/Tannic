@@ -16,6 +16,6 @@ namespace tannic {
 tensor_t structure(Tensor const&);
 host_t structure(Host const&);
 device_t structure(Device const&);
-allocator_t structure(Allocator const&);    
+environment_t structure(Environment const&);    
 
 }
