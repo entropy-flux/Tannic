@@ -52,6 +52,7 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ]
       ] ]
     ] ],
@@ -77,9 +78,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/d26/classtannic_1_1operation_1_1Unary.html#a486cbdbfcc58767ac1690239ef58251f",
-"da/d93/classtannic_1_1Tensor.html#afc696fcdc106333ce6410d5863201d25",
-"dd/d74/namespacetannic_1_1function.html#af97a5da6ca19a282f6c4ec90d40fe468"
+"d6/de5/structtannic_1_1operation_1_1Subtraction.html#afc988b4e53299042435409e149f961d3",
+"da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78",
+"dd/d0f/classtannic_1_1expression_1_1Slice.html#a9bb289f510cb0da3d400293a265bd800"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

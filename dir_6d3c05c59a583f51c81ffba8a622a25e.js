@@ -12,6 +12,7 @@ var dir_6d3c05c59a583f51c81ffba8a622a25e =
     [ "operations.hpp", "d6/d00/operations_8hpp.html", "d6/d00/operations_8hpp" ],
     [ "reductions.hpp", "d1/d01/reductions_8hpp.html", "d1/d01/reductions_8hpp" ],
     [ "resources.hpp", "d1/dee/resources_8hpp.html", "d1/dee/resources_8hpp" ],
+    [ "serialization.hpp", "d8/d21/serialization_8hpp.html", "d8/d21/serialization_8hpp" ],
     [ "shape.hpp", "d3/d30/shape_8hpp.html", "d3/d30/shape_8hpp" ],
     [ "slices.hpp", "d4/d71/slices_8hpp.html", "d4/d71/slices_8hpp" ],
     [ "strides.hpp", "d7/d08/strides_8hpp.html", "d7/d08/strides_8hpp" ],

@@ -96,7 +96,8 @@ $(document).ready(function(){initNavTree('d0/d1a/namespacetannic.html','../../')
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#concepts">Concepts</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">tannic Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -130,8 +131,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d87/classtannic_1_1Exception.html">Exception</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple generic exception type for the Tannic <a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a> Library.  <a href="../../d9/d87/classtannic_1_1Exception.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d69/structtannic_1_1Header.html">Header</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../df/da7/classtannic_1_1Host.html" title="Host memory domain.">Host</a> memory domain.  <a href="../../df/da7/classtannic_1_1Host.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df4/structtannic_1_1Metadata.html">Metadata</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d78/structtannic_1_1Metadata_3_01Tensor_01_4.html">Metadata&lt; Tensor &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d85/structtannic_1_1Node.html">Node</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -221,6 +228,11 @@ Functions</h2></td></tr>
 <tr class="separator:a3b772a18c1f497ea579f9e6ece4130f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c1a48f353ac51e8ae5affa4dccd2e4a"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a1c1a48f353ac51e8ae5affa4dccd2e4a">operator&lt;&lt;</a> (std::ostream &amp;ostream, type type)</td></tr>
 <tr class="separator:a1c1a48f353ac51e8ae5affa4dccd2e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:af5d559718f5807bf195a1845948fa3f1"><td class="memItemLeft" align="right" valign="top">constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#af5d559718f5807bf195a1845948fa3f1">MAGIC</a> = 0x43495245</td></tr>
+<tr class="separator:af5d559718f5807bf195a1845948fa3f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="ae3a6cffd27941abef241bf9dd55cf112" name="ae3a6cffd27941abef241bf9dd55cf112"></a>
@@ -771,6 +783,29 @@ template&lt;Expression Source&gt; </div>
 
 <p>Equality comparison for strides. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if all stride sizes are equal for each dimension. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="af5d559718f5807bf195a1845948fa3f1" name="af5d559718f5807bf195a1845948fa3f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5d559718f5807bf195a1845948fa3f1">&#9670;&#160;</a></span>MAGIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint32_t tannic::MAGIC = 0x43495245</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

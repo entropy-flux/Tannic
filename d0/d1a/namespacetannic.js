@@ -10,7 +10,10 @@ var namespacetannic =
     [ "Device", "d3/d46/classtannic_1_1Device.html", "d3/d46/classtannic_1_1Device" ],
     [ "Devices", "d9/dd4/classtannic_1_1Devices.html", "d9/dd4/classtannic_1_1Devices" ],
     [ "Exception", "d9/d87/classtannic_1_1Exception.html", "d9/d87/classtannic_1_1Exception" ],
+    [ "Header", "d1/d69/structtannic_1_1Header.html", "d1/d69/structtannic_1_1Header" ],
     [ "Host", "df/da7/classtannic_1_1Host.html", "df/da7/classtannic_1_1Host" ],
+    [ "Metadata", "d4/df4/structtannic_1_1Metadata.html", null ],
+    [ "Metadata< Tensor >", "d4/d78/structtannic_1_1Metadata_3_01Tensor_01_4.html", "d4/d78/structtannic_1_1Metadata_3_01Tensor_01_4" ],
     [ "Node", "df/d85/structtannic_1_1Node.html", "df/d85/structtannic_1_1Node" ],
     [ "Shape", "db/da7/classtannic_1_1Shape.html", "db/da7/classtannic_1_1Shape" ],
     [ "Strides", "dc/deb/classtannic_1_1Strides.html", "dc/deb/classtannic_1_1Strides" ],
@@ -38,5 +41,6 @@ var namespacetannic =
     [ "operator<<", "d0/d1a/namespacetannic.html#a1a847102d1be0f3bdc61821df66844c0", null ],
     [ "operator<<", "d0/d1a/namespacetannic.html#a1c1a48f353ac51e8ae5affa4dccd2e4a", null ],
     [ "operator==", "d0/d1a/namespacetannic.html#ab9024d05a23081306cb9f03929bd96d9", null ],
-    [ "operator==", "d0/d1a/namespacetannic.html#a1c8ec7747a2d4ba830533d01fdeb35b2", null ]
+    [ "operator==", "d0/d1a/namespacetannic.html#a1c8ec7747a2d4ba830533d01fdeb35b2", null ],
+    [ "MAGIC", "d0/d1a/namespacetannic.html#af5d559718f5807bf195a1845948fa3f1", null ]
 ];

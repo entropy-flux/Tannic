@@ -1,9 +1,10 @@
 <map id="include/tannic/complex.hpp" name="include/tannic/complex.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="280,5,481,31"/>
-<area shape="rect" id="node2" href="$d3/d8b/tensor_8hpp.html" title=" " alt="" coords="288,79,473,104"/>
+<area shape="rect" id="node1" title=" " alt="" coords="396,5,597,31"/>
+<area shape="rect" id="node2" href="$d3/d8b/tensor_8hpp.html" title=" " alt="" coords="404,79,589,104"/>
 <area shape="rect" id="node3" href="$da/db7/callback_8hpp.html" title=" " alt="" coords="5,152,204,177"/>
-<area shape="rect" id="node4" href="$d6/dba/convolutions_8hpp.html" title=" " alt="" coords="441,225,669,251"/>
+<area shape="rect" id="node4" href="$d6/dba/convolutions_8hpp.html" title=" " alt="" coords="565,225,793,251"/>
 <area shape="rect" id="node5" href="$db/d1a/functions_8hpp.html" title=" " alt="" coords="278,152,483,177"/>
 <area shape="rect" id="node6" href="$d1/d01/reductions_8hpp.html" title=" " alt="" coords="507,152,721,177"/>
-<area shape="rect" id="node7" href="$d8/d71/transformations_8hpp.html" title=" " alt="" coords="745,152,995,177"/>
+<area shape="rect" id="node7" href="$d8/d21/serialization_8hpp.html" title=" " alt="" coords="745,152,971,177"/>
+<area shape="rect" id="node8" href="$d8/d71/transformations_8hpp.html" title=" " alt="" coords="995,152,1244,177"/>
 </map>
