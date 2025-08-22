@@ -9,6 +9,8 @@ namespace cuda {
 using tannic::tensor_t;
 using tannic::stream_t;
 using tannic::device_t;
+
+status conv1d(const tensor_t* signal, const tensor_t* kernel, tensor_t* dst, stream_t stream, const size_t pad, const size_t stride);
 status conv2d(const tensor_t*, const tensor_t*, tensor_t*, stream_t, const size_t pad[2], const size_t stride[2])  { throw std::runtime_error("CUDA not available"); }
 } // namespace cuda
 #endif
