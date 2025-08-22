@@ -48,6 +48,9 @@ var annotated_dup =
       [ "transformation", "de/d75/namespacetannic_1_1transformation.html", [
         [ "Composition", "d4/d53/structtannic_1_1transformation_1_1Composition.html", "d4/d53/structtannic_1_1transformation_1_1Composition" ],
         [ "Concatenation", "dd/d77/structtannic_1_1transformation_1_1Concatenation.html", "dd/d77/structtannic_1_1transformation_1_1Concatenation" ],
+        [ "Convolution", "d9/d3b/classtannic_1_1transformation_1_1Convolution.html", null ],
+        [ "Convolution< 1 >", "d0/dc5/classtannic_1_1transformation_1_1Convolution_3_011_01_4.html", "d0/dc5/classtannic_1_1transformation_1_1Convolution_3_011_01_4" ],
+        [ "Convolution< 2 >", "db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html", "db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4" ],
         [ "Outer", "de/d42/structtannic_1_1transformation_1_1Outer.html", "de/d42/structtannic_1_1transformation_1_1Outer" ],
         [ "Repack", "d8/d0a/structtannic_1_1transformation_1_1Repack.html", "d8/d0a/structtannic_1_1transformation_1_1Repack" ],
         [ "Repetition", "da/d5d/structtannic_1_1transformation_1_1Repetition.html", "da/d5d/structtannic_1_1transformation_1_1Repetition" ],

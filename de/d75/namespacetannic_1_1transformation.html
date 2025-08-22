@@ -106,6 +106,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html">Concatenation</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html" title="Concatenation operation along a specified axis.">Concatenation</a> operation along a specified axis.  <a href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d3b/classtannic_1_1transformation_1_1Convolution.html">Convolution</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dc5/classtannic_1_1transformation_1_1Convolution_3_011_01_4.html">Convolution&lt; 1 &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html">Convolution&lt; 2 &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html">Outer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the outer product operation between two vectors.  <a href="../../de/d42/structtannic_1_1transformation_1_1Outer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,6 +127,12 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a1298ce7dc6434ea0905a4eec46f4f2c3"><td class="memTemplParams" colspan="2">template&lt;auto Dimension, Expression Signal, Expression Kernel&gt; </td></tr>
+<tr class="memitem:a1298ce7dc6434ea0905a4eec46f4f2c3"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a1298ce7dc6434ea0905a4eec46f4f2c3">convolve</a> (Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::size_t strides, std::size_t padding)</td></tr>
+<tr class="separator:a1298ce7dc6434ea0905a4eec46f4f2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7749a6d3ab09071315cb86b83b6dd379"><td class="memTemplParams" colspan="2">template&lt;auto Dimension, Expression Signal, Expression Kernel&gt; </td></tr>
+<tr class="memitem:a7749a6d3ab09071315cb86b83b6dd379"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a7749a6d3ab09071315cb86b83b6dd379">convolve</a> (Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::array&lt; std::size_t, Dimension &gt; strides, std::array&lt; std::size_t, Dimension &gt; padding)</td></tr>
+<tr class="separator:a7749a6d3ab09071315cb86b83b6dd379"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memTemplParams" colspan="2">template&lt;Expression Outer, Expression Inner&gt; </td></tr>
 <tr class="memitem:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#ac79cd681ae5e04a088cff5347d2ee8f8">composition</a> (<a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html">Outer</a> &amp;&amp;<a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d">outer</a>, Inner &amp;&amp;inner, double scale)</td></tr>
 <tr class="memdesc:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a composition (matrix multiplication) expression.  <br /></td></tr>
@@ -267,6 +279,106 @@ template&lt;Expression First, Expression Second&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> expression representing concatenation. </dd></dl>
+
+</div>
+</div>
+<a id="a7749a6d3ab09071315cb86b83b6dd379" name="a7749a6d3ab09071315cb86b83b6dd379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7749a6d3ab09071315cb86b83b6dd379">&#9670;&#160;</a></span>convolve() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;auto Dimension, Expression Signal, Expression Kernel&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::transformation::convolve </td>
+          <td>(</td>
+          <td class="paramtype">Signal &amp;&amp;&#160;</td>
+          <td class="paramname"><em>signal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Kernel &amp;&amp;&#160;</td>
+          <td class="paramname"><em>kernel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::array&lt; std::size_t, Dimension &gt;&#160;</td>
+          <td class="paramname"><em>strides</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::array&lt; std::size_t, Dimension &gt;&#160;</td>
+          <td class="paramname"><em>padding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1298ce7dc6434ea0905a4eec46f4f2c3" name="a1298ce7dc6434ea0905a4eec46f4f2c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1298ce7dc6434ea0905a4eec46f4f2c3">&#9670;&#160;</a></span>convolve() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;auto Dimension, Expression Signal, Expression Kernel&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::transformation::convolve </td>
+          <td>(</td>
+          <td class="paramtype">Signal &amp;&amp;&#160;</td>
+          <td class="paramname"><em>signal</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Kernel &amp;&amp;&#160;</td>
+          <td class="paramname"><em>kernel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>strides</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>padding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

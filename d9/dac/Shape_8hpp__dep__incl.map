@@ -1,13 +1,14 @@
 <map id="include/tannic/Shape.hpp" name="include/tannic/Shape.hpp">
-<area shape="rect" id="node1" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="469,5,655,31"/>
-<area shape="rect" id="node2" href="$d5/dae/Complex_8hpp.html" title="Complex number operations for the Tannic Tensor Library." alt="" coords="461,152,663,177"/>
-<area shape="rect" id="node3" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="499,225,686,251"/>
-<area shape="rect" id="node5" href="$dc/d66/Functions_8hpp.html" title="Defines the excception types used in the library." alt="" coords="888,299,1095,324"/>
-<area shape="rect" id="node6" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="5,299,223,324"/>
-<area shape="rect" id="node7" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="247,299,498,324"/>
-<area shape="rect" id="node8" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="738,152,954,177"/>
-<area shape="rect" id="node9" href="$d2/d6a/Slices_8hpp.html" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="1029,152,1212,177"/>
-<area shape="rect" id="node10" href="$d8/d85/Strides_8hpp.html" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="605,79,796,104"/>
-<area shape="rect" id="node11" href="$d8/dea/Views_8hpp.html" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="253,152,437,177"/>
-<area shape="rect" id="node4" href="$df/da3/Callback_8hpp.html" title=" " alt="" coords="523,299,724,324"/>
+<area shape="rect" id="node1" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="407,5,592,31"/>
+<area shape="rect" id="node2" href="$d5/dae/Complex_8hpp.html" title="Complex number operations for the Tannic Tensor Library." alt="" coords="264,152,466,177"/>
+<area shape="rect" id="node3" href="$db/d10/Tensor_8hpp.html" title="Core multidimensional tensor class for the Tannic Tensor Library." alt="" coords="569,225,756,251"/>
+<area shape="rect" id="node5" href="$d4/de2/Convolutions_8hpp.html" title="Defines tensor convolutional operations." alt="" coords="296,372,527,397"/>
+<area shape="rect" id="node6" href="$dc/d66/Functions_8hpp.html" title="Defines the excception types used in the library." alt="" coords="867,299,1074,324"/>
+<area shape="rect" id="node7" href="$db/db8/Reductions_8hpp.html" title="Defines reduction operations for tensor expressions." alt="" coords="44,299,262,324"/>
+<area shape="rect" id="node8" href="$df/d25/Transformations_8hpp.html" title="Defines tensor transformation operations." alt="" coords="286,299,537,324"/>
+<area shape="rect" id="node9" href="$d1/d00/Operations_8hpp.html" title="Defines expression templates tensor aritmetic operations." alt="" coords="1008,152,1224,177"/>
+<area shape="rect" id="node10" href="$d2/d6a/Slices_8hpp.html" title="Implements tensor slicing for expression templates in the Tannic Tensor Library." alt="" coords="491,152,674,177"/>
+<area shape="rect" id="node11" href="$d8/d85/Strides_8hpp.html" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="695,79,886,104"/>
+<area shape="rect" id="node12" href="$d8/dea/Views_8hpp.html" title="Implements views for tensors in the Tannic Tensor Library." alt="" coords="698,152,882,177"/>
+<area shape="rect" id="node4" href="$df/da3/Callback_8hpp.html" title=" " alt="" coords="562,299,763,324"/>
 </map>
