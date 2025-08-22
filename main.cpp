@@ -1,30 +1,33 @@
 #include <iostream>
-#include <tannic.hpp> 
+#include <tannic.hpp>
+#include <tannic/Convolutions.hpp>
 
 using namespace tannic;
-  
-/*
-Copy and paste this file into main.cpp and then run ``bash main.sh``
-*/ 
 
-int main() {  
-    Tensor X = { {-1.22474f, 0.f, 1.22474f}, {-1.22474f, 0.f, 1.22474f} }; 
-    Tensor W = {0.5f, 1.0f, 1.5f}; 
-    Tensor b = {0.0f, 0.1f, 0.2f}; 
-    std::cout << X * W + b << std::endl;
+int main() {
+    // Input tensor: batch_size=1, channels=1, height=3, width=3
+    Tensor input = {{
+        {{1.0f, 2.0f, 3.0f},
+         {4.0f, 5.0f, 6.0f},
+         {7.0f, 8.0f, 9.0f}}
+    }};  // shape: (1,1,3,3)
 
-    /*
-    
-Tensor([[-0.61237, 0.1, 2.03711], 
-        [-0.61237, 0.1, 2.03711]] dtype=float32, shape=(2, 3))
-    
-    */
-} 
+    // Kernel tensor: out_channels=1, in_channels=1, height=2, width=2
+    Tensor kernel = {{
+        {{1.0f, 0.0f},
+         {0.0f, -1.0f}}
+    }};  // shape: (1,1,2,2)
+
+    std::cout << "Input Tensor:" << std::endl;
+    std::cout << input << std::endl;
+
+    std::cout << "Kernel Tensor:" << std::endl;
+    std::cout << kernel << std::endl;
  
-/*
-Weight: Tensor([[0.5, 1, 1.5]] dtype=float32, shape=(1, 3))
-Bias: Tensor([[0, 0.1, 0.2]] dtype=float32, shape=(1, 3))
-Normalized:Tensor([[-1.22474, 0, 1.22474], 
-        [-1.22474, 0, 1.22474]] dtype=float32, shape=(2, 3))
- 
-*/
+    auto output = convolve<2>(input, kernel, {1,1}, {0,0});
+
+    std::cout << "Output Tensor:" << std::endl;
+    std::cout << output << std::endl;
+
+    return 0;
+}

@@ -56,7 +56,7 @@ void batchedBinaryOpKernel(
     D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides, uint8_t dst_rank
 ) {
     Op op{};
-    size_t cnt[8] = {0};  // assuming max rank 8, adjust if needed
+    size_t cnt[8] = {0};   
 
     for (size_t idx = 0;; ++idx) {
         size_t offs0 = 0, offs1 = 0;
