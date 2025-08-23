@@ -4,7 +4,7 @@ var searchData=
   ['imaginary_1',['imaginary',['../d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html#a0367d23806cd0e74d0c40a39a7834364',1,'tannic::expression::Complexification&lt; Coordinates, Real, Imaginary &gt;']]],
   ['index_2emd_2',['INDEX.md',['../d0/d7f/INDEX_8md.html',1,'']]],
   ['indexing_2ehpp_3',['indexing.hpp',['../d7/d1d/indexing_8hpp.html',1,'']]],
-  ['initialize_4',['initialize',['../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882',1,'tannic::Tensor']]],
+  ['initialize_4',['initialize',['../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c',1,'tannic::Tensor']]],
   ['instance_5',['instance',['../d9/dd4/classtannic_1_1Devices.html#a08e873a9357bba7615b7cd1f041d257c',1,'tannic::Devices']]],
   ['is_5fassignable_6',['is_assignable',['../d1/d96/structtannic_1_1Trait.html#af2ea5857d5ac63c84cd0849a8a11cfa6',1,'tannic::Trait']]],
   ['is_5fcomparable_7',['is_comparable',['../d1/d96/structtannic_1_1Trait.html#acfa95553b70aa62a6c29d4a59bf504c0',1,'tannic::Trait']]],

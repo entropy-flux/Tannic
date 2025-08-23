@@ -185,18 +185,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:afa045be0c377ee3127a5a9d97c5b1fcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to this tensor (non-const).  <br /></td></tr>
 <tr class="separator:afa045be0c377ee3127a5a9d97c5b1fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Memory Management (Always runtime.)</div></td></tr>
-<tr class="memitem:a4ee063da4965ea868081841b3d967882"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a> (<a class="el" href="../../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112">Allocator</a> <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#afc696fcdc106333ce6410d5863201d25">allocator</a>=<a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>{}) const</td></tr>
-<tr class="memdesc:a4ee063da4965ea868081841b3d967882"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates the memory buffer for the tensor.  <br /></td></tr>
-<tr class="separator:a4ee063da4965ea868081841b3d967882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3158b2d19ac07f894990b5e1014cc67c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a> (<a class="el" href="../../d0/d1a/namespacetannic.html#ab25d9deb845a2f968f245cc13c4a1f43">Environment</a> <a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a1eb90f9f03cc3f775f1bf22f4282101e">environment</a>=<a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>{}) const</td></tr>
+<tr class="memdesc:a3158b2d19ac07f894990b5e1014cc67c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates the memory buffer for the tensor.  <br /></td></tr>
+<tr class="separator:a3158b2d19ac07f894990b5e1014cc67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a104cf81bd4da1b3e8e96e2ad2644f941"><td class="memItemLeft" align="right" valign="top">std::byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a104cf81bd4da1b3e8e96e2ad2644f941">bytes</a> () const</td></tr>
 <tr class="memdesc:a104cf81bd4da1b3e8e96e2ad2644f941"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the beginning of the tensor's data (accounting for offset).  <br /></td></tr>
 <tr class="separator:a104cf81bd4da1b3e8e96e2ad2644f941"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a608af294e14a31a695a727931d236f2f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a608af294e14a31a695a727931d236f2f">is_initialized</a> () const</td></tr>
 <tr class="memdesc:a608af294e14a31a695a727931d236f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the tensor has been initialized with memory.  <br /></td></tr>
 <tr class="separator:a608af294e14a31a695a727931d236f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc696fcdc106333ce6410d5863201d25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112">Allocator</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#afc696fcdc106333ce6410d5863201d25">allocator</a> () const</td></tr>
-<tr class="memdesc:afc696fcdc106333ce6410d5863201d25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the allocator variant used to allocate this tensor's buffer.  <br /></td></tr>
-<tr class="separator:afc696fcdc106333ce6410d5863201d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb90f9f03cc3f775f1bf22f4282101e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1a/namespacetannic.html#ab25d9deb845a2f968f245cc13c4a1f43">Environment</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a1eb90f9f03cc3f775f1bf22f4282101e">environment</a> () const</td></tr>
+<tr class="memdesc:a1eb90f9f03cc3f775f1bf22f4282101e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to the environment variant used to allocate this tensor's buffer.  <br /></td></tr>
+<tr class="separator:a1eb90f9f03cc3f775f1bf22f4282101e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Indexing, Slicing and Views.</div></td></tr>
 <tr class="memitem:addd20f7c75af9c8bdc7f6e87e4b5785b"><td class="memTemplParams" colspan="2">template&lt;Integral Index&gt; </td></tr>
 <tr class="memitem:addd20f7c75af9c8bdc7f6e87e4b5785b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#addd20f7c75af9c8bdc7f6e87e4b5785b">operator[]</a> (Index index) const</td></tr>
@@ -264,28 +264,28 @@ Evaluation Mode:</h4>
 <h4><a class="anchor" id="autotoc_md50"></a>
 Memory:</h4>
 <ul>
-<li><a class="el" href="../../df/da7/classtannic_1_1Host.html" title="Host memory domain.">Host</a> and <a class="el" href="../../d3/d46/classtannic_1_1Device.html" title="Device memory domain.">Device</a> (e.g., CUDA) allocations are supported using allocators like <code>Host()</code> or <code>Device()</code>.</li>
+<li><a class="el" href="../../df/da7/classtannic_1_1Host.html" title="Host memory domain.">Host</a> and <a class="el" href="../../d3/d46/classtannic_1_1Device.html" title="Device memory domain.">Device</a> (e.g., CUDA) allocations are supported using environments like <code>Host()</code> or <code>Device()</code>.</li>
 <li>Memory must be explicitly allocated via <code>initialize(Host())</code> or initialize(Device()) but maybe removed in the future.</li>
 </ul>
 <h4><a class="anchor" id="autotoc_md51"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a>; </div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>(); <span class="comment">// or X.initialize(Device()); for CUDA support   </span></div>
+<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>(); <span class="comment">// or X.initialize(Device()); for CUDA support   </span></div>
 <div class="line">X[0, <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>{0,-1}] = 1; </div>
 <div class="line">X[1,0] = 3;</div>
 <div class="line">X[1,1] = 4;   </div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Y(float32, {1,2}); Y.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>();  <span class="comment">// or X.initialize(Device()); for CUDA support   </span></div>
+<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Y(float32, {1,2}); Y.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();  <span class="comment">// or X.initialize(Device()); for CUDA support   </span></div>
 <div class="line">Y[0,0] = 4;</div>
 <div class="line">Y[0,1] = 6;    </div>
 <div class="line"> </div>
 <div class="line">std::cout &lt;&lt; <a class="code hl_function" href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">log</a>(X) + Y * Y - <a class="code hl_function" href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">exp</a>(X) + <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">matmul</a>(X, Y.transpose());</div>
 <div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:105</div></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a4ee063da4965ea868081841b3d967882"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Allocator allocator=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_a3158b2d19ac07f894990b5e1014cc67c"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Environment environment=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a1a8e818c37a5236e4481677e70ce6209"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a></div><div class="ttdeci">constexpr auto exp(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated exponential function expression.</div><div class="ttdef"><b>Definition:</b> functions.hpp:249</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a9ec44a47e78a5e28b75b76573d98e06b"><div class="ttname"><a href="../../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a></div><div class="ttdeci">constexpr auto log(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated natural logarithm expression.</div><div class="ttdef"><b>Definition:</b> functions.hpp:237</div></div>
-<div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition:</b> buffer.hpp:43</div></div>
+<div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition:</b> buffer.hpp:41</div></div>
 <div class="ttc" id="anamespacetannic_html_abe303690a4d7ad0383f88855f6f0fce6"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier, double scale=1.0)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> transformations.hpp:578</div></div>
 <div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="../../de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdoc">Represents a half-open interval [start, stop) for slicing.</div><div class="ttdef"><b>Definition:</b> indexing.hpp:56</div></div>
 </div><!-- fragment --><p>This example demonstrates eager initialization, advanced indexing, broadcasting, and composite expression evaluation.</p>
@@ -786,35 +786,6 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afc696fcdc106333ce6410d5863201d25" name="afc696fcdc106333ce6410d5863201d25"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc696fcdc106333ce6410d5863201d25">&#9670;&#160;</a></span>allocator()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112">Allocator</a> const  &amp; tannic::Tensor::allocator </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns a reference to the allocator variant used to allocate this tensor's buffer. </p>
-<dl class="section return"><dt>Returns</dt><dd>Allocator reference. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Asserts if the tensor is not initialized. </dd></dl>
-
-</div>
-</div>
 <a id="adf4c49f9887498bb45b5d0b78a520602" name="adf4c49f9887498bb45b5d0b78a520602"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adf4c49f9887498bb45b5d0b78a520602">&#9670;&#160;</a></span>assign()</h2>
 
@@ -942,6 +913,35 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a1eb90f9f03cc3f775f1bf22f4282101e" name="a1eb90f9f03cc3f775f1bf22f4282101e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eb90f9f03cc3f775f1bf22f4282101e">&#9670;&#160;</a></span>environment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d1a/namespacetannic.html#ab25d9deb845a2f968f245cc13c4a1f43">Environment</a> const  &amp; tannic::Tensor::environment </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a reference to the environment variant used to allocate this tensor's buffer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Environment reference. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Asserts if the tensor is not initialized. </dd></dl>
+
+</div>
+</div>
 <a id="a24efaf36c2ec793288c470e5e92ad397" name="a24efaf36c2ec793288c470e5e92ad397"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a24efaf36c2ec793288c470e5e92ad397">&#9670;&#160;</a></span>forward() <span class="overload">[1/2]</span></h2>
 
@@ -996,8 +996,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a4ee063da4965ea868081841b3d967882" name="a4ee063da4965ea868081841b3d967882"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ee063da4965ea868081841b3d967882">&#9670;&#160;</a></span>initialize()</h2>
+<a id="a3158b2d19ac07f894990b5e1014cc67c" name="a3158b2d19ac07f894990b5e1014cc67c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3158b2d19ac07f894990b5e1014cc67c">&#9670;&#160;</a></span>initialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1005,8 +1005,8 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">void tannic::Tensor::initialize </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112">Allocator</a>&#160;</td>
-          <td class="paramname"><em>allocator</em> = <code><a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>{}</code></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d0/d1a/namespacetannic.html#ab25d9deb845a2f968f245cc13c4a1f43">Environment</a>&#160;</td>
+          <td class="paramname"><em>environment</em> = <code><a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>{}</code></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1015,7 +1015,7 @@ template&lt;typename T &gt; </div>
 <p>Allocates the memory buffer for the tensor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">allocator</td><td>Memory allocator (defaults to <code><a class="el" href="../../df/da7/classtannic_1_1Host.html" title="Host memory domain.">Host</a>{}</code>). </td></tr>
+    <tr><td class="paramname">environment</td><td>Memory environment (defaults to <code><a class="el" href="../../df/da7/classtannic_1_1Host.html" title="Host memory domain.">Host</a>{}</code>). </td></tr>
   </table>
   </dd>
 </dl>
@@ -1237,7 +1237,7 @@ template&lt;Integral Index&gt; </div>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a>; </div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2,2}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>(); </div>
+<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2,2}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>(); </div>
 <div class="line">X[0] = 1;    <span class="comment">//arbitrary types assignment support.</span></div>
 <div class="line">X[1] = 2.f;</div>
 <div class="line">std::cout &lt;&lt; X  &lt;&lt; std::endl; <span class="comment">// Tensor([[[1, 1], [1, 1]], </span></div>
@@ -1295,7 +1295,7 @@ template&lt;class ... Indexes&gt; </div>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a>; </div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>(); <span class="comment">// or X.initialize(Device()); for CUDA support   </span></div>
+<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>(); <span class="comment">// or X.initialize(Device()); for CUDA support   </span></div>
 <div class="line">X[0, <a class="code hl_struct" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">range</a>{0,-1}] = 1;  <span class="comment">//  fills [0,0] and [0,1] with 1.</span></div>
 <div class="line">X[1,0] = 3;</div>
 <div class="line">X[1,1] = 4;       </div>
@@ -1338,7 +1338,7 @@ Example:</h4>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="../../d0/d1a/namespacetannic.html">tannic</a>; </div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2,2}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>();  </div>
+<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2,2}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();  </div>
 <div class="line">X[{0,1}] = 5; <span class="comment">// same as X[range{0,1}] = 5</span></div>
 </div><!-- fragment --> 
 </div>

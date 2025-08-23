@@ -127,7 +127,7 @@ What is Tannic?</h1>
 <div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:105</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a1a8e818c37a5236e4481677e70ce6209"><div class="ttname"><a href="dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a></div><div class="ttdeci">constexpr auto exp(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated exponential function expression.</div><div class="ttdef"><b>Definition:</b> functions.hpp:249</div></div>
 <div class="ttc" id="anamespacetannic_1_1function_html_a9ec44a47e78a5e28b75b76573d98e06b"><div class="ttname"><a href="dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a></div><div class="ttdeci">constexpr auto log(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated natural logarithm expression.</div><div class="ttdef"><b>Definition:</b> functions.hpp:237</div></div>
-<div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition:</b> buffer.hpp:43</div></div>
+<div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition:</b> buffer.hpp:41</div></div>
 <div class="ttc" id="anamespacetannic_html_abe303690a4d7ad0383f88855f6f0fce6"><div class="ttname"><a href="d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier, double scale=1.0)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition:</b> transformations.hpp:578</div></div>
 <div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdoc">Represents a half-open interval [start, stop) for slicing.</div><div class="ttdef"><b>Definition:</b> indexing.hpp:56</div></div>
 </div><!-- fragment --><p>It will output:</p>
@@ -266,13 +266,13 @@ Usage</h1>
 </div><!-- fragment --><p>Any class that follows that pattern is a valid Tannic expression and can interact with other components of the library. All available expressions are detailed under the <a href="https://entropy-flux.github.io/Tannic/annotated.html">class list</a> section. You can scroll to the members of each expression and find information about how dtypes are promoted, or how shapes are calculated.</p>
 <p>The library is built around the Host-Device computational model, so in order to use CUDA you just have to initialize kernels tensors on the Device you want to use, for example:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> main() { </div>
-<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); X.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>(<a class="code hl_class" href="d3/d46/classtannic_1_1Device.html">Device</a>());</div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); X.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>(<a class="code hl_class" href="d3/d46/classtannic_1_1Device.html">Device</a>());</div>
 <div class="line">    X[0, <a class="code hl_struct" href="de/dea/structtannic_1_1indexing_1_1Range.html">range</a>{0,-1}] = 1;   <span class="comment">// assignment just works the same on device</span></div>
 <div class="line">    X[1,0] = 3;             </div>
 <div class="line">    X[1,1] = 4;           </div>
 <div class="line">    </div>
 <div class="line"> </div>
-<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> Y(float32, {1,2}); Y.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>(<a class="code hl_class" href="d3/d46/classtannic_1_1Device.html">Device</a>());</div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> Y(float32, {1,2}); Y.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>(<a class="code hl_class" href="d3/d46/classtannic_1_1Device.html">Device</a>());</div>
 <div class="line">    ...</div>
 <div class="line"> </div>
 <div class="line">    Y = <a class="code hl_function" href="dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">log</a>(X) + Y * Y - <a class="code hl_function" href="dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">exp</a>(X) + <a class="code hl_function" href="d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">matmul</a>(X, Y.transpose()); <span class="comment">// assign expressions dynamically like in python</span></div>
@@ -280,7 +280,7 @@ Usage</h1>
 <div class="line">    ...</div>
 <div class="line">}</div>
 <div class="ttc" id="aclasstannic_1_1Device_html"><div class="ttname"><a href="d3/d46/classtannic_1_1Device.html">tannic::Device</a></div><div class="ttdoc">Device memory domain.</div><div class="ttdef"><b>Definition:</b> resources.hpp:156</div></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a4ee063da4965ea868081841b3d967882"><div class="ttname"><a href="da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Allocator allocator=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_a3158b2d19ac07f894990b5e1014cc67c"><div class="ttname"><a href="da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Environment environment=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
 </div><!-- fragment --><p>The library currently lacks of some easily implementable CUDA features like copying a tensor from Host to Device and viceversa or printing CUDA tensors, I will add them soon. <br  />
 </p>
 <p>Data types are dynamic to make it easier to serialize and deserialize tensors at runtime, and deliver machine learning models that can work with arbitrary data types. They are represented using a C enum to be compatible with the C api runtime on wich the library relies on.</p>
@@ -306,12 +306,12 @@ Ways to Contribute</h1>
 <li><b>Write new test cases to cover code that is not yet tested</b>. I’m using a test-driven approach to build the library, but some edge cases may still be missing.</li>
 <li><b>Refactor existing tests to use built-in features</b>. Many current tests manipulate tensor pointers directly to verify values because they were written before proper indexing and slicing functionality was implemented. This approach is tedious and can be simplified using tensor accessors. Take as example:</li>
 </ul>
-<div class="fragment"><div class="line"><a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> x(float32, {2,2}); x.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>()</div>
+<div class="fragment"><div class="line"><a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> x(float32, {2,2}); x.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>()</div>
 <div class="line"><span class="keywordtype">float</span>* data = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">float</span>*<span class="keyword">&gt;</span>(x.bytes());</div>
 <div class="line">data[3] = 3;</div>
 <div class="line">ASSERT_EQ(data[3], 3);</div>
 </div><!-- fragment --><p>can be refactored into:</p>
-<div class="fragment"><div class="line"><a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> x(float32, {2,2}); x.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a4ee063da4965ea868081841b3d967882">initialize</a>() </div>
+<div class="fragment"><div class="line"><a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> x(float32, {2,2}); x.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>() </div>
 <div class="line">x[1][1] = 3;</div>
 <div class="line">ASSERT_EQ(x[1][1], 3); <span class="comment">// GTest support this but not  ASSERT_EQ(x[1,1], 3)</span></div>
 </div><!-- fragment --><p>This is especially important in CUDA tests, where manually copying device memory sync to the host hurts test performance.</p>

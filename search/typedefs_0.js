@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['allocator_0',['Allocator',['../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112',1,'tannic']]]
+  ['environment_0',['Environment',['../d0/d1a/namespacetannic.html#ab25d9deb845a2f968f245cc13c4a1f43',1,'tannic']]]
 ];

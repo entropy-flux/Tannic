@@ -186,12 +186,16 @@ Typedefs</h2></td></tr>
 <tr class="memitem:affef8090e8f7ba383c67e15135664024"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024">range</a> = <a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">indexing::Range</a></td></tr>
 <tr class="memdesc:affef8090e8f7ba383c67e15135664024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience alias for <code><a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html" title="Represents a half-open interval [start, stop) for slicing.">tannic::indexing::Range</a></code>.  <br /></td></tr>
 <tr class="separator:affef8090e8f7ba383c67e15135664024"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3a6cffd27941abef241bf9dd55cf112"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112">Allocator</a> = std::variant&lt; <a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>, <a class="el" href="../../d3/d46/classtannic_1_1Device.html">Device</a> &gt;</td></tr>
-<tr class="memdesc:ae3a6cffd27941abef241bf9dd55cf112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Memory allocator variant type.  <br /></td></tr>
-<tr class="separator:ae3a6cffd27941abef241bf9dd55cf112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab25d9deb845a2f968f245cc13c4a1f43"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#ab25d9deb845a2f968f245cc13c4a1f43">Environment</a> = std::variant&lt; <a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>, <a class="el" href="../../d3/d46/classtannic_1_1Device.html">Device</a> &gt;</td></tr>
+<tr class="memdesc:ab25d9deb845a2f968f245cc13c4a1f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Memory environment variant type.  <br /></td></tr>
+<tr class="separator:ab25d9deb845a2f968f245cc13c4a1f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:aa966b765f458a1a30f3baf663db8ad5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d69/structtannic_1_1Header.html">Header</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#aa966b765f458a1a30f3baf663db8ad5e">headerof</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;tensor)</td></tr>
+<tr class="separator:aa966b765f458a1a30f3baf663db8ad5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86aef25866193018eadfb21fa69465f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/df4/structtannic_1_1Metadata.html">Metadata</a>&lt; <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a86aef25866193018eadfb21fa69465f7">metadataof</a> (<a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;tensor)</td></tr>
+<tr class="separator:a86aef25866193018eadfb21fa69465f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9024d05a23081306cb9f03929bd96d9"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#ab9024d05a23081306cb9f03929bd96d9">operator==</a> (<a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;first, <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;second)</td></tr>
 <tr class="memdesc:ab9024d05a23081306cb9f03929bd96d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality comparison operator for shapes.  <br /></td></tr>
 <tr class="separator:ab9024d05a23081306cb9f03929bd96d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,20 +239,20 @@ Variables</h2></td></tr>
 <tr class="separator:af5d559718f5807bf195a1845948fa3f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ae3a6cffd27941abef241bf9dd55cf112" name="ae3a6cffd27941abef241bf9dd55cf112"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3a6cffd27941abef241bf9dd55cf112">&#9670;&#160;</a></span>Allocator</h2>
+<a id="ab25d9deb845a2f968f245cc13c4a1f43" name="ab25d9deb845a2f968f245cc13c4a1f43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab25d9deb845a2f968f245cc13c4a1f43">&#9670;&#160;</a></span>Environment</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../d0/d1a/namespacetannic.html#ae3a6cffd27941abef241bf9dd55cf112">tannic::Allocator</a> = typedef std::variant&lt;<a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>, <a class="el" href="../../d3/d46/classtannic_1_1Device.html">Device</a>&gt;</td>
+          <td class="memname">using <a class="el" href="../../d0/d1a/namespacetannic.html#ab25d9deb845a2f968f245cc13c4a1f43">tannic::Environment</a> = typedef std::variant&lt;<a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a>, <a class="el" href="../../d3/d46/classtannic_1_1Device.html">Device</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Memory allocator variant type. </p>
-<p>Type-safe union of host and device memory allocators. </p>
+<p>Memory environment variant type. </p>
+<p>Type-safe union of host and device memory environments. </p>
 
 </div>
 </div>
@@ -466,6 +470,32 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="aa966b765f458a1a30f3baf663db8ad5e" name="aa966b765f458a1a30f3baf663db8ad5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa966b765f458a1a30f3baf663db8ad5e">&#9670;&#160;</a></span>headerof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d69/structtannic_1_1Header.html">Header</a> tannic::headerof </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;&#160;</td>
+          <td class="paramname"><em>tensor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abe303690a4d7ad0383f88855f6f0fce6" name="abe303690a4d7ad0383f88855f6f0fce6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe303690a4d7ad0383f88855f6f0fce6">&#9670;&#160;</a></span>matmul()</h2>
 
@@ -524,6 +554,32 @@ template&lt;Expression Multiplicand, Expression Multiplier&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Transformation expression representing matrix multiplication </dd></dl>
+
+</div>
+</div>
+<a id="a86aef25866193018eadfb21fa69465f7" name="a86aef25866193018eadfb21fa69465f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86aef25866193018eadfb21fa69465f7">&#9670;&#160;</a></span>metadataof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/df4/structtannic_1_1Metadata.html">Metadata</a>&lt; <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &gt; tannic::metadataof </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;&#160;</td>
+          <td class="paramname"><em>tensor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

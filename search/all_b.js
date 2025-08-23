@@ -7,5 +7,6 @@ var searchData=
   ['message_4',['message',['../d9/d87/classtannic_1_1Exception.html#acc4253823005b369cfbfbcb0596ad7ee',1,'tannic::Exception']]],
   ['metadata_5',['Metadata',['../d4/df4/structtannic_1_1Metadata.html',1,'tannic']]],
   ['metadata_3c_20tensor_20_3e_6',['Metadata&lt; Tensor &gt;',['../d4/d78/structtannic_1_1Metadata_3_01Tensor_01_4.html',1,'tannic']]],
-  ['multiplication_7',['Multiplication',['../d0/dcf/structtannic_1_1operation_1_1Multiplication.html',1,'tannic::operation']]]
+  ['metadataof_7',['metadataof',['../d0/d1a/namespacetannic.html#a86aef25866193018eadfb21fa69465f7',1,'tannic']]],
+  ['multiplication_8',['Multiplication',['../d0/dcf/structtannic_1_1operation_1_1Multiplication.html',1,'tannic::operation']]]
 ];
