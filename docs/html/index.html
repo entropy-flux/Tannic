@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tannic: Main Page</title>
+<title>Tannic: Tannic</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -17,6 +17,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -89,10 +90,318 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Tannic Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Tannic </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_docs_2INDEX"></a> </p>
+<h1><a class="anchor" id="autotoc_md61"></a>
+Introduction</h1>
+<p>While exploring the most recent models, I began noticing some weird patterns, CUDA kernels hardcoded as strings, pointers, and constexpr hacks embedded in Python sublanguages. I’m not saying this approach is inherently bad, but I couldn’t shake the feeling that it would be far more sane to rewrite everything directly in C++ using those features directly.</p>
+<p>On the other hand, many existing C++ frameworks, while fully native, are low-level and hard to use or extend. They often force developers to manage complex memory layouts or backend-specific details using macros, which makes adding new operations or integrating new hardware backends cumbersome.</p>
+<p>This insight led me to create Tannic, a lightweight, fully C++ tensor library designed from the ground up for clarity, composability, and extensibility. It maintains a Python-like API feel, so developers can enjoy familiar, intuitive syntax while working entirely in C++. The library is designed to be easy to adopt, easy to extend, and consistent in its behavior—even as new operations, data types, or backends are added.</p>
+<h1><a class="anchor" id="autotoc_md62"></a>
+What is Tannic?</h1>
+<p><b>Tannic</b> is an extensible C++ tensor library built around a host–device execution model. Unlike monolithic frameworks, it provides only a minimal set of built‑in operators, focusing on a flexible architecture where new operations, data types, and backends can be added easily. This approach keeps the library lightweight while enabling adaptation to a wide range of computational needs.</p>
+<p>This library is designed to serve as the foundational core for a neural network inference framework, but is equally suited to other domains such as classical ML or physics simulations—all without requiring Python.</p>
+<p>Below is a minimal example demonstrating tensor creation, initialization, basic indexing, and arithmetic operations with Tannic:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;tannic.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="d0/d1a/namespacetannic.html">tannic</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() { </div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); <span class="comment">// and X.initialize(Device()) for CUDA support</span></div>
+<div class="line">    </div>
+<div class="line">    X[0, <a class="code hl_struct" href="de/dea/structtannic_1_1indexing_1_1Range.html">range</a>{0,-1}] = 1;  </div>
+<div class="line">    X[1,0] = 3;             </div>
+<div class="line">    X[1,1] = 4;           </div>
+<div class="line">    </div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> Y(float32, {1,2}); </div>
+<div class="line">    Y[0,0] = 4;                            </div>
+<div class="line">    Y[0,1] = 6;    </div>
+<div class="line">    </div>
+<div class="line">    Y = <a class="code hl_function" href="dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">log</a>(X) + Y * Y - <a class="code hl_function" href="dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">exp</a>(X) + <a class="code hl_function" href="d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">matmul</a>(X, Y.transpose()); <span class="comment">// assign expressions dynamically like in python</span></div>
+<div class="line">    std::cout &lt;&lt; Y; </div>
+<div class="line">}</div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition</b> tensor.hpp:105</div></div>
+<div class="ttc" id="anamespacetannic_1_1function_html_a1a8e818c37a5236e4481677e70ce6209"><div class="ttname"><a href="dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">tannic::function::exp</a></div><div class="ttdeci">constexpr auto exp(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated exponential function expression.</div><div class="ttdef"><b>Definition</b> functions.hpp:249</div></div>
+<div class="ttc" id="anamespacetannic_1_1function_html_a9ec44a47e78a5e28b75b76573d98e06b"><div class="ttname"><a href="dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">tannic::function::log</a></div><div class="ttdeci">constexpr auto log(Operand &amp;&amp;operand)</div><div class="ttdoc">Creates a lazy-evaluated natural logarithm expression.</div><div class="ttdef"><b>Definition</b> functions.hpp:237</div></div>
+<div class="ttc" id="anamespacetannic_html"><div class="ttname"><a href="d0/d1a/namespacetannic.html">tannic</a></div><div class="ttdef"><b>Definition</b> buffer.hpp:41</div></div>
+<div class="ttc" id="anamespacetannic_html_abe303690a4d7ad0383f88855f6f0fce6"><div class="ttname"><a href="d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">tannic::matmul</a></div><div class="ttdeci">constexpr auto matmul(Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier, double scale=1.0)</div><div class="ttdoc">Matrix multiplication convenience function.</div><div class="ttdef"><b>Definition</b> transformations.hpp:578</div></div>
+<div class="ttc" id="astructtannic_1_1indexing_1_1Range_html"><div class="ttname"><a href="de/dea/structtannic_1_1indexing_1_1Range.html">tannic::indexing::Range</a></div><div class="ttdoc">Represents a half-open interval [start, stop) for slicing.</div><div class="ttdef"><b>Definition</b> indexing.hpp:56</div></div>
+</div><!-- fragment --><p>It will output:</p>
+<div class="fragment"><div class="line">Tensor([[23.2817, 43.2817], </div>
+<div class="line">        [33.0131, 18.7881]] dtype=float32, shape=(2, 2))</div>
+</div><!-- fragment --><p>Equivalent PyTorch code for comparison:</p>
+<div class="fragment"><div class="line"><span class="keyword">import</span> torch</div>
+<div class="line"> </div>
+<div class="line">X = torch.zeros((2, 2), dtype=torch.float32)</div>
+<div class="line"> </div>
+<div class="line">X[0, 0:] = 1       </div>
+<div class="line">X[1, 0] = 3</div>
+<div class="line">X[1, 1] = 4</div>
+<div class="line"> </div>
+<div class="line">Y = torch.zeros((1, 2), dtype=torch.float32)</div>
+<div class="line"> </div>
+<div class="line">Y[0, 0] = 4     </div>
+<div class="line">Y[0, 1] = 6       </div>
+<div class="line">Y = torch.log(X) + Y * Y - torch.exp(X) + torch.matmul(X, Y.t())</div>
+<div class="line">print(Y) </div>
+</div><!-- fragment --><p>Giving:</p>
+<div class="fragment"><div class="line">tensor([[23.2817, 43.2817],</div>
+<div class="line">        [33.0131, 18.7881]])</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md63"></a>
+Status</h1>
+<p>Note: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API—used to extend the library—is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.</p>
+<p>While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental- too significant to ignore. At some point, it may be requirement for Tannic.</p>
+<h1><a class="anchor" id="autotoc_md64"></a>
+Features</h1>
+<ul>
+<li>Dynamic typing: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization, but that also support compile time specifications thanks to constexpr.</li>
+<li>Constexpr templated expressions: This allows custom kernel fusion strategies using SFINAE and compile time assertions and shape calculations.</li>
+<li>Broadcasting: NumPy‑style automatic shape expansion in arithmetic operations, enabling intuitive and efficient tensor computations across dimensions.</li>
+<li>Advanced indexing and slicing: Intuitive multi-dimensional tensor access and manipulation.</li>
+<li>Host–Device execution model: Unified support for CPU and CUDA-enabled GPU computation within the same codebase. While the device backend is currently developed in CUDA, the design is not tied to it and can support other backends in the future.</li>
+<li>Minimal core operators: Only essential built-in operations to keep the library lightweight and extensible.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md65"></a>
+What is comming...</h1>
+<ul>
+<li><b>cuBlas and cuTensor optional support</b>: This may be added soon to accelerate tensor computations.</li>
+<li><b>Autograd</b>: Autograd is not necessary for inference, so it will be added to the library later when the runtime api is optimized and mature.</li>
+<li><b>Graph mode</b>: A constexpr graph mode will be added to the library, possibly with the arrival of C++26.</li>
+<li><b>Quantization support</b>: The library will support necessary dtypes to create quantized neural networks like bitnet.</li>
+<li><b>Additional backends</b>: Expansion beyond CUDA to support other device backends is planned. Host-Device computational model can be used as well with other hardware vendors.</li>
+<li><b>Multi GPU support</b>. Unfortunately I don't have either the expertise or the resources to add multigpu support, but the whole library was build taking this in mind so it won't be a breaking change when added. <br  />
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md66"></a>
+Installation</h1>
+<p>This guide is currently in a “works on my machine” state. If you encounter any issues while building Tannic, your feedback is greatly appreciated, please open an issue or submit a pull request. Contributions to improve this guide are also very welcome!</p>
+<h2><a class="anchor" id="autotoc_md67"></a>
+Requirements</h2>
+<ul>
+<li>A C++23 compatible compiler.</li>
+<li>CMake 3.28+ <br  />
+</li>
+<li>(Optional) OpenBLAS: accelerates matrix multiplication <br  />
+</li>
+<li>(Optional) CUDA Toolkit 12+: only required for GPU support</li>
+</ul>
+<p>Other optional requirements may be added in the future. Also the arrival of C++26, is shaping up to be a huge and too significant to ignore. At some point, it may be requirement for Tannic.</p>
+<h2><a class="anchor" id="autotoc_md68"></a>
+Clone the repository:</h2>
+<div class="fragment"><div class="line">git clone https://github.com/entropy-flux/Tannic.git</div>
+<div class="line">cd Tannic </div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md69"></a>
+Debug build:</h2>
+<p>Use this for development — includes extra checks, assertions, and debug symbols for easier troubleshooting.</p>
+<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
+<div class="line">cmake .. -DCMAKE_BUILD_TYPE=Debug</div>
+<div class="line">make -j$(nproc)</div>
+<div class="line">ctest --output-on-failure</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md70"></a>
+Release build</h2>
+<p>Use this for deployment or benchmarking — builds with full compiler optimizations and without debug checks.</p>
+<div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
+<div class="line">cmake .. -DCMAKE_BUILD_TYPE=Release</div>
+<div class="line">make -j$(nproc) </div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md71"></a>
+Run the example</h2>
+<p>You can run the example provided in the main.cpp from the build folder: </p><div class="fragment"><div class="line">cd build</div>
+<div class="line">./main</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md72"></a>
+Include Tannic in your project</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;tannic.hpp&gt;</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md73"></a>
+CUDA support</h2>
+<p>CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detected during configuration. If no CUDA installation is found, Tannic will automatically fall back to a CPU‑only build. You can explicitly disable CUDA with:</p>
+<div class="fragment"><div class="line">cmake .. -DTANNIC_ENABLE_CUDA=OFF</div>
+</div><!-- fragment --><p>These defaults provide a fast setup for development with the current state of the library. As Tannic evolves, CUDA configuration options and behavior may change.</p>
+<h1><a class="anchor" id="autotoc_md74"></a>
+Usage</h1>
+<p>To use Tannic, simply include it in your project and interact with it similarly to a Python framework:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;tannic.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="d0/d1a/namespacetannic.html">tannic</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main() { </div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); <span class="comment">// and X.initialize(Device()) for CUDA support</span></div>
+<div class="line">    </div>
+<div class="line">    X[0, <a class="code hl_struct" href="de/dea/structtannic_1_1indexing_1_1Range.html">range</a>{0,-1}] = 1;  </div>
+<div class="line">    X[1,0] = 3;             </div>
+<div class="line">    X[1,1] = 4;           </div>
+<div class="line">    </div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> Y(float64, {1,2}); </div>
+<div class="line">    Y[0,0] = 4;                            </div>
+<div class="line">    Y[0,1] = 6;    </div>
+<div class="line">    </div>
+<div class="line">    Y = <a class="code hl_function" href="dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">log</a>(X) + Y * Y - <a class="code hl_function" href="dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">exp</a>(X) + <a class="code hl_function" href="d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">matmul</a>(X, Y.transpose()); <span class="comment">// assign expressions dynamically like in python</span></div>
+<div class="line">    std::cout &lt;&lt; Y;</div>
+<div class="line">    </div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> Z = {</div>
+<div class="line">        {1,2,3,4},</div>
+<div class="line">        {2,3,4,5}</div>
+<div class="line">    };                      <span class="comment">// int tensor</span></div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> W = {</div>
+<div class="line">        {1.0f, 2.0f, 3.0f},</div>
+<div class="line">        {1.0f, 2.0f, 3.0f}</div>
+<div class="line">    };                      <span class="comment">// float tensor</span></div>
+<div class="line"> </div>
+<div class="line">    std::cout &lt;&lt; <a class="code hl_function" href="d9/dd9/namespacetannic_1_1expression.html#a83caa2ee55fd9f434b633d9eba583b61">argmax</a>(Z) &lt;&lt; std::endl&gt;&gt;</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespacetannic_1_1expression_html_a83caa2ee55fd9f434b633d9eba583b61"><div class="ttname"><a href="d9/dd9/namespacetannic_1_1expression.html#a83caa2ee55fd9f434b633d9eba583b61">tannic::expression::argmax</a></div><div class="ttdeci">constexpr auto argmax(Source &amp;&amp;source, int axis=-1, bool keepdim=false)</div><div class="ttdoc">Creates an Argmax reduction.</div><div class="ttdef"><b>Definition</b> reductions.hpp:303</div></div>
+</div><!-- fragment --><p>Functions in Tannic do not immediately compute results. Instead, they build Expression objects, described in detail in the <a href="https://entropy-flux.github.io/Tannic/concepts.html">concepts</a> documentation. Basically an <code>Expression</code> is any class that follows the pattern:</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><span class="keyword">concept </span>Expression = <span class="keyword">requires</span>(<span class="keyword">const</span> T expression) {</div>
+<div class="line">    { expression.dtype()   } -&gt; std::same_as&lt;type&gt;;</div>
+<div class="line">    { expression.shape()   } -&gt; std::same_as&lt;Shape const&amp;&gt;;</div>
+<div class="line">    { expression.strides() } -&gt; std::same_as&lt;Strides const&amp;&gt;;</div>
+<div class="line">      expression.offset();  <span class="comment">// convertible to ptrdifft_t</span></div>
+<div class="line">      expression.forward(); <span class="comment">// same as Tensor or Tensor const&amp;</span></div>
+<div class="line">}; </div>
+</div><!-- fragment --><p>Any class that follows that pattern is a valid Tannic expression and can interact with other components of the library. All available expressions are detailed under the <a href="https://entropy-flux.github.io/Tannic/annotated.html">class list</a> section. You can scroll to the members of each expression and find information about how dtypes are promoted, or how shapes are calculated.</p>
+<p>The library is built around the Host-Device computational model, so in order to use CUDA you just have to initialize kernels tensors on the Device you want to use, for example:</p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> main() { </div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2,2}); X.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>(<a class="code hl_class" href="d3/d46/classtannic_1_1Device.html">Device</a>());</div>
+<div class="line">    X[0, <a class="code hl_struct" href="de/dea/structtannic_1_1indexing_1_1Range.html">range</a>{0,-1}] = 1;   <span class="comment">// assignment just works the same on device</span></div>
+<div class="line">    X[1,0] = 3;             </div>
+<div class="line">    X[1,1] = 4;           </div>
+<div class="line">    </div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> Y(float32, {1,2}); Y.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>(<a class="code hl_class" href="d3/d46/classtannic_1_1Device.html">Device</a>());</div>
+<div class="line">    ...</div>
+<div class="line"> </div>
+<div class="line">    Y = <a class="code hl_function" href="dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b">log</a>(X) + Y * Y - <a class="code hl_function" href="dd/d74/namespacetannic_1_1function.html#a1a8e818c37a5236e4481677e70ce6209">exp</a>(X) + <a class="code hl_function" href="d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">matmul</a>(X, Y.transpose()); <span class="comment">// assign expressions dynamically like in python</span></div>
+<div class="line">    <span class="comment">// Y is now calculated using CUDA.</span></div>
+<div class="line">    ...</div>
+<div class="line">}</div>
+<div class="ttc" id="aclasstannic_1_1Device_html"><div class="ttname"><a href="d3/d46/classtannic_1_1Device.html">tannic::Device</a></div><div class="ttdoc">Device memory domain.</div><div class="ttdef"><b>Definition</b> resources.hpp:156</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_a3158b2d19ac07f894990b5e1014cc67c"><div class="ttname"><a href="da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Environment environment=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
+</div><!-- fragment --><p>The library currently lacks of some easily implementable CUDA features like copying a tensor from Host to Device and viceversa or printing CUDA tensors, I will add them soon. <br  />
+</p>
+<p>Data types are dynamic to make it easier to serialize and deserialize tensors at runtime, and deliver machine learning models that can work with arbitrary data types. They are represented using a C enum to be compatible with the C api runtime on wich the library relies on.</p>
+<div class="fragment"><div class="line"><span class="keyword">enum</span> type { </div>
+<div class="line">    none,</div>
+<div class="line">    int8,</div>
+<div class="line">    int16,</div>
+<div class="line">    int32,</div>
+<div class="line">    int64,</div>
+<div class="line">    float32,</div>
+<div class="line">    float64,</div>
+<div class="line">    complex64,   </div>
+<div class="line">    complex128,  </div>
+<div class="line">    TYPES</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>This design also paves the way for future features such as tensor quantization.</p>
+<h1><a class="anchor" id="autotoc_md75"></a>
+Contributing</h1>
+<p>Contributions to Tannic are welcome! Whether you’re reporting bugs, proposing features, improving documentation, or optimizing kernels, your help is greatly appreciated.</p>
+<h1><a class="anchor" id="autotoc_md76"></a>
+Ways to Contribute</h1>
+<ul>
+<li><b>Write new test cases to cover code that is not yet tested</b>. I’m using a test-driven approach to build the library, but some edge cases may still be missing.</li>
+<li><b>Refactor existing tests to use built-in features</b>. Many current tests manipulate tensor pointers directly to verify values because they were written before proper indexing and slicing functionality was implemented. This approach is tedious and can be simplified using tensor accessors. Take as example:</li>
+</ul>
+<div class="fragment"><div class="line"><a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> x(float32, {2,2}); x.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>()</div>
+<div class="line"><span class="keywordtype">float</span>* data = <span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">float</span>*<span class="keyword">&gt;</span>(x.bytes());</div>
+<div class="line">data[3] = 3;</div>
+<div class="line">ASSERT_EQ(data[3], 3);</div>
+</div><!-- fragment --><p>can be refactored into:</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> x(float32, {2,2}); x.<a class="code hl_function" href="da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>() </div>
+<div class="line">x[1][1] = 3;</div>
+<div class="line">ASSERT_EQ(x[1][1], 3); <span class="comment">// GTest support this but not  ASSERT_EQ(x[1,1], 3)</span></div>
+</div><!-- fragment --><p>This is especially important in CUDA tests, where manually copying device memory sync to the host hurts test performance.</p>
+<ul>
+<li><b>Improve installation documentation</b>. One of the main challenges with C++ adoption is the complexity of building and linking libraries. I plan to create a comprehensive guide on installing and integrating the library into other projects.</li>
+<li><b>Optimize builds</b>. Currently there is a single CMakeLists.txt inside the cmake folder that compiles all the project. Decoupled builds for cpu and cuda backends will be a nice to have.</li>
+<li><b>Optimize kernels</b>. Kernels are currently unoptimized since I'm still focusing on builing necessary features. The kernels can be found on .cpp and .cu files inside src/cpu and src/cuda files.</li>
+<li><b>New features</b>. If you propose new features for the library, please ensure they align with the scope of a tensor library. For example, operations like tensor contractions would be a great addition, but machine learning components —such as neural network activation functions or attention mechanisms— are outside the scope. (Don’t worry—I'm building a separate neural networks library on top of this one!) That said, I’m always open to fresh ideas, so don’t hesitate to share your suggestions.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md77"></a>
+How to Contribute</h1>
+<p>Fork the repository and create a new branch for your feature or bug fix. Example:</p>
+<div class="fragment"><div class="line">git checkout -b metal/metal-backend</div>
+</div><!-- fragment --><p>Open a pull request describing:</p><ul>
+<li>The purpose of your changes.</li>
+<li>Any relevant issues they address.</li>
+<li>Implementation details if needed.</li>
+</ul>
+<p>Target branch: PRs for now should just target main till the library matures.</p>
+<h1><a class="anchor" id="autotoc_md78"></a>
+Project structure</h1>
+<p>The project is organized into the following main components:</p>
+<ul>
+<li>Frontend (C++23) – Implemented in C++23 and distributed across multiple .hpp header files in include/tannic/.<ul>
+<li>Implementations of non-constexpr and non templated functions are located in the src/ directory.</li>
+<li>Some functions currently implemented in headers but not marked constexpr (e.g., certain member functions of the <code>Tensor</code> class) may become constexpr in the future.</li>
+</ul>
+</li>
+<li>Backends – Contain platform-specific execution code:<ul>
+<li>src/cpu/ for the CPU backend.</li>
+<li>src/cuda/ for the CUDA backend.</li>
+</ul>
+</li>
+<li>C Runtime Utilities – C utilities located in include/tannic/runtime/, used for building the C API required to extend the library, writting the backend and binding it to the C++ frontend.<ul>
+<li>All kernels must be implemented in terms of the C interfaces.</li>
+<li><p class="startli">Vendor-specific constructs (e.g., streams, events, handles) must not be exposed in the C API. Instead, they should be abstracted using IDs or type erasure.</p><ul>
+<li>Example: <code>cudaStream_t</code> represents a computation queue, which is not specific to CUDA. In the C API, it is stored in a type-erased form:</li>
+</ul>
+<p class="startli"><code>c struct stream_t { uintptr_t address; }; &lt;br&gt; </code></p>
+<p class="startli">Then if it was created as a cuda stream will be recovered as:</p>
+<p class="startli"><code>cpp cudaStream_t cudaStream = reinterpret_cast&lt;cudaStream_t&gt;(stream.address); </code></p>
+</li>
+<li>C utilities should not be exposed in the C++ frontend, except for data types (dtypes) which are included for compatibility and convenience.</li>
+</ul>
+</li>
+</ul>
+<p>Currently what is in the src root folder is a mess, lot of code repetition and nasty helper functions with bunch of templates. I promise I will take the time to refactor this but after I find a way to dynamically add and remove nodes from a graph dynamically based on reference counting. This refactor won't change anything on the public API.</p>
+<h1><a class="anchor" id="autotoc_md79"></a>
+Creating new features.</h1>
+<p>The C++ frontend is based on templated expressions, this means that when you write an expression, for example:</p>
+<div class="fragment"><div class="line"><span class="keyword">auto</span> expr = matmul(X, Y) + Z;</div>
+</div><!-- fragment --><p>The result is not computed inmediatly, instead a templated expression is created with type:</p>
+<div class="fragment"><div class="line">Binary&lt;Addition, Transformation&lt;Composition, Tensor, Tensor&gt;&gt;, Tensor&gt; // (matmul is actually a composition of tensors :)</div>
+</div><!-- fragment --><p>This expression holds the the following methods:</p>
+<ul>
+<li>constexpr type dtype(): The resulting dtype of the expression, calculated using promotion tables or custom logic.</li>
+<li>constexpr Shape shape(): The resulting broadcasted shape of the expression.</li>
+<li>constexpr Strides strides(): The resulting strides of the expression, calculated from the shape.</li>
+<li>ptrdiff_t offset(): The possition in bytes where the tensor starts in the current buffer. In this case 0 since a new tensor is created.</li>
+<li>Tensor forward(): A method that actually performs the computation using the already calculated metadata.</li>
+</ul>
+<p>This allows you to:</p>
+<ul>
+<li><p class="startli">Create new symbols: All expressions that follows the concept (don't worry this is just like a python protocol):</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><span class="keyword">concept </span>Expression = <span class="keyword">requires</span>(<span class="keyword">const</span> T expression) {</div>
+<div class="line">    { expression.dtype()   } -&gt; std::same_as&lt;type&gt;;</div>
+<div class="line">    { expression.shape()   } -&gt; std::same_as&lt;Shape const&amp;&gt;;</div>
+<div class="line">    { expression.strides() } -&gt; std::same_as&lt;Strides const&amp;&gt;;</div>
+<div class="line">    expression.offset();  <span class="comment">// convertible to ptrdifft_t</span></div>
+<div class="line">    expression.forward(); <span class="comment">// same as Tensor or Tensor const&amp;</span></div>
+<div class="line">}; </div>
+</div><!-- fragment --><p class="startli">Will work with current <code>Tensor</code> class and other templated expressions in this library.</p>
+</li>
+<li>Create new data structures: Again if your data structure follows the prior concept it can be used as well with the library, for example you can create <code>Scalar</code>, <code>Parameter</code>, <code>Sequence</code> classes and plug them into operations like if they were tensors, the resulting expression will be something like this:</li>
+</ul>
+<div class="fragment"><div class="line">Binary&lt;Addition, Transformation&lt;Composition, Parameter, Sequence&gt;&gt;, Scalar&gt;</div>
+</div><!-- fragment --><p>Finally the computation will be done when calling forward or when the expression is assigned to a non const tensor:</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> W = matmul(X, Y) + Z;</div>
+</div><!-- fragment --><p>This allows a python alike behavior since you can chain operations on the same variable like this:</p>
+<div class="fragment"><div class="line"><a class="code hl_class" href="da/d93/classtannic_1_1Tensor.html">Tensor</a> W = matmul(X, Y) + Z;</div>
+<div class="line">W = W * log(Z);</div>
+<div class="line">W = W * exp(Y) + X[1]; </div>
+<div class="line">std::cout &lt;&lt; W[1] + Z[0]; <span class="comment">// IO supported for expressions.</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md80"></a>
+License &amp; Attribution</h2>
+<p>Tannic is licensed under the Apache License 2.0, a permissive open-source license that allows you to use, modify, and distribute the code freely—even in commercial projects.</p>
+<p>By contributing, you agree that your contributions will also be licensed under Apache 2.0 and that proper attribution is appreciated.</p>
+<p>The only thing I ask in return is proper credit to the project and its contributors. Recognition helps the project grow and motivates continued development. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
