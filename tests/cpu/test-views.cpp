@@ -168,6 +168,43 @@ TEST(TestTensorExpand, TestBasicExpand) {
     }
 }
 
+TEST(TestTensorExpand, TestExpandWithNegativeIndex) {
+    Tensor X(float32, {2, 1}); 
+    X.initialize();
+
+    X[0][0] = 10;
+    X[1][0] = 20;
+ 
+    Tensor Y = expand(X, -1, 3);
+
+    ASSERT_EQ(Y.shape().rank(), 2);
+    EXPECT_EQ(Y.shape()[0], 2); // kept from X
+    EXPECT_EQ(Y.shape()[1], 3); // expanded
+ 
+    EXPECT_EQ(Y[0][0], 10);
+    EXPECT_EQ(Y[0][1], 10);
+    EXPECT_EQ(Y[0][2], 10);
+    EXPECT_EQ(Y[1][0], 20);
+    EXPECT_EQ(Y[1][1], 20);
+    EXPECT_EQ(Y[1][2], 20);
+ 
+    Y[1][2] = 77;
+    EXPECT_EQ(X[1][0], 77);
+}
+
+TEST(TestTensorExpand, TestExpandNegativeIndexInvalid) {
+    Tensor X(float32, {2, 3}); 
+    X.initialize();
+ 
+    EXPECT_THROW({
+        auto Y = expand(X, -1, 3, 3);
+    }, Exception);
+ 
+    EXPECT_THROW({
+        auto Y = expand(X, 5, -1);
+    }, Exception);
+}
+
 TEST(TestTensorSqueeze, TestBasicSqueeze) {
     Tensor X(float32, {1, 3, 1}); 
     X.initialize();

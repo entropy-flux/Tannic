@@ -397,8 +397,6 @@ private:
 template<Expression Source>
 class Expansion {
 public:
-
-
     /**
      * @brief Construct an expansion view.
      *
@@ -407,22 +405,54 @@ public:
      * @tparam Sizes Integral dimension sizes of the target shape.
      * @param source Reference to the source tensor or expression.
      * @param sizes Dimension sizes for the expanded view.
-     */
+     */    
+     
     template<Integral... Sizes>
     constexpr Expansion(typename Trait<Source>::Reference source, Sizes... sizes)
-    : source_(source)
-    , shape_(sizes...)
-    , strides_(source.strides()) {
-        if (sizeof...(sizes) != source.rank())
-            throw Exception("Expansion requires same rank as source");
+    :   source_(source) {
+        std::array<long long, sizeof...(Sizes)> requested{ static_cast<long long>(sizes)... };
+        auto src_shape = source.shape();
+        auto src_rank  = src_shape.rank();
+        auto dst_rank  = requested.size();
 
-        for (uint8_t dimension = 0; dimension < source.rank(); ++dimension) {
-            if (source.shape()[dimension] == 1 && shape_[dimension] > 1) {
-                strides_[dimension] = 0;
-            } 
-            
-            else if (source.shape()[dimension] != shape_[dimension]) {
-                throw Exception("Expansion only allows broadcasting singleton dimensions");
+        // Rule: you can expand to a higher rank by prepending new dims
+        if (dst_rank < src_rank) 
+            throw Exception("Expansion target rank must be >= source rank");
+
+        std::size_t src_offset = dst_rank - src_rank;
+        for (std::size_t i = 0; i < dst_rank; ++i) {
+            long long req = requested[i];
+            std::size_t target;
+
+            if (req == -1) {
+                if (i < src_offset) {
+                    throw Exception("Cannot use -1 for new leading dimensions");
+                }
+                target = src_shape[i - src_offset];
+            } else if (req <= 0) {
+                throw Exception("Expansion size must be positive or -1");
+            } else {
+                target = static_cast<std::size_t>(req);
+            }
+
+            // Copy stride rules
+            if (i < src_offset) {
+                // new leading dimensions must be size > 0, stride 0
+                shape_.expand(target);
+                strides_.expand(0);
+            } else {
+                auto src_dim = src_shape[i - src_offset];
+                auto src_stride = source.strides()[i - src_offset];
+
+                if (src_dim == 1 && target > 1) {
+                    shape_.expand(target);
+                    strides_.expand(0);  // broadcast
+                } else if (src_dim == target) {
+                    shape_.expand(target);
+                    strides_.expand(src_stride);
+                } else {
+                    throw Exception("Expansion only allows -1 (keep) or broadcasting singleton dims");
+                }
             }
         }
     }
