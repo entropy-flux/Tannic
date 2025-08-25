@@ -11,6 +11,7 @@ var annotated_dup =
         [ "Complexification< Coordinates, Real, Imaginary >", "d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html", "d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4" ],
         [ "Complexification< Coordinates, Source >", "df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4.html", "df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4" ],
         [ "Expansion", "d0/d10/classtannic_1_1expression_1_1Expansion.html", "d0/d10/classtannic_1_1expression_1_1Expansion" ],
+        [ "Flatten", "d1/dbe/classtannic_1_1expression_1_1Flatten.html", "d1/dbe/classtannic_1_1expression_1_1Flatten" ],
         [ "Permutation", "d0/d42/classtannic_1_1expression_1_1Permutation.html", "d0/d42/classtannic_1_1expression_1_1Permutation" ],
         [ "Polar", "d3/dd3/structtannic_1_1expression_1_1Polar.html", null ],
         [ "Realification", "db/d96/classtannic_1_1expression_1_1Realification.html", "db/d96/classtannic_1_1expression_1_1Realification" ],

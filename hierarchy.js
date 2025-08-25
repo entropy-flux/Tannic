@@ -28,6 +28,7 @@ var hierarchy =
     [ "tannic::function::Exp", "dc/da3/structtannic_1_1function_1_1Exp.html", null ],
     [ "tannic::expression::Expansion< Source >", "d0/d10/classtannic_1_1expression_1_1Expansion.html", null ],
     [ "tannic::operation::Exponentiation", "db/d23/structtannic_1_1operation_1_1Exponentiation.html", null ],
+    [ "tannic::expression::Flatten< Source >", "d1/dbe/classtannic_1_1expression_1_1Flatten.html", null ],
     [ "tannic::function::Function< Functor, Argument >", "db/d37/classtannic_1_1function_1_1Function.html", null ],
     [ "tannic::Header", "d1/d69/structtannic_1_1Header.html", null ],
     [ "tannic::Host", "df/da7/classtannic_1_1Host.html", null ],

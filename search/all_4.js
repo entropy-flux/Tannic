@@ -12,11 +12,12 @@ var searchData=
   ['expand_9',['expand',['../d9/dd9/namespacetannic_1_1expression.html#a3e153f6fc540062b27409ba60926e869',1,'tannic::expression::expand()'],['../dc/deb/classtannic_1_1Strides.html#aa19c88689f47e239b7dfb8a82c134e96',1,'tannic::Strides::expand()'],['../db/da7/classtannic_1_1Shape.html#a936a0809e4f31f6c9a32f25dd7ce1be6',1,'tannic::Shape::expand()']]],
   ['expansion_10',['Expansion',['../d0/d10/classtannic_1_1expression_1_1Expansion.html#a84219829dc2ee73283f61320ea99474f',1,'tannic::expression::Expansion::Expansion()'],['../da/d93/classtannic_1_1Tensor.html#a830bdb67badcbd6222aea8106b4919bc',1,'tannic::Tensor::Expansion()'],['../d0/d10/classtannic_1_1expression_1_1Expansion.html',1,'tannic::expression::Expansion&lt; Source &gt;']]],
   ['exponentiation_11',['Exponentiation',['../db/d23/structtannic_1_1operation_1_1Exponentiation.html',1,'tannic::operation']]],
-  ['permutation_12',['Permutation',['../da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78',1,'tannic::Tensor']]],
-  ['realification_13',['Realification',['../da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082',1,'tannic::Tensor']]],
-  ['slice_14',['Slice',['../da/d93/classtannic_1_1Tensor.html#acd979f317f147e5b65290548bed8fa45',1,'tannic::Tensor']]],
-  ['squeeze_15',['Squeeze',['../da/d93/classtannic_1_1Tensor.html#a729eb82721a6e05f3e5db99bf6100aa8',1,'tannic::Tensor']]],
-  ['transpose_16',['Transpose',['../da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9',1,'tannic::Tensor']]],
-  ['unsqueeze_17',['Unsqueeze',['../da/d93/classtannic_1_1Tensor.html#ad8a7f79f8522948fa0a41f7c2f4322d2',1,'tannic::Tensor']]],
-  ['view_18',['View',['../da/d93/classtannic_1_1Tensor.html#a7f7618fb8029f94419961726b789b0c3',1,'tannic::Tensor']]]
+  ['flatten_12',['Flatten',['../da/d93/classtannic_1_1Tensor.html#af21e40cedc5595f8cdf4088a38341fe3',1,'tannic::Tensor']]],
+  ['permutation_13',['Permutation',['../da/d93/classtannic_1_1Tensor.html#ac476c46f4bf3abbf4777f81f5cd19a78',1,'tannic::Tensor']]],
+  ['realification_14',['Realification',['../da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082',1,'tannic::Tensor']]],
+  ['slice_15',['Slice',['../da/d93/classtannic_1_1Tensor.html#acd979f317f147e5b65290548bed8fa45',1,'tannic::Tensor']]],
+  ['squeeze_16',['Squeeze',['../da/d93/classtannic_1_1Tensor.html#a729eb82721a6e05f3e5db99bf6100aa8',1,'tannic::Tensor']]],
+  ['transpose_17',['Transpose',['../da/d93/classtannic_1_1Tensor.html#ae69fa951d7e1f4c2e93eabef4dc136d9',1,'tannic::Tensor']]],
+  ['unsqueeze_18',['Unsqueeze',['../da/d93/classtannic_1_1Tensor.html#ad8a7f79f8522948fa0a41f7c2f4322d2',1,'tannic::Tensor']]],
+  ['view_19',['View',['../da/d93/classtannic_1_1Tensor.html#a7f7618fb8029f94419961726b789b0c3',1,'tannic::Tensor']]]
 ];

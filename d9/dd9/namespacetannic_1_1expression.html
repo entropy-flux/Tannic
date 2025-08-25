@@ -125,6 +125,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d10/classtannic_1_1expression_1_1Expansion.html">Expansion</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for expanding (broadcasting) singleton dimensions of a tensor.  <a href="../../d0/d10/classtannic_1_1expression_1_1Expansion.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbe/classtannic_1_1expression_1_1Flatten.html">Flatten</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for flattening a contiguous range of dimensions.  <a href="../../d1/dbe/classtannic_1_1expression_1_1Flatten.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">Permutation</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for reordering tensor dimensions according to a specified permutation.  <a href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,6 +215,10 @@ Functions</h2></td></tr>
 <tr class="memitem:af3cfb1c4d6698824ae724c29c94e5d18"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#af3cfb1c4d6698824ae724c29c94e5d18">unsqueeze</a> (Source &amp;&amp;source, Axes... axes)</td></tr>
 <tr class="memdesc:af3cfb1c4d6698824ae724c29c94e5d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts singleton dimensions at the specified axes (unsqueeze).  <br /></td></tr>
 <tr class="separator:af3cfb1c4d6698824ae724c29c94e5d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0573425cb00a0c994323d6453efa3ff"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
+<tr class="memitem:ae0573425cb00a0c994323d6453efa3ff"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#ae0573425cb00a0c994323d6453efa3ff">flatten</a> (Source &amp;&amp;source, int start=0, int end=-1)</td></tr>
+<tr class="memdesc:ae0573425cb00a0c994323d6453efa3ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flattens dimensions of a tensor into a single dimension.  <br /></td></tr>
+<tr class="separator:ae0573425cb00a0c994323d6453efa3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a83caa2ee55fd9f434b633d9eba583b61" name="a83caa2ee55fd9f434b633d9eba583b61"></a>
@@ -525,6 +532,70 @@ template&lt;Expression Source, Integral... Sizes&gt; </div>
 <div class="line"> </div>
 <div class="line">std::cout &lt;&lt; Y.shape() &lt;&lt; std::endl;   <span class="comment">// prints (4, 3)</span></div>
 <div class="line">std::cout &lt;&lt; Y.strides() &lt;&lt; std::endl; <span class="comment">// prints (0, original_stride[1])</span></div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a id="ae0573425cb00a0c994323d6453efa3ff" name="ae0573425cb00a0c994323d6453efa3ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0573425cb00a0c994323d6453efa3ff">&#9670;&#160;</a></span>flatten()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression Source&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::expression::flatten </td>
+          <td>(</td>
+          <td class="paramtype">Source &amp;&amp;&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>end</em> = <code>-1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flattens dimensions of a tensor into a single dimension. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Source</td><td>The expression or tensor type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>The source tensor or expression. </td></tr>
+    <tr><td class="paramname">start_dim</td><td>First dimension to flatten (default = 0). </td></tr>
+    <tr><td class="paramname">end_dim</td><td>Last dimension to flatten (default = -1, meaning last dim). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <code><a class="el" href="../../d1/dbe/classtannic_1_1expression_1_1Flatten.html" title="Expression template for flattening a contiguous range of dimensions.">Flatten</a></code> view expression.</dd></dl>
+<p>Example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2, 3, 4});</div>
+<div class="line"><span class="keyword">auto</span> Y = flatten(X, 1, -1); <span class="comment">// shape: (2, 12)</span></div>
+<div class="line"><span class="keyword">auto</span> Z = flatten(X);        <span class="comment">// shape: (24)</span></div>
 </div><!-- fragment --> 
 </div>
 </div>
