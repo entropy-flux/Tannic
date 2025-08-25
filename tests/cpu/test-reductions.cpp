@@ -175,9 +175,8 @@ TEST(TestReductions, TestRMSIssued) {
 }
 
 /*
-
 TEST(TestReductions, Test1D) {
-    Tensor X(float32, {7}); X.initialize();
+    Tensor X(float32, {7}); X.initialize(Device());
     X[0] = 3; X[1] = 5; X[2] = 4; X[3] = 1; X[4] = 5; X[5] = 9; X[6] = 2;
     Tensor tmax = argmax(X);
     Tensor tmin = argmin(X); 
@@ -186,7 +185,7 @@ TEST(TestReductions, Test1D) {
 }
 
 TEST(TestReductions, Test2D) {
-    Tensor X(float32, {3, 4}); X.initialize();
+    Tensor X(float32, {3, 4});  X.initialize(Device());
     X[0][0] = 3; X[0][1] = 5; X[0][2] = 4; X[0][3] = 1;
     X[1][0] = 5; X[1][1] = 9; X[1][2] = 2; X[1][3] = 7;
     X[2][0] = 6; X[2][1] = 2; X[2][2] = 8; X[2][3] = 4;
@@ -204,7 +203,7 @@ TEST(TestReductions, Test2D) {
 }
  
 TEST(TestReductions, Test2D_Axis0) {
-    Tensor X(float32, {3, 4}); X.initialize();
+    Tensor X(float32, {3, 4});  X.initialize(Device());
     X[0][0] = 3; X[0][1] = 5; X[0][2] = 4; X[0][3] = 1;
     X[1][0] = 5; X[1][1] = 9; X[1][2] = 2; X[1][3] = 7;
     X[2][0] = 6; X[2][1] = 2; X[2][2] = 8; X[2][3] = 4;
@@ -224,7 +223,7 @@ TEST(TestReductions, Test2D_Axis0) {
 } 
 
 TEST(TestReductions, TestSum2D_Keepdim) {
-    Tensor X(float32, {2, 3}); X.initialize();
+    Tensor X(float32, {2, 3}); X.initialize(Device());
     X[0][0] = 1; X[0][1] = 2; X[0][2] = 3;
     X[1][0] = 4; X[1][1] = 5; X[1][2] = 6;
  
@@ -235,7 +234,7 @@ TEST(TestReductions, TestSum2D_Keepdim) {
 }
 
 TEST(TestReductions, TestMean2D) {
-    Tensor X(float32, {2, 3}); X.initialize();
+    Tensor X(float32, {2, 3}); X.initialize(Device());
     X[0][0] = 1; X[0][1] = 2; X[0][2] = 3;
     X[1][0] = 4; X[1][1] = 5; X[1][2] = 6;
 
@@ -248,7 +247,7 @@ TEST(TestReductions, TestMean2D) {
 } 
 
 TEST(TestReductions, Test1D_MeanAndSum) { 
-    Tensor X(float32, {5}); X.initialize();
+    Tensor X(float32, {5}); X.initialize(Device());
     X[0] = 10; X[1] = 20; X[2] = 30; X[3] = 40; X[4] = 50;
  
     Tensor tsum = sum(X); 
@@ -259,7 +258,7 @@ TEST(TestReductions, Test1D_MeanAndSum) {
 }
 
 TEST(TestReductions, Test1D_MeanAndSum_Keepdim) { 
-    Tensor X(float32, {5}); X.initialize();
+    Tensor X(float32, {5}); X.initialize(Device());
     X[0] = 10; X[1] = 20; X[2] = 30; X[3] = 40; X[4] = 50;
 
     Tensor tsum = sum(X, 0, true);
@@ -272,7 +271,7 @@ TEST(TestReductions, Test1D_MeanAndSum_Keepdim) {
 }
 
 TEST(TestReductions, Test2D_AxisMinus1_Keepdim) {
-    Tensor X(float32, {2, 4}); X.initialize();
+    Tensor X(float32, {2, 4}); X.initialize(Device());
     X[0][0] = 1; X[0][1] = 2; X[0][2] = 3; X[0][3] = 4;
     X[1][0] = 5; X[1][1] = 6; X[1][2] = 7; X[1][3] = 8;
 
@@ -290,7 +289,7 @@ TEST(TestReductions, Test2D_AxisMinus1_Keepdim) {
 }
 
 TEST(TestReductions, Test3D_AxisMinus1_Keepdim) {
-    Tensor X(float32, {2, 3, 4}); X.initialize();
+    Tensor X(float32, {2, 3, 4}); X.initialize(Device());
     
     X[0][0][0] = 1;  X[0][0][1] = 2;  X[0][0][2] = 3;  X[0][0][3] = 4;
     X[0][1][0] = 5;  X[0][1][1] = 6;  X[0][1][2] = 7;  X[0][1][3] = 8;
@@ -321,31 +320,5 @@ TEST(TestReductions, Test3D_AxisMinus1_Keepdim) {
     ASSERT_EQ(tmean[1][2][0], 22.5f); 
 }
 
-
-TEST(TestReductions, TestRMSIssued) {
-    Tensor X(float32, {2,2,3}); X.initialize(); 
-    X[0, 0, 0] = 1.0;
-    X[0, 0, 1] = 2.0;
-    X[0, 0, 2] = 3.0;
-
-    X[0, 1, 0] = 4.0;
-    X[0, 1, 1] = 5.0;
-    X[0, 1, 2] = 6.0;
-
-    X[1, 0, 0] = -1.0;
-    X[1, 0, 1] = -2.0;
-    X[1, 0, 2] = -3.0;
-
-    X[1, 1, 0] = 0.5;
-    X[1, 1, 1] = 1.0;
-    X[1, 1, 2] = 1.5;
-
-    Tensor Y = mean(X*X, -1);
-    float* data = reinterpret_cast<float*>(Y.bytes()); 
-
-    EXPECT_NEAR(data[0], 4.6667f, 1e-3);
-    EXPECT_NEAR(data[1], 25.6667, 1e-3);
-    EXPECT_NEAR(data[2], 4.6667, 1e-3);
-    EXPECT_NEAR(data[3], 1.1667, 1e-3);
-} 
+ 
 */
