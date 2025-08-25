@@ -79,8 +79,9 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d6/de5/structtannic_1_1operation_1_1Subtraction.html",
-"da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082",
-"dd/d0f/classtannic_1_1expression_1_1Slice.html#a5d11cdc8bf08fd7cbfa7784dec7dadaa"
+"da/d93/classtannic_1_1Tensor.html#a729eb82721a6e05f3e5db99bf6100aa8",
+"dc/deb/classtannic_1_1Strides.html#ae12a35e163505895661333ff7f694162",
+"namespacemembers_type.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

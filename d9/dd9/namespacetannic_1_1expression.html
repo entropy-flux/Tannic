@@ -140,8 +140,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html">Slice</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template representing a tensor slice or subview.  <a href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dca/classtannic_1_1expression_1_1Squeeze.html">Squeeze</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for removing singleton dimensions from a tensor.  <a href="../../d7/dca/classtannic_1_1expression_1_1Squeeze.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html">Transpose</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for transposing two dimensions of a tensor.  <a href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html">Unsqueeze</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for inserting singleton dimensions into a tensor.  <a href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9f/classtannic_1_1expression_1_1View.html">View</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for viewing a tensor with a new shape.  <a href="../../d2/d9f/classtannic_1_1expression_1_1View.html#details">More...</a><br /></td></tr>
@@ -198,6 +204,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a3e153f6fc540062b27409ba60926e869"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a3e153f6fc540062b27409ba60926e869">expand</a> (Source &amp;&amp;source, Sizes... sizes)</td></tr>
 <tr class="memdesc:a3e153f6fc540062b27409ba60926e869"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an expanded view of a tensor, broadcasting singleton dimensions.  <br /></td></tr>
 <tr class="separator:a3e153f6fc540062b27409ba60926e869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb6b00dc672b62ceb6217af46120894c"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
+<tr class="memitem:aeb6b00dc672b62ceb6217af46120894c"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#aeb6b00dc672b62ceb6217af46120894c">squeeze</a> (Source &amp;&amp;source)</td></tr>
+<tr class="memdesc:aeb6b00dc672b62ceb6217af46120894c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all singleton dimensions from a tensor (squeeze).  <br /></td></tr>
+<tr class="separator:aeb6b00dc672b62ceb6217af46120894c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3cfb1c4d6698824ae724c29c94e5d18"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral... Axes&gt; </td></tr>
+<tr class="memitem:af3cfb1c4d6698824ae724c29c94e5d18"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#af3cfb1c4d6698824ae724c29c94e5d18">unsqueeze</a> (Source &amp;&amp;source, Axes... axes)</td></tr>
+<tr class="memdesc:af3cfb1c4d6698824ae724c29c94e5d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts singleton dimensions at the specified axes (unsqueeze).  <br /></td></tr>
+<tr class="separator:af3cfb1c4d6698824ae724c29c94e5d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a83caa2ee55fd9f434b633d9eba583b61" name="a83caa2ee55fd9f434b633d9eba583b61"></a>
@@ -758,6 +772,52 @@ Example:</h4>
 </div><!-- fragment --> 
 </div>
 </div>
+<a id="aeb6b00dc672b62ceb6217af46120894c" name="aeb6b00dc672b62ceb6217af46120894c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb6b00dc672b62ceb6217af46120894c">&#9670;&#160;</a></span>squeeze()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression Source&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::expression::squeeze </td>
+          <td>(</td>
+          <td class="paramtype">Source &amp;&amp;&#160;</td>
+          <td class="paramname"><em>source</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes all singleton dimensions from a tensor (squeeze). </p>
+<p>This function returns a <code><a class="el" href="../../d7/dca/classtannic_1_1expression_1_1Squeeze.html" title="Expression template for removing singleton dimensions from a tensor.">Squeeze</a></code> expression that reinterprets the source tensor without its size-1 dimensions.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Source</td><td>The expression or tensor type. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>The source tensor or expression. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A <code><a class="el" href="../../d7/dca/classtannic_1_1expression_1_1Squeeze.html" title="Expression template for removing singleton dimensions from a tensor.">Squeeze</a></code> view expression.</dd></dl>
+<p>Example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {1, 3, 1});</div>
+<div class="line"><span class="keyword">auto</span> Y = squeeze(X); <span class="comment">// shape: (3)</span></div>
+</div><!-- fragment --> 
+</div>
+</div>
 <a id="ab256bfd94d0cccbceab6a094403ccc96" name="ab256bfd94d0cccbceab6a094403ccc96"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab256bfd94d0cccbceab6a094403ccc96">&#9670;&#160;</a></span>sum()</h2>
 
@@ -884,6 +944,65 @@ template&lt;Expression Source&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A <code><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html" title="Expression template for transposing two dimensions of a tensor.">Transpose</a></code> view expression. </dd></dl>
 
+</div>
+</div>
+<a id="af3cfb1c4d6698824ae724c29c94e5d18" name="af3cfb1c4d6698824ae724c29c94e5d18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3cfb1c4d6698824ae724c29c94e5d18">&#9670;&#160;</a></span>unsqueeze()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Expression Source, Integral... Axes&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto tannic::expression::unsqueeze </td>
+          <td>(</td>
+          <td class="paramtype">Source &amp;&amp;&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Axes...&#160;</td>
+          <td class="paramname"><em>axes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inserts singleton dimensions at the specified axes (unsqueeze). </p>
+<p>This function returns an <code><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html" title="Expression template for inserting singleton dimensions into a tensor.">Unsqueeze</a></code> expression that reinterprets the source tensor with new dimensions of size 1 added.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Source</td><td>The expression or tensor type. </td></tr>
+    <tr><td class="paramname">Axes</td><td>One or more integral indices where new dimensions will be inserted. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>The source tensor or expression. </td></tr>
+    <tr><td class="paramname">axes</td><td>Axis indices (negative indices allowed). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An <code><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html" title="Expression template for inserting singleton dimensions into a tensor.">Unsqueeze</a></code> view expression.</dd></dl>
+<p>Example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {3});</div>
+<div class="line"><span class="keyword">auto</span> Y = unsqueeze(X, 0);  <span class="comment">// shape: (1, 3)</span></div>
+<div class="line"><span class="keyword">auto</span> Z = unsqueeze(X, -1); <span class="comment">// shape: (3, 1)</span></div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a id="a5f5b6b37401a67689b7df785f85eefbe" name="a5f5b6b37401a67689b7df785f85eefbe"></a>

@@ -5,6 +5,7 @@ var searchData=
   ['sinh_2',['Sinh',['../de/d64/structtannic_1_1function_1_1Sinh.html',1,'tannic::function']]],
   ['slice_3',['Slice',['../dd/d0f/classtannic_1_1expression_1_1Slice.html',1,'tannic::expression']]],
   ['sqrt_4',['Sqrt',['../d7/df8/structtannic_1_1function_1_1Sqrt.html',1,'tannic::function']]],
-  ['strides_5',['Strides',['../dc/deb/classtannic_1_1Strides.html',1,'tannic']]],
-  ['subtraction_6',['Subtraction',['../d6/de5/structtannic_1_1operation_1_1Subtraction.html',1,'tannic::operation']]]
+  ['squeeze_5',['Squeeze',['../d7/dca/classtannic_1_1expression_1_1Squeeze.html',1,'tannic::expression']]],
+  ['strides_6',['Strides',['../dc/deb/classtannic_1_1Strides.html',1,'tannic']]],
+  ['subtraction_7',['Subtraction',['../d6/de5/structtannic_1_1operation_1_1Subtraction.html',1,'tannic::operation']]]
 ];

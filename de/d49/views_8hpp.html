@@ -174,6 +174,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d10/classtannic_1_1expression_1_1Expansion.html">tannic::expression::Expansion&lt; Source &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for expanding (broadcasting) singleton dimensions of a tensor.  <a href="../../d0/d10/classtannic_1_1expression_1_1Expansion.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dca/classtannic_1_1expression_1_1Squeeze.html">tannic::expression::Squeeze&lt; Source &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for removing singleton dimensions from a tensor.  <a href="../../d7/dca/classtannic_1_1expression_1_1Squeeze.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html">tannic::expression::Unsqueeze&lt; Source &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for inserting singleton dimensions into a tensor.  <a href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -200,6 +206,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a3e153f6fc540062b27409ba60926e869"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a3e153f6fc540062b27409ba60926e869">tannic::expression::expand</a> (Source &amp;&amp;source, Sizes... sizes)</td></tr>
 <tr class="memdesc:a3e153f6fc540062b27409ba60926e869"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an expanded view of a tensor, broadcasting singleton dimensions.  <br /></td></tr>
 <tr class="separator:a3e153f6fc540062b27409ba60926e869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb6b00dc672b62ceb6217af46120894c"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
+<tr class="memitem:aeb6b00dc672b62ceb6217af46120894c"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#aeb6b00dc672b62ceb6217af46120894c">tannic::expression::squeeze</a> (Source &amp;&amp;source)</td></tr>
+<tr class="memdesc:aeb6b00dc672b62ceb6217af46120894c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all singleton dimensions from a tensor (squeeze).  <br /></td></tr>
+<tr class="separator:aeb6b00dc672b62ceb6217af46120894c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3cfb1c4d6698824ae724c29c94e5d18"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral... Axes&gt; </td></tr>
+<tr class="memitem:af3cfb1c4d6698824ae724c29c94e5d18"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#af3cfb1c4d6698824ae724c29c94e5d18">tannic::expression::unsqueeze</a> (Source &amp;&amp;source, Axes... axes)</td></tr>
+<tr class="memdesc:af3cfb1c4d6698824ae724c29c94e5d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts singleton dimensions at the specified axes (unsqueeze).  <br /></td></tr>
+<tr class="separator:af3cfb1c4d6698824ae724c29c94e5d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

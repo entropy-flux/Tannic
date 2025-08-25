@@ -14,7 +14,9 @@ var namespacetannic_1_1expression =
     [ "Realification", "db/d96/classtannic_1_1expression_1_1Realification.html", "db/d96/classtannic_1_1expression_1_1Realification" ],
     [ "Reduction", "da/dc5/classtannic_1_1expression_1_1Reduction.html", "da/dc5/classtannic_1_1expression_1_1Reduction" ],
     [ "Slice", "dd/d0f/classtannic_1_1expression_1_1Slice.html", "dd/d0f/classtannic_1_1expression_1_1Slice" ],
+    [ "Squeeze", "d7/dca/classtannic_1_1expression_1_1Squeeze.html", "d7/dca/classtannic_1_1expression_1_1Squeeze" ],
     [ "Transpose", "d0/dd9/classtannic_1_1expression_1_1Transpose.html", "d0/dd9/classtannic_1_1expression_1_1Transpose" ],
+    [ "Unsqueeze", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze" ],
     [ "View", "d2/d9f/classtannic_1_1expression_1_1View.html", "d2/d9f/classtannic_1_1expression_1_1View" ],
     [ "argmax", "d9/dd9/namespacetannic_1_1expression.html#a83caa2ee55fd9f434b633d9eba583b61", null ],
     [ "argmin", "d9/dd9/namespacetannic_1_1expression.html#aa12d02d976951a8d0311e23af16e2ab3", null ],
@@ -25,7 +27,9 @@ var namespacetannic_1_1expression =
     [ "permute", "d9/dd9/namespacetannic_1_1expression.html#a1f1dde31ec629ed3d6b2b979221cf802", null ],
     [ "polar", "d9/dd9/namespacetannic_1_1expression.html#a94ab220f2ca090334605296af5f3de84", null ],
     [ "realify", "d9/dd9/namespacetannic_1_1expression.html#a0e5202d0e8bc3b22deddc6eabcb0df39", null ],
+    [ "squeeze", "d9/dd9/namespacetannic_1_1expression.html#aeb6b00dc672b62ceb6217af46120894c", null ],
     [ "sum", "d9/dd9/namespacetannic_1_1expression.html#ab256bfd94d0cccbceab6a094403ccc96", null ],
     [ "transpose", "d9/dd9/namespacetannic_1_1expression.html#ab43b77ed569cfeb4380abc2e6458aa00", null ],
+    [ "unsqueeze", "d9/dd9/namespacetannic_1_1expression.html#af3cfb1c4d6698824ae724c29c94e5d18", null ],
     [ "view", "d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe", null ]
 ];

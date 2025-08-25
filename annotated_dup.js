@@ -16,7 +16,9 @@ var annotated_dup =
         [ "Realification", "db/d96/classtannic_1_1expression_1_1Realification.html", "db/d96/classtannic_1_1expression_1_1Realification" ],
         [ "Reduction", "da/dc5/classtannic_1_1expression_1_1Reduction.html", "da/dc5/classtannic_1_1expression_1_1Reduction" ],
         [ "Slice", "dd/d0f/classtannic_1_1expression_1_1Slice.html", "dd/d0f/classtannic_1_1expression_1_1Slice" ],
+        [ "Squeeze", "d7/dca/classtannic_1_1expression_1_1Squeeze.html", "d7/dca/classtannic_1_1expression_1_1Squeeze" ],
         [ "Transpose", "d0/dd9/classtannic_1_1expression_1_1Transpose.html", "d0/dd9/classtannic_1_1expression_1_1Transpose" ],
+        [ "Unsqueeze", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze" ],
         [ "View", "d2/d9f/classtannic_1_1expression_1_1View.html", "d2/d9f/classtannic_1_1expression_1_1View" ]
       ] ],
       [ "function", "dd/d74/namespacetannic_1_1function.html", [

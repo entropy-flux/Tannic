@@ -52,6 +52,7 @@ var hierarchy =
     [ "tannic::function::Sinh", "de/d64/structtannic_1_1function_1_1Sinh.html", null ],
     [ "tannic::expression::Slice< Source, Indexes >", "dd/d0f/classtannic_1_1expression_1_1Slice.html", null ],
     [ "tannic::function::Sqrt", "d7/df8/structtannic_1_1function_1_1Sqrt.html", null ],
+    [ "tannic::expression::Squeeze< Source >", "d7/dca/classtannic_1_1expression_1_1Squeeze.html", null ],
     [ "tannic::Strides", "dc/deb/classtannic_1_1Strides.html", null ],
     [ "tannic::operation::Subtraction", "d6/de5/structtannic_1_1operation_1_1Subtraction.html", null ],
     [ "tannic::function::Tan", "d2/d15/structtannic_1_1function_1_1Tan.html", null ],
@@ -67,5 +68,6 @@ var hierarchy =
     [ "tannic::transformation::Transformation< Operation, Operands >", "d9/d4d/classtannic_1_1transformation_1_1Transformation.html", null ],
     [ "tannic::expression::Transpose< Source >", "d0/dd9/classtannic_1_1expression_1_1Transpose.html", null ],
     [ "tannic::operation::Unary< Operation, Operand >", "d7/d26/classtannic_1_1operation_1_1Unary.html", null ],
+    [ "tannic::expression::Unsqueeze< Source >", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html", null ],
     [ "tannic::expression::View< Source >", "d2/d9f/classtannic_1_1expression_1_1View.html", null ]
 ];

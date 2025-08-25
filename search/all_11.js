@@ -32,9 +32,7 @@ var searchData=
   ['transformation_29',['transformation',['../de/d75/namespacetannic_1_1transformation.html',1,'tannic']]],
   ['transformation_30',['Transformation',['../d9/d4d/classtannic_1_1transformation_1_1Transformation.html',1,'tannic::transformation::Transformation&lt; Operation, Operands &gt;'],['../d9/d4d/classtannic_1_1transformation_1_1Transformation.html#a9204f338e3bdfd0d018e77b363e73d18',1,'tannic::transformation::Transformation::Transformation()']]],
   ['transformations_2ehpp_31',['transformations.hpp',['../d8/d71/transformations_8hpp.html',1,'']]],
-  ['transpose_32',['Transpose',['../d0/dd9/classtannic_1_1expression_1_1Transpose.html',1,'tannic::expression']]],
-  ['transpose_33',['transpose',['../da/d93/classtannic_1_1Tensor.html#a2970d79712c97bca7c781c3d7987fb0b',1,'tannic::Tensor']]],
-  ['transpose_34',['Transpose',['../d0/dd9/classtannic_1_1expression_1_1Transpose.html#a8a249c8137fb87b17025731e6315e17a',1,'tannic::expression::Transpose']]],
-  ['transpose_35',['transpose',['../d9/dd9/namespacetannic_1_1expression.html#ab43b77ed569cfeb4380abc2e6458aa00',1,'tannic::expression']]],
-  ['types_2ehpp_36',['types.hpp',['../dd/de3/types_8hpp.html',1,'']]]
+  ['transpose_32',['Transpose',['../d0/dd9/classtannic_1_1expression_1_1Transpose.html',1,'tannic::expression::Transpose&lt; Source &gt;'],['../d0/dd9/classtannic_1_1expression_1_1Transpose.html#a8a249c8137fb87b17025731e6315e17a',1,'tannic::expression::Transpose::Transpose()']]],
+  ['transpose_33',['transpose',['../da/d93/classtannic_1_1Tensor.html#a2970d79712c97bca7c781c3d7987fb0b',1,'tannic::Tensor::transpose()'],['../d9/dd9/namespacetannic_1_1expression.html#ab43b77ed569cfeb4380abc2e6458aa00',1,'tannic::expression::transpose()']]],
+  ['types_2ehpp_34',['types.hpp',['../dd/de3/types_8hpp.html',1,'']]]
 ];

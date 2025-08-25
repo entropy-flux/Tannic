@@ -105,10 +105,10 @@ $(document).ready(function(){initNavTree('d2/d9f/classtannic_1_1expression_1_1Vi
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:addfe0cc20be2955bbf7d8548b8248f38"><td class="memTemplParams" colspan="2">template&lt;Integral... Sizes&gt; </td></tr>
-<tr class="memitem:addfe0cc20be2955bbf7d8548b8248f38"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d2/d9f/classtannic_1_1expression_1_1View.html#addfe0cc20be2955bbf7d8548b8248f38">View</a> (<a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Source &gt;::Reference source, Sizes... sizes)</td></tr>
-<tr class="memdesc:addfe0cc20be2955bbf7d8548b8248f38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a reshaped view of the source tensor.  <br /></td></tr>
-<tr class="separator:addfe0cc20be2955bbf7d8548b8248f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2cba300b3fa4c438c0e1edf3ddc8ed3"><td class="memTemplParams" colspan="2">template&lt;Integral... Sizes&gt; </td></tr>
+<tr class="memitem:ae2cba300b3fa4c438c0e1edf3ddc8ed3"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d2/d9f/classtannic_1_1expression_1_1View.html#ae2cba300b3fa4c438c0e1edf3ddc8ed3">View</a> (typename <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Source &gt;::Reference source, Sizes... sizes)</td></tr>
+<tr class="memdesc:ae2cba300b3fa4c438c0e1edf3ddc8ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a reshaped view of the source tensor.  <br /></td></tr>
+<tr class="separator:ae2cba300b3fa4c438c0e1edf3ddc8ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96b3a4db8ae1b05bc0a4a2e1f8fab3f5"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9f/classtannic_1_1expression_1_1View.html#a96b3a4db8ae1b05bc0a4a2e1f8fab3f5">dtype</a> () const</td></tr>
 <tr class="separator:a96b3a4db8ae1b05bc0a4a2e1f8fab3f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ced07a49e01a73338c4107a17329107"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9f/classtannic_1_1expression_1_1View.html#a3ced07a49e01a73338c4107a17329107">shape</a> () const</td></tr>
@@ -134,10 +134,10 @@ class tannic::expression::View&lt; Source &gt;</div><p>Expression template for v
 <p>Example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2, 3});</div>
 <div class="line"><span class="keyword">auto</span> Y = <a class="code hl_function" href="../../d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe">view</a>(X, 3, 2); <span class="comment">// new shape: (3, 2)</span></div>
 <div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:105</div></div>
-<div class="ttc" id="anamespacetannic_1_1expression_html_a5f5b6b37401a67689b7df785f85eefbe"><div class="ttname"><a href="../../d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe">tannic::expression::view</a></div><div class="ttdeci">constexpr auto view(Source &amp;&amp;source, Indexes ... indexes)</div><div class="ttdoc">Creates a reshaped view of a tensor or expression.</div><div class="ttdef"><b>Definition:</b> views.hpp:472</div></div>
+<div class="ttc" id="anamespacetannic_1_1expression_html_a5f5b6b37401a67689b7df785f85eefbe"><div class="ttname"><a href="../../d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe">tannic::expression::view</a></div><div class="ttdeci">constexpr auto view(Source &amp;&amp;source, Indexes ... indexes)</div><div class="ttdoc">Creates a reshaped view of a tensor or expression.</div><div class="ttdef"><b>Definition:</b> views.hpp:708</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="addfe0cc20be2955bbf7d8548b8248f38" name="addfe0cc20be2955bbf7d8548b8248f38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addfe0cc20be2955bbf7d8548b8248f38">&#9670;&#160;</a></span>View()</h2>
+<a id="ae2cba300b3fa4c438c0e1edf3ddc8ed3" name="ae2cba300b3fa4c438c0e1edf3ddc8ed3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2cba300b3fa4c438c0e1edf3ddc8ed3">&#9670;&#160;</a></span>View()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -152,7 +152,7 @@ template&lt;Integral... Sizes&gt; </div>
         <tr>
           <td class="memname">constexpr <a class="el" href="../../d2/d9f/classtannic_1_1expression_1_1View.html">tannic::expression::View</a>&lt; Source &gt;::View </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Source &gt;::Reference&#160;</td>
+          <td class="paramtype">typename <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Source &gt;::Reference&#160;</td>
           <td class="paramname"><em>source</em>, </td>
         </tr>
         <tr>
