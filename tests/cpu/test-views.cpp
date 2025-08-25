@@ -269,7 +269,7 @@ TEST(TestTensorFlatten, TestFlattenAllDims) {
         for (size_t j = 0; j < 3; j++)
             X[i][j] = val++;
 
-    Tensor Y = flatten(X); // flatten all dims → shape (6)
+    Tensor Y = flatten(X);  
 
     ASSERT_EQ(Y.shape().rank(), 1);
     ASSERT_EQ(Y.shape()[0], 6);
