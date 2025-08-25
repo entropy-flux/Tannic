@@ -259,3 +259,94 @@ TEST(TestTensorUnsqueeze, TestMultipleAxes) {
     Y[0][1][0][1] = 99;
     EXPECT_EQ(X[1][1], 99);
 }
+
+TEST(TestTensorFlatten, TestFlattenAllDims) {
+    Tensor X(float32, {2, 3}); 
+    X.initialize();
+
+    int val = 1;
+    for (size_t i = 0; i < 2; i++)
+        for (size_t j = 0; j < 3; j++)
+            X[i][j] = val++;
+
+    Tensor Y = flatten(X); // flatten all dims → shape (6)
+
+    ASSERT_EQ(Y.shape().rank(), 1);
+    ASSERT_EQ(Y.shape()[0], 6);
+
+    int expected = 1;
+    for (size_t i = 0; i < 6; i++) {
+        EXPECT_EQ(Y[i], expected++) << "Mismatch at Y[" << i << "]";
+    }
+
+    Y[0] = 99;
+    EXPECT_EQ(X[0][0], 99); // check view semantics
+}
+
+
+TEST(TestTensorFlatten, TestFlattenInnerDims) {
+    Tensor X(float32, {2, 3, 4}); 
+    X.initialize();
+
+    int val = 1;
+    for (size_t i = 0; i < 2; i++)
+        for (size_t j = 0; j < 3; j++)
+            for (size_t k = 0; k < 4; k++)
+                X[i][j][k] = val++;
+
+    Tensor Y = flatten(X, 1, -1); // collapse dims (1,2) → shape (2, 12)
+
+    ASSERT_EQ(Y.shape().rank(), 2);
+    EXPECT_EQ(Y.shape()[0], 2);
+    EXPECT_EQ(Y.shape()[1], 12);
+
+    int expected = 1;
+    for (size_t i = 0; i < 2; i++) {
+        for (size_t j = 0; j < 12; j++) {
+            EXPECT_EQ(Y[i][j], expected++) 
+                << "Mismatch at Y[" << i << "][" << j << "]";
+        }
+    }
+
+    Y[1][5] = 123;
+    EXPECT_EQ(X[1][1][1], 123); // verify mapping back
+}
+
+
+TEST(TestTensorFlatten, TestFlattenMiddleOnly) {
+    Tensor X(float32, {2, 3, 4, 5}); 
+    X.initialize();
+
+    int val = 1;
+    for (size_t a = 0; a < 2; a++)
+        for (size_t b = 0; b < 3; b++)
+            for (size_t c = 0; c < 4; c++)
+                for (size_t d = 0; d < 5; d++)
+                    X[a][b][c][d] = val++;
+
+    Tensor Y = flatten(X, 1, 2); // collapse dims (1,2) → shape (2, 12, 5)
+
+    ASSERT_EQ(Y.shape().rank(), 3);
+    EXPECT_EQ(Y.shape()[0], 2);
+    EXPECT_EQ(Y.shape()[1], 12);
+    EXPECT_EQ(Y.shape()[2], 5);
+ 
+    EXPECT_EQ(Y[0][0][0], 1);
+ 
+    int expected_val = ((0 * 3 * 4 * 5) + (2 * 4 * 5) + (3 * 5) + 4 + 1);             
+    EXPECT_EQ(Y[0][11][4], expected_val);  
+}
+
+
+TEST(TestTensorFlatten, TestFlattenInvalid) {
+    Tensor X(float32, {2, 3, 4});
+    X.initialize();
+ 
+    EXPECT_THROW({
+        auto Y = flatten(X, 2, 1);
+    }, Exception);
+ 
+    EXPECT_THROW({
+        auto Y = flatten(X, 0, 10);
+    }, Exception);
+}

@@ -642,6 +642,9 @@ protected:
 
     template <Expression Source>
     friend class expression::Expansion;
+ 
+    template <Expression Source>
+    friend class expression::Flatten;
 
     template <class Coordinates, Expression... Sources>
     friend class expression::Complexification;
@@ -713,6 +716,12 @@ Tensor expression::Unsqueeze<Source>::forward() const {
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
+ 
+template<Expression Source>
+Tensor expression::Flatten<Source>::forward() const { 
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
+} 
 
 template<Expression Source, Integral... Indexes>
 Tensor expression::Permutation<Source, Indexes...>::forward() const {   

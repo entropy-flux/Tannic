@@ -689,6 +689,116 @@ private:
 };
 
   
+/**
+ * @class Flatten
+ * @brief Expression template for flattening a contiguous range of dimensions.
+ *
+ * @tparam Source The expression or tensor type being flattened.
+ *
+ * The `Flatten` view collapses dimensions between `start_dim` and `end_dim`
+ * into a single dimension. This operation only modifies tensor metadata
+ * (shape and strides) and does not move data.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {2, 3, 4});
+ * auto Y = flatten(X, 1, -1); // shape becomes (2, 12)
+ * auto Z = flatten(X);        // shape becomes (24)
+ * ```
+ */
+template<Expression Source>
+class Flatten {
+public:
+    constexpr Flatten(typename Trait<Source>::Reference source, int start = 0, int end = -1)
+    :   source_(source) {
+        auto rank = source.shape().rank();
+ 
+        start = indexing::normalize(start, rank);
+        end   = indexing::normalize(end, rank);
+
+        if (start > end) {
+            throw Exception("Flatten requires start_dim <= end_dim");
+        }
+ 
+        for (int dimension = 0; dimension < start; ++dimension) {
+            shape_.expand(source.shape()[dimension]);
+            strides_.expand(source.strides()[dimension]);
+        }
+ 
+        std::size_t flattened = 1;
+        for (int dimension = start; dimension <= end; ++dimension) {
+            flattened *= source.shape()[dimension];
+        }
+        shape_.expand(flattened);
+        strides_.expand(source.strides()[end]);  
+ 
+        for (int dimension = end + 1; dimension < rank; ++dimension) {
+            shape_.expand(source.shape()[dimension]);
+            strides_.expand(source.strides()[dimension]);
+        }
+    }
+
+    /**
+     * @return The runtime data type of the tensor elements.
+     *
+     * This is forwarded directly from the source expression.
+     * Flatten does not alter the tensor’s dtype.
+     */
+    constexpr type dtype() const { return source_.dtype(); }
+
+        /**
+     * @return The shape of the flattened tensor.
+     *
+     * Calculation:
+     * - Dimensions before `start` are copied unchanged.
+     * - Dimensions between `start` and `end` (inclusive) are collapsed
+     *   into a single dimension equal to the product of their sizes.
+     * - Dimensions after `end` are copied unchanged.
+     *
+     * Example:
+     * - Source shape: (2, 3, 4), start_dim = 1, end_dim = -1
+     * - Flattened shape: (2, 12)
+     */
+    constexpr Shape const& shape() const { 
+        return shape_; 
+    }
+
+    /**
+     * @return The strides of the flattened tensor.
+     *
+     * Calculation:
+     * - Strides before `start` are copied unchanged.
+     * - The collapsed dimension is assigned the stride of the
+     *   *last* flattened dimension (`end`).  
+     *   This ensures contiguous indexing across the merged block.
+     * - Strides after `end_dim` are copied unchanged.
+     *
+     * Example:
+     * - Source strides: (12, 4, 1) with shape (2, 3, 4)
+     * - Flattened (start=1, end=-1) → strides: (12, 1) with shape (2, 12)
+     */
+    constexpr Strides const& strides() const { 
+        return strides_; 
+    }
+
+    /**
+     * @return The byte offset of the unsqueezed tensor from the start of storage.
+     *
+     * This is forwarded from the source tensor since flatten
+     * does not change the starting position of the data.
+     */
+    std::ptrdiff_t offset() const { return source_.offset(); }
+
+    Tensor forward() const;
+
+private:
+    Shape shape_{};
+    Strides strides_{};
+    typename Trait<Source>::Reference source_;
+};
+
+ 
+
   
 /*
 ----------------------------------------------------------------------------------------------------
@@ -831,6 +941,29 @@ constexpr auto unsqueeze(Source&& source, Axes... axes) {
     return Unsqueeze<Source>(std::forward<Source>(source), axes...);
 }
 
+
+/**
+ * @brief Flattens dimensions of a tensor into a single dimension.
+ *
+ * @tparam Source The expression or tensor type.
+ * @param source The source tensor or expression.
+ * @param start_dim First dimension to flatten (default = 0).
+ * @param end_dim Last dimension to flatten (default = -1, meaning last dim).
+ * @return A `Flatten` view expression.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {2, 3, 4});
+ * auto Y = flatten(X, 1, -1); // shape: (2, 12)
+ * auto Z = flatten(X);        // shape: (24)
+ * ```
+ */
+template<Expression Source>
+constexpr auto flatten(Source&& source, int start = 0, int end   = -1) {
+    return Flatten<Source>(std::forward<Source>(source), start, end);
+}
+
+
 } // namespace expression
 
 using expression::view;
@@ -839,6 +972,7 @@ using expression::permute;
 using expression::expand;
 using expression::squeeze;
 using expression::unsqueeze;
+using expression::flatten;
 
 } // namespace tannic
 
