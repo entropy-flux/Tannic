@@ -95,18 +95,47 @@ public:
      *         does not match the number of elements in the source.
      */
     template<Integral... Sizes>  
-    constexpr View(Trait<Source>::Reference source, Sizes... sizes)
-    :   shape_(sizes...) 
-    ,   strides_(shape_)
-    ,   source_(source) {
-        std::size_t elements = 0;
-        for (std::size_t dimension = 0; dimension < sizeof...(sizes); ++dimension) {
-            elements += strides_[dimension] * (shape_[dimension] - 1);
-        } 
-        elements += 1;  
-        if (elements != std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{} ))
+    constexpr View(typename Trait<Source>::Reference source, Sizes... sizes)
+    :   source_(source)
+    { 
+        std::array<long long, sizeof...(Sizes)> requested{ static_cast<long long>(sizes)... };
+ 
+        std::size_t source_elements = std::accumulate(
+            source.shape().begin(), source.shape().end(), 1ULL, std::multiplies<>{}
+        );
+
+        // Step 3. Handle -1 (infer axis)
+        int infer_axis = -1;
+        std::size_t known_product = 1;
+        for (std::size_t i = 0; i < requested.size(); ++i) {
+            if (requested[i] == -1) {
+                if (infer_axis != -1)
+                    throw Exception("Only one dimension can be inferred (-1) in view");
+                infer_axis = static_cast<int>(i);
+            } else if (requested[i] < 0) {
+                throw Exception("Invalid negative dimension in view");
+            } else {
+                known_product *= static_cast<std::size_t>(requested[i]);
+            }
+        }
+
+        if (infer_axis != -1) {
+            if (source_elements % known_product != 0)
+                throw Exception("Cannot infer dimension: source elements not divisible");
+            requested[infer_axis] = static_cast<long long>(source_elements / known_product);
+        }
+ 
+        for (auto v : requested) {
+            shape_.expand(static_cast<std::size_t>(v));
+        }
+ 
+        std::size_t new_elements = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{});
+        if (new_elements != source_elements)
             throw Exception("Shape mismatch: view must preserve total number of elements");
+ 
+        strides_ = Strides(shape_);
     }
+
 
     /**
      * @return The runtime data type of the tensor elements.
@@ -453,6 +482,213 @@ private:
     typename Trait<Source>::Reference source_;
 };
 
+/**
+ * @class Squeeze
+ * @brief Expression template for removing singleton dimensions from a tensor.
+ *
+ * @tparam Source The expression or tensor type being squeezed.
+ *
+ * The `Squeeze` view removes dimensions of size 1 from the shape of a tensor.
+ * This changes only the tensor metadata (shape and strides), not the underlying storage.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {1, 3, 1});
+ * auto Y = squeeze(X); // shape becomes (3)
+ * ```
+ */
+template<Expression Source>
+class Squeeze {
+public:
+    /**
+     * @brief Construct a squeezed view of the source tensor.
+     *
+     * @param source Reference to the source expression or tensor.
+     *
+     * This constructor removes all dimensions of size 1 from the source shape.
+     * Strides corresponding to those singleton dimensions are also removed.
+     */
+    constexpr Squeeze(typename Trait<Source>::Reference source)
+    : source_(source) {
+        for (auto dimension = 0; dimension < source.shape().rank(); ++dimension) {
+            if (source.shape()[dimension] != 1) {
+                shape_.expand(source.shape()[dimension]);
+                strides_.expand(source.strides()[dimension]);
+            }
+        }
+    }
+
+    /**
+     * @return The runtime data type of the tensor elements.
+     *
+     * This is forwarded directly from the source expression.
+     * Squeezing does not alter the tensor’s dtype.
+     */
+    constexpr type dtype() const { 
+        return source_.dtype(); 
+    }
+
+    /**
+     * @return The shape of the squeezed tensor.
+     *
+     * Calculation:
+     * - Copies the source shape.
+     * - Removes all dimensions of size 1.
+     *
+     * Example:
+     * - Source shape: (1, 3, 1) → Squeezed shape: (3)
+     */
+    constexpr Shape const& shape() const { 
+        return shape_; 
+    }
+
+    /**
+     * @return The strides of the squeezed tensor.
+     *
+     * Calculation:
+     * - Copies the source strides.
+     * - Removes strides corresponding to dimensions of size 1.
+     *
+     * Example:
+     * - Source strides: (3, 1, 1) with shape (1, 3, 1)
+     * - Result after squeeze: (1) with shape (3)
+     */
+    constexpr Strides const& strides() const { 
+        return strides_; 
+    }
+
+    /**
+     * @return The byte offset of the squeezed tensor from the start of storage.
+     *
+     * This is forwarded from the source tensor since squeezing
+     * does not change the starting position of the data.
+     */
+    std::ptrdiff_t offset() const { 
+        return source_.offset(); 
+    }
+
+    Tensor forward() const;
+
+private:
+    Shape shape_{};
+    Strides strides_{};
+    typename Trait<Source>::Reference source_;
+};
+
+
+
+/**
+ * @class Unsqueeze
+ * @brief Expression template for inserting singleton dimensions into a tensor.
+ *
+ * @tparam Source The expression or tensor type being unsqueezed.
+ *
+ * The `Unsqueeze` view adds new dimensions of size 1 at specified axes.
+ * This changes only the tensor metadata (shape and strides), not the underlying storage.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {3});
+ * auto Y = unsqueeze(X, 0);   // shape becomes (1, 3)
+ * auto Z = unsqueeze(X, -1);  // shape becomes (3, 1)
+ * ```
+ */
+template<Expression Source>
+class Unsqueeze {
+public:
+    /**
+     * @brief Construct an unsqueezed view of the source tensor.
+     *
+     * @tparam Axes Integral indices where new dimensions of size 1 should be inserted.
+     * @param source Reference to the source expression or tensor.
+     * @param axes One or more dimension indices (negative indices allowed).
+     *
+     * Example:
+     * - `unsqueeze(X, 0)` inserts a new axis before the first dimension.
+     * - `unsqueeze(X, -1)` inserts a new axis after the last dimension.
+     *
+     * @throws Exception if any normalized axis index is invalid.
+     */
+    template<Integral... Axes>
+    constexpr Unsqueeze(typename Trait<Source>::Reference source, Axes... axes)
+    : source_(source) {
+        auto rank = source.shape().rank();
+        std::vector<std::size_t> normalized{ static_cast<std::size_t>(indexing::normalize(axes, rank + sizeof...(axes)))... };
+        std::sort(normalized.begin(), normalized.end());
+
+        size_t dimensions = rank + normalized.size();
+        size_t index = 0;
+        size_t axis = 0;
+
+        for (auto dimension = 0; dimension < dimensions; ++dimension) {
+            if (axis < normalized.size() && dimension == normalized[axis]) {
+                shape_.expand(1);
+                strides_.expand( (index < source.strides().rank()) ? source.strides()[index] : 1 );
+                ++axis;
+            } else {
+                shape_.expand(source.shape()[index]);
+                strides_.expand(source.strides()[index]);
+                ++index;
+            }
+        }
+    }
+
+    /**
+     * @return The runtime data type of the tensor elements.
+     *
+     * This is forwarded directly from the source expression.
+     * Unsqueezing does not alter the tensor’s dtype.
+     */
+    constexpr type dtype() const { 
+        return source_.dtype(); 
+    }
+
+    /**
+     * @return The shape of the unsqueezed tensor.
+     *
+     * Calculation:
+     * - Copies the source shape.
+     * - Inserts size-1 dimensions at the specified axes.
+     *
+     * Example:
+     * - Source shape: (3)
+     * - unsqueeze(X, 0) → shape: (1, 3)
+     */
+    constexpr Shape const& shape() const { 
+        return shape_; 
+    }
+
+    /**
+     * @return The strides of the unsqueezed tensor.
+     *
+     * Calculation:
+     * - Copies the source strides.
+     * - Inserts strides for new singleton dimensions.
+     *   These strides are set to repeat the same memory element along the axis.
+     */
+    constexpr Strides const& strides() const { 
+        return strides_; 
+    }
+
+    /**
+     * @return The byte offset of the unsqueezed tensor from the start of storage.
+     *
+     * This is forwarded from the source tensor since unsqueezing
+     * does not change the starting position of the data.
+     */
+    std::ptrdiff_t offset() const { 
+        return source_.offset(); 
+    }
+
+    Tensor forward() const;
+
+private:
+    Shape shape_{};
+    Strides strides_{};
+    typename Trait<Source>::Reference source_;
+};
+
+  
   
 /*
 ----------------------------------------------------------------------------------------------------
@@ -548,12 +784,61 @@ constexpr auto expand(Source&& source, Sizes... sizes) {
     return Expansion<Source>(std::forward<Source>(source), sizes...);
 }
 
+
+/**
+ * @brief Removes all singleton dimensions from a tensor (squeeze).
+ *
+ * This function returns a `Squeeze` expression that reinterprets the
+ * source tensor without its size-1 dimensions.
+ *
+ * @tparam Source The expression or tensor type.
+ * @param source The source tensor or expression.
+ * @return A `Squeeze` view expression.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {1, 3, 1});
+ * auto Y = squeeze(X); // shape: (3)
+ * ```
+ */
+template<Expression Source>
+constexpr auto squeeze(Source&& source) {
+    return Squeeze<Source>(std::forward<Source>(source));
+}
+
+
+/**
+ * @brief Inserts singleton dimensions at the specified axes (unsqueeze).
+ *
+ * This function returns an `Unsqueeze` expression that reinterprets
+ * the source tensor with new dimensions of size 1 added.
+ *
+ * @tparam Source The expression or tensor type.
+ * @tparam Axes One or more integral indices where new dimensions will be inserted.
+ * @param source The source tensor or expression.
+ * @param axes Axis indices (negative indices allowed).
+ * @return An `Unsqueeze` view expression.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {3});
+ * auto Y = unsqueeze(X, 0);  // shape: (1, 3)
+ * auto Z = unsqueeze(X, -1); // shape: (3, 1)
+ * ```
+ */
+template<Expression Source, Integral... Axes>
+constexpr auto unsqueeze(Source&& source, Axes... axes) {
+    return Unsqueeze<Source>(std::forward<Source>(source), axes...);
+}
+
 } // namespace expression
 
 using expression::view;
 using expression::transpose;
 using expression::permute;
 using expression::expand;
+using expression::squeeze;
+using expression::unsqueeze;
 
 } // namespace tannic
 

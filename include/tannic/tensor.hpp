@@ -629,7 +629,13 @@ protected:
     friend class expression::Transpose;
 
     template <Expression Source>
-    friend class expression::View;
+    friend class expression::View; 
+
+    template <Expression Source>
+    friend class expression::Squeeze; 
+
+    template <Expression Source>
+    friend class expression::Unsqueeze;
 
     template <Expression Source, Integral... Indexes> 
     friend class expression::Permutation; 
@@ -692,6 +698,18 @@ Tensor operation::Binary<Operation, Operand, Cooperand>::forward() const {
 
 template<Expression Source>
 Tensor expression::View<Source>::forward() const { 
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
+}
+ 
+template<Expression Source>
+Tensor expression::Squeeze<Source>::forward() const { 
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
+}
+ 
+template<Expression Source>
+Tensor expression::Unsqueeze<Source>::forward() const { 
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
