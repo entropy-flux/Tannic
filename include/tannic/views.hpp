@@ -410,46 +410,39 @@ public:
     template<Integral... Sizes>
     constexpr Expansion(typename Trait<Source>::Reference source, Sizes... sizes)
     :   source_(source) {
-        std::array<long long, sizeof...(Sizes)> requested{ static_cast<long long>(sizes)... };
-        auto src_shape = source.shape();
-        auto src_rank  = src_shape.rank();
-        auto dst_rank  = requested.size();
-
-        // Rule: you can expand to a higher rank by prepending new dims
-        if (dst_rank < src_rank) 
+        std::array<long long, sizeof...(Sizes)> requested{ static_cast<long long>(sizes)... }; 
+ 
+        if (requested.size() < source.shape().rank()) 
             throw Exception("Expansion target rank must be >= source rank");
 
-        std::size_t src_offset = dst_rank - src_rank;
-        for (std::size_t i = 0; i < dst_rank; ++i) {
-            long long req = requested[i];
+        std::size_t offset = requested.size() - source.shape().rank();
+        for (std::size_t dimension = 0; dimension < requested.size(); ++dimension) {
+            long long index = requested[dimension];
             std::size_t target;
 
-            if (req == -1) {
-                if (i < src_offset) {
+            if (index == -1) {
+                if (dimension < offset) {
                     throw Exception("Cannot use -1 for new leading dimensions");
                 }
-                target = src_shape[i - src_offset];
-            } else if (req <= 0) {
+                target = source.shape()[dimension - offset];
+            } else if (index <= 0) {
                 throw Exception("Expansion size must be positive or -1");
             } else {
-                target = static_cast<std::size_t>(req);
+                target = static_cast<std::size_t>(index);
             }
-
-            // Copy stride rules
-            if (i < src_offset) {
-                // new leading dimensions must be size > 0, stride 0
+ 
+            if (dimension < offset) { 
                 shape_.expand(target);
                 strides_.expand(0);
-            } else {
-                auto src_dim = src_shape[i - src_offset];
-                auto src_stride = source.strides()[i - src_offset];
-
-                if (src_dim == 1 && target > 1) {
+            } 
+            
+            else { 
+                if (source.shape()[dimension - offset] == 1 && target > 1) {
                     shape_.expand(target);
                     strides_.expand(0);  // broadcast
-                } else if (src_dim == target) {
+                } else if (source.shape()[dimension - offset] == target) {
                     shape_.expand(target);
-                    strides_.expand(src_stride);
+                    strides_.expand(source.strides()[dimension - offset]);
                 } else {
                     throw Exception("Expansion only allows -1 (keep) or broadcasting singleton dims");
                 }
