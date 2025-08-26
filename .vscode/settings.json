@@ -114,6 +114,7 @@
         "__availability": "cpp",
         "source_location": "cpp",
         "tensor.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "resources.h": "c"
     }
 }

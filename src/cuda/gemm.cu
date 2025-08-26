@@ -35,7 +35,7 @@ static bool isTransposed(const tensor_t* tensor) {
     else {
         return tensor->strides.sizes[tensor->rank-1] > tensor->strides.sizes[tensor->rank-2];
     }
-}   
+}    
 
 template<typename S0, typename S1, typename D>
 void computeOffsets(
@@ -44,22 +44,28 @@ void computeOffsets(
     size_t& offs_src0, size_t& offs_src1, size_t& offs_dst,
     uint8_t batch, uint8_t batch_rank
 ) {
- 
     size_t b = batch;
     for (int dim = batch_rank - 1; dim >= 0; --dim) {
         dst_idx[dim] = b % dst->shape.sizes[dim];
         b /= dst->shape.sizes[dim];
-    } 
+    }
+
+    auto get_src_idx = [&](const tensor_t* src, size_t dim) -> size_t { 
+        int src_dim = dim + (src->rank - dst->rank);
+        if (src_dim < 0) return 0; 
+        return (src->shape.sizes[src_dim] == 1) ? 0 : dst_idx[dim];
+    };
 
     for (size_t dim = 0; dim < batch_rank; ++dim) {
-        size_t s0_idx = (src0->rank > 2 && src0->shape.sizes[dim] == 1) ? 0 : dst_idx[dim];
-        size_t s1_idx = (src1->rank > 2 && src1->shape.sizes[dim] == 1) ? 0 : dst_idx[dim];
+        size_t s0_idx = get_src_idx(src0, dim);
+        size_t s1_idx = get_src_idx(src1, dim);
 
-        offs_src0 += s0_idx * src0->strides.sizes[dim];
-        offs_src1 += s1_idx * src1->strides.sizes[dim];
+        if (dim < src0->rank) offs_src0 += s0_idx * src0->strides.sizes[dim];
+        if (dim < src1->rank) offs_src1 += s1_idx * src1->strides.sizes[dim];
         offs_dst  += dst_idx[dim] * dst->strides.sizes[dim];
     }
 }
+
 
 template<typename S0, typename S1, typename D>
 status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream, double alpha) {  
