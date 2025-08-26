@@ -406,7 +406,6 @@ public:
      * @param source Reference to the source tensor or expression.
      * @param sizes Dimension sizes for the expanded view.
      */    
-     
     template<Integral... Sizes>
     constexpr Expansion(typename Trait<Source>::Reference source, Sizes... sizes)
     :   source_(source) {

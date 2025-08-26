@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 project(TANNIC LANGUAGES CXX)
- 
+
 include(CheckLanguage)
 check_language(CUDA)
 if(CMAKE_CUDA_COMPILER)
@@ -22,13 +22,12 @@ endif()
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
 endif()
- 
+
 set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
 set(CMAKE_CUDA_FLAGS_DEBUG "-g -O0")    
 if(CUDA_ENABLED)
     set(CMAKE_CUDA_FLAGS_DEBUG "-G -g -O0")
 endif() 
- 
 
 include_directories(include/tannic)
 include_directories(src)
@@ -41,15 +40,28 @@ if(CUDA_ENABLED)
     list(APPEND SRC_FILES ${SRC_CU_FILES})
 endif() 
 
-find_package(OpenBLAS QUIET)
+# Robust OpenBLAS detection
+find_path(OPENBLAS_INCLUDE_DIR
+    NAMES cblas.h
+    PATHS /usr/include /usr/local/include /opt/openblas/include
+    DOC "OpenBLAS include directory"
+)
 
-if(OpenBLAS_FOUND)
+find_library(OPENBLAS_LIBRARY
+    NAMES openblas openblas64
+    PATHS /usr/lib /usr/lib64 /usr/local/lib /opt/openblas/lib
+    DOC "OpenBLAS library"
+)
+
+if(OPENBLAS_INCLUDE_DIR AND OPENBLAS_LIBRARY AND EXISTS "${OPENBLAS_INCLUDE_DIR}/cblas.h")
+    set(OpenBLAS_FOUND TRUE)
+    set(OpenBLAS_INCLUDE_DIRS ${OPENBLAS_INCLUDE_DIR})
+    set(OpenBLAS_LIBRARIES ${OPENBLAS_LIBRARY})
     message(STATUS "Found OpenBLAS: ${OpenBLAS_INCLUDE_DIRS}")
-    add_definitions(-DOPENBLAS) 
-    include_directories(${OpenBLAS_INCLUDE_DIRS})
 else()
     message(STATUS "OpenBLAS not found, continuing without it.")
-endif() 
+    set(OpenBLAS_FOUND FALSE)
+endif()
 
 if(SRC_FILES)
     add_library(tannic STATIC ${SRC_FILES})
@@ -76,11 +88,11 @@ if(SRC_FILES)
     endif()
 
     if(OpenBLAS_FOUND)
+        target_include_directories(tannic PUBLIC ${OpenBLAS_INCLUDE_DIRS})
         target_link_libraries(tannic PUBLIC ${OpenBLAS_LIBRARIES})
         target_compile_definitions(tannic PUBLIC BLAS)
     endif()
 endif()
-
 
 find_package(GTest QUIET)
 
@@ -96,7 +108,6 @@ if(NOT GTest_FOUND)
 else()
     message(STATUS "Found system-installed GoogleTest")
 endif()
-
 
 file(GLOB TEST_FILES
     tests/*.cpp
@@ -127,4 +138,4 @@ if(TEST_FILES)
 
     include(GoogleTest)
     gtest_discover_tests(tests)
-endif()  
+endif()
