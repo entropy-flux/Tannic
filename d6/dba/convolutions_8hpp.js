@@ -1,7 +1,9 @@
 var convolutions_8hpp =
 [
-    [ "tannic::transformation::Convolution< 1 >", "d0/dc5/classtannic_1_1transformation_1_1Convolution_3_011_01_4.html", "d0/dc5/classtannic_1_1transformation_1_1Convolution_3_011_01_4" ],
-    [ "tannic::transformation::Convolution< 2 >", "db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html", "db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4" ],
-    [ "convolve", "d6/dba/convolutions_8hpp.html#a7749a6d3ab09071315cb86b83b6dd379", null ],
-    [ "convolve", "d6/dba/convolutions_8hpp.html#a1298ce7dc6434ea0905a4eec46f4f2c3", null ]
+    [ "tannic::transformation::Convolution1D", "db/dd5/classtannic_1_1transformation_1_1Convolution1D.html", "db/dd5/classtannic_1_1transformation_1_1Convolution1D" ],
+    [ "tannic::transformation::Convolution2D", "d7/d4c/classtannic_1_1transformation_1_1Convolution2D.html", "d7/d4c/classtannic_1_1transformation_1_1Convolution2D" ],
+    [ "convolve1D", "d6/dba/convolutions_8hpp.html#ae1d1c303624f21e6e5f7a29feb268587", null ],
+    [ "convolve1D", "d6/dba/convolutions_8hpp.html#ac18bf1542b1da07c49fd3e3b50fdcdbf", null ],
+    [ "convolve2D", "d6/dba/convolutions_8hpp.html#a351f76d5ca8516413662d756055060f1", null ],
+    [ "convolve2D", "d6/dba/convolutions_8hpp.html#a9e2fe216266f6568ed54452f04e062c8", null ]
 ];

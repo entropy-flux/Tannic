@@ -161,11 +161,11 @@ Include dependency graph for convolutions.hpp:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dc5/classtannic_1_1transformation_1_1Convolution_3_011_01_4.html">tannic::transformation::Convolution&lt; 1 &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for 1D convolution operations.  <a href="../../d0/dc5/classtannic_1_1transformation_1_1Convolution_3_011_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dd5/classtannic_1_1transformation_1_1Convolution1D.html">tannic::transformation::Convolution1D</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression for 1D convolution operations.  <a href="../../db/dd5/classtannic_1_1transformation_1_1Convolution1D.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html">tannic::transformation::Convolution&lt; 2 &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for 2D convolution operations.  <a href="../../db/d2b/classtannic_1_1transformation_1_1Convolution_3_012_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d4c/classtannic_1_1transformation_1_1Convolution2D.html">tannic::transformation::Convolution2D</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression for 2D convolution operations.  <a href="../../d7/d4c/classtannic_1_1transformation_1_1Convolution2D.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -177,14 +177,22 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1298ce7dc6434ea0905a4eec46f4f2c3"><td class="memTemplParams" colspan="2">template&lt;auto Dimension, Expression Signal, Expression Kernel&gt; </td></tr>
-<tr class="memitem:a1298ce7dc6434ea0905a4eec46f4f2c3"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a1298ce7dc6434ea0905a4eec46f4f2c3">tannic::transformation::convolve</a> (Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::size_t strides, std::size_t padding)</td></tr>
-<tr class="memdesc:a1298ce7dc6434ea0905a4eec46f4f2c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a 1D or 2D convolution expression with uniform strides and padding.  <br /></td></tr>
-<tr class="separator:a1298ce7dc6434ea0905a4eec46f4f2c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7749a6d3ab09071315cb86b83b6dd379"><td class="memTemplParams" colspan="2">template&lt;auto Dimension, Expression Signal, Expression Kernel&gt; </td></tr>
-<tr class="memitem:a7749a6d3ab09071315cb86b83b6dd379"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a7749a6d3ab09071315cb86b83b6dd379">tannic::transformation::convolve</a> (Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::array&lt; std::size_t, Dimension &gt; strides, std::array&lt; std::size_t, Dimension &gt; padding)</td></tr>
-<tr class="memdesc:a7749a6d3ab09071315cb86b83b6dd379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a 1D or 2D convolution expression with dimension-specific strides and padding.  <br /></td></tr>
-<tr class="separator:a7749a6d3ab09071315cb86b83b6dd379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac18bf1542b1da07c49fd3e3b50fdcdbf"><td class="memTemplParams" colspan="2">template&lt;Expression Signal, Expression Kernel&gt; </td></tr>
+<tr class="memitem:ac18bf1542b1da07c49fd3e3b50fdcdbf"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#ac18bf1542b1da07c49fd3e3b50fdcdbf">tannic::transformation::convolve1D</a> (Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::size_t stride, std::size_t padding)</td></tr>
+<tr class="memdesc:ac18bf1542b1da07c49fd3e3b50fdcdbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a 1D convolution expression with uniform stride and padding.  <br /></td></tr>
+<tr class="separator:ac18bf1542b1da07c49fd3e3b50fdcdbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1d1c303624f21e6e5f7a29feb268587"><td class="memTemplParams" colspan="2">template&lt;Expression Signal, Expression Kernel&gt; </td></tr>
+<tr class="memitem:ae1d1c303624f21e6e5f7a29feb268587"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#ae1d1c303624f21e6e5f7a29feb268587">tannic::transformation::convolve1D</a> (Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::array&lt; std::size_t, 1 &gt; strides, std::array&lt; std::size_t, 1 &gt; padding)</td></tr>
+<tr class="memdesc:ae1d1c303624f21e6e5f7a29feb268587"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a 1D convolution expression with explicit stride and padding arrays.  <br /></td></tr>
+<tr class="separator:ae1d1c303624f21e6e5f7a29feb268587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e2fe216266f6568ed54452f04e062c8"><td class="memTemplParams" colspan="2">template&lt;Expression Signal, Expression Kernel&gt; </td></tr>
+<tr class="memitem:a9e2fe216266f6568ed54452f04e062c8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a9e2fe216266f6568ed54452f04e062c8">tannic::transformation::convolve2D</a> (Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::size_t stride, std::size_t padding)</td></tr>
+<tr class="memdesc:a9e2fe216266f6568ed54452f04e062c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a 2D convolution expression with uniform stride and padding.  <br /></td></tr>
+<tr class="separator:a9e2fe216266f6568ed54452f04e062c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a351f76d5ca8516413662d756055060f1"><td class="memTemplParams" colspan="2">template&lt;Expression Signal, Expression Kernel&gt; </td></tr>
+<tr class="memitem:a351f76d5ca8516413662d756055060f1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a351f76d5ca8516413662d756055060f1">tannic::transformation::convolve2D</a> (Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::array&lt; std::size_t, 2 &gt; strides, std::array&lt; std::size_t, 2 &gt; padding)</td></tr>
+<tr class="memdesc:a351f76d5ca8516413662d756055060f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a 2D convolution expression with explicit stride and padding arrays.  <br /></td></tr>
+<tr class="separator:a351f76d5ca8516413662d756055060f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

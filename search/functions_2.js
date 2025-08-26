@@ -9,8 +9,9 @@ var searchData=
   ['complexify_6',['complexify',['../d9/dd9/namespacetannic_1_1expression.html#ab9732ede6a977fed3895bf928a67748f',1,'tannic::expression']]],
   ['composition_7',['composition',['../de/d75/namespacetannic_1_1transformation.html#ac79cd681ae5e04a088cff5347d2ee8f8',1,'tannic::transformation']]],
   ['concatenate_8',['concatenate',['../de/d75/namespacetannic_1_1transformation.html#adb2680136e1491dededb15e6f6169f77',1,'tannic::transformation']]],
-  ['convolve_9',['convolve',['../de/d75/namespacetannic_1_1transformation.html#a1298ce7dc6434ea0905a4eec46f4f2c3',1,'tannic::transformation::convolve(Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::size_t strides, std::size_t padding)'],['../de/d75/namespacetannic_1_1transformation.html#a7749a6d3ab09071315cb86b83b6dd379',1,'tannic::transformation::convolve(Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::array&lt; std::size_t, Dimension &gt; strides, std::array&lt; std::size_t, Dimension &gt; padding)']]],
-  ['cos_10',['cos',['../dd/d74/namespacetannic_1_1function.html#a4ee4a5baeff864c9605cc1c088ef9895',1,'tannic::function']]],
-  ['cosh_11',['cosh',['../dd/d74/namespacetannic_1_1function.html#a8419d8c9fe7bcb9ac418842fb3d726bd',1,'tannic::function']]],
-  ['count_12',['count',['../d9/dd4/classtannic_1_1Devices.html#a5f0a34f7a26f78f7328c3af3a188528e',1,'tannic::Devices']]]
+  ['convolve1d_9',['convolve1D',['../de/d75/namespacetannic_1_1transformation.html#ac18bf1542b1da07c49fd3e3b50fdcdbf',1,'tannic::transformation::convolve1D(Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::size_t stride, std::size_t padding)'],['../de/d75/namespacetannic_1_1transformation.html#ae1d1c303624f21e6e5f7a29feb268587',1,'tannic::transformation::convolve1D(Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::array&lt; std::size_t, 1 &gt; strides, std::array&lt; std::size_t, 1 &gt; padding)']]],
+  ['convolve2d_10',['convolve2D',['../de/d75/namespacetannic_1_1transformation.html#a9e2fe216266f6568ed54452f04e062c8',1,'tannic::transformation::convolve2D(Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::size_t stride, std::size_t padding)'],['../de/d75/namespacetannic_1_1transformation.html#a351f76d5ca8516413662d756055060f1',1,'tannic::transformation::convolve2D(Signal &amp;&amp;signal, Kernel &amp;&amp;kernel, std::array&lt; std::size_t, 2 &gt; strides, std::array&lt; std::size_t, 2 &gt; padding)']]],
+  ['cos_11',['cos',['../dd/d74/namespacetannic_1_1function.html#a4ee4a5baeff864c9605cc1c088ef9895',1,'tannic::function']]],
+  ['cosh_12',['cosh',['../dd/d74/namespacetannic_1_1function.html#a8419d8c9fe7bcb9ac418842fb3d726bd',1,'tannic::function']]],
+  ['count_13',['count',['../d9/dd4/classtannic_1_1Devices.html#a5f0a34f7a26f78f7328c3af3a188528e',1,'tannic::Devices']]]
 ];
