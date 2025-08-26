@@ -39,28 +39,22 @@
 #include "tensor.hpp" 
 #include "exceptions.hpp"
 #include "transformations.hpp"
-
+ 
 namespace tannic {
 
 class Tensor;  
 
-namespace transformation {
-
-
-template<auto Dimension> class Convolution;
+namespace transformation { 
 
 /**
- * @brief Expression template for 1D convolution operations
+ * @brief Expression for 1D convolution operations
  *
  * Implements 1D convolution with:
  * - Input and kernel dtype validation
  * - Automatic output shape calculation
- * - Support for strides and padding
- *
- * @tparam Dimension Template parameter fixed to 1 for 1D convolution
- */
-template<>
-class Convolution<1> {
+ * - Support for strides and padding 
+ */ 
+class Convolution1D {
 public: 
     std::array<std::size_t, 1> strides;  ///< Stride values for the convolution operation
     std::array<std::size_t, 1> padding;  ///< Padding values for the convolution operation
@@ -129,21 +123,18 @@ public:
 };
 
 /**
- * @brief Expression template for 2D convolution operations
+ * @brief Expression for 2D convolution operations
  *
  * Implements 2D convolution with:
  * - Input and kernel dtype validation
  * - Automatic output shape calculation
- * - Support for strides and padding in both spatial dimensions
- *
- * @tparam Dimension Template parameter fixed to 2 for 2D convolution
- */
-template<>
-class Convolution<2> {
+ * - Support for strides and padding in both spatial dimensions 
+ */ 
+class Convolution2D {
 public:      
     std::array<std::size_t, 2> strides;  ///< Stride values for height and width dimensions
     std::array<std::size_t, 2> padding;  ///< Padding values for height and width dimensions
- 
+  
     /**
      * @brief Type promotion for 2D convolution
      * 
@@ -214,60 +205,114 @@ public:
 };
 
 /**
- * @brief Creates a 1D or 2D convolution expression with uniform strides and padding
- * 
- * @tparam Dimension Convolution dimension (1 or 2)
+ * @brief Creates a 1D convolution expression with uniform stride and padding
+ *
  * @tparam Signal Input signal expression type
  * @tparam Kernel Convolution kernel expression type
  * @param signal Input signal tensor operand
  * @param kernel Convolution kernel tensor operand
- * @param strides Stride value (applied uniformly to all spatial dimensions)
- * @param padding Padding value (applied uniformly to all spatial dimensions)
- * @return Transformation expression representing the convolution operation
- * @throws Exception if stride values are zero
+ * @param stride Stride value applied to the signal length
+ * @param padding Padding value applied to the signal length
+ * @return Transformation expression representing the 1D convolution operation
+ * @throws Exception if stride is zero
  */
-template<auto Dimension, Expression Signal, Expression Kernel>
-constexpr auto convolve(Signal&& signal, Kernel&& kernel, std::size_t strides, std::size_t padding) {
-    if (strides == 0) 
-        throw Exception("Strides should be non zero.");
-        
-    return Transformation<Convolution<Dimension>, Signal, Kernel>(
-        {{strides}, {padding}}, 
-        std::forward<Signal>(signal), 
+template<Expression Signal, Expression Kernel>
+constexpr auto convolve1D(Signal&& signal, Kernel&& kernel, std::size_t stride, std::size_t padding) {
+    if (stride == 0)
+        throw Exception("Stride must be non-zero for Conv1D.");
+
+    return Transformation<Convolution1D, Signal, Kernel>(
+        {{stride}, {padding}},
+        std::forward<Signal>(signal),
         std::forward<Kernel>(kernel)
     );
-} 
+}
 
 /**
- * @brief Creates a 1D or 2D convolution expression with dimension-specific strides and padding
- * 
- * @tparam Dimension Convolution dimension (1 or 2)
+ * @brief Creates a 1D convolution expression with explicit stride and padding arrays
+ *
  * @tparam Signal Input signal expression type
  * @tparam Kernel Convolution kernel expression type
  * @param signal Input signal tensor operand
  * @param kernel Convolution kernel tensor operand
- * @param strides Array of stride values for each spatial dimension
- * @param padding Array of padding values for each spatial dimension
- * @return Transformation expression representing the convolution operation
- * @throws Exception if any stride values are zero
+ * @param strides Array of stride values (size = 1)
+ * @param padding Array of padding values (size = 1)
+ * @return Transformation expression representing the 1D convolution operation
+ * @throws Exception if stride is zero
  */
-template<auto Dimension, Expression Signal, Expression Kernel>
-constexpr auto convolve(Signal&& signal, Kernel&& kernel, std::array<std::size_t, Dimension> strides, std::array<std::size_t, Dimension> padding) {
-    for (std::size_t i = 0; i < Dimension; ++i) {
-        if (strides[i] == 0) 
-            throw Exception("Strides should be non zero.");
-    }
-        
-    return Transformation<Convolution<Dimension>, Signal, Kernel>(
-        {strides, padding}, 
-        std::forward<Signal>(signal), 
+template<Expression Signal, Expression Kernel>
+constexpr auto convolve1D(
+    Signal&& signal, Kernel&& kernel,
+    std::array<std::size_t, 1> strides,
+    std::array<std::size_t, 1> padding
+)   {
+    if (strides[0] == 0)
+        throw Exception("Stride must be non-zero for Conv1D.");
+
+    return Transformation<Convolution1D, Signal, Kernel>(
+        {strides, padding},
+        std::forward<Signal>(signal),
         std::forward<Kernel>(kernel)
     );
-} 
+}
+
+/**
+ * @brief Creates a 2D convolution expression with uniform stride and padding
+ *
+ * @tparam Signal Input signal expression type
+ * @tparam Kernel Convolution kernel expression type
+ * @param signal Input signal tensor operand
+ * @param kernel Convolution kernel tensor operand
+ * @param stride Stride value applied uniformly to both spatial dimensions
+ * @param padding Padding value applied uniformly to both spatial dimensions
+ * @return Transformation expression representing the 2D convolution operation
+ * @throws Exception if stride is zero
+ */
+template<Expression Signal, Expression Kernel>
+constexpr auto convolve2D(Signal&& signal, Kernel&& kernel, std::size_t stride, std::size_t padding) {
+    if (stride == 0)
+        throw Exception("Stride must be non-zero for Conv2D.");
+
+    return Transformation<Convolution2D, Signal, Kernel>(
+        {{stride, stride}, {padding, padding}},
+        std::forward<Signal>(signal),
+        std::forward<Kernel>(kernel)
+    );
+}
+
+/**
+ * @brief Creates a 2D convolution expression with explicit stride and padding arrays
+ *
+ * @tparam Signal Input signal expression type
+ * @tparam Kernel Convolution kernel expression type
+ * @param signal Input signal tensor operand
+ * @param kernel Convolution kernel tensor operand
+ * @param strides Array of stride values (size = 2: {stride_h, stride_w})
+ * @param padding Array of padding values (size = 2: {pad_h, pad_w})
+ * @return Transformation expression representing the 2D convolution operation
+ * @throws Exception if any stride value is zero
+ */
+template<Expression Signal, Expression Kernel>
+constexpr auto convolve2D(
+    Signal&& signal, Kernel&& kernel,
+    std::array<std::size_t, 2> strides,
+    std::array<std::size_t, 2> padding
+)   {
+    if (strides[0] == 0 || strides[1] == 0)
+        throw Exception("Stride values must be non-zero for Conv2D.");
+
+    return Transformation<Convolution2D, Signal, Kernel>(
+        {strides, padding},
+        std::forward<Signal>(signal),
+        std::forward<Kernel>(kernel)
+    );
+}
+
  
 } // namespace transformation
  
-using transformation::convolve; 
+using transformation::convolve1D; 
+using transformation::convolve2D; 
 
 } // namespace tannic
 

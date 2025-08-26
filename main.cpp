@@ -23,8 +23,10 @@ int main() {
     Tensor W = {
         {0.1f, 0.2f, 0.3f},
         {0.4f, 0.5f, 0.6f}
-    }; 
+    };
+ 
+    Tensor b = {0.5f, -0.5f};
     
-    std::cout << matmul(X, W.transpose(-1, -2));
+    std::cout << matmul(X, W.transpose(-1, -2)) + b;
     return 0;
 }

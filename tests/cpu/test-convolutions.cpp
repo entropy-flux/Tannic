@@ -23,7 +23,7 @@ TEST(TestConvolution1D, Simple1D) {
     float* k_data = reinterpret_cast<float*>(kernel.bytes());
     k_data[0] = 1.0f; k_data[1] = 0.0f; k_data[2] = -1.0f;
 
-    Tensor output = convolve<1>(input, kernel, 1, 0);
+    Tensor output = convolve1D(input, kernel, 1, 0);
     float* out_data = reinterpret_cast<float*>(output.bytes());
  
     float expected[] = {-2.0f, -2.0f, -2.0f};
@@ -46,7 +46,7 @@ TEST(TestConvolution1D, Stride2) {
     float* k_data = reinterpret_cast<float*>(kernel.bytes());
     k_data[0] = 1; k_data[1] = 0; k_data[2] = -1;
 
-    Tensor output = convolve<1>(input, kernel, 2, 0);
+    Tensor output = convolve1D(input, kernel, 2, 0);
     ASSERT_EQ(output.shape(), Shape({1, 1, 2}));   
     
     float* out_data = reinterpret_cast<float*>(output.bytes()); 
@@ -65,7 +65,7 @@ TEST(TestConvolution1D, Padding1) {
     float* k_data = reinterpret_cast<float*>(kernel.bytes());
     k_data[0] = 1; k_data[1] = -1;
 
-    Tensor output = convolve<1>(input, kernel, 1, 1);
+    Tensor output = convolve1D(input, kernel, 1, 1);
     ASSERT_EQ(output.shape(), Shape({1, 1, 4}));   
 }
  
@@ -80,7 +80,7 @@ TEST(TestConvolution1D, MultiChannelInput) {
     float* k_data = reinterpret_cast<float*>(kernel.bytes());
     for (int i = 0; i < 6; ++i) k_data[i] = 1.0f;
 
-    Tensor output = convolve<1>(input, kernel, 1, 0);
+    Tensor output = convolve1D(input, kernel, 1, 0);
     ASSERT_EQ(output.shape(), Shape({1, 1, 2}));   
 }
  
@@ -95,7 +95,7 @@ TEST(TestConvolution1D, Kernel1x1) {
     float* k_data = reinterpret_cast<float*>(kernel.bytes());
     k_data[0] = 2.0f;
 
-    Tensor output = convolve<1>(input, kernel, 1, 0);
+    Tensor output = convolve1D(input, kernel, 1, 0);
     float* out_data = reinterpret_cast<float*>(output.bytes());
     ASSERT_EQ(output.shape(), Shape({1, 1, 4}));
     for (int i = 0; i < 4; ++i) {
@@ -115,7 +115,7 @@ TEST(TestConvolution1D, MultiOutputChannels) {
     k_data[0] = 1.0f; k_data[1] = 0.0f; k_data[2] = -1.0f; 
     k_data[3] = 0.0f; k_data[4] = 1.0f; k_data[5] = 0.0f;
 
-    Tensor output = convolve<1>(input, kernel, 1, 0);
+    Tensor output = convolve1D(input, kernel, 1, 0);
     ASSERT_EQ(output.shape(), Shape({1, 2, 3}));  
     
     float* out_data = reinterpret_cast<float*>(output.bytes()); 
@@ -143,7 +143,7 @@ TEST(TestConvolution, Simple2D) {
     k_data[0] = 1.0f; k_data[1] = 0.0f;
     k_data[2] = 0.0f; k_data[3] = -1.0f; 
 
-    Tensor output = convolve<2>(input, kernel, {1,1}, {0,0});
+    Tensor output = convolve2D(input, kernel, {1,1}, {0,0});
     float* out_data = reinterpret_cast<float*>(output.bytes());
 
     // Expected 2x2 result
@@ -172,7 +172,7 @@ TEST(TestConvolution, Stride2) {
     k_data[0] = 1; k_data[1] = 0;
     k_data[2] = 0; k_data[3] = -1;
 
-    Tensor output = convolve<2>(input, kernel, {2,2}, {0,0});
+    Tensor output = convolve2D(input, kernel, {2,2}, {0,0});
     ASSERT_EQ(output.shape(), Shape({1,1,2,2}));
 }
  
@@ -189,7 +189,7 @@ TEST(TestConvolution, Padding1) {
     k_data[0] = 1; k_data[1] = 0;
     k_data[2] = 0; k_data[3] = -1;
 
-    Tensor output = convolve<2>(input, kernel, {1,1}, {1,1});
+    Tensor output = convolve2D(input, kernel, {1,1}, {1,1});
     ASSERT_EQ(output.shape(), Shape({1,1,4,4}));
 }
  
@@ -204,7 +204,7 @@ TEST(TestConvolution, MultiChannelInput) {
     float* k_data = reinterpret_cast<float*>(kernel.bytes());
     for (int i = 0; i < 8; ++i) k_data[i] = 1.0f;
 
-    Tensor output = convolve<2>(input, kernel, {1,1}, {0,0});
+    Tensor output = convolve2D(input, kernel, {1,1}, {0,0});
     ASSERT_EQ(output.shape(), Shape({1,1,2,2}));
 }
  
@@ -219,7 +219,7 @@ TEST(TestConvolution, Kernel1x1) {
     float* k_data = reinterpret_cast<float*>(kernel.bytes());
     k_data[0] = 2.0f;
 
-    Tensor output = convolve<2>(input, kernel, {1,1}, {0,0});
+    Tensor output = convolve2D(input, kernel, {1,1}, {0,0});
     float* out_data = reinterpret_cast<float*>(output.bytes());
     for (int i = 0; i < 9; ++i) {
         EXPECT_FLOAT_EQ(out_data[i], in_data[i] * 2.0f);

@@ -17,7 +17,7 @@ status conv2d(const tensor_t*, const tensor_t*, tensor_t*, stream_t, const size_
 
 namespace tannic::transformation {
 
-void Convolution<1>::forward(Tensor const& signal, Tensor const& kernel, Tensor& output) const { 
+void Convolution1D::forward(Tensor const& signal, Tensor const& kernel, Tensor& output) const { 
     Callback callback(
         [&](const tensor_t* sgnal,const tensor_t* knel, tensor_t* dst) -> status { return cpu::conv1d(sgnal, knel, dst, padding[0], strides[0]); },
         [&](const tensor_t* sgnal,const tensor_t* knel, tensor_t* dst, stream_t stream) -> status { return cuda::conv1d(sgnal, knel, dst, stream, padding[0], strides[0]); }
@@ -25,7 +25,7 @@ void Convolution<1>::forward(Tensor const& signal, Tensor const& kernel, Tensor&
     callback(signal, kernel, output);
 }
 
-void Convolution<2>::forward(Tensor const& signal, Tensor const& kernel, Tensor& output) const {  
+void Convolution2D::forward(Tensor const& signal, Tensor const& kernel, Tensor& output) const {  
     Callback callback(
         [&](const tensor_t* sgnal,const tensor_t* knel, tensor_t* dst) -> status { return cpu::conv2d(sgnal, knel, dst, padding.data(), strides.data()); },
         [&](const tensor_t* sgnal,const tensor_t* knel, tensor_t* dst, stream_t stream) -> status { return cuda::conv2d(sgnal, knel, dst, stream, padding.data(), strides.data()); }
