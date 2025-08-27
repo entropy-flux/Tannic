@@ -339,7 +339,7 @@ private:
 };   
 
 template<typename T>
-static inline std::byte const* tobytes(T const& reference) { 
+inline std::byte const* tobytes(T const& reference) { 
     return reinterpret_cast<std::byte const*>(&reference);
 }  
 
