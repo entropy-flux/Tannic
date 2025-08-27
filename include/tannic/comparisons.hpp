@@ -28,10 +28,10 @@ template<class Criteria, Expression First, Expression Second>
 class Comparison {
 public:  
     Criteria criteria;
-    typename Trait<Expression>::Reference first;
-    typename Trait<Expression>::Reference second;
+    typename Trait<First>::Reference first;
+    typename Trait<Second>::Reference second;
 
-    constexpr Comparison(Criteria criteria, typename Trait<Expression>::Reference first, typename Trait<Expression>::Reference second) 
+    constexpr Comparison(Criteria criteria, typename Trait<First>::Reference first, typename Trait<Second>::Reference second) 
     :   criteria(criteria)
     ,   first(first)
     ,   second(second)
@@ -46,11 +46,11 @@ public:
         return boolean;
     }
 
-    constexpr Shape const shape() const {
+    constexpr Shape const& shape() const {
         return shape_;
     }
 
-    constexpr Strides strides() const {
+    constexpr Strides  const& strides() const {
         return strides_;
     }
 
@@ -72,33 +72,68 @@ private:
 };
 
 struct EQ {
-    void forward(Tensor const&, Tensor const&, Tensor&);
+    void forward(Tensor const&, Tensor const&, Tensor&) const;
 };
 
 struct NE { 
-    void forward(Tensor const&, Tensor const&, Tensor&);
+    void forward(Tensor const&, Tensor const&, Tensor&) const;
 };
 
 struct GT {
-    void forward(Tensor const&, Tensor const&, Tensor&); 
+    void forward(Tensor const&, Tensor const&, Tensor&) const;
 };
 
 struct GE {
-    void forward(Tensor const&, Tensor const&, Tensor&); 
+    void forward(Tensor const&, Tensor const&, Tensor&) const;
 };
 
 struct LT {
-    void forward(Tensor const&, Tensor const&, Tensor&); 
+    void forward(Tensor const&, Tensor const&, Tensor&) const;
 };
 
 struct LE { 
-    void forward(Tensor const&, Tensor const&, Tensor&);
+    void forward(Tensor const&, Tensor const&, Tensor&) const;
 };
 
-} namespace tannic {
-
-
+template<Expression First, Expression Second>
+constexpr auto operator==(First&& lhs, Second&& rhs) {
+    return Comparison<EQ, First, Second>({}, lhs, rhs);
 }
 
+template<Expression First, Expression Second>
+constexpr auto operator!=(First&& lhs, Second&& rhs) {
+    return Comparison<NE, First, Second>({}, lhs, rhs);
+}
 
+template<Expression First, Expression Second>
+constexpr auto operator<(First&& lhs, Second&& rhs) {
+    return Comparison<LT, First, Second>({}, lhs, rhs);
+}
+
+template<Expression First, Expression Second>
+constexpr auto operator<=(First&& lhs, Second&& rhs) {
+    return Comparison<LE, First, Second>({}, lhs, rhs);
+}
+
+template<Expression First, Expression Second>
+constexpr auto operator>(First&& lhs, Second&& rhs) {
+    return Comparison<GT, First, Second>({}, lhs, rhs);
+}
+
+template<Expression First, Expression Second>
+constexpr auto operator>=(First&& lhs, Second&& rhs) {
+    return Comparison<GE, First, Second>({}, lhs, rhs);
+}
+
+} namespace tannic {
+    
+using expression::operator==;
+using expression::operator!=;
+using expression::operator<;
+using expression::operator<=;
+using expression::operator>;
+using expression::operator>=;
+
+} // namespace tannic
+ 
 #endif // COMPARISONS_HPP
