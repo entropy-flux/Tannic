@@ -68,10 +68,8 @@ int main() {
   }};
 
   
-    Tensor b = {0.5f};
- 
-    auto Y = convolve2D(X , K, /*stride=*/1, /*padding=*/1) ;
-
+    Tensor b = {0.5f}; 
+    Tensor Y = convolve2D(X , K, /*stride=*/1, /*padding=*/1) ; 
     std::cout << Y << std::endl;
     return 0;
 }

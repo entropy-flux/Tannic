@@ -373,38 +373,13 @@ void Slice<Source, Indexes...>::operator=(T value) {
     };
 
     switch (dtype_) {
-        case int8: {
-            int8_t casted = value;
-            copy(tobytes(casted), offset()); 
-            break;
-        }
-        case int16: {
-            int16_t casted = value;
-            copy(tobytes(casted), offset()); 
-            break;
-        }
-        case int32: {
-            int32_t casted = value;
-            copy(tobytes(casted), offset());
-            break;
-        }
-        case int64: {
-            int64_t casted = value;
-            copy(tobytes(casted), offset());
-            break;
-        }
-        case float32: {
-            float casted = value;
-            copy(tobytes(casted), offset());
-            break;
-        }
-        case float64: {
-            double casted = value;
-            copy(tobytes(casted), offset());
-            break;
-        } 
-        default:
-            break;
+        case int8:  {   int8_t casted = value; copy(tobytes(casted), offset()); break; }
+        case int16: {  int16_t casted = value; copy(tobytes(casted), offset()); break; }
+        case int32: {  int32_t casted = value; copy(tobytes(casted), offset()); break; }
+        case int64: {  int64_t casted = value; copy(tobytes(casted), offset()); break; }
+        case float32: {  float casted = value; copy(tobytes(casted), offset()); break; }
+        case float64: { double casted = value; copy(tobytes(casted), offset()); break; } 
+        default: throw Exception("Unsupported dtype for assignment");
         } 
 }
 
@@ -415,32 +390,13 @@ bool Slice<Source, Indexes...>::operator==(T value) const {
         throw Exception("Cannot compare an scalar to a non scalar slice");
  
     switch (dtype_) {
-        case int8: {
-            int8_t casted = value;
-            return compare(tobytes(casted), offset()); 
-        }
-        case int16: {
-            int16_t casted = value;
-            return compare(tobytes(casted), offset()); 
-        }
-        case int32: {
-            int32_t casted = value;
-            return compare(tobytes(casted), offset());
-        }
-        case int64: {
-            int64_t casted = value;
-            return compare(tobytes(casted), offset());
-        }
-        case float32: {
-            float casted = value;
-            return compare(tobytes(casted), offset());
-        }
-        case float64: {
-            double casted = value;
-            return compare(tobytes(casted), offset());
-        } 
-        default:
-            return false;
+        case int8:  {    int8_t casted = value; return compare(tobytes(casted), offset()); }
+        case int16: {   int16_t casted = value; return compare(tobytes(casted), offset()); }
+        case int32: {   int32_t casted = value; return compare(tobytes(casted), offset()); }
+        case int64: {   int64_t casted = value; return compare(tobytes(casted), offset()); }
+        case float32:  {  float casted = value; return compare(tobytes(casted), offset()); }
+        case float64:  { double casted = value; return compare(tobytes(casted), offset()); }  
+        default: throw Exception("Unsupported dtype for comparison");
         }
 }   
  

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <tannic.hpp> 
+#include <tannic/functions.hpp>
+#include <tannic/transformations.hpp> 
 
 using namespace tannic;
   

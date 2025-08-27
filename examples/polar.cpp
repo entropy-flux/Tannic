@@ -1,5 +1,6 @@
 #include <iostream>  
 #include <tannic.hpp>
+#include <tannic/complex.hpp>>
 
 using namespace tannic;
 

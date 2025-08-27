@@ -423,8 +423,7 @@ public:
         }
     }
 
-public:
-
+public: 
     /**
      * @brief Assigns values to a 1D tensor from an initializer list.
      *
@@ -442,6 +441,7 @@ public:
      * Requirements:
      * - The tensor must already be initialized.
      * - The tensor must be rank-1.
+     * - The tensor must be contiguous.
      * - The size of `values` must match the tensor shape.
      *
      * Type conversion:
@@ -450,6 +450,9 @@ public:
      */ 
     template<typename T>
     Tensor& operator=(std::initializer_list<T> const& values) {
+        if (!is_contiguous())
+            throw Exception("Assign to initializer list supported only for contiguous tensors");
+    
         if (!is_initialized()) 
             initialize();
 
@@ -499,6 +502,7 @@ public:
      * Requirements:
      * - The tensor must already be initialized.
      * - The tensor must be rank-2.
+     * - The tensor must be contiguous.
      * - All rows must have the same length, matching the tensor’s second dimension.
      *
      * Type conversion:
@@ -506,6 +510,9 @@ public:
      */
     template<typename T>
     Tensor& operator=(std::initializer_list<std::initializer_list<T>> const& values) {
+        if (!is_contiguous())
+            throw Exception("Assign to initializer list supported only for contiguous tensors");
+            
         if (!is_initialized()) 
             initialize();
 
@@ -574,6 +581,7 @@ public:
      * Requirements:
      * - The tensor must already be initialized.
      * - The tensor must be rank-4.
+     * - The tensor must be contiguous.
      * - All nested dimensions must match the tensor’s shape.
      *
      * Type conversion:
@@ -581,6 +589,9 @@ public:
      */
     template<typename T>
     Tensor& operator=(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const& values) {
+        if (!is_contiguous())
+            throw Exception("Assign to initializer list supported only for contiguous tensors");
+
         if (!is_initialized()) 
             initialize();
 
