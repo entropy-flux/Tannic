@@ -44,8 +44,8 @@
 namespace tannic {
  
 class Tensor; 
- 
-namespace expression { 
+
+} namespace tannic::expression { 
  
 /**
  * @struct Cartesian
@@ -487,8 +487,8 @@ constexpr auto realify(Complex&& complex) {
     return Realification<Complex>{std::forward<Complex>(complex)};
 } 
 
-} // namespace expression
-
+} namespace tannic {
+    
 using expression::complex;
 using expression::complexify;
 using expression::realify;

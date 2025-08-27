@@ -44,7 +44,7 @@ namespace tannic {
 
 class Tensor;  
 
-namespace transformation { 
+} namespace tannic::transformation { 
 
 /**
  * @brief Expression for 1D convolution operations
@@ -309,7 +309,7 @@ constexpr auto convolve2D(
 }
 
  
-} // namespace transformation
+} namespace tannic {
  
 using transformation::convolve1D; 
 using transformation::convolve2D; 

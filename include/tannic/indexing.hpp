@@ -127,9 +127,7 @@ constexpr inline Range normalize(Range range, Size size) {
     return {start, stop};
 }  
  
-} // namespace TANNIC::indexing
-
-namespace tannic {
+} namespace tannic {
 
 /**
  * @typedef range
@@ -139,6 +137,7 @@ namespace tannic {
  * slices without fully qualifying the `indexing::Range` type.
  */
 using range = indexing::Range;
+
 } 
 
 #endif // INDEXING_H

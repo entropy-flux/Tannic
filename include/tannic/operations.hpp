@@ -48,8 +48,8 @@
 namespace tannic {
 
 class Tensor;    
-  
-namespace operation {  
+
+} namespace tannic::operation {  
 
 /**
  * @brief Expression template for a unary tensor aritmetic operation.
@@ -555,7 +555,7 @@ constexpr auto operator^(Base&& base, Exponent&& exponent) {
     return Binary<Exponentiation, Base, Exponent>{{}, std::forward<Base>(base), std::forward<Exponent>(exponent)};
 } 
 
-} // namespace operation 
+} namespace tannic {
 
 using operation::operator-; 
 using operation::operator+; 

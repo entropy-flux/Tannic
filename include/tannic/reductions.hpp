@@ -57,10 +57,9 @@
 #include "tensor.hpp" 
 #include "indexing.hpp"
 #include "exceptions.hpp"
+ 
 
-namespace tannic { 
-
-namespace expression {
+namespace tannic::expression {
  
 
 /**
@@ -384,7 +383,7 @@ constexpr auto mean(Source&& source, int axis = -1, bool keepdim = false) {
     };
 }
  
-} // namespace expression
+} namespace tannic {
  
 using expression::argmax;
 using expression::argmin;

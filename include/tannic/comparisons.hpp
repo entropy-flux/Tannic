@@ -19,12 +19,56 @@
 #define COMPARISONS_HPP
 
 #include "concepts.hpp"
+#include "shape.hpp"
+#include "tensor.hpp"
 
 namespace tannic::expression {
 
 template<class Criteria, Expression First, Expression Second>
 class Comparison {
+public:  
+    Criteria criteria;
+    typename Trait<Expression>::Reference first;
+    typename Trait<Expression>::Reference second;
+
+    constexpr Comparison(Criteria criteria, typename Trait<Expression>::Reference first, typename Trait<Expression>::Reference second) 
+    :   criteria(criteria)
+    ,   first(first)
+    ,   second(second)
+    ,   shape_(first.shape())
+    ,   strides_(shape_)
+    {
+        if(first.shape() != second.shape()) 
+            throw Exception("Cannot compare tensors of different shape"); 
+    }
+
+    constexpr type dtype() const {
+        return boolean;
+    }
+
+    constexpr Shape const shape() const {
+        return shape_;
+    }
+
+    constexpr Strides strides() const {
+        return strides_;
+    }
+
+    constexpr std::ptrdiff_t offset() const {
+        return 0;
+    }
     
+    Tensor forward() const {
+        Tensor result(boolean, shape_, strides_, 0);
+        criteria.forward(first, second, result);
+        return result;
+    }
+
+
+private:
+    Shape shape_;
+    Strides strides_;
+
 };
 
 struct EQ {

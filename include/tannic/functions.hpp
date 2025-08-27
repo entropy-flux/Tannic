@@ -50,9 +50,7 @@
 #include "strides.hpp"
 #include "tensor.hpp" 
 
-namespace tannic {
-  
-namespace function {
+namespace tannic::function {  
 /**
  * @brief Expression template for mathematical function operations.
  *
@@ -361,8 +359,8 @@ constexpr auto tanh(Operand&& operand) {
     return Function<Tanh, Operand>({}, std::forward<Operand>(operand));
 }
 
-} // namespace function
-
+} namespace tannic {
+    
 using function::log;
 using function::exp;
 using function::sqrt;
