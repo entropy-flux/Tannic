@@ -62,22 +62,21 @@ namespace tannic {
 /**
  * @class Tensor
  * @brief A multidimensional, strided tensor data structure.
- *
- * @details
+ * 
  * The `Tensor` class is the primary data structure in the Tannic Tensor Library.
  * It represents a dynamic typed intention of a computation. It supports
  * slicing, transposition, and expression composition.
  *
  * #### Evaluation Mode:
  * 
- * - Tensors are currently **eager**: expressions assigned to them are immediately evaluated and stored.
+ * - Tensors are currently eager : expressions assigned to them are immediately evaluated and stored.
  * - A lazy `constexpr` evaluation mode is planned for future versions, enabling compile-time computational graphs.
  *
  * #### Memory:
  *  
  * - Host and Device (e.g., CUDA) allocations are supported using environments like `Host()` or `Device()`.
- * - Memory must be explicitly allocated via `initialize(Host())` or initialize(Device())  but maybe removed in the future.
- *
+ * - Memory can be explicitly allocated via `initialize(Host())` or initialize(Device()).
+ * 
  * #### Example:
  * 
  * ```cpp
@@ -96,11 +95,6 @@ namespace tannic {
  * ```
  *
  * This example demonstrates eager initialization, advanced indexing, broadcasting, and composite expression evaluation.
- * 
- * @warning: 
- * Explicit inialization required for now but maybe removed in the future.
- * If not properly initialized the tensors may segfault instead of throwing assertion error. 
- * This will be fixed when resources can be infered at the end of a templated expression.
  */
 class Tensor {
 public: 
