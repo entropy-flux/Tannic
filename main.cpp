@@ -1,88 +1,42 @@
-#include <iostream>
-#include <tannic.hpp>
-#include <tannic/transformations.hpp>
-#include <tannic/convolutions.hpp>
+#include <cstdlib>
+#include <cstddef>
+#include <cstdint>
+#include <cstring>
 
-using namespace tannic; 
-#include <iostream>
-#include <tannic.hpp>
-#include <tannic/transformations.hpp>
-#include <tannic/convolutions.hpp>
+void* allocate_bool_storage(size_t num_bools) {
+    size_t num_bytes = (num_bools + 7) / 8;  // round up
+    void* ptr = std::calloc(num_bytes, 1);   // zero-initialized
+    return ptr;
+}
 
-using namespace tannic;
+inline bool get_bit(const void* base, size_t index) {
+    const uint8_t* data = reinterpret_cast<const uint8_t*>(base);
+    return (data[index >> 3] >> (index & 7)) & 1;
+}
+
+inline void set_bit(void* base, size_t index, bool value) {
+    uint8_t* data = reinterpret_cast<uint8_t*>(base);
+    if (value)
+        data[index >> 3] |=  (1u << (index & 7));
+    else
+        data[index >> 3] &= ~(1u << (index & 7));
+}
+ 
+#include <iostream>
 
 int main() {
-    //Implicit initialization, deduce type from initializer list.
-    
-    Tensor A = {1,2,3,4,5}; // int tensor
-    Tensor B = {{1.0f, 2.0f, 3.0f}, {4.0f, 5.0f, 6.0f}}; //float tensor
-    Tensor C = {
-        {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}}, // double
-        {{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}}
-    };
+    size_t N = 20;
+    void* storage = allocate_bool_storage(N);
 
-    std::cout << A << std::endl;
-    std::cout << B << std::endl;
-    std::cout << C << std::endl;
+    // set a few values
+    set_bit(storage, 3, true);
+    set_bit(storage, 5, true);
+    set_bit(storage, 19, true);
 
+    // check them
+    for (size_t i = 0; i < N; i++) {
+        std::cout << i << ": " << get_bit(storage, i) << "\n";
+    }
 
-    // Explicit intialization, dtype and shape are defined before intilize
-    // the tensors, types from initializer list will be promoted to the dtype of the
-    // tensor.
-    // --- 1D tensor ---
-    Tensor X(float32, {3});
-    X = {1, 2, 3};
-    std::cout << "1D tensor X:" << std::endl;
-    std::cout << X << std::endl << std::endl;
-
-    // --- 2D tensor ---
-    Tensor Y(float32, {2, 3});
-    Y = {
-        {1, 2, 3},
-        {4, 5, 6}
-    };
-    std::cout << "2D tensor Y:" << std::endl;
-    std::cout << Y << std::endl << std::endl;
-
-    // --- 3D tensor ---
-    Tensor Z(float32, {2, 2, 2});
-    Z = {
-        {
-            {1, 2},
-            {3, 4}
-        },
-        {
-            {5, 6},
-            {7, 8}
-        }
-    };
-    std::cout << "3D tensor Z:" << std::endl;
-    std::cout << Z << std::endl << std::endl;
-
-    // --- 4D tensor ---
-    Tensor W(float32, {2, 2, 2, 2});
-    W = {
-        {
-            {
-                {1,  2},
-                {3,  4}
-            },
-            {
-                {5,  6},
-                {7,  8}
-            }
-        },
-        {
-            {
-                { 9, 10},
-                {11, 12}
-            },
-            {
-                {13, 14},
-                {15, 16}
-            }
-        }
-    };
-    std::cout << "4D tensor W:" << std::endl;
-    std::cout << W << std::endl << std::endl; 
-} 
+    std::free(storage);
+}

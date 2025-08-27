@@ -154,7 +154,7 @@ struct Composition {
      */
     static constexpr auto promotions = []() {
         std::array<type, index(TYPES, TYPES)> table{};  
-        table.fill(none);
+        table.fill(unknown);
         // Integer promotions
         table[index(int8, int8)]   = int32;
         table[index(int8, int16)]  = int32;
@@ -215,7 +215,7 @@ struct Composition {
      */
     constexpr static type promote(type inner, type outer) {
         type dtype = promotions[index(inner, outer)];
-        if (dtype == none) 
+        if (dtype == unknown) 
             throw Exception("Unsuported dtypes");
         return dtype;
     }

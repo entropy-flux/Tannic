@@ -35,7 +35,7 @@
  * - Tracks memory region size and location 
  */
  
-#include <cstddef>   
+#include <cstddef>    
 #include "resources.hpp" 
 
 namespace tannic { 
@@ -54,8 +54,7 @@ namespace tannic {
  * - Const-correct access methods
  */
 class Buffer {
-public:   
-
+public:     
     /**
      * @brief Constructs a buffer with specified size and environment
      * @param nbytes Size of memory region in bytes

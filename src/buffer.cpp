@@ -4,8 +4,9 @@
 
 #include "bindings.hpp"
 #include "buffer.hpp" 
+#include "types.hpp"
 
-namespace tannic {
+namespace tannic { 
 
 Buffer::Buffer(std::size_t nbytes, Environment environment)
 :   nbytes_(nbytes)

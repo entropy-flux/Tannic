@@ -19,8 +19,8 @@ inline bool compareFromHost(const device_t*, std::byte const* src, std::byte con
 
 namespace tannic { 
 
-void Tensor::initialize(Environment environment) const {  
-    buffer_ = std::make_shared<Buffer>(nbytes_, environment);  
+void Tensor::initialize(Environment environment) const {   
+    buffer_ = std::make_shared<Buffer>(nbytes_, environment);   
     node_ = std::make_shared<Node>(*this);
 }    
 

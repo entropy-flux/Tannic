@@ -31,7 +31,8 @@
  * The `type` enum defines all supported numeric types:
  * ```cpp
  * enum type {
- *     none,       // Invalid type
+ *     none,       // Invalid type 
+ *     boolean     // 1-bit-packed boolean (true, false).
  *     int8,       // 8-bit integer
  *     int16,      // 16-bit integer
  *     int32,      // 32-bit integer
@@ -76,9 +77,12 @@ namespace tannic {
  * @param type The data type to query
  * @return Size of the type in bytes (0 for `none`)
  * 
- * @note For complex types:
- * - `complex64` returns 8 (2 × float32)
- * - `complex128` returns 16 (2 × float64)
+ * @note 
+ * - `boolean` is stored as bit-packed (1 bit per element). Since the size is
+ *   less than one byte, this function returns 0. To compute the actual storage
+ *   requirement for N elements, use `(N + 7) / 8` bytes.
+ * - `complex64`  returns 8 (2 × float32).
+ * - `complex128` returns 16 (2 × float64).
  * 
  * #### Example:
  * ```cpp
@@ -88,6 +92,7 @@ namespace tannic {
  */
 constexpr inline std::size_t dsizeof(type type) {
     switch (type) { 
+        case boolean:   return 0;
         case int8:      return sizeof(int8_t);
         case int16:     return sizeof(int16_t);
         case int32:     return sizeof(int32_t);
@@ -98,6 +103,32 @@ constexpr inline std::size_t dsizeof(type type) {
         case complex128:return 2 * sizeof(double);  
         default:        return 0;
     }
+} 
+
+/**
+ * @brief Returns the total number of bytes required to store `nelements` elements
+ *        of the given data type.
+ *
+ * @param type The data type.
+ * @param nelements Number of elements.
+ * @return Total size in bytes required.
+ *
+ * @note
+ * - For `boolean`, storage is bit-packed. The result is `(nelements + 7) / 8`.
+ * - For all other types, result is `dsizeof(type) * nelements`.
+ *
+ * #### Example:
+ * ```cpp
+ * nbytesof(float32, 10);   // returns 40
+ * nbytesof(complex64, 5);  // returns 40
+ * nbytesof(boolean, 100);  // returns 13
+ * ```
+ */
+constexpr inline std::size_t nbytesof(type dtype, std::size_t nelements) {
+    if (dtype == boolean) {
+        return (nelements + 7) / 8; 
+    }
+    return dsizeof(dtype) * nelements;
 }
 
 
@@ -114,6 +145,7 @@ constexpr inline std::size_t dsizeof(type type) {
  */
 constexpr inline std::string dnameof(type type) {
     switch (type) { 
+        case boolean:    return "boolean";
         case int8:       return "int8";
         case int16:      return "int16";
         case int32:      return "int32";
@@ -149,6 +181,7 @@ constexpr inline std::string dnameof(type type) {
  */
 constexpr inline uint8_t dcodeof(type type) {
     switch (type) { 
+        case boolean:   return 1;
         case int8:      return 12;
         case int16:     return 13;
         case int32:     return 14;
@@ -174,6 +207,7 @@ constexpr inline uint8_t dcodeof(type type) {
  */
 constexpr inline type dtypeof(uint8_t code) {
     switch (code) {
+        case 1 : return boolean;
         case 12: return int8;
         case 13: return int16;
         case 14: return int32;
@@ -182,13 +216,14 @@ constexpr inline type dtypeof(uint8_t code) {
         case 25: return float64;
         case 35: return complex64;
         case 36: return complex128;
-        default: return none;
+        default: return unknown;
     }
 }
   
 template <typename T>
 constexpr inline type dtypeof() {
-    if constexpr (std::is_same_v<T, int8_t>)      return int8;
+    if constexpr (std::is_same_v<T, bool>) return boolean;
+    else if constexpr (std::is_same_v<T, int8_t>)  return int8;
     else if constexpr (std::is_same_v<T, int16_t>) return int16;
     else if constexpr (std::is_same_v<T, int32_t>) return int32;
     else if constexpr (std::is_same_v<T, int64_t>) return int64;
@@ -196,7 +231,7 @@ constexpr inline type dtypeof() {
     else if constexpr (std::is_same_v<T, double>)  return float64;
     else if constexpr (std::is_same_v<T, std::complex<float>>)  return complex64;
     else if constexpr (std::is_same_v<T, std::complex<double>>) return complex128;
-    else                                           return none;
+    else                                           return unknown;
 }
 
 inline std::ostream& operator<<(std::ostream& ostream, type type) {

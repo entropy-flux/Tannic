@@ -117,8 +117,9 @@ public:
     ,   shape_(shape) 
     ,   strides_(shape_) 
     ,   offset_(0)  {
-        nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
-    }   
+        std::size_t nelements = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{});
+        nbytes_ = nbytesof(dtype, nelements);
+    }
 
     /**
      * @brief Constructs an uninitialized tensor with custom strides and offset.
@@ -136,16 +137,16 @@ public:
             nbytes_ = dsizeof(dtype_);
         }
         else {
-            std::size_t nbytes = 0; 
+            std::size_t nelements = 0; 
             std::size_t expected = 1;
             for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
-                nbytes += strides_[dimension] * (shape_[dimension] - 1); 
+                nelements += strides_[dimension] * (shape_[dimension] - 1); 
                 if (strides_[dimension] != expected) {
                     is_contiguous_ = false;
                 }
                 expected *= shape_[dimension];
             } 
-            nbytes_ = (nbytes + 1) * dsizeof(dtype_);
+            nbytes_ = nbytesof(dtype, nelements + 1);
         }
     }  
 
@@ -846,7 +847,8 @@ public:
     ,   offset_(offset)   
     ,   buffer_(std::move(storage)) 
     {
-        nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
+        std::size_t nelements = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{});
+        nbytes_ =  nbytesof(dtype_, nelements);
         node_ = std::make_shared<Node>(*this);
     }
 
@@ -858,19 +860,19 @@ public:
     ,   buffer_(std::move(storage)) 
     {
         if (rank() == 0) {
-            nbytes_ = dsizeof(dtype_);
+            nbytes_ = nbytesof(dtype_, 1);
         }
         else {
-            std::size_t nbytes = 0; 
+            std::size_t nelements = 0; 
             std::size_t expected = 1;
             for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
-                nbytes += strides_[dimension] * (shape_[dimension] - 1); 
+                nelements += strides_[dimension] * (shape_[dimension] - 1); 
                 if (strides_[dimension] != expected) {
                     is_contiguous_ = false;
                 }
                 expected *= shape_[dimension];
             } 
-            nbytes_ = (nbytes + 1) * dsizeof(dtype_);
+            nbytes_ = nbytesof(dtype, nelements + 1);
         }
         node_ = std::make_shared<Node>(*this);
     }

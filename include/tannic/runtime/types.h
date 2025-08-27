@@ -24,7 +24,8 @@ extern "C" {
 #endif 
 
 enum type { 
-    none,
+    unknown,
+    boolean,
     int8,
     int16,
     int32,

@@ -13,7 +13,7 @@ TEST(DTypeTest, SizeofValuesAreCorrect) {
     EXPECT_EQ(dsizeof(float64),   sizeof(double));
     EXPECT_EQ(dsizeof(complex64), 2 * sizeof(float));
     EXPECT_EQ(dsizeof(complex128),2 * sizeof(double));
-    EXPECT_EQ(dsizeof(none),      0);
+    EXPECT_EQ(dsizeof(unknown),      0);
 }
 
 TEST(DTypeTest, NameofValuesAreCorrect) {
@@ -25,7 +25,7 @@ TEST(DTypeTest, NameofValuesAreCorrect) {
     EXPECT_EQ(dnameof(float64),   "float64");
     EXPECT_EQ(dnameof(complex64), "complex64");
     EXPECT_EQ(dnameof(complex128),"complex128");
-    EXPECT_EQ(dnameof(none),      "none");
+    EXPECT_EQ(dnameof(unknown),      "none");
 }
 
 TEST(DTypeTest, OstreamOperatorPrintsCorrectly) {
@@ -34,6 +34,6 @@ TEST(DTypeTest, OstreamOperatorPrintsCorrectly) {
     EXPECT_EQ(oss.str(), "float64");
 
     oss.str(""); // Clear stream
-    oss << none;
+    oss << unknown;
     EXPECT_EQ(oss.str(), "none");
 }
