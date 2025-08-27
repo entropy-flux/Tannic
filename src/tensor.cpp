@@ -36,6 +36,26 @@ void Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {
     }
 } 
 
+
+void Tensor::assign(bool const* value, std::ptrdiff_t index) {
+    size_t byte_index = index / 8;
+    uint8_t bit_index = index % 8;
+
+    std::byte* target = static_cast<std::byte*>(buffer_->address()) + byte_index;
+
+    if (std::holds_alternative<Host>(this->environment())) {
+        if (*value) {
+            *target |= std::byte(1u << bit_index);  
+        } else {
+            *target &= std::byte(~(1u << bit_index)); 
+        }
+    }
+    else {
+        throw std::runtime_error("Unimplemented");
+    }
+} 
+
+
 bool Tensor::compare(std::byte const* hst_ptr, std::ptrdiff_t offset) const {  
     std::byte const* dvc_ptr = static_cast<std::byte const*>(buffer_->address()) + offset;  
     environment_t environment = structure(this->environment()); 

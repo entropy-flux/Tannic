@@ -67,3 +67,4 @@ TEST(TestTensor, TestInitializerLists) {
     ASSERT_EQ(Z[1][0][1], 6.0f);
     ASSERT_EQ(Z[1][1][1], 8.0f); 
 }
+

@@ -254,13 +254,25 @@ public:
     ,   shape_({values.size()})
     ,   strides_(shape_)
     ,   offset_(0) {
-        nbytes_ = values.size() * dsizeof(dtype_);
-        initialize();
-        size_t index = 0;
-        for (auto const& value : values) {
-            assign((std::byte const*)(&value), index * dsizeof(dtype_));
-            ++index;
+        if (dtype_ == boolean) {
+            nbytes_ = (values.size() + 7) / 8;
+            initialize();
+            std::ptrdiff_t index = 0; 
+            for (auto const& value : values) {
+                assign((bool const*)(&value), index);
+                ++index;
+            }
         }
+
+        else {
+            nbytes_ = values.size() * dsizeof(dtype_);
+            initialize();
+            size_t index = 0;
+            for (auto const& value : values) {
+                assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                ++index;
+            }
+        } 
     }
 
     /**
@@ -288,17 +300,24 @@ public:
         , strides_(shape_)
         , offset_(0) 
     {
-        nbytes_ =  shape_.front() * shape_.back() * dsizeof(dtype_);
-        initialize(); 
-        size_t index = 0;   
-        for (auto row : values) {
-            if (row.size() != shape_[1])
-                throw Exception("All rows must have the same number of columns");
-            for (auto const& value : row) {
-                assign((std::byte const*)(&value), index * dsizeof(dtype_));
-                ++index;
+
+        if (dtype_ == boolean) {
+
+        } 
+
+        else {
+            nbytes_ =  shape_.front() * shape_.back() * dsizeof(dtype_);
+            initialize(); 
+            size_t index = 0;   
+            for (auto row : values) {
+                if (row.size() != shape_[1])
+                    throw Exception("All rows must have the same number of columns");
+                for (auto const& value : row) {
+                    assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                    ++index;
+                }
             }
-        }
+        } 
     }
 
     /**
@@ -333,23 +352,29 @@ public:
         , strides_(shape_)
         , offset_(0)
     {
-        nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
-        initialize();
-        std::cout << shape_ << std::endl;
-        std::cout << nbytes_ << std::endl;
-        size_t index = 0;   
-        for (auto const& matrix : values) {
-            if (matrix.size() != shape_[1])
-                throw Exception("All matrices must have the same number of rows");
-            for (auto const& row : matrix) {
-                if (row.size() != shape_[2])
-                    throw Exception("All rows must have the same number of columns");
-                for (auto const& value : row) {
-                    assign((std::byte const*)(&value), index * dsizeof(dtype_));
-                    ++index;
+        if (dtype_ == boolean) {
+ 
+        }
+
+        else {
+            nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
+            initialize();
+            std::cout << shape_ << std::endl;
+            std::cout << nbytes_ << std::endl;
+            size_t index = 0;   
+            for (auto const& matrix : values) {
+                if (matrix.size() != shape_[1])
+                    throw Exception("All matrices must have the same number of rows");
+                for (auto const& row : matrix) {
+                    if (row.size() != shape_[2])
+                        throw Exception("All rows must have the same number of columns");
+                    for (auto const& value : row) {
+                        assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                        ++index;
+                    }
                 }
             }
-        }
+        } 
     }   
  
 
@@ -401,27 +426,33 @@ public:
         , strides_(shape_)
         , offset_(0)
     {
-        // compute total number of bytes
-        nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
-        initialize();
+        
+        if (dtype_ == boolean) {
 
-        size_t index = 0;
-        for (auto const& tensor3D : values) {
-            if (tensor3D.size() != shape_[1])
-                throw Exception("All 3D tensors must have the same number of matrices");
-            for (auto const& matrix : tensor3D) {
-                if (matrix.size() != shape_[2])
-                    throw Exception("All matrices must have the same number of rows");
-                for (auto const& row : matrix) {
-                    if (row.size() != shape_[3])
-                        throw Exception("All rows must have the same number of columns");
-                    for (auto const& value : row) {
-                        assign((std::byte const*)(&value), index * dsizeof(dtype_));
-                        ++index;
+        }
+
+        else { 
+            nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
+            initialize();
+
+            size_t index = 0;
+            for (auto const& tensor3D : values) {
+                if (tensor3D.size() != shape_[1])
+                    throw Exception("All 3D tensors must have the same number of matrices");
+                for (auto const& matrix : tensor3D) {
+                    if (matrix.size() != shape_[2])
+                        throw Exception("All matrices must have the same number of rows");
+                    for (auto const& row : matrix) {
+                        if (row.size() != shape_[3])
+                            throw Exception("All rows must have the same number of columns");
+                        for (auto const& value : row) {
+                            assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                            ++index;
+                        }
                     }
                 }
-            }
-        }
+            } 
+        } 
     }
 
 public: 
@@ -909,6 +940,8 @@ protected:
     friend class expression::Realification;
 
     void assign(std::byte const*, std::ptrdiff_t); 
+    void assign(bool const*, std::ptrdiff_t); 
+
     bool compare(std::byte const*, std::ptrdiff_t) const; 
      
 

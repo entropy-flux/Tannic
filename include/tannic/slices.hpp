@@ -327,6 +327,7 @@ public:
     Tensor forward() const;
  
     void assign(std::byte const* value, std::ptrdiff_t offset); 
+    void assign(bool const*, std::ptrdiff_t); 
     bool compare(std::byte const* value, std::ptrdiff_t offset) const;
 
 private: 
@@ -380,7 +381,7 @@ void Slice<Source, Indexes...>::operator=(T value) {
         case float32: {  float casted = value; copy(tobytes(casted), offset()); break; }
         case float64: { double casted = value; copy(tobytes(casted), offset()); break; } 
         default: throw Exception("Unsupported dtype for assignment");
-        } 
+    } 
 }
 
 template <Expression Source, class... Indexes>
@@ -397,7 +398,7 @@ bool Slice<Source, Indexes...>::operator==(T value) const {
         case float32:  {  float casted = value; return compare(tobytes(casted), offset()); }
         case float64:  { double casted = value; return compare(tobytes(casted), offset()); }  
         default: throw Exception("Unsupported dtype for comparison");
-        }
+    }
 }   
  
 } // namespace tannic::expression
