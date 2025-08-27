@@ -7,7 +7,7 @@ var annotated_dup =
         [ "Argmin", "d7/d32/structtannic_1_1expression_1_1Argmin.html", "d7/d32/structtannic_1_1expression_1_1Argmin" ],
         [ "Argsum", "df/d20/structtannic_1_1expression_1_1Argsum.html", "df/d20/structtannic_1_1expression_1_1Argsum" ],
         [ "Cartesian", "d7/d1c/structtannic_1_1expression_1_1Cartesian.html", null ],
-        [ "Comparison", "dc/dc3/classtannic_1_1expression_1_1Comparison.html", null ],
+        [ "Comparison", "dc/dc3/classtannic_1_1expression_1_1Comparison.html", "dc/dc3/classtannic_1_1expression_1_1Comparison" ],
         [ "Complexification", "d3/d42/classtannic_1_1expression_1_1Complexification.html", null ],
         [ "Complexification< Coordinates, Real, Imaginary >", "d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html", "d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4" ],
         [ "Complexification< Coordinates, Source >", "df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4.html", "df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4" ],

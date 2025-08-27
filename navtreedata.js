@@ -79,9 +79,9 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "d5/d5f/concepttannic_1_1Iterator.html",
-"da/d93/classtannic_1_1Tensor.html",
-"dc/d3e/structtannic_1_1expression_1_1Argmax.html",
-"functions_b.html"
+"da/d5d/structtannic_1_1transformation_1_1Repetition.html#ab498ec608a7dcfe845d1d15fe4d9cf3e",
+"db/dd8/complex_8hpp.html#a0e5202d0e8bc3b22deddc6eabcb0df39",
+"df/da7/classtannic_1_1Host.html#a4d32bc66b1bc6f2cfa91448ee7ac1af8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

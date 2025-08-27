@@ -3,11 +3,11 @@ var searchData=
   ['callback_0',['Callback',['../d2/d24/classtannic_1_1Callback.html#ab65d59ce6a82174c639a6c248528665a',1,'tannic::Callback::Callback()'],['../d2/d24/classtannic_1_1Callback.html',1,'tannic::Callback&lt; H, D &gt;']]],
   ['callback_2ehpp_1',['callback.hpp',['../da/db7/callback_8hpp.html',1,'']]],
   ['cartesian_2',['Cartesian',['../d7/d1c/structtannic_1_1expression_1_1Cartesian.html',1,'tannic::expression']]],
-  ['cbegin_3',['cbegin',['../dc/deb/classtannic_1_1Strides.html#a3eb190825f87d2ef0a30aa62459187e7',1,'tannic::Strides::cbegin()'],['../db/da7/classtannic_1_1Shape.html#a4d8a4fa2c7447a56b051bcb122449bb6',1,'tannic::Shape::cbegin()']]],
-  ['cend_4',['cend',['../dc/deb/classtannic_1_1Strides.html#a11e2dc7323bb92b3ba8b19d9edd1eabc',1,'tannic::Strides::cend()'],['../db/da7/classtannic_1_1Shape.html#a503031effa03b129773a9ca011890784',1,'tannic::Shape::cend()']]],
+  ['cbegin_3',['cbegin',['../dc/deb/classtannic_1_1Strides.html#a3eb190825f87d2ef0a30aa62459187e7',1,'tannic::Strides::cbegin()'],['../db/da7/classtannic_1_1Shape.html#a4d8a4fa2c7447a56b051bcb122449bb6',1,'tannic::Shape::cbegin() const']]],
+  ['cend_4',['cend',['../db/da7/classtannic_1_1Shape.html#a503031effa03b129773a9ca011890784',1,'tannic::Shape::cend()'],['../dc/deb/classtannic_1_1Strides.html#a11e2dc7323bb92b3ba8b19d9edd1eabc',1,'tannic::Strides::cend()']]],
   ['checksum_5',['checksum',['../d1/d69/structtannic_1_1Header.html#add95b83c0f46a7f8ea9676f230e24b7b',1,'tannic::Header']]],
   ['compare_6',['compare',['../da/d93/classtannic_1_1Tensor.html#ae5d53f0606904d652ef67b1d99909e55',1,'tannic::Tensor::compare()'],['../dd/d0f/classtannic_1_1expression_1_1Slice.html#abd2d3e77db09d40e48aa8420aae1d84a',1,'tannic::expression::Slice::compare()']]],
-  ['comparison_7',['Comparison',['../dc/dc3/classtannic_1_1expression_1_1Comparison.html',1,'tannic::expression']]],
+  ['comparison_7',['Comparison',['../dc/dc3/classtannic_1_1expression_1_1Comparison.html#a7df77d427763ca71419898742d1e44e6',1,'tannic::expression::Comparison::Comparison()'],['../dc/dc3/classtannic_1_1expression_1_1Comparison.html',1,'tannic::expression::Comparison&lt; Criteria, First, Second &gt;']]],
   ['comparisons_2ehpp_8',['comparisons.hpp',['../de/d06/comparisons_8hpp.html',1,'']]],
   ['complex_9',['complex',['../d9/dd9/namespacetannic_1_1expression.html#a79760dbb305bbb78577f24479457c383',1,'tannic::expression']]],
   ['complex_2ehpp_10',['complex.hpp',['../db/dd8/complex_8hpp.html',1,'']]],
@@ -30,5 +30,6 @@ var searchData=
   ['cos_27',['Cos',['../d1/dd6/structtannic_1_1function_1_1Cos.html',1,'tannic::function']]],
   ['cosh_28',['cosh',['../dd/d74/namespacetannic_1_1function.html#a8419d8c9fe7bcb9ac418842fb3d726bd',1,'tannic::function']]],
   ['cosh_29',['Cosh',['../df/dc5/structtannic_1_1function_1_1Cosh.html',1,'tannic::function']]],
-  ['count_30',['count',['../d9/dd4/classtannic_1_1Devices.html#a5f0a34f7a26f78f7328c3af3a188528e',1,'tannic::Devices']]]
+  ['count_30',['count',['../d9/dd4/classtannic_1_1Devices.html#a5f0a34f7a26f78f7328c3af3a188528e',1,'tannic::Devices']]],
+  ['criteria_31',['criteria',['../dc/dc3/classtannic_1_1expression_1_1Comparison.html#a68f8309cdefd010edf4b4fca30a66479',1,'tannic::expression::Comparison']]]
 ];
