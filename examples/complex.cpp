@@ -5,12 +5,7 @@ using namespace tannic;
 
 // run this file with ``bash main.sh``
 
-int main() { 
-    // WARNING:
-    // Explicit inialization required for now but maybe removed in the future.
-    // If not properly initialized the tensors may segfault instead of throwing error. 
-    // This will be fixed when resources can be infered at the end of a templated expression.
-
+int main() {   
     std::cout << "Working example of the tensor library" << std::endl;
 
     Tensor X(float32, {2,2});  // or X.initialize(Device()); for CUDA support 

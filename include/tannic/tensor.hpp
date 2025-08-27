@@ -302,11 +302,21 @@ public:
     {
 
         if (dtype_ == boolean) {
-
+            nbytes_ = (shape_[0] * shape_[1] + 7) / 8;
+            initialize();
+            std::ptrdiff_t index = 0;   
+            for (auto const& row : values) {
+                if (row.size() != shape_[1])
+                    throw Exception("All rows must have the same number of columns");
+                for (auto const& value : row) {
+                    assign((bool const*)(&value), index);
+                    ++index;
+                }
+            }
         } 
 
         else {
-            nbytes_ =  shape_.front() * shape_.back() * dsizeof(dtype_);
+            nbytes_ = shape_[0] * shape_[1] * dsizeof(dtype_);
             initialize(); 
             size_t index = 0;   
             for (auto row : values) {
@@ -353,7 +363,21 @@ public:
         , offset_(0)
     {
         if (dtype_ == boolean) {
- 
+            nbytes_ = (shape_[0] * shape_[1] * shape_[2] + 7) / 8;
+            initialize();
+            std::ptrdiff_t index = 0;   
+            for (auto const& matrix : values) {
+                if (matrix.size() != shape_[1])
+                    throw Exception("All matrices must have the same number of rows");
+                for (auto const& row : matrix) {
+                    if (row.size() != shape_[2])
+                        throw Exception("All rows must have the same number of columns");
+                    for (auto const& value : row) {
+                        assign((bool const*)(&value), index);
+                        ++index;
+                    }
+                }
+            }
         }
 
         else {
@@ -428,7 +452,25 @@ public:
     {
         
         if (dtype_ == boolean) {
-
+            nbytes_ = (shape_[0] * shape_[1] * shape_[2] * shape_[3] + 7) / 8;
+            initialize();
+            std::ptrdiff_t index = 0;
+            for (auto const& tensor3D : values) {
+                if (tensor3D.size() != shape_[1])
+                    throw Exception("All 3D tensors must have the same number of matrices");
+                for (auto const& matrix : tensor3D) {
+                    if (matrix.size() != shape_[2])
+                        throw Exception("All matrices must have the same number of rows");
+                    for (auto const& row : matrix) {
+                        if (row.size() != shape_[3])
+                            throw Exception("All rows must have the same number of columns");
+                        for (auto const& value : row) {
+                            assign((bool const*)(&value), index);
+                            ++index;
+                        }
+                    }
+                }
+            }
         }
 
         else { 
@@ -490,28 +532,39 @@ public:
 
         if (rank() != 1 || shape_[0] != values.size())
             throw Exception("Shape mismatch in assignment from initializer_list");
-
-        auto fill = [this, &values](auto cast) { 
-            using Cast = decltype(cast);
-            size_t index = 0;
-            for (auto value : values) {
-                Cast casted = value;
-                assign(expression::tobytes(casted), index * dsizeof(dtype_));
+ 
+        if (dtype_ == boolean) {
+            std::ptrdiff_t index = 0;
+            for (auto const& value : values) {
+                assign((bool const*)(&value), index);
                 ++index;
             }
-        }; 
+        } 
+        
+        else { 
+            auto fill = [this, &values](auto cast) { 
+                using Cast = decltype(cast);
+                size_t index = 0;
+                for (auto value : values) {
+                    Cast casted = value;
+                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                    ++index;
+                }
+            }; 
 
-        switch (dtype_) {
-            case int8:    fill(int8_t{});   break;
-            case int16:   fill(int16_t{});  break;
-            case int32:   fill(int32_t{});  break;
-            case int64:   fill(int64_t{});  break;
-            case float32: fill(float{});    break;
-            case float64: fill(double{});   break;
-            default: throw Exception("Unsupported dtype in assignment");
+            switch (dtype_) {
+                case int8:    fill(int8_t{});   break;
+                case int16:   fill(int16_t{});  break;
+                case int32:   fill(int32_t{});  break;
+                case int64:   fill(int64_t{});  break;
+                case float32: fill(float{});    break;
+                case float64: fill(double{});   break;
+                default: throw Exception("Unsupported dtype in assignment");
+            } 
         }
-
+        
         return *this;
+  
     }
 
     /**
@@ -549,32 +602,46 @@ public:
             initialize();
 
         if (rank() != 2 || shape_[0] != values.size() || shape_[1] != values.begin()->size())
-            throw Exception("Shape mismatch in assignment from nested initializer_list");
+            throw Exception("Shape mismatch in assignment from nested initializer_list"); 
 
-        auto fill = [this, &values](auto cast) { 
-            using Cast = decltype(cast);
-            size_t index = 0;
+        if (dtype_ == boolean) {
+            std::ptrdiff_t index = 0;
             for (auto const& row : values) {
                 if (row.size() != shape_[1])
                     throw Exception("Row length mismatch in assignment from initializer_list");
-
-                for (auto value : row) {
-                    Cast casted = value;
-                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                for (auto const& value : row) {
+                    assign((bool const*)(&value), index);
                     ++index;
                 }
-            }
-        };
-
-        switch (dtype_) {
-            case int8:    fill(int8_t{});   break;
-            case int16:   fill(int16_t{});  break;
-            case int32:   fill(int32_t{});  break;
-            case int64:   fill(int64_t{});  break;
-            case float32: fill(float{});    break;
-            case float64: fill(double{});   break;
-            default: throw Exception("Unsupported dtype in assignment");
+            } 
         }
+
+        else { 
+            auto fill = [this, &values](auto cast) { 
+                using Cast = decltype(cast);
+                size_t index = 0;
+                for (auto const& row : values) {
+                    if (row.size() != shape_[1])
+                        throw Exception("Row length mismatch in assignment from initializer_list");
+
+                    for (auto value : row) {
+                        Cast casted = value;
+                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                        ++index;
+                    }
+                }
+            };
+
+            switch (dtype_) {
+                case int8:    fill(int8_t{});   break;
+                case int16:   fill(int16_t{});  break;
+                case int32:   fill(int32_t{});  break;
+                case int64:   fill(int64_t{});  break;
+                case float32: fill(float{});    break;
+                case float64: fill(double{});   break;
+                default: throw Exception("Unsupported dtype in assignment");
+            } 
+        } 
 
         return *this;
     }
@@ -634,9 +701,9 @@ public:
             || shape_[3] != values.begin()->begin()->begin()->size())
             throw Exception("Shape mismatch in assignment from quadruple-nested initializer_list");
 
-        auto fill = [this, &values](auto cast) { 
-            using Cast = decltype(cast);
-            size_t index = 0;
+
+        if (dtype_ == boolean) {
+            std::ptrdiff_t index = 0;
             for (auto const& tensor3D : values) {
                 if (tensor3D.size() != shape_[1])
                     throw Exception("3D tensor count mismatch");
@@ -649,24 +716,51 @@ public:
                         if (row.size() != shape_[3])
                             throw Exception("Row length mismatch");
 
-                        for (auto value : row) {
-                            Cast casted = value;
-                            assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                        for (auto const& value : row) {
+                            assign((bool const*)(&value), index);
                             ++index;
                         }
                     }
                 }
             }
-        };
+            return *this;
+        }
 
-        switch (dtype_) {
-            case int8:    fill(int8_t{});   break;
-            case int16:   fill(int16_t{});  break;
-            case int32:   fill(int32_t{});  break;
-            case int64:   fill(int64_t{});  break;
-            case float32: fill(float{});    break;
-            case float64: fill(double{});   break;
-            default: throw Exception("Unsupported dtype in assignment");
+        else { 
+            auto fill = [this, &values](auto cast) { 
+                using Cast = decltype(cast);
+                size_t index = 0;
+                for (auto const& tensor3D : values) {
+                    if (tensor3D.size() != shape_[1])
+                        throw Exception("3D tensor count mismatch");
+
+                    for (auto const& matrix : tensor3D) {
+                        if (matrix.size() != shape_[2])
+                            throw Exception("Matrix row count mismatch");
+
+                        for (auto const& row : matrix) {
+                            if (row.size() != shape_[3])
+                                throw Exception("Row length mismatch");
+
+                            for (auto value : row) {
+                                Cast casted = value;
+                                assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                                ++index;
+                            }
+                        }
+                    }
+                }
+            };
+
+            switch (dtype_) {
+                case int8:    fill(int8_t{});   break;
+                case int16:   fill(int16_t{});  break;
+                case int32:   fill(int32_t{});  break;
+                case int64:   fill(int64_t{});  break;
+                case float32: fill(float{});    break;
+                case float64: fill(double{});   break;
+                default: throw Exception("Unsupported dtype in assignment");
+            } 
         } 
         return *this;
     }
@@ -1047,6 +1141,19 @@ void expression::Slice<Source, Indexes...>::assign(std::byte const* value, std::
         tensor.assign(value, offset);
     }
 }  
+
+template<Expression Source, class... Indexes>
+void expression::Slice<Source, Indexes...>::assign(bool const* value, std::ptrdiff_t offset) { 
+    if constexpr (Trait<Source>::is_assignable) {
+        source_.assign(value, offset); 
+    } 
+
+    else {
+        Tensor tensor = forward();
+        tensor.assign(value, offset);
+    }
+}  
+
 
 template<Expression Source, class... Indexes>
 bool expression::Slice<Source, Indexes...>::compare(std::byte const* value, std::ptrdiff_t offset) const { 

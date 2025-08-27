@@ -390,7 +390,7 @@ bool Slice<Source, Indexes...>::operator==(T value) const {
     if (rank() != 0)
         throw Exception("Cannot compare an scalar to a non scalar slice");
  
-    switch (dtype_) {
+    switch (dtype_) { 
         case int8:  {    int8_t casted = value; return compare(tobytes(casted), offset()); }
         case int16: {   int16_t casted = value; return compare(tobytes(casted), offset()); }
         case int32: {   int32_t casted = value; return compare(tobytes(casted), offset()); }
