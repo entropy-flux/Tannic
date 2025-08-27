@@ -191,6 +191,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a82d37178b53fdae2ff53db01e563a4f2"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a82d37178b53fdae2ff53db01e563a4f2">mean</a> (Source &amp;&amp;source, int axis=-1, bool keepdim=false)</td></tr>
 <tr class="memdesc:a82d37178b53fdae2ff53db01e563a4f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a mean reduction.  <br /></td></tr>
 <tr class="separator:a82d37178b53fdae2ff53db01e563a4f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a229e8299f39cdaf07fd8ab88ab21b476"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a229e8299f39cdaf07fd8ab88ab21b476"><td class="memTemplItemLeft" align="right" valign="top">std::byte const *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a229e8299f39cdaf07fd8ab88ab21b476">tobytes</a> (T const &amp;reference)</td></tr>
+<tr class="separator:a229e8299f39cdaf07fd8ab88ab21b476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f5b6b37401a67689b7df785f85eefbe"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral ... Indexes&gt; </td></tr>
 <tr class="memitem:a5f5b6b37401a67689b7df785f85eefbe"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe">view</a> (Source &amp;&amp;source, Indexes ... indexes)</td></tr>
 <tr class="memdesc:a5f5b6b37401a67689b7df785f85eefbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a reshaped view of a tensor or expression.  <br /></td></tr>
@@ -954,6 +957,34 @@ Example:</h4>
 <div class="line"><span class="comment">//      [15]]           // Sum of values per row</span></div>
 <div class="ttc" id="anamespacetannic_1_1expression_html_ab256bfd94d0cccbceab6a094403ccc96"><div class="ttname"><a href="../../d9/dd9/namespacetannic_1_1expression.html#ab256bfd94d0cccbceab6a094403ccc96">tannic::expression::sum</a></div><div class="ttdeci">constexpr auto sum(Source &amp;&amp;source, int axis=-1, bool keepdim=false)</div><div class="ttdoc">Creates a sum reduction.</div><div class="ttdef"><b>Definition:</b> reductions.hpp:352</div></div>
 </div><!-- fragment --> 
+</div>
+</div>
+<a id="a229e8299f39cdaf07fd8ab88ab21b476" name="a229e8299f39cdaf07fd8ab88ab21b476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a229e8299f39cdaf07fd8ab88ab21b476">&#9670;&#160;</a></span>tobytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::byte const  * tannic::expression::tobytes </td>
+          <td>(</td>
+          <td class="paramtype">T const &amp;&#160;</td>
+          <td class="paramname"><em>reference</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="ab43b77ed569cfeb4380abc2e6458aa00" name="ab43b77ed569cfeb4380abc2e6458aa00"></a>

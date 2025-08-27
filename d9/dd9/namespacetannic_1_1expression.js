@@ -31,6 +31,7 @@ var namespacetannic_1_1expression =
     [ "realify", "d9/dd9/namespacetannic_1_1expression.html#a0e5202d0e8bc3b22deddc6eabcb0df39", null ],
     [ "squeeze", "d9/dd9/namespacetannic_1_1expression.html#aeb6b00dc672b62ceb6217af46120894c", null ],
     [ "sum", "d9/dd9/namespacetannic_1_1expression.html#ab256bfd94d0cccbceab6a094403ccc96", null ],
+    [ "tobytes", "d9/dd9/namespacetannic_1_1expression.html#a229e8299f39cdaf07fd8ab88ab21b476", null ],
     [ "transpose", "d9/dd9/namespacetannic_1_1expression.html#ab43b77ed569cfeb4380abc2e6458aa00", null ],
     [ "unsqueeze", "d9/dd9/namespacetannic_1_1expression.html#af3cfb1c4d6698824ae724c29c94e5d18", null ],
     [ "view", "d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe", null ]
