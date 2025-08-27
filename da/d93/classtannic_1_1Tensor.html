@@ -244,6 +244,8 @@ Public Member Functions</h2></td></tr>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:adf4c49f9887498bb45b5d0b78a520602"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#adf4c49f9887498bb45b5d0b78a520602">assign</a> (std::byte const *, std::ptrdiff_t)</td></tr>
 <tr class="separator:adf4c49f9887498bb45b5d0b78a520602"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa4b6a6ffd6c1af179a2280b124da7ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#afa4b6a6ffd6c1af179a2280b124da7ac">assign</a> (bool const *, std::ptrdiff_t)</td></tr>
+<tr class="separator:afa4b6a6ffd6c1af179a2280b124da7ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5d53f0606904d652ef67b1d99909e55"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ae5d53f0606904d652ef67b1d99909e55">compare</a> (std::byte const *, std::ptrdiff_t) const</td></tr>
 <tr class="separator:ae5d53f0606904d652ef67b1d99909e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -814,8 +816,44 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="afa4b6a6ffd6c1af179a2280b124da7ac" name="afa4b6a6ffd6c1af179a2280b124da7ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa4b6a6ffd6c1af179a2280b124da7ac">&#9670;&#160;</a></span>assign() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tannic::Tensor::assign </td>
+          <td>(</td>
+          <td class="paramtype">bool const *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::ptrdiff_t&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="adf4c49f9887498bb45b5d0b78a520602" name="adf4c49f9887498bb45b5d0b78a520602"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf4c49f9887498bb45b5d0b78a520602">&#9670;&#160;</a></span>assign()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adf4c49f9887498bb45b5d0b78a520602">&#9670;&#160;</a></span>assign() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1289,6 +1327,7 @@ template&lt;typename T &gt; </div>
 </div><!-- fragment --><p>Requirements:</p><ul>
 <li>The tensor must already be initialized.</li>
 <li>The tensor must be rank-4.</li>
+<li>The tensor must be contiguous.</li>
 <li>All nested dimensions must match the tensor’s shape.</li>
 </ul>
 <p>Type conversion:</p><ul>
@@ -1345,6 +1384,7 @@ template&lt;typename T &gt; </div>
 </div><!-- fragment --><p>Requirements:</p><ul>
 <li>The tensor must already be initialized.</li>
 <li>The tensor must be rank-2.</li>
+<li>The tensor must be contiguous.</li>
 <li>All rows must have the same length, matching the tensor’s second dimension.</li>
 </ul>
 <p>Type conversion:</p><ul>
@@ -1398,6 +1438,7 @@ template&lt;typename T &gt; </div>
 </div><!-- fragment --><p>Requirements:</p><ul>
 <li>The tensor must already be initialized.</li>
 <li>The tensor must be rank-1.</li>
+<li>The tensor must be contiguous.</li>
 <li>The size of <code>values</code> must match the tensor shape.</li>
 </ul>
 <p>Type conversion:</p><ul>
@@ -1701,7 +1742,7 @@ Example:</h4>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {1, 3, 1, 5}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Y = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">squeeze</a>();     <span class="comment">// shape = (3, 5)</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a52e251e55f66349fa482ee2894554aee"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">tannic::Tensor::squeeze</a></div><div class="ttdeci">auto squeeze() const</div><div class="ttdoc">Returns a view of the tensor with all dimensions of size 1 removed.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:802</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_a52e251e55f66349fa482ee2894554aee"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">tannic::Tensor::squeeze</a></div><div class="ttdeci">auto squeeze() const</div><div class="ttdoc">Returns a view of the tensor with all dimensions of size 1 removed.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:939</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -1819,7 +1860,7 @@ Example:</h4>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {3, 5}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Y = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">unsqueeze</a>(0);   <span class="comment">// shape = (1, 3, 5)</span></div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Z = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">unsqueeze</a>(2);   <span class="comment">// shape = (3, 1, 5)</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_acc757159be586ad0dbba4fce36360fed"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">tannic::Tensor::unsqueeze</a></div><div class="ttdeci">auto unsqueeze(Axes... axes)</div><div class="ttdoc">Returns a view of the tensor with a dimension of size 1 inserted at the given axis.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:824</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_acc757159be586ad0dbba4fce36360fed"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">tannic::Tensor::unsqueeze</a></div><div class="ttdeci">auto unsqueeze(Axes... axes)</div><div class="ttdoc">Returns a view of the tensor with a dimension of size 1 inserted at the given axis.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:961</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

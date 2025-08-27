@@ -218,6 +218,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a> (type type)</td></tr>
 <tr class="memdesc:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size in bytes of a given tensor data type.  <br /></td></tr>
 <tr class="separator:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e047ef72e50f442b8fd458213bbdc04"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">nbytesof</a> (type dtype, std::size_t nelements)</td></tr>
+<tr class="memdesc:a9e047ef72e50f442b8fd458213bbdc04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total number of bytes required to store <code>nelements</code> elements of the given data type.  <br /></td></tr>
+<tr class="separator:a9e047ef72e50f442b8fd458213bbdc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f6a29013277d9209efa113453cf0b2e"><td class="memItemLeft" align="right" valign="top">constexpr std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a> (type type)</td></tr>
 <tr class="memdesc:a1f6a29013277d9209efa113453cf0b2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the string name of a given tensor data type.  <br /></td></tr>
 <tr class="separator:a1f6a29013277d9209efa113453cf0b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -353,11 +356,11 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Human-readable type name ("none" for invalid types)</dd></dl>
-<h4><a class="anchor" id="autotoc_md61"></a>
+<h4><a class="anchor" id="autotoc_md62"></a>
 Example:</h4>
 <div class="fragment"><div class="line">std::cout &lt;&lt; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(int32) &lt;&lt; std::endl   <span class="comment">// prints &quot;int32&quot;</span></div>
 <div class="line">std::cout &lt;&lt; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(complex128); <span class="comment">// prints &quot;complex128&quot;</span></div>
-<div class="ttc" id="anamespacetannic_html_a1f6a29013277d9209efa113453cf0b2e"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a></div><div class="ttdeci">constexpr std::string dnameof(type type)</div><div class="ttdoc">Returns the string name of a given tensor data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:115</div></div>
+<div class="ttc" id="anamespacetannic_html_a1f6a29013277d9209efa113453cf0b2e"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a></div><div class="ttdeci">constexpr std::string dnameof(type type)</div><div class="ttdoc">Returns the string name of a given tensor data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:146</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -393,16 +396,17 @@ Example:</h4>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Size of the type in bytes (0 for <code>none</code>)</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>For complex types:<ul>
-<li><code>complex64</code> returns 8 (2 × float32)</li>
-<li><code>complex128</code> returns 16 (2 × float64)</li>
+<dl class="section note"><dt>Note</dt><dd><ul>
+<li><code>boolean</code> is stored as bit-packed (1 bit per element). Since the size is less than one byte, this function returns 0. To compute the actual storage requirement for N elements, use <code>(N + 7) / 8</code> bytes.</li>
+<li><code>complex64</code> returns 8 (2 × float32).</li>
+<li><code>complex128</code> returns 16 (2 × float64).</li>
 </ul>
 </dd></dl>
 <h4><a class="anchor" id="autotoc_md60"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a>(float32);  <span class="comment">// returns 4</span></div>
 <div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a>(complex64); <span class="comment">// returns 8</span></div>
-<div class="ttc" id="anamespacetannic_html_aee5ef48cb75e37f65cc11ef67fbb9d25"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a></div><div class="ttdeci">constexpr std::size_t dsizeof(type type)</div><div class="ttdoc">Returns the size in bytes of a given tensor data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:89</div></div>
+<div class="ttc" id="anamespacetannic_html_aee5ef48cb75e37f65cc11ef67fbb9d25"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a></div><div class="ttdeci">constexpr std::size_t dsizeof(type type)</div><div class="ttdoc">Returns the size in bytes of a given tensor data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:93</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -581,6 +585,63 @@ template&lt;Expression Multiplicand, Expression Multiplier&gt; </div>
 </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="a9e047ef72e50f442b8fd458213bbdc04" name="a9e047ef72e50f442b8fd458213bbdc04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e047ef72e50f442b8fd458213bbdc04">&#9670;&#160;</a></span>nbytesof()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::size_t tannic::nbytesof </td>
+          <td>(</td>
+          <td class="paramtype">type&#160;</td>
+          <td class="paramname"><em>dtype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>nelements</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the total number of bytes required to store <code>nelements</code> elements of the given data type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The data type. </td></tr>
+    <tr><td class="paramname">nelements</td><td>Number of elements. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Total size in bytes required.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd><ul>
+<li>For <code>boolean</code>, storage is bit-packed. The result is <code>(nelements + 7) / 8</code>.</li>
+<li>For all other types, result is <code><a class="el" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25" title="Returns the size in bytes of a given tensor data type.">dsizeof(type)</a> * nelements</code>.</li>
+</ul>
+</dd></dl>
+<h4><a class="anchor" id="autotoc_md61"></a>
+Example:</h4>
+<div class="fragment"><div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">nbytesof</a>(float32, 10);   <span class="comment">// returns 40</span></div>
+<div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">nbytesof</a>(complex64, 5);  <span class="comment">// returns 40</span></div>
+<div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">nbytesof</a>(<span class="keywordtype">boolean</span>, 100);  <span class="comment">// returns 13</span></div>
+<div class="ttc" id="anamespacetannic_html_a9e047ef72e50f442b8fd458213bbdc04"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">tannic::nbytesof</a></div><div class="ttdeci">constexpr std::size_t nbytesof(type dtype, std::size_t nelements)</div><div class="ttdoc">Returns the total number of bytes required to store nelements elements of the given data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:127</div></div>
+</div><!-- fragment --> 
 </div>
 </div>
 <a id="a8b7066a546d8d6a8605b695788c479f0" name="a8b7066a546d8d6a8605b695788c479f0"></a>

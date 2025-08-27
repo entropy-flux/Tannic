@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['shape_0',['Shape',['../db/da7/classtannic_1_1Shape.html',1,'tannic']]],
-  ['sin_1',['Sin',['../d5/d31/structtannic_1_1function_1_1Sin.html',1,'tannic::function']]],
-  ['sinh_2',['Sinh',['../de/d64/structtannic_1_1function_1_1Sinh.html',1,'tannic::function']]],
-  ['slice_3',['Slice',['../dd/d0f/classtannic_1_1expression_1_1Slice.html',1,'tannic::expression']]],
-  ['sqrt_4',['Sqrt',['../d7/df8/structtannic_1_1function_1_1Sqrt.html',1,'tannic::function']]],
-  ['squeeze_5',['Squeeze',['../d7/dca/classtannic_1_1expression_1_1Squeeze.html',1,'tannic::expression']]],
-  ['strides_6',['Strides',['../dc/deb/classtannic_1_1Strides.html',1,'tannic']]],
-  ['subtraction_7',['Subtraction',['../d6/de5/structtannic_1_1operation_1_1Subtraction.html',1,'tannic::operation']]]
+  ['range_0',['Range',['../de/dea/structtannic_1_1indexing_1_1Range.html',1,'tannic::indexing']]],
+  ['realification_1',['Realification',['../d6/d98/classRealification.html',1,'Realification'],['../db/d96/classtannic_1_1expression_1_1Realification.html',1,'tannic::expression::Realification&lt; Source &gt;']]],
+  ['reduction_2',['Reduction',['../da/dc5/classtannic_1_1expression_1_1Reduction.html',1,'tannic::expression']]],
+  ['repack_3',['Repack',['../d8/d0a/structtannic_1_1transformation_1_1Repack.html',1,'tannic::transformation']]],
+  ['repetition_4',['Repetition',['../da/d5d/structtannic_1_1transformation_1_1Repetition.html',1,'tannic::transformation']]],
+  ['rsqrt_5',['Rsqrt',['../dc/db8/structtannic_1_1function_1_1Rsqrt.html',1,'tannic::function']]]
 ];

@@ -1,6 +1,7 @@
 var classtannic_1_1expression_1_1Slice =
 [
     [ "Slice", "dd/d0f/classtannic_1_1expression_1_1Slice.html#a0c907b6d34d55ff79e61061e839cda11", null ],
+    [ "assign", "dd/d0f/classtannic_1_1expression_1_1Slice.html#aa451965bd55e53b10b50f21f76f10105", null ],
     [ "assign", "dd/d0f/classtannic_1_1expression_1_1Slice.html#af670e5fd637111c77061a76f55b179ff", null ],
     [ "bytes", "dd/d0f/classtannic_1_1expression_1_1Slice.html#a5d11cdc8bf08fd7cbfa7784dec7dadaa", null ],
     [ "bytes", "dd/d0f/classtannic_1_1expression_1_1Slice.html#aa7d760dcd1a9f9e401308400f360427f", null ],

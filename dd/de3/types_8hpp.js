@@ -5,5 +5,6 @@ var types_8hpp =
     [ "dsizeof", "dd/de3/types_8hpp.html#aee5ef48cb75e37f65cc11ef67fbb9d25", null ],
     [ "dtypeof", "dd/de3/types_8hpp.html#a3b772a18c1f497ea579f9e6ece4130f5", null ],
     [ "dtypeof", "dd/de3/types_8hpp.html#a6e357abf60406726c8b595658e93e110", null ],
+    [ "nbytesof", "dd/de3/types_8hpp.html#a9e047ef72e50f442b8fd458213bbdc04", null ],
     [ "operator<<", "dd/de3/types_8hpp.html#a1c1a48f353ac51e8ae5affa4dccd2e4a", null ]
 ];

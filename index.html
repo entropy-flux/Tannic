@@ -95,12 +95,12 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_docs_INDEX"></a> </p>
-<h1><a class="anchor" id="autotoc_md63"></a>
+<h1><a class="anchor" id="autotoc_md64"></a>
 Introduction</h1>
 <p>While exploring the most recent models, I began noticing some weird patterns, CUDA kernels hardcoded as strings, pointers, and constexpr hacks embedded in Python sublanguages. I’m not saying this approach is inherently bad, but I couldn’t shake the feeling that it would be far more sane to rewrite everything directly in C++ using those features directly.</p>
 <p>On the other hand, many existing C++ frameworks, while fully native, are low-level and hard to use or extend. They often force developers to manage complex memory layouts or backend-specific details using macros, which makes adding new operations or integrating new hardware backends cumbersome.</p>
 <p>This insight led me to create Tannic, a lightweight, fully C++ tensor library designed from the ground up for clarity, composability, and extensibility. It maintains a Python-like API feel, so developers can enjoy familiar, intuitive syntax while working entirely in C++. The library is designed to be easy to adopt, easy to extend, and consistent in its behavior—even as new operations, data types, or backends are added.</p>
-<h1><a class="anchor" id="autotoc_md64"></a>
+<h1><a class="anchor" id="autotoc_md65"></a>
 What is Tannic?</h1>
 <p><b>Tannic</b> is an extensible C++ tensor library built around a host–device execution model. Unlike monolithic frameworks, it provides only a minimal set of built‑in operators, focusing on a flexible architecture where new operations, data types, and backends can be added easily. This approach keeps the library lightweight while enabling adaptation to a wide range of computational needs.</p>
 <p>This library is designed to serve as the foundational core for a neural network inference framework, but is equally suited to other domains such as classical ML or physics simulations—all without requiring Python.</p>
@@ -151,11 +151,11 @@ What is Tannic?</h1>
 </div><!-- fragment --><p>Giving:</p>
 <div class="fragment"><div class="line">tensor([[23.2817, 43.2817],</div>
 <div class="line">        [33.0131, 18.7881]])</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md65"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md66"></a>
 Status</h1>
 <p>Note: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API—used to extend the library—is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.</p>
 <p>While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental- too significant to ignore. At some point, it may be requirement for Tannic.</p>
-<h1><a class="anchor" id="autotoc_md66"></a>
+<h1><a class="anchor" id="autotoc_md67"></a>
 Features</h1>
 <ul>
 <li>Dynamic typing: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization, but that also support compile time specifications thanks to constexpr.</li>
@@ -165,7 +165,7 @@ Features</h1>
 <li>Host–Device execution model: Unified support for CPU and CUDA-enabled GPU computation within the same codebase. While the device backend is currently developed in CUDA, the design is not tied to it and can support other backends in the future.</li>
 <li>Minimal core operators: Only essential built-in operations to keep the library lightweight and extensible.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md67"></a>
+<h1><a class="anchor" id="autotoc_md68"></a>
 What is comming...</h1>
 <ul>
 <li><b>cuBlas and cuTensor optional support</b>: This may be added soon to accelerate tensor computations.</li>
@@ -176,10 +176,10 @@ What is comming...</h1>
 <li><b>Multi GPU support</b>. Unfortunately I don't have either the expertise or the resources to add multigpu support, but the whole library was build taking this in mind so it won't be a breaking change when added. <br  />
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md68"></a>
+<h1><a class="anchor" id="autotoc_md69"></a>
 Installation</h1>
 <p>This guide is currently in a “works on my machine” state. If you encounter any issues while building Tannic, your feedback is greatly appreciated, please open an issue or submit a pull request. Contributions to improve this guide are also very welcome!</p>
-<h2><a class="anchor" id="autotoc_md69"></a>
+<h2><a class="anchor" id="autotoc_md70"></a>
 Requirements</h2>
 <ul>
 <li>A C++23 compatible compiler.</li>
@@ -190,36 +190,36 @@ Requirements</h2>
 <li>(Optional) CUDA Toolkit 12+: only required for GPU support</li>
 </ul>
 <p>Other optional requirements may be added in the future. Also the arrival of C++26, is shaping up to be a huge and too significant to ignore. At some point, it may be requirement for Tannic.</p>
-<h2><a class="anchor" id="autotoc_md70"></a>
+<h2><a class="anchor" id="autotoc_md71"></a>
 Clone the repository:</h2>
 <div class="fragment"><div class="line">git clone https://github.com/entropy-flux/Tannic.git</div>
 <div class="line">cd Tannic </div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md71"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md72"></a>
 Debug build:</h2>
 <p>Use this for development — includes extra checks, assertions, and debug symbols for easier troubleshooting.</p>
 <div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
 <div class="line">cmake .. -DCMAKE_BUILD_TYPE=Debug</div>
 <div class="line">make -j$(nproc)</div>
 <div class="line">ctest --output-on-failure</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md72"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md73"></a>
 Release build</h2>
 <p>Use this for deployment or benchmarking — builds with full compiler optimizations and without debug checks.</p>
 <div class="fragment"><div class="line">mkdir build &amp;&amp; cd build</div>
 <div class="line">cmake .. -DCMAKE_BUILD_TYPE=Release</div>
 <div class="line">make -j$(nproc) </div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md73"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md74"></a>
 Run the example</h2>
 <p>You can run the example provided in the main.cpp from the build folder: </p><div class="fragment"><div class="line">cd build</div>
 <div class="line">./main</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md74"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md75"></a>
 Include Tannic in your project</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;tannic.hpp&gt;</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md75"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md76"></a>
 CUDA support</h2>
 <p>CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detected during configuration. If no CUDA installation is found, Tannic will automatically fall back to a CPU‑only build. You can explicitly disable CUDA with:</p>
 <div class="fragment"><div class="line">cmake .. -DTANNIC_ENABLE_CUDA=OFF</div>
 </div><!-- fragment --><p>These defaults provide a fast setup for development with the current state of the library. As Tannic evolves, CUDA configuration options and behavior may change.</p>
-<h1><a class="anchor" id="autotoc_md76"></a>
+<h1><a class="anchor" id="autotoc_md77"></a>
 Usage</h1>
 <p>To use Tannic, simply include it in your project and interact with it similarly to a Python framework:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
@@ -297,10 +297,10 @@ Usage</h1>
 <div class="line">    TYPES</div>
 <div class="line">};</div>
 </div><!-- fragment --><p>This design also paves the way for future features such as tensor quantization.</p>
-<h1><a class="anchor" id="autotoc_md77"></a>
+<h1><a class="anchor" id="autotoc_md78"></a>
 Contributing</h1>
 <p>Contributions to Tannic are welcome! Whether you’re reporting bugs, proposing features, improving documentation, or optimizing kernels, your help is greatly appreciated.</p>
-<h1><a class="anchor" id="autotoc_md78"></a>
+<h1><a class="anchor" id="autotoc_md79"></a>
 Ways to Contribute</h1>
 <ul>
 <li><b>Write new test cases to cover code that is not yet tested</b>. I’m using a test-driven approach to build the library, but some edge cases may still be missing.</li>
@@ -321,7 +321,7 @@ Ways to Contribute</h1>
 <li><b>Optimize kernels</b>. Kernels are currently unoptimized since I'm still focusing on builing necessary features. The kernels can be found on .cpp and .cu files inside src/cpu and src/cuda files.</li>
 <li><b>New features</b>. If you propose new features for the library, please ensure they align with the scope of a tensor library. For example, operations like tensor contractions would be a great addition, but machine learning components —such as neural network activation functions or attention mechanisms— are outside the scope. (Don’t worry—I'm building a separate neural networks library on top of this one!) That said, I’m always open to fresh ideas, so don’t hesitate to share your suggestions.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md79"></a>
+<h1><a class="anchor" id="autotoc_md80"></a>
 How to Contribute</h1>
 <p>Fork the repository and create a new branch for your feature or bug fix. Example:</p>
 <div class="fragment"><div class="line">git checkout -b metal/metal-backend</div>
@@ -331,7 +331,7 @@ How to Contribute</h1>
 <li>Implementation details if needed.</li>
 </ul>
 <p>Target branch: PRs for now should just target main till the library matures.</p>
-<h1><a class="anchor" id="autotoc_md80"></a>
+<h1><a class="anchor" id="autotoc_md81"></a>
 Project structure</h1>
 <p>The project is organized into the following main components:</p>
 <ul>
@@ -360,7 +360,7 @@ Project structure</h1>
 </li>
 </ul>
 <p>Currently what is in the src root folder is a mess, lot of code repetition and nasty helper functions with bunch of templates. I promise I will take the time to refactor this but after I find a way to dynamically add and remove nodes from a graph dynamically based on reference counting. This refactor won't change anything on the public API.</p>
-<h1><a class="anchor" id="autotoc_md81"></a>
+<h1><a class="anchor" id="autotoc_md82"></a>
 Creating new features.</h1>
 <p>The C++ frontend is based on templated expressions, this means that when you write an expression, for example:</p>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> expr = matmul(X, Y) + Z;</div>
@@ -397,7 +397,7 @@ Creating new features.</h1>
 <div class="line">W = W * log(Z);</div>
 <div class="line">W = W * exp(Y) + X[1]; </div>
 <div class="line">std::cout &lt;&lt; W[1] + Z[0]; <span class="comment">// IO supported for expressions.</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md82"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md83"></a>
 License &amp; Attribution</h2>
 <p>Tannic is licensed under the Apache License 2.0, a permissive open-source license that allows you to use, modify, and distribute the code freely—even in commercial projects.</p>
 <p>By contributing, you agree that your contributions will also be licensed under Apache 2.0 and that proper attribution is appreciated.</p>
