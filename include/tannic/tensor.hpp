@@ -963,7 +963,6 @@ public:
     } 
 
 
-
     /**
      * @brief Returns a view of the tensor with two dimensions transposed.
      * @param first First dimension to swap (default: -1).
