@@ -20,7 +20,7 @@ var classtannic_1_1Tensor =
     [ "forward", "da/d93/classtannic_1_1Tensor.html#a24efaf36c2ec793288c470e5e92ad397", null ],
     [ "forward", "da/d93/classtannic_1_1Tensor.html#afa045be0c377ee3127a5a9d97c5b1fcb", null ],
     [ "initialize", "da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c", null ],
-    [ "initialize", "da/d93/classtannic_1_1Tensor.html#a02b663451f362b7ac58c889c2111351d", null ],
+    [ "initialize", "da/d93/classtannic_1_1Tensor.html#a1b94366e95eeb7d5987d0e1e024b2d63", null ],
     [ "initialize", "da/d93/classtannic_1_1Tensor.html#adb95241997821b2425869bf6076e029f", null ],
     [ "initialize", "da/d93/classtannic_1_1Tensor.html#af04f30b6a7bcb783170d17617d90b70e", null ],
     [ "initialize", "da/d93/classtannic_1_1Tensor.html#a3a52cb61b4145d02dd20e40934689f81", null ],
