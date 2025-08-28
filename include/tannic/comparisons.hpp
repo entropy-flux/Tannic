@@ -18,12 +18,68 @@
 #ifndef COMPARISONS_HPP
 #define COMPARISONS_HPP
 
+/**
+ * @file comparisons.hpp
+ * @author Eric Hermosis
+ * @date 2025
+ * @brief Defines element-wise comparison operations for tensor expressions.
+ *
+ * This header provides **lazy-evaluated comparison operators** for `Tensor` 
+ * and expression types. All comparisons are element-wise and produce 
+ * boolean tensors of the same shape as the operands.  
+ *
+ * Supported operators:
+ * - Equality and inequality:
+ *   * `==` (equal)
+ *   * `!=` (not equal)
+ * - Relational comparisons:
+ *   * `<`  (less than)
+ *   * `<=` (less than or equal)
+ *   * `>`  (greater than)
+ *   * `>=` (greater than or equal)
+ *
+ * ## Example
+ * ```cpp
+ * #include <iostream>
+ * #include <tannic.hpp>
+ * #include <tannic/comparisons.hpp>
+ *
+ * using namespace tannic;
+ *
+ * int main() {
+ *     Tensor A = {1, 2, 3, 4, 5};
+ *     Tensor B = {5, 4, 3, 2, 1};
+ *
+ *     std::cout << "A == B: " << (A == B) << std::endl;
+ *     std::cout << "A != B: " << (A != B) << std::endl;
+ *     std::cout << "A >  B: " << (A >  B) << std::endl;
+ *     std::cout << "A >= B: " << (A >= B) << std::endl;
+ *     std::cout << "A <  B: " << (A <  B) << std::endl;
+ *     std::cout << "A <= B: " << (A <= B) << std::endl;
+ * }
+ * ```
+ *
+ * Part of the Tannic Tensor Library.
+ */
+
 #include "concepts.hpp"
 #include "shape.hpp"
 #include "tensor.hpp"
 
 namespace tannic::expression {
 
+ 
+/**
+ * @brief Expression template for element-wise tensor comparisons.
+ *
+ * Represents a lazy comparison between two tensor expressions.
+ * The actual boolean tensor is only materialized when assigned
+ * to a `Tensor`.
+ *
+ * @tparam Criteria The comparison functor (e.g., `EQ`, `LT`)
+ * @tparam First    The left-hand expression type
+ * @tparam Second   The right-hand expression type
+ */
 template<class Criteria, Expression First, Expression Second>
 class Comparison {
 public:  
@@ -31,6 +87,10 @@ public:
     typename Trait<First>::Reference first;
     typename Trait<Second>::Reference second;
 
+    /**
+     * @brief Constructs a comparison expression.
+     * @throws Exception if the tensor shapes differ.
+     */
     constexpr Comparison(Criteria criteria, typename Trait<First>::Reference first, typename Trait<Second>::Reference second) 
     :   criteria(criteria)
     ,   first(first)
@@ -45,7 +105,7 @@ public:
     constexpr type dtype() const {
         return boolean;
     }
-
+    
     constexpr Shape const& shape() const {
         return shape_;
     }
@@ -125,6 +185,29 @@ constexpr auto operator>=(First&& lhs, Second&& rhs) {
     return Comparison<GE, First, Second>({}, lhs, rhs);
 }
 
+/**
+ * @brief Determine whether two tensors are element-wise equal within a tolerance.
+ *
+ * This function checks whether all elements of two tensors are close to each other,
+ * within a relative tolerance (`rtol`) and an absolute tolerance (`atol`). 
+ *
+ * @param first   The first tensor to compare.
+ * @param second  The second tensor to compare.
+ * @param rtol    Relative tolerance. Default = 1e-5.
+ *                The allowable difference grows with the magnitude of the values.
+ * @param atol    Absolute tolerance. Default = 1e-8.
+ *                The minimum absolute tolerance for small values.
+ *
+ * @return true if all corresponding elements of @p first and @p second
+ *         satisfy the condition:
+ *         \f$ |a - b| \leq \text{atol} + \text{rtol} \times |b| \f$,
+ *         false otherwise.
+ *
+ * @throw tannic::Exception if the tensors have mismatched shapes
+ *        or incompatible environments.
+ */
+bool allclose(Tensor const& first, Tensor const& second, double rtol = 1e-5f, double atol = 1e-8f);
+
 } namespace tannic {
     
 using expression::operator==;
@@ -133,6 +216,7 @@ using expression::operator<;
 using expression::operator<=;
 using expression::operator>;
 using expression::operator>=;
+using expression::allclose;
 
 } // namespace tannic
  

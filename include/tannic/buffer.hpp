@@ -19,7 +19,7 @@
 #define BUFFER_HPP
 
 /**
- * @file Buffer.hpp
+ * @file buffer.hpp
  * @author Eric Hermosis  
  * @date 2025
  * @brief Memory buffer management for tensor storage

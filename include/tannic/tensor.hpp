@@ -69,7 +69,7 @@ namespace tannic {
  *
  * #### Evaluation Mode:
  * 
- * - Tensors are currently eager : expressions assigned to them are immediately evaluated and stored.
+ * - Tensors are currently **eager** : expressions assigned to them are immediately evaluated and stored.
  * - A lazy `constexpr` evaluation mode is planned for future versions, enabling compile-time computational graphs.
  *
  * #### Memory:
@@ -224,9 +224,48 @@ public:
         return *this;
     } 
     /// @}
+ 
+ 
+public:   
+    /// @name Memory Management (Always runtime.)
+    /// @{
 
-public:
+    /**
+     * @brief Allocates the memory buffer for the tensor.
+     * @param environment Memory environment (defaults to `Host{}`).
+     */
+    void initialize(Environment environment = Host{}) const;
+   
+    /**
+     * @brief Returns a pointer to the beginning of the tensor's data (accounting for offset).
+     * @return Pointer to the tensor's data in bytes.
+     */
+    std::byte* bytes() const {
+        return static_cast<std::byte*>(buffer_->address()) + offset_;
+    }  
 
+    /**
+     * @brief Checks whether the tensor has been initialized with memory.
+     * @return True if initialized, false otherwise.
+     */
+    bool is_initialized() const {
+        return buffer_ ? true : false;
+    } 
+
+    /**
+     * @brief Returns a reference to the environment variant used to allocate this tensor's buffer.
+     * @return Environment reference.
+     * @note Asserts if the tensor is not initialized.
+     */
+    Environment const& environment() const {
+        if (!is_initialized())
+            throw Exception("Cannot get resource of an initializer tensor."); 
+        return buffer_->environment();
+    }   
+    /// @}
+   
+
+public: 
     /**
      * @brief Constructs a 1D tensor from an initializer list.
      *
@@ -237,7 +276,7 @@ public:
      * This constructor allows **direct construction of 1D tensors** using brace-enclosed lists:
      *
      * ```cpp
-     * Tensor X = {1.0f, 2.0f, 3.0f, 4.0f};  // 1D tensor of shape {4}, dtype=float32
+     * Tensor X {1.0f, 2.0f, 3.0f, 4.0f};  // 1D tensor of shape {4}, dtype=float32
      * ```
      *
      * The tensor is immediately initialized on host, contiguous in memory, and its dtype is deduced from `T`.
@@ -406,7 +445,7 @@ public:
      * This constructor allows **direct construction of 4D tensors**:
      *
      * ```cpp
-     * Tensor W = {
+     * Tensor X = {
      *     {
      *         {
      *             {1.0f, 2.0f},
@@ -491,6 +530,7 @@ public:
         } 
     }
 
+
 public: 
     /**
      * @brief Assigns values to a 1D tensor from an initializer list.
@@ -503,7 +543,7 @@ public:
      *
      * ```cpp
      * Tensor X(float32, {3});
-     * X = {1, 2, 3};  // values cast to float32
+     * X.initialize({1, 2, 3});  // values cast to float32
      * ```
      *
      * Requirements:
@@ -517,16 +557,16 @@ public:
      * - This ensures that the tensor’s dtype does not change after assignment.
      */ 
     template<typename T>
-    Tensor& operator=(std::initializer_list<T> const& values) {
+    void initialize(std::initializer_list<T> values, Environment environment = Host{}) {
         if (!is_contiguous())
             throw Exception("Assign to initializer list supported only for contiguous tensors");
-    
-        if (!is_initialized()) 
-            initialize();
-
+      
         if (rank() != 1 || shape_[0] != values.size())
             throw Exception("Shape mismatch in assignment from initializer_list");
  
+        if (!is_initialized()) 
+            initialize(environment);
+
         if (dtype_ == boolean) {
             std::ptrdiff_t index = 0;
             for (auto const& value : values) {
@@ -555,11 +595,100 @@ public:
                 case float64: fill(double{});   break;
                 default: throw Exception("Unsupported dtype in assignment");
             } 
-        }
-        
-        return *this;
-  
+        } 
     }
+
+
+    /**
+     * @brief Assigns values to a 3D tensor from a triple-nested initializer list.
+     *
+     * @tparam T Element type of the nested initializer list.
+     * @param values A triple-nested list of values (matrices) to assign to the tensor.
+     * @param environment Target environment for initialization (default: Host).
+     *
+     * @details
+     * This operator assigns values to an **existing 3D tensor**:
+     *
+     * ```cpp
+     * Tensor Z(float32, {2, 1, 3});
+     * Z.initialize({
+     *     { {0.0f, 1.0f, 2.0f} },
+     *     { {3.0f, 4.0f, 5.0f} }
+     * });  // values cast to float32
+     * ```
+     *
+     * Requirements:
+     * - The tensor must already be initialized.
+     * - The tensor must be rank-3.
+     * - The tensor must be contiguous.
+     * - All matrices must have the same number of rows, and all rows must have the same number of columns,
+     *   matching the tensor’s shape.
+     *
+     * Type conversion:
+     * - Values are cast to the tensor’s existing dtype before being written.
+     * - This ensures that the tensor’s dtype does not change after assignment.
+     */
+    template<typename T>
+    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<T>>> values, Environment environment = Host{}) {
+        if (!is_contiguous())
+            throw Exception("Assign to initializer list supported only for contiguous tensors");
+
+        if (rank() != 3 
+            || shape_[0] != values.size() 
+            || shape_[1] != values.begin()->size() 
+            || shape_[2] != values.begin()->begin()->size())
+            throw Exception("Shape mismatch in assignment from triple-nested initializer_list");
+
+        if (!is_initialized()) 
+            initialize(environment);
+
+        if (dtype_ == boolean) {
+            std::ptrdiff_t index = 0;
+            for (auto const& matrix : values) {
+                if (matrix.size() != shape_[1])
+                    throw Exception("Matrix row count mismatch");
+                for (auto const& row : matrix) {
+                    if (row.size() != shape_[2])
+                        throw Exception("Row length mismatch");
+                    for (auto const& value : row) {
+                        assign((bool const*)(&value), index);
+                        ++index;
+                    }
+                }
+            }
+        }
+
+        else { 
+            auto fill = [this, &values](auto cast) { 
+                using Cast = decltype(cast);
+                size_t index = 0;
+                for (auto const& matrix : values) {
+                    if (matrix.size() != shape_[1])
+                        throw Exception("Matrix row count mismatch");
+                    for (auto const& row : matrix) {
+                        if (row.size() != shape_[2])
+                            throw Exception("Row length mismatch");
+                        for (auto value : row) {
+                            Cast casted = value;
+                            assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                            ++index;
+                        }
+                    }
+                }
+            };
+
+            switch (dtype_) {
+                case int8:    fill(int8_t{});   break;
+                case int16:   fill(int16_t{});  break;
+                case int32:   fill(int32_t{});  break;
+                case int64:   fill(int64_t{});  break;
+                case float32: fill(float{});    break;
+                case float64: fill(double{});   break;
+                default: throw Exception("Unsupported dtype in assignment");
+            } 
+        } 
+}
+
 
     /**
      * @brief Assigns values to a 2D tensor from a nested initializer list.
@@ -572,10 +701,10 @@ public:
      *
      * ```cpp
      * Tensor Y(float32, {2, 3});
-     * Y = {
+     * Y.initialize({
      *     {1, 2, 3},
      *     {4, 5, 6}
-     * };  // values cast to float32
+     * });  // values cast to float32
      * ```
      *
      * Requirements:
@@ -588,15 +717,15 @@ public:
      * - Values are cast to the tensor’s existing dtype before being written.
      */
     template<typename T>
-    Tensor& operator=(std::initializer_list<std::initializer_list<T>> const& values) {
+    void initialize(std::initializer_list<std::initializer_list<T>> values, Environment environment = Host{}) {
         if (!is_contiguous())
-            throw Exception("Assign to initializer list supported only for contiguous tensors");
-            
-        if (!is_initialized()) 
-            initialize();
-
+            throw Exception("Assign to initializer list supported only for contiguous tensors"); 
+ 
         if (rank() != 2 || shape_[0] != values.size() || shape_[1] != values.begin()->size())
             throw Exception("Shape mismatch in assignment from nested initializer_list"); 
+
+        if (!is_initialized()) 
+            initialize(environment);
 
         if (dtype_ == boolean) {
             std::ptrdiff_t index = 0;
@@ -635,9 +764,7 @@ public:
                 case float64: fill(double{});   break;
                 default: throw Exception("Unsupported dtype in assignment");
             } 
-        } 
-
-        return *this;
+        }  
     }
 
     /**
@@ -651,7 +778,7 @@ public:
      *
      * ```cpp
      * Tensor W(float32, {2, 2, 2, 2});  
-     * W = {
+     * W.initialize({
      *     {
      *         {
      *             {1,  2}, {3,  4}
@@ -668,7 +795,7 @@ public:
      *             {13, 14}, {15, 16}
      *         }
      *     }
-     * };  // values cast to float32
+     * });  // values cast to float32
      * ```
      *
      * Requirements:
@@ -681,12 +808,9 @@ public:
      * - Values are cast to the tensor’s existing dtype before being written.
      */
     template<typename T>
-    Tensor& operator=(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const& values) {
+    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> values, Environment environment = Host{}) {
         if (!is_contiguous())
             throw Exception("Assign to initializer list supported only for contiguous tensors");
-
-        if (!is_initialized()) 
-            initialize();
 
         if (rank() != 4 
             || shape_[0] != values.size() 
@@ -695,6 +819,8 @@ public:
             || shape_[3] != values.begin()->begin()->begin()->size())
             throw Exception("Shape mismatch in assignment from quadruple-nested initializer_list");
 
+        if (!is_initialized()) 
+            initialize(environment);
 
         if (dtype_ == boolean) {
             std::ptrdiff_t index = 0;
@@ -716,8 +842,7 @@ public:
                         }
                     }
                 }
-            }
-            return *this;
+            } 
         }
 
         else { 
@@ -755,50 +880,9 @@ public:
                 case float64: fill(double{});   break;
                 default: throw Exception("Unsupported dtype in assignment");
             } 
-        } 
-        return *this;
-    }
-
-
-
-public:   
-    /// @name Memory Management (Always runtime.)
-    /// @{
-
-    /**
-     * @brief Allocates the memory buffer for the tensor.
-     * @param environment Memory environment (defaults to `Host{}`).
-     */
-    void initialize(Environment environment = Host{}) const;
-   
-    /**
-     * @brief Returns a pointer to the beginning of the tensor's data (accounting for offset).
-     * @return Pointer to the tensor's data in bytes.
-     */
-    std::byte* bytes() const {
-        return static_cast<std::byte*>(buffer_->address()) + offset_;
-    }  
-
-    /**
-     * @brief Checks whether the tensor has been initialized with memory.
-     * @return True if initialized, false otherwise.
-     */
-    bool is_initialized() const {
-        return buffer_ ? true : false;
+        }  
     } 
-
-    /**
-     * @brief Returns a reference to the environment variant used to allocate this tensor's buffer.
-     * @return Environment reference.
-     * @note Asserts if the tensor is not initialized.
-     */
-    Environment const& environment() const {
-        if (!is_initialized())
-            throw Exception("Cannot get resource of an initializer tensor."); 
-        return buffer_->environment();
-    }   
-    /// @}
-   
+    
 public: 
     /// @name Indexing, Slicing and Views.
     /// @{

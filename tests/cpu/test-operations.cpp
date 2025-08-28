@@ -2,249 +2,185 @@
 #include <vector>
 #include <numeric>
 #include <cmath>
- 
 #include "tensor.hpp"   
+#include "comparisons.hpp"
 
-using namespace tannic; 
+using namespace tannic;  
+
 
 TEST(TestUnaryOp, Negation) {
-    Tensor A(float32, {3, 3}); A.initialize(); 
-    float* A_data = reinterpret_cast<float*>(A.bytes());
-    for(int i = 0; i < 3*3; i++) {
-        A_data[i] = 9 + 1. * i;
-    }
+    Tensor A(float32, {3, 3});
+    A.initialize({
+        {  9, 10, 11 },
+        { 12, 13, 14 },
+        { 15, 16, 17 }
+    });
 
-    Tensor B = -A;
-    float* B_data = reinterpret_cast<float*>(B.bytes());
+    Tensor expected(float32, {3, 3});
+    expected.initialize({
+        { -9, -10, -11 },
+        { -12, -13, -14 },
+        { -15, -16, -17 }
+    });
 
-    float expected[] = {
-        -9.0, -10.0, -11.0,                
-        -12.0, -13.0, -14.0,
-        -15.0, -16.0, -17.0
-    };
-    
-    for(int i = 0; i < 3*3; i++) {
-        ASSERT_FLOAT_EQ(B_data[i], expected[i]);
-    }
+    Tensor result = -A;
+    EXPECT_TRUE(allclose(result, expected));
 }
 
+TEST(TestBinaryOps, Addition) {
+    Tensor A(float32, {2, 1, 3});
+    A.initialize({ { {0., 1., 2.} }, { {3., 4., 5.} } });
 
-class TestBinaryOps : public ::testing::Test {
-protected:
-    Tensor A; 
-    Tensor B; 
+    Tensor B(float32, {1, 4, 3});
+    B.initialize({ { {0., 10., 20.}, {30., 40., 50.}, {60., 70., 80.}, {90., 100., 110.} } });
 
-    TestBinaryOps() 
-    :   A(float32, Shape(2, 1, 3))
-    ,   B(float32, Shape(1, 4, 3))
-    { 
-        A.initialize();  
-        B.initialize();  
-    }
-
-    void SetUp() override {    
-        float* A_data = reinterpret_cast<float*>(A.bytes());
-        float* B_data = reinterpret_cast<float*>(B.bytes());
-
-        const float A_init[2][1][3] = {
-            {{0.0f, 1.0f, 2.0f}}, 
-            {{3.0f, 4.0f, 5.0f}} 
-        };
-        
-        const float B_init[1][4][3] = {
-            {
-                {0.0f,  10.0f, 20.0f},  
-                {30.0f, 40.0f, 50.0f},  
-                {60.0f, 70.0f, 80.0f}, 
-                {90.0f, 100.0f, 110.0f}
-            }
-        };
-
-        for (int i = 0; i < 2; ++i) {
-            for (int j = 0; j < 1; ++j) {
-                for (int k = 0; k < 3; ++k) {
-                    A_data[i * 3 + j * 3 + k] = A_init[i][j][k];
-                }
-            }
-        }
-
-        for (int i = 0; i < 1; ++i) {
-            for (int j = 0; j < 4; ++j) {
-                for (int k = 0; k < 3; ++k) {
-                    B_data[j * 3 + k] = B_init[i][j][k]; 
-                }
-            }
-        }
-    }
-}; 
-
-TEST_F(TestBinaryOps, Addition) {
-    Tensor C = A + B;
-    ASSERT_EQ(C.shape(), Shape(2, 4, 3));
-    float expected[2][4][3] = {
+    Tensor expected(float32, {2, 4, 3});
+    expected.initialize({
         {
-            {  0.0f,  11.0f,  22.0f},
-            { 30.0f,  41.0f,  52.0f},
-            { 60.0f,  71.0f,  82.0f}, 
-            { 90.0f, 101.0f, 112.0f}
+            {  0., 11., 22. },
+            { 30., 41., 52. },
+            { 60., 71., 82. },
+            { 90.,101.,112. }
         },
         {
-            {  3.0f,  14.0f,  25.0f},
-            { 33.0f,  44.0f,  55.0f},
-            { 63.0f,  74.0f,  85.0f},
-            { 93.0f, 104.0f, 115.0f}
+            {  3., 14., 25. },
+            { 33., 44., 55. },
+            { 63., 74., 85. },
+            { 93.,104.,115. }
         }
-    };
+    });
 
-    float* C_data = reinterpret_cast<float*>(C.bytes());
-    for (int i = 0; i < 2; ++i)
-        for (int j = 0; j < 4; ++j)
-            for (int k = 0; k < 3; ++k) {
-                int idx = i * 12 + j * 3 + k;
-                EXPECT_FLOAT_EQ(C_data[idx], expected[i][j][k]) 
-                    << "Mismatch at C[" << i << "][" << j << "][" << k << "]";
-            }
+    Tensor result = A + B;
+    std::cout << A.dtype() << B.dtype() << result.dtype() << std::endl;
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestBinaryOps, Multiplication) { 
-    Tensor C = A * B;
-    float expected[2][4][3] = {
+TEST(TestBinaryOps, Multiplication) {
+    Tensor A(float32, {2, 1, 3});
+    A.initialize({ { {0, 1, 2} }, { {3, 4, 5} } });
+
+    Tensor B(float32, {1, 4, 3});
+    B.initialize({ { {0, 10, 20}, {30, 40, 50}, {60, 70, 80}, {90, 100, 110} } });
+
+    Tensor expected(float32, {2, 4, 3});
+    expected.initialize({
         {
-            {  0.0f,  10.0f,  40.0f},
-            {  0.0f,  40.0f,  100.0f},
-            {  0.0f,  70.0f,  160.0f},
-            {  0.0f, 100.0f,  220.0f}
+            {   0,  10,  40 },
+            {   0,  40, 100 },
+            {   0,  70, 160 },
+            {   0, 100, 220 }
         },
         {
-            {  0.0f, 40.0f,  100.0f},
-            { 90.0f, 160.0f,  250.0f},
-            { 180.0f, 280.0f,  400.0f},
-            { 270.0f, 400.0f,  550.0f}
+            {   0,  40, 100 },
+            {  90, 160, 250 },
+            { 180, 280, 400 },
+            { 270, 400, 550 }
         }
-    };
+    });
 
-    float* C_data = reinterpret_cast<float*>(C.bytes());
-    for (int i = 0; i < 2; ++i)
-        for (int j = 0; j < 4; ++j)
-            for (int k = 0; k < 3; ++k) {
-                int idx = i * 12 + j * 3 + k;
-                EXPECT_FLOAT_EQ(C_data[idx], expected[i][j][k]) 
-                    << "Mismatch at C[" << i << "][" << j << "][" << k << "]";
-            }
+    Tensor result = A * B;
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestBinaryOps, Subtraction) {
-    Tensor C = A - B; 
-    float expected[2][4][3] = {
+TEST(TestBinaryOps, Subtraction) {
+    Tensor A(float32, {2, 1, 3});
+    A.initialize({ { {0, 1, 2} }, { {3, 4, 5} } });
+
+    Tensor B(float32, {1, 4, 3});
+    B.initialize({ { {0, 10, 20}, {30, 40, 50}, {60, 70, 80}, {90, 100, 110} } });
+
+    Tensor expected(float32, {2, 4, 3});
+    expected.initialize({
         {
-            {  0.0f,  -9.0f, -18.0f },
-            { -30.0f, -39.0f, -48.0f },
-            { -60.0f, -69.0f, -78.0f },
-            { -90.0f, -99.0f, -108.0f }
+            {   0,  -9, -18 },
+            { -30, -39, -48 },
+            { -60, -69, -78 },
+            { -90, -99,-108 }
         },
         {
-            {  3.0f,  -6.0f, -15.0f },
-            { -27.0f, -36.0f, -45.0f },
-            { -57.0f, -66.0f, -75.0f },
-            { -87.0f, -96.0f, -105.0f }
+            {   3,  -6, -15 },
+            { -27, -36, -45 },
+            { -57, -66, -75 },
+            { -87, -96,-105 }
         }
-    };
+    });
 
-    float* C_data = reinterpret_cast<float*>(C.bytes());
-    for (int i = 0; i < 2; ++i)
-        for (int j = 0; j < 4; ++j)
-            for (int k = 0; k < 3; ++k) {
-                int idx = i * 12 + j * 3 + k;
-                EXPECT_FLOAT_EQ(C_data[idx], expected[i][j][k]) 
-                    << "Mismatch at C[" << i << "][" << j << "][" << k << "]";
-            }
-} 
+    Tensor result = A - B;
+    EXPECT_TRUE(allclose(result, expected));
+}
 
-TEST_F(TestBinaryOps, Complex) {
-    Tensor X(float32, {2,2}); X.initialize();  
-    X[0, 0] = 1;
-    X[0, 1] = 6;
-    X[1, 0] = 2;
-    X[1, 1] = 3;      
-    X = complexify(X);  
-    
-    Tensor Y(float32, {2,2}); Y.initialize(); 
-    Y[0, 0] = 2;
-    Y[0, 1] = 1;
-    Y[1, 0] = 1.5;
-    Y[1, 1] = 3.14;   
+TEST(TestBinaryOps, Complex) {
+    Tensor X(float32, {2,2});
+    X.initialize({ {1, 6}, {2, 3} });
+    X = complexify(X);
+
+    Tensor Y(float32, {2,2});
+    Y.initialize({ {2., 1.}, {1.5, 3.14} });
     Y = complexify(Y);
- 
 
-    Tensor Z = realify(X*Y); 
- 
-    float* Z_data = reinterpret_cast<float*>(Z.bytes());
-    ASSERT_NEAR(Z_data[0], -4.00, 0.001);
-    ASSERT_NEAR(Z_data[1], 13.00, 0.001);
-    ASSERT_NEAR(Z_data[2], -6.42, 0.001);
-    ASSERT_NEAR(Z_data[3], 10.78, 0.001);
+    Tensor result = realify(X * Y);
+
+    Tensor expected(float32, {2,2});
+    expected.initialize({
+        { -4.00, 13.00 },
+        { -6.42, 10.78 }
+    });
+
+    EXPECT_TRUE(allclose(result, expected, 1e-3f));
 }
 
-TEST_F(TestBinaryOps, Power) { 
-    Tensor C = A ^ B;
-    ASSERT_EQ(C.shape(), Shape(2, 4, 3));
+TEST(TestBinaryOps, Power) {
+    Tensor A(float32, {2, 1, 3});
+    A.initialize({ { {0, 1, 2} }, { {3, 4, 5} } });
 
-    float expected[2][4][3];
-    float* A_data = reinterpret_cast<float*>(A.bytes());
-    float* B_data = reinterpret_cast<float*>(B.bytes());
- 
-    for (int i = 0; i < 2; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            for (int k = 0; k < 3; ++k) {
-                int idx_A = i * 3 + k;       
-                int idx_B = j * 3 + k; 
-                expected[i][j][k] = std::pow(A_data[idx_A], B_data[idx_B]);
-            }
+    Tensor B(float32, {1, 4, 3});
+    B.initialize({ { {0, 10, 20}, {30, 40, 50}, {60, 70, 80}, {90, 100, 110} } });
+
+    Tensor result = A ^ B;
+    ASSERT_EQ(result.shape(), Shape(2, 4, 3));
+
+    Tensor expected(float32, {2, 4, 3});
+    expected.initialize({
+        {   
+            { std::pow(0.f, 0.f),   std::pow(1.f, 10.f),   std::pow(2.f, 20.f) },
+            { std::pow(0.f, 30.f),  std::pow(1.f, 40.f),   std::pow(2.f, 50.f) },
+            { std::pow(0.f, 60.f),  std::pow(1.f, 70.f),   std::pow(2.f, 80.f) },
+            { std::pow(0.f, 90.f),  std::pow(1.f, 100.f),  std::pow(2.f, 110.f) }
+        },
+        {   
+            { std::pow(3.f, 0.f),   std::pow(4.f, 10.f),   std::pow(5.f, 20.f) },
+            { std::pow(3.f, 30.f),  std::pow(4.f, 40.f),   std::pow(5.f, 50.f) },
+            { std::pow(3.f, 60.f),  std::pow(4.f, 70.f),   std::pow(5.f, 80.f) },
+            { std::pow(3.f, 90.f),  std::pow(4.f, 100.f),  std::pow(5.f, 110.f) }
         }
-    }
- 
-    float* C_data = reinterpret_cast<float*>(C.bytes());
-    for (int i = 0; i < 2; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            for (int k = 0; k < 3; ++k) {
-                int idx = i * 12 + j * 3 + k;
-                EXPECT_FLOAT_EQ(C_data[idx], expected[i][j][k])
-                    << "Mismatch at C[" << i << "][" << j << "][" << k << "]";
-            }
-        }
-    }
+    });
+
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestBinaryOps, BroadcastMultiplyAdd) { 
-    Tensor X(float32, {2, 3}); X.initialize();
-    float* X_data = reinterpret_cast<float*>(X.bytes());
-    X_data[0] = -1.22474f; X_data[1] = 0.f; X_data[2] = 1.22474f;
-    X_data[3] = -1.22474f; X_data[4] = 0.f; X_data[5] = 1.22474f;
+TEST(TestBinaryOps, BroadcastMultiplyAdd) {
+    Tensor X(float32, {2, 3});
+    X.initialize({
+        { -1.22474f, 0.f, 1.22474f },
+        { -1.22474f, 0.f, 1.22474f }
+    });
 
-    Tensor W(float32, {3}); W.initialize();
-    float* W_data = reinterpret_cast<float*>(W.bytes());
-    W_data[0] = 0.5f; W_data[1] = 1.0f; W_data[2] = 1.5f;
+    Tensor W(float32, {3});
+    W.initialize({ 0.5f, 1.0f, 1.5f });
 
-    Tensor b(float32, {3}); b.initialize();
-    float* b_data = reinterpret_cast<float*>(b.bytes());
-    b_data[0] = 0.0f; b_data[1] = 0.1f; b_data[2] = 0.2f;
- 
-    Tensor C = X * W + b;
- 
-    float expected[2][3] = {
-        {-0.61237f, 0.1f, 2.03711f},
-        {-0.61237f, 0.1f, 2.03711f}
-    };
+    Tensor b(float32, {3});
+    b.initialize({ 0.0f, 0.1f, 0.2f });
 
-    float* C_data = reinterpret_cast<float*>(C.bytes());
-    for (int i = 0; i < 2; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            int idx = i * 3 + j;
-            EXPECT_NEAR(C_data[idx], expected[i][j], 1e-5)
-                << "Mismatch at C[" << i << "][" << j << "]";
-        }
-    }
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { -0.61237f, 0.1f, 2.03711f },
+        { -0.61237f, 0.1f, 2.03711f }
+    });
+
+    Tensor result = X * W + b;
+    EXPECT_TRUE(allclose(result, expected, 1e-5f));
 }
+
 
 
 

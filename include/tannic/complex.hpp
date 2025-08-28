@@ -19,7 +19,7 @@
 #define COMPLEX_HPP
 
 /**
- * @file Complex.hpp 
+ * @file complex.hpp 
  * @author Eric Hermosis
  * @date 2025 
  * @brief Complex number operations for the Tannic Tensor Library

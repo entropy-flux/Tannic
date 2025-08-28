@@ -4,181 +4,158 @@
 #include <cstring>
 #include "tensor.hpp"
 #include "functions.hpp"
-
+#include "tannic/comparisons.hpp"
+ 
 using namespace tannic;
 
-class TestFunctions : public ::testing::Test {
-protected:
-    Tensor A;
+TEST(FunctionTests, Log) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {1, 2, 3}, {4, 5, 6} });
 
-    TestFunctions() : A(float32, Shape(2, 1, 3)) { 
-        A.initialize();
-    }
-     
-    void SetUp() override { 
-        float* data = reinterpret_cast<float*>(A.bytes());
-        for (int i = 0; i < 6; ++i) {
-            data[i] = static_cast<float>(i + 1);
-        }
-    }
-};
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { std::log(1.0f), std::log(2.0f), std::log(3.0f) },
+        { std::log(4.0f), std::log(5.0f), std::log(6.0f) }
+    });
 
-TEST_F(TestFunctions, Log) {
     Tensor result = log(A);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
-    
-    const float expected[6] = {
-        std::log(1.0f), std::log(2.0f), std::log(3.0f),
-        std::log(4.0f), std::log(5.0f), std::log(6.0f)
-    };
-    
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestFunctions, Exp) {
+TEST(FunctionTests, Exp) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {1, 2, 3}, {4, 5, 6} });
+
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { std::exp(1.0f), std::exp(2.0f), std::exp(3.0f) },
+        { std::exp(4.0f), std::exp(5.0f), std::exp(6.0f) }
+    });
+
     Tensor result = exp(A);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
-    
-    const float expected[6] = {
-        std::exp(1.0f), std::exp(2.0f), std::exp(3.0f),
-        std::exp(4.0f), std::exp(5.0f), std::exp(6.0f)
-    };
-    
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestFunctions, Sqrt) {
+TEST(FunctionTests, Sqrt) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {1, 2, 3}, {4, 5, 6} });
+
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { std::sqrt(1.0f), std::sqrt(2.0f), std::sqrt(3.0f) },
+        { std::sqrt(4.0f), std::sqrt(5.0f), std::sqrt(6.0f) }
+    });
+
     Tensor result = sqrt(A);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
-    
-    const float expected[6] = {
-        std::sqrt(1.0f), std::sqrt(2.0f), std::sqrt(3.0f),
-        std::sqrt(4.0f), std::sqrt(5.0f), std::sqrt(6.0f)
-    };
-    
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestFunctions, Rsqrt) {
-    Tensor result = rsqrt(A, 1e-6);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
+TEST(FunctionTests, Rsqrt) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {1, 2, 3}, {4, 5, 6} });
 
-    const float expected[6] = {
-        1.0f / std::sqrt(1.0f + 1e-6f),
-        1.0f / std::sqrt(2.0f + 1e-6f),
-        1.0f / std::sqrt(3.0f + 1e-6f),
-        1.0f / std::sqrt(4.0f + 1e-6f),
-        1.0f / std::sqrt(5.0f + 1e-6f),
-        1.0f / std::sqrt(6.0f + 1e-6f)
-    };
+    float eps = 1e-6f;
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { 1.0f / std::sqrt(1.0f + eps), 1.0f / std::sqrt(2.0f + eps), 1.0f / std::sqrt(3.0f + eps) },
+        { 1.0f / std::sqrt(4.0f + eps), 1.0f / std::sqrt(5.0f + eps), 1.0f / std::sqrt(6.0f + eps) }
+    });
 
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
-} 
+    Tensor result = rsqrt(A, eps);
+    EXPECT_TRUE(allclose(result, expected));
+}
 
-TEST_F(TestFunctions, Abs) { 
-    float* original_data = reinterpret_cast<float*>(A.bytes());
-    for (int i = 0; i < 6; ++i) {
-        original_data[i] = -original_data[i];
-    }
+TEST(FunctionTests, Abs) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {-1, -2, -3}, {-4, -5, -6} });
+
+    Tensor expected(float32, {2, 3});
+    expected.initialize({ {1, 2, 3}, {4, 5, 6} });
 
     Tensor result = abs(A);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
-    
-    const float expected[6] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f};
-    
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestFunctions, Sin) {
+TEST(FunctionTests, Sin) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {1, 2, 3}, {4, 5, 6} });
+
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { std::sin(1.0f), std::sin(2.0f), std::sin(3.0f) },
+        { std::sin(4.0f), std::sin(5.0f), std::sin(6.0f) }
+    });
+
     Tensor result = sin(A);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
-    
-    const float expected[6] = {
-        std::sin(1.0f), std::sin(2.0f), std::sin(3.0f),
-        std::sin(4.0f), std::sin(5.0f), std::sin(6.0f)
-    };
-    
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestFunctions, Cos) {
+TEST(FunctionTests, Cos) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {1, 2, 3}, {4, 5, 6} });
+
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { std::cos(1.0f), std::cos(2.0f), std::cos(3.0f) },
+        { std::cos(4.0f), std::cos(5.0f), std::cos(6.0f) }
+    });
+
     Tensor result = cos(A);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
-    
-    const float expected[6] = {
-        std::cos(1.0f), std::cos(2.0f), std::cos(3.0f),
-        std::cos(4.0f), std::cos(5.0f), std::cos(6.0f)
-    };
-    
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestFunctions, Tan) {
+TEST(FunctionTests, Tan) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {1, 2, 3}, {4, 5, 6} });
+
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { std::tan(1.0f), std::tan(2.0f), std::tan(3.0f) },
+        { std::tan(4.0f), std::tan(5.0f), std::tan(6.0f) }
+    });
+
     Tensor result = tan(A);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
-    
-    const float expected[6] = {
-        std::tan(1.0f), std::tan(2.0f), std::tan(3.0f),
-        std::tan(4.0f), std::tan(5.0f), std::tan(6.0f)
-    };
-    
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestFunctions, Sinh) {
+TEST(FunctionTests, Sinh) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {1, 2, 3}, {4, 5, 6} });
+
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { std::sinh(1.0f), std::sinh(2.0f), std::sinh(3.0f) },
+        { std::sinh(4.0f), std::sinh(5.0f), std::sinh(6.0f) }
+    });
+
     Tensor result = sinh(A);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
-    
-    const float expected[6] = {
-        std::sinh(1.0f), std::sinh(2.0f), std::sinh(3.0f),
-        std::sinh(4.0f), std::sinh(5.0f), std::sinh(6.0f)
-    };
-    
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestFunctions, Cosh) {
+TEST(FunctionTests, Cosh) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {1, 2, 3}, {4, 5, 6} });
+
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { std::cosh(1.0f), std::cosh(2.0f), std::cosh(3.0f) },
+        { std::cosh(4.0f), std::cosh(5.0f), std::cosh(6.0f) }
+    });
+
     Tensor result = cosh(A);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
-    
-    const float expected[6] = {
-        std::cosh(1.0f), std::cosh(2.0f), std::cosh(3.0f),
-        std::cosh(4.0f), std::cosh(5.0f), std::cosh(6.0f)
-    };
-    
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
+    EXPECT_TRUE(allclose(result, expected));
 }
 
-TEST_F(TestFunctions, Tanh) {
+TEST(FunctionTests, Tanh) {
+    Tensor A(float32, {2, 3});
+    A.initialize({ {1, 2, 3}, {4, 5, 6} });
+
+    Tensor expected(float32, {2, 3});
+    expected.initialize({
+        { std::tanh(1.0f), std::tanh(2.0f), std::tanh(3.0f) },
+        { std::tanh(4.0f), std::tanh(5.0f), std::tanh(6.0f) }
+    });
+
     Tensor result = tanh(A);
-    const float* data = reinterpret_cast<const float*>(result.bytes());
-    
-    const float expected[6] = {
-        std::tanh(1.0f), std::tanh(2.0f), std::tanh(3.0f),
-        std::tanh(4.0f), std::tanh(5.0f), std::tanh(6.0f)
-    };
-    
-    for (int i = 0; i < 6; ++i) {
-        EXPECT_FLOAT_EQ(data[i], expected[i]);
-    }
+    EXPECT_TRUE(allclose(result, expected));
 }

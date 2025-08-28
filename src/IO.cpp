@@ -67,7 +67,7 @@ static void print(std::ostream& os, element_ref elem, type dtype) {
     }
 }
 
-// -------- tensor pretty-printer (recursive) --------
+
 std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
     os << "Tensor(";
  

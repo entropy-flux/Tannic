@@ -5,6 +5,7 @@
 #include "runtime/graph.h" 
 #include "runtime/streams.h"
 #include "cpu/cmps.hpp"
+#include "cpu/val.hpp"
 
 namespace cuda {
     
@@ -49,6 +50,21 @@ void LT::forward(Tensor const& first, Tensor const& second, Tensor& target) cons
 void LE::forward(Tensor const& first, Tensor const& second, Tensor& target) const {
     Callback callback(cpu::le, cuda::le);
     callback(first, second, target);
+}
+
+bool allclose(Tensor const& first, Tensor const& second, double rtol, double atol) {
+    if (first.shape() != second.shape())
+        throw Exception("allclose: shape mismatch"); 
+
+    if (std::holds_alternative<Host>(first.environment())) {
+        if (!std::holds_alternative<Host>(second.environment()))
+            throw Exception("Cannot compare tensors from different environmments");
+        tensor_t* fst = get_tensor(first.node()->id);
+        tensor_t* sec = get_tensor(second.node()->id);
+        return cpu::allclose(fst, sec, rtol, atol);
+    } else {
+        throw std::runtime_error("CUDA not supported here.");
+    }
 }
 
 }
