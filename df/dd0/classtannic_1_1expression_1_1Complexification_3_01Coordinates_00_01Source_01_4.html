@@ -191,7 +191,7 @@ template&lt;class Coordinates , Expression Source&gt; </div>
 
 <p>Returns the complex dtype of the view. </p>
 <dl class="section return"><dt>Returns</dt><dd>complex64 if source was float32, complex128 if float64</dd></dl>
-<h4><a class="anchor" id="autotoc_md12"></a>
+<h4><a class="anchor" id="autotoc_md13"></a>
 Transformation Rule:</h4>
 <p>float32 → complex64 <br  />
  float64 → complex128 </p>
@@ -271,15 +271,15 @@ template&lt;class Coordinates , Expression Source&gt; </div>
 
 <p>Returns the shape of the complex view. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../db/da7/classtannic_1_1Shape.html" title="Represents the shape (dimensions) of an tensor-like expression.">Shape</a> with last dimension halved</dd></dl>
-<h4><a class="anchor" id="autotoc_md13"></a>
+<h4><a class="anchor" id="autotoc_md14"></a>
 Transformation Rule:</h4>
 <p>[...,2N] → [...,N]</p>
-<h4><a class="anchor" id="autotoc_md14"></a>
+<h4><a class="anchor" id="autotoc_md15"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> real({4});       <span class="comment">// [a,b,c,d] (interpreted as 2 complex numbers)</span></div>
 <div class="line"><span class="keyword">auto</span> cplx = <a class="code hl_function" href="../../d9/dd9/namespacetannic_1_1expression.html#ab9732ede6a977fed3895bf928a67748f">complexify</a>(real);</div>
 <div class="line">cplx.shape();           <span class="comment">// Returns [2]</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:105</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:99</div></div>
 <div class="ttc" id="anamespacetannic_1_1expression_html_ab9732ede6a977fed3895bf928a67748f"><div class="ttname"><a href="../../d9/dd9/namespacetannic_1_1expression.html#ab9732ede6a977fed3895bf928a67748f">tannic::expression::complexify</a></div><div class="ttdeci">constexpr auto complexify(Real &amp;&amp;real)</div><div class="ttdoc">Creates a complex tensor view from interleaved real/imaginary data.</div><div class="ttdef"><b>Definition:</b> complex.hpp:402</div></div>
 </div><!-- fragment --> 
 </div>
@@ -311,7 +311,7 @@ template&lt;class Coordinates , Expression Source&gt; </div>
 
 <p>Returns the strides of the complex view. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../dc/deb/classtannic_1_1Strides.html" title="Represents the memory strides associated with a tensor shape.">Strides</a> adjusted for complex elements</dd></dl>
-<h4><a class="anchor" id="autotoc_md15"></a>
+<h4><a class="anchor" id="autotoc_md16"></a>
 Transformation Rules:</h4>
 <ul>
 <li>Last stride becomes 1 (contiguous complex numbers)</li>

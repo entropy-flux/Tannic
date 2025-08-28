@@ -119,7 +119,7 @@ Static Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html" title="Expression template for a binary tensor operation.">Binary</a> element-wise addition of two tensor expressions. </p>
 <p>Used to build a lazily evaluated <code><a class="el" href="../../d7/d6b/classtannic_1_1operation_1_1Binary.html" title="Expression template for a binary tensor operation.">Binary</a>&lt;<a class="el" href="../../d9/da3/structtannic_1_1operation_1_1Addition.html" title="Binary element-wise addition of two tensor expressions.">Addition</a>, Augend, Addend&gt;</code> expression. Computation is deferred until <code><a class="el" href="../../d9/da3/structtannic_1_1operation_1_1Addition.html#aaf1e81033a9b9907db9f9c3c94b458f9">forward()</a></code> is called or assigned to a <code><a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a></code>. Supports broadcasting and type promotion.</p>
-<h4><a class="anchor" id="autotoc_md27"></a>
+<h4><a class="anchor" id="autotoc_md28"></a>
 Example: Addition</h4>
 <div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> A(float32, {2, 2}); A.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
 <div class="line">A[0, 0] = 1; A[0, 1] = 2;</div>
@@ -132,7 +132,7 @@ Example: Addition</h4>
 <div class="line"><span class="keyword">auto</span> C = A + B;</div>
 <div class="line">std::cout &lt;&lt; C.forward();</div>
 <div class="line"><span class="comment">// Output: [[6, 8], [10, 12]]</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:105</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:99</div></div>
 <div class="ttc" id="aclasstannic_1_1Tensor_html_a3158b2d19ac07f894990b5e1014cc67c"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Environment environment=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7359d4d440448d0e9a1cc9c07acb897c" name="a7359d4d440448d0e9a1cc9c07acb897c"></a>

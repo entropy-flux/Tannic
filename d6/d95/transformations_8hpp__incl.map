@@ -25,11 +25,11 @@
 <area shape="rect" id="node24" title=" " alt="" coords="1025,152,1103,177"/>
 <area shape="rect" id="node25" title=" " alt="" coords="941,225,1001,251"/>
 <area shape="rect" id="node26" href="$d7/d08/strides_8hpp.html" title=" " alt="" coords="1330,225,1425,251"/>
-<area shape="rect" id="node29" href="$da/d1d/buffer_8hpp.html" title=" " alt="" coords="1850,152,1937,177"/>
+<area shape="rect" id="node29" href="$da/d1d/buffer_8hpp.html" title="Memory buffer management for tensor storage." alt="" coords="1850,152,1937,177"/>
 <area shape="rect" id="node33" href="$d4/d71/slices_8hpp.html" title=" " alt="" coords="914,152,1001,177"/>
 <area shape="rect" id="node34" href="$de/d49/views_8hpp.html" title=" " alt="" coords="1333,152,1421,177"/>
 <area shape="rect" id="node37" href="$d6/d00/operations_8hpp.html" title=" " alt="" coords="669,152,787,177"/>
-<area shape="rect" id="node38" href="$db/dd8/complex_8hpp.html" title=" " alt="" coords="509,152,616,177"/>
+<area shape="rect" id="node38" href="$db/dd8/complex_8hpp.html" title="Complex number operations for the Tannic Tensor Library." alt="" coords="509,152,616,177"/>
 <area shape="rect" id="node39" href="$d9/de9/graph_8hpp.html" title=" " alt="" coords="2186,445,2273,471"/>
 <area shape="rect" id="node27" title=" " alt="" coords="1709,299,1779,324"/>
 <area shape="rect" id="node28" title=" " alt="" coords="1203,299,1290,324"/>

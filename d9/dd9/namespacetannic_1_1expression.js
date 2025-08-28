@@ -26,6 +26,7 @@ var namespacetannic_1_1expression =
     [ "Transpose", "d0/dd9/classtannic_1_1expression_1_1Transpose.html", "d0/dd9/classtannic_1_1expression_1_1Transpose" ],
     [ "Unsqueeze", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze" ],
     [ "View", "d2/d9f/classtannic_1_1expression_1_1View.html", "d2/d9f/classtannic_1_1expression_1_1View" ],
+    [ "allclose", "d9/dd9/namespacetannic_1_1expression.html#acf6a1b94b0f8ba3f6823c4c30255ad45", null ],
     [ "argmax", "d9/dd9/namespacetannic_1_1expression.html#a83caa2ee55fd9f434b633d9eba583b61", null ],
     [ "argmin", "d9/dd9/namespacetannic_1_1expression.html#aa12d02d976951a8d0311e23af16e2ab3", null ],
     [ "complex", "d9/dd9/namespacetannic_1_1expression.html#a79760dbb305bbb78577f24479457c383", null ],

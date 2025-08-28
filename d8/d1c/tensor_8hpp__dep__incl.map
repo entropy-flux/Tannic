@@ -1,7 +1,7 @@
 <map id="include/tannic/tensor.hpp" name="include/tannic/tensor.hpp">
 <area shape="rect" id="node1" title=" " alt="" coords="541,5,727,31"/>
 <area shape="rect" id="node2" href="$da/db7/callback_8hpp.html" title=" " alt="" coords="5,79,204,104"/>
-<area shape="rect" id="node3" href="$de/d06/comparisons_8hpp.html" title=" " alt="" coords="228,79,456,104"/>
+<area shape="rect" id="node3" href="$de/d06/comparisons_8hpp.html" title="Defines element&#45;wise comparison operations for tensor expressions." alt="" coords="228,79,456,104"/>
 <area shape="rect" id="node4" href="$d6/dba/convolutions_8hpp.html" title=" " alt="" coords="819,152,1047,177"/>
 <area shape="rect" id="node5" href="$db/d1a/functions_8hpp.html" title=" " alt="" coords="531,79,737,104"/>
 <area shape="rect" id="node6" href="$d1/d01/reductions_8hpp.html" title=" " alt="" coords="761,79,974,104"/>

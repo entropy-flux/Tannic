@@ -1,5 +1,5 @@
 <map id="include/tannic/buffer.hpp" name="include/tannic/buffer.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="37,5,220,31"/>
+<area shape="rect" id="node1" title="Memory buffer management for tensor storage." alt="" coords="37,5,220,31"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,152,76,177"/>
 <area shape="rect" id="node3" href="$d1/dee/resources_8hpp.html" title=" " alt="" coords="140,79,253,104"/>
 <area shape="rect" id="node4" title=" " alt="" coords="101,152,167,177"/>

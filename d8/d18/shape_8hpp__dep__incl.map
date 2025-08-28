@@ -1,7 +1,7 @@
 <map id="include/tannic/shape.hpp" name="include/tannic/shape.hpp">
 <area shape="rect" id="node1" title=" " alt="" coords="547,5,731,31"/>
-<area shape="rect" id="node2" href="$de/d06/comparisons_8hpp.html" title=" " alt="" coords="45,299,273,324"/>
-<area shape="rect" id="node3" href="$db/dd8/complex_8hpp.html" title=" " alt="" coords="538,152,739,177"/>
+<area shape="rect" id="node2" href="$de/d06/comparisons_8hpp.html" title="Defines element&#45;wise comparison operations for tensor expressions." alt="" coords="45,299,273,324"/>
+<area shape="rect" id="node3" href="$db/dd8/complex_8hpp.html" title="Complex number operations for the Tannic Tensor Library." alt="" coords="538,152,739,177"/>
 <area shape="rect" id="node4" href="$d3/d8b/tensor_8hpp.html" title=" " alt="" coords="605,225,790,251"/>
 <area shape="rect" id="node6" href="$d6/dba/convolutions_8hpp.html" title=" " alt="" coords="434,372,662,397"/>
 <area shape="rect" id="node7" href="$db/d1a/functions_8hpp.html" title=" " alt="" coords="1331,299,1536,324"/>

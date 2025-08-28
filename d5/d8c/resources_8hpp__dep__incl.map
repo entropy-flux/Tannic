@@ -1,9 +1,9 @@
 <map id="include/tannic/resources.hpp" name="include/tannic/resources.hpp">
 <area shape="rect" id="node1" title=" " alt="" coords="530,5,738,31"/>
-<area shape="rect" id="node2" href="$da/d1d/buffer_8hpp.html" title=" " alt="" coords="543,79,725,104"/>
+<area shape="rect" id="node2" href="$da/d1d/buffer_8hpp.html" title="Memory buffer management for tensor storage." alt="" coords="543,79,725,104"/>
 <area shape="rect" id="node3" href="$d3/d8b/tensor_8hpp.html" title=" " alt="" coords="541,152,727,177"/>
 <area shape="rect" id="node4" href="$da/db7/callback_8hpp.html" title=" " alt="" coords="5,225,204,251"/>
-<area shape="rect" id="node5" href="$de/d06/comparisons_8hpp.html" title=" " alt="" coords="228,225,456,251"/>
+<area shape="rect" id="node5" href="$de/d06/comparisons_8hpp.html" title="Defines element&#45;wise comparison operations for tensor expressions." alt="" coords="228,225,456,251"/>
 <area shape="rect" id="node6" href="$d6/dba/convolutions_8hpp.html" title=" " alt="" coords="819,299,1047,324"/>
 <area shape="rect" id="node7" href="$db/d1a/functions_8hpp.html" title=" " alt="" coords="531,225,737,251"/>
 <area shape="rect" id="node8" href="$d1/d01/reductions_8hpp.html" title=" " alt="" coords="761,225,974,251"/>

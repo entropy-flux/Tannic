@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('da/d1d/buffer_8hpp.html','../../'); in
   <div class="headertitle"><div class="title">buffer.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Memory buffer management for tensor storage.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d1/dee/resources_8hpp_source.html">resources.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -104,7 +107,7 @@ Include dependency graph for buffer.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d76/buffer_8hpp__incl.png" border="0" usemap="#ainclude_2tannic_2buffer_8hpp" alt=""/></div>
 <map name="ainclude_2tannic_2buffer_8hpp" id="ainclude_2tannic_2buffer_8hpp">
-<area shape="rect" title=" " alt="" coords="37,5,220,31"/>
+<area shape="rect" title="Memory buffer management for tensor storage." alt="" coords="37,5,220,31"/>
 <area shape="rect" title=" " alt="" coords="5,152,76,177"/>
 <area shape="rect" href="../../d1/dee/resources_8hpp.html" title=" " alt="" coords="140,79,253,104"/>
 <area shape="rect" title=" " alt="" coords="101,152,167,177"/>
@@ -118,10 +121,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d83/buffer_8hpp__dep__incl.png" border="0" usemap="#ainclude_2tannic_2buffer_8hppdep" alt=""/></div>
 <map name="ainclude_2tannic_2buffer_8hppdep" id="ainclude_2tannic_2buffer_8hppdep">
-<area shape="rect" title=" " alt="" coords="543,5,725,31"/>
+<area shape="rect" title="Memory buffer management for tensor storage." alt="" coords="543,5,725,31"/>
 <area shape="rect" href="../../d3/d8b/tensor_8hpp.html" title=" " alt="" coords="541,79,727,104"/>
 <area shape="rect" href="../../da/db7/callback_8hpp.html" title=" " alt="" coords="5,152,204,177"/>
-<area shape="rect" href="../../de/d06/comparisons_8hpp.html" title=" " alt="" coords="228,152,456,177"/>
+<area shape="rect" href="../../de/d06/comparisons_8hpp.html" title="Defines element&#45;wise comparison operations for tensor expressions." alt="" coords="228,152,456,177"/>
 <area shape="rect" href="../../d6/dba/convolutions_8hpp.html" title=" " alt="" coords="819,225,1047,251"/>
 <area shape="rect" href="../../db/d1a/functions_8hpp.html" title=" " alt="" coords="531,152,737,177"/>
 <area shape="rect" href="../../d1/d01/reductions_8hpp.html" title=" " alt="" coords="761,152,974,177"/>
@@ -143,7 +146,19 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d0/d1a/namespacetannic"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Memory buffer management for tensor storage. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis <br  />
+ </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>Provides a basic memory buffer abstraction that:</p>
+<ul>
+<li>Manages allocation and ownership of raw memory</li>
+<li>Supports both host and device memory through environments</li>
+<li>Enforces move-only semantics for clear ownership</li>
+<li>Tracks memory region size and location </li>
+</ul>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
