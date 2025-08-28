@@ -597,6 +597,85 @@ public:
             } 
         } 
     }
+ 
+    /**
+     * @brief Assigns values to a 2D tensor from a nested initializer list.
+     *
+     * @tparam T Element type of the nested initializer list.
+     * @param values A nested list of values to assign to the tensor (rows).
+     *
+     * @details
+     * This operator assigns values to an **existing 2D tensor**:
+     *
+     * ```cpp
+     * Tensor Y(float32, {2, 3});
+     * Y.initialize({
+     *     {1, 2, 3},
+     *     {4, 5, 6}
+     * });  // values cast to float32
+     * ```
+     *
+     * Requirements:
+     * - The tensor must already be initialized.
+     * - The tensor must be rank-2.
+     * - The tensor must be contiguous.
+     * - All rows must have the same length, matching the tensor’s second dimension.
+     *
+     * Type conversion:
+     * - Values are cast to the tensor’s existing dtype before being written.
+     */
+    template<typename T>
+    void initialize(std::initializer_list<std::initializer_list<T>> const & values, Environment environment = Host{}) {
+        if (!is_contiguous())
+            throw Exception("Assign to initializer list supported only for contiguous tensors"); 
+ 
+        if (rank() != 2 || shape_[0] != values.size() || shape_[1] != values.begin()->size())
+            throw Exception("Shape mismatch in assignment from nested initializer_list"); 
+
+        if (!is_initialized()) 
+            initialize(environment);
+
+        if (dtype_ == boolean) {
+            std::ptrdiff_t index = 0;
+            for (auto const& row : values) {
+                if (row.size() != shape_[1])
+                    throw Exception("Row length mismatch in assignment from initializer_list");
+                for (auto const& value : row) {
+                    assign((bool const*)(&value), index);
+                    ++index;
+                }
+            } 
+        }
+
+        else { 
+            auto fill = [this, &values](auto cast) { 
+                using Cast = decltype(cast);
+                size_t index = 0;
+                for (auto const& row : values) {
+                    if (row.size() != shape_[1])
+                        throw Exception("Row length mismatch in assignment from initializer_list");
+
+                    for (auto value : row) {
+                        Cast casted = value;
+                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                        ++index;
+                    }
+                }
+            };
+
+            switch (dtype_) {
+                case int8:    fill(int8_t{});   break;
+                case int16:   fill(int16_t{});  break;
+                case int32:   fill(int32_t{});  break;
+                case int64:   fill(int64_t{});  break;
+                case float32: fill(float{});    break;
+                case float64: fill(double{});   break;
+                default: throw Exception("Unsupported dtype in assignment");
+            } 
+        }  
+    }
+
+
 
 
     /**
@@ -629,7 +708,7 @@ public:
      * - This ensures that the tensor’s dtype does not change after assignment.
      */
     template<typename T>
-    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<T>>> values, Environment environment = Host{}) {
+    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values, Environment environment = Host{}) {
         if (!is_contiguous())
             throw Exception("Assign to initializer list supported only for contiguous tensors");
 
@@ -687,85 +766,7 @@ public:
                 default: throw Exception("Unsupported dtype in assignment");
             } 
         } 
-}
-
-
-    /**
-     * @brief Assigns values to a 2D tensor from a nested initializer list.
-     *
-     * @tparam T Element type of the nested initializer list.
-     * @param values A nested list of values to assign to the tensor (rows).
-     *
-     * @details
-     * This operator assigns values to an **existing 2D tensor**:
-     *
-     * ```cpp
-     * Tensor Y(float32, {2, 3});
-     * Y.initialize({
-     *     {1, 2, 3},
-     *     {4, 5, 6}
-     * });  // values cast to float32
-     * ```
-     *
-     * Requirements:
-     * - The tensor must already be initialized.
-     * - The tensor must be rank-2.
-     * - The tensor must be contiguous.
-     * - All rows must have the same length, matching the tensor’s second dimension.
-     *
-     * Type conversion:
-     * - Values are cast to the tensor’s existing dtype before being written.
-     */
-    template<typename T>
-    void initialize(std::initializer_list<std::initializer_list<T>> values, Environment environment = Host{}) {
-        if (!is_contiguous())
-            throw Exception("Assign to initializer list supported only for contiguous tensors"); 
- 
-        if (rank() != 2 || shape_[0] != values.size() || shape_[1] != values.begin()->size())
-            throw Exception("Shape mismatch in assignment from nested initializer_list"); 
-
-        if (!is_initialized()) 
-            initialize(environment);
-
-        if (dtype_ == boolean) {
-            std::ptrdiff_t index = 0;
-            for (auto const& row : values) {
-                if (row.size() != shape_[1])
-                    throw Exception("Row length mismatch in assignment from initializer_list");
-                for (auto const& value : row) {
-                    assign((bool const*)(&value), index);
-                    ++index;
-                }
-            } 
-        }
-
-        else { 
-            auto fill = [this, &values](auto cast) { 
-                using Cast = decltype(cast);
-                size_t index = 0;
-                for (auto const& row : values) {
-                    if (row.size() != shape_[1])
-                        throw Exception("Row length mismatch in assignment from initializer_list");
-
-                    for (auto value : row) {
-                        Cast casted = value;
-                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                        ++index;
-                    }
-                }
-            };
-
-            switch (dtype_) {
-                case int8:    fill(int8_t{});   break;
-                case int16:   fill(int16_t{});  break;
-                case int32:   fill(int32_t{});  break;
-                case int64:   fill(int64_t{});  break;
-                case float32: fill(float{});    break;
-                case float64: fill(double{});   break;
-                default: throw Exception("Unsupported dtype in assignment");
-            } 
-        }  
-    }
+} 
 
     /**
      * @brief Assigns values to a 4D tensor from a quadruple-nested initializer list.
@@ -808,7 +809,7 @@ public:
      * - Values are cast to the tensor’s existing dtype before being written.
      */
     template<typename T>
-    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> values, Environment environment = Host{}) {
+    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const & values, Environment environment = Host{}) {
         if (!is_contiguous())
             throw Exception("Assign to initializer list supported only for contiguous tensors");
 

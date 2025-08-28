@@ -57,18 +57,18 @@ int main() {
 
 
     Tensor A(boolean, {5});
-    A = {true, true, false, true, false};
+    A.initialize({true, true, false, true, false});
     std::cout << "A = " << A << std::endl;
  
     Tensor B(boolean, {2, 3});
-    B = {
+    B.initialize({
         {true, false, true},
         {false, true, false}
-    };
+    });
     std::cout << "B = " << B << std::endl;
  
     Tensor C(boolean, {2, 2, 2});
-    C = {
+    C.initialize({
         {
             {true, false},
             {false, true}
@@ -77,11 +77,11 @@ int main() {
             {false, true},
             {true, false}
         }
-    };
+    });
     std::cout << "C = " << C << std::endl;
  
     Tensor D(boolean, {2, 2, 2, 2});
-    D = {
+    D.initialize({
         {
             {
                 {true, false},
@@ -102,8 +102,9 @@ int main() {
                 {true, true}
             }
         }
-    };
+    });
     std::cout << "D = " << D << std::endl; 
 
     return 0;
 }
+

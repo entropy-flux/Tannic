@@ -31,22 +31,22 @@ int main() {
     // tensor.
     // --- 1D tensor ---
     Tensor X(float32, {3});
-    X = {1, 2, 3};
+    X.initialize({1, 2, 3});
     std::cout << "1D tensor X:" << std::endl;
     std::cout << X << std::endl << std::endl;
 
     // --- 2D tensor ---
     Tensor Y(float32, {2, 3});
-    Y = {
+    Y.initialize({
         {1, 2, 3},
         {4, 5, 6}
-    };
+    });
     std::cout << "2D tensor Y:" << std::endl;
     std::cout << Y << std::endl << std::endl;
 
     // --- 3D tensor ---
     Tensor Z(float32, {2, 2, 2});
-    Z = {
+    Z.initialize({
         {
             {1, 2},
             {3, 4}
@@ -55,13 +55,13 @@ int main() {
             {5, 6},
             {7, 8}
         }
-    };
+    });
     std::cout << "3D tensor Z:" << std::endl;
     std::cout << Z << std::endl << std::endl;
 
     // --- 4D tensor ---
     Tensor W(float32, {2, 2, 2, 2});
-    W = {
+    W.initialize({
         {
             {
                 {1,  2},
@@ -82,7 +82,7 @@ int main() {
                 {15, 16}
             }
         }
-    };
+    });
     std::cout << "4D tensor W:" << std::endl;
     std::cout << W << std::endl << std::endl; 
 } 
