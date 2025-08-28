@@ -1,227 +1,338 @@
 #include <gtest/gtest.h>
 #include "tensor.hpp"
 #include "convolutions.hpp"
+#include "comparisons.hpp"
 
 using namespace tannic;
 
-#include <gtest/gtest.h>
-#include "tensor.hpp"
-#include "convolutions.hpp"
-
-using namespace tannic;
-
+//
+// 1D Convolution Tests
+//
 TEST(TestConvolution1D, Simple1D) { 
-    Tensor input(float32, {1, 1, 5});   
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 5; ++i) {
-        in_data[i] = static_cast<float>(i + 1);   
-    }
- 
-    Tensor kernel(float32, {1, 1, 3});   
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes());
-    k_data[0] = 1.0f; k_data[1] = 0.0f; k_data[2] = -1.0f;
+    Tensor input(float32, {1, 1, 5});
+    input.initialize({{{1, 2, 3, 4, 5}}});
+
+    Tensor kernel(float32, {1, 1, 3});
+    kernel.initialize({{{1, 0, -1}}});
 
     Tensor output = convolve1D(input, kernel, 1, 0);
-    float* out_data = reinterpret_cast<float*>(output.bytes());
- 
-    float expected[] = {-2.0f, -2.0f, -2.0f};
 
-    ASSERT_EQ(output.shape(), Shape({1, 1, 3}));
-    for (int i = 0; i < 3; ++i) {
-        EXPECT_FLOAT_EQ(out_data[i], expected[i]) 
-            << "Mismatch at output[" << i << "]";
-    }
+    Tensor expected(float32, {1, 1, 3});
+    expected.initialize({{{-2, -2, -2}}});
+
+    EXPECT_EQ(output.shape(), Shape({1, 1, 3}));
+    EXPECT_TRUE(allclose(output, expected));
 }
 
 TEST(TestConvolution1D, Stride2) {
     Tensor input(float32, {1, 1, 6});
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 6; ++i) in_data[i] = static_cast<float>(i + 1); 
+    input.initialize({{{1, 2, 3, 4, 5, 6}}});
 
     Tensor kernel(float32, {1, 1, 3});
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes());
-    k_data[0] = 1; k_data[1] = 0; k_data[2] = -1;
+    kernel.initialize({{{1, 0, -1}}});
 
     Tensor output = convolve1D(input, kernel, 2, 0);
-    ASSERT_EQ(output.shape(), Shape({1, 1, 2}));   
-    
-    float* out_data = reinterpret_cast<float*>(output.bytes()); 
-    EXPECT_FLOAT_EQ(out_data[0], -2.0f);
-    EXPECT_FLOAT_EQ(out_data[1], -2.0f);
+
+    Tensor expected(float32, {1, 1, 2});
+    expected.initialize({{{-2, -2}}});
+
+    EXPECT_EQ(output.shape(), Shape({1, 1, 2}));
+    EXPECT_TRUE(allclose(output, expected));
 }
- 
+
 TEST(TestConvolution1D, Padding1) {
     Tensor input(float32, {1, 1, 3});
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 3; ++i) in_data[i] = static_cast<float>(i + 1);  
+    input.initialize({{{1, 2, 3}}});
 
     Tensor kernel(float32, {1, 1, 2});
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes());
-    k_data[0] = 1; k_data[1] = -1;
+    kernel.initialize({{{1, -1}}});
 
     Tensor output = convolve1D(input, kernel, 1, 1);
-    ASSERT_EQ(output.shape(), Shape({1, 1, 4}));   
+    EXPECT_EQ(output.shape(), Shape({1, 1, 4}));
 }
- 
-TEST(TestConvolution1D, MultiChannelInput) {
-    Tensor input(float32, {1, 2, 4});  // 2 input channels
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 8; ++i) in_data[i] = static_cast<float>(i + 1);
 
-    Tensor kernel(float32, {1, 2, 3});  
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes());
-    for (int i = 0; i < 6; ++i) k_data[i] = 1.0f;
+TEST(TestConvolution1D, MultiChannelInput) {
+    Tensor input(float32, {1, 2, 4});  // shape: [batch=1, channels=2, length=4]
+    input.initialize({
+        {
+            {1, 2, 3, 4},   // channel 0
+            {5, 6, 7, 8}    // channel 1
+        }
+    });
+
+    Tensor kernel(float32, {1, 2, 3});  // shape: [out_channels=1, in_channels=2, kernel=3]
+    kernel.initialize({
+        {   // out_channel 0
+            {1, 1, 1},      // in_channel 0
+            {1, 1, 1}       // in_channel 1
+        }
+    });
 
     Tensor output = convolve1D(input, kernel, 1, 0);
-    ASSERT_EQ(output.shape(), Shape({1, 1, 2}));   
+    EXPECT_EQ(output.shape(), Shape({1, 1, 2}));
 }
- 
+
+
 TEST(TestConvolution1D, Kernel1x1) {
     Tensor input(float32, {1, 1, 4});
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 4; ++i) in_data[i] = static_cast<float>(i + 1); 
+    input.initialize({{{1, 2, 3, 4}}});
 
     Tensor kernel(float32, {1, 1, 1});
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes());
-    k_data[0] = 2.0f;
+    kernel.initialize({{{2}}});
 
     Tensor output = convolve1D(input, kernel, 1, 0);
-    float* out_data = reinterpret_cast<float*>(output.bytes());
-    ASSERT_EQ(output.shape(), Shape({1, 1, 4}));
-    for (int i = 0; i < 4; ++i) {
-        EXPECT_FLOAT_EQ(out_data[i], in_data[i] * 2.0f);
-    }
-}
 
+    Tensor expected(float32, {1, 1, 4});
+    expected.initialize({{{2, 4, 6, 8}}});
+
+    EXPECT_EQ(output.shape(), Shape({1, 1, 4}));
+    EXPECT_TRUE(allclose(output, expected));
+}
 TEST(TestConvolution1D, MultiOutputChannels) {
-    Tensor input(float32, {1, 1, 5});
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 5; ++i) in_data[i] = static_cast<float>(i + 1);  
+    Tensor input(float32, {1, 1, 5});  // shape: [batch=1, channels=1, length=5]
+    input.initialize({
+        {   // batch 0
+            {1, 2, 3, 4, 5}   // channel 0
+        }
+    });
 
-    Tensor kernel(float32, {2, 1, 3});  
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes()); 
-    k_data[0] = 1.0f; k_data[1] = 0.0f; k_data[2] = -1.0f; 
-    k_data[3] = 0.0f; k_data[4] = 1.0f; k_data[5] = 0.0f;
+    Tensor kernel(float32, {2, 1, 3});  // shape: [out_channels=2, in_channels=1, kernel=3]
+    kernel.initialize({
+        {   // out_channel 0
+            {1, 0, -1}        // in_channel 0
+        },
+        {   // out_channel 1
+            {0, 1, 0}         // in_channel 0
+        }
+    });
 
     Tensor output = convolve1D(input, kernel, 1, 0);
-    ASSERT_EQ(output.shape(), Shape({1, 2, 3}));  
-    
-    float* out_data = reinterpret_cast<float*>(output.bytes()); 
-    EXPECT_FLOAT_EQ(out_data[0], -2.0f);
-    EXPECT_FLOAT_EQ(out_data[1], -2.0f);
-    EXPECT_FLOAT_EQ(out_data[2], -2.0f);
-     
-    EXPECT_FLOAT_EQ(out_data[3], 2.0f);
-    EXPECT_FLOAT_EQ(out_data[4], 3.0f);
-    EXPECT_FLOAT_EQ(out_data[5], 4.0f);
+
+    Tensor expected(float32, {1, 2, 3});
+    expected.initialize({
+        {   // batch 0
+            {-2, -2, -2},   // out_channel 0
+            { 2,  3,  4}    // out_channel 1
+        }
+    });
+
+    EXPECT_EQ(output.shape(), Shape({1, 2, 3}));
+    EXPECT_TRUE(allclose(output, expected));
 }
 
-
+//
+// 2D Convolution Tests
+//
 TEST(TestConvolution, Simple2D) { 
     Tensor input(float32, {1, 1, 3, 3});
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 9; ++i) {
-        in_data[i] = static_cast<float>(i + 1);  // 1,2,...,9
-    }
- 
+    input.initialize({{
+        {{1, 2, 3},
+         {4, 5, 6},
+         {7, 8, 9}}
+    }});
+
     Tensor kernel(float32, {1, 1, 2, 2});
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes());
-    k_data[0] = 1.0f; k_data[1] = 0.0f;
-    k_data[2] = 0.0f; k_data[3] = -1.0f; 
+    kernel.initialize({{
+        {{ 1, 0},
+         { 0,-1}}
+    }});
 
     Tensor output = convolve2D(input, kernel, {1,1}, {0,0});
-    float* out_data = reinterpret_cast<float*>(output.bytes());
 
-    // Expected 2x2 result
-    float expected[] = {
-        -4.0f, -4.0f,
-        -4.0f, -4.0f
-    };
+    Tensor expected(float32, {1, 1, 2, 2});
+    expected.initialize({{
+        {{-4, -4},
+         {-4, -4}}
+    }});
 
-    ASSERT_EQ(output.shape(), Shape({1, 1, 2, 2}));
-    for (int i = 0; i < 4; ++i) {
-        EXPECT_FLOAT_EQ(out_data[i], expected[i]) 
-            << "Mismatch at output[" << i << "]";
-    }
+    EXPECT_EQ(output.shape(), Shape({1, 1, 2, 2}));
+    EXPECT_TRUE(allclose(output, expected));
 }
-
 
 TEST(TestConvolution, Stride2) {
     Tensor input(float32, {1,1,4,4});
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 16; ++i) in_data[i] = static_cast<float>(i + 1);
+    input.initialize({{{
+        { 1,  2,  3,  4},
+        { 5,  6,  7,  8},
+        { 9, 10, 11, 12},
+        {13, 14, 15, 16}
+    }}});
 
     Tensor kernel(float32, {1,1,2,2});
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes());
-    k_data[0] = 1; k_data[1] = 0;
-    k_data[2] = 0; k_data[3] = -1;
+    kernel.initialize({{{
+        { 1, 0},
+        { 0,-1}
+    }}});
 
     Tensor output = convolve2D(input, kernel, {2,2}, {0,0});
-    ASSERT_EQ(output.shape(), Shape({1,1,2,2}));
+    EXPECT_EQ(output.shape(), Shape({1,1,2,2}));
 }
- 
 
 TEST(TestConvolution, Padding1) {
     Tensor input(float32, {1,1,3,3});
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 9; ++i) in_data[i] = static_cast<float>(i + 1);
+    input.initialize({{{
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    }}});
 
     Tensor kernel(float32, {1,1,2,2});
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes());
-    k_data[0] = 1; k_data[1] = 0;
-    k_data[2] = 0; k_data[3] = -1;
+    kernel.initialize({{{
+        { 1, 0},
+        { 0,-1}
+    }}});
 
     Tensor output = convolve2D(input, kernel, {1,1}, {1,1});
-    ASSERT_EQ(output.shape(), Shape({1,1,4,4}));
+    EXPECT_EQ(output.shape(), Shape({1,1,4,4}));
 }
- 
+
 TEST(TestConvolution, MultiChannelInput) {
     Tensor input(float32, {1,2,3,3});
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 18; ++i) in_data[i] = static_cast<float>(i + 1);
+    input.initialize({
+        {   // batch 0
+            {   // channel 0
+                {1.f, 2.f, 3.f},
+                {4.f, 5.f, 6.f},
+                {7.f, 8.f, 9.f}
+            },
+            {   // channel 1
+                {10.f, 11.f, 12.f},
+                {13.f, 14.f, 15.f},
+                {16.f, 17.f, 18.f}
+            }
+        }
+    });
 
-    Tensor kernel(float32, {1,2,2,2});  // 2 input channels
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes());
-    for (int i = 0; i < 8; ++i) k_data[i] = 1.0f;
+
+    Tensor kernel(float32, {1,2,2,2});
+    kernel.initialize({
+        {   // out_channel 0
+            {   // in_channel 0
+                {1.f, 1.f},
+                {1.f, 1.f}
+            },
+            {   // in_channel 1
+                {1.f, 1.f},
+                {1.f, 1.f}
+            }
+        }
+    });
+
 
     Tensor output = convolve2D(input, kernel, {1,1}, {0,0});
-    ASSERT_EQ(output.shape(), Shape({1,1,2,2}));
+    EXPECT_EQ(output.shape(), Shape({1,1,2,2}));
 }
- 
+
 TEST(TestConvolution, Kernel1x1) {
     Tensor input(float32, {1,1,3,3});
-    input.initialize();
-    float* in_data = reinterpret_cast<float*>(input.bytes());
-    for (int i = 0; i < 9; ++i) in_data[i] = static_cast<float>(i + 1);
+    input.initialize({{{
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    }}});
 
     Tensor kernel(float32, {1,1,1,1});
-    kernel.initialize();
-    float* k_data = reinterpret_cast<float*>(kernel.bytes());
-    k_data[0] = 2.0f;
+    kernel.initialize({{{{2}}}});
 
     Tensor output = convolve2D(input, kernel, {1,1}, {0,0});
-    float* out_data = reinterpret_cast<float*>(output.bytes());
-    for (int i = 0; i < 9; ++i) {
-        EXPECT_FLOAT_EQ(out_data[i], in_data[i] * 2.0f);
-    }
+
+    Tensor expected(float32, {1,1,3,3});
+    expected.initialize({{{
+        { 2,  4,  6},
+        { 8, 10, 12},
+        {14, 16, 18}
+    }}});
+
+    EXPECT_TRUE(allclose(output, expected));
+}
+
+TEST(TestConvolution, BigConv) {
+
+    Tensor X = {{
+        { // batch 0
+            { // channel 0
+                {1.0f,  2.0f,  3.0f,  4.0f},
+                {5.0f,  6.0f,  7.0f,  8.0f},
+                {9.0f, 10.0f, 11.0f, 12.0f},
+                {13.0f,14.0f, 15.0f, 16.0f}
+            },
+            { // channel 1
+                {17.0f, 18.0f, 19.0f, 20.0f},
+                {21.0f, 22.0f, 23.0f, 24.0f},
+                {25.0f, 26.0f, 27.0f, 28.0f},
+                {29.0f, 30.0f, 31.0f, 32.0f}
+            },
+            { // channel 2
+                {33.0f, 34.0f, 35.0f, 36.0f},
+                {37.0f, 38.0f, 39.0f, 40.0f},
+                {41.0f, 42.0f, 43.0f, 44.0f},
+                {45.0f, 46.0f, 47.0f, 48.0f}
+            }
+        },
+        { // batch 1
+            { // channel 0
+                {49.0f, 50.0f, 51.0f, 52.0f},
+                {53.0f, 54.0f, 55.0f, 56.0f},
+                {57.0f, 58.0f, 59.0f, 60.0f},
+                {61.0f, 62.0f, 63.0f, 64.0f}
+            },
+            { // channel 1
+                {65.0f, 66.0f, 67.0f, 68.0f},
+                {69.0f, 70.0f, 71.0f, 72.0f},
+                {73.0f, 74.0f, 75.0f, 76.0f},
+                {77.0f, 78.0f, 79.0f, 80.0f}
+            },
+            { // channel 2
+                {81.0f, 82.0f, 83.0f, 84.0f},
+                {85.0f, 86.0f, 87.0f, 88.0f},
+                {89.0f, 90.0f, 91.0f, 92.0f},
+                {93.0f, 94.0f, 95.0f, 96.0f}
+            }
+        }
+    }};
+    
+    
+    Tensor K = {{
+        { // out_channel 0
+            { // in channel 0
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f}
+            },
+            { // in channel 1
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f}
+            },
+            { // in channel 2
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f}
+            }
+        }
+    }};
+
+    Tensor Y = convolve2D(X , K, /*stride=*/1, /*padding=*/1) ; 
+
+    Tensor Y_expected(float32, {2, 1, 4, 4});
+    Y_expected.initialize({
+        {   // first batch
+            {
+                { -120, -12, -12, 126 },
+                { -198, -18, -18, 207 },
+                { -234, -18, -18, 243 },
+                { -168, -12, -12, 174 }
+            }
+        },
+        {   // second batch
+            {
+                { -408, -12, -12, 414 },
+                { -630, -18, -18, 639 },
+                { -666, -18, -18, 675 },
+                { -456, -12, -12, 462 }
+            }
+        }
+    });
+
+    EXPECT_TRUE(allclose(Y, Y_expected));
 }

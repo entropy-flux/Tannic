@@ -8,7 +8,7 @@ Copy and paste this file into main.cpp and then run ``bash main.sh``
 */ 
 
 int main() { 
-    Tensor X(float32, {2,2,2}); X.initialize(); 
+    Tensor X(float32, {2,2,2}); 
     X[0] = 1;    //arbitrary types assignment support.
     X[1] = 2.f;
     std::cout << X  << std::endl; // Tensor([[[1, 1], [1, 1]], 

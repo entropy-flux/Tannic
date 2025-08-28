@@ -9,20 +9,15 @@ using namespace tannic;
 Copy and paste this file into main.cpp and then run ``bash main.sh``
 */ 
 
-int main() { 
-    // WARNING:
-    // Explicit inialization required for now but maybe removed in the future.
-    // If not properly initialized the tensors may segfault instead of throwing error. 
-    // This will be fixed when resources can be infered at the end of a templated expression.
-
+int main() {  
     std::cout << "Working example of the tensor library" << std::endl;
 
-    Tensor X(float32, {2,2}); X.initialize(); // or X.initialize(Device()); for CUDA support   
+    Tensor X(float32, {2,2}); // X.initialize(Device()); for CUDA support   
     X[0, range{0,-1}] = 1; 
     X[1,0] = 3;
     X[1][1] = 4;   
     
-    Tensor Y(float32, {1,2}); Y.initialize();  // or X.initialize(Device()); for CUDA support   
+    Tensor Y(float32, {1,2}); // or X.initialize(Device()); for CUDA support   
     Y[0,0] = 4;
     Y[0,1] = 6;   
     Y = log(X) + Y * Y - exp(X) + matmul(X, Y.transpose());

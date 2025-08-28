@@ -809,7 +809,7 @@ public:
      * - Values are cast to the tensor’s existing dtype before being written.
      */
     template<typename T>
-    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const & values, Environment environment = Host{}) {
+    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> values, Environment environment = Host{}) {
         if (!is_contiguous())
             throw Exception("Assign to initializer list supported only for contiguous tensors");
 

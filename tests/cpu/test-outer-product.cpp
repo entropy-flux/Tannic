@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "tensor.hpp"
+#include "comparisons.hpp"
 #include "transformations.hpp"
 
 using namespace tannic; 
@@ -15,16 +16,9 @@ TEST(TestOuter, HostOuterProduct) {
     B[2] = -1.0f;
  
     Tensor C = outer(A, B);   
-
-    float expected[2][3] = {
+    Tensor C_expected = { 
         {  6.0f, 0.0f, -1.5f },
         { -8.0f, 0.0f,  2.0f }
     };
-
-    float* result = reinterpret_cast<float*>(C.bytes());
-    for (int i = 0; i < 2; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            EXPECT_FLOAT_EQ(result[i * 3 + j], expected[i][j]);
-        }
-    }
+    EXPECT_TRUE(allclose(C, C_expected));
 }
