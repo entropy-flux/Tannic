@@ -10,8 +10,8 @@ using namespace tannic;
 
 TEST(TestReductions, Test1D) {
     Tensor X = {3.0f, 5.0f, 4.0f, 1.0f, 5.0f, 9.0f, 2.0f};
-    Tensor tmax = argmax(X);
-    Tensor tmin = argmin(X); 
+    Tensor tmax = argmax(X, 0);
+    Tensor tmin = argmin(X, 0); 
     ASSERT_EQ(tmax[0], 5);
     ASSERT_EQ(tmin[0], 3);
 }
@@ -23,8 +23,8 @@ TEST(TestReductions, Test2D) {
         {6.0f, 2.0f, 8.0f, 4.0f}
     };
 
-    Tensor Zmax = argmax(X);
-    Tensor Zmin = argmin(X); 
+    Tensor Zmax = argmax(X, -1);
+    Tensor Zmin = argmin(X, -1); 
 
     ASSERT_EQ(Zmax[0], 1);
     ASSERT_EQ(Zmax[1], 1);
@@ -85,10 +85,10 @@ TEST(TestReductions, TestMean2D) {
 TEST(TestReductions, Test1D_MeanAndSum) { 
     Tensor X = {10.0f, 20.0f, 30.0f, 40.0f, 50.0f};
  
-    Tensor tsum = sum(X); 
+    Tensor tsum = sum(X, -1); 
     ASSERT_EQ(tsum[0], 150.0f);   
  
-    Tensor tmean = mean(X); 
+    Tensor tmean = mean(X, -1); 
     ASSERT_EQ(tmean[0], 30.0f);   
 }
 

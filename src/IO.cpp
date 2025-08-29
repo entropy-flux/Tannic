@@ -2,10 +2,14 @@
 #include <ostream>
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
 #include "bindings.hpp"
 #include "runtime/streams.h"
 #include "types.hpp"
 #include "tensor.hpp"
+#ifdef CUDA
+#include "cuda/mem.cuh"
+#endif
 
 namespace tannic {
  
@@ -120,17 +124,59 @@ std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
     }
     return os << "))";
 }
- 
-std::ostream& operator<<(std::ostream& os, const Tensor& tensor) {
-    tensor_t printable = structure(tensor);
-    environment_t env  = structure(tensor.environment());
+  
 
-    if (env.environment == HOST) {
-        os << &printable;
-    } else {
-        // you can later implement a device-side dump (copy to host then print)
-        throw std::runtime_error("IO not implemented for cuda tensor, but will be!");
+std::ostream& operator<<(std::ostream& os, const Tensor& tensor) { 
+    const Environment& alloc = tensor.environment();
+    shape_t shape{};
+    strides_t strides{};
+    
+    for (int dimension = 0; dimension < tensor.rank(); ++dimension) {
+        shape.sizes[dimension] = tensor.shape()[dimension];
+        strides.sizes[dimension] = tensor.strides()[dimension];
     }
+
+    if (std::holds_alternative<Host>(alloc)) {
+        Host const& resource = std::get<Host>(alloc);
+        tensor_t printable{
+            .address = (void*)(tensor.bytes()),
+            .rank = tensor.rank(),
+            .shape = shape,
+            .strides = strides,
+            .dtype = tensor.dtype(),
+            .environment = {
+                .environment = HOST,
+                .resource = {.host = structure(resource)},
+            }
+        };
+        os << &printable;
+    }  
+    
+    #ifdef CUDA
+    else {
+        Device const& resource = std::get<Device>(alloc);
+        void* buffer = std::malloc(tensor.nbytes());
+        device_t dvc = structure(resource);
+        cuda::copyDeviceToHost(&dvc,(const void*)(tensor.bytes()), buffer, tensor.nbytes());        
+        tensor_t printable{
+            .address = buffer,
+            .rank = tensor.rank(),
+            .shape = shape,
+            .strides = strides,
+            .dtype = tensor.dtype(),
+            .environment = {
+                .environment = DEVICE,
+                .resource = {.device = structure(resource)},
+            }
+        };
+        os << &printable; 
+        std::free(buffer);
+    } 
+    #else
+    else {
+        throw std::runtime_error("CUDA not supported!");
+    } 
+    #endif
     return os;
 }
 

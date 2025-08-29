@@ -5,7 +5,11 @@ Unlike monolithic frameworks, it provides only a minimal set of built‑in opera
 This approach keeps the library lightweight while enabling adaptation to a wide range of computational needs.
 
 This library is designed to serve as the foundational core for a neural network inference framework, but is equally suited to other domains such as classical ML or physics simulations—all without requiring Python. 
- 
+
+You can find examples of neural networks inference with the tannic framework here: 
+- [CNN Server Example](https://github.com/entropy-flux/cnn-server-example) – demonstrates serving convolutional neural network models.  
+- [ViT Server Example](https://github.com/entropy-flux/vit-server-example) – demonstrates serving Vision Transformer models.  
+
 📖 Full documentation: [API Reference](https://entropy-flux.github.io/Tannic/)   
 
 ---

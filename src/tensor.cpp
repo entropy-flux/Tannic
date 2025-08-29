@@ -56,16 +56,16 @@ void Tensor::assign(bool const* value, std::ptrdiff_t index) {
 } 
 
 
-bool Tensor::compare(std::byte const* hst_ptr, std::ptrdiff_t offset) const {  
-    std::byte const* dvc_ptr = static_cast<std::byte const*>(buffer_->address()) + offset;  
+bool Tensor::compare(std::byte const* hst_ptr, std::ptrdiff_t offset) const {   
+    void const* lcl_ptr = static_cast<std::byte const*>(buffer_->address()) + offset; 
     environment_t environment = structure(this->environment()); 
-    if (std::holds_alternative<Host>(this->environment())) {
-        return std::memcmp(hst_ptr, dvc_ptr, dsizeof(dtype_)) == 0;  
+    if (std::holds_alternative<Host>(this->environment())) {  
+        return std::memcmp(hst_ptr, lcl_ptr, dsizeof(dtype_)) == 0;  
     } 
 
     else {
         device_t device = structure(std::get<Device>(this->environment()));
-        return cuda::compareFromHost(&device, hst_ptr, dvc_ptr, dsizeof(dtype_));
+        return cuda::compareFromHost(&device, (void const*)(hst_ptr), lcl_ptr, dsizeof(dtype_));
     }
 }  
 

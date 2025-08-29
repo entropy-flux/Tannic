@@ -40,33 +40,6 @@ __global__ void batchedUnaryOpKernel(
     }
 } 
 
-template<typename S, typename D, class Op>
-status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, cudaStream_t stream = 0) { 
-    if (src->rank == 0) {
-        scalarUnaryOpKernel<S, D, Op><<<1, 1, 0,stream>>>(
-            (const S*)(src->address),
-            (D*)(dst->address)
-        ); 
-    } 
-    
-    else {
-        size_t ne = 1;
-        for (uint8_t dim = 0; dim < src->rank; ++dim) {
-            ne *= dst->shape.sizes[dim];
-        }
-
-        size_t blockSize = 256;
-        size_t gridSize = (ne + blockSize - 1) / blockSize;
-
-        batchedUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, stream>>>(
-            (const S*)(src->address), src->shape, src->strides,
-            (D*)(dst->address), dst->shape, dst->strides,
-            src->rank, ne
-        ); 
-    } 
-    return SUCCESS;
-} 
-
 template<typename S0, typename S1, typename D, class Op>
 __global__ void scalarBinaryOpKernel(const S0* src0, const S1* src1, D* dst) {
     Op op;
@@ -107,7 +80,6 @@ __global__ void batchedBinaryOpKernel(
         dst_ptr[idx] = op(src0_ptr[offs0], src1_ptr[offs1]);
     }
 }
-
  
 template<typename S, typename D, class Op>
 status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream) {
@@ -181,28 +153,28 @@ constexpr static status launchDefaultBinaryOpKernel(const tensor_t*, const tenso
 
 struct Neg { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(-a)) {
+    __device__ __forceinline__ auto operator()(A&& a) const {
         return -a;
     }
 };
 
 struct Add { 
     template<class A, class B>
-    __device__ __forceinline__ auto operator()(A&& a, B&& b) const noexcept(noexcept(a + b)) {
+    __device__ __forceinline__ auto operator()(A&& a, B&& b) const {
         return a + b;
     }
 };
 
 struct Sub { 
     template<class A, class B>
-    __device__ __forceinline__ auto operator()(A&& a, B&& b) const noexcept(noexcept(a - b)) {
+    __device__ __forceinline__ auto operator()(A&& a, B&& b) const {
         return a - b;
     }
 };
 
 struct Mul { 
     template<class A, class B>
-    __device__ __forceinline__ auto operator()(A&& a, B&& b) const noexcept(noexcept(a * b)) {
+    __device__ __forceinline__ auto operator()(A&& a, B&& b) const {
         return a * b;
     }
 };    

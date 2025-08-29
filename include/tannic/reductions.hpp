@@ -105,14 +105,13 @@ public:
         Tensor result(dtype(), shape(), strides(), offset());          
         reducer.forward(source, result);
         return result;
-    }
+    } 
 
 private:
     type dtype_;
     Shape shape_;
     Strides strides_;
-};
-
+}; 
 
 /**
  * @brief Finds the **indices of maximum values** along an axis.
@@ -299,7 +298,7 @@ struct Argmean {
  * ```
  */
 template<Expression Source>
-constexpr auto argmax(Source&& source, int axis = -1, bool keepdim = false) {  
+constexpr auto argmax(Source&& source, int axis, bool keepdim = false) {  
     return Reduction<Argmax, Source>{
         {indexing::normalize(axis, source.shape().rank()), keepdim}, std::forward<Source>(source) 
     };
@@ -321,7 +320,7 @@ constexpr auto argmax(Source&& source, int axis = -1, bool keepdim = false) {
  * ```
  */
 template<Expression Source>
-constexpr auto argmin(Source&& source, int axis = -1, bool keepdim = false) {  
+constexpr auto argmin(Source&& source, int axis, bool keepdim = false) {  
     return Reduction<Argmin, Source>{ 
         {indexing::normalize(axis, source.shape().rank()), keepdim}, std::forward<Source>(source) 
     };
@@ -348,7 +347,7 @@ constexpr auto argmin(Source&& source, int axis = -1, bool keepdim = false) {
  * ```
  */
 template<Expression Source>
-constexpr auto sum(Source&& source, int axis = -1, bool keepdim = false) {
+constexpr auto sum(Source&& source, int axis, bool keepdim = false) {
     return Reduction<Argsum, Source>{
         {indexing::normalize(axis, source.shape().rank()), keepdim},
         std::forward<Source>(source)
@@ -357,7 +356,7 @@ constexpr auto sum(Source&& source, int axis = -1, bool keepdim = false) {
 
 /**
  * @brief Creates a mean reduction.
- * @param axis Axis to reduce (`-1` for last axis).
+ * @param axis Axis to reduce.
  * @param keepdim If `true`, keeps reduced axis as size 1.
  *
  * #### Example:
@@ -376,7 +375,7 @@ constexpr auto sum(Source&& source, int axis = -1, bool keepdim = false) {
  * ```
  */
 template<Expression Source>
-constexpr auto mean(Source&& source, int axis = -1, bool keepdim = false) {
+constexpr auto mean(Source&& source, int axis, bool keepdim = false) {
     return Reduction<Argmean, Source>{
         {indexing::normalize(axis, source.shape().rank()), keepdim},
         std::forward<Source>(source)

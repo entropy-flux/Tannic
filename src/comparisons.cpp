@@ -10,7 +10,9 @@
 #ifdef CUDA 
 #include "cuda/val.cuh"
 #else 
+namespace cuda {
 bool allclose(const tensor_t*, const tensor_t*, stream_t, double rtol = 1e-5, double atol = 1e-8) {throw std::runtime_error("CUDA not available");}
+} 
 #endif
 
 namespace cuda {

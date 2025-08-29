@@ -49,13 +49,22 @@ void copyFromHost(const device_t* resource, const void* src , void* dst, size_t 
     streams.put(resource->id, stream);  
 } 
 
+void copyDeviceToHost(const device_t* resource, const void* src, void* dst, size_t nbytes) {
+    setDevice(resource->id);
+    Streams& streams = Streams::instance();
+    cudaStream_t stream = streams.pop(resource->id);
+    CUDA_CHECK(cudaMemcpyAsync(dst, src, nbytes, cudaMemcpyDeviceToHost, stream));
+    streams.put(resource->id, stream);
+} 
+
 bool compareFromHost(const device_t* resource, const void* hst_ptr, const void* dvc_ptr, size_t nbytes) {  
     void* buffer = malloc(nbytes); 
 
     Streams& streams = Streams::instance();
-    cudaStream_t stream = streams.pop(resource->id);
-
+    cudaStream_t stream = streams.pop(resource->id);     
+    CUDA_CHECK(cudaStreamSynchronize(stream));
     CUDA_CHECK(cudaMemcpyAsync(buffer, dvc_ptr, nbytes, cudaMemcpyDeviceToHost, stream));
+    CUDA_CHECK(cudaStreamSynchronize(stream));
     bool result = (memcmp(hst_ptr, buffer, nbytes) == 0);
     streams.put(resource->id, stream);
     free(buffer);   

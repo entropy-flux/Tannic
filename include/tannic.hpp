@@ -17,5 +17,9 @@
 #define TANNIC_HPP
 
 #include "tannic/tensor.hpp"  
+#include "tannic/reductions.hpp"
+#include "tannic/transformations.hpp"
+#include "tannic/comparisons.hpp"
+#include "tannic/functions.hpp"
 
 #endif

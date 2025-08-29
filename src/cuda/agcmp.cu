@@ -6,44 +6,57 @@
 #include "cuda/argcmp.cuh"  
 
 namespace {
-
+    
 template<typename S, typename D, typename Cmp>
 __global__ void argCompareKernel(
     const S* __restrict__ src, shape_t src_shape, strides_t src_strides,
-    D* __restrict__ dst, shape_t dst_shape, strides_t dst_strides,
+    D* __restrict__ dst, shape_t /*dst_shape*/, strides_t /*dst_strides*/,
     uint8_t rank, uint8_t dim, S initial_value, size_t ne
 ) {
     Cmp cmp{};
 
+    // scalar tensor: arg{min,max} is 0
     for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x;
          idx < ne;
          idx += blockDim.x * gridDim.x)
-    { 
+    {
+        if (rank == 0) {
+            if (idx == 0) dst[0] = static_cast<D>(0);
+            continue;
+        }
+
+        // Map flat idx -> multi-index using src_shape with reduced dim treated as 1
         size_t remaining = idx;
         size_t base_src_offs = 0;
 
-        for (int d = rank - 1; d >= 0; --d) {
-            size_t dim_idx = remaining % dst_shape.sizes[d];
-            remaining /= dst_shape.sizes[d];
-            size_t src_idx = (src_shape.sizes[d] == 1) ? 0 : dim_idx;
+        for (int d = static_cast<int>(rank) - 1; d >= 0; --d) {
+            const size_t size_d = (d == dim) ? 1 : src_shape.sizes[d];
+            const size_t idx_d  = (size_d > 1) ? (remaining % size_d) : 0;
+            if (size_d > 1) remaining /= size_d;
+
+            // If the source is broadcast (size 1), always index 0
+            const size_t src_idx = (src_shape.sizes[d] == 1) ? 0 : idx_d;
             base_src_offs += src_idx * src_strides.sizes[d];
         }
 
         int64_t best_idx = 0;
         S best_val = initial_value;
 
+        // Scan along the reduced dimension
         for (size_t i = 0; i < src_shape.sizes[dim]; ++i) {
-            size_t offs = base_src_offs + i * src_strides.sizes[dim];
+            const size_t offs = base_src_offs + i * src_strides.sizes[dim];
             const S val = src[offs];
-            if (cmp(val, best_val) || (val == best_val && i < (size_t)best_idx)) {
+            if (cmp(val, best_val) || (val == best_val && i < static_cast<size_t>(best_idx))) {
                 best_val = val;
-                best_idx = (int64_t)i;
+                best_idx = static_cast<int64_t>(i);
             }
         }
 
+        // Assumes dst is contiguous; if it's not, compute dst offset with dst_strides.
         dst[idx] = static_cast<D>(best_idx);
     }
-} 
+}
+
   
 struct GE {
     template<class A, class B>

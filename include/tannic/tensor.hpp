@@ -262,8 +262,7 @@ public:
             throw Exception("Cannot get resource of an initializer tensor."); 
         return buffer_->environment();
     }   
-    /// @}
-   
+    /// @
 
 public: 
     /**
