@@ -12,9 +12,9 @@ namespace cuda {
 using tannic::tensor_t;
 using tannic::stream_t;
 using tannic::device_t;
-inline void copyFromHost(const device_t*, std::byte const* src, std::byte* dst, size_t size) { throw std::runtime_error("CUDA copyFromHost called without CUDA support"); }
-inline bool compareFromHost(const device_t*, std::byte const* src, std::byte const* dst, size_t size) { throw std::runtime_error("CUDA compareFromHost called without CUDA support"); }
-} // namespace cuda
+inline void copyFromHost(const device_t* resource, const void* src , void* dst, size_t nbytes) { throw std::runtime_error("CUDA copyFromHost called without CUDA support"); }
+inline bool compareFromHost(const device_t* resource, const void* hst_ptr, const void* dvc_ptr, size_t nbytes) {throw std::runtime_error("CUDA compareFromHost called without CUDA support"); }
+} // namespace cuda0
 #endif
 
 namespace tannic { 
@@ -55,14 +55,12 @@ void Tensor::assign(bool const* value, std::ptrdiff_t index) {
     }
 } 
 
-
 bool Tensor::compare(std::byte const* hst_ptr, std::ptrdiff_t offset) const {   
     void const* lcl_ptr = static_cast<std::byte const*>(buffer_->address()) + offset; 
     environment_t environment = structure(this->environment()); 
     if (std::holds_alternative<Host>(this->environment())) {  
         return std::memcmp(hst_ptr, lcl_ptr, dsizeof(dtype_)) == 0;  
     } 
-
     else {
         device_t device = structure(std::get<Device>(this->environment()));
         return cuda::compareFromHost(&device, (void const*)(hst_ptr), lcl_ptr, dsizeof(dtype_));
