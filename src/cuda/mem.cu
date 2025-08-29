@@ -42,22 +42,22 @@ void* deallocate(const device_t* resource, void* ptr) {
 }
 
 void copyFromHost(const device_t* resource, const void* src , void* dst, size_t nbytes) {
-    setDevice(resource->id);
-    if (resource->traits & SYNC) {
-        cudaMemcpy(dst, src, nbytes, cudaMemcpyHostToDevice);
-    } 
-    else {
-        Streams& streams = Streams::instance();
-        cudaStream_t stream = streams.pop(resource->id);
-        cudaMemcpyAsync(dst, src, nbytes, cudaMemcpyHostToDevice, stream);
-        streams.put(resource->id, stream); 
-    }
+    setDevice(resource->id);  
+    Streams& streams = Streams::instance();
+    cudaStream_t stream = streams.pop(resource->id);
+    cudaMemcpyAsync(dst, src, nbytes, cudaMemcpyHostToDevice, stream);
+    streams.put(resource->id, stream);  
 } 
 
 bool compareFromHost(const device_t* resource, const void* hst_ptr, const void* dvc_ptr, size_t nbytes) {  
     void* buffer = malloc(nbytes); 
-    CUDA_CHECK(cudaMemcpy(buffer, dvc_ptr, nbytes, cudaMemcpyDeviceToHost));
+
+    Streams& streams = Streams::instance();
+    cudaStream_t stream = streams.pop(resource->id);
+
+    CUDA_CHECK(cudaMemcpyAsync(buffer, dvc_ptr, nbytes, cudaMemcpyDeviceToHost, stream));
     bool result = (memcmp(hst_ptr, buffer, nbytes) == 0);
+    streams.put(resource->id, stream);
     free(buffer);   
     return result;
 }

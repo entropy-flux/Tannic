@@ -4,7 +4,7 @@
 #include <cstring>
 #include "tensor.hpp"
 #include "functions.hpp"
-#include "tannic/comparisons.hpp"
+#include "comparisons.hpp"
  
 using namespace tannic;
 

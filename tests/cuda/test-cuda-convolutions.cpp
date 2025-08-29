@@ -2,200 +2,342 @@
 #include <gtest/gtest.h>
 #include "tensor.hpp"
 #include "convolutions.hpp"
+#include "comparisons.hpp"
 #include <cuda_runtime.h>
 #include <cstring>
 
-using namespace tannic;
+using namespace tannic; 
 
-TEST(TestCudaConvolution1D, Simple1D) { 
-    Tensor input(float32, {1, 1, 5});   
-    input.initialize(Device());
-     
-    std::vector<float> host_input(5);
-    for (int i = 0; i < 5; ++i) {
-        host_input[i] = static_cast<float>(i + 1);   
-    } 
-    cudaMemcpy(input.bytes(), host_input.data(), 5 * sizeof(float), cudaMemcpyHostToDevice);
- 
-    Tensor kernel(float32, {1, 1, 3});   
-    kernel.initialize(Device());
-     
-    std::vector<float> host_kernel = {1.0f, 0.0f, -1.0f}; 
-    cudaMemcpy(kernel.bytes(), host_kernel.data(), 3 * sizeof(float), cudaMemcpyHostToDevice);
 
-    Tensor output = convolve<1>(input, kernel, 1, 0);
-     
-    std::vector<float> host_output(3);
-    cudaMemcpy(host_output.data(), output.bytes(), 3 * sizeof(float), cudaMemcpyDeviceToHost);
-
-    float expected[] = {-2.0f, -2.0f, -2.0f};
-
-    ASSERT_EQ(output.shape(), Shape({1, 1, 3}));
-    for (int i = 0; i < 3; ++i) {
-        EXPECT_FLOAT_EQ(host_output[i], expected[i]) 
-            << "Mismatch at output[" << i << "]";
-    }
-}
-
-TEST(TestCudaConvolution1D, Stride2) {
-    Tensor input(float32, {1, 1, 6});
-    input.initialize(Device());
-    
-    std::vector<float> host_input(6);
-    for (int i = 0; i < 6; ++i) host_input[i] = static_cast<float>(i + 1);
-    cudaMemcpy(input.bytes(), host_input.data(), 6 * sizeof(float), cudaMemcpyHostToDevice);
+//
+TEST(TestConvolution1DVC, Simple1DDVC) { 
+    Tensor input(float32, {1, 1, 5});
+    input.initialize({{{1, 2, 3, 4, 5}}}, Device());
 
     Tensor kernel(float32, {1, 1, 3});
-    kernel.initialize(Device());
-    
-    std::vector<float> host_kernel = {1.0f, 0.0f, -1.0f};
-    cudaMemcpy(kernel.bytes(), host_kernel.data(), 3 * sizeof(float), cudaMemcpyHostToDevice);
+    kernel.initialize({{{1, 0, -1}}}, Device());
 
-    Tensor output = convolve<1>(input, kernel, 2, 0);
-    ASSERT_EQ(output.shape(), Shape({1, 1, 2}));   
-    
-    std::vector<float> host_output(2);
-    cudaMemcpy(host_output.data(), output.bytes(), 2 * sizeof(float), cudaMemcpyDeviceToHost);
-    
-    EXPECT_FLOAT_EQ(host_output[0], -2.0f);
-    EXPECT_FLOAT_EQ(host_output[1], -2.0f);
+    Tensor output = convolve1D(input, kernel, 1, 0);
+
+    Tensor expected(float32, {1, 1, 3});
+    expected.initialize({{{-2, -2, -2}}}, Device());
+
+    EXPECT_EQ(output.shape(), Shape({1, 1, 3}));
+    EXPECT_TRUE(allclose(output, expected));
 }
- 
-TEST(TestCudaConvolution1D, Padding1) {
+
+TEST(TestConvolution1DDVC, Stride2DVC) {
+    Tensor input(float32, {1, 1, 6});
+    input.initialize({{{1, 2, 3, 4, 5, 6}}}, Device());
+
+    Tensor kernel(float32, {1, 1, 3});
+    kernel.initialize({{{1, 0, -1}}}, Device());
+
+    Tensor output = convolve1D(input, kernel, 2, 0);
+
+    Tensor expected(float32, {1, 1, 2});
+    expected.initialize({{{-2, -2}}}, Device());
+
+    EXPECT_EQ(output.shape(), Shape({1, 1, 2}));
+    EXPECT_TRUE(allclose(output, expected));
+}
+
+TEST(TestConvolution1DDVC, Padding1DVC) {
     Tensor input(float32, {1, 1, 3});
-    input.initialize(Device());
-    
-    std::vector<float> host_input(3);
-    for (int i = 0; i < 3; ++i) host_input[i] = static_cast<float>(i + 1);
-    cudaMemcpy(input.bytes(), host_input.data(), 3 * sizeof(float), cudaMemcpyHostToDevice);
+    input.initialize({{{1, 2, 3}}}, Device());
 
     Tensor kernel(float32, {1, 1, 2});
-    kernel.initialize(Device());
-    
-    std::vector<float> host_kernel = {1.0f, -1.0f};
-    cudaMemcpy(kernel.bytes(), host_kernel.data(), 2 * sizeof(float), cudaMemcpyHostToDevice);
+    kernel.initialize({{{1, -1}}}, Device());
 
-    Tensor output = convolve<1>(input, kernel, 1, 1);
-    ASSERT_EQ(output.shape(), Shape({1, 1, 4}));   
-    
-    // Verify we can copy the result back
-    std::vector<float> host_output(4);
-    cudaMemcpy(host_output.data(), output.bytes(), 4 * sizeof(float), cudaMemcpyDeviceToHost);
+    Tensor output = convolve1D(input, kernel, 1, 1);
+    EXPECT_EQ(output.shape(), Shape({1, 1, 4}));
 }
- 
-TEST(TestCudaConvolution1D, MultiChannelInput) {
-    Tensor input(float32, {1, 2, 4});
-    input.initialize(Device());
-    
-    std::vector<float> host_input(8);
-    for (int i = 0; i < 8; ++i) host_input[i] = static_cast<float>(i + 1);
-    cudaMemcpy(input.bytes(), host_input.data(), 8 * sizeof(float), cudaMemcpyHostToDevice);
 
-    Tensor kernel(float32, {1, 2, 3});
-    kernel.initialize(Device());
-    
-    std::vector<float> host_kernel(6, 1.0f);
-    cudaMemcpy(kernel.bytes(), host_kernel.data(), 6 * sizeof(float), cudaMemcpyHostToDevice);
+TEST(TestConvolution1DDVC, MultiChannelInputDVC) {
+    Tensor input(float32, {1, 2, 4});  // shape: [batch=1, channels=2, length=4]
+    input.initialize({
+        {
+            {1, 2, 3, 4},   // channel 0
+            {5, 6, 7, 8}    // channel 1
+        }
+    }, Device());
 
-    Tensor output = convolve<1>(input, kernel, 1, 0);
-    ASSERT_EQ(output.shape(), Shape({1, 1, 2}));   
-    
-    std::vector<float> host_output(2);
-    cudaMemcpy(host_output.data(), output.bytes(), 2 * sizeof(float), cudaMemcpyDeviceToHost);
+    Tensor kernel(float32, {1, 2, 3});  // shape: [out_channels=1, in_channels=2, kernel=3]
+    kernel.initialize({
+        {   // out_channel 0
+            {1, 1, 1},      // in_channel 0
+            {1, 1, 1}       // in_channel 1
+        }
+    }, Device());
+
+    Tensor output = convolve1D(input, kernel, 1, 0);
+    EXPECT_EQ(output.shape(), Shape({1, 1, 2}));
 }
- 
-TEST(TestCudaConvolution1D, Kernel1x1) {
+
+
+TEST(TestConvolution1DDVC, Kernel1x1DVC) {
     Tensor input(float32, {1, 1, 4});
-    input.initialize(Device());
-    
-    std::vector<float> host_input(4);
-    for (int i = 0; i < 4; ++i) host_input[i] = static_cast<float>(i + 1);
-    cudaMemcpy(input.bytes(), host_input.data(), 4 * sizeof(float), cudaMemcpyHostToDevice);
+    input.initialize({{{1, 2, 3, 4}}}, Device());
 
     Tensor kernel(float32, {1, 1, 1});
-    kernel.initialize(Device());
-    
-    std::vector<float> host_kernel = {2.0f};
-    cudaMemcpy(kernel.bytes(), host_kernel.data(), sizeof(float), cudaMemcpyHostToDevice);
+    kernel.initialize({{{2}}}, Device());
 
-    Tensor output = convolve<1>(input, kernel, 1, 0);
-    
-    std::vector<float> host_output(4);
-    cudaMemcpy(host_output.data(), output.bytes(), 4 * sizeof(float), cudaMemcpyDeviceToHost);
-    
-    ASSERT_EQ(output.shape(), Shape({1, 1, 4}));
-    for (int i = 0; i < 4; ++i) {
-        EXPECT_FLOAT_EQ(host_output[i], host_input[i] * 2.0f);
-    }
+    Tensor output = convolve1D(input, kernel, 1, 0);
+
+    Tensor expected(float32, {1, 1, 4});
+    expected.initialize({{{2, 4, 6, 8}}}, Device());
+
+    EXPECT_EQ(output.shape(), Shape({1, 1, 4}));
+    EXPECT_TRUE(allclose(output, expected));
 }
 
-TEST(TestCudaConvolution1D, MultiOutputChannels) {
-    Tensor input(float32, {1, 1, 5});
-    input.initialize(Device());
-    
-    std::vector<float> host_input(5);
-    for (int i = 0; i < 5; ++i) host_input[i] = static_cast<float>(i + 1);
-    cudaMemcpy(input.bytes(), host_input.data(), 5 * sizeof(float), cudaMemcpyHostToDevice);
-
-    Tensor kernel(float32, {2, 1, 3});
-    kernel.initialize(Device());
-    
-    std::vector<float> host_kernel = {
-        1.0f, 0.0f, -1.0f,  // First output channel
-        0.0f, 1.0f, 0.0f    // Second output channel
-    };
-    cudaMemcpy(kernel.bytes(), host_kernel.data(), 6 * sizeof(float), cudaMemcpyHostToDevice);
-
-    Tensor output = convolve<1>(input, kernel, 1, 0);
-    ASSERT_EQ(output.shape(), Shape({1, 2, 3}));  
-    
-    std::vector<float> host_output(6);
-    cudaMemcpy(host_output.data(), output.bytes(), 6 * sizeof(float), cudaMemcpyDeviceToHost);
-    
-    // First channel
-    EXPECT_FLOAT_EQ(host_output[0], -2.0f);
-    EXPECT_FLOAT_EQ(host_output[1], -2.0f);
-    EXPECT_FLOAT_EQ(host_output[2], -2.0f);
-    
-    // Second channel
-    EXPECT_FLOAT_EQ(host_output[3], 2.0f);
-    EXPECT_FLOAT_EQ(host_output[4], 3.0f);
-    EXPECT_FLOAT_EQ(host_output[5], 4.0f);
-}
-
-TEST(TestCudaConvolution1D, LargeInput) {
-    const size_t length = 1024;
-    Tensor input(float32, {1, 1, length});
-    input.initialize(Device());
-    
-    std::vector<float> host_input(length);
-    for (size_t i = 0; i < length; ++i) {
-        host_input[i] = static_cast<float>(i % 10);
-    }
-    cudaMemcpy(input.bytes(), host_input.data(), length * sizeof(float), cudaMemcpyHostToDevice);
-
-    Tensor kernel(float32, {1, 1, 5});
-    kernel.initialize(Device());
-    
-    std::vector<float> host_kernel = {1.0f, -1.0f, 0.5f, -0.5f, 0.25f};
-    cudaMemcpy(kernel.bytes(), host_kernel.data(), 5 * sizeof(float), cudaMemcpyHostToDevice);
-
-    Tensor output = convolve<1>(input, kernel, 1, 2);
-    
-    size_t expected_length = (length + 2*2 - 5) / 1 + 1;
-    ASSERT_EQ(output.shape(), Shape({1, 1, expected_length}));
-    
-    std::vector<float> host_output(expected_length);
-    cudaMemcpy(host_output.data(), output.bytes(), expected_length * sizeof(float), cudaMemcpyDeviceToHost);
-    
-    // Just verify we got some non-zero results
-    bool has_non_zero = false;
-    for (size_t i = 0; i < expected_length; ++i) {
-        if (host_output[i] != 0.0f) {
-            has_non_zero = true;
-            break;
+TEST(TestConvolution1DDVC, MultiOutputChannelsDVC) {
+    Tensor input(float32, {1, 1, 5});  // shape: [batch=1, channels=1, length=5]
+    input.initialize({
+        {   // batch 0
+            {1, 2, 3, 4, 5}   // channel 0
         }
-    }
-    EXPECT_TRUE(has_non_zero);
+    }, Device());
+
+    Tensor kernel(float32, {2, 1, 3});  // shape: [out_channels=2, in_channels=1, kernel=3]
+    kernel.initialize({
+        {   // out_channel 0
+            {1, 0, -1}        // in_channel 0
+        },
+        {   // out_channel 1
+            {0, 1, 0}         // in_channel 0
+        }
+    }, Device());
+
+    Tensor output = convolve1D(input, kernel, 1, 0);
+
+    Tensor expected(float32, {1, 2, 3});
+    expected.initialize({
+        {   // batch 0
+            {-2, -2, -2},   // out_channel 0
+            { 2,  3,  4}    // out_channel 1
+        }
+    }, Device());
+
+    EXPECT_EQ(output.shape(), Shape({1, 2, 3}));
+    EXPECT_TRUE(allclose(output, expected));
 }
+
+//
+// 2D Convolution Tests
+//
+TEST(TestConvolutionDVC, Simple2DDVC) { 
+    Tensor input(float32, {1, 1, 3, 3});
+    input.initialize({{
+        {{1, 2, 3},
+         {4, 5, 6},
+         {7, 8, 9}}
+    }}, Device());
+
+    Tensor kernel(float32, {1, 1, 2, 2});
+    kernel.initialize({{
+        {{ 1, 0},
+         { 0,-1}}
+    }}, Device());
+
+    Tensor output = convolve2D(input, kernel, {1,1}, {0,0});
+
+    Tensor expected(float32, {1, 1, 2, 2});
+    expected.initialize({{
+        {{-4, -4},
+         {-4, -4}}
+    }}, Device());
+
+    EXPECT_EQ(output.shape(), Shape({1, 1, 2, 2}));
+    EXPECT_TRUE(allclose(output, expected));
+}
+
+TEST(TestConvolutionDVC, Stride2DVC) {
+    Tensor input(float32, {1,1,4,4});
+    input.initialize({{{
+        { 1,  2,  3,  4},
+        { 5,  6,  7,  8},
+        { 9, 10, 11, 12},
+        {13, 14, 15, 16}
+    }}}, Device());
+
+    Tensor kernel(float32, {1,1,2,2});
+    kernel.initialize({{{
+        { 1, 0},
+        { 0,-1}
+    }}}, Device());
+
+    Tensor output = convolve2D(input, kernel, {2,2}, {0,0});
+    EXPECT_EQ(output.shape(), Shape({1,1,2,2}));
+}
+
+TEST(TestConvolutionDVC, Padding1DVC) {
+    Tensor input(float32, {1,1,3,3});
+    input.initialize({{{
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    }}}, Device());
+
+    Tensor kernel(float32, {1,1,2,2});
+    kernel.initialize({{{
+        { 1, 0},
+        { 0,-1}
+    }}}, Device());
+
+    Tensor output = convolve2D(input, kernel, {1,1}, {1,1});
+    EXPECT_EQ(output.shape(), Shape({1,1,4,4}));
+}
+
+TEST(TestConvolutionDVC, MultiChannelInputDVC) {
+    Tensor input(float32, {1,2,3,3});
+    input.initialize({
+        {   // batch 0
+            {   // channel 0
+                {1.f, 2.f, 3.f},
+                {4.f, 5.f, 6.f},
+                {7.f, 8.f, 9.f}
+            },
+            {   // channel 1
+                {10.f, 11.f, 12.f},
+                {13.f, 14.f, 15.f},
+                {16.f, 17.f, 18.f}
+            }
+        }
+    }, Device());
+
+
+    Tensor kernel(float32, {1,2,2,2});
+    kernel.initialize({
+        {   // out_channel 0
+            {   // in_channel 0
+                {1.f, 1.f},
+                {1.f, 1.f}
+            },
+            {   // in_channel 1
+                {1.f, 1.f},
+                {1.f, 1.f}
+            }
+        }
+    }, Device());
+
+
+    Tensor output = convolve2D(input, kernel, {1,1}, {0,0});
+    EXPECT_EQ(output.shape(), Shape({1,1,2,2}));
+}
+
+TEST(TestConvolutionDVC, Kernel1x1DVC) {
+    Tensor input(float32, {1,1,3,3});
+    input.initialize({{{
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    }}}, Device());
+
+    Tensor kernel(float32, {1,1,1,1});
+    kernel.initialize({{{{2}}}}, Device());
+
+    Tensor output = convolve2D(input, kernel, {1,1}, {0,0});
+
+    Tensor expected(float32, {1,1,3,3});
+    expected.initialize({{{
+        { 2,  4,  6},
+        { 8, 10, 12},
+        {14, 16, 18}
+    }}}, Device());
+
+    EXPECT_TRUE(allclose(output, expected));
+}
+
+TEST(TestConvolution, BigConvDVC) {
+
+    Tensor X(float32, {2,3,4,4}); X.initialize({
+        { // batch 0
+            { // channel 0
+                {1.0f,  2.0f,  3.0f,  4.0f},
+                {5.0f,  6.0f,  7.0f,  8.0f},
+                {9.0f, 10.0f, 11.0f, 12.0f},
+                {13.0f,14.0f, 15.0f, 16.0f}
+            },
+            { // channel 1
+                {17.0f, 18.0f, 19.0f, 20.0f},
+                {21.0f, 22.0f, 23.0f, 24.0f},
+                {25.0f, 26.0f, 27.0f, 28.0f},
+                {29.0f, 30.0f, 31.0f, 32.0f}
+            },
+            { // channel 2
+                {33.0f, 34.0f, 35.0f, 36.0f},
+                {37.0f, 38.0f, 39.0f, 40.0f},
+                {41.0f, 42.0f, 43.0f, 44.0f},
+                {45.0f, 46.0f, 47.0f, 48.0f}
+            }
+        },
+        { // batch 1
+            { // channel 0
+                {49.0f, 50.0f, 51.0f, 52.0f},
+                {53.0f, 54.0f, 55.0f, 56.0f},
+                {57.0f, 58.0f, 59.0f, 60.0f},
+                {61.0f, 62.0f, 63.0f, 64.0f}
+            },
+            { // channel 1
+                {65.0f, 66.0f, 67.0f, 68.0f},
+                {69.0f, 70.0f, 71.0f, 72.0f},
+                {73.0f, 74.0f, 75.0f, 76.0f},
+                {77.0f, 78.0f, 79.0f, 80.0f}
+            },
+            { // channel 2
+                {81.0f, 82.0f, 83.0f, 84.0f},
+                {85.0f, 86.0f, 87.0f, 88.0f},
+                {89.0f, 90.0f, 91.0f, 92.0f},
+                {93.0f, 94.0f, 95.0f, 96.0f}
+            }
+        }
+    }, Device());
+    
+    
+    Tensor K(float32, {1,3,3,3}); K.initialize({
+        { // out_channel 0
+            { // in channel 0
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f}
+            },
+            { // in channel 1
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f}
+            },
+            { // in channel 2
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f},
+                {1.0f,  0.0f, -1.0f}
+            }
+        }
+    }, Device());
+
+    Tensor Y = convolve2D(X , K, /*stride=*/1, /*padding=*/1) ; 
+
+    Tensor Y_expected(float32, {2, 1, 4, 4});
+    Y_expected.initialize({
+        {   // first batch
+            {
+                { -120, -12, -12, 126 },
+                { -198, -18, -18, 207 },
+                { -234, -18, -18, 243 },
+                { -168, -12, -12, 174 }
+            }
+        },
+        {   // second batch
+            {
+                { -408, -12, -12, 414 },
+                { -630, -18, -18, 639 },
+                { -666, -18, -18, 675 },
+                { -456, -12, -12, 462 }
+            }
+        }
+    }, Device());
+
+    EXPECT_TRUE(allclose(Y, Y_expected));
+}
+
 #endif

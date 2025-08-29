@@ -209,7 +209,7 @@ struct Mul {
 
 struct Pow { 
     template<class A, class B>
-    __device__ __forceinline__ auto operator()(A&& a, B&& b) const noexcept(noexcept(a * b)) {
+    __device__ __forceinline__ auto operator()(A&& a, B&& b) const {
         return pow(a, b);
     }
 };   
@@ -353,15 +353,15 @@ constexpr auto dispatchMul = []() {
 
 constexpr auto dispatchPow = []() {
     std::array<BinaryOpKernel, index(TYPES, TYPES)> table; table.fill(launchDefaultBinaryOpKernel); 
-    table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Mul>;
-    table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Mul>;
-    table[index(int32, float64)] = launchBinaryOpKernel<int32_t, double, double, Mul>;
-    table[index(float64, int32)] = launchBinaryOpKernel<double, int32_t, double, Mul>;
+    table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Pow>;
+    table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Pow>;
+    table[index(int32, float64)] = launchBinaryOpKernel<int32_t, double, double, Pow>;
+    table[index(float64, int32)] = launchBinaryOpKernel<double, int32_t, double, Pow>;
 
-    table[index(float32, float32)] = launchBinaryOpKernel<float, float, float, Mul>;
-    table[index(float32, float64)] = launchBinaryOpKernel<float, double, double, Mul>;
-    table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Mul>;
-    table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Mul>; 
+    table[index(float32, float32)] = launchBinaryOpKernel<float, float, float, Pow>;
+    table[index(float32, float64)] = launchBinaryOpKernel<float, double, double, Pow>;
+    table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Pow>;
+    table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Pow>; 
     return table;
 }();  
 

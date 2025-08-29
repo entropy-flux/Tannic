@@ -7,6 +7,12 @@
 #include "cpu/cmps.hpp"
 #include "cpu/val.hpp"
 
+#ifdef CUDA 
+#include "cuda/val.cuh"
+#else 
+bool allclose(const tensor_t*, const tensor_t*, stream_t, double rtol = 1e-5, double atol = 1e-8) {throw std::runtime_error("CUDA not available");}
+#endif
+
 namespace cuda {
     
 using tannic::status;
@@ -62,8 +68,23 @@ bool allclose(Tensor const& first, Tensor const& second, double rtol, double ato
         tensor_t* fst = get_tensor(first.node()->id);
         tensor_t* sec = get_tensor(second.node()->id);
         return cpu::allclose(fst, sec, rtol, atol);
+    } else if (std::holds_alternative<Device>(first.environment())) {
+        if (!std::holds_alternative<Device>(second.environment()))
+            throw Exception("Cannot compare tensors from different environmments");
+        
+        tensor_t* fst = get_tensor(first.node()->id);
+        tensor_t* sec = get_tensor(second.node()->id);
+
+        device_t device = fst->environment.resource.device;
+        stream_t stream = pop_stream(&device);
+        
+        bool result = cuda::allclose(fst, sec, stream, rtol, atol);
+        
+        put_stream(&device, stream);
+        
+        return result;
     } else {
-        throw std::runtime_error("CUDA not supported here.");
+        throw std::runtime_error("Unsupported environment");
     }
 }
 
