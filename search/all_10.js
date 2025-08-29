@@ -33,5 +33,5 @@ var searchData=
   ['strides_30',['Strides',['../dc/deb/classtannic_1_1Strides.html',1,'tannic']]],
   ['strides_2ehpp_31',['strides.hpp',['../d7/d08/strides_8hpp.html',1,'']]],
   ['subtraction_32',['Subtraction',['../d6/de5/structtannic_1_1operation_1_1Subtraction.html',1,'tannic::operation']]],
-  ['sum_33',['sum',['../d9/dd9/namespacetannic_1_1expression.html#ab256bfd94d0cccbceab6a094403ccc96',1,'tannic::expression']]]
+  ['sum_33',['sum',['../d9/dd9/namespacetannic_1_1expression.html#a86e00b9acced8ebb951803f22ef7207e',1,'tannic::expression']]]
 ];

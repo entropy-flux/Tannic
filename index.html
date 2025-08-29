@@ -104,6 +104,12 @@ Introduction</h1>
 What is Tannic?</h1>
 <p><b>Tannic</b> is an extensible C++ tensor library built around a host–device execution model. Unlike monolithic frameworks, it provides only a minimal set of built‑in operators, focusing on a flexible architecture where new operations, data types, and backends can be added easily. This approach keeps the library lightweight while enabling adaptation to a wide range of computational needs.</p>
 <p>This library is designed to serve as the foundational core for a neural network inference framework, but is equally suited to other domains such as classical ML or physics simulations—all without requiring Python.</p>
+<p>You can find full examples of neural networks inference with the Tannic framework here:</p><ul>
+<li><a href="https://github.com/entropy-flux/cnn-server-example">CNN Server Example</a> – demonstrates serving convolutional neural network models. <br  />
+</li>
+<li><a href="https://github.com/entropy-flux/vit-server-example">ViT Server Example</a> – demonstrates serving Vision Transformer models. <br  />
+</li>
+</ul>
 <p>Below is a minimal example demonstrating tensor creation, initialization, basic indexing, and arithmetic operations with Tannic:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;tannic.hpp&gt;</span></div>
@@ -251,9 +257,9 @@ Usage</h1>
 <div class="line">        {1.0f, 2.0f, 3.0f}</div>
 <div class="line">    };                      <span class="comment">// float tensor</span></div>
 <div class="line"> </div>
-<div class="line">    std::cout &lt;&lt; <a class="code hl_function" href="d9/dd9/namespacetannic_1_1expression.html#a83caa2ee55fd9f434b633d9eba583b61">argmax</a>(Z) &lt;&lt; std::endl&gt;&gt;</div>
+<div class="line">    std::cout &lt;&lt; <a class="code hl_function" href="d9/dd9/namespacetannic_1_1expression.html#a0cee5a6cd1bfafa984d9de0c89548424">argmax</a>(Z) &lt;&lt; std::endl&gt;&gt;</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespacetannic_1_1expression_html_a83caa2ee55fd9f434b633d9eba583b61"><div class="ttname"><a href="d9/dd9/namespacetannic_1_1expression.html#a83caa2ee55fd9f434b633d9eba583b61">tannic::expression::argmax</a></div><div class="ttdeci">constexpr auto argmax(Source &amp;&amp;source, int axis=-1, bool keepdim=false)</div><div class="ttdoc">Creates an Argmax reduction.</div><div class="ttdef"><b>Definition:</b> reductions.hpp:302</div></div>
+<div class="ttc" id="anamespacetannic_1_1expression_html_a0cee5a6cd1bfafa984d9de0c89548424"><div class="ttname"><a href="d9/dd9/namespacetannic_1_1expression.html#a0cee5a6cd1bfafa984d9de0c89548424">tannic::expression::argmax</a></div><div class="ttdeci">constexpr auto argmax(Source &amp;&amp;source, int axis, bool keepdim=false)</div><div class="ttdoc">Creates an Argmax reduction.</div><div class="ttdef"><b>Definition:</b> reductions.hpp:301</div></div>
 </div><!-- fragment --><p>Functions in Tannic do not immediately compute results. Instead, they build Expression objects, described in detail in the <a href="https://entropy-flux.github.io/Tannic/concepts.html">concepts</a> documentation. Basically an <code>Expression</code> is any class that follows the pattern:</p>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">concept </span>Expression = <span class="keyword">requires</span>(<span class="keyword">const</span> T expression) {</div>
