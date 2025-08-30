@@ -125,19 +125,15 @@ public:
     :   dtype_(dtype)
     ,   shape_(shape) 
     ,   strides_(strides) 
-    ,   offset_(offset)  {   
-        if (rank() == 0) { 
-        }
-        else {
-            std::size_t expected = 1;
-            for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
-                nelements_ += strides_[dimension] * (shape_[dimension] - 1); 
-                if (strides_[dimension] != expected) {
-                    is_contiguous_ = false;
-                }
-                expected *= shape_[dimension];
-            }  
-        }
+    ,   offset_(offset)  {    
+        std::size_t expected = 1;
+        for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
+            nelements_ += strides_[dimension] * (shape_[dimension] - 1); 
+            if (strides_[dimension] != expected) {
+                is_contiguous_ = false;
+            }
+            expected *= shape_[dimension];
+        }   
     }  
 
     /**
@@ -1050,19 +1046,15 @@ public:
     ,   strides_(strides)
     ,   offset_(offset)   
     ,   buffer_(std::move(storage)) 
-    {
-        if (rank() == 0) { 
-        }
-        else { 
-            std::size_t expected = 1;
-            for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
-                nelements_ += strides_[dimension] * (shape_[dimension] - 1); 
-                if (strides_[dimension] != expected) {
-                    is_contiguous_ = false;
-                }
-                expected *= shape_[dimension];
-            }  
-        }
+    {  
+        std::size_t expected = 1;
+        for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
+            nelements_ += strides_[dimension] * (shape_[dimension] - 1); 
+            if (strides_[dimension] != expected) {
+                is_contiguous_ = false;
+            }
+            expected *= shape_[dimension];
+        }   
         node_ = std::make_shared<Node>(*this);
     }
 
