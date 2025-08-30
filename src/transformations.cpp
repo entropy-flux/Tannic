@@ -14,7 +14,7 @@
 #include "cuda/outer.cuh"
 #include "cuda/reps.cuh"
 #include "cuda/concat.cuh"
-#include "cuda/fns.cuh"
+#include "cuda/ops.cuh"
 #else   
 namespace cuda {  
 using tannic::tensor_t;
@@ -63,7 +63,7 @@ void Concatenation::forward(Tensor const& first, Tensor const& second, Tensor& o
 } 
 
 void Repack::forward(Tensor const& input, Tensor& output) const {
-    Callback callback(cpu::cpy, cuda::idn);
+    Callback callback(cpu::cpy, cuda::cpy);
     callback(input, output);
 }
 

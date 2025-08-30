@@ -8,7 +8,7 @@
 #include "cpu/ops.hpp"
 
 #ifdef CUDA
-#include "cuda/fns.cuh"
+#include "cuda/ops.cuh"
 #else
 namespace cuda {
 using tannic::tensor_t;

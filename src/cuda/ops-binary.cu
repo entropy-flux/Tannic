@@ -5,47 +5,15 @@
 #include <cuda_runtime.h>
 #include <thrust/complex.h>
 #include "cuda/exc.cuh"
-#include "cuda/ops.cuh"
-#include "cuda/streams.cuh"
+#include "cuda/ops.cuh" 
 
-namespace {
-
-template<typename S, typename D, class Op>
-__global__ void scalarUnaryOpKernel(const S* src, D* dst) {
-    Op op;
-    *dst = op(*src);
-}  
-
-template<typename S, typename D, class Op>
-__global__ void batchedUnaryOpKernel(
-    const S* src, shape_t src_shape, strides_t src_strides,           
-    D* dst , shape_t dst_shape, strides_t dst_strides, 
-    uint8_t rank, size_t ne
-) {
-    Op op{};
-
-    for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) { 
-        size_t offs = 0;
-        size_t remaining = idx;
-
-        for (int dim = rank - 1; dim >= 0; --dim) {
-            size_t dim_idx = remaining % dst_shape.sizes[dim];
-            remaining /= dst_shape.sizes[dim];
- 
-            size_t src_idx = (src_shape.sizes[dim] == 1) ? 0 : dim_idx;
-            offs += src_idx * src_strides.sizes[dim];
-        }
-
-        dst[idx] = op(src[offs]);
-    }
-} 
+namespace { 
 
 template<typename S0, typename S1, typename D, class Op>
 __global__ void scalarBinaryOpKernel(const S0* src0, const S1* src1, D* dst) {
     Op op;
     *dst = op(*src0, *src1);
-}
-
+} 
 
 template<typename S0, typename S1, typename D, class Op>
 __global__ void batchedBinaryOpKernel(
@@ -79,32 +47,7 @@ __global__ void batchedBinaryOpKernel(
 
         dst_ptr[idx] = op(src0_ptr[offs0], src1_ptr[offs1]);
     }
-}
- 
-template<typename S, typename D, class Op>
-status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream) {
-    cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
-    if (src->rank == 0) {
-        scalarUnaryOpKernel<S, D, Op><<<1, 1, 0, cudaStream>>>(
-            (const S*)(src->address), 
-            (D*)(dst->address)
-        ); 
-    } 
-    
-    else {    
-        size_t ne = dst->size; 
-        size_t blockSize = 256;
-        size_t gridSize = (ne + blockSize - 1) / blockSize;
-
-        batchedUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
-            (const S*)(src->address), src->shape, src->strides,
-            (D*)(dst->address), dst->shape, dst->strides,
-            src->rank, ne
-        ); 
-    } 
-    return SUCCESS;
-}         
- 
+} 
 
 template<typename S0, typename S1, typename D, class Op>
 status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream) {
@@ -132,23 +75,11 @@ status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t
     } 
 
     return SUCCESS;
-} 
-
-constexpr static status launchDefaultUnaryOpKernel(const tensor_t*, tensor_t*, stream_t) {
-    return UNSUPPORTED_DTYPE;
-};  
-  
+}  
 
 constexpr static status launchDefaultBinaryOpKernel(const tensor_t*, const tensor_t*, tensor_t*, stream_t) {
     return UNSUPPORTED_DTYPE;
-};   
-
-struct Neg { 
-    template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const {
-        return -a;
-    }
-};
+};    
 
 struct Add { 
     template<class A, class B>
@@ -177,32 +108,13 @@ struct Pow {
         return pow(a, b);
     }
 };   
-
-constexpr static inline int index(type type) {
-    return static_cast<int>(type);
-}
-
-
+ 
 constexpr static inline int index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 }   
-
-using UnaryOpKernel = status(*)(const tensor_t*, tensor_t*, stream_t);       
+      
 using BinaryOpKernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*, stream_t);         
-
-constexpr auto dispatchNeg = []() {  
-    std::array<UnaryOpKernel, index(TYPES)> table; table.fill(launchDefaultUnaryOpKernel);
-    table[index(int8)] = launchUnaryOpKernel<int8_t, int8_t, Neg>;
-    table[index(int16)] = launchUnaryOpKernel<int16_t, int16_t, Neg>;
-    table[index(int32)] = launchUnaryOpKernel<int32_t, int32_t, Neg>;
-    table[index(int64)] = launchUnaryOpKernel<int64_t, int64_t, Neg>;
-    table[index(float32)] = launchUnaryOpKernel<float, float, Neg>;
-    table[index(float64)] = launchUnaryOpKernel<double, double, Neg>;
-    table[index(complex64)] = launchUnaryOpKernel<thrust::complex<float>, thrust::complex<float>, Neg>;
-    table[index(complex128)] = launchUnaryOpKernel<thrust::complex<double>, thrust::complex<double>, Neg>;
-    return table;
-}();      
-
+  
 constexpr auto dispatchAdd = []() {
     std::array<BinaryOpKernel, index(TYPES, TYPES)> table; table.fill(launchDefaultBinaryOpKernel);
     table[index(int8, int8)]   = launchBinaryOpKernel<int8_t, int8_t, int8_t, Add>;
@@ -327,14 +239,9 @@ constexpr auto dispatchPow = []() {
     table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Pow>;
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Pow>; 
     return table;
-}();  
+}();   
 
-
-} namespace cuda {
-  
-status neg(tensor_t const* src, tensor_t* dst, stream_t stream) {   
-    return dispatchNeg[index(src->dtype)](src, dst, stream); 
-}
+} namespace cuda { 
 
 status add(tensor_t const* src1, tensor_t const* src2, tensor_t* dst, stream_t stream) {  
     return dispatchAdd[index(src1->dtype, src2->dtype)](src1, src2, dst, stream); 

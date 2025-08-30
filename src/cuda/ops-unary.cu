@@ -2,8 +2,9 @@
 #include <cstdint>
 #include <array>
 #include <stdexcept>
+#include <thrust/complex.h>
 #include "cuda/exc.cuh"
-#include "cuda/fns.cuh"  
+#include "cuda/ops.cuh"  
 
 namespace {
     
@@ -58,7 +59,15 @@ status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args.
     }  
     return SUCCESS;
 } 
- 
+
+
+struct Neg { 
+    template<class A>
+    __device__ __forceinline__ auto operator()(A&& a) const {
+        return -a;
+    }
+};
+
 struct Cpy { 
     template<class A>
     __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(a)) {
@@ -151,7 +160,30 @@ struct Tanh {
 
 } namespace cuda {
 
-status idn(const tensor_t* src, tensor_t* dst, stream_t stream) {
+status neg(const tensor_t* src, tensor_t* dst,  stream_t stream) {
+    switch (src->dtype) {
+        case int8:
+            return launchFnKernel<int8_t, int8_t, Neg>(src, dst, stream);
+        case int16:
+            return launchFnKernel<int16_t, int16_t, Neg>(src, dst, stream);
+        case int32:
+            return launchFnKernel<int32_t, int32_t, Neg>(src, dst, stream);
+        case int64:
+            return launchFnKernel<int64_t, int64_t, Neg>(src, dst, stream);
+        case float32:
+            return launchFnKernel<float, float, Neg>(src, dst, stream);
+        case float64:
+            return launchFnKernel<double, double, Neg>(src, dst, stream);
+        case complex64:
+            return launchFnKernel<thrust::complex<float>, thrust::complex<float>, Neg>(src, dst, stream);
+        case complex128:
+            return launchFnKernel<thrust::complex<double>, thrust::complex<double>, Neg>(src, dst, stream);
+        default:
+            return UNSUPPORTED_DTYPE;
+    }
+}
+
+status cpy(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case int8:
             return launchFnKernel<int8_t, int8_t, Cpy>(src, dst, stream);
@@ -165,7 +197,11 @@ status idn(const tensor_t* src, tensor_t* dst, stream_t stream) {
             return launchFnKernel<float, float, Cpy>(src, dst, stream);
         case float64:
             return launchFnKernel<double, double, Cpy>(src, dst, stream);
-        default:
+        case complex64:
+            return launchFnKernel<thrust::complex<float>, thrust::complex<float>, Cpy>(src, dst, stream);
+        case complex128:
+            return launchFnKernel<thrust::complex<double>, thrust::complex<double>, Cpy>(src, dst, stream);
+        default: 
             return UNSUPPORTED_DTYPE;
     }
 } 
