@@ -33,7 +33,8 @@ Node::Node(Tensor const& target) {
                 .resource = {
                     .host = host_t {.traits = resource.pinned() ? PINNED : PAGEABLE }
                 },
-            }
+            },
+            .size = target.nelements()
         };
     } 
     
@@ -52,7 +53,8 @@ Node::Node(Tensor const& target) {
                         .id = resource.id(),
                         .traits = resource.blocking() ? SYNC : ASYNC}
                 },
-            }
+            },
+            .size = target.nelements()
         };
     }
  

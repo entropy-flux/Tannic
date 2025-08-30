@@ -94,7 +94,8 @@ tensor_t structure(Tensor const& tensor) {
             .environment = {
                 .environment = HOST,
                 .resource = {.host = structure(resource)},
-            }
+            },
+            .size = tensor.nelements()
         };
     } else {
         Device const& resource = std::get<Device>(alloc);
@@ -107,7 +108,8 @@ tensor_t structure(Tensor const& tensor) {
             .environment = {
                 .environment = DEVICE,
                 .resource = {.device = structure(resource)},
-            }
+            },
+            .size = tensor.nelements()
         };
     }
 }

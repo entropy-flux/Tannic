@@ -190,7 +190,12 @@ public:
     /// Returns the offset of the tensor in the current buffer. 
     std::ptrdiff_t offset() const {
         return offset_;
-    }   
+    } 
+    
+    /// Returns the total number of elements of the tensor.
+    std::size_t nelements() const {  
+        return nelements_;
+    } 
 
     /// Returns the total number of bytes occupied by the tensor's elements.
     std::size_t nbytes() const {  
