@@ -4,15 +4,7 @@
 #include <complex>
 #include "cpu/ops.hpp" 
 
-namespace {
-    
-template<typename S, typename D, class Op>
-void scalarUnaryOpKernel(
-    const S* src_ptr, D* dst_ptr
-) {
-    Op op;
-    *dst_ptr = op(*src_ptr);
-}    
+namespace { 
 
 template<typename S0, typename S1, typename D, class Op>
 void scalarBinaryOpKernel(
@@ -22,32 +14,7 @@ void scalarBinaryOpKernel(
 ) {
     Op op;
     *dst_ptr = op(*src0_ptr, *src1_ptr);
-}  
-  
-template<typename S, typename D, class Op>
-void batchedUnaryOpKernel( 
-    const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,           
-    D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides, 
-    uint8_t rank, size_t ne
-) { 
-    Op op{};  
-    size_t cnt[8] = {0};
-    for (size_t idx = 0; idx < ne; ++idx) {
-        size_t offs = 0;
-        for (int dim = 0; dim < rank; ++dim) { 
-            size_t coord = (src_shape.sizes[dim] == 1) ? 0 : cnt[dim];
-            offs += coord * src_strides.sizes[dim];
-        }
-
-        dst_ptr[idx] = op(src_ptr[offs]);
-
-        for (int dim = rank - 1; dim >= 0; --dim) {
-            if (++cnt[dim] < dst_shape.sizes[dim])
-                break;
-            cnt[dim] = 0;
-        }
-    } 
-}     
+}   
 
 template<typename S0, typename S1, typename D, class Op>
 void batchedBinaryOpKernel(
@@ -84,29 +51,7 @@ void batchedBinaryOpKernel(
         }
         if (done) break;
     }
-}
-
-
-template<typename S, typename D, class Op>
-status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
-    if (src->rank == 0) {
-        scalarUnaryOpKernel<S, D, Op>(
-            (const S*)(src->address), 
-            (D*)(dst->address)
-        ); 
-    } 
-    
-    else {    
-        size_t ne = dst->size;
-
-        batchedUnaryOpKernel<S, D, Op>(
-            (const S*)(src->address), src->shape, src->strides,
-            (D*)(dst->address), dst->shape, dst->strides,
-            src->rank, ne
-        ); 
-    } 
-    return SUCCESS;
-}        
+}  
  
 template<typename S0, typename S1, typename D, class Op>
 status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
@@ -125,15 +70,7 @@ status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t
         ); 
     } 
     return SUCCESS;
-}
-
-  
-struct Neg { 
-    template<class A>
-    auto operator()(A&& a) const noexcept(noexcept(-a)) {
-        return -a;
-    }
-};
+}   
 
 struct Add { 
     template<class A, class B>
@@ -162,39 +99,16 @@ struct Pow {
         return std::pow(a, b);
     }
 };
-
-using UnaryOpKernel = status(*)( const tensor_t*, tensor_t*);      
+  
 using BinaryOpKernel = status(*)( const tensor_t*, const tensor_t*, tensor_t*);      
-
-constexpr static inline int index(type type) {
-    return static_cast<int>(type);
-} 
 
 constexpr static inline int index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 }  
-
-constexpr static status launchDefaultUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
-    return UNSUPPORTED_DTYPE;
-};  
-
+ 
 constexpr static status launchDefaultBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
     return UNSUPPORTED_DTYPE;
-};    
- 
-constexpr auto dispatchNeg = []() {  
-    std::array<UnaryOpKernel, index(TYPES)> table; table.fill(launchDefaultUnaryOpKernel);
-    table[index(int8)] = launchUnaryOpKernel<int8_t, int8_t, Neg>;
-    table[index(int16)] = launchUnaryOpKernel<int16_t, int16_t, Neg>;
-    table[index(int32)] = launchUnaryOpKernel<int32_t, int32_t, Neg>;
-    table[index(int64)] = launchUnaryOpKernel<int64_t, int64_t, Neg>;
-    table[index(float32)] = launchUnaryOpKernel<float, float, Neg>;
-    table[index(float64)] = launchUnaryOpKernel<double, double, Neg>;
-    table[index(complex64)] = launchUnaryOpKernel<std::complex<float>, std::complex<float>, Neg>;
-    table[index(complex128)] = launchUnaryOpKernel<std::complex<double>, std::complex<double>, Neg>;
-    return table;
-    return table;
-}();      
+};     
 
 constexpr auto dispatchAdd = []() {
     std::array<BinaryOpKernel, index(TYPES, TYPES)> table; table.fill(launchDefaultBinaryOpKernel);
@@ -321,11 +235,7 @@ constexpr auto dispatchPow = []() {
     return table;
 }();  
 
-} namespace cpu {
-
-status neg(tensor_t const* src, tensor_t* dst) {  
-    return dispatchNeg[index(src->dtype)](src, dst);
-}
+} namespace cpu { 
 
 status add(tensor_t const* src1, tensor_t const* src2, tensor_t* dst) { 
     return dispatchAdd[index(src1->dtype, src2->dtype)](src1, src2, dst);

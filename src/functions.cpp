@@ -5,7 +5,7 @@
 #include "runtime/status.h"
 #include "runtime/streams.h"
 #include "runtime/graph.h"
-#include "cpu/fns.hpp"
+#include "cpu/ops.hpp"
 
 #ifdef CUDA
 #include "cuda/fns.cuh"

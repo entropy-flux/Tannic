@@ -7,7 +7,7 @@
 #include "cpu/outer.hpp"
 #include "cpu/reps.hpp"
 #include "cpu/concat.hpp"
-#include "cpu/fns.hpp"
+#include "cpu/ops.hpp"
 
 #ifdef CUDA
 #include "cuda/gemm.cuh"   
@@ -63,7 +63,7 @@ void Concatenation::forward(Tensor const& first, Tensor const& second, Tensor& o
 } 
 
 void Repack::forward(Tensor const& input, Tensor& output) const {
-    Callback callback(cpu::idn, cuda::idn);
+    Callback callback(cpu::cpy, cuda::idn);
     callback(input, output);
 }
 

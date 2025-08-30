@@ -7,16 +7,16 @@
 
 namespace {
     
-template<typename S, typename D, class Fn>
-__global__ void scalarFnKernel(const S* src, D* dst, Fn fn) { 
+template<typename S, typename D, class Op>
+__global__ void scalarUnaryOpKernel(const S* src, D* dst, Op fn) { 
     *dst = fn(*src);
 }  
 
-template<typename S, typename D, class Fn>
+template<typename S, typename D, class Op>
 __global__ void batchedFnKernel(
     const S* src, shape_t src_shape, strides_t src_strides,
     D* dst, shape_t dst_shape, strides_t dst_strides,
-    uint8_t rank, size_t ne, Fn fn
+    uint8_t rank, size_t ne, Op fn
 ) { 
     for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) { 
         size_t offs = 0;
@@ -34,12 +34,12 @@ __global__ void batchedFnKernel(
     }
 }   
 
-template<typename S, typename D, class Fn, class ... Args>
+template<typename S, typename D, class Op, class ... Args>
 status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args... args)  { 
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
-    Fn fn(std::forward<Args>(args)...);
+    Op fn(std::forward<Args>(args)...);
     if (src->rank == 0) {
-        scalarFnKernel<S, D, Fn><<<1, 1, 0, cudaStream>>>(
+        scalarUnaryOpKernel<S, D, Op><<<1, 1, 0, cudaStream>>>(
             (const S*)(src->address),
             (D*)(dst->address), fn
         ); 
@@ -50,7 +50,7 @@ status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args.
         size_t blockSize = 256;
         size_t gridSize = (ne + blockSize - 1) / blockSize;
 
-        batchedFnKernel<S, D, Fn><<<gridSize, blockSize, 0, cudaStream>>>(
+        batchedFnKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
             (const S*)(src->address), src->shape, src->strides,
             (D*)(dst->address), dst->shape, dst->strides,
             src->rank, ne, fn
@@ -59,7 +59,7 @@ status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args.
     return SUCCESS;
 } 
  
-struct Idn { 
+struct Cpy { 
     template<class A>
     __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(a)) {
         return a;
@@ -154,17 +154,17 @@ struct Tanh {
 status idn(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case int8:
-            return launchFnKernel<int8_t, int8_t, Idn>(src, dst, stream);
+            return launchFnKernel<int8_t, int8_t, Cpy>(src, dst, stream);
         case int16:
-            return launchFnKernel<int16_t, int16_t, Idn>(src, dst, stream); 
+            return launchFnKernel<int16_t, int16_t, Cpy>(src, dst, stream); 
         case int32:
-            return launchFnKernel<int32_t, int32_t, Idn>(src, dst, stream); 
+            return launchFnKernel<int32_t, int32_t, Cpy>(src, dst, stream); 
         case int64:
-            return launchFnKernel<int64_t, int64_t, Idn>(src, dst, stream); 
+            return launchFnKernel<int64_t, int64_t, Cpy>(src, dst, stream); 
         case float32:
-            return launchFnKernel<float, float, Idn>(src, dst, stream);
+            return launchFnKernel<float, float, Cpy>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Idn>(src, dst, stream);
+            return launchFnKernel<double, double, Cpy>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
