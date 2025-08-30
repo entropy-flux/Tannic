@@ -97,10 +97,7 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst) {
     } 
     
     else {    
-        size_t ne = 1;
-        for (uint8_t dim = 0; dim < src->rank; ++dim) {
-            ne *= dst->shape.sizes[dim];
-        }
+        size_t ne = dst->size;
 
         batchedUnaryOpKernel<S, D, Op>(
             (const S*)(src->address), src->shape, src->strides,

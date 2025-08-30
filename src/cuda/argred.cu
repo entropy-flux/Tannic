@@ -58,10 +58,8 @@ template<typename S, typename D, typename A, class Op>
 status launchArgReduce(const tensor_t* src, tensor_t* dst, uint8_t dim, stream_t stream) {
     if (src->rank == 0 || dim >= src->rank) return SUCCESS; // or an error code if you prefer
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
-
-    size_t ne = 1;
-    for (int i = 0; i < src->rank; ++i) if (i != dim) ne *= src->shape.sizes[i];
-
+    
+    size_t ne = src->size / src->shape.sizes[dim];
     const int blockSize = 256;
     const int gridSize  = static_cast<int>((ne + blockSize - 1) / blockSize);
 

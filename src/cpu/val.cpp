@@ -39,10 +39,7 @@ void allcloseKernel(
 template<typename S>
 bool launchAllcloseKernel(const tensor_t* src0, const tensor_t* src1,
                           double rtol, double atol) {
-    size_t ne = 1;
-    for (uint8_t dim = 0; dim < src0->rank; ++dim) {
-        ne *= src0->shape.sizes[dim];
-    }
+    size_t ne = src0->size;
 
     bool result = true;
 

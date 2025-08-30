@@ -75,10 +75,7 @@ struct LE {
 template<typename S, typename Cmp>
 status launchArgCompare(const tensor_t* src, tensor_t* dst, uint8_t dim, S init, stream_t stream) { 
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
-    size_t ne = 1;
-    for (int i = 0; i < dst->rank; ++i) {
-        ne *= dst->shape.sizes[i];
-    }
+    size_t ne = dst->size;
 
     int threads = 256;
     int blocks = (ne + threads - 1) / threads;

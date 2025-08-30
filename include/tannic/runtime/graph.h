@@ -17,7 +17,6 @@
 
 #ifndef GRAPH_H
 #define GRAPH_H 
-  
 
 #ifdef __cplusplus 
 #include <cstdint> 

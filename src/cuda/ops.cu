@@ -92,11 +92,7 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream) 
     } 
     
     else {    
-        size_t ne = 1;
-        for (uint8_t dim = 0; dim < src->rank; ++dim) {
-            ne *= dst->shape.sizes[dim];
-        }
-
+        size_t ne = dst->size; 
         size_t blockSize = 256;
         size_t gridSize = (ne + blockSize - 1) / blockSize;
 
@@ -123,11 +119,7 @@ status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t
     } 
     else {     
         // total number of elements in dst
-        size_t ne = 1;
-        for (uint8_t dim = 0; dim < dst->rank; ++dim) {
-            ne *= dst->shape.sizes[dim];
-        }
-        
+        size_t ne = dst->size; 
         int blockSize = 256;
         int gridSize = (ne + blockSize - 1) / blockSize;
 

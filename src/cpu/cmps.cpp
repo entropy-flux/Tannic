@@ -83,10 +83,7 @@ status launchCmpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst
         return SUCCESS;
     }
  
-    size_t ne = 1;
-    for (uint8_t dim = 0; dim < dst->rank; ++dim) {
-        ne *= dst->shape.sizes[dim];
-    }
+    size_t ne = dst->size;
  
     std::memset(dst->address, 0, (ne + 7) / 8); 
     cmpKernel<S, Op>(
