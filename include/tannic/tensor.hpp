@@ -111,8 +111,7 @@ public:
     ,   shape_(shape) 
     ,   strides_(shape_) 
     ,   offset_(0)  {
-        nelements_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{});
-        nbytes_ = nbytesof(dtype, nelements_);
+        nelements_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}); 
     }
 
     /**
@@ -127,8 +126,7 @@ public:
     ,   shape_(shape) 
     ,   strides_(strides) 
     ,   offset_(offset)  {   
-        if (rank() == 0) {
-            nbytes_ = dsizeof(dtype_);
+        if (rank() == 0) { 
         }
         else {
             std::size_t expected = 1;
@@ -138,8 +136,7 @@ public:
                     is_contiguous_ = false;
                 }
                 expected *= shape_[dimension];
-            } 
-            nbytes_ = nbytesof(dtype, nelements_);
+            }  
         }
     }  
 
@@ -200,8 +197,7 @@ public:
     }   
 
     /// Returns the total number of bytes occupied by the tensor's elements.
-    std::size_t nbytes() const { 
-        assert(nbytes_ == nbytesof(dtype_, nelements_));
+    std::size_t nbytes() const {  
         return nbytesof(dtype_, nelements_);
     } 
 
@@ -287,8 +283,7 @@ public:
     ,   strides_(shape_)
     ,   offset_(0)
     ,   nelements_(shape_[0]) {
-        if (dtype_ == boolean) {
-            nbytes_ = (values.size() + 7) / 8;
+        if (dtype_ == boolean) { 
             initialize();
             std::ptrdiff_t index = 0; 
             for (auto const& value : values) {
@@ -297,8 +292,7 @@ public:
             }
         }
 
-        else {
-            nbytes_ = values.size() * dsizeof(dtype_);
+        else { 
             initialize();
             size_t index = 0;
             for (auto const& value : values) {
@@ -335,8 +329,7 @@ public:
     ,   nelements_(shape_[0] * shape_[1])
     {
 
-        if (dtype_ == boolean) {
-            nbytes_ = (shape_[0] * shape_[1] + 7) / 8;
+        if (dtype_ == boolean) { 
             initialize();
             std::ptrdiff_t index = 0;   
             for (auto const& row : values) {
@@ -349,8 +342,7 @@ public:
             }
         } 
 
-        else {
-            nbytes_ = shape_[0] * shape_[1] * dsizeof(dtype_);
+        else { 
             initialize(); 
             size_t index = 0;   
             for (auto row : values) {
@@ -398,8 +390,7 @@ public:
     ,   nelements_(shape_[0] * shape_[1] * shape_[2])
         
     {
-        if (dtype_ == boolean) {
-            nbytes_ = (shape_[0] * shape_[1] * shape_[2] + 7) / 8;
+        if (dtype_ == boolean) { 
             initialize();
             std::ptrdiff_t index = 0;   
             for (auto const& matrix : values) {
@@ -416,11 +407,8 @@ public:
             }
         }
 
-        else {
-            nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
-            initialize();
-            std::cout << shape_ << std::endl;
-            std::cout << nbytes_ << std::endl;
+        else { 
+            initialize(); 
             size_t index = 0;   
             for (auto const& matrix : values) {
                 if (matrix.size() != shape_[1])
@@ -488,8 +476,7 @@ public:
     ,   nelements_(shape_[0] * shape_[1] * shape_[2] * shape_[3])
     {
         
-        if (dtype_ == boolean) {
-            nbytes_ = (shape_[0] * shape_[1] * shape_[2] * shape_[3] + 7) / 8;
+        if (dtype_ == boolean) { 
             initialize();
             std::ptrdiff_t index = 0;
             for (auto const& tensor3D : values) {
@@ -510,8 +497,7 @@ public:
             }
         }
 
-        else { 
-            nbytes_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}) * dsizeof(dtype_);
+        else {  
             initialize();
 
             size_t index = 0;
@@ -1054,8 +1040,7 @@ public:
     ,   offset_(offset)   
     ,   buffer_(std::move(storage)) 
     {
-        nelements_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{});
-        nbytes_ =  nbytesof(dtype_, nelements_);
+        nelements_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}); 
         node_ = std::make_shared<Node>(*this);
     }
 
@@ -1066,8 +1051,7 @@ public:
     ,   offset_(offset)   
     ,   buffer_(std::move(storage)) 
     {
-        if (rank() == 0) {
-            nbytes_ = nbytesof(dtype_, 1);
+        if (rank() == 0) { 
         }
         else { 
             std::size_t expected = 1;
@@ -1077,8 +1061,7 @@ public:
                     is_contiguous_ = false;
                 }
                 expected *= shape_[dimension];
-            } 
-            nbytes_ = nbytesof(dtype, nelements_);
+            }  
         }
         node_ = std::make_shared<Node>(*this);
     }
@@ -1133,7 +1116,6 @@ private:
     type dtype_;
     Shape shape_; 
     Strides strides_; 
-    std::size_t nbytes_ = 0; 
     std::size_t nelements_ = 1;
     std::ptrdiff_t offset_ = 0;    
     mutable std::shared_ptr<Buffer> buffer_ = nullptr;
