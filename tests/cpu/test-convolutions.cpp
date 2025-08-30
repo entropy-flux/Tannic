@@ -48,8 +48,11 @@ TEST(TestConvolution1D, Padding1) {
     kernel.initialize({{{1, -1}}});
 
     Tensor output = convolve1D(input, kernel, 1, 1);
+    Tensor expected(float32, {1, 1, 4}); expected.initialize({{{-1, -1, -1, 3}}});
     EXPECT_EQ(output.shape(), Shape({1, 1, 4}));
+    EXPECT_TRUE(allclose(expected, output)); 
 }
+
 
 TEST(TestConvolution1D, MultiChannelInput) {
     Tensor input(float32, {1, 2, 4});  // shape: [batch=1, channels=2, length=4]
@@ -69,9 +72,10 @@ TEST(TestConvolution1D, MultiChannelInput) {
     });
 
     Tensor output = convolve1D(input, kernel, 1, 0);
+    Tensor expected(float32, {1,1,2}); expected.initialize({{{24, 30}}});
     EXPECT_EQ(output.shape(), Shape({1, 1, 2}));
+    EXPECT_TRUE(allclose(output, expected));
 }
-
 
 TEST(TestConvolution1D, Kernel1x1) {
     Tensor input(float32, {1, 1, 4});
@@ -165,7 +169,9 @@ TEST(TestConvolution, Stride2) {
     }}});
 
     Tensor output = convolve2D(input, kernel, {2,2}, {0,0});
+    Tensor expected(float32, {1, 1, 2, 2}); expected.initialize({{{{-5, -5},{-5, -5}}}});
     EXPECT_EQ(output.shape(), Shape({1,1,2,2}));
+    EXPECT_TRUE(allclose(expected, output));
 }
 
 TEST(TestConvolution, Padding1) {

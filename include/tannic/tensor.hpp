@@ -19,7 +19,7 @@
 #define TENSOR_HPP 
 
 /**
- * @file Tensor.hpp
+ * @file tensor.hpp
  * @author Eric Hermosis
  * @date 2025
  * @brief Core multidimensional tensor class for the Tannic Tensor Library. 
@@ -111,8 +111,8 @@ public:
     ,   shape_(shape) 
     ,   strides_(shape_) 
     ,   offset_(0)  {
-        std::size_t nelements = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{});
-        nbytes_ = nbytesof(dtype, nelements);
+        nelements_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{});
+        nbytes_ = nbytesof(dtype, nelements_);
     }
 
     /**
@@ -131,16 +131,15 @@ public:
             nbytes_ = dsizeof(dtype_);
         }
         else {
-            std::size_t nelements = 0; 
             std::size_t expected = 1;
             for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
-                nelements += strides_[dimension] * (shape_[dimension] - 1); 
+                nelements_ += strides_[dimension] * (shape_[dimension] - 1); 
                 if (strides_[dimension] != expected) {
                     is_contiguous_ = false;
                 }
                 expected *= shape_[dimension];
             } 
-            nbytes_ = nbytesof(dtype, nelements + 1);
+            nbytes_ = nbytesof(dtype, nelements_);
         }
     }  
 
@@ -202,7 +201,8 @@ public:
 
     /// Returns the total number of bytes occupied by the tensor's elements.
     std::size_t nbytes() const { 
-        return nbytes_;
+        assert(nbytes_ == nbytesof(dtype_, nelements_));
+        return nbytesof(dtype_, nelements_);
     } 
 
     /// Returns whether the tensor's elements are in contiguous layout or not.
@@ -285,7 +285,8 @@ public:
     :   dtype_(dtypeof<T>())
     ,   shape_({values.size()})
     ,   strides_(shape_)
-    ,   offset_(0) {
+    ,   offset_(0)
+    ,   nelements_(shape_[0]) {
         if (dtype_ == boolean) {
             nbytes_ = (values.size() + 7) / 8;
             initialize();
@@ -327,10 +328,11 @@ public:
      */
     template<typename T>
     Tensor(std::initializer_list<std::initializer_list<T>> const& values)
-        : dtype_(dtypeof<T>())
-        , shape_({values.size(), values.begin()->size()})
-        , strides_(shape_)
-        , offset_(0) 
+    :   dtype_(dtypeof<T>())
+    ,   shape_({values.size(), values.begin()->size()})
+    ,   strides_(shape_)
+    ,   offset_(0) 
+    ,   nelements_(shape_[0] * shape_[1])
     {
 
         if (dtype_ == boolean) {
@@ -389,10 +391,12 @@ public:
      */
     template<typename T>
     Tensor(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values)
-        : dtype_(dtypeof<T>())
-        , shape_({values.size(), values.begin()->size(), values.begin()->begin()->size()})
-        , strides_(shape_)
-        , offset_(0)
+    :   dtype_(dtypeof<T>())
+    ,   shape_({values.size(), values.begin()->size(), values.begin()->begin()->size()})
+    ,   strides_(shape_)
+    ,   offset_(0)
+    ,   nelements_(shape_[0] * shape_[1] * shape_[2])
+        
     {
         if (dtype_ == boolean) {
             nbytes_ = (shape_[0] * shape_[1] * shape_[2] + 7) / 8;
@@ -472,15 +476,16 @@ public:
      */
     template<typename T>
     Tensor(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const& values)
-        : dtype_(dtypeof<T>())
-        , shape_({
+    :    dtype_(dtypeof<T>())
+    ,    shape_({
             values.size(),
             values.begin()->size(),
             values.begin()->begin()->size(),
             values.begin()->begin()->begin()->size()
         })
-        , strides_(shape_)
-        , offset_(0)
+    ,   strides_(shape_)
+    ,   offset_(0)
+    ,   nelements_(shape_[0] * shape_[1] * shape_[2] * shape_[3])
     {
         
         if (dtype_ == boolean) {
@@ -1049,8 +1054,8 @@ public:
     ,   offset_(offset)   
     ,   buffer_(std::move(storage)) 
     {
-        std::size_t nelements = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{});
-        nbytes_ =  nbytesof(dtype_, nelements);
+        nelements_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{});
+        nbytes_ =  nbytesof(dtype_, nelements_);
         node_ = std::make_shared<Node>(*this);
     }
 
@@ -1064,17 +1069,16 @@ public:
         if (rank() == 0) {
             nbytes_ = nbytesof(dtype_, 1);
         }
-        else {
-            std::size_t nelements = 0; 
+        else { 
             std::size_t expected = 1;
             for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
-                nelements += strides_[dimension] * (shape_[dimension] - 1); 
+                nelements_ += strides_[dimension] * (shape_[dimension] - 1); 
                 if (strides_[dimension] != expected) {
                     is_contiguous_ = false;
                 }
                 expected *= shape_[dimension];
             } 
-            nbytes_ = nbytesof(dtype, nelements + 1);
+            nbytes_ = nbytesof(dtype, nelements_);
         }
         node_ = std::make_shared<Node>(*this);
     }
@@ -1130,6 +1134,7 @@ private:
     Shape shape_; 
     Strides strides_; 
     std::size_t nbytes_ = 0; 
+    std::size_t nelements_ = 1;
     std::ptrdiff_t offset_ = 0;    
     mutable std::shared_ptr<Buffer> buffer_ = nullptr;
     mutable std::shared_ptr<Node> node_ = nullptr;

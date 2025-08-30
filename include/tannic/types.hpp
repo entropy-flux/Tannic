@@ -19,7 +19,7 @@
 #define TYPES_HPP
  
 /**
- * @file Types.hpp
+ * @file types.hpp
  * @author Eric Hermosis
  * @date 2025
  * @brief Core type system for the Tannic Tensor Library.

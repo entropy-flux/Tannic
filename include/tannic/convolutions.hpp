@@ -17,7 +17,7 @@
 #define CONVOLUTIONS_HPP 
 
 /**
- * @file Convolutions.hpp
+ * @file convolutions.hpp
  * @author Eric Hermosis
  * @date 2025
  * @brief Defines tensor convolutional operations.

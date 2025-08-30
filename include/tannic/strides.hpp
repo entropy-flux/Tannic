@@ -19,7 +19,7 @@
 #define STRIDES_HPP 
 
 /**
- * @file Strides.hpp
+ * @file strides.hpp
  * @author Eric Hermosis
  * @date 2025
  * @brief Memory layout specification for tensor dimensions in the Tannic Tensor Library. 

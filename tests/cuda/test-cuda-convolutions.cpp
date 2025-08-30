@@ -9,7 +9,6 @@
 using namespace tannic; 
 
 
-//
 TEST(TestConvolution1DVC, Simple1DDVC) { 
     Tensor input(float32, {1, 1, 5});
     input.initialize({{{1, 2, 3, 4, 5}}}, Device());
@@ -50,7 +49,10 @@ TEST(TestConvolution1DDVC, Padding1DVC) {
     kernel.initialize({{{1, -1}}}, Device());
 
     Tensor output = convolve1D(input, kernel, 1, 1);
+
+    Tensor expected(float32, {1, 1, 4}); expected.initialize({{{-1, -1, -1, 3}}}, Device());
     EXPECT_EQ(output.shape(), Shape({1, 1, 4}));
+    EXPECT_TRUE(allclose(expected, output)); 
 }
 
 TEST(TestConvolution1DDVC, MultiChannelInputDVC) {
@@ -71,7 +73,9 @@ TEST(TestConvolution1DDVC, MultiChannelInputDVC) {
     }, Device());
 
     Tensor output = convolve1D(input, kernel, 1, 0);
+    Tensor expected(float32, {1,1,2}); expected.initialize({{{24, 30}}}, Device());
     EXPECT_EQ(output.shape(), Shape({1, 1, 2}));
+    EXPECT_TRUE(allclose(output, expected));
 }
 
 
@@ -168,8 +172,18 @@ TEST(TestConvolutionDVC, Stride2DVC) {
     }}}, Device());
 
     Tensor output = convolve2D(input, kernel, {2,2}, {0,0});
+    Tensor expected(float32, {1, 1, 2, 2}); expected.initialize({{{{-5, -5},{-5, -5}}}}, Device());
     EXPECT_EQ(output.shape(), Shape({1,1,2,2}));
 }
+
+/*
+
+
+Output: tensor([[[[-5., -5.],
+          [-5., -5.]]]])
+Output shape: torch.Size([1, 1, 2, 2])
+
+*/
 
 TEST(TestConvolutionDVC, Padding1DVC) {
     Tensor input(float32, {1,1,3,3});

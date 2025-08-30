@@ -19,7 +19,7 @@
 #define SHAPE_HPP
  
 /**
- * @file Shape.hpp
+ * @file shape.hpp
  * @author Eric Hermosis
  * @date 2025
  * @brief Defines the `tannic::Shape` class for representing tensor dimensions.   

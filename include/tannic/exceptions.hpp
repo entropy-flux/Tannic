@@ -19,7 +19,7 @@
 #define EXCEPTIONS_HPP
 
 /**
- * @file Functions.hpp
+ * @file functions.hpp
  * @author Eric Hermosis
  * @date 2025
  * @brief Defines the excception types used in the library.  

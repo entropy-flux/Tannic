@@ -19,7 +19,7 @@
 #define SLICES_HPP
 
 /**
- * @file Slices.hpp 
+ * @file slices.hpp 
  * @author Eric Hermosis
  * @date 2025  
  * @brief Implements tensor slicing for expression templates in the Tannic Tensor Library.

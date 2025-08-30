@@ -31,7 +31,7 @@
 #define REDUCTIONS_HPP 
  
 /**
- * @file Reductions.hpp
+ * @file reductions.hpp
  * @author Eric Hermosis
  * @date 2025
  * @brief Defines reduction operations for tensor expressions. 

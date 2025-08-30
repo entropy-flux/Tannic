@@ -19,7 +19,7 @@
 #define INDEXING_HPP
 
 /**
- * @file Indexing.hpp 
+ * @file indexing.hpp 
  * @author Eric Hermosis
  * @date 2025  
  * @brief Utilities for index normalization and slicing ranges in the Tannic Tensor Library.

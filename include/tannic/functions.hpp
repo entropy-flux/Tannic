@@ -17,7 +17,7 @@
 #define FUNCTIONS_HPP
 
 /**
- * @file Functions.hpp
+ * @file functions.hpp
  * @author Eric Hermosis
  * @date 2025
  * @brief Defines mathematical function operations for tensor expressions. 

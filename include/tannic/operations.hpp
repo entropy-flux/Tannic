@@ -17,7 +17,7 @@
 #define OPERATIONS_HPP
 
 /**
- * @file Operations.hpp
+ * @file operations.hpp
  * @author Eric Hermosis
  * @date 2025
  * @brief Defines expression templates tensor aritmetic operations. 

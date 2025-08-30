@@ -17,7 +17,7 @@
 #define TRANSFORMATIONS_HPP 
 
 /**
- * @file Transformations.hpp
+ * @file transformations.hpp
  * @author Eric Hermosis
  * @date 2025
  * @brief Defines tensor transformation operations.

@@ -19,7 +19,7 @@
 #define CONCEPTS_HPP 
 
 /**
- * @file Concepts.hpp
+ * @file concepts.hpp
  * @brief Defines core C++20 concepts used throughout the Tannic Tensor Library.
  * @date 2025
  * @brief This header the `tannic::Expression` fundamental concept as a compile time
@@ -44,8 +44,7 @@ class Tensor;
  * @concept Expression
  * @brief 
  * Defines the core protocol for all expression-like types in the Tannic Tensor Library.
- *
- * @details
+ * 
  * This concept specifies the interface required to participate in tensor operations such as
  * broadcasting, slicing, evaluation, and composition. Any type that satisfies this concept
  * is considered a valid expression—this includes tensors, views, lazy expressions, and future

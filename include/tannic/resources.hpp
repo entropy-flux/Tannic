@@ -19,7 +19,7 @@
 #define RESOURCES_HPP 
 
 /**
- * @file Resources.hpp
+ * @file resources.hpp
  * @author Eric Hermosis  
  * @date 2025
  * @brief Memory resource management for heterogeneous computing. 

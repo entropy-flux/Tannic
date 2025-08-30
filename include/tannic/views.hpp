@@ -19,7 +19,7 @@
 #define VIEWS_HPP 
 
 /**
- * @file Views.hpp 
+ * @file views.hpp 
  * @author Eric Hermosis
  * @date 2025  
  * @brief Implements views for tensors in the Tannic Tensor Library.
