@@ -15,7 +15,7 @@ void scalarUnaryOpKernel(
 }    
 
 template<typename S, typename D, class Op>
-void batchedUnaryOpKernel( 
+void stridedUnaryOpKernel( 
     const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,           
     D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides, 
     uint8_t rank, size_t ne, Op op
@@ -50,7 +50,7 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, Args... args) {
     
     else {    
         size_t ne = dst->size;
-        batchedUnaryOpKernel<S, D, Op>(
+        stridedUnaryOpKernel<S, D, Op>(
             (const S*)(src->address), src->shape, src->strides,
             (D*)(dst->address), dst->shape, dst->strides,
             src->rank, ne, op

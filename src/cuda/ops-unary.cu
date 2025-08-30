@@ -14,7 +14,7 @@ __global__ void scalarUnaryOpKernel(const S* src, D* dst, Op fn) {
 }  
 
 template<typename S, typename D, class Op>
-__global__ void batchedFnKernel(
+__global__ void stridedUnaryOpKernel(
     const S* src, shape_t src_shape, strides_t src_strides,
     D* dst, shape_t dst_shape, strides_t dst_strides,
     uint8_t rank, size_t ne, Op fn
@@ -51,7 +51,7 @@ status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args.
         size_t blockSize = 256;
         size_t gridSize = (ne + blockSize - 1) / blockSize;
 
-        batchedFnKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
+        stridedUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
             (const S*)(src->address), src->shape, src->strides,
             (D*)(dst->address), dst->shape, dst->strides,
             src->rank, ne, fn

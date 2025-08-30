@@ -125,16 +125,19 @@ public:
     :   dtype_(dtype)
     ,   shape_(shape) 
     ,   strides_(strides) 
-    ,   offset_(offset)  {    
+    ,   offset_(offset)  
+    {    
         std::size_t expected = 1;
         for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
-            nelements_ += strides_[dimension] * (shape_[dimension] - 1); 
-            if (strides_[dimension] != expected) {
+            std::size_t index = rank() - 1 - dimension;   // walk backward logically
+            if (strides_[index] != expected) {
                 is_contiguous_ = false;
             }
-            expected *= shape_[dimension];
+            nelements_ *= shape_[index];
+            expected *= shape_[index];
         }   
-    }  
+    }
+
 
     /**
      * @brief Constructs a tensor by forwarding an `Expression`-like object.
@@ -1054,11 +1057,12 @@ public:
     {  
         std::size_t expected = 1;
         for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
-            nelements_ += strides_[dimension] * (shape_[dimension] - 1); 
-            if (strides_[dimension] != expected) {
+            std::size_t index = rank() - 1 - dimension;   // walk backward logically
+            if (strides_[index] != expected) {
                 is_contiguous_ = false;
             }
-            expected *= shape_[dimension];
+            nelements_ *= shape_[index];
+            expected *= shape_[index];
         }   
         node_ = std::make_shared<Node>(*this);
     }
