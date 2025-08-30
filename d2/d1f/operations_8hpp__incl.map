@@ -1,11 +1,11 @@
 <map id="include/tannic/operations.hpp" name="include/tannic/operations.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="160,5,375,31"/>
+<area shape="rect" id="node1" title="Defines expression templates tensor aritmetic operations." alt="" coords="160,5,375,31"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,79,65,104"/>
 <area shape="rect" id="node3" title=" " alt="" coords="192,225,284,251"/>
-<area shape="rect" id="node4" href="$d7/dd8/concepts_8hpp.html" title=" " alt="" coords="335,299,443,324"/>
-<area shape="rect" id="node7" href="$dd/de3/types_8hpp.html" title=" " alt="" coords="269,372,356,397"/>
-<area shape="rect" id="node13" href="$d3/d30/shape_8hpp.html" title=" " alt="" coords="616,152,705,177"/>
-<area shape="rect" id="node21" href="$d7/d08/strides_8hpp.html" title=" " alt="" coords="860,79,955,104"/>
+<area shape="rect" id="node4" href="$d7/dd8/concepts_8hpp.html" title="Defines core C++20 concepts used throughout the Tannic Tensor Library." alt="" coords="335,299,443,324"/>
+<area shape="rect" id="node7" href="$dd/de3/types_8hpp.html" title="Core type system for the Tannic Tensor Library." alt="" coords="269,372,356,397"/>
+<area shape="rect" id="node13" href="$d3/d30/shape_8hpp.html" title="Defines the tannic::Shape class for representing tensor dimensions." alt="" coords="616,152,705,177"/>
+<area shape="rect" id="node21" href="$d7/d08/strides_8hpp.html" title="Memory layout specification for tensor dimensions in the Tannic Tensor Library." alt="" coords="860,79,955,104"/>
 <area shape="rect" id="node24" href="$df/d73/traits_8hpp.html" title=" " alt="" coords="145,152,229,177"/>
 <area shape="rect" id="node5" title=" " alt="" coords="381,372,461,397"/>
 <area shape="rect" id="node6" title=" " alt="" coords="485,372,556,397"/>
@@ -18,7 +18,7 @@
 <area shape="rect" id="node15" title=" " alt="" coords="667,299,737,324"/>
 <area shape="rect" id="node16" title=" " alt="" coords="461,225,572,251"/>
 <area shape="rect" id="node17" title=" " alt="" coords="960,225,1036,251"/>
-<area shape="rect" id="node18" href="$d7/d1d/indexing_8hpp.html" title=" " alt="" coords="698,225,805,251"/>
+<area shape="rect" id="node18" href="$d7/d1d/indexing_8hpp.html" title="Utilities for index normalization and slicing ranges in the Tannic Tensor Library." alt="" coords="698,225,805,251"/>
 <area shape="rect" id="node19" href="$da/d49/exceptions_8hpp.html" title=" " alt="" coords="771,299,892,324"/>
 <area shape="rect" id="node20" title=" " alt="" coords="788,372,875,397"/>
 <area shape="rect" id="node22" title=" " alt="" coords="1112,152,1183,177"/>

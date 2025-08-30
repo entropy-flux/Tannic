@@ -9,10 +9,10 @@ var NAVTREEINDEX1 =
 "d6/d00/operations_8hpp.html#ac0ecafc7bebd99d7498fd2b815539040":[15,0,1,0,10,8],
 "d6/d00/operations_8hpp.html#acf566907df5853e93fe6b49872ed6b01":[15,0,1,0,10,9],
 "d6/d00/operations_8hpp_source.html":[15,0,1,0,10],
-"d6/d39/structtannic_1_1function_1_1Tanh.html":[14,0,0,1,11],
 "d6/d39/structtannic_1_1function_1_1Tanh.html":[12,0,0,1,11],
-"d6/d39/structtannic_1_1function_1_1Tanh.html#acbfb5b916d582aa7a144fdb4c2d2a39f":[12,0,0,1,11,0],
+"d6/d39/structtannic_1_1function_1_1Tanh.html":[14,0,0,1,11],
 "d6/d39/structtannic_1_1function_1_1Tanh.html#acbfb5b916d582aa7a144fdb4c2d2a39f":[14,0,0,1,11,0],
+"d6/d39/structtannic_1_1function_1_1Tanh.html#acbfb5b916d582aa7a144fdb4c2d2a39f":[12,0,0,1,11,0],
 "d6/d98/classRealification.html":[14,0,1],
 "d6/dba/convolutions_8hpp.html":[15,0,1,0,5],
 "d6/dba/convolutions_8hpp.html#a351f76d5ca8516413662d756055060f1":[15,0,1,0,5,4],
@@ -20,8 +20,8 @@ var NAVTREEINDEX1 =
 "d6/dba/convolutions_8hpp.html#ac18bf1542b1da07c49fd3e3b50fdcdbf":[15,0,1,0,5,3],
 "d6/dba/convolutions_8hpp.html#ae1d1c303624f21e6e5f7a29feb268587":[15,0,1,0,5,2],
 "d6/dba/convolutions_8hpp_source.html":[15,0,1,0,5],
-"d6/ddb/concepttannic_1_1Iterable.html":[12,0,0,22],
 "d6/ddb/concepttannic_1_1Iterable.html":[13,0,3],
+"d6/ddb/concepttannic_1_1Iterable.html":[12,0,0,22],
 "d6/de5/structtannic_1_1operation_1_1Subtraction.html":[14,0,0,3,5],
 "d6/de5/structtannic_1_1operation_1_1Subtraction.html":[12,0,0,3,5],
 "d6/de5/structtannic_1_1operation_1_1Subtraction.html#afc988b4e53299042435409e149f961d3":[14,0,0,3,5,0],
@@ -247,7 +247,7 @@ var NAVTREEINDEX1 =
 "da/d49/exceptions_8hpp_source.html":[15,0,1,0,6],
 "da/d5d/structtannic_1_1transformation_1_1Repetition.html":[12,0,0,4,6],
 "da/d5d/structtannic_1_1transformation_1_1Repetition.html":[14,0,0,4,6],
-"da/d5d/structtannic_1_1transformation_1_1Repetition.html#a119132fd4a9bccd6069465129d5efb39":[12,0,0,4,6,2],
 "da/d5d/structtannic_1_1transformation_1_1Repetition.html#a119132fd4a9bccd6069465129d5efb39":[14,0,0,4,6,2],
-"da/d5d/structtannic_1_1transformation_1_1Repetition.html#ab37be05a5f1045efebb79b80e0bf7ee0":[12,0,0,4,6,3]
+"da/d5d/structtannic_1_1transformation_1_1Repetition.html#a119132fd4a9bccd6069465129d5efb39":[12,0,0,4,6,2],
+"da/d5d/structtannic_1_1transformation_1_1Repetition.html#ab37be05a5f1045efebb79b80e0bf7ee0":[14,0,0,4,6,3]
 };

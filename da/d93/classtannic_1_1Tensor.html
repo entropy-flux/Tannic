@@ -156,6 +156,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a64e1ab26b63bda193b0252b840aacc5a"><td class="memItemLeft" align="right" valign="top">std::ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a64e1ab26b63bda193b0252b840aacc5a">offset</a> () const</td></tr>
 <tr class="memdesc:a64e1ab26b63bda193b0252b840aacc5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the offset of the tensor in the current buffer.  <br /></td></tr>
 <tr class="separator:a64e1ab26b63bda193b0252b840aacc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae859b2c47650e8d01c5a6979a0b199b2"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#ae859b2c47650e8d01c5a6979a0b199b2">nelements</a> () const</td></tr>
+<tr class="memdesc:ae859b2c47650e8d01c5a6979a0b199b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total number of elements of the tensor.  <br /></td></tr>
+<tr class="separator:ae859b2c47650e8d01c5a6979a0b199b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4064f4b6e988d2ccdff1a4c5f7357f43"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a4064f4b6e988d2ccdff1a4c5f7357f43">nbytes</a> () const</td></tr>
 <tr class="memdesc:a4064f4b6e988d2ccdff1a4c5f7357f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total number of bytes occupied by the tensor's elements.  <br /></td></tr>
 <tr class="separator:a4064f4b6e988d2ccdff1a4c5f7357f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1456,6 +1459,33 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="ae859b2c47650e8d01c5a6979a0b199b2" name="ae859b2c47650e8d01c5a6979a0b199b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae859b2c47650e8d01c5a6979a0b199b2">&#9670;&#160;</a></span>nelements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::size_t tannic::Tensor::nelements </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the total number of elements of the tensor. </p>
+
+</div>
+</div>
 <a id="a451eebfea1fb68557e20d8b91fdd7876" name="a451eebfea1fb68557e20d8b91fdd7876"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a451eebfea1fb68557e20d8b91fdd7876">&#9670;&#160;</a></span>node()</h2>
 
@@ -1845,7 +1875,7 @@ Example:</h4>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {1, 3, 1, 5}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Y = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">squeeze</a>();     <span class="comment">// shape = (3, 5)</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a52e251e55f66349fa482ee2894554aee"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">tannic::Tensor::squeeze</a></div><div class="ttdeci">auto squeeze() const</div><div class="ttdoc">Returns a view of the tensor with all dimensions of size 1 removed.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1016</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_a52e251e55f66349fa482ee2894554aee"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">tannic::Tensor::squeeze</a></div><div class="ttdeci">auto squeeze() const</div><div class="ttdoc">Returns a view of the tensor with all dimensions of size 1 removed.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1008</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -1963,7 +1993,7 @@ Example:</h4>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {3, 5}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Y = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">unsqueeze</a>(0);   <span class="comment">// shape = (1, 3, 5)</span></div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Z = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">unsqueeze</a>(2);   <span class="comment">// shape = (3, 1, 5)</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_acc757159be586ad0dbba4fce36360fed"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">tannic::Tensor::unsqueeze</a></div><div class="ttdeci">auto unsqueeze(Axes... axes)</div><div class="ttdoc">Returns a view of the tensor with a dimension of size 1 inserted at the given axis.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1038</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_acc757159be586ad0dbba4fce36360fed"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">tannic::Tensor::unsqueeze</a></div><div class="ttdeci">auto unsqueeze(Axes... axes)</div><div class="ttdoc">Returns a view of the tensor with a dimension of size 1 inserted at the given axis.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1030</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
