@@ -578,19 +578,26 @@ public:
                 using Cast = decltype(cast);
                 size_t index = 0;
                 for (auto value : values) {
-                    Cast casted = value;
-                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                    if constexpr (std::is_same_v<Cast, float16_t>) { 
+                        float as_float = value;
+                        float16_t casted = float32_to_float16(as_float);
+                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                    } else { 
+                        Cast casted = value;
+                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                    }
                     ++index;
                 }
             }; 
 
             switch (dtype_) {
-                case int8:    fill(int8_t{});   break;
-                case int16:   fill(int16_t{});  break;
-                case int32:   fill(int32_t{});  break;
-                case int64:   fill(int64_t{});  break;
-                case float32: fill(float{});    break;
-                case float64: fill(double{});   break;
+                case int8:    fill(int8_t{});    break;
+                case int16:   fill(int16_t{});   break;
+                case int32:   fill(int32_t{});   break;
+                case int64:   fill(int64_t{});   break;
+                case float16: fill(float16_t{}); break;   
+                case float32: fill(float{});     break;
+                case float64: fill(double{});    break;
                 default: throw Exception("Unsupported dtype in assignment");
             } 
         } 
@@ -654,20 +661,27 @@ public:
                         throw Exception("Row length mismatch in assignment from initializer_list");
 
                     for (auto value : row) {
-                        Cast casted = value;
-                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                        if constexpr (std::is_same_v<Cast, float16_t>) {
+                            float as_float = value;
+                            float16_t casted = float32_to_float16(as_float);
+                            assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                        } else {
+                            Cast casted = value;
+                            assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                        }
                         ++index;
                     }
                 }
             };
 
             switch (dtype_) {
-                case int8:    fill(int8_t{});   break;
-                case int16:   fill(int16_t{});  break;
-                case int32:   fill(int32_t{});  break;
-                case int64:   fill(int64_t{});  break;
-                case float32: fill(float{});    break;
-                case float64: fill(double{});   break;
+                case int8:    fill(int8_t{});    break;
+                case int16:   fill(int16_t{});   break;
+                case int32:   fill(int32_t{});   break;
+                case int64:   fill(int64_t{});   break;
+                case float16: fill(float16_t{}); break;   
+                case float32: fill(float{});     break;
+                case float64: fill(double{});    break;
                 default: throw Exception("Unsupported dtype in assignment");
             } 
         }  
@@ -746,8 +760,14 @@ public:
                         if (row.size() != shape_[2])
                             throw Exception("Row length mismatch");
                         for (auto value : row) {
-                            Cast casted = value;
-                            assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                            if constexpr (std::is_same_v<Cast, float16_t>) {
+                                float as_float = value;
+                                float16_t casted = float32_to_float16(as_float);
+                                assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                            } else {
+                                Cast casted = value;
+                                assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                            }
                             ++index;
                         }
                     }
@@ -755,12 +775,13 @@ public:
             };
 
             switch (dtype_) {
-                case int8:    fill(int8_t{});   break;
-                case int16:   fill(int16_t{});  break;
-                case int32:   fill(int32_t{});  break;
-                case int64:   fill(int64_t{});  break;
-                case float32: fill(float{});    break;
-                case float64: fill(double{});   break;
+                case int8:    fill(int8_t{});    break;
+                case int16:   fill(int16_t{});   break;
+                case int32:   fill(int32_t{});   break;
+                case int64:   fill(int64_t{});   break;
+                case float16: fill(float16_t{}); break;   
+                case float32: fill(float{});     break;
+                case float64: fill(double{});    break;
                 default: throw Exception("Unsupported dtype in assignment");
             } 
         } 
@@ -842,7 +863,7 @@ public:
                     }
                 }
             } 
-        }
+        }  
 
         else { 
             auto fill = [this, &values](auto cast) { 
@@ -861,8 +882,14 @@ public:
                                 throw Exception("Row length mismatch");
 
                             for (auto value : row) {
-                                Cast casted = value;
-                                assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                                if constexpr (std::is_same_v<Cast, float16_t>) {
+                                    float as_float = value;
+                                    float16_t casted = float32_to_float16(as_float);
+                                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                                } else {
+                                    Cast casted = value;
+                                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                                }
                                 ++index;
                             }
                         }
@@ -871,12 +898,13 @@ public:
             };
 
             switch (dtype_) {
-                case int8:    fill(int8_t{});   break;
-                case int16:   fill(int16_t{});  break;
-                case int32:   fill(int32_t{});  break;
-                case int64:   fill(int64_t{});  break;
-                case float32: fill(float{});    break;
-                case float64: fill(double{});   break;
+                case int8:    fill(int8_t{});    break;
+                case int16:   fill(int16_t{});   break;
+                case int32:   fill(int32_t{});   break;
+                case int64:   fill(int64_t{});   break;
+                case float16: fill(float16_t{}); break;  
+                case float32: fill(float{});     break;
+                case float64: fill(double{});    break;
                 default: throw Exception("Unsupported dtype in assignment");
             } 
         }  

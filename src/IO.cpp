@@ -46,6 +46,14 @@ static void print(std::ostream& os, element_ref elem, type dtype) {
             os << v;
             break;
         }
+
+        case float16: { 
+            auto v = *static_cast<const float16_t*>(elem.address);
+            float f = float16_to_float32(v);
+            os << f;
+            break;
+        }
+
         case float32: {
             auto v = *static_cast<const float*>(elem.address);
             os << v;

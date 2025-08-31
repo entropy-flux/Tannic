@@ -16,26 +16,37 @@
 //
 
 #ifndef TYPES_H
-#define TYPES_H
+#define TYPES_H 
 
 #ifdef __cplusplus
+#include <cstdint> 
 namespace tannic {
 extern "C" {
+#else
+#include <stdint.h> 
 #endif 
 
 enum type { 
     unknown,
-    boolean,
+    boolean, 
     int8,
     int16,
     int32,
     int64,
+    float16,
     float32,
     float64,
     complex64,   
     complex128,  
     TYPES
 };
+
+struct float16_t {
+    uint16_t bits;
+};
+
+float16_t float32_to_float16(float);
+float float16_to_float32(float16_t);
 
 #ifdef __cplusplus
 }

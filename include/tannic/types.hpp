@@ -37,6 +37,7 @@
  *     int16,      // 16-bit integer
  *     int32,      // 32-bit integer
  *     int64,      // 64-bit integer
+ *     float16,    // 16-bit float
  *     float32,    // 32-bit float
  *     float64,    // 64-bit float (double)
  *     complex64,  // 64-bit complex (two float32)
@@ -97,8 +98,9 @@ constexpr inline std::size_t dsizeof(type type) {
         case int16:     return sizeof(int16_t);
         case int32:     return sizeof(int32_t);
         case int64:     return sizeof(int64_t);
+        case float16:   return sizeof(float) / 2;
         case float32:   return sizeof(float);
-        case float64:   return sizeof(double);
+        case float64:   return 2 * sizeof(float);
         case complex64: return 2 * sizeof(float);     
         case complex128:return 2 * sizeof(double);  
         default:        return 0;
@@ -150,6 +152,7 @@ constexpr inline std::string dnameof(type type) {
         case int16:      return "int16";
         case int32:      return "int32";
         case int64:      return "int64";
+        case float16:    return "float16";
         case float32:    return "float32";
         case float64:    return "float64";
         case complex64:  return "complex64";
@@ -186,6 +189,7 @@ constexpr inline uint8_t dcodeof(type type) {
         case int16:     return 13;
         case int32:     return 14;
         case int64:     return 15;
+        case float16:   return 23;
         case float32:   return 24;
         case float64:   return 25;
         case complex64: return 35;     
@@ -212,13 +216,14 @@ constexpr inline type dtypeof(uint8_t code) {
         case 13: return int16;
         case 14: return int32;
         case 15: return int64;
+        case 23: return float16;
         case 24: return float32;
         case 25: return float64;
         case 35: return complex64;
         case 36: return complex128;
         default: return unknown;
     }
-}
+} 
   
 template <typename T>
 constexpr inline type dtypeof() {
@@ -227,6 +232,7 @@ constexpr inline type dtypeof() {
     else if constexpr (std::is_same_v<T, int16_t>) return int16;
     else if constexpr (std::is_same_v<T, int32_t>) return int32;
     else if constexpr (std::is_same_v<T, int64_t>) return int64;
+    else if constexpr (std::is_same_v<T, float16_t>)   return float16;
     else if constexpr (std::is_same_v<T, float>)   return float32;
     else if constexpr (std::is_same_v<T, double>)  return float64;
     else if constexpr (std::is_same_v<T, std::complex<float>>)  return complex64;

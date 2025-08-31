@@ -378,6 +378,12 @@ void Slice<Source, Indexes...>::operator=(T value) {
         case int16: {  int16_t casted = value; copy(tobytes(casted), offset()); break; }
         case int32: {  int32_t casted = value; copy(tobytes(casted), offset()); break; }
         case int64: {  int64_t casted = value; copy(tobytes(casted), offset()); break; }
+        case float16:{ 
+            float casted = value; 
+            float16_t half = float32_to_float16(casted);
+            copy(tobytes(half), offset());
+        }
+     
         case float32: {  float casted = value; copy(tobytes(casted), offset()); break; }
         case float64: { double casted = value; copy(tobytes(casted), offset()); break; } 
         default: throw Exception("Unsupported dtype for assignment");
@@ -395,6 +401,11 @@ bool Slice<Source, Indexes...>::operator==(T value) const {
         case int16: {   int16_t casted = value; return compare(tobytes(casted), offset()); }
         case int32: {   int32_t casted = value; return compare(tobytes(casted), offset()); }
         case int64: {   int64_t casted = value; return compare(tobytes(casted), offset()); }
+        case float16: { 
+            float casted = value; 
+            float16_t h = float32_to_float16(casted);
+            return compare(tobytes(h), offset()); 
+        }
         case float32:  {  float casted = value; return compare(tobytes(casted), offset()); }
         case float64:  { double casted = value; return compare(tobytes(casted), offset()); }  
         default: throw Exception("Unsupported dtype for comparison");
