@@ -1902,7 +1902,7 @@ Example:</h4>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {1, 3, 1, 5}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Y = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">squeeze</a>();     <span class="comment">// shape = (3, 5)</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a52e251e55f66349fa482ee2894554aee"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">tannic::Tensor::squeeze</a></div><div class="ttdeci">auto squeeze() const</div><div class="ttdoc">Returns a view of the tensor with all dimensions of size 1 removed.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1015</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_a52e251e55f66349fa482ee2894554aee"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">tannic::Tensor::squeeze</a></div><div class="ttdeci">auto squeeze() const</div><div class="ttdoc">Returns a view of the tensor with all dimensions of size 1 removed.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1043</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -2020,7 +2020,7 @@ Example:</h4>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {3, 5}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Y = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">unsqueeze</a>(0);   <span class="comment">// shape = (1, 3, 5)</span></div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Z = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">unsqueeze</a>(2);   <span class="comment">// shape = (3, 1, 5)</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_acc757159be586ad0dbba4fce36360fed"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">tannic::Tensor::unsqueeze</a></div><div class="ttdeci">auto unsqueeze(Axes... axes)</div><div class="ttdoc">Returns a view of the tensor with a dimension of size 1 inserted at the given axis.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1037</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_acc757159be586ad0dbba4fce36360fed"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">tannic::Tensor::unsqueeze</a></div><div class="ttdeci">auto unsqueeze(Axes... axes)</div><div class="ttdoc">Returns a view of the tensor with a dimension of size 1 inserted at the given axis.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1065</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
