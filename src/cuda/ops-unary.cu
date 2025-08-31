@@ -9,36 +9,33 @@
 namespace {
 
 template<typename S, typename D, class Op>
-__global__ void singletonUnaryOpKernel(const S* src, D* dst, Op fn) { 
+__global__ void singletonUnaryOpKernel(const S* __restrict__ src, D* __restrict__ dst, Op fn) { 
     *dst = fn(*src);
 }  
 
 template<typename S, typename D, class Op>
-__global__ void contiguousUnaryOpKernel(const S* src, D* dst, size_t ne, Op fn) {
+__global__ void contiguousUnaryOpKernel(const S* __restrict__ src, D* __restrict__ dst, size_t ne, Op fn) {
     for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) {
         dst[idx] = fn(src[idx]);
     }
 }
-
-
+ 
 template<typename S, typename D, class Op>
 __global__ void stridedUnaryOpKernel(
     const S* __restrict__ src_ptr, strides_t src_strides,    
     D* __restrict__ dst_ptr, strides_t resets,          
-    uint8_t rank, size_t ne, Op op
+    uint8_t dst_rank, size_t ne, Op op
 ){
+    int rank = static_cast<int>(dst_rank);
     const size_t gstride = size_t(blockDim.x) * gridDim.x;
     for (size_t idx = size_t(blockIdx.x) * blockDim.x + threadIdx.x; idx < ne; idx += gstride) {
         size_t offset = 0;
         size_t divisor = 1;
 
-        for (int dim = int(rank) - 1; dim >= 0; --dim) {
-            const size_t stride_e  = src_strides.sizes[dim];
-            const size_t reset_e   = resets.sizes[dim];      
-            const size_t extent    = reset_e / stride_e;
-            const size_t coord     = (idx / divisor) % extent;
-
-            offset += coord * stride_e;
+        for (int dim = rank - 1; dim >= 0; --dim) { 
+            const size_t extent    = resets.sizes[dim] / rc_strides.sizes[dim];
+            const size_t coord     = (idx / divisor) % extent; 
+            offset += coord * rc_strides.sizes[dim];
             divisor *= extent;
         }
 
