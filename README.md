@@ -16,8 +16,7 @@ You can find examples of neural networks inference with the tannic framework her
 
 ## Table of Contents
 - [Quick Start](#quick-start)
-- [Features](#features)
-- [Roadmap](#roadmap)
+- [Features](#features) 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
