@@ -20,68 +20,81 @@ __global__ void contiguousUnaryOpKernel(const S* src, D* dst, size_t ne, Op fn) 
     }
 }
 
+
 template<typename S, typename D, class Op>
 __global__ void stridedUnaryOpKernel(
-    const S* src, shape_t src_shape, strides_t src_strides,
-    D* dst, shape_t dst_shape, strides_t dst_strides,
-    uint8_t rank, size_t ne, Op fn
-) { 
-    for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) { 
-        size_t offs = 0;
-        size_t remaining = idx;
+    const S* __restrict__ src_ptr, strides_t src_strides,    
+    D* __restrict__ dst_ptr, strides_t resets,          
+    uint8_t rank, size_t ne, Op op
+){
+    const size_t gstride = size_t(blockDim.x) * gridDim.x;
+    for (size_t idx = size_t(blockIdx.x) * blockDim.x + threadIdx.x; idx < ne; idx += gstride) {
+        size_t offset = 0;
+        size_t divisor = 1;
 
-        for (int dim = rank - 1; dim >= 0; --dim) {
-            size_t dim_idx = remaining % dst_shape.sizes[dim];
-            remaining /= dst_shape.sizes[dim];
- 
-            size_t src_idx = (src_shape.sizes[dim] == 1) ? 0 : dim_idx;
-            offs += src_idx * src_strides.sizes[dim];
+        for (int dim = int(rank) - 1; dim >= 0; --dim) {
+            const size_t stride_e  = src_strides.sizes[dim];
+            const size_t reset_e   = resets.sizes[dim];      
+            const size_t extent    = reset_e / stride_e;
+            const size_t coord     = (idx / divisor) % extent;
+
+            offset += coord * stride_e;
+            divisor *= extent;
         }
 
-        dst[idx] = fn(src[offs]);
+        dst_ptr[idx] = op(src_ptr[offset]);
     }
-}   
+}
 
 template<typename S, typename D, class Op, class ... Args>
-status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args... args)  { 
+status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args... args)  { 
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
-    Op fn(std::forward<Args>(args)...);
+    Op op(std::forward<Args>(args)...);
 
     size_t ne = dst->size; 
     size_t blockSize = 256;
     size_t gridSize = (ne + blockSize - 1) / blockSize;
 
     switch (src->layout) {
-        case SINGLETON:
+        case SINGLETON: {
             singletonUnaryOpKernel<S, D, Op><<<1, 1, 0, cudaStream>>>(
                 (const S*)(src->address),
                 (D*)(dst->address),
-                fn
+                op
             ); 
-            break;
+            return SUCCESS;
+        }
 
-        case CONTIGUOUS:
+        case CONTIGUOUS: {
             contiguousUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
                 (const S*)(src->address),
                 (D*)(dst->address),
                 ne,
-                fn
+                op
             );
-            break;
+            return SUCCESS;
+        }
 
-        case STRIDED:
+        case STRIDED: {
+            strides_t strides{0};
+            strides_t resets{0};
+            for (int dim = 0; dim < src->rank; ++dim) {
+                resets.sizes[dim] = dst->shape.sizes[dim] * src->strides.sizes[dim];
+                strides.sizes[dim] = src->strides.sizes[dim];
+            } 
+            
             stridedUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
-                (const S*)(src->address), src->shape, src->strides,
-                (D*)(dst->address), dst->shape, dst->strides,
-                src->rank, ne, fn
-            ); 
-            break;
+                (const S*)(src->address), strides,
+                (D*)(dst->address), resets,
+                src->rank, ne,
+                op
+            );
+            return SUCCESS;
+        }
 
         default:
             return ERROR;
-    }
-
-    return SUCCESS;
+    } 
 }   
 
 
@@ -187,21 +200,21 @@ struct Tanh {
 status neg(const tensor_t* src, tensor_t* dst,  stream_t stream) {
     switch (src->dtype) {
         case int8:
-            return launchFnKernel<int8_t, int8_t, Neg>(src, dst, stream);
+            return launchUnaryOpKernel<int8_t, int8_t, Neg>(src, dst, stream);
         case int16:
-            return launchFnKernel<int16_t, int16_t, Neg>(src, dst, stream);
+            return launchUnaryOpKernel<int16_t, int16_t, Neg>(src, dst, stream);
         case int32:
-            return launchFnKernel<int32_t, int32_t, Neg>(src, dst, stream);
+            return launchUnaryOpKernel<int32_t, int32_t, Neg>(src, dst, stream);
         case int64:
-            return launchFnKernel<int64_t, int64_t, Neg>(src, dst, stream);
+            return launchUnaryOpKernel<int64_t, int64_t, Neg>(src, dst, stream);
         case float32:
-            return launchFnKernel<float, float, Neg>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Neg>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Neg>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Neg>(src, dst, stream);
         case complex64:
-            return launchFnKernel<thrust::complex<float>, thrust::complex<float>, Neg>(src, dst, stream);
+            return launchUnaryOpKernel<thrust::complex<float>, thrust::complex<float>, Neg>(src, dst, stream);
         case complex128:
-            return launchFnKernel<thrust::complex<double>, thrust::complex<double>, Neg>(src, dst, stream);
+            return launchUnaryOpKernel<thrust::complex<double>, thrust::complex<double>, Neg>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -210,21 +223,21 @@ status neg(const tensor_t* src, tensor_t* dst,  stream_t stream) {
 status cpy(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case int8:
-            return launchFnKernel<int8_t, int8_t, Cpy>(src, dst, stream);
+            return launchUnaryOpKernel<int8_t, int8_t, Cpy>(src, dst, stream);
         case int16:
-            return launchFnKernel<int16_t, int16_t, Cpy>(src, dst, stream); 
+            return launchUnaryOpKernel<int16_t, int16_t, Cpy>(src, dst, stream); 
         case int32:
-            return launchFnKernel<int32_t, int32_t, Cpy>(src, dst, stream); 
+            return launchUnaryOpKernel<int32_t, int32_t, Cpy>(src, dst, stream); 
         case int64:
-            return launchFnKernel<int64_t, int64_t, Cpy>(src, dst, stream); 
+            return launchUnaryOpKernel<int64_t, int64_t, Cpy>(src, dst, stream); 
         case float32:
-            return launchFnKernel<float, float, Cpy>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Cpy>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Cpy>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Cpy>(src, dst, stream);
         case complex64:
-            return launchFnKernel<thrust::complex<float>, thrust::complex<float>, Cpy>(src, dst, stream);
+            return launchUnaryOpKernel<thrust::complex<float>, thrust::complex<float>, Cpy>(src, dst, stream);
         case complex128:
-            return launchFnKernel<thrust::complex<double>, thrust::complex<double>, Cpy>(src, dst, stream);
+            return launchUnaryOpKernel<thrust::complex<double>, thrust::complex<double>, Cpy>(src, dst, stream);
         default: 
             return UNSUPPORTED_DTYPE;
     }
@@ -233,9 +246,9 @@ status cpy(const tensor_t* src, tensor_t* dst, stream_t stream) {
 status log(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Log>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Log>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Log>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Log>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -244,9 +257,9 @@ status log(const tensor_t* src, tensor_t* dst, stream_t stream) {
 status exp(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Exp>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Exp>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Exp>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Exp>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -255,9 +268,9 @@ status exp(const tensor_t* src, tensor_t* dst, stream_t stream) {
 status sqrt(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Sqrt>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Sqrt>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Sqrt>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Sqrt>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -267,9 +280,9 @@ status sqrt(const tensor_t* src, tensor_t* dst, stream_t stream) {
 status rsqrt(const tensor_t* src, tensor_t* dst, stream_t stream, float eps) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Rsqrt>(src, dst, stream, eps);
+            return launchUnaryOpKernel<float, float, Rsqrt>(src, dst, stream, eps);
         case float64:
-            return launchFnKernel<double, double, Rsqrt>(src, dst, stream, eps);
+            return launchUnaryOpKernel<double, double, Rsqrt>(src, dst, stream, eps);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -279,13 +292,13 @@ status rsqrt(const tensor_t* src, tensor_t* dst, stream_t stream, float eps) {
 status abs(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Abs>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Abs>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Abs>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Abs>(src, dst, stream);
         case int32:
-            return launchFnKernel<int32_t, int32_t, Abs>(src, dst, stream);
+            return launchUnaryOpKernel<int32_t, int32_t, Abs>(src, dst, stream);
         case int64:
-            return launchFnKernel<int64_t, int64_t, Abs>(src, dst, stream);
+            return launchUnaryOpKernel<int64_t, int64_t, Abs>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -294,9 +307,9 @@ status abs(const tensor_t* src, tensor_t* dst, stream_t stream) {
 status sin(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Sin>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Sin>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Sin>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Sin>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -305,9 +318,9 @@ status sin(const tensor_t* src, tensor_t* dst, stream_t stream) {
 status cos(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Cos>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Cos>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Cos>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Cos>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -316,9 +329,9 @@ status cos(const tensor_t* src, tensor_t* dst, stream_t stream) {
 status tan(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Tan>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Tan>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Tan>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Tan>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -327,9 +340,9 @@ status tan(const tensor_t* src, tensor_t* dst, stream_t stream) {
 status sinh(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Sinh>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Sinh>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Sinh>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Sinh>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -338,9 +351,9 @@ status sinh(const tensor_t* src, tensor_t* dst, stream_t stream) {
 status cosh(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Cosh>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Cosh>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Cosh>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Cosh>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }
@@ -349,9 +362,9 @@ status cosh(const tensor_t* src, tensor_t* dst, stream_t stream) {
 status tanh(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case float32:
-            return launchFnKernel<float, float, Tanh>(src, dst, stream);
+            return launchUnaryOpKernel<float, float, Tanh>(src, dst, stream);
         case float64:
-            return launchFnKernel<double, double, Tanh>(src, dst, stream);
+            return launchUnaryOpKernel<double, double, Tanh>(src, dst, stream);
         default:
             return UNSUPPORTED_DTYPE;
     }

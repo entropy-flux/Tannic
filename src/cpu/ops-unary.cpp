@@ -25,26 +25,26 @@ void contiguousUnaryOpKernel(
 
 template<typename S, typename D, class Op>
 void stridedUnaryOpKernel( 
-    const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,           
-    D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides, 
+    const S* src_ptr, const strides_t& src_strides,           
+    D* dst_ptr, const strides_t& resets, 
     uint8_t rank, size_t ne, Op op
 ) {  
-    size_t cnt[8] = {0}; 
+    size_t current_offset = 0;  
     for (size_t idx = 0; idx < ne; ++idx) {
-        size_t offs = 0;
-        for (int dim = 0; dim < rank; ++dim) {
-            offs += cnt[dim] * src_strides.sizes[dim];
-        }
-
-        dst_ptr[idx] = op(src_ptr[offs]);
-
+        dst_ptr[idx] = op(src_ptr[current_offset]); 
+        current_offset += src_strides.sizes[rank - 1];
+         
         for (int dim = rank - 1; dim >= 0; --dim) {
-            if (++cnt[dim] < dst_shape.sizes[dim])
+            if (current_offset % resets.sizes[dim] != 0)
                 break;
-            cnt[dim] = 0;
+             
+            current_offset -= resets.sizes[dim];
+            if (dim > 0) {
+                current_offset += src_strides.sizes[dim - 1];
+            }
         }
     } 
-} 
+}
 
 template<typename S, typename D, class Op, class ... Args>
 status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, Args... args) {
@@ -52,37 +52,45 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, Args... args) {
     size_t ne = dst->size;
 
     switch (src->layout) {
-        case SINGLETON:
+        case SINGLETON: {
             singletonUnaryOpKernel<S, D, Op>(
                 (const S*)(src->address),
                 (D*)(dst->address),
                 op
             );
-            break;
+            return SUCCESS;
+        }
 
-        case CONTIGUOUS:
-            contiguousUnaryOpKernel<S, D, Op>(
-                (const S*)(src->address),
-                (D*)(dst->address),
-                ne,
-                op
-            );
-            break;
+        case CONTIGUOUS: {
+                contiguousUnaryOpKernel<S, D, Op>(
+                    (const S*)(src->address),
+                    (D*)(dst->address),
+                    ne,
+                    op
+                ); 
+            return SUCCESS;
+        }
 
-        case STRIDED:
+        case STRIDED: {   
+            strides_t strides{0};
+            strides_t resets{0};
+            for (int dim = 0; dim < src->rank; ++dim) {
+                resets.sizes[dim] = dst->shape.sizes[dim] * src->strides.sizes[dim];
+                strides.sizes[dim] = src->strides.sizes[dim];
+            }
+
             stridedUnaryOpKernel<S, D, Op>(
-                (const S*)(src->address), src->shape, src->strides,
-                (D*)(dst->address), dst->shape, dst->strides,
+                (const S*)(src->address), strides,
+                (D*)(dst->address), resets,
                 src->rank, ne,
                 op
             );
-            break;
+            return SUCCESS;
+        }
 
         default:
             return ERROR; 
-    }
-
-    return SUCCESS;
+    } 
 }
 
 
