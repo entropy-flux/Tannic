@@ -24,7 +24,7 @@ inline status gemm(const tensor_t*, const tensor_t*, tensor_t*, stream_t, double
 inline status outer(tensor_t const*, tensor_t const*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
 inline status repeat(const tensor_t*, tensor_t*, int, int, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
 inline status concat(const tensor_t*, const tensor_t*, tensor_t*, stream_t, int)  { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
-inline status idn (const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
+inline status cpy (const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA gemm called without CUDA support"); }; 
 } // namespace cuda
 #endif
 
