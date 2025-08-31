@@ -3,6 +3,7 @@
 #include <array>
 #include <stdexcept>
 #include <cuda_runtime.h>
+#include <cuda_fp16.h> 
 #include <thrust/complex.h>
 #include "cuda/exc.cuh"
 #include "cuda/ops.cuh" 
@@ -127,41 +128,121 @@ status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t
     }
 }
 
-
-
-
 constexpr static status launchDefaultBinaryOpKernel(const tensor_t*, const tensor_t*, tensor_t*, stream_t) {
     return UNSUPPORTED_DTYPE;
 };    
 
 struct Add { 
     template<class A, class B>
-    __device__ __forceinline__ auto operator()(A&& a, B&& b) const {
-        return a + b;
+    __device__ __forceinline__ auto operator()(A a, B b) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half> && std::is_same_v<std::decay_t<B>, __half>) {
+            return __hadd(a, b);
+        } else if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            if constexpr (std::is_same_v<std::decay_t<B>, float>) {
+                return __half2float(a) + b;
+            } else if constexpr (std::is_same_v<std::decay_t<B>, double>) {
+                return static_cast<double>(__half2float(a)) + b;  // Fixed: added return
+            } else {
+                return __half2float(a) + static_cast<float>(b);
+            }
+        } else if constexpr (std::is_same_v<std::decay_t<B>, __half>) {
+            if constexpr (std::is_same_v<std::decay_t<A>, float>) {
+                return a + __half2float(b);
+            } else if constexpr (std::is_same_v<std::decay_t<A>, double>) {
+                return a + static_cast<double>(__half2float(b));  // Fixed: added return
+            } else {
+                return static_cast<float>(a) + __half2float(b);
+            }
+        } else {
+            return a + b;
+        }
     }
 };
-
 struct Sub { 
     template<class A, class B>
-    __device__ __forceinline__ auto operator()(A&& a, B&& b) const {
-        return a - b;
+    __device__ __forceinline__ auto operator()(A a, B b) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half> && 
+                     std::is_same_v<std::decay_t<B>, __half>) {
+            return __hsub(a, b);
+        } else if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            if constexpr (std::is_same_v<std::decay_t<B>, float>) {
+                return __half2float(a) - b;
+            } else if constexpr (std::is_same_v<std::decay_t<B>, double>) {
+                return static_cast<double>(__half2float(a)) - b;  // Fixed
+            } else {
+                return __half2float(a) - static_cast<float>(b);
+            }
+        } else if constexpr (std::is_same_v<std::decay_t<B>, __half>) {
+            if constexpr (std::is_same_v<std::decay_t<A>, float>) {
+                return a - __half2float(b);
+            } else if constexpr (std::is_same_v<std::decay_t<A>, double>) {
+                return a - static_cast<double>(__half2float(b));  // Fixed
+            } else {
+                return static_cast<float>(a) - __half2float(b);
+            }
+        } else {
+            return a - b;
+        }
     }
 };
 
 struct Mul { 
     template<class A, class B>
-    __device__ __forceinline__ auto operator()(A&& a, B&& b) const {
-        return a * b;
+    __device__ __forceinline__ auto operator()(A a, B b) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half> && 
+                     std::is_same_v<std::decay_t<B>, __half>) {
+            return __hmul(a, b);
+        } else if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            if constexpr (std::is_same_v<std::decay_t<B>, float>) {
+                return __half2float(a) * b;
+            } else if constexpr (std::is_same_v<std::decay_t<B>, double>) {
+                return static_cast<double>(__half2float(a)) * b;  // Fixed
+            } else {
+                return __half2float(a) * static_cast<float>(b);
+            }
+        } else if constexpr (std::is_same_v<std::decay_t<B>, __half>) {
+            if constexpr (std::is_same_v<std::decay_t<A>, float>) {
+                return a * __half2float(b);
+            } else if constexpr (std::is_same_v<std::decay_t<A>, double>) {
+                return a * static_cast<double>(__half2float(b));  // Fixed
+            } else {
+                return static_cast<float>(a) * __half2float(b);
+            }
+        } else {
+            return a * b;
+        }
     }
-};    
+};
 
 struct Pow { 
     template<class A, class B>
-    __device__ __forceinline__ auto operator()(A&& a, B&& b) const {
-        return pow(a, b);
+    __device__ __forceinline__ auto operator()(A a, B b) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half> && std::is_same_v<std::decay_t<B>, __half>) {
+            return __float2half(powf(__half2float(a), __half2float(b)));
+        } else if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            float a_f = __half2float(a);
+            if constexpr (std::is_same_v<std::decay_t<B>, float>) {
+                return powf(a_f, b);
+            } else if constexpr (std::is_same_v<std::decay_t<B>, double>) {
+                return pow(static_cast<double>(a_f), b);  // Fixed
+            } else {
+                return powf(a_f, static_cast<float>(b));
+            }
+        } else if constexpr (std::is_same_v<std::decay_t<B>, __half>) {
+            float b_f = __half2float(b);
+            if constexpr (std::is_same_v<std::decay_t<A>, float>) {
+                return powf(a, b_f);
+            } else if constexpr (std::is_same_v<std::decay_t<A>, double>) {
+                return pow(a, static_cast<double>(b_f));  // Fixed
+            } else {
+                return powf(static_cast<float>(a), b_f);
+            }
+        } else {
+            return pow(a, b);
+        }
     }
-};   
- 
+};
+
 constexpr static inline int index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 }   
@@ -189,6 +270,21 @@ constexpr auto dispatchAdd = []() {
     table[index(int64, int16)] = launchBinaryOpKernel<int64_t, int16_t, int64_t, Add>;
     table[index(int64, int32)] = launchBinaryOpKernel<int64_t, int32_t, int64_t, Add>;
     table[index(int64, int64)] = launchBinaryOpKernel<int64_t, int64_t, int64_t, Add>;
+
+    table[index(float16, float16)] = launchBinaryOpKernel<__half, __half, __half, Add>;
+    table[index(float16, float32)] = launchBinaryOpKernel<__half, float, float, Add>;
+    table[index(float32, float16)] = launchBinaryOpKernel<float, __half, float, Add>;
+    table[index(float16, float64)] = launchBinaryOpKernel<__half, double, double, Add>;
+    table[index(float64, float16)] = launchBinaryOpKernel<double, __half, double, Add>;
+    
+    table[index(float16, int8)]    = launchBinaryOpKernel<__half, int8_t, float, Add>;
+    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t, __half, float, Add>;
+    table[index(float16, int16)]   = launchBinaryOpKernel<__half, int16_t, float, Add>;
+    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t, __half, float, Add>;
+    table[index(float16, int32)]   = launchBinaryOpKernel<__half, int32_t, float, Add>;
+    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, __half, float, Add>;
+    table[index(float16, int64)]   = launchBinaryOpKernel<__half, int64_t, double, Add>;
+    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, __half, double, Add>;
 
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Add>;
     table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Add>;
@@ -226,6 +322,21 @@ constexpr auto dispatchSub = []() {
     table[index(int64, int16)] = launchBinaryOpKernel<int64_t, int16_t, int64_t, Sub>;
     table[index(int64, int32)] = launchBinaryOpKernel<int64_t, int32_t, int64_t, Sub>;
     table[index(int64, int64)] = launchBinaryOpKernel<int64_t, int64_t, int64_t, Sub>;
+
+    table[index(float16, float16)] = launchBinaryOpKernel<__half, __half, __half, Sub>;
+    table[index(float16, float32)] = launchBinaryOpKernel<__half, float, float, Sub>;
+    table[index(float32, float16)] = launchBinaryOpKernel<float, __half, float, Sub>;
+    table[index(float16, float64)] = launchBinaryOpKernel<__half, double, double, Sub>;
+    table[index(float64, float16)] = launchBinaryOpKernel<double, __half, double, Sub>;
+    
+    table[index(float16, int8)]    = launchBinaryOpKernel<__half, int8_t, float, Sub>;
+    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t, __half, float, Sub>;
+    table[index(float16, int16)]   = launchBinaryOpKernel<__half, int16_t, float, Sub>;
+    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t, __half, float, Sub>;
+    table[index(float16, int32)]   = launchBinaryOpKernel<__half, int32_t, float, Sub>;
+    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, __half, float, Sub>;
+    table[index(float16, int64)]   = launchBinaryOpKernel<__half, int64_t, double, Sub>;
+    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, __half, double, Sub>;
 
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Sub>;
     table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Sub>;
@@ -265,6 +376,21 @@ constexpr auto dispatchMul = []() {
     table[index(int64, int32)] = launchBinaryOpKernel<int64_t, int32_t, int64_t, Mul>;
     table[index(int64, int64)] = launchBinaryOpKernel<int64_t, int64_t, int64_t, Mul>;
 
+    table[index(float16, float16)] = launchBinaryOpKernel<__half, __half, __half, Mul>;
+    table[index(float16, float32)] = launchBinaryOpKernel<__half, float, float, Mul>;
+    table[index(float32, float16)] = launchBinaryOpKernel<float, __half, float, Mul>;
+    table[index(float16, float64)] = launchBinaryOpKernel<__half, double, double, Mul>;
+    table[index(float64, float16)] = launchBinaryOpKernel<double, __half, double, Mul>;
+    
+    table[index(float16, int8)]    = launchBinaryOpKernel<__half, int8_t, float, Mul>;
+    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t, __half, float, Mul>;
+    table[index(float16, int16)]   = launchBinaryOpKernel<__half, int16_t, float, Mul>;
+    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t, __half, float, Mul>;
+    table[index(float16, int32)]   = launchBinaryOpKernel<__half, int32_t, float, Mul>;
+    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, __half, float, Mul>;
+    table[index(float16, int64)]   = launchBinaryOpKernel<__half, int64_t, double, Mul>;
+    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, __half, double, Mul>;
+
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Mul>;
     table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Mul>;
     table[index(int32, float64)] = launchBinaryOpKernel<int32_t, double, double, Mul>;
@@ -282,6 +408,22 @@ constexpr auto dispatchMul = []() {
 
 constexpr auto dispatchPow = []() {
     std::array<BinaryOpKernel, index(TYPES, TYPES)> table; table.fill(launchDefaultBinaryOpKernel); 
+
+    table[index(float16, float16)] = launchBinaryOpKernel<__half, __half, float, Pow>;
+    table[index(float16, float32)] = launchBinaryOpKernel<__half, float, float, Pow>;
+    table[index(float32, float16)] = launchBinaryOpKernel<float, __half, float, Pow>;
+    table[index(float16, float64)] = launchBinaryOpKernel<__half, double, double, Pow>;
+    table[index(float64, float16)] = launchBinaryOpKernel<double, __half, double, Pow>;
+    
+    table[index(float16, int8)]    = launchBinaryOpKernel<__half, int8_t, float, Pow>;
+    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t, __half, float, Pow>;
+    table[index(float16, int16)]   = launchBinaryOpKernel<__half, int16_t, float, Pow>;
+    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t, __half, float, Pow>;
+    table[index(float16, int32)]   = launchBinaryOpKernel<__half, int32_t, float, Pow>;
+    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, __half, float, Pow>;
+    table[index(float16, int64)]   = launchBinaryOpKernel<__half, int64_t, double, Pow>;
+    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, __half, double, Pow>;
+
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Pow>;
     table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Pow>;
     table[index(int32, float64)] = launchBinaryOpKernel<int32_t, double, double, Pow>;
@@ -292,7 +434,7 @@ constexpr auto dispatchPow = []() {
     table[index(float64, float32)] = launchBinaryOpKernel<double, float, double, Pow>;
     table[index(float64, float64)] = launchBinaryOpKernel<double, double, double, Pow>; 
     return table;
-}();   
+}();
 
 } namespace cuda { 
 

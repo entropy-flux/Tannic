@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <array>
 #include <stdexcept>
+#include <cuda_fp16.h> 
 #include <thrust/complex.h>
 #include "cuda/exc.cuh"
 #include "cuda/ops.cuh"  
@@ -94,107 +95,154 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream, 
     } 
 }   
 
+#include <cuda_fp16.h>
+#include <type_traits>
 
 struct Neg { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const {
-        return -a;
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __hneg(a);  // CUDA intrinsic
+        } else {
+            return -a;
+        }
     }
 };
 
 struct Cpy { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(a)) {
+    __device__ __forceinline__ auto operator()(A a) const noexcept {
         return a;
     }
 };
 
 struct Log { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(log(a))) {
-        return log(a);
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __float2half(logf(__half2float(a)));
+        } else {
+            return log(a);
+        }
     }
 };
- 
+
 struct Exp { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(exp(a))) {
-        return exp(a);
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __float2half(expf(__half2float(a)));
+        } else {
+            return exp(a);
+        }
     }
 };
-  
+
 struct Sqrt { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(sqrt(a))) {
-        return sqrt(a);
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __float2half(sqrtf(__half2float(a)));
+        } else {
+            return sqrt(a);
+        }
     }
 };
 
 struct Rsqrt {
     float eps; 
-
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept {
-        if constexpr (std::is_same_v<std::decay_t<A>, float>) {
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __float2half(rsqrtf(__half2float(a) + eps));
+        } else if constexpr (std::is_same_v<std::decay_t<A>, float>) {
             return rsqrtf(a + eps);
         } else {
             return 1.0 / sqrt(a + eps);
         }
     }
-}; 
+};
 
 struct Abs { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(abs(a))) {
-        return abs(a);
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __habs(a);
+        } else {
+            return abs(a);
+        }
     }
 };
- 
+
 struct Sin { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(sin(a))) {
-        return sin(a);
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __float2half(sinf(__half2float(a)));
+        } else {
+            return sin(a);
+        }
     }
 };
- 
+
 struct Cos { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(cos(a))) {
-        return cos(a);
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __float2half(cosf(__half2float(a)));
+        } else {
+            return cos(a);
+        }
     }
 };
 
 struct Tan { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(tan(a))) {
-        return tan(a);
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __float2half(tanf(__half2float(a)));
+        } else {
+            return tan(a);
+        }
     }
-}; 
+};
 
 struct Sinh { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(sinh(a))) {
-        return sinh(a);
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __float2half(sinhf(__half2float(a)));
+        } else {
+            return sinh(a);
+        }
     }
 };
- 
-struct Cosh{ 
+
+struct Cosh { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(cosh(a))) {
-        return cosh(a);
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __float2half(coshf(__half2float(a)));
+        } else {
+            return cosh(a);
+        }
     }
 };
- 
+
 struct Tanh { 
     template<class A>
-    __device__ __forceinline__ auto operator()(A&& a) const noexcept(noexcept(tanh(a))) {
-        return tanh(a);
+    __device__ __forceinline__ auto operator()(A a) const {
+        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
+            return __float2half(tanhf(__half2float(a)));
+        } else {
+            return tanh(a);
+        }
     }
-};    
+}; 
 
 } namespace cuda {
 
-status neg(const tensor_t* src, tensor_t* dst,  stream_t stream) {
+status neg(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case int8:
             return launchUnaryOpKernel<int8_t, int8_t, Neg>(src, dst, stream);
@@ -204,6 +252,8 @@ status neg(const tensor_t* src, tensor_t* dst,  stream_t stream) {
             return launchUnaryOpKernel<int32_t, int32_t, Neg>(src, dst, stream);
         case int64:
             return launchUnaryOpKernel<int64_t, int64_t, Neg>(src, dst, stream);
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Neg>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Neg>(src, dst, stream);
         case float64:
@@ -227,6 +277,8 @@ status cpy(const tensor_t* src, tensor_t* dst, stream_t stream) {
             return launchUnaryOpKernel<int32_t, int32_t, Cpy>(src, dst, stream); 
         case int64:
             return launchUnaryOpKernel<int64_t, int64_t, Cpy>(src, dst, stream); 
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Cpy>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Cpy>(src, dst, stream);
         case float64:
@@ -238,10 +290,12 @@ status cpy(const tensor_t* src, tensor_t* dst, stream_t stream) {
         default: 
             return UNSUPPORTED_DTYPE;
     }
-} 
+}
 
 status log(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Log>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Log>(src, dst, stream);
         case float64:
@@ -253,6 +307,8 @@ status log(const tensor_t* src, tensor_t* dst, stream_t stream) {
 
 status exp(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Exp>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Exp>(src, dst, stream);
         case float64:
@@ -264,6 +320,8 @@ status exp(const tensor_t* src, tensor_t* dst, stream_t stream) {
 
 status sqrt(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Sqrt>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Sqrt>(src, dst, stream);
         case float64:
@@ -273,9 +331,10 @@ status sqrt(const tensor_t* src, tensor_t* dst, stream_t stream) {
     }
 }
 
-
 status rsqrt(const tensor_t* src, tensor_t* dst, stream_t stream, float eps) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Rsqrt>(src, dst, stream, eps);
         case float32:
             return launchUnaryOpKernel<float, float, Rsqrt>(src, dst, stream, eps);
         case float64:
@@ -285,9 +344,10 @@ status rsqrt(const tensor_t* src, tensor_t* dst, stream_t stream, float eps) {
     }
 }
 
-
 status abs(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Abs>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Abs>(src, dst, stream);
         case float64:
@@ -303,6 +363,8 @@ status abs(const tensor_t* src, tensor_t* dst, stream_t stream) {
 
 status sin(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Sin>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Sin>(src, dst, stream);
         case float64:
@@ -314,6 +376,8 @@ status sin(const tensor_t* src, tensor_t* dst, stream_t stream) {
 
 status cos(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Cos>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Cos>(src, dst, stream);
         case float64:
@@ -325,6 +389,8 @@ status cos(const tensor_t* src, tensor_t* dst, stream_t stream) {
 
 status tan(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Tan>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Tan>(src, dst, stream);
         case float64:
@@ -336,6 +402,8 @@ status tan(const tensor_t* src, tensor_t* dst, stream_t stream) {
 
 status sinh(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Sinh>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Sinh>(src, dst, stream);
         case float64:
@@ -347,6 +415,8 @@ status sinh(const tensor_t* src, tensor_t* dst, stream_t stream) {
 
 status cosh(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Cosh>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Cosh>(src, dst, stream);
         case float64:
@@ -358,6 +428,8 @@ status cosh(const tensor_t* src, tensor_t* dst, stream_t stream) {
 
 status tanh(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
+        case float16:
+            return launchUnaryOpKernel<__half, __half, Tanh>(src, dst, stream);
         case float32:
             return launchUnaryOpKernel<float, float, Tanh>(src, dst, stream);
         case float64:
@@ -365,6 +437,6 @@ status tanh(const tensor_t* src, tensor_t* dst, stream_t stream) {
         default:
             return UNSUPPORTED_DTYPE;
     }
-}
+} 
 
 } // namespace cuda
