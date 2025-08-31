@@ -9,14 +9,14 @@
 namespace {
 
 template<typename S, typename D, class Op>
-__global__ void singletonUnaryOpKernel(const S* __restrict__ src, D* __restrict__ dst, Op fn) { 
-    *dst = fn(*src);
+__global__ void singletonUnaryOpKernel(const S* __restrict__ src, D* __restrict__ dst, Op op) { 
+    *dst = op(*src);
 }  
 
 template<typename S, typename D, class Op>
-__global__ void contiguousUnaryOpKernel(const S* __restrict__ src, D* __restrict__ dst, size_t ne, Op fn) {
+__global__ void contiguousUnaryOpKernel(const S* __restrict__ src, D* __restrict__ dst, size_t ne, Op op) {
     for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) {
-        dst[idx] = fn(src[idx]);
+        dst[idx] = op(src[idx]);
     }
 }
  
