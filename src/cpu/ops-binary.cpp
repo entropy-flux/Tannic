@@ -1,9 +1,19 @@
 #include <stdexcept>
 #include <vector>
 #include <array>
-#include <complex>
-#include <stdfloat>
+#include <complex> 
 #include "cpu/ops.hpp" 
+#ifndef HAS_FLOAT16
+    #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
+        #include <stdfloat>
+        using half = std::float16_t;
+        #define HAS_FLOAT16 1
+    #else 
+        #define HAS_FLOAT16 0 
+        struct half_placeholder { float value; };
+        using half = half_placeholder;
+    #endif
+#endif
 
 namespace {   
 
@@ -123,35 +133,37 @@ struct Add {
         return a + b;
     }
 
-    inline std::float16_t operator()(std::float16_t a, std::float16_t b) const noexcept {
-        return std::float16_t(float(a) + float(b));
+#if HAS_FLOAT16
+    inline half operator()(half a, half b) const noexcept {
+        return half(float(a) + float(b));
     }
 
-    inline float operator()(std::float16_t a, float b) const noexcept {
+    inline float operator()(half a, float b) const noexcept {
         return float(a) + b;
     }
 
-    inline double operator()(std::float16_t a, double b) const noexcept {
+    inline double operator()(half a, double b) const noexcept {
         return static_cast<double>(a) + b;
     }
 
-    inline float operator()(float a, std::float16_t b) const noexcept {
+    inline float operator()(float a, half b) const noexcept {
         return a + float(b);
     }
 
-    inline double operator()(double a, std::float16_t b) const noexcept {
+    inline double operator()(double a, half b) const noexcept {
         return a + static_cast<double>(b);
     }
 
-    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, std::float16_t> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
-    inline float operator()(std::float16_t a, B b) const noexcept {
+    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
+    inline float operator()(half a, B b) const noexcept {
         return float(a) + static_cast<float>(b);
     }
 
-    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, std::float16_t> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
-    inline float operator()(A a, std::float16_t b) const noexcept {
+    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
+    inline float operator()(A a, half b) const noexcept {
         return static_cast<float>(a) + float(b);
     }
+#endif
 };
  
 struct Sub {
@@ -160,35 +172,37 @@ struct Sub {
         return a - b;
     }
 
-    inline std::float16_t operator()(std::float16_t a, std::float16_t b) const noexcept {
-        return std::float16_t(float(a) - float(b));
+#if HAS_FLOAT16
+    inline half operator()(half a, half b) const noexcept {
+        return half(float(a) - float(b));
     }
 
-    inline float operator()(std::float16_t a, float b) const noexcept {
+    inline float operator()(half a, float b) const noexcept {
         return float(a) - b;
     }
 
-    inline double operator()(std::float16_t a, double b) const noexcept {
+    inline double operator()(half a, double b) const noexcept {
         return static_cast<double>(a) - b;
     }
 
-    inline float operator()(float a, std::float16_t b) const noexcept {
+    inline float operator()(float a, half b) const noexcept {
         return a - float(b);
     }
 
-    inline double operator()(double a, std::float16_t b) const noexcept {
+    inline double operator()(double a, half b) const noexcept {
         return a - static_cast<double>(b);
     }
 
-    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, std::float16_t> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
-    inline float operator()(std::float16_t a, B b) const noexcept {
+    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
+    inline float operator()(half a, B b) const noexcept {
         return float(a) - static_cast<float>(b);
     }
 
-    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, std::float16_t> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
-    inline float operator()(A a, std::float16_t b) const noexcept {
+    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
+    inline float operator()(A a, half b) const noexcept {
         return static_cast<float>(a) - float(b);
     }
+#endif
 };
  
 struct Mul {
@@ -197,35 +211,37 @@ struct Mul {
         return a * b;
     }
 
-    inline std::float16_t operator()(std::float16_t a, std::float16_t b) const noexcept {
-        return std::float16_t(float(a) * float(b));
+#if HAS_FLOAT16
+    inline half operator()(half a, half b) const noexcept {
+        return half(float(a) * float(b));
     }
 
-    inline float operator()(std::float16_t a, float b) const noexcept {
+    inline float operator()(half a, float b) const noexcept {
         return float(a) * b;
     }
 
-    inline double operator()(std::float16_t a, double b) const noexcept {
+    inline double operator()(half a, double b) const noexcept {
         return static_cast<double>(a) * b;
     }
 
-    inline float operator()(float a, std::float16_t b) const noexcept {
+    inline float operator()(float a, half b) const noexcept {
         return a * float(b);
     }
 
-    inline double operator()(double a, std::float16_t b) const noexcept {
+    inline double operator()(double a, half b) const noexcept {
         return a * static_cast<double>(b);
     }
 
-    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, std::float16_t> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
-    inline float operator()(std::float16_t a, B b) const noexcept {
+    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
+    inline float operator()(half a, B b) const noexcept {
         return float(a) * static_cast<float>(b);
     }
 
-    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, std::float16_t> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
-    inline float operator()(A a, std::float16_t b) const noexcept {
+    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
+    inline float operator()(A a, half b) const noexcept {
         return static_cast<float>(a) * float(b);
     }
+#endif
 };
  
 struct Pow {
@@ -234,35 +250,38 @@ struct Pow {
         return std::pow(a, b);
     }
 
-    inline std::float16_t operator()(std::float16_t a, std::float16_t b) const noexcept {
-        return std::float16_t(std::pow(float(a), float(b)));
+#if HAS_FLOAT16
+    inline half operator()(half a, half b) const noexcept {
+        return half(std::pow(float(a), float(b)));
     }
 
-    inline float operator()(std::float16_t a, float b) const noexcept {
+    inline float operator()(half a, float b) const noexcept {
         return std::pow(float(a), b);
     }
 
-    inline double operator()(std::float16_t a, double b) const noexcept {
+    inline double operator()(half a, double b) const noexcept {
         return std::pow(static_cast<double>(a), b);
     }
 
-    inline float operator()(float a, std::float16_t b) const noexcept {
+    inline float operator()(float a, half b) const noexcept {
         return std::pow(a, float(b));
     }
 
-    inline double operator()(double a, std::float16_t b) const noexcept {
+    inline double operator()(double a, half b) const noexcept {
         return std::pow(a, static_cast<double>(b));
     }
 
-    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, std::float16_t> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
-    inline float operator()(std::float16_t a, B b) const noexcept {
+    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
+    inline float operator()(half a, B b) const noexcept {
         return std::pow(float(a), static_cast<float>(b));
     }
 
-    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, std::float16_t> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
-    inline float operator()(A a, std::float16_t b) const noexcept {
+    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
+    inline float operator()(A a, half b) const noexcept {
         return std::pow(static_cast<float>(a), float(b));
     }
+
+#endif
 };
 
   
@@ -300,20 +319,22 @@ constexpr auto dispatchAdd = []() {
     table[index(int64, int32)] = launchBinaryOpKernel<int64_t, int32_t, int64_t, Add>;
     table[index(int64, int64)] = launchBinaryOpKernel<int64_t, int64_t, int64_t, Add>;
  
-    table[index(float16, float16)] = launchBinaryOpKernel<std::float16_t, std::float16_t, std::float16_t, Add>;
-    table[index(float16, float32)] = launchBinaryOpKernel<std::float16_t, float, float, Add>;
-    table[index(float32, float16)] = launchBinaryOpKernel<float, std::float16_t, float, Add>;
-    table[index(float16, float64)] = launchBinaryOpKernel<std::float16_t, double, double, Add>;
-    table[index(float64, float16)] = launchBinaryOpKernel<double, std::float16_t, double, Add>;
+#if HAS_FLOAT16
+    table[index(float16, float16)] = launchBinaryOpKernel<half, half, half, Add>;
+    table[index(float16, float32)] = launchBinaryOpKernel<half, float, float, Add>;
+    table[index(float32, float16)] = launchBinaryOpKernel<float, half, float, Add>;
+    table[index(float16, float64)] = launchBinaryOpKernel<half, double, double, Add>;
+    table[index(float64, float16)] = launchBinaryOpKernel<double, half, double, Add>;
     
-    table[index(float16, int8)]    = launchBinaryOpKernel<std::float16_t, int8_t, float, Add>;
-    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t, std::float16_t, float, Add>;
-    table[index(float16, int16)]   = launchBinaryOpKernel<std::float16_t, int16_t, float, Add>;
-    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t, std::float16_t, float, Add>;
-    table[index(float16, int32)]   = launchBinaryOpKernel<std::float16_t, int32_t, float, Add>;
-    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, std::float16_t, float, Add>;
-    table[index(float16, int64)]   = launchBinaryOpKernel<std::float16_t, int64_t, double, Add>;
-    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, std::float16_t, double, Add>;
+    table[index(float16, int8)]    = launchBinaryOpKernel<half, int8_t, float, Add>;
+    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t, half, float, Add>;
+    table[index(float16, int16)]   = launchBinaryOpKernel<half, int16_t, float, Add>;
+    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t, half, float, Add>;
+    table[index(float16, int32)]   = launchBinaryOpKernel<half, int32_t, float, Add>;
+    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, half, float, Add>;
+    table[index(float16, int64)]   = launchBinaryOpKernel<half, int64_t, double, Add>;
+    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, half, double, Add>;
+#endif
 
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Add>;
     table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Add>;
@@ -354,20 +375,22 @@ constexpr auto dispatchSub = []() {
     table[index(int64, int32)] = launchBinaryOpKernel<int64_t, int32_t, int64_t, Sub>;
     table[index(int64, int64)] = launchBinaryOpKernel<int64_t, int64_t, int64_t, Sub>;
 
-    table[index(float16, float16)] = launchBinaryOpKernel<std::float16_t, std::float16_t, std::float16_t, Sub>;
-    table[index(float16, float32)] = launchBinaryOpKernel<std::float16_t, float, float, Sub>;
-    table[index(float32, float16)] = launchBinaryOpKernel<float, std::float16_t, float, Sub>;
-    table[index(float16, float64)] = launchBinaryOpKernel<std::float16_t, double, double, Sub>;
-    table[index(float64, float16)] = launchBinaryOpKernel<double, std::float16_t, double, Sub>;
+#if HAS_FLOAT16
+    table[index(float16, float16)] = launchBinaryOpKernel<half, half, half, Sub>;
+    table[index(float16, float32)] = launchBinaryOpKernel<half, float, float, Sub>;
+    table[index(float32, float16)] = launchBinaryOpKernel<float, half, float, Sub>;
+    table[index(float16, float64)] = launchBinaryOpKernel<half, double, double, Sub>;
+    table[index(float64, float16)] = launchBinaryOpKernel<double, half, double, Sub>;
     
-    table[index(float16, int8)]    = launchBinaryOpKernel<std::float16_t, int8_t, float, Sub>;
-    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t, std::float16_t, float, Sub>;
-    table[index(float16, int16)]   = launchBinaryOpKernel<std::float16_t, int16_t, float, Sub>;
-    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t, std::float16_t, float, Sub>;
-    table[index(float16, int32)]   = launchBinaryOpKernel<std::float16_t, int32_t, float, Sub>;
-    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, std::float16_t, float, Sub>;
-    table[index(float16, int64)]   = launchBinaryOpKernel<std::float16_t, int64_t, double, Sub>;
-    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, std::float16_t, double, Sub>;
+    table[index(float16, int8)]    = launchBinaryOpKernel<half, int8_t, float, Sub>;
+    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t, half, float, Sub>;
+    table[index(float16, int16)]   = launchBinaryOpKernel<half, int16_t, float, Sub>;
+    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t, half, float, Sub>;
+    table[index(float16, int32)]   = launchBinaryOpKernel<half, int32_t, float, Sub>;
+    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, half, float, Sub>;
+    table[index(float16, int64)]   = launchBinaryOpKernel<half, int64_t, double, Sub>;
+    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, half, double, Sub>;
+#endif
 
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Sub>;
     table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Sub>;
@@ -408,21 +431,22 @@ constexpr auto dispatchMul = []() {
     table[index(int64, int32)] = launchBinaryOpKernel<int64_t, int32_t, int64_t, Mul>;
     table[index(int64, int64)] = launchBinaryOpKernel<int64_t, int64_t, int64_t, Mul>;
 
-    // std::float16_t variants
-    table[index(float16, float16)] = launchBinaryOpKernel<std::float16_t, std::float16_t, std::float16_t, Mul>;
-    table[index(float16, float32)] = launchBinaryOpKernel<std::float16_t, float, float, Mul>;
-    table[index(float32, float16)] = launchBinaryOpKernel<float, std::float16_t, float, Mul>;
-    table[index(float16, float64)] = launchBinaryOpKernel<std::float16_t, double, double, Mul>;
-    table[index(float64, float16)] = launchBinaryOpKernel<double, std::float16_t, double, Mul>;
+#if HAS_FLOAT16
+    table[index(float16, float16)] = launchBinaryOpKernel<half, half, half, Mul>;
+    table[index(float16, float32)] = launchBinaryOpKernel<half, float, float, Mul>;
+    table[index(float32, float16)] = launchBinaryOpKernel<float, half, float, Mul>;
+    table[index(float16, float64)] = launchBinaryOpKernel<half, double, double, Mul>;
+    table[index(float64, float16)] = launchBinaryOpKernel<double, half, double, Mul>;
     
-    table[index(float16, int8)]    = launchBinaryOpKernel<std::float16_t, int8_t, float, Mul>;
-    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t, std::float16_t, float, Mul>;
-    table[index(float16, int16)]   = launchBinaryOpKernel<std::float16_t, int16_t, float, Mul>;
-    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t, std::float16_t, float, Mul>;
-    table[index(float16, int32)]   = launchBinaryOpKernel<std::float16_t, int32_t, float, Mul>;
-    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, std::float16_t, float, Mul>;
-    table[index(float16, int64)]   = launchBinaryOpKernel<std::float16_t, int64_t, double, Mul>;
-    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, std::float16_t, double, Mul>;
+    table[index(float16, int8)]    = launchBinaryOpKernel<half, int8_t, float, Mul>;
+    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t, half, float, Mul>;
+    table[index(float16, int16)]   = launchBinaryOpKernel<half, int16_t, float, Mul>;
+    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t, half, float, Mul>;
+    table[index(float16, int32)]   = launchBinaryOpKernel<half, int32_t, float, Mul>;
+    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, half, float, Mul>;
+    table[index(float16, int64)]   = launchBinaryOpKernel<half, int64_t, double, Mul>;
+    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, half, double, Mul>;
+#endif
 
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Mul>;
     table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Mul>;
@@ -442,21 +466,23 @@ constexpr auto dispatchMul = []() {
 constexpr auto dispatchPow = []() {
     std::array<BinaryOpKernel, index(TYPES, TYPES)> table; 
     table.fill(launchDefaultBinaryOpKernel); 
- 
-    table[index(float16, float16)] = launchBinaryOpKernel<std::float16_t, std::float16_t, float,   Pow>;
-    table[index(float16, float32)] = launchBinaryOpKernel<std::float16_t, float,           float,  Pow>;
-    table[index(float32, float16)] = launchBinaryOpKernel<float,           std::float16_t, float,  Pow>;
-    table[index(float16, float64)] = launchBinaryOpKernel<std::float16_t, double,          double, Pow>;
-    table[index(float64, float16)] = launchBinaryOpKernel<double,          std::float16_t, double, Pow>;
+
+#if HAS_FLOAT16
+    table[index(float16, float16)] = launchBinaryOpKernel<half, half, float,   Pow>;
+    table[index(float16, float32)] = launchBinaryOpKernel<half, float,           float,  Pow>;
+    table[index(float32, float16)] = launchBinaryOpKernel<float,           half, float,  Pow>;
+    table[index(float16, float64)] = launchBinaryOpKernel<half, double,          double, Pow>;
+    table[index(float64, float16)] = launchBinaryOpKernel<double,          half, double, Pow>;
     
-    table[index(float16, int8)]    = launchBinaryOpKernel<std::float16_t, int8_t,  float,  Pow>;
-    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t,         std::float16_t, float,  Pow>;
-    table[index(float16, int16)]   = launchBinaryOpKernel<std::float16_t, int16_t, float,  Pow>;
-    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t,        std::float16_t, float,  Pow>;
-    table[index(float16, int32)]   = launchBinaryOpKernel<std::float16_t, int32_t, float,  Pow>;
-    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t,        std::float16_t, float,  Pow>;
-    table[index(float16, int64)]   = launchBinaryOpKernel<std::float16_t, int64_t, double, Pow>;
-    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t,        std::float16_t, double, Pow>;
+    table[index(float16, int8)]    = launchBinaryOpKernel<half, int8_t,  float,  Pow>;
+    table[index(int8, float16)]    = launchBinaryOpKernel<int8_t,         half, float,  Pow>;
+    table[index(float16, int16)]   = launchBinaryOpKernel<half, int16_t, float,  Pow>;
+    table[index(int16, float16)]   = launchBinaryOpKernel<int16_t,        half, float,  Pow>;
+    table[index(float16, int32)]   = launchBinaryOpKernel<half, int32_t, float,  Pow>;
+    table[index(int32, float16)]   = launchBinaryOpKernel<int32_t,        half, float,  Pow>;
+    table[index(float16, int64)]   = launchBinaryOpKernel<half, int64_t, double, Pow>;
+    table[index(int64, float16)]   = launchBinaryOpKernel<int64_t,        half, double, Pow>;
+#endif
 
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float,  float,  Pow>;
     table[index(float32, int32)] = launchBinaryOpKernel<float,   int32_t, float,  Pow>;

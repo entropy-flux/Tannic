@@ -2,10 +2,20 @@
 #include <vector>
 #include <array>
 #include <cmath>  
-#include <complex>
-#include <stdfloat>
+#include <complex> 
 #include "cpu/ops.hpp"  
- 
+#ifndef HAS_FLOAT16
+    #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
+        #include <stdfloat>
+        using half = std::float16_t;
+        #define HAS_FLOAT16 1
+    #else 
+        #define HAS_FLOAT16 0 
+        struct half_placeholder { float value; };
+        using half = half_placeholder;
+    #endif
+#endif
+
 namespace {  
 
 template<typename S, typename D, class Op>
@@ -99,19 +109,25 @@ struct Neg {
     auto operator()(A&& a) const noexcept(noexcept(-a)) {
         return -a;
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(-float(a));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(-float(a));
     }
-};
+#endif
+}; 
 
 struct Cpy {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(a)) {
         return a;
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
         return a;
     }
+#endif
 };
 
 struct Log {
@@ -119,9 +135,13 @@ struct Log {
     auto operator()(A&& a) const noexcept(noexcept(std::log(a))) {
         return std::log(a);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(std::log(float(a)));
+
+
+#if HAS_FLOAT16        
+    half operator()(half a) const noexcept {
+        return half(std::log(float(a)));
     }
+#endif
 };
 
 struct Exp {
@@ -129,9 +149,12 @@ struct Exp {
     auto operator()(A&& a) const noexcept(noexcept(std::exp(a))) {
         return std::exp(a);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(std::exp(float(a)));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(std::exp(float(a)));
     }
+#endif
 };
 
 struct Sqrt {
@@ -139,9 +162,12 @@ struct Sqrt {
     auto operator()(A&& a) const noexcept(noexcept(std::sqrt(a))) {
         return std::sqrt(a);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(std::sqrt(float(a)));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(std::sqrt(float(a)));
     }
+#endif
 };
 
 struct Rsqrt {
@@ -152,9 +178,12 @@ struct Rsqrt {
     auto operator()(A&& a) const noexcept {
         return 1.0 / std::sqrt(a + eps);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(1.0f / std::sqrt(float(a) + float(eps)));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(1.0f / std::sqrt(float(a) + float(eps)));
     }
+#endif
 };
 
 struct Abs {
@@ -162,9 +191,12 @@ struct Abs {
     auto operator()(A&& a) const noexcept(noexcept(std::abs(a))) {
         return std::abs(a);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(std::fabs(float(a)));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(std::fabs(float(a)));
     }
+#endif
 };
 
 struct Sin {
@@ -172,9 +204,12 @@ struct Sin {
     auto operator()(A&& a) const noexcept(noexcept(std::sin(a))) {
         return std::sin(a);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(std::sin(float(a)));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(std::sin(float(a)));
     }
+#endif
 };
 
 struct Cos {
@@ -182,9 +217,12 @@ struct Cos {
     auto operator()(A&& a) const noexcept(noexcept(std::cos(a))) {
         return std::cos(a);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(std::cos(float(a)));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(std::cos(float(a)));
     }
+#endif
 };
 
 struct Tan {
@@ -192,9 +230,12 @@ struct Tan {
     auto operator()(A&& a) const noexcept(noexcept(std::tan(a))) {
         return std::tan(a);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(std::tan(float(a)));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(std::tan(float(a)));
     }
+#endif
 };
 
 struct Sinh {
@@ -202,9 +243,12 @@ struct Sinh {
     auto operator()(A&& a) const noexcept(noexcept(std::sinh(a))) {
         return std::sinh(a);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(std::sinh(float(a)));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(std::sinh(float(a)));
     }
+#endif
 };
 
 struct Cosh {
@@ -212,9 +256,12 @@ struct Cosh {
     auto operator()(A&& a) const noexcept(noexcept(std::cosh(a))) {
         return std::cosh(a);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(std::cosh(float(a)));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(std::cosh(float(a)));
     }
+#endif
 };
 
 struct Tanh {
@@ -222,9 +269,12 @@ struct Tanh {
     auto operator()(A&& a) const noexcept(noexcept(std::tanh(a))) {
         return std::tanh(a);
     }
-    std::float16_t operator()(std::float16_t a) const noexcept {
-        return std::float16_t(std::tanh(float(a)));
+
+#if HAS_FLOAT16    
+    half operator()(half a) const noexcept {
+        return half(std::tanh(float(a)));
     }
+#endif
 };
 
 } namespace cpu {
@@ -235,7 +285,10 @@ status neg(const tensor_t* src, tensor_t* dst) {
         case int16:    return launchUnaryOpKernel<int16_t, int16_t, Neg>(src, dst);
         case int32:    return launchUnaryOpKernel<int32_t, int32_t, Neg>(src, dst);
         case int64:    return launchUnaryOpKernel<int64_t, int64_t, Neg>(src, dst);
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Neg>(src, dst);
+
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Neg>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Neg>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Neg>(src, dst);
         case complex64:  return launchUnaryOpKernel<std::complex<float>, std::complex<float>, Neg>(src, dst);
@@ -250,7 +303,9 @@ status cpy(const tensor_t* src, tensor_t* dst) {
         case int16:    return launchUnaryOpKernel<int16_t, int16_t, Cpy>(src, dst);
         case int32:    return launchUnaryOpKernel<int32_t, int32_t, Cpy>(src, dst);
         case int64:    return launchUnaryOpKernel<int64_t, int64_t, Cpy>(src, dst);
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Cpy>(src, dst);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Cpy>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Cpy>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Cpy>(src, dst);
         case complex64:  return launchUnaryOpKernel<std::complex<float>, std::complex<float>, Cpy>(src, dst);
@@ -261,7 +316,10 @@ status cpy(const tensor_t* src, tensor_t* dst) {
 
 status log(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Log>(src, dst);
+    
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Log>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Log>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Log>(src, dst);
         default: return UNSUPPORTED_DTYPE;
@@ -270,7 +328,9 @@ status log(const tensor_t* src, tensor_t* dst) {
 
 status exp(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Exp>(src, dst);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Exp>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Exp>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Exp>(src, dst);
         default: return UNSUPPORTED_DTYPE;
@@ -279,7 +339,9 @@ status exp(const tensor_t* src, tensor_t* dst) {
 
 status sqrt(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Sqrt>(src, dst);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Sqrt>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Sqrt>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Sqrt>(src, dst);
         default: return UNSUPPORTED_DTYPE;
@@ -288,7 +350,9 @@ status sqrt(const tensor_t* src, tensor_t* dst) {
 
 status rsqrt(const tensor_t* src, tensor_t* dst, float eps) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Rsqrt>(src, dst, eps);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Rsqrt>(src, dst, eps);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Rsqrt>(src, dst, eps);
         case float64:  return launchUnaryOpKernel<double, double, Rsqrt>(src, dst, eps);
         default: return UNSUPPORTED_DTYPE;
@@ -297,7 +361,9 @@ status rsqrt(const tensor_t* src, tensor_t* dst, float eps) {
 
 status abs(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Abs>(src, dst);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Abs>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Abs>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Abs>(src, dst);
         case int32:    return launchUnaryOpKernel<int32_t, int32_t, Abs>(src, dst);
@@ -308,7 +374,9 @@ status abs(const tensor_t* src, tensor_t* dst) {
 
 status sin(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Sin>(src, dst);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Sin>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Sin>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Sin>(src, dst);
         default: return UNSUPPORTED_DTYPE;
@@ -317,7 +385,9 @@ status sin(const tensor_t* src, tensor_t* dst) {
 
 status cos(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Cos>(src, dst);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Cos>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Cos>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Cos>(src, dst);
         default: return UNSUPPORTED_DTYPE;
@@ -326,7 +396,9 @@ status cos(const tensor_t* src, tensor_t* dst) {
 
 status tan(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Tan>(src, dst);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Tan>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Tan>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Tan>(src, dst);
         default: return UNSUPPORTED_DTYPE;
@@ -335,7 +407,9 @@ status tan(const tensor_t* src, tensor_t* dst) {
 
 status sinh(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Sinh>(src, dst);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Sinh>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Sinh>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Sinh>(src, dst);
         default: return UNSUPPORTED_DTYPE;
@@ -344,7 +418,9 @@ status sinh(const tensor_t* src, tensor_t* dst) {
 
 status cosh(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Cosh>(src, dst);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Cosh>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Cosh>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Cosh>(src, dst);
         default: return UNSUPPORTED_DTYPE;
@@ -353,7 +429,9 @@ status cosh(const tensor_t* src, tensor_t* dst) {
 
 status tanh(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Tanh>(src, dst);
+#if HAS_FLOAT16    
+        case float16:  return launchUnaryOpKernel<half, half, Tanh>(src, dst);
+#endif
         case float32:  return launchUnaryOpKernel<float, float, Tanh>(src, dst);
         case float64:  return launchUnaryOpKernel<double, double, Tanh>(src, dst);
         default: return UNSUPPORTED_DTYPE;
