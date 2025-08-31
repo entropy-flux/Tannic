@@ -50,8 +50,7 @@ TEST(TestBinaryOps, Addition) {
         }
     });
 
-    Tensor result = A + B;
-    std::cout << A.dtype() << B.dtype() << result.dtype() << std::endl;
+    Tensor result = A + B; 
     EXPECT_TRUE(allclose(result, expected));
 }
 

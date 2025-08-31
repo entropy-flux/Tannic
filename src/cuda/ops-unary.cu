@@ -7,11 +7,18 @@
 #include "cuda/ops.cuh"  
 
 namespace {
-    
+
 template<typename S, typename D, class Op>
-__global__ void scalarUnaryOpKernel(const S* src, D* dst, Op fn) { 
+__global__ void singletonUnaryOpKernel(const S* src, D* dst, Op fn) { 
     *dst = fn(*src);
 }  
+
+template<typename S, typename D, class Op>
+__global__ void contiguousUnaryOpKernel(const S* src, D* dst, size_t ne, Op fn) {
+    for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) {
+        dst[idx] = fn(src[idx]);
+    }
+}
 
 template<typename S, typename D, class Op>
 __global__ void stridedUnaryOpKernel(
@@ -39,26 +46,43 @@ template<typename S, typename D, class Op, class ... Args>
 status launchFnKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args... args)  { 
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
     Op fn(std::forward<Args>(args)...);
-    if (src->rank == 0) {
-        scalarUnaryOpKernel<S, D, Op><<<1, 1, 0, cudaStream>>>(
-            (const S*)(src->address),
-            (D*)(dst->address), fn
-        ); 
-    } 
-    
-    else {
-        size_t ne = dst->size; 
-        size_t blockSize = 256;
-        size_t gridSize = (ne + blockSize - 1) / blockSize;
 
-        stridedUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
-            (const S*)(src->address), src->shape, src->strides,
-            (D*)(dst->address), dst->shape, dst->strides,
-            src->rank, ne, fn
-        ); 
-    }  
+    size_t ne = dst->size; 
+    size_t blockSize = 256;
+    size_t gridSize = (ne + blockSize - 1) / blockSize;
+
+    switch (src->layout) {
+        case SINGLETON:
+            singletonUnaryOpKernel<S, D, Op><<<1, 1, 0, cudaStream>>>(
+                (const S*)(src->address),
+                (D*)(dst->address),
+                fn
+            ); 
+            break;
+
+        case CONTIGUOUS:
+            contiguousUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
+                (const S*)(src->address),
+                (D*)(dst->address),
+                ne,
+                fn
+            );
+            break;
+
+        case STRIDED:
+            stridedUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
+                (const S*)(src->address), src->shape, src->strides,
+                (D*)(dst->address), dst->shape, dst->strides,
+                src->rank, ne, fn
+            ); 
+            break;
+
+        default:
+            return ERROR;
+    }
+
     return SUCCESS;
-} 
+}   
 
 
 struct Neg { 

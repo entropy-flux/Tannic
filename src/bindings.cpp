@@ -95,7 +95,8 @@ tensor_t structure(Tensor const& tensor) {
                 .environment = HOST,
                 .resource = {.host = structure(resource)},
             },
-            .size = tensor.nelements()
+            .size = tensor.nelements(),
+            .layout = tensor.is_singleton() ? SINGLETON : tensor.is_contiguous() ? CONTIGUOUS : STRIDED
         };
     } else {
         Device const& resource = std::get<Device>(alloc);
@@ -109,7 +110,8 @@ tensor_t structure(Tensor const& tensor) {
                 .environment = DEVICE,
                 .resource = {.device = structure(resource)},
             },
-            .size = tensor.nelements()
+            .size = tensor.nelements(),
+            .layout = tensor.is_singleton() ? SINGLETON : tensor.is_contiguous() ? CONTIGUOUS : STRIDED
         };
     }
 }

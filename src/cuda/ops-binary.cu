@@ -10,72 +10,125 @@
 namespace { 
 
 template<typename S0, typename S1, typename D, class Op>
-__global__ void scalarBinaryOpKernel(const S0* src0, const S1* src1, D* dst) {
+__global__ void singletonBinaryOpKernel(const S0* src0, const S1* src1, D* dst) {
     Op op;
     *dst = op(*src0, *src1);
-} 
+}  
 
 template<typename S0, typename S1, typename D, class Op>
-__global__ void batchedBinaryOpKernel(
-    const S0* src0_ptr, shape_t src0_shape, strides_t src0_strides, uint8_t src0_rank,
-    const S1* src1_ptr, shape_t src1_shape, strides_t src1_strides, uint8_t src1_rank,
-    D* dst_ptr, shape_t dst_shape, strides_t dst_strides, uint8_t dst_rank,
-    size_t ne
-) {
-    Op op{};
-    
-    for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) {
-        size_t cnt[8] = {0};  
-        size_t remaining = idx;
- 
-        for (int i = dst_rank - 1; i >= 0; --i) {
-            cnt[i] = remaining % dst_shape.sizes[i];
-            remaining /= dst_shape.sizes[i];
-        }
-
-        size_t offs0 = 0, offs1 = 0;
-        for (uint8_t i = 0; i < dst_rank; ++i) { 
-            int dim0 = i + src0_rank - dst_rank;
-            int dim1 = i + src1_rank - dst_rank;
-
-            size_t idx0 = (dim0 >= 0 && src0_shape.sizes[dim0] > 1) ? cnt[i] : 0;
-            size_t idx1 = (dim1 >= 0 && src1_shape.sizes[dim1] > 1) ? cnt[i] : 0;
-
-            if (dim0 >= 0) offs0 += idx0 * src0_strides.sizes[dim0];
-            if (dim1 >= 0) offs1 += idx1 * src1_strides.sizes[dim1];
-        }
-
-        dst_ptr[idx] = op(src0_ptr[offs0], src1_ptr[offs1]);
+__global__ void flatBinaryOpKernel(const S0* src0, const S1* src1, D* dst, size_t ne, Op op) {
+    size_t idx = blockIdx.x * blockDim.x + threadIdx.x;
+    size_t stride = blockDim.x * gridDim.x;
+    for (; idx < ne; idx += stride) {
+        dst[idx] = op(src0[idx], src1[idx]);
     }
 } 
 
 template<typename S0, typename S1, typename D, class Op>
+__global__ void broadcastBinaryOpKernel(
+    const S0* src0, strides_t src0_strides,
+    const S1* src1, strides_t src1_strides,
+    D* dst, strides_t dst_strides,
+    shape_t shape, uint8_t rank,
+    size_t ne, Op op)
+{
+    size_t linear_idx = blockIdx.x * blockDim.x + threadIdx.x;
+    size_t grid_stride = blockDim.x * gridDim.x;
+ 
+    for (; linear_idx < ne; linear_idx += grid_stride) {
+        size_t offset0 = 0, offset1 = 0, offset_dst = 0;
+        size_t remaining = linear_idx;   
+
+        #pragma unroll
+        for (int dim = rank - 1; dim >= 0; --dim) {
+            const size_t coord = remaining % shape.sizes[dim];
+            remaining /= shape.sizes[dim];
+
+            offset0    += coord * (size_t)src0_strides.sizes[dim];
+            offset1    += coord * (size_t)src1_strides.sizes[dim];
+            offset_dst += coord * (size_t)dst_strides.sizes[dim];
+        }
+
+        dst[offset_dst] = op(src0[offset0], src1[offset1]);
+    }
+}
+
+
+
+template<typename S0, typename S1, typename D, class Op>
 status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream) {
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
+    const size_t ne = dst->size;
 
     if (dst->rank == 0) {
-        scalarBinaryOpKernel<S0, S1, D, Op><<<1, 1, 0, cudaStream>>>(
-            (const S0*)(src0->address), 
-            (const S1*)(src1->address), 
-            (D*)(dst->address)
-        );   
-    } 
-    else {     
-        // total number of elements in dst
-        size_t ne = dst->size; 
-        int blockSize = 256;
-        int gridSize = (ne + blockSize - 1) / blockSize;
+        singletonBinaryOpKernel<S0, S1, D, Op><<<1, 1, 0, cudaStream>>>(
+            (const S0*)src0->address,
+            (const S1*)src1->address,
+            (D*)dst->address
+        );
+        return SUCCESS;
+    }
 
-        batchedBinaryOpKernel<S0, S1, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
-            (const S0*)(src0->address), src0->shape, src0->strides, src0->rank,
-            (const S1*)(src1->address), src1->shape, src1->strides, src1->rank,
-            (D*)(dst->address), dst->shape, dst->strides, dst->rank,
-            ne
-        ); 
-    } 
+    else {
+        strides_t src0_strides{};
+        strides_t src1_strides{};
 
-    return SUCCESS;
-}  
+        bool flat = true;
+
+        int64_t expect_src0 = 1;
+        int64_t expect_src1 = 1;
+
+        const int off0 = dst->rank - src0->rank;
+        const int off1 = dst->rank - src1->rank;
+
+        for (int dim = dst->rank - 1; dim >= 0; --dim) {
+            const size_t sz = dst->shape.sizes[dim]; 
+            const size_t sz0 = (dim >= off0) ? src0->shape.sizes[dim - off0] : 1;
+            const size_t sz1 = (dim >= off1) ? src1->shape.sizes[dim - off1] : 1;
+ 
+            src0_strides.sizes[dim] = (sz0 == 1) ? 0 : src0->strides.sizes[dim - off0];
+            src1_strides.sizes[dim] = (sz1 == 1) ? 0 : src1->strides.sizes[dim - off1];
+ 
+            if (!(sz0 == sz && ((dim >= off0) ? src0->strides.sizes[dim - off0] == expect_src0 : expect_src0 == 1)))
+                flat = false;
+ 
+            if (!(sz1 == sz && ((dim >= off1) ? src1->strides.sizes[dim - off1] == expect_src1 : expect_src1 == 1)))
+                flat = false;
+ 
+            expect_src0 *= (sz0 == 1 ? 1 : sz0);
+            expect_src1 *= (sz1 == 1 ? 1 : sz1);
+        }
+
+        const size_t blockSize = 256;
+        const size_t gridSize  = (ne + blockSize - 1) / blockSize;
+
+        if (flat) {
+            flatBinaryOpKernel<S0, S1, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
+                (const S0*)src0->address,
+                (const S1*)src1->address,
+                (D*)dst->address,
+                ne,
+                Op{}
+            );
+        } 
+        
+        else {
+            broadcastBinaryOpKernel<S0, S1, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
+                (const S0*)src0->address, src0_strides,
+                (const S1*)src1->address, src1_strides,
+                (D*)dst->address, dst->strides,
+                dst->shape, dst->rank,
+                ne,
+                Op{}
+            );
+        }
+
+        return SUCCESS;
+    }
+}
+
+
+
 
 constexpr static status launchDefaultBinaryOpKernel(const tensor_t*, const tensor_t*, tensor_t*, stream_t) {
     return UNSUPPORTED_DTYPE;

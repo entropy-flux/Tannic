@@ -4,73 +4,120 @@
 #include <complex>
 #include "cpu/ops.hpp" 
 
-namespace { 
+namespace {   
 
 template<typename S0, typename S1, typename D, class Op>
-void scalarBinaryOpKernel(
-    const S0* src0_ptr,  
-    const S1* src1_ptr, 
+void singletonBinaryOpKernel(
+    const S0* src0_ptr,
+    const S1* src1_ptr,
     D* dst_ptr
 ) {
-    Op op;
+    Op op{};
     *dst_ptr = op(*src0_ptr, *src1_ptr);
-}   
+}
 
 template<typename S0, typename S1, typename D, class Op>
-void batchedBinaryOpKernel(
-    const S0* src0_ptr, const shape_t& src0_shape, const strides_t& src0_strides, uint8_t src0_rank,
-    const S1* src1_ptr, const shape_t& src1_shape, const strides_t& src1_strides, uint8_t src1_rank,
-    D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides, uint8_t dst_rank
+void contiguousBinaryOpKernel(const S0* src0_ptr, const S1* src1_ptr, D* dst_ptr, size_t ne) {
+    Op op{};
+    for (size_t i = 0; i < ne; ++i) {
+        dst_ptr[i] = op(src0_ptr[i], src1_ptr[i]);
+    }
+}
+
+template<typename S0, typename S1, typename D, class Op>
+void stridedBinaryOpKernel(
+    const S0* src0_ptr, strides_t src0_strides,
+    const S1* src1_ptr, strides_t src1_strides,
+    D* dst_ptr, const strides_t& dst_strides,
+    const shape_t& dst_shape, uint8_t dst_rank,
+    size_t ne
 ) {
     Op op{};
-    size_t cnt[8] = {0};   
+    int rank = static_cast<int>(dst_rank);
+    for (size_t linear_idx = 0; linear_idx < ne; ++linear_idx) {
+        size_t offset0 = 0, offset1 = 0, offset_dst = 0;
+        size_t remaining = linear_idx;
 
-    for (size_t idx = 0;; ++idx) {
-        size_t offs0 = 0, offs1 = 0;
-
-        for (uint8_t i = 0; i < dst_rank; ++i) { 
-            int dim0 = i + src0_rank - dst_rank;
-            int dim1 = i + src1_rank - dst_rank;
-
-            size_t idx0 = (dim0 >= 0 && src0_shape.sizes[dim0] > 1) ? cnt[i] : 0;
-            size_t idx1 = (dim1 >= 0 && src1_shape.sizes[dim1] > 1) ? cnt[i] : 0;
-
-            if (dim0 >= 0) offs0 += idx0 * src0_strides.sizes[dim0];
-            if (dim1 >= 0) offs1 += idx1 * src1_strides.sizes[dim1];
+        for (int dim = rank - 1; dim >= 0; --dim) {
+            const size_t coord = remaining % dst_shape.sizes[dim];
+            remaining /= dst_shape.sizes[dim]; 
+            offset0    += coord * static_cast<size_t>(src0_strides.sizes[dim]);
+            offset1    += coord * static_cast<size_t>(src1_strides.sizes[dim]);
+            offset_dst += coord * static_cast<size_t>(dst_strides.sizes[dim]);
         }
 
-        dst_ptr[idx] = op(src0_ptr[offs0], src1_ptr[offs1]);
- 
-        bool done = false;
-        for (int i = dst_rank - 1; i >= 0; --i) {
-            if (++cnt[i] < dst_shape.sizes[i])
-                break;
-            if (i == 0)
-                done = true;
-            cnt[i] = 0;
-        }
-        if (done) break;
+        dst_ptr[offset_dst] = op(src0_ptr[offset0], src1_ptr[offset1]);
     }
-}  
+}
  
+
 template<typename S0, typename S1, typename D, class Op>
 status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
-    if (dst->rank == 0) {
-        scalarBinaryOpKernel<S0, S1, D, Op>(
-            (const S0*)(src0->address), 
-            (const S1*)(src1->address),  
-            (D*)(dst->address)
-        ); 
+    const size_t ne = dst->size; 
+    if (dst->layout == SINGLETON) {
+        singletonBinaryOpKernel<S0, S1, D, Op>(
+            static_cast<const S0*>(src0->address),
+            static_cast<const S1*>(src1->address),
+            static_cast<D*>(dst->address)
+        );
+        return SUCCESS;
+    }
+ 
+    else { 
+        strides_t src0_strides{};
+        strides_t src1_strides{};
+
+        bool flat = true;               
+        int64_t expect_src0 = 1;       
+        int64_t expect_src1 = 1;        
+
+        const int rank = dst->rank;
+        const int off0 = rank - src0->rank; 
+        const int off1 = rank - src1->rank;
+
+        for (int dim = rank - 1; dim >= 0; --dim) {
+            const size_t sz   = dst->shape.sizes[dim];
+            const size_t sz0 = (dim >= off0) ? src0->shape.sizes[dim - off0] : 1;
+            const size_t sz1 = (dim >= off1) ? src1->shape.sizes[dim - off1] : 1;
+    
+            src0_strides.sizes[dim] = (sz0 == 1) ? 0 : src0->strides.sizes[dim - off0];
+            src1_strides.sizes[dim] = (sz1 == 1) ? 0 : src1->strides.sizes[dim - off1];
+    
+            if (!(sz0 == sz && ((dim >= off0) ? (src0->strides.sizes[dim - off0] == expect_src0) : (expect_src0 == 1))))
+                flat = false;
+
+            if (!(sz1 == sz && ((dim >= off1) ? (src1->strides.sizes[dim - off1] == expect_src1) : (expect_src1 == 1))))
+                flat = false;
+    
+            expect_src0 *= (sz0 == 1 ? 1 : static_cast<int64_t>(sz0));
+            expect_src1 *= (sz1 == 1 ? 1 : static_cast<int64_t>(sz1));
+        }
+
+        if (flat) {
+            contiguousBinaryOpKernel<S0, S1, D, Op>(
+                static_cast<const S0*>(src0->address),
+                static_cast<const S1*>(src1->address),
+                static_cast<D*>(dst->address),
+                ne
+            );
+        } 
+        
+        else {
+            stridedBinaryOpKernel<S0, S1, D, Op>(
+                static_cast<const S0*>(src0->address), src0_strides,
+                static_cast<const S1*>(src1->address), src1_strides,
+                static_cast<D*>(dst->address), dst->strides,
+                dst->shape, dst->rank,
+                ne
+            );
+        }
+
+        return SUCCESS;
     } 
-    else {     
-        batchedBinaryOpKernel<S0, S1, D, Op>(
-            (const S0*)(src0->address), src0->shape, src0->strides, src0->rank,
-            (const S1*)(src1->address), src1->shape, src1->strides, src1->rank,
-            (D*)(dst->address), dst->shape, dst->strides, dst->rank
-        ); 
-    } 
-    return SUCCESS;
-}   
+}
+
+
+
 
 struct Add { 
     template<class A, class B>

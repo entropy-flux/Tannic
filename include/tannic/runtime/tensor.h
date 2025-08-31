@@ -36,6 +36,12 @@ extern "C" {
 
 #define DIMENSIONS 8
 
+enum layout {
+    SINGLETON,
+    CONTIGUOUS,
+    STRIDED
+};
+
 struct shape_t {
     union {
         const size_t* address;
@@ -58,6 +64,7 @@ struct tensor_t {
     enum type dtype; 
     struct environment_t environment;
     size_t size;
+    enum layout layout;
 };    
 
 #ifdef __cplusplus

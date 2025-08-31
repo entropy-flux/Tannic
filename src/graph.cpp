@@ -34,7 +34,8 @@ Node::Node(Tensor const& target) {
                     .host = host_t {.traits = resource.pinned() ? PINNED : PAGEABLE }
                 },
             },
-            .size = target.nelements()
+            .size = target.nelements(),
+            .layout = target.is_singleton() ? SINGLETON : target.is_contiguous() ? CONTIGUOUS : STRIDED
         };
     } 
     
@@ -54,7 +55,8 @@ Node::Node(Tensor const& target) {
                         .traits = resource.blocking() ? SYNC : ASYNC}
                 },
             },
-            .size = target.nelements()
+            .size = target.nelements(),
+            .layout = target.is_singleton() ? SINGLETON : target.is_contiguous() ? CONTIGUOUS : STRIDED
         };
     }
  

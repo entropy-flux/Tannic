@@ -8,11 +8,20 @@
 namespace {  
 
 template<typename S, typename D, class Op>
-void scalarUnaryOpKernel(
+void singletonUnaryOpKernel(
     const S* src_ptr, D* dst_ptr, Op op
 ) {
     *dst_ptr = op(*src_ptr);
 }    
+
+template<typename S, typename D, class Op>
+void contiguousUnaryOpKernel(
+    const S* src_ptr, D* dst_ptr, size_t ne, Op op
+) {
+    for (size_t i = 0; i < ne; ++i) {
+        dst_ptr[i] = op(src_ptr[i]);
+    }
+}
 
 template<typename S, typename D, class Op>
 void stridedUnaryOpKernel( 
@@ -20,7 +29,7 @@ void stridedUnaryOpKernel(
     D* dst_ptr, const shape_t& dst_shape, const strides_t& dst_strides, 
     uint8_t rank, size_t ne, Op op
 ) {  
-    size_t cnt[8] = {0};
+    size_t cnt[8] = {0}; 
     for (size_t idx = 0; idx < ne; ++idx) {
         size_t offs = 0;
         for (int dim = 0; dim < rank; ++dim) {
@@ -39,25 +48,42 @@ void stridedUnaryOpKernel(
 
 template<typename S, typename D, class Op, class ... Args>
 status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, Args... args) {
-     Op op(std::forward<Args>(args)...);
+    Op op(std::forward<Args>(args)...);
+    size_t ne = dst->size;
 
-    if (src->rank == 0) {
-        scalarUnaryOpKernel<S, D, Op>(
-            (const S*)(src->address), 
-            (D*)(dst->address), op
-        ); 
-    } 
-    
-    else {    
-        size_t ne = dst->size;
-        stridedUnaryOpKernel<S, D, Op>(
-            (const S*)(src->address), src->shape, src->strides,
-            (D*)(dst->address), dst->shape, dst->strides,
-            src->rank, ne, op
-        ); 
-    } 
+    switch (src->layout) {
+        case SINGLETON:
+            singletonUnaryOpKernel<S, D, Op>(
+                (const S*)(src->address),
+                (D*)(dst->address),
+                op
+            );
+            break;
+
+        case CONTIGUOUS:
+            contiguousUnaryOpKernel<S, D, Op>(
+                (const S*)(src->address),
+                (D*)(dst->address),
+                ne,
+                op
+            );
+            break;
+
+        case STRIDED:
+            stridedUnaryOpKernel<S, D, Op>(
+                (const S*)(src->address), src->shape, src->strides,
+                (D*)(dst->address), dst->shape, dst->strides,
+                src->rank, ne,
+                op
+            );
+            break;
+
+        default:
+            return ERROR; 
+    }
+
     return SUCCESS;
-}        
+}
 
 
 struct Neg { 

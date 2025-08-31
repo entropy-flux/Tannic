@@ -129,7 +129,7 @@ public:
     {    
         std::size_t expected = 1;
         for (std::size_t dimension = 0; dimension < rank(); ++dimension) { 
-            std::size_t index = rank() - 1 - dimension;   // walk backward logically
+            std::size_t index = rank() - 1 - dimension;   
             if (strides_[index] != expected) {
                 is_contiguous_ = false;
             }
@@ -208,6 +208,10 @@ public:
     /// Returns whether the tensor's elements are in contiguous layout or not.
     bool is_contiguous() const {
         return is_contiguous_;
+    }
+
+    bool is_singleton() const {
+        return (nelements_ == 1);
     }
       
     /// Returns a reference to this tensor (const-qualified).
