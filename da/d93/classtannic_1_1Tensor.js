@@ -26,6 +26,7 @@ var classtannic_1_1Tensor =
     [ "initialize", "da/d93/classtannic_1_1Tensor.html#a3a52cb61b4145d02dd20e40934689f81", null ],
     [ "is_contiguous", "da/d93/classtannic_1_1Tensor.html#aaa9f6eae57c44e544cad56e2553923c0", null ],
     [ "is_initialized", "da/d93/classtannic_1_1Tensor.html#a608af294e14a31a695a727931d236f2f", null ],
+    [ "is_singleton", "da/d93/classtannic_1_1Tensor.html#a54b467a1b3d9cb2ee342a9617955ecc8", null ],
     [ "nbytes", "da/d93/classtannic_1_1Tensor.html#a4064f4b6e988d2ccdff1a4c5f7357f43", null ],
     [ "nelements", "da/d93/classtannic_1_1Tensor.html#ae859b2c47650e8d01c5a6979a0b199b2", null ],
     [ "node", "da/d93/classtannic_1_1Tensor.html#a451eebfea1fb68557e20d8b91fdd7876", null ],

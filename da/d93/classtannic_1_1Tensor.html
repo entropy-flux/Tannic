@@ -165,6 +165,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaa9f6eae57c44e544cad56e2553923c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#aaa9f6eae57c44e544cad56e2553923c0">is_contiguous</a> () const</td></tr>
 <tr class="memdesc:aaa9f6eae57c44e544cad56e2553923c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the tensor's elements are in contiguous layout or not.  <br /></td></tr>
 <tr class="separator:aaa9f6eae57c44e544cad56e2553923c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54b467a1b3d9cb2ee342a9617955ecc8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a54b467a1b3d9cb2ee342a9617955ecc8">is_singleton</a> () const</td></tr>
+<tr class="separator:a54b467a1b3d9cb2ee342a9617955ecc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24efaf36c2ec793288c470e5e92ad397"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html#a24efaf36c2ec793288c470e5e92ad397">forward</a> ()</td></tr>
 <tr class="memdesc:a24efaf36c2ec793288c470e5e92ad397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to this tensor (const-qualified).  <br /></td></tr>
 <tr class="separator:a24efaf36c2ec793288c470e5e92ad397"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1432,6 +1434,31 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a54b467a1b3d9cb2ee342a9617955ecc8" name="a54b467a1b3d9cb2ee342a9617955ecc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54b467a1b3d9cb2ee342a9617955ecc8">&#9670;&#160;</a></span>is_singleton()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tannic::Tensor::is_singleton </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4064f4b6e988d2ccdff1a4c5f7357f43" name="a4064f4b6e988d2ccdff1a4c5f7357f43"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4064f4b6e988d2ccdff1a4c5f7357f43">&#9670;&#160;</a></span>nbytes()</h2>
 
@@ -1875,7 +1902,7 @@ Example:</h4>
 <div class="line"> </div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {1, 3, 1, 5}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Y = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">squeeze</a>();     <span class="comment">// shape = (3, 5)</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a52e251e55f66349fa482ee2894554aee"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">tannic::Tensor::squeeze</a></div><div class="ttdeci">auto squeeze() const</div><div class="ttdoc">Returns a view of the tensor with all dimensions of size 1 removed.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1008</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_a52e251e55f66349fa482ee2894554aee"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee">tannic::Tensor::squeeze</a></div><div class="ttdeci">auto squeeze() const</div><div class="ttdoc">Returns a view of the tensor with all dimensions of size 1 removed.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1015</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -1993,7 +2020,7 @@ Example:</h4>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {3, 5}); X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Y = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">unsqueeze</a>(0);   <span class="comment">// shape = (1, 3, 5)</span></div>
 <div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> Z = X.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">unsqueeze</a>(2);   <span class="comment">// shape = (3, 1, 5)</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_acc757159be586ad0dbba4fce36360fed"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">tannic::Tensor::unsqueeze</a></div><div class="ttdeci">auto unsqueeze(Axes... axes)</div><div class="ttdoc">Returns a view of the tensor with a dimension of size 1 inserted at the given axis.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1030</div></div>
+<div class="ttc" id="aclasstannic_1_1Tensor_html_acc757159be586ad0dbba4fce36360fed"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#acc757159be586ad0dbba4fce36360fed">tannic::Tensor::unsqueeze</a></div><div class="ttdeci">auto unsqueeze(Axes... axes)</div><div class="ttdoc">Returns a view of the tensor with a dimension of size 1 inserted at the given axis.</div><div class="ttdef"><b>Definition:</b> tensor.hpp:1037</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
