@@ -1,32 +1,80 @@
-#include <vector>
-#include <array>
+#include <cstddef>
+#include <vector> 
 #include <stdexcept>
-#include "cuda/streams.cuh"
-#include "cuda/gemm.cuh"
+#include <array>
+#include "cpu/matmul.hpp" 
+#include "runtime/types.h"
 
-namespace { 
-    
+namespace cpu {
+ 
 template<typename S0, typename S1, typename D>
-__global__ void gemmKernel(
+void gemmKernel( 
     bool A_trans, bool B_trans,
-    const S0* __restrict__ A_ptr,
-    const S1* __restrict__ B_ptr,
-    D* __restrict__ C_ptr,
+    const S0* A_ptr,
+    const S1* B_ptr,
+    D* C_ptr,
     size_t M, size_t N, size_t K,
     size_t A_ld, size_t B_ld, size_t C_ld,
     D alpha
-) {
-    size_t i = blockIdx.y * blockDim.y + threadIdx.y;
-    size_t j = blockIdx.x * blockDim.x + threadIdx.x;
-    if (i >= M || j >= N) return;
-    D sum = D(0);
-    for (size_t k = 0; k < K; ++k) {
-        size_t A_idx = A_trans ? k * A_ld + i : i * A_ld + k;
-        size_t B_idx = B_trans ? j * B_ld + k : k * B_ld + j;
-        sum += static_cast<D>(A_ptr[A_idx]) * static_cast<D>(B_ptr[B_idx]);
-    }   
-    C_ptr[i * C_ld + j] = alpha * sum;
+) {   
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < N; ++j) {
+            D sum = D(0);
+            for (int k = 0; k < K; ++k) {
+                size_t A_idx = A_trans ? k * A_ld + i : i * A_ld + k;
+                size_t B_idx = B_trans ? j * B_ld + k : k * B_ld + j;
+                sum += static_cast<D>(A_ptr[A_idx]) * static_cast<D>(B_ptr[B_idx]);
+            }
+            C_ptr[i * C_ld + j] = alpha *sum;
+        }
+    }
 }
+
+#ifdef BLAS
+#include <cblas.h>  
+
+template <>
+void gemmKernel<float, float, float>(
+    bool A_trans, bool B_trans,
+    const float* A_ptr,
+    const float* B_ptr,
+    float* C_ptr,
+    size_t M, size_t N, size_t K,
+    size_t A_ld, size_t B_ld, size_t C_ld,
+    float alpha
+) {   
+    cblas_sgemm(
+        CblasRowMajor, 
+        A_trans ? CblasTrans : CblasNoTrans, 
+        B_trans ? CblasTrans : CblasNoTrans,
+        M, N, K,
+        alpha, A_ptr, A_ld, B_ptr, B_ld,
+        0.0, C_ptr, C_ld 
+    );  
+}
+
+
+template <>
+void gemmKernel<double, double, double>(
+    bool A_trans, bool B_trans,
+    const double* A_ptr,
+    const double* B_ptr,
+    double* C_ptr,
+    size_t M, size_t N, size_t K,
+    size_t A_ld, size_t B_ld, size_t C_ld, 
+    double alpha
+) {   
+    cblas_dgemm(
+        CblasRowMajor, 
+        A_trans ? CblasTrans : CblasNoTrans, 
+        B_trans ? CblasTrans : CblasNoTrans,
+        M, N, K,
+        alpha, A_ptr, A_ld, B_ptr, B_ld,
+        0.0, C_ptr, C_ld
+    );
+}
+
+#endif  
 
 static bool isTransposed(const tensor_t* tensor) {
     if(tensor->rank < 2) {
@@ -35,7 +83,7 @@ static bool isTransposed(const tensor_t* tensor) {
     else {
         return tensor->strides.sizes[tensor->rank-1] > tensor->strides.sizes[tensor->rank-2];
     }
-}    
+}  
 
 template<typename S0, typename S1, typename D>
 void computeOffsets(
@@ -68,8 +116,7 @@ void computeOffsets(
 
 
 template<typename S0, typename S1, typename D>
-status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream, double alpha) {  
-    cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
+status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, double alpha) {  
     size_t M = dst->shape.sizes[dst->rank - 2];
     size_t N = dst->shape.sizes[dst->rank - 1];
     size_t K = src0->shape.sizes[src0->rank - 1];
@@ -96,48 +143,43 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
             const S1* B_ptr = static_cast<const S1*>(src1->address) + offs_src1;
             D* C_ptr = static_cast<D*>(dst->address) + offs_dst;
 
-            dim3 blockDim(16, 16);
-            dim3 gridDim((N + blockDim.x - 1) / blockDim.x, (M + blockDim.y - 1) / blockDim.y);
-            gemmKernel<S0, S1, D><<<gridDim, blockDim, 0, cudaStream>>>(
+            gemmKernel<S0, S1, D>(
                 A_trans, B_trans,
                 A_ptr, B_ptr, C_ptr,
                 M, N, K,
-                A_ld, B_ld, C_ld,
-                alpha
+                A_ld, B_ld, C_ld, alpha
             );
         } 
     }
 
     else {
         const S0* A_ptr = static_cast<const S0*>(src0->address);
-        const S1* B_ptr = static_cast<const S1*>(src1->address); 
+        const S1* B_ptr = static_cast<const S1*>(src1->address);
         D* C_ptr = static_cast<D*>(dst->address);
-        dim3 blockDim(16, 16);
-        dim3 gridDim((N + blockDim.x - 1) / blockDim.x, (M + blockDim.y - 1) / blockDim.y);
-        gemmKernel<S0, S1, D><<<gridDim, blockDim, 0, cudaStream>>>(
+        gemmKernel<S0, S1, D>(
             A_trans, B_trans,
             A_ptr, B_ptr, C_ptr,
             M, N, K,
-            A_ld, B_ld, C_ld,
-            alpha
+            A_ld, B_ld, C_ld, alpha
         );
     }
 
     return SUCCESS;
-}
+} 
+ 
 
-constexpr static status defaultKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t, double) {
-    return UNSUPPORTED_DTYPE;
-};
-
-using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*, stream_t, double alpha);        
+using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*, double);        
  
 constexpr static inline auto index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 } 
 
+constexpr static  status launchDefaultKernel(const tensor_t*, const tensor_t*, tensor_t*, double alpha) {
+    return UNSUPPORTED_DTYPE;
+};
+
 constexpr auto dispatchGemm = []() {
-    std::array<Kernel, index(TYPES, TYPES)> table; table.fill(defaultKernel); 
+    std::array<Kernel, index(TYPES, TYPES)> table; table.fill(launchDefaultKernel); 
     table[index(int8, int8)]     = launchGemmKernel<int8_t, int8_t, int32_t>;
     table[index(int8, int16)]    = launchGemmKernel<int8_t, int16_t, int32_t>;
     table[index(int8, int32)]    = launchGemmKernel<int8_t, int32_t, int32_t>;
@@ -168,13 +210,10 @@ constexpr auto dispatchGemm = []() {
     table[index(float64, float32)] = launchGemmKernel<double, float, double>;
     table[index(float64, float64)] = launchGemmKernel<double, double, double>;
     return table;
-}();
+}();  
 
-
-} namespace cuda {
-  
-status gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream, double alpha) {    
-    return dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst, stream, alpha);  
+status gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, double alpha) {   
+    return dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst, alpha); 
 } 
 
 } 

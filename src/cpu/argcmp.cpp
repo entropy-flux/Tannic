@@ -56,7 +56,18 @@ void argCompareKernel(
             }
         }
     }
-}
+} 
+ 
+template<typename S, typename Cmp>
+status launchArgCompare(const tensor_t* src, tensor_t* dst, uint8_t dim, S init) {    
+    argCompareKernel<S, int64_t, Cmp>(
+        reinterpret_cast<const S*>(src->address), src->shape, src->strides,
+        reinterpret_cast<int64_t*>(dst->address), dst->shape, dst->strides,
+        src->rank, dim, init
+    );
+    return SUCCESS;
+} 
+
 
 struct GE {
     template<class A, class B>
@@ -71,16 +82,6 @@ struct LE {
         return a < b;
     }
 }; 
- 
-template<typename S, typename Cmp>
-status launchArgCompare(const tensor_t* src, tensor_t* dst, uint8_t dim, S init) {    
-    argCompareKernel<S, int64_t, Cmp>(
-        reinterpret_cast<const S*>(src->address), src->shape, src->strides,
-        reinterpret_cast<int64_t*>(dst->address), dst->shape, dst->strides,
-        src->rank, dim, init
-    );
-    return SUCCESS;
-} 
 
 status argmax(const tensor_t* src, tensor_t* dst, uint8_t dim) {
     switch (src->dtype) {

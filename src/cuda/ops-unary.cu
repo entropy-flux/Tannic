@@ -33,9 +33,9 @@ __global__ void stridedUnaryOpKernel(
         size_t divisor = 1;
 
         for (int dim = rank - 1; dim >= 0; --dim) { 
-            const size_t extent    = resets.sizes[dim] / rc_strides.sizes[dim];
+            const size_t extent    = resets.sizes[dim] / src_strides.sizes[dim];
             const size_t coord     = (idx / divisor) % extent; 
-            offset += coord * rc_strides.sizes[dim];
+            offset += coord * src_strides.sizes[dim];
             divisor *= extent;
         }
 

@@ -3,14 +3,14 @@
 #include "transformations.hpp" 
 #include "callback.hpp"
 #include "runtime/streams.h"
-#include "cpu/gemm.hpp"   
+#include "cpu/matmul.hpp"   
 #include "cpu/outer.hpp"
 #include "cpu/reps.hpp"
 #include "cpu/concat.hpp"
 #include "cpu/ops.hpp"
 
 #ifdef CUDA
-#include "cuda/gemm.cuh"   
+#include "cuda/matmul.cuh"   
 #include "cuda/outer.cuh"
 #include "cuda/reps.cuh"
 #include "cuda/concat.cuh"
