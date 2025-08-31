@@ -101,12 +101,12 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream, 
 struct Neg { 
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __hneg(a);  // CUDA intrinsic
-        } else {
-            return -a;
-        }
+        return -a;
     }
+
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __hneg(a);  
+    } 
 };
 
 struct Cpy { 
@@ -117,35 +117,35 @@ struct Cpy {
 };
 
 struct Log { 
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __float2half(logf(__half2float(a)));
+    }
+     
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __float2half(logf(__half2float(a)));
-        } else {
-            return log(a);
-        }
+        return log(a);
     }
 };
 
 struct Exp { 
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __float2half(expf(__half2float(a)));
+    }
+     
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __float2half(expf(__half2float(a)));
-        } else {
-            return exp(a);
-        }
+        return exp(a);
     }
 };
 
 struct Sqrt { 
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __float2half(sqrtf(__half2float(a)));
+    }
+     
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __float2half(sqrtf(__half2float(a)));
-        } else {
-            return sqrt(a);
-        }
+        return sqrt(a);
     }
 };
 
@@ -153,92 +153,99 @@ struct Rsqrt {
     float eps; 
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __float2half(rsqrtf(__half2float(a) + eps));
-        } else if constexpr (std::is_same_v<std::decay_t<A>, float>) {
-            return rsqrtf(a + eps);
-        } else {
-            return 1.0 / sqrt(a + eps);
-        }
+        return 1.0 / sqrt(a + eps);
     }
+
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __float2half(rsqrtf(__half2float(a) + eps));
+    }
+     
+    __device__ __forceinline__ float operator()(float a) const {
+        return rsqrtf(a + eps);
+    } 
 };
 
-struct Abs { 
+struct Abs {
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __habs(a);
-        } else {
-            return abs(a);
-        }
+        return abs(a);
     }
+
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __habs(a);
+    } 
 };
 
-struct Sin { 
+struct Sin {
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __float2half(sinf(__half2float(a)));
-        } else {
-            return sin(a);
-        }
+        return sin(a);
     }
+
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __float2half(sinf(__half2float(a)));
+    } 
 };
 
-struct Cos { 
+struct Cos {
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __float2half(cosf(__half2float(a)));
-        } else {
-            return cos(a);
-        }
+        return cos(a);
     }
+
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __float2half(cosf(__half2float(a)));
+    } 
 };
 
-struct Tan { 
+struct Tan {
+
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __float2half(tanf(__half2float(a)));
-        } else {
-            return tan(a);
-        }
+        return tan(a);
     }
+
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __float2half(tanf(__half2float(a)));
+    } 
 };
 
-struct Sinh { 
+struct Sinh {
+
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __float2half(sinhf(__half2float(a)));
-        } else {
-            return sinh(a);
-        }
+        return sinh(a);
     }
+
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __float2half(sinhf(__half2float(a)));
+    } 
 };
 
-struct Cosh { 
+struct Cosh {
+
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __float2half(coshf(__half2float(a)));
-        } else {
-            return cosh(a);
-        }
+        return cosh(a);
     }
+
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __float2half(coshf(__half2float(a)));
+    }
+     
 };
 
 struct Tanh { 
+
     template<class A>
     __device__ __forceinline__ auto operator()(A a) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            return __float2half(tanhf(__half2float(a)));
-        } else {
-            return tanh(a);
-        }
+        return tanh(a);
     }
-}; 
+
+    __device__ __forceinline__ __half operator()(__half a) const {
+        return __float2half(tanhf(__half2float(a)));
+    } 
+};
 
 } namespace cuda {
 

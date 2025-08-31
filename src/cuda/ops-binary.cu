@@ -132,115 +132,159 @@ constexpr static status launchDefaultBinaryOpKernel(const tensor_t*, const tenso
     return UNSUPPORTED_DTYPE;
 };    
 
-struct Add { 
+
+struct Add {
+
     template<class A, class B>
     __device__ __forceinline__ auto operator()(A a, B b) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half> && std::is_same_v<std::decay_t<B>, __half>) {
-            return __hadd(a, b);
-        } else if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            if constexpr (std::is_same_v<std::decay_t<B>, float>) {
-                return __half2float(a) + b;
-            } else if constexpr (std::is_same_v<std::decay_t<B>, double>) {
-                return static_cast<double>(__half2float(a)) + b;  // Fixed: added return
-            } else {
-                return __half2float(a) + static_cast<float>(b);
-            }
-        } else if constexpr (std::is_same_v<std::decay_t<B>, __half>) {
-            if constexpr (std::is_same_v<std::decay_t<A>, float>) {
-                return a + __half2float(b);
-            } else if constexpr (std::is_same_v<std::decay_t<A>, double>) {
-                return a + static_cast<double>(__half2float(b));  // Fixed: added return
-            } else {
-                return static_cast<float>(a) + __half2float(b);
-            }
-        } else {
-            return a + b;
-        }
+        return a + b;
     }
+
+    __device__ __forceinline__ __half operator()(__half a, __half b) const {
+        return __hadd(a, b);
+    }
+    
+    __device__ __forceinline__ float operator()(__half a, float b) const {
+        return __half2float(a) + b;
+    }
+    
+    __device__ __forceinline__ double operator()(__half a, double b) const {
+        return static_cast<double>(__half2float(a)) + b;
+    }
+     
+    
+    __device__ __forceinline__ float operator()(float a, __half b) const {
+        return a + __half2float(b);
+    }
+    
+    __device__ __forceinline__ double operator()(double a, __half b) const {
+        return a + static_cast<double>(__half2float(b));
+    }
+    
+    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, __half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
+    __device__ __forceinline__ float operator()(__half a, B b) const {
+        return __half2float(a) + static_cast<float>(b);
+    }
+    
+    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, __half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
+    __device__ __forceinline__ float operator()(A a, __half b) const {
+        return static_cast<float>(a) + __half2float(b);
+    }
+     
 };
-struct Sub { 
+
+struct Sub {
     template<class A, class B>
     __device__ __forceinline__ auto operator()(A a, B b) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half> && 
-                     std::is_same_v<std::decay_t<B>, __half>) {
-            return __hsub(a, b);
-        } else if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            if constexpr (std::is_same_v<std::decay_t<B>, float>) {
-                return __half2float(a) - b;
-            } else if constexpr (std::is_same_v<std::decay_t<B>, double>) {
-                return static_cast<double>(__half2float(a)) - b;  // Fixed
-            } else {
-                return __half2float(a) - static_cast<float>(b);
-            }
-        } else if constexpr (std::is_same_v<std::decay_t<B>, __half>) {
-            if constexpr (std::is_same_v<std::decay_t<A>, float>) {
-                return a - __half2float(b);
-            } else if constexpr (std::is_same_v<std::decay_t<A>, double>) {
-                return a - static_cast<double>(__half2float(b));  // Fixed
-            } else {
-                return static_cast<float>(a) - __half2float(b);
-            }
-        } else {
-            return a - b;
-        }
+        return a - b;
+    }
+
+    __device__ __forceinline__ __half operator()(__half a, __half b) const {
+        return __hsub(a, b);
+    }
+    
+    __device__ __forceinline__ float operator()(__half a, float b) const {
+        return __half2float(a) - b;
+    }
+    
+    __device__ __forceinline__ double operator()(__half a, double b) const {
+        return static_cast<double>(__half2float(a)) - b;
+    }
+     
+    __device__ __forceinline__ float operator()(float a, __half b) const {
+        return a - __half2float(b);
+    }
+    
+    __device__ __forceinline__ double operator()(double a, __half b) const {
+        return a - static_cast<double>(__half2float(b));
+    }
+    
+    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, __half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
+    __device__ __forceinline__ float operator()(__half a, B b) const {
+        return __half2float(a) - static_cast<float>(b);
+    }
+
+    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, __half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
+    __device__ __forceinline__ float operator()(A a, __half b) const {
+        return static_cast<float>(a) - __half2float(b);
     }
 };
 
 struct Mul { 
+
     template<class A, class B>
     __device__ __forceinline__ auto operator()(A a, B b) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half> && 
-                     std::is_same_v<std::decay_t<B>, __half>) {
-            return __hmul(a, b);
-        } else if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            if constexpr (std::is_same_v<std::decay_t<B>, float>) {
-                return __half2float(a) * b;
-            } else if constexpr (std::is_same_v<std::decay_t<B>, double>) {
-                return static_cast<double>(__half2float(a)) * b;  // Fixed
-            } else {
-                return __half2float(a) * static_cast<float>(b);
-            }
-        } else if constexpr (std::is_same_v<std::decay_t<B>, __half>) {
-            if constexpr (std::is_same_v<std::decay_t<A>, float>) {
-                return a * __half2float(b);
-            } else if constexpr (std::is_same_v<std::decay_t<A>, double>) {
-                return a * static_cast<double>(__half2float(b));  // Fixed
-            } else {
-                return static_cast<float>(a) * __half2float(b);
-            }
-        } else {
-            return a * b;
-        }
+        return a * b;
     }
+
+    __device__ __forceinline__ __half operator()(__half a, __half b) const {
+        return __hmul(a, b);
+    }
+    
+    __device__ __forceinline__ float operator()(__half a, float b) const {
+        return __half2float(a) * b;
+    }
+    
+    __device__ __forceinline__ double operator()(__half a, double b) const {
+        return static_cast<double>(__half2float(a)) * b;
+    } 
+    
+    __device__ __forceinline__ float operator()(float a, __half b) const {
+        return a * __half2float(b);
+    }
+    
+    __device__ __forceinline__ double operator()(double a, __half b) const {
+        return a * static_cast<double>(__half2float(b));
+    }
+    
+    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, __half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
+    __device__ __forceinline__ float operator()(__half a, B b) const {
+        return __half2float(a) * static_cast<float>(b);
+    }
+
+    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, __half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
+    __device__ __forceinline__ float operator()(A a, __half b) const {
+        return static_cast<float>(a) * __half2float(b);
+    } 
 };
 
-struct Pow { 
+struct Pow {  
     template<class A, class B>
     __device__ __forceinline__ auto operator()(A a, B b) const {
-        if constexpr (std::is_same_v<std::decay_t<A>, __half> && std::is_same_v<std::decay_t<B>, __half>) {
-            return __float2half(powf(__half2float(a), __half2float(b)));
-        } else if constexpr (std::is_same_v<std::decay_t<A>, __half>) {
-            float a_f = __half2float(a);
-            if constexpr (std::is_same_v<std::decay_t<B>, float>) {
-                return powf(a_f, b);
-            } else if constexpr (std::is_same_v<std::decay_t<B>, double>) {
-                return pow(static_cast<double>(a_f), b);  // Fixed
-            } else {
-                return powf(a_f, static_cast<float>(b));
-            }
-        } else if constexpr (std::is_same_v<std::decay_t<B>, __half>) {
-            float b_f = __half2float(b);
-            if constexpr (std::is_same_v<std::decay_t<A>, float>) {
-                return powf(a, b_f);
-            } else if constexpr (std::is_same_v<std::decay_t<A>, double>) {
-                return pow(a, static_cast<double>(b_f));  // Fixed
-            } else {
-                return powf(static_cast<float>(a), b_f);
-            }
-        } else {
-            return pow(a, b);
-        }
+        return pow(a, b);
     }
+
+    __device__ __forceinline__ __half operator()(__half a, __half b) const {
+        return __float2half(powf(__half2float(a), __half2float(b)));
+    }
+    
+    __device__ __forceinline__ float operator()(__half a, float b) const {
+        return powf(__half2float(a), b);
+    }
+    
+    __device__ __forceinline__ double operator()(__half a, double b) const {
+        return pow(static_cast<double>(__half2float(a)), b);
+    } 
+    
+    __device__ __forceinline__ float operator()(float a, __half b) const {
+        return powf(a, __half2float(b));
+    }
+    
+    __device__ __forceinline__ double operator()(double a, __half b) const {
+        return pow(a, static_cast<double>(__half2float(b)));
+    }
+    
+    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, __half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
+    __device__ __forceinline__ float operator()(__half a, B b) const {
+        return powf(__half2float(a), static_cast<float>(b));
+    }
+
+    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, __half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
+    __device__ __forceinline__ float operator()(A a, __half b) const {
+        return powf(static_cast<float>(a), __half2float(b));
+    } 
+    
+     
 };
 
 constexpr static inline int index(type first, type second) {

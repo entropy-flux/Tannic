@@ -3,6 +3,7 @@
 #include <array>
 #include <cmath>  
 #include <complex>
+#include <stdfloat>
 #include "cpu/ops.hpp"  
  
 namespace {  
@@ -91,43 +92,57 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, Args... args) {
         default:
             return ERROR; 
     } 
-}
+} 
 
-
-struct Neg { 
+struct Neg {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(-a)) {
         return -a;
     }
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(-float(a));
+    }
 };
 
-struct Cpy { 
+struct Cpy {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(a)) {
         return a;
     }
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return a;
+    }
 };
 
-struct Log { 
+struct Log {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::log(a))) {
         return std::log(a);
     }
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(std::log(float(a)));
+    }
 };
- 
-struct Exp { 
+
+struct Exp {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::exp(a))) {
         return std::exp(a);
     }
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(std::exp(float(a)));
+    }
 };
-  
-struct Sqrt { 
+
+struct Sqrt {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::sqrt(a))) {
         return std::sqrt(a);
     }
-}; 
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(std::sqrt(float(a)));
+    }
+};
 
 struct Rsqrt {
     double eps;
@@ -137,228 +152,212 @@ struct Rsqrt {
     auto operator()(A&& a) const noexcept {
         return 1.0 / std::sqrt(a + eps);
     }
-}; 
- 
-struct Abs { 
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(1.0f / std::sqrt(float(a) + float(eps)));
+    }
+};
+
+struct Abs {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::abs(a))) {
         return std::abs(a);
     }
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(std::fabs(float(a)));
+    }
 };
- 
-struct Sin { 
+
+struct Sin {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::sin(a))) {
         return std::sin(a);
     }
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(std::sin(float(a)));
+    }
 };
- 
-struct Cos { 
+
+struct Cos {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::cos(a))) {
         return std::cos(a);
     }
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(std::cos(float(a)));
+    }
 };
 
-struct Tan { 
+struct Tan {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::tan(a))) {
         return std::tan(a);
     }
-}; 
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(std::tan(float(a)));
+    }
+};
 
-struct Sinh { 
+struct Sinh {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::sinh(a))) {
         return std::sinh(a);
     }
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(std::sinh(float(a)));
+    }
 };
- 
-struct Cosh{ 
+
+struct Cosh {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::cosh(a))) {
         return std::cosh(a);
     }
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(std::cosh(float(a)));
+    }
 };
- 
-struct Tanh { 
+
+struct Tanh {
     template<class A>
     auto operator()(A&& a) const noexcept(noexcept(std::tanh(a))) {
         return std::tanh(a);
     }
-};    
+    std::float16_t operator()(std::float16_t a) const noexcept {
+        return std::float16_t(std::tanh(float(a)));
+    }
+};
 
-} namespace cpu { 
+} namespace cpu {
 
 status neg(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case int8:
-            return launchUnaryOpKernel<int8_t, int8_t, Neg>(src, dst);
-        case int16:
-            return launchUnaryOpKernel<int16_t, int16_t, Neg>(src, dst);
-        case int32:
-            return launchUnaryOpKernel<int32_t, int32_t, Neg>(src, dst);
-        case int64:
-            return launchUnaryOpKernel<int64_t, int64_t, Neg>(src, dst);
-        case float32:
-            return launchUnaryOpKernel<float, float, Neg>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Neg>(src, dst);
-        case complex64:
-            return launchUnaryOpKernel<std::complex<float>, std::complex<float>, Neg>(src, dst);
-        case complex128:
-            return launchUnaryOpKernel<std::complex<double>, std::complex<double>, Neg>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case int8:     return launchUnaryOpKernel<int8_t, int8_t, Neg>(src, dst);
+        case int16:    return launchUnaryOpKernel<int16_t, int16_t, Neg>(src, dst);
+        case int32:    return launchUnaryOpKernel<int32_t, int32_t, Neg>(src, dst);
+        case int64:    return launchUnaryOpKernel<int64_t, int64_t, Neg>(src, dst);
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Neg>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Neg>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Neg>(src, dst);
+        case complex64:  return launchUnaryOpKernel<std::complex<float>, std::complex<float>, Neg>(src, dst);
+        case complex128: return launchUnaryOpKernel<std::complex<double>, std::complex<double>, Neg>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status cpy(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case int8:
-            return launchUnaryOpKernel<int8_t, int8_t, Cpy>(src, dst);
-        case int16:
-            return launchUnaryOpKernel<int16_t, int16_t, Cpy>(src, dst); 
-        case int32:
-            return launchUnaryOpKernel<int32_t, int32_t, Cpy>(src, dst); 
-        case int64:
-            return launchUnaryOpKernel<int64_t, int64_t, Cpy>(src, dst); 
-        case float32:
-            return launchUnaryOpKernel<float, float, Cpy>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Cpy>(src, dst);
-        case complex64:
-            return launchUnaryOpKernel<std::complex<float>, std::complex<float>, Cpy>(src, dst);
-        case complex128:
-            return launchUnaryOpKernel<std::complex<double>, std::complex<double>, Cpy>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case int8:     return launchUnaryOpKernel<int8_t, int8_t, Cpy>(src, dst);
+        case int16:    return launchUnaryOpKernel<int16_t, int16_t, Cpy>(src, dst);
+        case int32:    return launchUnaryOpKernel<int32_t, int32_t, Cpy>(src, dst);
+        case int64:    return launchUnaryOpKernel<int64_t, int64_t, Cpy>(src, dst);
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Cpy>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Cpy>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Cpy>(src, dst);
+        case complex64:  return launchUnaryOpKernel<std::complex<float>, std::complex<float>, Cpy>(src, dst);
+        case complex128: return launchUnaryOpKernel<std::complex<double>, std::complex<double>, Cpy>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
-} 
+}
 
 status log(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Log>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Log>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Log>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Log>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Log>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status exp(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Exp>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Exp>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Exp>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Exp>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Exp>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status sqrt(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Sqrt>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Sqrt>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Sqrt>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Sqrt>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Sqrt>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status rsqrt(const tensor_t* src, tensor_t* dst, float eps) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Rsqrt>(src, dst, eps);
-        case float64:
-            return launchUnaryOpKernel<double, double, Rsqrt>(src, dst, eps);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Rsqrt>(src, dst, eps);
+        case float32:  return launchUnaryOpKernel<float, float, Rsqrt>(src, dst, eps);
+        case float64:  return launchUnaryOpKernel<double, double, Rsqrt>(src, dst, eps);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status abs(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Abs>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Abs>(src, dst);
-        case int32:
-            return launchUnaryOpKernel<int32_t, int32_t, Abs>(src, dst);
-        case int64:
-            return launchUnaryOpKernel<int64_t, int64_t, Abs>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Abs>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Abs>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Abs>(src, dst);
+        case int32:    return launchUnaryOpKernel<int32_t, int32_t, Abs>(src, dst);
+        case int64:    return launchUnaryOpKernel<int64_t, int64_t, Abs>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status sin(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Sin>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Sin>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Sin>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Sin>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Sin>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status cos(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Cos>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Cos>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Cos>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Cos>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Cos>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status tan(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Tan>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Tan>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Tan>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Tan>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Tan>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status sinh(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Sinh>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Sinh>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Sinh>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Sinh>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Sinh>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status cosh(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Cosh>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Cosh>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Cosh>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Cosh>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Cosh>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
 }
 
 status tanh(const tensor_t* src, tensor_t* dst) {
     switch (src->dtype) {
-        case float32:
-            return launchUnaryOpKernel<float, float, Tanh>(src, dst);
-        case float64:
-            return launchUnaryOpKernel<double, double, Tanh>(src, dst);
-        default:
-            return UNSUPPORTED_DTYPE;
+        case float16:  return launchUnaryOpKernel<std::float16_t, std::float16_t, Tanh>(src, dst);
+        case float32:  return launchUnaryOpKernel<float, float, Tanh>(src, dst);
+        case float64:  return launchUnaryOpKernel<double, double, Tanh>(src, dst);
+        default: return UNSUPPORTED_DTYPE;
     }
-} 
+}
 
-} // namespace cpu
+} // namespace cpu 

@@ -115,6 +115,7 @@
         "source_location": "cpp",
         "tensor.h": "c",
         "stdio.h": "c",
-        "resources.h": "c"
+        "resources.h": "c",
+        "stdfloat": "cpp"
     }
 }
