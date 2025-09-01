@@ -24,7 +24,7 @@ __global__ void contiguousUnaryOpKernel(const S* __restrict__ src, D* __restrict
 template<typename S, typename D, class Op>
 __global__ void stridedUnaryOpKernel(
     const S* __restrict__ src_ptr, strides_t src_strides,    
-    D* __restrict__ dst_ptr, strides_t resets,          
+    D* __restrict__ dst_ptr, shape_t resets,          
     uint8_t dst_rank, size_t ne, Op op
 ){
     int rank = static_cast<int>(dst_rank);
@@ -42,8 +42,8 @@ __global__ void stridedUnaryOpKernel(
 
         dst_ptr[idx] = op(src_ptr[offset]);
     }
-}
-
+} 
+ 
 template<typename S, typename D, class Op, class ... Args>
 status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream, Args... args)  { 
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
@@ -73,9 +73,9 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream, 
             return SUCCESS;
         }
 
-        case STRIDED: {
+        case STRIDED: {  
             strides_t strides{0};
-            strides_t resets{0};
+            shape_t resets{0};
             for (int dim = 0; dim < src->rank; ++dim) {
                 resets.sizes[dim] = dst->shape.sizes[dim] * src->strides.sizes[dim];
                 strides.sizes[dim] = src->strides.sizes[dim];

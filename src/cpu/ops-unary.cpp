@@ -34,10 +34,12 @@ void contiguousUnaryOpKernel(
     }
 }
 
+
+
 template<typename S, typename D, class Op>
 void stridedUnaryOpKernel( 
     const S* src_ptr, const strides_t& src_strides,           
-    D* dst_ptr, const strides_t& resets, 
+    D* dst_ptr, const shape_t& resets, 
     uint8_t rank, size_t ne, Op op
 ) {  
     size_t current_offset = 0;  
@@ -84,12 +86,12 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, Args... args) {
 
         case STRIDED: {   
             strides_t strides{0};
-            strides_t resets{0};
+            shape_t resets{0};
             for (int dim = 0; dim < src->rank; ++dim) {
                 resets.sizes[dim] = dst->shape.sizes[dim] * src->strides.sizes[dim];
                 strides.sizes[dim] = src->strides.sizes[dim];
-            }
-
+            } 
+            
             stridedUnaryOpKernel<S, D, Op>(
                 (const S*)(src->address), strides,
                 (D*)(dst->address), resets,
@@ -102,7 +104,7 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, Args... args) {
         default:
             return ERROR; 
     } 
-} 
+}  
 
 struct Neg {
     template<class A>

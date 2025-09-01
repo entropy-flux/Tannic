@@ -10,5 +10,7 @@ namespace cuda {
      
 status argsum(const tensor_t*, tensor_t*, stream_t, uint8_t);
 status argmean(const tensor_t*, tensor_t*, stream_t, uint8_t);
+status argmax(tensor_t const*, tensor_t*, stream_t, uint8_t);
+status argmin(tensor_t const*, tensor_t*, stream_t, uint8_t);
 
 } // namespace cuda

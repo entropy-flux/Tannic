@@ -3,10 +3,8 @@
 #include "indexing.hpp"
 #include "callback.hpp"
 #include "runtime/streams.h"
-#include "cpu/argcmp.hpp" 
 #include "cpu/argred.hpp" 
 #ifdef CUDA
-#include "cuda/argcmp.cuh"
 #include "cuda/argred.cuh" 
 #else 
 namespace cuda { 
