@@ -3,78 +3,30 @@
 #include "argred.hpp"
 
 namespace {   
+    
 template<typename S, typename D, typename Op>
 void contiguousArgReduceKernel(
     const S* src_ptr, const shape_t& src_shape,
     D* dst_ptr,
-    uint8_t rank, uint8_t ax, size_t ne
+    uint8_t rank, uint8_t ax, size_t ne,
+    size_t outer_sizes, size_t inner_sizes
 ) {
     Op op; 
-    size_t outer_dims = 1;
-    for (int d = 0; d < ax; ++d) {
-        outer_dims *= src_shape.sizes[d];
-    }
-    
     size_t reduce_dim = src_shape.sizes[ax];
     
-    size_t inner_dims = 1;
-    for (int d = ax + 1; d < rank; ++d) {
-        inner_dims *= src_shape.sizes[d];
-    }
-      
-    for (size_t outer = 0; outer < outer_dims; ++outer) {
-        for (size_t inner = 0; inner < inner_dims; ++inner) {
-            const S* slice_start = src_ptr + (outer * reduce_dim * inner_dims + inner);
+    for (size_t outer = 0; outer < outer_sizes; ++outer) {
+        for (size_t inner = 0; inner < inner_sizes; ++inner) {
+            const S* slice_start = src_ptr + (outer * reduce_dim * inner_sizes + inner);
             D accum = D(0); 
             for (size_t i = 0; i < reduce_dim; ++i) {
-                const S val = slice_start[i * inner_dims];
+                const S val = slice_start[i * inner_sizes];
                 accum = op(accum, val);
             }
             
-            dst_ptr[outer * inner_dims + inner] = op.finalize(accum, reduce_dim);
+            dst_ptr[outer * inner_sizes + inner] = op.finalize(accum, reduce_dim);
         }
     }
-}
- 
-template<typename S, typename D, typename Op>
-void contiguousArgCompareKernel(
-    const S* src_ptr, const shape_t& src_shape,
-    D* dst_ptr,
-    uint8_t rank, uint8_t ax, size_t ne, S initial_value
-) {
-    Op cmp{}; 
-    size_t outer_dims = 1;
-    for (int d = 0; d < ax; ++d) {
-        outer_dims *= src_shape.sizes[d];
-    }
-    
-    size_t reduce_dim = src_shape.sizes[ax];
-    
-    size_t inner_dims = 1;
-    for (int d = ax + 1; d < rank; ++d) {
-        inner_dims *= src_shape.sizes[d];
-    }
-      
-    for (size_t outer = 0; outer < outer_dims; ++outer) {
-        for (size_t inner = 0; inner < inner_dims; ++inner) {
-            const S* slice_start = src_ptr + (outer * reduce_dim * inner_dims + inner);
-            
-            int64_t best_idx = 0;
-            S best_val = initial_value;
-             
-            for (size_t i = 0; i < reduce_dim; ++i) {
-                const S val = slice_start[i * inner_dims];
-                if (cmp(val, best_val) || (val == best_val && i < best_idx)) {
-                    best_val = val;
-                    best_idx = i;
-                }
-            }
-            
-            dst_ptr[outer * inner_dims + inner] = static_cast<D>(best_idx);
-        }
-    }
-}
-
+} 
 
 template<typename S, typename D, typename Op>
 void stridedArgReduceKernel(
@@ -101,17 +53,47 @@ void stridedArgReduceKernel(
 
         dst_ptr[idx] = op.finalize(accum, src_shape.sizes[ax]);
  
-        for (int d = rank - 1; d >= 0; --d) {
-            if (d == ax) continue; 
-            if (++cnt[d] < src_shape.sizes[d]) {
+        for (int dim = rank - 1; dim >= 0; --dim) {
+            if (dim == ax) continue; 
+            if (++cnt[dim] < src_shape.sizes[dim]) {
                 break;
             } else {
-                cnt[d] = 0;
+                cnt[dim] = 0;
             }
         }
     }
 }
  
+
+template<typename S, typename D, typename Op>
+void contiguousArgCompareKernel(
+    const S* src_ptr, const shape_t& src_shape,
+    D* dst_ptr,
+    uint8_t rank, uint8_t ax, size_t ne, S initial_value,
+    size_t outer_sizes, size_t inner_sizes
+) {
+    Op cmp{};  
+    size_t reduce_dim = src_shape.sizes[ax]; 
+    
+    for (size_t outer = 0; outer < outer_sizes; ++outer) {
+        for (size_t inner = 0; inner < inner_sizes; ++inner) {
+            const S* slice_start = src_ptr + (outer * reduce_dim * inner_sizes + inner);
+            
+            int64_t best_idx = 0;
+            S best_val = initial_value;
+             
+            for (size_t i = 0; i < reduce_dim; ++i) {
+                const S val = slice_start[i * inner_sizes];
+                if (cmp(val, best_val) || (val == best_val && i < best_idx)) {
+                    best_val = val;
+                    best_idx = i;
+                }
+            }
+            
+            dst_ptr[outer * inner_sizes + inner] = static_cast<D>(best_idx);
+        }
+    }
+}
 
 template<typename S, typename D, typename Op>
 void stridedArgCompareKernel(
@@ -140,14 +122,13 @@ void stridedArgCompareKernel(
             }
         }
 
-        *dst_ptr++ = static_cast<D>(best_idx);
- 
-        for (int d = rank - 1; d >= 0; --d) {
-            if (d == ax) continue; 
-            if (++cnt[d] < src_shape.sizes[d]) {
+        *dst_ptr++ = static_cast<D>(best_idx); 
+        for (int dim = rank - 1; dim >= 0; --dim) {
+            if (dim == ax) continue; 
+            if (++cnt[dim] < src_shape.sizes[dim]) {
                 break;
             } else {
-                cnt[d] = 0;
+                cnt[dim] = 0;
             }
         }
     }
@@ -187,19 +168,33 @@ struct LE {
 
 template<typename S, typename D, typename Op>
 status launchArgReduce(const tensor_t* src, tensor_t* dst, uint8_t ax) { 
-    if (src->layout == CONTIGUOUS) { 
+    if (src->layout == CONTIGUOUS) {  
         size_t ne = 1;
-        shape_t src_shape;
-        for (int dim = 0; dim < src->rank; ++dim) {
-            src_shape.sizes[dim] = src->shape.sizes[dim];
-            if (dim != ax)
+        shape_t src_shape; 
+        size_t outer_size = 1;
+        size_t inner_size = 1; 
+        for (uint8_t dim = 0; dim < src->rank; ++dim) {
+            if (dim < ax) { 
+                src_shape.sizes[dim] = src->shape.sizes[dim];
                 ne *= src->shape.sizes[dim];
-        }
-        
+                outer_size *= src->shape.sizes[dim];
+            } 
+
+            else if(dim == ax) {
+                src_shape.sizes[dim] = src->shape.sizes[dim]; 
+            }
+            
+            else { 
+                src_shape.sizes[dim] = src->shape.sizes[dim];
+                ne *= src->shape.sizes[dim];
+                inner_size *= src->shape.sizes[dim]; 
+            }
+        } 
+
         contiguousArgReduceKernel<S, D, Op>(
             reinterpret_cast<const S*>(src->address), src_shape,
             reinterpret_cast<D*>(dst->address),
-            src->rank, ax, ne
+            src->rank, ax, ne, outer_size, inner_size
         );
         return SUCCESS;
     } 
@@ -226,16 +221,33 @@ status launchArgReduce(const tensor_t* src, tensor_t* dst, uint8_t ax) {
  
 template<typename S, typename Op>
 status launchArgCompare(const tensor_t* src, tensor_t* dst, uint8_t ax, S init) { 
-    if (src->layout == CONTIGUOUS) { 
+    if (src->layout == CONTIGUOUS) {  
         size_t ne = 1;
-        for (int dim = 0; dim < src->rank; ++dim) {
-            if (dim != ax) ne *= src->shape.sizes[dim];
-        }
-        
+        shape_t src_shape; 
+        size_t outer_size = 1;
+        size_t inner_size = 1; 
+        for (uint8_t dim = 0; dim < src->rank; ++dim) {
+            if (dim < ax) { 
+                src_shape.sizes[dim] = src->shape.sizes[dim];
+                ne *= src->shape.sizes[dim];
+                outer_size *= src->shape.sizes[dim];
+            } 
+
+            else if(dim == ax) {
+                src_shape.sizes[dim] = src->shape.sizes[dim]; 
+            }
+            
+            else { 
+                src_shape.sizes[dim] = src->shape.sizes[dim];
+                ne *= src->shape.sizes[dim];
+                inner_size *= src->shape.sizes[dim]; 
+            }
+        } 
         contiguousArgCompareKernel<S, int64_t, Op>(
-            reinterpret_cast<const S*>(src->address), src->shape,
+            reinterpret_cast<const S*>(src->address), src_shape,
             reinterpret_cast<int64_t*>(dst->address),
-            src->rank, ax, ne, init
+            src->rank, ax, ne, init,
+            outer_size, inner_size
         );
         return SUCCESS;
 
