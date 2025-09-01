@@ -131,8 +131,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d87/classtannic_1_1Exception.html">Exception</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple generic exception type for the Tannic <a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a> Library.  <a href="../../d9/d87/classtannic_1_1Exception.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d2c/structtannic_1_1float16__t.html">float16_t</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d69/structtannic_1_1Header.html">Header</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da7/classtannic_1_1Host.html">Host</a></td></tr>
@@ -217,10 +215,6 @@ Functions</h2></td></tr>
 <tr class="memitem:abe303690a4d7ad0383f88855f6f0fce6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">matmul</a> (Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier, double scale=1.0)</td></tr>
 <tr class="memdesc:abe303690a4d7ad0383f88855f6f0fce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix multiplication convenience function.  <br /></td></tr>
 <tr class="separator:abe303690a4d7ad0383f88855f6f0fce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68402cf2ce569bf5489264bc23556051"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d2c/structtannic_1_1float16__t.html">float16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a68402cf2ce569bf5489264bc23556051">float32_to_float16</a> (float)</td></tr>
-<tr class="separator:a68402cf2ce569bf5489264bc23556051"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2448a001f264221690792e80af9c2eb6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a2448a001f264221690792e80af9c2eb6">float16_to_float32</a> (<a class="el" href="../../d5/d2c/structtannic_1_1float16__t.html">float16_t</a>)</td></tr>
-<tr class="separator:a2448a001f264221690792e80af9c2eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a> (type type)</td></tr>
 <tr class="memdesc:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size in bytes of a given tensor data type.  <br /></td></tr>
 <tr class="separator:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -366,7 +360,7 @@ Variables</h2></td></tr>
 Example:</h4>
 <div class="fragment"><div class="line">std::cout &lt;&lt; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(int32) &lt;&lt; std::endl   <span class="comment">// prints &quot;int32&quot;</span></div>
 <div class="line">std::cout &lt;&lt; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(complex128); <span class="comment">// prints &quot;complex128&quot;</span></div>
-<div class="ttc" id="anamespacetannic_html_a1f6a29013277d9209efa113453cf0b2e"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a></div><div class="ttdeci">constexpr std::string dnameof(type type)</div><div class="ttdoc">Returns the string name of a given tensor data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:155</div></div>
+<div class="ttc" id="anamespacetannic_html_a1f6a29013277d9209efa113453cf0b2e"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a></div><div class="ttdeci">constexpr std::string dnameof(type type)</div><div class="ttdoc">Returns the string name of a given tensor data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:148</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -412,7 +406,7 @@ Example:</h4>
 Example:</h4>
 <div class="fragment"><div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a>(float32);  <span class="comment">// returns 4</span></div>
 <div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a>(complex64); <span class="comment">// returns 8</span></div>
-<div class="ttc" id="anamespacetannic_html_aee5ef48cb75e37f65cc11ef67fbb9d25"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a></div><div class="ttdeci">constexpr std::size_t dsizeof(type type)</div><div class="ttdoc">Returns the size in bytes of a given tensor data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:101</div></div>
+<div class="ttc" id="anamespacetannic_html_aee5ef48cb75e37f65cc11ef67fbb9d25"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a></div><div class="ttdeci">constexpr std::size_t dsizeof(type type)</div><div class="ttdoc">Returns the size in bytes of a given tensor data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:94</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -477,42 +471,6 @@ template&lt;typename T &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>Corresponding type enum value (none for invalid codes)</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>This is the inverse operation of <a class="el" href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363" title="Returns the numeric code used for serialization of a data type.">dcodeof()</a>. The code values follow the same pattern.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d0/d1a/namespacetannic.html#a7cc5a20569f733cb88c508ebb9119363" title="Returns the numeric code used for serialization of a data type.">dcodeof()</a> for the reverse conversion </dd></dl>
-
-</div>
-</div>
-<a id="a2448a001f264221690792e80af9c2eb6" name="a2448a001f264221690792e80af9c2eb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2448a001f264221690792e80af9c2eb6">&#9670;&#160;</a></span>float16_to_float32()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float tannic::float16_to_float32 </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d5/d2c/structtannic_1_1float16__t.html">float16_t</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a68402cf2ce569bf5489264bc23556051" name="a68402cf2ce569bf5489264bc23556051"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68402cf2ce569bf5489264bc23556051">&#9670;&#160;</a></span>float32_to_float16()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d5/d2c/structtannic_1_1float16__t.html">float16_t</a> tannic::float32_to_float16 </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -682,7 +640,7 @@ Example:</h4>
 <div class="fragment"><div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">nbytesof</a>(float32, 10);   <span class="comment">// returns 40</span></div>
 <div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">nbytesof</a>(complex64, 5);  <span class="comment">// returns 40</span></div>
 <div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">nbytesof</a>(<span class="keywordtype">boolean</span>, 100);  <span class="comment">// returns 13</span></div>
-<div class="ttc" id="anamespacetannic_html_a9e047ef72e50f442b8fd458213bbdc04"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">tannic::nbytesof</a></div><div class="ttdeci">constexpr std::size_t nbytesof(type dtype, std::size_t nelements)</div><div class="ttdoc">Returns the total number of bytes required to store nelements elements of the given data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:136</div></div>
+<div class="ttc" id="anamespacetannic_html_a9e047ef72e50f442b8fd458213bbdc04"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">tannic::nbytesof</a></div><div class="ttdeci">constexpr std::size_t nbytesof(type dtype, std::size_t nelements)</div><div class="ttdoc">Returns the total number of bytes required to store nelements elements of the given data type.</div><div class="ttdef"><b>Definition:</b> types.hpp:129</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

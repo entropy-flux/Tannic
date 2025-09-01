@@ -70,7 +70,6 @@ var annotated_dup =
       [ "Device", "d3/d46/classtannic_1_1Device.html", "d3/d46/classtannic_1_1Device" ],
       [ "Devices", "d9/dd4/classtannic_1_1Devices.html", "d9/dd4/classtannic_1_1Devices" ],
       [ "Exception", "d9/d87/classtannic_1_1Exception.html", "d9/d87/classtannic_1_1Exception" ],
-      [ "float16_t", "d5/d2c/structtannic_1_1float16__t.html", "d5/d2c/structtannic_1_1float16__t" ],
       [ "Header", "d1/d69/structtannic_1_1Header.html", "d1/d69/structtannic_1_1Header" ],
       [ "Host", "df/da7/classtannic_1_1Host.html", "df/da7/classtannic_1_1Host" ],
       [ "Metadata", "d4/df4/structtannic_1_1Metadata.html", null ],

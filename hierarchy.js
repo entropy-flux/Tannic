@@ -30,7 +30,6 @@ var hierarchy =
     [ "tannic::expression::Expansion< Source >", "d0/d10/classtannic_1_1expression_1_1Expansion.html", null ],
     [ "tannic::operation::Exponentiation", "db/d23/structtannic_1_1operation_1_1Exponentiation.html", null ],
     [ "tannic::expression::Flatten< Source >", "d1/dbe/classtannic_1_1expression_1_1Flatten.html", null ],
-    [ "tannic::float16_t", "d5/d2c/structtannic_1_1float16__t.html", null ],
     [ "tannic::function::Function< Functor, Argument >", "db/d37/classtannic_1_1function_1_1Function.html", null ],
     [ "tannic::expression::GE", "d2/d2d/structtannic_1_1expression_1_1GE.html", null ],
     [ "tannic::expression::GT", "d3/d70/structtannic_1_1expression_1_1GT.html", null ],
