@@ -2,8 +2,8 @@ name: Doxygen GitHub Pages Deploy Action
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - '*'  # triggers on any tag push
 
 jobs:
   deploy:
