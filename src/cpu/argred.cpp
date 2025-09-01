@@ -2,35 +2,96 @@
 #include <cmath> 
 #include "argred.hpp"
 
-namespace { 
-    
+namespace {   
 template<typename S, typename D, typename Op>
-void argReduceKernel(
-    const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,
-    D* dst_ptr, 
-    uint8_t rank, uint8_t dim
+void contiguousArgReduceKernel(
+    const S* src_ptr, const shape_t& src_shape,
+    D* dst_ptr,
+    uint8_t rank, uint8_t ax, size_t ne
 ) {
-    Op op;
-    if (rank == 0) {
-        *dst_ptr = 0;
-        return;
+    Op op; 
+    size_t outer_dims = 1;
+    for (int d = 0; d < ax; ++d) {
+        outer_dims *= src_shape.sizes[d];
     }
+    
+    size_t reduce_dim = src_shape.sizes[ax];
+    
+    size_t inner_dims = 1;
+    for (int d = ax + 1; d < rank; ++d) {
+        inner_dims *= src_shape.sizes[d];
+    }
+      
+    for (size_t outer = 0; outer < outer_dims; ++outer) {
+        for (size_t inner = 0; inner < inner_dims; ++inner) {
+            const S* slice_start = src_ptr + (outer * reduce_dim * inner_dims + inner);
+            D accum = D(0); 
+            for (size_t i = 0; i < reduce_dim; ++i) {
+                const S val = slice_start[i * inner_dims];
+                accum = op(accum, val);
+            }
+            
+            dst_ptr[outer * inner_dims + inner] = op.finalize(accum, reduce_dim);
+        }
+    }
+}
  
-    size_t total = 1;
-    for (int i = 0; i < rank; ++i) {
-        if (i != dim)
-            total *= src_shape.sizes[i];
-    } 
+template<typename S, typename D, typename Op>
+void contiguousArgCompareKernel(
+    const S* src_ptr, const shape_t& src_shape,
+    D* dst_ptr,
+    uint8_t rank, uint8_t ax, size_t ne, S initial_value
+) {
+    Op cmp{}; 
+    size_t outer_dims = 1;
+    for (int d = 0; d < ax; ++d) {
+        outer_dims *= src_shape.sizes[d];
+    }
+    
+    size_t reduce_dim = src_shape.sizes[ax];
+    
+    size_t inner_dims = 1;
+    for (int d = ax + 1; d < rank; ++d) {
+        inner_dims *= src_shape.sizes[d];
+    }
+      
+    for (size_t outer = 0; outer < outer_dims; ++outer) {
+        for (size_t inner = 0; inner < inner_dims; ++inner) {
+            const S* slice_start = src_ptr + (outer * reduce_dim * inner_dims + inner);
+            
+            int64_t best_idx = 0;
+            S best_val = initial_value;
+             
+            for (size_t i = 0; i < reduce_dim; ++i) {
+                const S val = slice_start[i * inner_dims];
+                if (cmp(val, best_val) || (val == best_val && i < best_idx)) {
+                    best_val = val;
+                    best_idx = i;
+                }
+            }
+            
+            dst_ptr[outer * inner_dims + inner] = static_cast<D>(best_idx);
+        }
+    }
+}
 
+
+template<typename S, typename D, typename Op>
+void stridedArgReduceKernel(
+    const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,
+    D* dst_ptr,
+    uint8_t rank, uint8_t ax, size_t ne
+) {
+    Op op;  
     size_t cnt[8] = {0};
 
-    for (size_t idx = 0; idx < total; ++idx) {
+    for (size_t idx = 0; idx < ne; ++idx) {
         D accum = D(0);
 
-        for (size_t i = 0; i < src_shape.sizes[dim]; ++i) {
+        for (size_t i = 0; i < src_shape.sizes[ax]; ++i) {
             size_t offset = 0;
             for (int d = 0; d < rank; ++d) {
-                size_t idx_val = (d == dim) ? i : cnt[d];
+                size_t idx_val = (d == ax) ? i : cnt[d];
                 offset += idx_val * src_strides.sizes[d];
             }
 
@@ -38,10 +99,10 @@ void argReduceKernel(
             accum = op(accum, val);
         }
 
-        dst_ptr[idx] = op.finalize(accum, src_shape.sizes[dim]);
+        dst_ptr[idx] = op.finalize(accum, src_shape.sizes[ax]);
  
         for (int d = rank - 1; d >= 0; --d) {
-            if (d == dim) continue; 
+            if (d == ax) continue; 
             if (++cnt[d] < src_shape.sizes[d]) {
                 break;
             } else {
@@ -53,34 +114,22 @@ void argReduceKernel(
  
 
 template<typename S, typename D, typename Op>
-void argCompareKernel(
+void stridedArgCompareKernel(
     const S* src_ptr, const shape_t& src_shape, const strides_t& src_strides,
     D* dst_ptr,
-    uint8_t rank, uint8_t dim, S initial_value
+    uint8_t rank, uint8_t ax, size_t ne, S initial_value
 ) {
-    Op cmp{};
-
-    if (rank == 0) {
-        *dst_ptr = 0;
-        return;
-    }
- 
-    size_t total = 1;
-    for (int i = 0; i < rank; ++i) {
-        if (i != dim)
-            total *= src_shape.sizes[i];
-    } 
-
+    Op cmp{}; 
     size_t cnt[8] = {0};
 
-    for (size_t idx = 0; idx < total; ++idx) {
+    for (size_t idx = 0; idx < ne; ++idx) {
         int64_t best_idx = 0;
         S best_val = initial_value;
 
-        for (size_t i = 0; i < src_shape.sizes[dim]; ++i) {
+        for (size_t i = 0; i < src_shape.sizes[ax]; ++i) {
             size_t offset = 0;
             for (int d = 0; d < rank; ++d) {
-                size_t idx_val = (d == dim) ? i : cnt[d];
+                size_t idx_val = (d == ax) ? i : cnt[d];
                 offset += idx_val * src_strides.sizes[d];
             }
 
@@ -94,7 +143,7 @@ void argCompareKernel(
         *dst_ptr++ = static_cast<D>(best_idx);
  
         for (int d = rank - 1; d >= 0; --d) {
-            if (d == dim) continue; 
+            if (d == ax) continue; 
             if (++cnt[d] < src_shape.sizes[d]) {
                 break;
             } else {
@@ -136,25 +185,77 @@ struct LE {
     }
 }; 
 
-
 template<typename S, typename D, typename Op>
-status launchArgReduce(const tensor_t* src, tensor_t* dst, uint8_t dim) {    
-    argReduceKernel<S, D, Op>(
-        reinterpret_cast<const S*>(src->address), src->shape, src->strides,
-        reinterpret_cast<D*>(dst->address),
-        src->rank, dim
-    );
-    return SUCCESS;
+status launchArgReduce(const tensor_t* src, tensor_t* dst, uint8_t ax) { 
+    if (src->layout == CONTIGUOUS) { 
+        size_t ne = 1;
+        shape_t src_shape;
+        for (int dim = 0; dim < src->rank; ++dim) {
+            src_shape.sizes[dim] = src->shape.sizes[dim];
+            if (dim != ax)
+                ne *= src->shape.sizes[dim];
+        }
+        
+        contiguousArgReduceKernel<S, D, Op>(
+            reinterpret_cast<const S*>(src->address), src_shape,
+            reinterpret_cast<D*>(dst->address),
+            src->rank, ax, ne
+        );
+        return SUCCESS;
+    } 
+    
+    else {     
+        size_t ne = 1;
+        shape_t src_shape;
+        strides_t src_strides;
+        for (int dim = 0; dim < src->rank; ++dim) {
+            src_shape.sizes[dim] = src->shape.sizes[dim];
+            src_strides.sizes[dim] = src->strides.sizes[dim];
+            if (dim != ax)
+                ne *= src_shape.sizes[dim];
+        } 
+
+        stridedArgReduceKernel<S, D, Op>(
+            reinterpret_cast<const S*>(src->address), src_shape, src_strides,
+            reinterpret_cast<D*>(dst->address),
+            src->rank, ax, ne
+        );
+        return SUCCESS;
+    } 
 } 
  
 template<typename S, typename Op>
-status launchArgCompare(const tensor_t* src, tensor_t* dst, uint8_t dim, S init) {    
-    argCompareKernel<S, int64_t, Op>(
-        reinterpret_cast<const S*>(src->address), src->shape, src->strides,
-        reinterpret_cast<int64_t*>(dst->address), 
-        src->rank, dim, init
-    );
-    return SUCCESS;
+status launchArgCompare(const tensor_t* src, tensor_t* dst, uint8_t ax, S init) { 
+    if (src->layout == CONTIGUOUS) { 
+        size_t ne = 1;
+        for (int dim = 0; dim < src->rank; ++dim) {
+            if (dim != ax) ne *= src->shape.sizes[dim];
+        }
+        
+        contiguousArgCompareKernel<S, int64_t, Op>(
+            reinterpret_cast<const S*>(src->address), src->shape,
+            reinterpret_cast<int64_t*>(dst->address),
+            src->rank, ax, ne, init
+        );
+        return SUCCESS;
+
+    } else {     
+        size_t ne = 1;
+        shape_t src_shape;
+        strides_t src_strides;
+        for (int dim = 0; dim < src->rank; ++dim) {
+            src_shape.sizes[dim] = src->shape.sizes[dim];
+            src_strides.sizes[dim] = src->strides.sizes[dim];
+            if (dim != ax) ne *= src_shape.sizes[dim];
+        } 
+
+        stridedArgCompareKernel<S, int64_t, Op>(
+            reinterpret_cast<const S*>(src->address), src_shape, src_strides,
+            reinterpret_cast<int64_t*>(dst->address),
+            src->rank, ax, ne, init
+        );
+        return SUCCESS;
+    }
 } 
 
 } namespace cpu {

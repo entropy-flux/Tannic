@@ -6,10 +6,10 @@
 namespace {
  
 template<typename S, typename D, typename Op>
-__global__ void argCompareKernel(
+__global__ void stridedArgCompareKernel(
     const S* __restrict__ src, shape_t src_shape, strides_t src_strides,
     D* __restrict__ dst, 
-    uint8_t rank, uint8_t dim, S initial_value, size_t ne
+    uint8_t rank, uint8_t ax, S initial_value, size_t ne
 ) {
     Op cmp{};
  
@@ -21,17 +21,15 @@ __global__ void argCompareKernel(
             if (idx == 0) dst[0] = static_cast<D>(0);
             continue;
         }
-
-        // Map flat idx -> multi-index using src_shape with reduced dim treated as 1
+        
         size_t remaining = idx;
         size_t base_src_offs = 0;
 
         for (int d = static_cast<int>(rank) - 1; d >= 0; --d) {
-            const size_t size_d = (d == dim) ? 1 : src_shape.sizes[d];
+            const size_t size_d = (d == ax) ? 1 : src_shape.sizes[d];
             const size_t idx_d  = (size_d > 1) ? (remaining % size_d) : 0;
             if (size_d > 1) remaining /= size_d;
 
-            // If the source is broadcast (size 1), always index 0
             const size_t src_idx = (src_shape.sizes[d] == 1) ? 0 : idx_d;
             base_src_offs += src_idx * src_strides.sizes[d];
         }
@@ -39,9 +37,8 @@ __global__ void argCompareKernel(
         int64_t best_idx = 0;
         S best_val = initial_value;
 
-        // Scan along the reduced dimension
-        for (size_t i = 0; i < src_shape.sizes[dim]; ++i) {
-            const size_t offs = base_src_offs + i * src_strides.sizes[dim];
+        for (size_t i = 0; i < src_shape.sizes[ax]; ++i) {
+            const size_t offs = base_src_offs + i * src_strides.sizes[ax];
             const S val = src[offs];
             if (cmp(val, best_val) || (val == best_val && i < static_cast<size_t>(best_idx))) {
                 best_val = val;
@@ -49,37 +46,36 @@ __global__ void argCompareKernel(
             }
         }
 
-        // Assumes dst is contiguous; if it's not, compute dst offset with dst_strides.
         dst[idx] = static_cast<D>(best_idx);
     }
 }
 
 
 template<typename S, typename D, typename A, class Op>
-__global__ void argReduceKernel(
+__global__ void stridedArgReduceKernel(
     const S* __restrict__ src_ptr, const shape_t src_shape, const strides_t src_strides,
     D* __restrict__ dst_ptr,
-    uint8_t rank, uint8_t dim, size_t ne
+    uint8_t rank, uint8_t ax, size_t ne
 ) {
     Op op;
     for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) {
  
         size_t cnt[8] = {0};
         size_t remaining = idx;
-        for (int d = rank - 1; d >= 0; --d) {
-            if (d == dim) continue;
-            const size_t sz = src_shape.sizes[d];
-            cnt[d] = (sz ? (remaining % sz) : 0);
+        for (int dim = rank - 1; dim >= 0; --dim) {
+            if (dim == ax) continue;
+            const size_t sz = src_shape.sizes[dim];
+            cnt[dim] = (sz ? (remaining % sz) : 0);
             remaining = (sz ? (remaining / sz) : 0);
         }
  
         A accum = A(0);
-        const size_t reduceN = src_shape.sizes[dim];
+        const size_t reduceN = src_shape.sizes[ax];
         for (size_t i = 0; i < reduceN; ++i) {
             size_t offset = 0;
-            for (int d = 0; d < rank; ++d) {
-                const size_t idx_val = (d == dim) ? i : cnt[d];
-                offset += idx_val * src_strides.sizes[d]; // assumes strides in elements
+            for (int dim = 0; dim < rank; ++dim) {
+                const size_t idx_val = (dim == ax) ? i : cnt[dim];
+                offset += idx_val * src_strides.sizes[dim]; 
             }
             accum = op(accum, static_cast<A>(src_ptr[offset]));
         }
@@ -119,34 +115,47 @@ struct Mean {
 };
  
 template<typename S, typename Op>
-status launchArgCompare(const tensor_t* src, tensor_t* dst, uint8_t dim, S init, stream_t stream) { 
+status launchArgCompare(const tensor_t* src, tensor_t* dst, uint8_t ax, S init, stream_t stream) { 
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
     size_t ne = dst->size;
 
     int threads = 256;
-    int blocks = (ne + threads - 1) / threads;
+    int blocks = (ne + threads - 1) / threads; 
 
-    argCompareKernel<S, int64_t, Op><<<blocks, threads, 0, cudaStream>>>(
-        reinterpret_cast<const S*>(src->address), src->shape, src->strides,
+    shape_t src_shape;
+    strides_t src_strides;
+    for (uint8_t dim = 0; dim < src->rank; dim++) {
+        src_shape.sizes[dim] = src->shape.sizes[dim];
+        src_strides.sizes[dim] = src->strides.sizes[dim];
+    } 
+
+    stridedArgCompareKernel<S, int64_t, Op><<<blocks, threads, 0, cudaStream>>>(
+        reinterpret_cast<const S*>(src->address), src_shape, src_strides,
         reinterpret_cast<int64_t*>(dst->address), 
-        src->rank, dim, init, ne
+        src->rank, ax, init, ne
     );
     return cudaGetLastError() == cudaSuccess ? SUCCESS : ERROR;
 } 
 
 template<typename S, typename D, typename A, class Op>
-status launchArgReduce(const tensor_t* src, tensor_t* dst, uint8_t dim, stream_t stream) {
-    if (src->rank == 0 || dim >= src->rank) return SUCCESS; // or an error code if you prefer
+status launchArgReduce(const tensor_t* src, tensor_t* dst, uint8_t ax, stream_t stream) {
+    if (src->rank == 0 || ax >= src->rank) return SUCCESS;  
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
-    
-    size_t ne = src->size / src->shape.sizes[dim];
+    size_t ne = src->size / src->shape.sizes[ax];
     const int blockSize = 256;
-    const int gridSize  = static_cast<int>((ne + blockSize - 1) / blockSize);
+    const int gridSize  = static_cast<int>((ne + blockSize - 1) / blockSize); 
 
-    argReduceKernel<S, D, A, Op><<<gridSize, blockSize, 0, cudaStream>>>(
-        reinterpret_cast<const S*>(src->address), src->shape, src->strides,
+    shape_t src_shape;
+    strides_t src_strides;
+    for (uint8_t dim = 0; dim < src->rank; dim++) {
+        src_shape.sizes[dim] = src->shape.sizes[dim];
+        src_strides.sizes[dim] = src->strides.sizes[dim];
+    } 
+
+    stridedArgReduceKernel<S, D, A, Op><<<gridSize, blockSize, 0, cudaStream>>>(
+        reinterpret_cast<const S*>(src->address), src_shape, src_strides,
         reinterpret_cast<D*>(dst->address), 
-        src->rank, dim, ne
+        src->rank, ax, ne
     );
  
     return (cudaGetLastError() == cudaSuccess) ? SUCCESS : ERROR;
