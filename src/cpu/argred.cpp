@@ -1,5 +1,7 @@
 #include <array>
 #include <cmath> 
+#include <limits>
+#include <cstdint> 
 #include "argred.hpp"
 
 namespace {   
