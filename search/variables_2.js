@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['dcode_0',['dcode',['../d4/d78/structtannic_1_1Metadata_3_01Tensor_01_4.html#adbf5ea7e7e4501ff4f40eccf751e13bd',1,'tannic::Metadata&lt; Tensor &gt;']]]
+  ['checksum_0',['checksum',['../d1/d69/structtannic_1_1Header.html#add95b83c0f46a7f8ea9676f230e24b7b',1,'tannic::Header']]],
+  ['cooperand_1',['cooperand',['../d7/d6b/classtannic_1_1operation_1_1Binary.html#aa800c0ab9919c0033991f2a855298785',1,'tannic::operation::Binary']]],
+  ['criteria_2',['criteria',['../dc/dc3/classtannic_1_1expression_1_1Comparison.html#a68f8309cdefd010edf4b4fca30a66479',1,'tannic::expression::Comparison']]]
 ];

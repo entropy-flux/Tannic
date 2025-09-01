@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['rank_0',['rank',['../d4/d78/structtannic_1_1Metadata_3_01Tensor_01_4.html#a470f184f4c9e0270afccfea49b3ed131',1,'tannic::Metadata&lt; Tensor &gt;']]],
-  ['real_1',['real',['../d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html#a765ddfa758f053ed6b199f41369e35dc',1,'tannic::expression::Complexification&lt; Coordinates, Real, Imaginary &gt;']]],
-  ['reducer_2',['reducer',['../da/dc5/classtannic_1_1expression_1_1Reduction.html#ad538ecaf232c6ff457f46291497700c8',1,'tannic::expression::Reduction']]],
-  ['repeats_3',['repeats',['../da/d5d/structtannic_1_1transformation_1_1Repetition.html#ad81145fd3afc10df86f8947523ed638f',1,'tannic::transformation::Repetition']]]
+  ['padding_0',['padding',['../db/dd5/classtannic_1_1transformation_1_1Convolution1D.html#a5b175d7fe3cd5ea09c51e3c978764f6e',1,'tannic::transformation::Convolution1D::padding()'],['../d7/d4c/classtannic_1_1transformation_1_1Convolution2D.html#ab4aaed9c185f9d5f5e5402e8e6db0f8a',1,'tannic::transformation::Convolution2D::padding()']]],
+  ['promotions_1',['promotions',['../d4/d53/structtannic_1_1transformation_1_1Composition.html#ae5532fbe7069dd08c4ee780f4b4e6a51',1,'tannic::transformation::Composition']]]
 ];
