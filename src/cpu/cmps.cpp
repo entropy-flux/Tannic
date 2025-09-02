@@ -189,7 +189,7 @@ status le(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
         case int16:   return launchCmpKernel<int16_t,  LE>(src0, src1, dst);
         case int32:   return launchCmpKernel<int32_t,  LE>(src0, src1, dst);
         case int64:   return launchCmpKernel<int64_t,  LE>(src0, src1, dst);
-#ifdef HAS_FLOAT16
+#if HAS_FLOAT16
         case float16: return launchCmpKernel<half,     LE>(src0, src1, dst);
 #endif
         case float32: return launchCmpKernel<float,    LE>(src0, src1, dst);
