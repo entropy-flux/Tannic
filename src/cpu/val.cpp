@@ -73,7 +73,7 @@ bool launchAllcloseKernel(const tensor_t* src0, const tensor_t* src1,
 
 bool allclose(const tensor_t* src0, const tensor_t* src1, double rtol, double atol) {
     switch (src0->dtype) {  
-#ifdef HAS_FLOAT16
+#if HAS_FLOAT16
         case float16: return launchAllcloseKernel<half>(src0, src1, rtol, atol);
 #endif
         case float32: return launchAllcloseKernel<float>(src0, src1, rtol, atol);
