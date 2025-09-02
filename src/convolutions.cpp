@@ -32,5 +32,17 @@ void Convolution2D::forward(Tensor const& signal, Tensor const& kernel, Tensor& 
     );
     callback(signal, kernel, output);
 } 
+ 
+void Convolution2D::forward(Tensor const& signal, Tensor const& kernel, Tensor const& bias, Tensor& output) const {
+    Callback callback(
+        [&](const tensor_t* sgnal, const tensor_t* knel, const tensor_t* b, tensor_t* dst) -> status {
+            return cpu::conv2d(sgnal, knel, b, dst, padding.data(), strides.data());
+        },
+        [&](const tensor_t* sgnal, const tensor_t* knel, const tensor_t* b, tensor_t* dst, stream_t stream) -> status {
+            return cuda::conv2d(sgnal, knel, b, dst, stream, padding.data(), strides.data());
+        }
+    );
+    callback(signal, kernel, bias, output);
+}
 
 }

@@ -116,7 +116,7 @@ tensor_t structure(Tensor const& tensor) {
     }
 }
 
-status resolve_environment(const environment_t* a, const environment_t* b, environment_t* result_out) {
+status resolve_two_environment(const environment_t* a, const environment_t* b, environment_t* result_out) {
     if (!a || !b || !result_out) {
         return NULL_ALLOCATOR;
     }
@@ -152,4 +152,51 @@ status resolve_environment(const environment_t* a, const environment_t* b, envir
     return SUCCESS;
 }
 
+status resolve_three_environment(
+    const environment_t* a,
+    const environment_t* b,
+    const environment_t* c,
+    environment_t* result_out
+) {
+    if (!a || !b || !c || !result_out) {
+        return NULL_ALLOCATOR;
+    }
+ 
+    result_out->environment = HOST;
+    result_out->resource.host.traits = PAGEABLE;
+
+    bool any_device = false;
+    int device_id = -1;
+    enum device device_traits = SYNC;
+
+    const environment_t* envs[3] = {a, b, c};
+
+    for (int i = 0; i < 3; ++i) {
+        const auto& env = envs[i];
+        if (env->environment == DEVICE) {
+            if (!any_device) { 
+                any_device = true;
+                device_id = env->resource.device.id;
+                device_traits = env->resource.device.traits;
+            } else { 
+                if (env->resource.device.id != device_id) {
+                    return INCOMPATIBLE_DEVICES;
+                }   
+                if (env->resource.device.traits == ASYNC) device_traits = ASYNC;
+            }
+        } else { 
+            if (env->resource.host.traits & MAPPED) result_out->resource.host.traits = MAPPED;
+            else if (env->resource.host.traits & PINNED) result_out->resource.host.traits = PINNED;
+        }
+    }
+
+    if (any_device) {
+        result_out->environment = DEVICE;
+        result_out->resource.device.id = device_id;
+        result_out->resource.device.traits = device_traits;
+    }
+
+    return SUCCESS;
+}
+ 
 }

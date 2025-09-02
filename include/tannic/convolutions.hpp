@@ -151,6 +151,13 @@ public:
         return signal;
     }
 
+    constexpr type promote(type signal, type kernel, type bias) const {
+        if (signal != kernel || signal != bias)
+            throw Exception("Signal, kernel, and bias dtypes must all match.");
+        return signal;
+    }
+
+
     /**
      * @brief Computes output shape for 2D convolution
      * 
@@ -194,6 +201,13 @@ public:
         return Shape{N, C_out, H_out, W_out};
     }
 
+    constexpr Shape transform(Shape const& signal, Shape const& kernel, Shape const& bias) const {
+        Shape out = transform(signal, kernel);
+        if (bias.rank() != 1 || bias[0] != out[1])
+            throw Exception("Bias shape must be [C_out].");
+        return out;
+    }
+
     /**
      * @brief Performs the forward pass of 2D convolution
      * 
@@ -202,6 +216,7 @@ public:
      * @param result Output tensor to store convolution result
      */
     void forward(Tensor const& signal, Tensor const& kernel, Tensor& result) const;
+    void forward(Tensor const& signal, Tensor const& kernel, Tensor const& bias, Tensor& result) const;
 };
 
 /**
@@ -258,9 +273,7 @@ constexpr auto convolve1D(
 
 /**
  * @brief Creates a 2D convolution expression with uniform stride and padding
- *
- * @tparam Signal Input signal expression type
- * @tparam Kernel Convolution kernel expression type
+ * 
  * @param signal Input signal tensor operand
  * @param kernel Convolution kernel tensor operand
  * @param stride Stride value applied uniformly to both spatial dimensions
@@ -282,9 +295,7 @@ constexpr auto convolve2D(Signal&& signal, Kernel&& kernel, std::size_t stride, 
 
 /**
  * @brief Creates a 2D convolution expression with explicit stride and padding arrays
- *
- * @tparam Signal Input signal expression type
- * @tparam Kernel Convolution kernel expression type
+ * 
  * @param signal Input signal tensor operand
  * @param kernel Convolution kernel tensor operand
  * @param strides Array of stride values (size = 2: {stride_h, stride_w})
@@ -307,6 +318,59 @@ constexpr auto convolve2D(
         std::forward<Kernel>(kernel)
     );
 }
+
+/**
+ * @brief Creates a biased 2D convolution expression with uniform stride and padding
+ * 
+ * @param signal Input signal tensor operand
+ * @param kernel Convolution kernel tensor operand
+ * @param bias Bias tensor operand (shape = [C_out])
+ * @param stride Stride value applied uniformly to both spatial dimensions
+ * @param padding Padding value applied uniformly to both spatial dimensions
+ * @return Transformation expression representing the biased 2D convolution operation
+ * @throws Exception if stride is zero
+ */
+template<Expression Signal, Expression Kernel, Expression Bias>
+constexpr auto convolve2D(Signal&& signal, Kernel&& kernel, Bias&& bias, std::size_t stride, std::size_t padding) {
+    if (stride == 0)
+        throw Exception("Stride must be non-zero for Conv2D.");
+
+    return Transformation<Convolution2D, Signal, Kernel, Bias>(
+        {{stride, stride}, {padding, padding}},
+        std::forward<Signal>(signal),
+        std::forward<Kernel>(kernel),
+        std::forward<Bias>(bias)
+    );
+}
+
+/**
+ * @brief Creates a biased 2D convolution expression with explicit stride and padding arrays
+ * 
+ * @param signal Input signal tensor operand
+ * @param kernel Convolution kernel tensor operand
+ * @param bias Bias tensor operand (shape = [C_out])
+ * @param strides Array of stride values (size = 2: {stride_h, stride_w})
+ * @param padding Array of padding values (size = 2: {pad_h, pad_w})
+ * @return Transformation expression representing the biased 2D convolution operation
+ * @throws Exception if any stride value is zero
+ */
+template<Expression Signal, Expression Kernel, Expression Bias>
+constexpr auto convolve2D(
+    Signal&& signal, Kernel&& kernel, Bias&& bias,
+    std::array<std::size_t, 2> strides,
+    std::array<std::size_t, 2> padding
+) {
+    if (strides[0] == 0 || strides[1] == 0)
+        throw Exception("Stride values must be non-zero for Conv2D.");
+
+    return Transformation<Convolution2D, Signal, Kernel, Bias>(
+        {strides, padding},
+        std::forward<Signal>(signal),
+        std::forward<Kernel>(kernel),
+        std::forward<Bias>(bias)
+    );
+}
+
 
  
 } namespace tannic {

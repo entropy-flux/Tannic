@@ -1161,7 +1161,7 @@ enum class IOStyle {
     PyTorch
 }; 
 
-static IOStyle iostyle = IOStyle::Tannic;
+static IOStyle iostyle = IOStyle::PyTorch;
 inline void setiostyle(IOStyle style) {
     iostyle = style;
 }

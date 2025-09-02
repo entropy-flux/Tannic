@@ -64,8 +64,10 @@ struct environment_t {
         struct device_t device;
     } resource;
 };
-
-status resolve_environment(const environment_t*, const environment_t*, environment_t*); 
+ 
+// TODO: Make this accept a list of environments and solve with recursion.
+status resolve_two_environment(const environment_t*, const environment_t*, environment_t*); 
+status resolve_three_environment(const environment_t* a, const environment_t* b, const environment_t* c, environment_t* result_out);
 
 #ifdef __cplusplus
 }

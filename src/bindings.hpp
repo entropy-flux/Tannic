@@ -13,6 +13,7 @@ the backend is more stable.
 
 namespace tannic {
 
+    // OLDS FUNCTIONS TO BE REMOVED.
 tensor_t structure(Tensor const&);
 host_t structure(Host const&);
 device_t structure(Device const&);

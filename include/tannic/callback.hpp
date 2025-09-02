@@ -72,7 +72,7 @@ public:
         tensor_t* src0 = get_tensor(first.node()->id);
         tensor_t* src1 = get_tensor(second.node()->id);
         environment_t environment;
-        auto status = resolve_environment(&src0->environment, &src1->environment, &environment);
+        auto status = resolve_two_environment(&src0->environment, &src1->environment, &environment);
         if(status != SUCCESS) {
             throw std::runtime_error("Environment issue!");
         }
@@ -105,6 +105,47 @@ public:
                 break;
             }  
     }
+
+
+    void operator()(Tensor const& first, Tensor const& second, Tensor const& third, Tensor& output) {   
+        tensor_t* src0 = get_tensor(first.node()->id);
+        tensor_t* src1 = get_tensor(second.node()->id);
+        tensor_t* src2 = get_tensor(third.node()->id);
+
+        environment_t environment;
+        auto status = resolve_three_environment(&src0->environment, &src1->environment,  &src2->environment, &environment);
+        if(status != SUCCESS) {
+            throw std::runtime_error("Environment issue !");
+        }
+
+        switch (environment.environment) {
+            case HOST: {
+                output.initialize(Host());  
+                tensor_t* dst = get_tensor(output.node()->id);
+                auto status = host_fn(src0, src1, src2, dst);    
+                if(status != SUCCESS) {
+                    throw std::runtime_error("Unsupported dtype");
+                }
+                break; 
+            } 
+
+            case DEVICE: { 
+                device_t dvc = environment.resource.device; 
+                output.initialize(Device(dvc.id));  
+                stream_t stream = pop_stream(&dvc);
+                tensor_t* dst = get_tensor(output.node()->id);
+                auto status = device_fn(src0, src1, src2, dst, stream);
+                put_stream(&dvc, stream);
+                if(status != SUCCESS) {
+                    throw std::runtime_error("Unsupported dtype");
+                } 
+                break; 
+            } 
+            
+            default:
+                throw std::runtime_error("Unsupported environment");
+        }  
+    } 
  
 }; 
 
