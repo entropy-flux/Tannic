@@ -75,7 +75,7 @@ constexpr auto dispatchOuter = []() {
     table[index(int64, int32)]  = launchOuterKernel<int64_t, int32_t, int64_t>;
     table[index(int64, int64)]  = launchOuterKernel<int64_t, int64_t, int64_t>;
  
-#ifdef HAS_FLOAT16
+#if HAS_FLOAT16
     table[index(int32, float16)] = launchOuterKernel<int32_t, half, float>;
     table[index(float16, int32)] = launchOuterKernel<half, int32_t, float>; 
 
