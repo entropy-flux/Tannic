@@ -82,10 +82,10 @@ constexpr auto dispatchOuter = []() {
     table[index(float16, float16)] = launchOuterKernel<half, half, float>;
     table[index(float16, float32)] = launchOuterKernel<half, float, float>;
     table[index(float16, float64)] = launchOuterKernel<half, double, double>;
-    table[index(float64, float16)] = launchOuterKernel<double, half, double>;
-#endif
-
+    table[index(float64, float16)] = launchOuterKernel<double, half, double>; 
     table[index(float32, float16)] = launchOuterKernel<float, half, float>;
+#endif 
+
     table[index(float32, float32)] = launchOuterKernel<float, float, float>;
     table[index(float32, float64)] = launchOuterKernel<float, double, double>;
 
