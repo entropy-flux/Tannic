@@ -110,7 +110,9 @@ constexpr auto dispatchConcatKernel = []() {
     table[index(int16)]    = launchConcatKernel<int16_t>;
     table[index(int32)]    = launchConcatKernel<int32_t>;
     table[index(int64)]    = launchConcatKernel<int64_t>;
+#if HAS_FLOAT16
     table[index(float16)]  = launchConcatKernel<half>;
+#endif
     table[index(float32)]  = launchConcatKernel<float>;
     table[index(float64)]  = launchConcatKernel<double>;
     return table;

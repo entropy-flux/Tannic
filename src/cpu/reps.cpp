@@ -85,7 +85,9 @@ constexpr auto dispatchRepeatsKernel = []() {
     table[index(int16)] = launchRepeatsKernel<int16_t>;
     table[index(int32)] = launchRepeatsKernel<int32_t>;
     table[index(int64)] = launchRepeatsKernel<int64_t>;
+#if HAS_FLOAT16
     table[index(float16)] = launchRepeatsKernel<half>;
+#endif
     table[index(float32)] = launchRepeatsKernel<float>;
     table[index(float64)] = launchRepeatsKernel<double>;
     return table;

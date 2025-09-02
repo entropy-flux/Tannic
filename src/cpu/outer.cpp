@@ -54,47 +54,46 @@ constexpr static inline auto index(type first, type second) {
 constexpr auto dispatchOuter = []() {
     std::array<Kernel, index(TYPES, TYPES)> table; 
     table.fill(launchDefaultKernel); 
-
-    // int8 combinations
+ 
     table[index(int8, int8)]   = launchOuterKernel<int8_t, int8_t, int32_t>;
     table[index(int8, int16)]  = launchOuterKernel<int8_t, int16_t, int32_t>;
     table[index(int8, int32)]  = launchOuterKernel<int8_t, int32_t, int32_t>;
     table[index(int8, int64)]  = launchOuterKernel<int8_t, int64_t, int64_t>;
-
-    // int16 combinations
+ 
     table[index(int16, int8)]   = launchOuterKernel<int16_t, int8_t, int32_t>;
     table[index(int16, int16)]  = launchOuterKernel<int16_t, int16_t, int32_t>;
     table[index(int16, int32)]  = launchOuterKernel<int16_t, int32_t, int32_t>;
     table[index(int16, int64)]  = launchOuterKernel<int16_t, int64_t, int64_t>;
-
-    // int32 combinations
+ 
     table[index(int32, int8)]   = launchOuterKernel<int32_t, int8_t, int32_t>;
     table[index(int32, int16)]  = launchOuterKernel<int32_t, int16_t, int32_t>;
     table[index(int32, int32)]  = launchOuterKernel<int32_t, int32_t, int64_t>;
     table[index(int32, int64)]  = launchOuterKernel<int32_t, int64_t, int64_t>;
-
-    // int64 combinations
+ 
     table[index(int64, int8)]   = launchOuterKernel<int64_t, int8_t, int64_t>;
     table[index(int64, int16)]  = launchOuterKernel<int64_t, int16_t, int64_t>;
     table[index(int64, int32)]  = launchOuterKernel<int64_t, int32_t, int64_t>;
     table[index(int64, int64)]  = launchOuterKernel<int64_t, int64_t, int64_t>;
  
+#ifdef HAS_FLOAT16
     table[index(int32, float16)] = launchOuterKernel<int32_t, half, float>;
-    table[index(float16, int32)] = launchOuterKernel<half, int32_t, float>;
-    table[index(int32, float32)] = launchOuterKernel<int32_t, float, float>;
-    table[index(float32, int32)] = launchOuterKernel<float, int32_t, float>;
-    table[index(int32, float64)] = launchOuterKernel<int32_t, double, double>;
-    table[index(float64, int32)] = launchOuterKernel<double, int32_t, double>;
+    table[index(float16, int32)] = launchOuterKernel<half, int32_t, float>; 
 
     table[index(float16, float16)] = launchOuterKernel<half, half, float>;
     table[index(float16, float32)] = launchOuterKernel<half, float, float>;
     table[index(float16, float64)] = launchOuterKernel<half, double, double>;
+    table[index(float64, float16)] = launchOuterKernel<double, half, double>;
+#endif
 
     table[index(float32, float16)] = launchOuterKernel<float, half, float>;
     table[index(float32, float32)] = launchOuterKernel<float, float, float>;
     table[index(float32, float64)] = launchOuterKernel<float, double, double>;
 
-    table[index(float64, float16)] = launchOuterKernel<double, half, double>;
+    table[index(int32, float32)] = launchOuterKernel<int32_t, float, float>;
+    table[index(float32, int32)] = launchOuterKernel<float, int32_t, float>;
+    table[index(int32, float64)] = launchOuterKernel<int32_t, double, double>;
+    table[index(float64, int32)] = launchOuterKernel<double, int32_t, double>;
+ 
     table[index(float64, float32)] = launchOuterKernel<double, float, double>;
     table[index(float64, float64)] = launchOuterKernel<double, double, double>;
 

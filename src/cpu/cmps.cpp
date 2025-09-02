@@ -113,7 +113,9 @@ status eq(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
         case int16:   return launchCmpKernel<int16_t,  EQ>(src0, src1, dst);
         case int32:   return launchCmpKernel<int32_t,  EQ>(src0, src1, dst);
         case int64:   return launchCmpKernel<int64_t,  EQ>(src0, src1, dst);
+#if HAS_FLOAT16
         case float16: return launchCmpKernel<half ,    EQ>(src0, src1, dst);
+#endif
         case float32: return launchCmpKernel<float,    EQ>(src0, src1, dst);
         case float64: return launchCmpKernel<double,   EQ>(src0, src1, dst);
         default:      return UNSUPPORTED_DTYPE;
@@ -126,7 +128,9 @@ status ne(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
         case int16:   return launchCmpKernel<int16_t,  NE>(src0, src1, dst);
         case int32:   return launchCmpKernel<int32_t,  NE>(src0, src1, dst);
         case int64:   return launchCmpKernel<int64_t,  NE>(src0, src1, dst);
+#if HAS_FLOAT16
         case float16: return launchCmpKernel<half,     NE>(src0, src1, dst);
+#endif
         case float32: return launchCmpKernel<float,    NE>(src0, src1, dst);
         case float64: return launchCmpKernel<double,   NE>(src0, src1, dst);
         default:      return UNSUPPORTED_DTYPE;
@@ -139,7 +143,9 @@ status gt(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
         case int16:   return launchCmpKernel<int16_t,  GT>(src0, src1, dst);
         case int32:   return launchCmpKernel<int32_t,  GT>(src0, src1, dst);
         case int64:   return launchCmpKernel<int64_t,  GT>(src0, src1, dst);
+#if HAS_FLOAT16
         case float16: return launchCmpKernel<half,     GT>(src0, src1, dst);
+#endif
         case float32: return launchCmpKernel<float,    GT>(src0, src1, dst);
         case float64: return launchCmpKernel<double,   GT>(src0, src1, dst);
         default:      return UNSUPPORTED_DTYPE;
@@ -152,7 +158,9 @@ status ge(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
         case int16:   return launchCmpKernel<int16_t,  GE>(src0, src1, dst);
         case int32:   return launchCmpKernel<int32_t,  GE>(src0, src1, dst);
         case int64:   return launchCmpKernel<int64_t,  GE>(src0, src1, dst);
+#if HAS_FLOAT16
         case float16: return launchCmpKernel<half,     GE>(src0, src1, dst);
+#endif
         case float32: return launchCmpKernel<float,    GE>(src0, src1, dst);
         case float64: return launchCmpKernel<double,   GE>(src0, src1, dst);
         default:      return UNSUPPORTED_DTYPE;
@@ -165,7 +173,10 @@ status lt(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
         case int16:   return launchCmpKernel<int16_t,  LT>(src0, src1, dst);
         case int32:   return launchCmpKernel<int32_t,  LT>(src0, src1, dst);
         case int64:   return launchCmpKernel<int64_t,  LT>(src0, src1, dst);
+
+#if HAS_FLOAT16
         case float16: return launchCmpKernel<half,     LT>(src0, src1, dst);
+#endif
         case float32: return launchCmpKernel<float,    LT>(src0, src1, dst);
         case float64: return launchCmpKernel<double,   LT>(src0, src1, dst);
         default:      return UNSUPPORTED_DTYPE;
@@ -178,7 +189,9 @@ status le(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {
         case int16:   return launchCmpKernel<int16_t,  LE>(src0, src1, dst);
         case int32:   return launchCmpKernel<int32_t,  LE>(src0, src1, dst);
         case int64:   return launchCmpKernel<int64_t,  LE>(src0, src1, dst);
+#ifdef HAS_FLOAT16
         case float16: return launchCmpKernel<half,     LE>(src0, src1, dst);
+#endif
         case float32: return launchCmpKernel<float,    LE>(src0, src1, dst);
         case float64: return launchCmpKernel<double,   LE>(src0, src1, dst);
         default:      return UNSUPPORTED_DTYPE;

@@ -11,13 +11,13 @@
 #include "cuda/mem.cuh"
 #endif
 
-namespace tannic {
- 
+namespace tannic { 
+  
 struct element_ref {
-    void*  address;    // Pointer to the underlying byte in storage
-    size_t bit_index;  // Valid only if dtype == boolean (0..7); otherwise 0
+    void*  address;    
+    size_t bit_index;  
 };
- 
+
 static void print(std::ostream& os, element_ref elem, type dtype) {
     switch (dtype) {
         case boolean: {
@@ -26,119 +26,84 @@ static void print(std::ostream& os, element_ref elem, type dtype) {
             os << (v ? "true" : "false");
             break;
         }
-        case int8: {
-            auto v = *static_cast<const int8_t*>(elem.address);
-            os << static_cast<int>(v);
-            break;
-        }
-        case int16: {
-            auto v = *static_cast<const int16_t*>(elem.address);
-            os << v;
-            break;
-        }
-        case int32: {
-            auto v = *static_cast<const int32_t*>(elem.address);
-            os << v;
-            break;
-        }
-        case int64: {
-            auto v = *static_cast<const int64_t*>(elem.address);
-            os << v;
-            break;
-        }
-
-        case float16: { 
-            auto v = *static_cast<const float16_t*>(elem.address);
-            float f = float16_to_float32(v);
-            os << f;
-            break;
-        }
-
-        case float32: {
-            auto v = *static_cast<const float*>(elem.address);
-            os << v;
-            break;
-        }
-        case float64: {
-            auto v = *static_cast<const double*>(elem.address);
-            os << v;
-            break;
-        }
+        case int8: os << static_cast<int>(*static_cast<const int8_t*>(elem.address)); break;
+        case int16: os << *static_cast<const int16_t*>(elem.address); break;
+        case int32: os << *static_cast<const int32_t*>(elem.address); break;
+        case int64: os << *static_cast<const int64_t*>(elem.address); break;
+        case float16: os << float16_to_float32(*static_cast<const float16_t*>(elem.address)); break;
+        case float32: os << *static_cast<const float*>(elem.address); break;
+        case float64: os << *static_cast<const double*>(elem.address); break;
         case complex64: {
             const float* c = static_cast<const float*>(elem.address);
-            os << "(" << c[0] << (c[1] >= 0 ? "+" : "") << c[1] << "j)";
+            os << "(" << c[0] << (c[1]>=0 ? "+" : "") << c[1] << "j)";
             break;
         }
         case complex128: {
             const double* c = static_cast<const double*>(elem.address);
-            os << "(" << c[0] << (c[1] >= 0 ? "+" : "") << c[1] << "j)";
+            os << "(" << c[0] << (c[1]>=0 ? "+" : "") << c[1] << "j)";
             break;
         }
-        default:
-            os << "?";
+        default: os << "?";
     }
 }
-
-
+ 
 std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
     os << "Tensor(";
- 
+
     auto get_element = [&](const std::vector<size_t>& indices) -> element_ref {
         size_t elem_offset = 0;
         for (size_t dim = 0; dim < tensor->rank; ++dim) {
             elem_offset += indices[dim] * static_cast<size_t>(tensor->strides.sizes[dim]);
         }
-
         if (tensor->dtype == boolean) {
             size_t byte_index = elem_offset / 8;
             size_t bit_index  = elem_offset % 8;
-            return { static_cast<void*>(
-                         static_cast<unsigned char*>(tensor->address) + byte_index),
+            return { static_cast<void*>(static_cast<unsigned char*>(tensor->address) + byte_index),
                      bit_index };
         } else {
-            // dsizeof(dtype) must be > 0 for non-boolean types
             size_t byte_off = elem_offset * dsizeof(tensor->dtype);
-            return { static_cast<void*>(
-                         static_cast<unsigned char*>(tensor->address) + byte_off),
-                     0 };
+            return { static_cast<void*>(static_cast<unsigned char*>(tensor->address) + byte_off), 0 };
         }
     };
- 
+
     const auto print_recursive = [&](size_t dim, std::vector<size_t>& idx, const auto& self) -> void {
         if (dim == tensor->rank) {
             print(os, get_element(idx), tensor->dtype);
             return;
         }
 
-        os << "[";
+        char open_bracket = (iostyle == IOStyle::PyTorch) ? '[' : '{';
+        char close_bracket = (iostyle == IOStyle::PyTorch) ? ']' : '}';
+
+        os << open_bracket;
         for (size_t i = 0; i < tensor->shape.sizes[dim]; ++i) {
             idx[dim] = i;
             self(dim + 1, idx, self);
             if (i + 1 != tensor->shape.sizes[dim]) {
                 os << ", ";
-                if (dim == 0) os << "\n        ";
+                if (dim == 0 && iostyle == IOStyle::Tannic) os << "\n        ";
             }
         }
-        os << "]";
+        os << close_bracket << "\n      ";
     };
 
     std::vector<size_t> indices(tensor->rank, 0);
     print_recursive(0, indices, print_recursive);
 
-    os << " dtype=" << tensor->dtype << ", shape=(";
+    os << ", dtype=" << tensor->dtype << ", shape=(";
     for (size_t dim = 0; dim < tensor->rank; ++dim) {
         os << tensor->shape.sizes[dim];
         if (dim + 1 != tensor->rank) os << ", ";
     }
     return os << "))";
 }
-  
 
-std::ostream& operator<<(std::ostream& os, const Tensor& tensor) { 
+// --- Tensor wrapper printing ---
+std::ostream& operator<<(std::ostream& os, const Tensor& tensor) {
     const Environment& alloc = tensor.environment();
     shape_t shape{};
     strides_t strides{};
-    
+
     for (int dimension = 0; dimension < tensor.rank(); ++dimension) {
         shape.sizes[dimension] = tensor.shape()[dimension];
         strides.sizes[dimension] = tensor.strides()[dimension];
@@ -159,8 +124,7 @@ std::ostream& operator<<(std::ostream& os, const Tensor& tensor) {
         };
         os << &printable;
     }  
-    
-    #ifdef CUDA
+#ifdef CUDA
     else {
         Device const& resource = std::get<Device>(alloc);
         void* buffer = std::malloc(tensor.nbytes());
@@ -180,11 +144,11 @@ std::ostream& operator<<(std::ostream& os, const Tensor& tensor) {
         os << &printable; 
         std::free(buffer);
     } 
-    #else
+#else
     else {
         throw std::runtime_error("CUDA not supported!");
     } 
-    #endif
+#endif
     return os;
 }
 

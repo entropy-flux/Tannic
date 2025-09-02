@@ -125,7 +125,9 @@ constexpr auto dispatchConv2D = []() {
     table[index(int16, int16)] = launchConv2DKernel<int16_t, int16_t, int16_t>;
     table[index(int32, int32)] = launchConv2DKernel<int32_t, int32_t, int32_t>;
     table[index(int64, int64)] = launchConv2DKernel<int64_t, int64_t, int64_t>;
+#if HAS_FLOAT16
     table[index(float16, float16)] = launchConv2DKernel<half, half, half>;
+#endif
     table[index(float32, float32)] = launchConv2DKernel<float, float, float>;
     table[index(float64, float64)] = launchConv2DKernel<double, double, double>;
     return table;

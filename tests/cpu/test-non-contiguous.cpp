@@ -1,56 +1,50 @@
-#include <iostream>
-#include <tannic.hpp> 
-#include <tannic/functions.hpp>
-#include <tannic/transformations.hpp> 
+#include <gtest/gtest.h>
+#include <vector>
+#include <numeric>
+#include <cmath>
 
-using namespace tannic;
-  
-/*
-Copy and paste this file into main.cpp and then run ``bash main.sh``
-*/ 
+#include "tensor.hpp"
+#include "comparisons.hpp"
+#include "transformations.hpp" 
 
+using namespace tannic; 
 
-Tensor merge(Tensor sequence, size_t heads_dimension, size_t number_of_heads) {
-    sequence = sequence.transpose(1, 2); 
-    return reshape(sequence, sequence.size(0) , sequence.size(1), heads_dimension * number_of_heads);
-}
-
-int main() {
+TEST(TransposedReshaped, Batched) {
     Tensor X(float32, {2, 3, 4, 4}); X.initialize({
-        { // batch 0
-            { // channel 0
+        { 
+            {  
                 {1.0f,  2.0f,  3.0f,  4.0f},
                 {5.0f,  6.0f,  7.0f,  8.0f},
                 {9.0f, 10.0f, 11.0f, 12.0f},
                 {13.0f,14.0f, 15.0f, 16.0f}
             },
-            { // channel 1
+            { 
                 {17.0f, 18.0f, 19.0f, 20.0f},
                 {21.0f, 22.0f, 23.0f, 24.0f},
                 {25.0f, 26.0f, 27.0f, 28.0f},
                 {29.0f, 30.0f, 31.0f, 32.0f}
             },
-            { // channel 2
+            {  
                 {33.0f, 34.0f, 35.0f, 36.0f},
                 {37.0f, 38.0f, 39.0f, 40.0f},
                 {41.0f, 42.0f, 43.0f, 44.0f},
                 {45.0f, 46.0f, 47.0f, 48.0f}
             }
         },
-        { // batch 1
-            { // channel 0
+        {  
+            {  
                 {49.0f, 50.0f, 51.0f, 52.0f},
                 {53.0f, 54.0f, 55.0f, 56.0f},
                 {57.0f, 58.0f, 59.0f, 60.0f},
                 {61.0f, 62.0f, 63.0f, 64.0f}
             },
-            { // channel 1
+            {  
                 {65.0f, 66.0f, 67.0f, 68.0f},
                 {69.0f, 70.0f, 71.0f, 72.0f},
                 {73.0f, 74.0f, 75.0f, 76.0f},
                 {77.0f, 78.0f, 79.0f, 80.0f}
             },
-            { // channel 2
+            { 
                 {81.0f, 82.0f, 83.0f, 84.0f},
                 {85.0f, 86.0f, 87.0f, 88.0f},
                 {89.0f, 90.0f, 91.0f, 92.0f},
@@ -59,29 +53,20 @@ int main() {
         }
     });
     X = X.transpose(1, 2);
-    Tensor Y = reshape(X, X.size(0) , X.size(1), 4 * 3);  
-    std::cout << Y << std::endl; 
-} 
-
-/*
-Equivalent torch code
-
-import torch
- 
-X = torch.zeros((2, 2), dtype=torch.float32)
- 
-X[0, 0:] = 1       
-X[1, 0] = 3
-X[1, 1] = 4
- 
-Y = torch.zeros((1, 2), dtype=torch.float32)
- 
-Y[0, 0] = 4     
-Y[0, 1] = 6       
-result = torch.log(X) + Y * Y - torch.exp(X) + torch.matmul(X, Y.t())
-
-print(result) 
-tensor([[23.2817, 43.2817],
-        [33.0131, 18.7881]])
-
-*/
+    Tensor Y = reshape(X, X.size(0) , X.size(1), 4 * 3); 
+    Tensor Y_expected(float32, {2, 4, 12}); Y_expected.initialize({
+        {
+            {1, 2, 3, 4, 17, 18, 19, 20, 33, 34, 35, 36},
+            {5, 6, 7, 8, 21, 22, 23, 24, 37, 38, 39, 40},
+            {9, 10, 11, 12, 25, 26, 27, 28, 41, 42, 43, 44}, 
+            {13, 14, 15, 16, 29, 30, 31, 32, 45, 46, 47, 48}
+        },{
+            {49, 50, 51, 52, 65, 66, 67, 68, 81, 82, 83, 84}, 
+            {53, 54, 55, 56, 69, 70, 71, 72, 85, 86, 87, 88},
+             {57, 58, 59, 60, 73, 74, 75, 76, 89, 90, 91, 92},
+              {61, 62, 63, 64, 77, 78, 79, 80, 93, 94, 95, 96}
+        }
+    });
+    
+    EXPECT_TRUE(allclose(Y, Y_expected)); 
+}

@@ -23,24 +23,23 @@ __global__ void contiguousUnaryOpKernel(const S* __restrict__ src, D* __restrict
  
 template<typename S, typename D, class Op>
 __global__ void stridedUnaryOpKernel(
-    const S* __restrict__ src_ptr, strides_t src_strides,    
-    D* __restrict__ dst_ptr, shape_t resets,          
+    const S* __restrict__ src_ptr, shape_t src_shape,  strides_t src_strides,    
+    D* __restrict__ dst_ptr, shape_t dst_shape,          
     uint8_t dst_rank, size_t ne, Op op
-){
-    int rank = static_cast<int>(dst_rank);
-    const size_t gstride = size_t(blockDim.x) * gridDim.x;
-    for (size_t idx = size_t(blockIdx.x) * blockDim.x + threadIdx.x; idx < ne; idx += gstride) {
-        size_t offset = 0;
-        size_t divisor = 1;
+){   
+    for (size_t idx = blockIdx.x * blockDim.x + threadIdx.x; idx < ne; idx += blockDim.x * gridDim.x) { 
+        size_t offs = 0;
+        size_t remaining = idx;
 
-        for (int dim = rank - 1; dim >= 0; --dim) { 
-            const size_t extent    = resets.sizes[dim] / src_strides.sizes[dim];
-            const size_t coord     = (idx / divisor) % extent; 
-            offset += coord * src_strides.sizes[dim];
-            divisor *= extent;
+        for (int dim = dst_rank - 1; dim >= 0; --dim) {
+            size_t dim_idx = remaining % dst_shape.sizes[dim];
+            remaining /= dst_shape.sizes[dim];
+ 
+            size_t src_idx = (src_shape.sizes[dim] == 1) ? 0 : dim_idx;
+            offs += src_idx * src_strides.sizes[dim];
         }
 
-        dst_ptr[idx] = op(src_ptr[offset]);
+        dst_ptr[idx] = op(src_ptr[offs]);
     }
 } 
  
@@ -53,46 +52,44 @@ status launchUnaryOpKernel(const tensor_t* src, tensor_t* dst, stream_t stream, 
     size_t blockSize = 256;
     size_t gridSize = (ne + blockSize - 1) / blockSize;
 
-    switch (src->layout) {
-        case SINGLETON: {
-            singletonUnaryOpKernel<S, D, Op><<<1, 1, 0, cudaStream>>>(
-                (const S*)(src->address),
-                (D*)(dst->address),
-                op
-            ); 
-            return SUCCESS;
-        }
-
-        case CONTIGUOUS: {
-            contiguousUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
-                (const S*)(src->address),
-                (D*)(dst->address),
-                ne,
-                op
-            );
-            return SUCCESS;
-        }
-
-        case STRIDED: {  
-            strides_t strides{0};
-            shape_t resets{0};
-            for (int dim = 0; dim < src->rank; ++dim) {
-                resets.sizes[dim] = dst->shape.sizes[dim] * src->strides.sizes[dim];
-                strides.sizes[dim] = src->strides.sizes[dim];
-            } 
-            
-            stridedUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
-                (const S*)(src->address), strides,
-                (D*)(dst->address), resets,
-                src->rank, ne,
-                op
-            );
-            return SUCCESS;
-        }
-
-        default:
-            return ERROR;
+    if (src->layout == SINGLETON) { 
+        singletonUnaryOpKernel<S, D, Op><<<1, 1, 0, cudaStream>>>(
+            (const S*)(src->address),
+            (D*)(dst->address),
+            op
+        ); 
+        return SUCCESS;
     } 
+
+    else if (src->layout == CONTIGUOUS) {
+        contiguousUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
+            (const S*)(src->address),
+            (D*)(dst->address),
+            ne,
+            op
+        );
+        return SUCCESS;
+    }
+
+    else {  
+        shape_t src_shape; 
+        strides_t src_strides; 
+        shape_t dst_shape;
+
+        for (int dim = 0; dim < src->rank; ++dim) {
+            src_shape.sizes[dim] = dst->shape.sizes[dim];
+            src_strides.sizes[dim] = src->strides.sizes[dim];
+            dst_shape.sizes[dim] = dst->shape.sizes[dim];
+        } 
+        
+        stridedUnaryOpKernel<S, D, Op><<<gridSize, blockSize, 0, cudaStream>>>(
+            (const S*)(src->address), src_shape, src_strides,
+            (D*)(dst->address), dst_shape,
+            src->rank, ne,
+            op
+        );
+        return SUCCESS;
+    }   
 }   
 
 #include <cuda_fp16.h>

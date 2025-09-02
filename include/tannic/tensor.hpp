@@ -1156,8 +1156,18 @@ private:
     bool is_contiguous_ = true;
 };    
 
+enum class IOStyle {
+    Tannic,
+    PyTorch
+}; 
+
+static IOStyle iostyle = IOStyle::Tannic;
+inline void setiostyle(IOStyle style) {
+    iostyle = style;
+}
+
 std::ostream& operator<<(std::ostream& ostream, Tensor const& tensor);  
- 
+
 template<Expression Source> 
 inline std::ostream& operator<<(std::ostream& ostream, Source source) {
     Tensor tensor = source.forward();  

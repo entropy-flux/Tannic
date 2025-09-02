@@ -210,6 +210,7 @@ constexpr auto dispatchGemm = []() {
     table[index(int64, int32)]   = launchGemmKernel<int64_t, int32_t, int64_t>;
     table[index(int64, int64)]   = launchGemmKernel<int64_t, int64_t, int64_t>;
  
+#if HAS_FLOAT16
     table[index(float16, float16)] = launchGemmKernel<half, half, half>;
     table[index(float16, float32)] = launchGemmKernel<half, float, float>;
     table[index(float32, float16)] = launchGemmKernel<float, half, float>;
@@ -224,7 +225,7 @@ constexpr auto dispatchGemm = []() {
     table[index(int32, float16)]   = launchGemmKernel<int32_t, half, float>;
     table[index(float16, int64)]   = launchGemmKernel<half, int64_t, double>;
     table[index(int64, float16)]   = launchGemmKernel<int64_t, half, double>;
-   
+#endif
     table[index(int32, float32)] = launchGemmKernel<int32_t, float, float>;
     table[index(float32, int32)] = launchGemmKernel<float, int32_t, float>;
     table[index(int32, float64)] = launchGemmKernel<int32_t, double, double>;
