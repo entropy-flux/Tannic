@@ -26,7 +26,7 @@ void Tensor::initialize(Environment environment) const {
 
 void Tensor::assign(std::byte const* value, std::ptrdiff_t offset) {      
     std::byte* target = static_cast<std::byte*>(buffer_->address()) + offset;    
-    if (std::holds_alternative<Host>(this->environment())) {
+    if (std::holds_alternative<Host>(this->environment())) { 
         std::memcpy(target, value, dsizeof(dtype_)); 
     } 
     

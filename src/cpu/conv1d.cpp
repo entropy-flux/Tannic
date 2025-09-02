@@ -1,5 +1,16 @@
 #include <array>
 #include "cpu/conv.hpp"
+#ifndef HAS_FLOAT16
+    #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
+        #include <stdfloat>
+        using half = std::float16_t;
+        #define HAS_FLOAT16 1
+    #else 
+        #define HAS_FLOAT16 0 
+        struct half_placeholder { float value; };
+        using half = half_placeholder;
+    #endif
+#endif
 
 namespace {
 
@@ -99,6 +110,7 @@ constexpr auto dispatchConv1D = []() {
     table[index(int16, int16)] = launchConv1DKernel<int16_t, int16_t, int16_t>;
     table[index(int32, int32)] = launchConv1DKernel<int32_t, int32_t, int32_t>;
     table[index(int64, int64)] = launchConv1DKernel<int64_t, int64_t, int64_t>;
+    table[index(float16, float16)] = launchConv1DKernel<half, half, half>;
     table[index(float32, float32)] = launchConv1DKernel<float, float, float>;
     table[index(float64, float64)] = launchConv1DKernel<double, double, double>;
     return table;

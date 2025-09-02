@@ -36,7 +36,7 @@ Below is a minimal example demonstrating tensor creation, initialization, basic 
 using namespace tannic;
 
 int main() { 
-    Tensor X(float32, {2,2}); //  X.initialize(Device()) // for CUDA support
+    Tensor X(float16, {2,2}); //  X.initialize(Device()) // for CUDA support
     
     X[0, range{0,-1}] = 1;  
     X[1,0] = 3;             
@@ -46,7 +46,9 @@ int main() {
     Y[0,0] = 4;                            
     Y[0,1] = 6;    
     
-    Y = log(X) + Y * Y - exp(X) + matmul(X, Y.transpose()); // assign expressions dynamically like in python
+    Y = log(X) + Y * Y - exp(X) + matmul(X, Y.transpose()); // assign expressions dynamically like in python 
+ 
+    // broadcasting and type promotions supported. 
     std::cout << Y; 
 }
 ```

@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <array> 
 #include <cuda_runtime.h> 
+#include <cuda_fp16.h> 
 #include "cuda/argred.cuh"
 
 namespace {
@@ -161,7 +162,7 @@ status launchArgReduce(const tensor_t* src, tensor_t* dst, uint8_t ax, stream_t 
     return (cudaGetLastError() == cudaSuccess) ? SUCCESS : ERROR;
 }
 
-} namespace cuda {
+} namespace cuda { 
 
 status argsum(const tensor_t* src, tensor_t* dst, stream_t stream, uint8_t dim) {
     switch (src->dtype) {
@@ -169,6 +170,7 @@ status argsum(const tensor_t* src, tensor_t* dst, stream_t stream, uint8_t dim) 
         case int16:   return launchArgReduce<int16_t, int16_t, int64_t, Sum>(src, dst, dim, stream);
         case int32:   return launchArgReduce<int32_t, int32_t, int64_t, Sum>(src, dst, dim, stream);
         case int64:   return launchArgReduce<int64_t, int64_t, int64_t, Sum>(src, dst, dim, stream);
+        case float16: return launchArgReduce<__half,  __half,  float,   Sum>(src, dst, dim, stream);
         case float32: return launchArgReduce<float,   float,   double,  Sum>(src, dst, dim, stream);
         case float64: return launchArgReduce<double,  double,  double,  Sum>(src, dst, dim, stream);
         default:      return UNSUPPORTED_DTYPE;
@@ -177,6 +179,7 @@ status argsum(const tensor_t* src, tensor_t* dst, stream_t stream, uint8_t dim) 
 
 status argmean(const tensor_t* src, tensor_t* dst, stream_t stream, uint8_t dim) {
     switch (src->dtype) {
+        case float16: return launchArgReduce<__half, __half, float,  Mean>(src, dst, dim, stream);
         case float32: return launchArgReduce<float,  float,  double, Mean>(src, dst, dim, stream);
         case float64: return launchArgReduce<double, double, double, Mean>(src, dst, dim, stream);
         default:      return UNSUPPORTED_DTYPE;
@@ -189,6 +192,7 @@ status argmax(const tensor_t* src, tensor_t* dst, stream_t stream, uint8_t dim) 
         case int16:   return launchArgCompare<int16_t, GE>(src, dst, dim, std::numeric_limits<int16_t>::lowest(), stream);
         case int32:   return launchArgCompare<int32_t, GE>(src, dst, dim, std::numeric_limits<int32_t>::lowest(), stream);
         case int64:   return launchArgCompare<int64_t, GE>(src, dst, dim, std::numeric_limits<int64_t>::lowest(), stream);
+        case float16: return launchArgCompare<__half, GE>(src, dst, dim, __short_as_half(0xFBFF), stream); // -inf for half
         case float32: return launchArgCompare<float, GE>(src, dst, dim, -std::numeric_limits<float>::infinity(), stream);
         case float64: return launchArgCompare<double, GE>(src, dst, dim, -std::numeric_limits<double>::infinity(), stream);
         default:      return UNSUPPORTED_DTYPE;
@@ -201,11 +205,11 @@ status argmin(const tensor_t* src, tensor_t* dst, stream_t stream, uint8_t dim) 
         case int16:   return launchArgCompare<int16_t, LE>(src, dst, dim, std::numeric_limits<int16_t>::max(), stream);
         case int32:   return launchArgCompare<int32_t, LE>(src, dst, dim, std::numeric_limits<int32_t>::max(), stream);
         case int64:   return launchArgCompare<int64_t, LE>(src, dst, dim, std::numeric_limits<int64_t>::max(), stream);
+        case float16: return launchArgCompare<__half, LE>(src, dst, dim, __short_as_half(0x7BFF), stream); // +inf for half
         case float32: return launchArgCompare<float, LE>(src, dst, dim, std::numeric_limits<float>::infinity(), stream);
         case float64: return launchArgCompare<double, LE>(src, dst, dim, std::numeric_limits<double>::infinity(), stream);
         default:      return UNSUPPORTED_DTYPE;
     }
-}
-
+} 
 
 } // namespace cuda

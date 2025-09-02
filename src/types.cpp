@@ -2,6 +2,7 @@
 #include "types.hpp"
 
 namespace tannic {  
+    
 
 float16_t float32_to_float16(float value) {
     uint32_t bits;

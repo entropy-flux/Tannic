@@ -1,6 +1,7 @@
 #include <cuda_runtime.h>
+#include <cuda_fp16.h> 
 #include <cstdint>
-#include <array>
+#include <array> 
 #include "cuda/reps.cuh"
 
 namespace {
@@ -95,6 +96,7 @@ constexpr auto dispatchRepeatsKernel = []() {
     table[index(int16)] = launchRepeatsKernel <int16_t>;
     table[index(int32)] = launchRepeatsKernel <int32_t>;
     table[index(int64)] = launchRepeatsKernel <int64_t>;
+    table[index(float16)] = launchRepeatsKernel<__half>;
     table[index(float32)] = launchRepeatsKernel<float>;
     table[index(float64)] = launchRepeatsKernel<double>;
     return table;

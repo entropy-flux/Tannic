@@ -22,7 +22,7 @@ template<typename S, typename D, class Op>
 void singletonUnaryOpKernel(
     const S* src_ptr, D* dst_ptr, Op op
 ) {
-    *dst_ptr = op(*src_ptr);
+    *dst_ptr = static_cast<D>(op(*src_ptr));
 }    
 
 template<typename S, typename D, class Op>
@@ -30,11 +30,9 @@ void contiguousUnaryOpKernel(
     const S* src_ptr, D* dst_ptr, size_t ne, Op op
 ) {
     for (size_t i = 0; i < ne; ++i) {
-        dst_ptr[i] = op(src_ptr[i]);
+        dst_ptr[i] = static_cast<D>(op(src_ptr[i]));
     }
-}
-
-
+} 
 
 template<typename S, typename D, class Op>
 void stridedUnaryOpKernel( 
@@ -44,7 +42,7 @@ void stridedUnaryOpKernel(
 ) {  
     size_t current_offset = 0;  
     for (size_t idx = 0; idx < ne; ++idx) {
-        dst_ptr[idx] = op(src_ptr[current_offset]); 
+        dst_ptr[idx] = static_cast<D>(op(src_ptr[current_offset])); 
         current_offset += src_strides.sizes[rank - 1];
          
         for (int dim = rank - 1; dim >= 0; --dim) {
@@ -111,12 +109,6 @@ struct Neg {
     auto operator()(A&& a) const noexcept(noexcept(-a)) {
         return -a;
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(-float(a));
-    }
-#endif
 }; 
 
 struct Cpy {
@@ -124,12 +116,6 @@ struct Cpy {
     auto operator()(A&& a) const noexcept(noexcept(a)) {
         return a;
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return a;
-    }
-#endif
 };
 
 struct Log {
@@ -137,13 +123,6 @@ struct Log {
     auto operator()(A&& a) const noexcept(noexcept(std::log(a))) {
         return std::log(a);
     }
-
-
-#if HAS_FLOAT16        
-    half operator()(half a) const noexcept {
-        return half(std::log(float(a)));
-    }
-#endif
 };
 
 struct Exp {
@@ -151,12 +130,6 @@ struct Exp {
     auto operator()(A&& a) const noexcept(noexcept(std::exp(a))) {
         return std::exp(a);
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(std::exp(float(a)));
-    }
-#endif
 };
 
 struct Sqrt {
@@ -164,12 +137,6 @@ struct Sqrt {
     auto operator()(A&& a) const noexcept(noexcept(std::sqrt(a))) {
         return std::sqrt(a);
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(std::sqrt(float(a)));
-    }
-#endif
 };
 
 struct Rsqrt {
@@ -180,12 +147,6 @@ struct Rsqrt {
     auto operator()(A&& a) const noexcept {
         return 1.0 / std::sqrt(a + eps);
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(1.0f / std::sqrt(float(a) + float(eps)));
-    }
-#endif
 };
 
 struct Abs {
@@ -193,12 +154,6 @@ struct Abs {
     auto operator()(A&& a) const noexcept(noexcept(std::abs(a))) {
         return std::abs(a);
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(std::fabs(float(a)));
-    }
-#endif
 };
 
 struct Sin {
@@ -206,12 +161,6 @@ struct Sin {
     auto operator()(A&& a) const noexcept(noexcept(std::sin(a))) {
         return std::sin(a);
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(std::sin(float(a)));
-    }
-#endif
 };
 
 struct Cos {
@@ -219,12 +168,6 @@ struct Cos {
     auto operator()(A&& a) const noexcept(noexcept(std::cos(a))) {
         return std::cos(a);
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(std::cos(float(a)));
-    }
-#endif
 };
 
 struct Tan {
@@ -232,12 +175,6 @@ struct Tan {
     auto operator()(A&& a) const noexcept(noexcept(std::tan(a))) {
         return std::tan(a);
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(std::tan(float(a)));
-    }
-#endif
 };
 
 struct Sinh {
@@ -245,12 +182,6 @@ struct Sinh {
     auto operator()(A&& a) const noexcept(noexcept(std::sinh(a))) {
         return std::sinh(a);
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(std::sinh(float(a)));
-    }
-#endif
 };
 
 struct Cosh {
@@ -258,12 +189,6 @@ struct Cosh {
     auto operator()(A&& a) const noexcept(noexcept(std::cosh(a))) {
         return std::cosh(a);
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(std::cosh(float(a)));
-    }
-#endif
 };
 
 struct Tanh {
@@ -271,12 +196,6 @@ struct Tanh {
     auto operator()(A&& a) const noexcept(noexcept(std::tanh(a))) {
         return std::tanh(a);
     }
-
-#if HAS_FLOAT16    
-    half operator()(half a) const noexcept {
-        return half(std::tanh(float(a)));
-    }
-#endif
 };
 
 } namespace cpu {

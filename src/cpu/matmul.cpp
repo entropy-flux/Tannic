@@ -4,6 +4,17 @@
 #include <array>
 #include "cpu/matmul.hpp" 
 #include "runtime/types.h"
+#ifndef HAS_FLOAT16
+    #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
+        #include <stdfloat>
+        using half = std::float16_t;
+        #define HAS_FLOAT16 1
+    #else 
+        #define HAS_FLOAT16 0 
+        struct half_placeholder { float value; };
+        using half = half_placeholder;
+    #endif
+#endif
 
 namespace cpu {
  
@@ -31,8 +42,8 @@ void gemmKernel(
 }
 
 #ifdef BLAS
-#include <cblas.h>  
-
+#include <cblas.h>   
+  
 template <>
 void gemmKernel<float, float, float>(
     bool A_trans, bool B_trans,
@@ -49,10 +60,9 @@ void gemmKernel<float, float, float>(
         B_trans ? CblasTrans : CblasNoTrans,
         M, N, K,
         alpha, A_ptr, A_ld, B_ptr, B_ld,
-        0.0, C_ptr, C_ld 
+        0.0f, C_ptr, C_ld 
     );  
-}
-
+} 
 
 template <>
 void gemmKernel<double, double, double>(
@@ -70,7 +80,7 @@ void gemmKernel<double, double, double>(
         B_trans ? CblasTrans : CblasNoTrans,
         M, N, K,
         alpha, A_ptr, A_ld, B_ptr, B_ld,
-        0.0, C_ptr, C_ld
+        0.0f, C_ptr, C_ld
     );
 }
 
@@ -147,7 +157,7 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
                 A_trans, B_trans,
                 A_ptr, B_ptr, C_ptr,
                 M, N, K,
-                A_ld, B_ld, C_ld, alpha
+                A_ld, B_ld, C_ld, static_cast<D>(alpha)
             );
         } 
     }
@@ -160,7 +170,7 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
             A_trans, B_trans,
             A_ptr, B_ptr, C_ptr,
             M, N, K,
-            A_ld, B_ld, C_ld, alpha
+            A_ld, B_ld, C_ld, static_cast<D>(alpha)
         );
     }
 
@@ -199,7 +209,22 @@ constexpr auto dispatchGemm = []() {
     table[index(int64, int16)]   = launchGemmKernel<int64_t, int16_t, int64_t>;
     table[index(int64, int32)]   = launchGemmKernel<int64_t, int32_t, int64_t>;
     table[index(int64, int64)]   = launchGemmKernel<int64_t, int64_t, int64_t>;
-
+ 
+    table[index(float16, float16)] = launchGemmKernel<half, half, half>;
+    table[index(float16, float32)] = launchGemmKernel<half, float, float>;
+    table[index(float32, float16)] = launchGemmKernel<float, half, float>;
+    table[index(float16, float64)] = launchGemmKernel<half, double, double>;
+    table[index(float64, float16)] = launchGemmKernel<double, half, double>;
+    
+    table[index(float16, int8)]    = launchGemmKernel<half, int8_t, float>;
+    table[index(int8, float16)]    = launchGemmKernel<int8_t, half, float>;
+    table[index(float16, int16)]   = launchGemmKernel<half, int16_t, float>;
+    table[index(int16, float16)]   = launchGemmKernel<int16_t, half, float>;
+    table[index(float16, int32)]   = launchGemmKernel<half, int32_t, float>;
+    table[index(int32, float16)]   = launchGemmKernel<int32_t, half, float>;
+    table[index(float16, int64)]   = launchGemmKernel<half, int64_t, double>;
+    table[index(int64, float16)]   = launchGemmKernel<int64_t, half, double>;
+   
     table[index(int32, float32)] = launchGemmKernel<int32_t, float, float>;
     table[index(float32, int32)] = launchGemmKernel<float, int32_t, float>;
     table[index(int32, float64)] = launchGemmKernel<int32_t, double, double>;

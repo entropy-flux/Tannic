@@ -1,4 +1,5 @@
 #include <array> 
+#include <cuda_fp16.h> 
 #include "cuda/concat.cuh"  
 
 namespace {
@@ -39,8 +40,7 @@ __global__ void stridedConcatKernel(
         for (int i = 0; i < rank; ++i) {
             src_offset += coord[i] * src_strides->sizes[i];
         }
-    }
-
+    } 
     dst_ptr[idx] = src_base[src_offset];
 }
  
@@ -81,6 +81,7 @@ constexpr auto dispatchConcatKernel = []() {
     table[index(int16)]    = launchConcatKernel<int16_t>;
     table[index(int32)]    = launchConcatKernel<int32_t>;
     table[index(int64)]    = launchConcatKernel<int64_t>;
+    table[index(float16)]  = launchConcatKernel<__half>;
     table[index(float32)]  = launchConcatKernel<float>;
     table[index(float64)]  = launchConcatKernel<double>;
     return table;

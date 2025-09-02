@@ -3,6 +3,17 @@
 #include <limits>
 #include <cstdint> 
 #include "argred.hpp"
+#ifndef HAS_FLOAT16
+    #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
+        #include <stdfloat>
+        using half = std::float16_t;
+        #define HAS_FLOAT16 1
+    #else 
+        #define HAS_FLOAT16 0 
+        struct half_placeholder { float value; };
+        using half = half_placeholder;
+    #endif
+#endif 
 
 namespace {   
     
@@ -136,10 +147,12 @@ void stridedArgCompareKernel(
     }
 } 
 
+ 
+
 struct Sum {
     template<typename A, typename B>
     A operator()(A accum, B val) const { return accum + val; }
-    
+
     template<typename T>
     T finalize(T accum, size_t count) const { return accum; }
 };
@@ -281,7 +294,10 @@ status argsum(const tensor_t* src, tensor_t* dst, uint8_t dim) {
         case int32:   return launchArgReduce<int32_t, int32_t, Sum>(src, dst, dim);
         case int64:   return launchArgReduce<int64_t, int64_t, Sum>(src, dst, dim);
         case float32: return launchArgReduce<float, float,   Sum>(src, dst, dim);
-        case float64: return launchArgReduce<double,  double, Sum>(src, dst, dim);
+        case float64: return launchArgReduce<double, double, Sum>(src, dst, dim);
+#if HAS_FLOAT16
+        case float16: return launchArgReduce<half, half,     Sum>(src, dst, dim);
+#endif
         default:      return UNSUPPORTED_DTYPE;
     }
 }
@@ -289,7 +305,10 @@ status argsum(const tensor_t* src, tensor_t* dst, uint8_t dim) {
 status argmean(const tensor_t* src, tensor_t* dst, uint8_t dim) {
     switch (src->dtype) {
         case float32: return launchArgReduce<float, float,  Mean>(src, dst, dim);
-        case float64: return launchArgReduce<double, double,  Mean>(src, dst, dim);
+        case float64: return launchArgReduce<double, double, Mean>(src, dst, dim);
+#if HAS_FLOAT16
+        case float16: return launchArgReduce<half, half,     Mean>(src, dst, dim);
+#endif
         default:      return UNSUPPORTED_DTYPE;
     }
 }
@@ -303,6 +322,9 @@ status argmax(const tensor_t* src, tensor_t* dst, uint8_t dim) {
         case int64:   return launchArgCompare<int64_t, GE>(src, dst, dim, std::numeric_limits<int64_t>::lowest());
         case float32: return launchArgCompare<float, GE>  (src, dst, dim, -std::numeric_limits<float>::infinity());
         case float64: return launchArgCompare<double, GE> (src, dst, dim, -std::numeric_limits<double>::infinity());
+#if HAS_FLOAT16
+        case float16: return launchArgCompare<half, GE>   (src, dst, dim, half(-std::numeric_limits<float>::infinity()));
+#endif
         default:      return UNSUPPORTED_DTYPE;
     }
 }
@@ -315,6 +337,9 @@ status argmin(const tensor_t* src, tensor_t* dst, uint8_t dim) {
         case int64:   return launchArgCompare<int64_t, LE>(src, dst, dim, std::numeric_limits<int64_t>::max());
         case float32: return launchArgCompare<float, LE>  (src, dst, dim, std::numeric_limits<float>::infinity());
         case float64: return launchArgCompare<double, LE> (src, dst, dim, std::numeric_limits<double>::infinity());
+#if HAS_FLOAT16
+        case float16: return launchArgCompare<half, LE>   (src, dst, dim, half(std::numeric_limits<float>::infinity()));
+#endif
         default:      return UNSUPPORTED_DTYPE;
     }
 } 

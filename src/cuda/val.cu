@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include <cuda_fp16.h>
 #include "cuda/val.cuh"
 
 namespace {
@@ -80,6 +81,7 @@ namespace cuda {
 
 bool allclose(const tensor_t* src0, const tensor_t* src1, stream_t stream, double rtol, double atol) {
     switch (src0->dtype) { 
+        case float16: return launchAllcloseKernel<__half>(src0, src1, stream, rtol, atol);
         case float32: return launchAllcloseKernel<float>(src0, src1, stream, rtol, atol);
         case float64: return launchAllcloseKernel<double>(src0, src1, stream, rtol, atol);
         default: throw std::runtime_error("Unsupported dtype");

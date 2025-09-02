@@ -1,6 +1,7 @@
 #include <vector>
 #include <array>
 #include <stdexcept>
+#include <cuda_fp16.h>
 #include "cuda/streams.cuh"
 #include "cuda/matmul.cuh"
 
@@ -137,36 +138,51 @@ constexpr static inline auto index(type first, type second) {
 } 
 
 constexpr auto dispatchGemm = []() {
-    std::array<Kernel, index(TYPES, TYPES)> table; table.fill(defaultKernel); 
-    table[index(int8, int8)]     = launchGemmKernel<int8_t, int8_t, int32_t>;
-    table[index(int8, int16)]    = launchGemmKernel<int8_t, int16_t, int32_t>;
-    table[index(int8, int32)]    = launchGemmKernel<int8_t, int32_t, int32_t>;
-    table[index(int8, int64)]    = launchGemmKernel<int8_t, int64_t, int64_t>;
+std::array<Kernel, index(TYPES, TYPES)> table; table.fill(defaultKernel); 
+table[index(int8, int8)]     = launchGemmKernel<int8_t, int8_t, int32_t>;
+table[index(int8, int16)]    = launchGemmKernel<int8_t, int16_t, int32_t>;
+table[index(int8, int32)]    = launchGemmKernel<int8_t, int32_t, int32_t>;
+table[index(int8, int64)]    = launchGemmKernel<int8_t, int64_t, int64_t>;
 
-    table[index(int16, int8)]    = launchGemmKernel<int16_t, int8_t, int32_t>;
-    table[index(int16, int16)]   = launchGemmKernel<int16_t, int16_t, int32_t>;
-    table[index(int16, int32)]   = launchGemmKernel<int16_t, int32_t, int32_t>;
-    table[index(int16, int64)]   = launchGemmKernel<int16_t, int64_t, int64_t>;
+table[index(int16, int8)]    = launchGemmKernel<int16_t, int8_t, int32_t>;
+table[index(int16, int16)]   = launchGemmKernel<int16_t, int16_t, int32_t>;
+table[index(int16, int32)]   = launchGemmKernel<int16_t, int32_t, int32_t>;
+table[index(int16, int64)]   = launchGemmKernel<int16_t, int64_t, int64_t>;
 
-    table[index(int32, int8)]    = launchGemmKernel<int32_t, int8_t, int32_t>;
-    table[index(int32, int16)]   = launchGemmKernel<int32_t, int16_t, int32_t>;
-    table[index(int32, int32)]   = launchGemmKernel<int32_t, int32_t, int64_t>;
-    table[index(int32, int64)]   = launchGemmKernel<int32_t, int64_t, int64_t>;
+table[index(int32, int8)]    = launchGemmKernel<int32_t, int8_t, int32_t>;
+table[index(int32, int16)]   = launchGemmKernel<int32_t, int16_t, int32_t>;
+table[index(int32, int32)]   = launchGemmKernel<int32_t, int32_t, int64_t>;
+table[index(int32, int64)]   = launchGemmKernel<int32_t, int64_t, int64_t>;
 
-    table[index(int64, int8)]    = launchGemmKernel<int64_t, int8_t, int64_t>;
-    table[index(int64, int16)]   = launchGemmKernel<int64_t, int16_t, int64_t>;
-    table[index(int64, int32)]   = launchGemmKernel<int64_t, int32_t, int64_t>;
-    table[index(int64, int64)]   = launchGemmKernel<int64_t, int64_t, int64_t>;
+table[index(int64, int8)]    = launchGemmKernel<int64_t, int8_t, int64_t>;
+table[index(int64, int16)]   = launchGemmKernel<int64_t, int16_t, int64_t>;
+table[index(int64, int32)]   = launchGemmKernel<int64_t, int32_t, int64_t>;
+table[index(int64, int64)]   = launchGemmKernel<int64_t, int64_t, int64_t>;
 
-    table[index(int32, float32)] = launchGemmKernel<int32_t, float, float>;
-    table[index(float32, int32)] = launchGemmKernel<float, int32_t, float>;
-    table[index(int32, float64)] = launchGemmKernel<int32_t, double, double>;
-    table[index(float64, int32)] = launchGemmKernel<double, int32_t, double>;
+table[index(float16, float16)] = launchGemmKernel<__half, __half, __half>;
+table[index(float16, float32)] = launchGemmKernel<__half, float, float>;
+table[index(float16, float64)] = launchGemmKernel<__half, double, double>;
+table[index(float32, float16)] = launchGemmKernel<float, __half, float>;
+table[index(float64, float16)] = launchGemmKernel<double, __half, double>;
 
-    table[index(float32, float32)] = launchGemmKernel<float, float, float>;
-    table[index(float32, float64)] = launchGemmKernel<float, double, double>;
-    table[index(float64, float32)] = launchGemmKernel<double, float, double>;
-    table[index(float64, float64)] = launchGemmKernel<double, double, double>;
+table[index(int8, float16)]    = launchGemmKernel<int8_t, __half, __half>;
+table[index(int16, float16)]   = launchGemmKernel<int16_t, __half, __half>;
+table[index(int32, float16)]   = launchGemmKernel<int32_t, __half, float>;
+table[index(int64, float16)]   = launchGemmKernel<int64_t, __half, double>;
+table[index(float16, int8)]    = launchGemmKernel<__half, int8_t, __half>;
+table[index(float16, int16)]   = launchGemmKernel<__half, int16_t, __half>;
+table[index(float16, int32)]   = launchGemmKernel<__half, int32_t, float>;
+table[index(float16, int64)]   = launchGemmKernel<__half, int64_t, double>;
+
+table[index(int32, float32)] = launchGemmKernel<int32_t, float, float>;
+table[index(float32, int32)] = launchGemmKernel<float, int32_t, float>;
+table[index(int32, float64)] = launchGemmKernel<int32_t, double, double>;
+table[index(float64, int32)] = launchGemmKernel<double, int32_t, double>;
+
+table[index(float32, float32)] = launchGemmKernel<float, float, float>;
+table[index(float32, float64)] = launchGemmKernel<float, double, double>;
+table[index(float64, float32)] = launchGemmKernel<double, float, double>;
+table[index(float64, float64)] = launchGemmKernel<double, double, double>;
     return table;
 }();
 

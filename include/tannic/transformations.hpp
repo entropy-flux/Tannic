@@ -174,9 +174,23 @@ struct Composition {
         table[index(int64, int8)]    = int64;
         table[index(int64, int16)]   = int64;
         table[index(int64, int32)]   = int64;
-        table[index(int64, int64)]   = int64; 
-        
-        // Mixed integer/float promotions
+        table[index(int64, int64)]   = int64;  
+    
+        table[index(int8, float16)]   = float16;
+        table[index(float16, int8)]   = float16;
+        table[index(int16, float16)]  = float16;
+        table[index(float16, int16)]  = float16;
+        table[index(int32, float16)]  = float32;  
+        table[index(float16, int32)]  = float32;
+        table[index(int64, float16)]  = float64;   
+        table[index(float16, int64)]  = float64;
+
+        table[index(float16, float16)] = float16;
+        table[index(float16, float32)] = float32;
+        table[index(float32, float16)] = float32;
+        table[index(float16, float64)] = float64;
+        table[index(float64, float16)] = float64;
+
         table[index(int32, float32)] = float32;
         table[index(float32, int32)] = float32;
         table[index(int32, float64)] = float64;

@@ -1,5 +1,16 @@
 #include <array>
 #include "cpu/concat.hpp"
+#ifndef HAS_FLOAT16
+    #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
+        #include <stdfloat>
+        using half = std::float16_t;
+        #define HAS_FLOAT16 1
+    #else 
+        #define HAS_FLOAT16 0 
+        struct half_placeholder { float value; };
+        using half = half_placeholder;
+    #endif
+#endif
 
 namespace {
 
@@ -99,6 +110,7 @@ constexpr auto dispatchConcatKernel = []() {
     table[index(int16)]    = launchConcatKernel<int16_t>;
     table[index(int32)]    = launchConcatKernel<int32_t>;
     table[index(int64)]    = launchConcatKernel<int64_t>;
+    table[index(float16)]  = launchConcatKernel<half>;
     table[index(float32)]  = launchConcatKernel<float>;
     table[index(float64)]  = launchConcatKernel<double>;
     return table;

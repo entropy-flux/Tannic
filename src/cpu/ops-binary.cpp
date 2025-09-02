@@ -132,38 +132,6 @@ struct Add {
     inline auto operator()(A a, B b) const noexcept(noexcept(a + b)) {
         return a + b;
     }
-
-#if HAS_FLOAT16
-    inline half operator()(half a, half b) const noexcept {
-        return half(float(a) + float(b));
-    }
-
-    inline float operator()(half a, float b) const noexcept {
-        return float(a) + b;
-    }
-
-    inline double operator()(half a, double b) const noexcept {
-        return static_cast<double>(a) + b;
-    }
-
-    inline float operator()(float a, half b) const noexcept {
-        return a + float(b);
-    }
-
-    inline double operator()(double a, half b) const noexcept {
-        return a + static_cast<double>(b);
-    }
-
-    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
-    inline float operator()(half a, B b) const noexcept {
-        return float(a) + static_cast<float>(b);
-    }
-
-    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
-    inline float operator()(A a, half b) const noexcept {
-        return static_cast<float>(a) + float(b);
-    }
-#endif
 };
  
 struct Sub {
@@ -171,38 +139,6 @@ struct Sub {
     inline auto operator()(A a, B b) const noexcept(noexcept(a - b)) {
         return a - b;
     }
-
-#if HAS_FLOAT16
-    inline half operator()(half a, half b) const noexcept {
-        return half(float(a) - float(b));
-    }
-
-    inline float operator()(half a, float b) const noexcept {
-        return float(a) - b;
-    }
-
-    inline double operator()(half a, double b) const noexcept {
-        return static_cast<double>(a) - b;
-    }
-
-    inline float operator()(float a, half b) const noexcept {
-        return a - float(b);
-    }
-
-    inline double operator()(double a, half b) const noexcept {
-        return a - static_cast<double>(b);
-    }
-
-    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
-    inline float operator()(half a, B b) const noexcept {
-        return float(a) - static_cast<float>(b);
-    }
-
-    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
-    inline float operator()(A a, half b) const noexcept {
-        return static_cast<float>(a) - float(b);
-    }
-#endif
 };
  
 struct Mul {
@@ -210,38 +146,6 @@ struct Mul {
     inline auto operator()(A a, B b) const noexcept(noexcept(a * b)) {
         return a * b;
     }
-
-#if HAS_FLOAT16
-    inline half operator()(half a, half b) const noexcept {
-        return half(float(a) * float(b));
-    }
-
-    inline float operator()(half a, float b) const noexcept {
-        return float(a) * b;
-    }
-
-    inline double operator()(half a, double b) const noexcept {
-        return static_cast<double>(a) * b;
-    }
-
-    inline float operator()(float a, half b) const noexcept {
-        return a * float(b);
-    }
-
-    inline double operator()(double a, half b) const noexcept {
-        return a * static_cast<double>(b);
-    }
-
-    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
-    inline float operator()(half a, B b) const noexcept {
-        return float(a) * static_cast<float>(b);
-    }
-
-    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
-    inline float operator()(A a, half b) const noexcept {
-        return static_cast<float>(a) * float(b);
-    }
-#endif
 };
  
 struct Pow {
@@ -249,39 +153,6 @@ struct Pow {
     inline auto operator()(A a, B b) const noexcept(noexcept(std::pow(a, b))) {
         return std::pow(a, b);
     }
-
-#if HAS_FLOAT16
-    inline half operator()(half a, half b) const noexcept {
-        return half(std::pow(float(a), float(b)));
-    }
-
-    inline float operator()(half a, float b) const noexcept {
-        return std::pow(float(a), b);
-    }
-
-    inline double operator()(half a, double b) const noexcept {
-        return std::pow(static_cast<double>(a), b);
-    }
-
-    inline float operator()(float a, half b) const noexcept {
-        return std::pow(a, float(b));
-    }
-
-    inline double operator()(double a, half b) const noexcept {
-        return std::pow(a, static_cast<double>(b));
-    }
-
-    template<typename B, typename = std::enable_if_t<!std::is_same_v<B, half> && !std::is_same_v<B, float> && !std::is_same_v<B, double>>>
-    inline float operator()(half a, B b) const noexcept {
-        return std::pow(float(a), static_cast<float>(b));
-    }
-
-    template<typename A, typename = std::enable_if_t<!std::is_same_v<A, half> && !std::is_same_v<A, float> && !std::is_same_v<A, double>>>
-    inline float operator()(A a, half b) const noexcept {
-        return std::pow(static_cast<float>(a), float(b));
-    }
-
-#endif
 };
 
   

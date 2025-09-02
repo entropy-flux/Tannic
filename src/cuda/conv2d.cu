@@ -1,5 +1,6 @@
 #include <array>
 #include <cuda_runtime.h>
+#include <cuda_fp16.h> 
 #include "cuda/conv.cuh"
 
 namespace {
@@ -102,6 +103,7 @@ using Conv2DKernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*, stre
 constexpr auto dispatchConv2DCUDA = []() {
     std::array<Conv2DKernel, index(TYPES, TYPES)> table; table.fill(launchDefaultConv2DKernel);
     table[index(int8, int8)] = launchConv2DKernel<int8_t, int8_t, int8_t>; 
+    table[index(float16, float16)] = launchConv2DKernel<__half, __half, __half>; 
     table[index(float32, float32)] = launchConv2DKernel<float, float, float>;
     table[index(float64, float64)] = launchConv2DKernel<double, double, double>;
     return table;

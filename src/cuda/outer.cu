@@ -1,5 +1,6 @@
-#include <cuda_runtime.h>
 #include <array>
+#include <cuda_fp16.h>
+#include <cuda_runtime.h>
 #include "cuda/outer.cuh"
 
 namespace {
@@ -15,7 +16,7 @@ __global__ void vectorOuterKernel(
     size_t j = blockIdx.x * blockDim.x + threadIdx.x;
 
     if (i < n1 && j < n2) {
-        dst_ptr[i * n2 + j] = src1_ptr[i] * src2_ptr[j];
+        dst_ptr[i * n2 + j] = static_cast<D>(src1_ptr[i]) * static_cast<D>(src2_ptr[j]); 
     }
 }
  
@@ -73,6 +74,21 @@ constexpr auto dispatchOuter = []() {
     table[index(int64, int16)]   = launchOuterKernel<int64_t, int16_t, int64_t>;
     table[index(int64, int32)]   = launchOuterKernel<int64_t, int32_t, int64_t>;
     table[index(int64, int64)]   = launchOuterKernel<int64_t, int64_t, int64_t>;
+    
+    table[index(float16, float16)] = launchOuterKernel<__half, __half, __half>;
+    table[index(float16, float32)] = launchOuterKernel<__half, float, float>;
+    table[index(float16, float64)] = launchOuterKernel<__half, double, double>;
+    table[index(float32, float16)] = launchOuterKernel<float, __half, float>;
+    table[index(float64, float16)] = launchOuterKernel<double, __half, double>;
+    
+    table[index(int8, float16)]    = launchOuterKernel<int8_t, __half, __half>;
+    table[index(int16, float16)]   = launchOuterKernel<int16_t, __half, __half>;
+    table[index(int32, float16)]   = launchOuterKernel<int32_t, __half, float>;
+    table[index(int64, float16)]   = launchOuterKernel<int64_t, __half, double>;
+    table[index(float16, int8)]    = launchOuterKernel<__half, int8_t, __half>;
+    table[index(float16, int16)]   = launchOuterKernel<__half, int16_t, __half>;
+    table[index(float16, int32)]   = launchOuterKernel<__half, int32_t, float>;
+    table[index(float16, int64)]   = launchOuterKernel<__half, int64_t, double>;
 
     table[index(int32, float32)] = launchOuterKernel<int32_t, float, float>;
     table[index(float32, int32)] = launchOuterKernel<float, int32_t, float>;
