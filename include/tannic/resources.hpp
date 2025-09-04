@@ -116,7 +116,6 @@ private:
  * @warning Device memory management is highly likely to change as the
  * backend evolves.
  */
-
 class Devices {
 private:
     int count_ = 0; 
@@ -194,7 +193,11 @@ private:
     int id_ = 0;
     bool blocking_ = false;
 };
- 
+
+/*
+TODO:
+class Mesh;
+*/ 
 
 /**
  * @brief Memory environment variant type.
