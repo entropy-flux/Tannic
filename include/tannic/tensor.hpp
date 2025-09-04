@@ -577,15 +577,9 @@ public:
             auto fill = [this, &values](auto cast) { 
                 using Cast = decltype(cast);
                 size_t index = 0;
-                for (auto value : values) {
-                    if constexpr (std::is_same_v<Cast, float16_t>) { 
-                        float as_float = value;
-                        float16_t casted = float32_to_float16(as_float);
-                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                    } else { 
-                        Cast casted = value;
-                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                    }
+                for (auto value : values) { 
+                    Cast casted(value);
+                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
                     ++index;
                 }
             }; 
@@ -660,15 +654,9 @@ public:
                     if (row.size() != shape_[1])
                         throw Exception("Row length mismatch in assignment from initializer_list");
 
-                    for (auto value : row) {
-                        if constexpr (std::is_same_v<Cast, float16_t>) {
-                            float as_float = value;
-                            float16_t casted = float32_to_float16(as_float);
-                            assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                        } else {
-                            Cast casted = value;
-                            assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                        }
+                    for (auto value : row) { 
+                        Cast casted(value);
+                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
                         ++index;
                     }
                 }
@@ -759,15 +747,9 @@ public:
                     for (auto const& row : matrix) {
                         if (row.size() != shape_[2])
                             throw Exception("Row length mismatch");
-                        for (auto value : row) {
-                            if constexpr (std::is_same_v<Cast, float16_t>) {
-                                float as_float = value;
-                                float16_t casted = float32_to_float16(as_float);
-                                assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                            } else {
-                                Cast casted = value;
-                                assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                            }
+                        for (auto value : row) { 
+                            Cast casted(value);
+                            assign(expression::tobytes(casted), index * dsizeof(dtype_));
                             ++index;
                         }
                     }
@@ -878,18 +860,12 @@ public:
                             throw Exception("Matrix row count mismatch");
 
                         for (auto const& row : matrix) {
-                            if (row.size() != shape_[3])
+                            if (row.size() != shape_[3]) 
                                 throw Exception("Row length mismatch");
 
                             for (auto value : row) {
-                                if constexpr (std::is_same_v<Cast, float16_t>) {
-                                    float as_float = value;
-                                    float16_t casted = float32_to_float16(as_float);
-                                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                                } else {
-                                    Cast casted = value;
-                                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                                }
+                                Cast casted(value);
+                                assign(expression::tobytes(casted), index * dsizeof(dtype_));
                                 ++index;
                             }
                         }
@@ -1134,8 +1110,7 @@ protected:
     void assign(bool const*, std::ptrdiff_t); 
 
     bool compare(std::byte const*, std::ptrdiff_t) const; 
-     
-
+    
 public:
     uintptr_t id() const {
         return node_->id;

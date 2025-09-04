@@ -30,7 +30,7 @@ static void print(std::ostream& os, element_ref elem, type dtype) {
         case int16: os << *static_cast<const int16_t*>(elem.address); break;
         case int32: os << *static_cast<const int32_t*>(elem.address); break;
         case int64: os << *static_cast<const int64_t*>(elem.address); break;
-        case float16: os << float16_to_float32(*static_cast<const float16_t*>(elem.address)); break;
+        case float16: os << *static_cast<const float16_t*>(elem.address); break;
         case float32: os << *static_cast<const float*>(elem.address); break;
         case float64: os << *static_cast<const double*>(elem.address); break;
         case complex64: {

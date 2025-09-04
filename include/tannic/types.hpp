@@ -74,12 +74,15 @@
 namespace tannic { 
 
 struct float16_t {
-    uint16_t bits;
+    uint16_t bits = 0; 
+    float16_t() : bits(0) {}
+    template<std::integral T>
+    float16_t(T value) : float16_t(static_cast<float>(value)) {}
+    float16_t(double value) : float16_t(static_cast<float>(value)) {}
+    float16_t(float); 
+    operator float() const;
 };
-
-float16_t float32_to_float16(float);
-float float16_to_float32(float16_t); 
-
+ 
 /**
  * @brief Returns the size in bytes of a given tensor data type.
  * @param type The data type to query
