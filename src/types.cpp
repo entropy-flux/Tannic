@@ -3,6 +3,15 @@
 
 namespace tannic {  
     
+void boolean_t::write(std::byte* buffer, std::ptrdiff_t offset) const {
+    size_t byte_index = offset / 8;
+    size_t bit_index  = offset % 8;
+    if (value)
+        buffer[byte_index] |= std::byte(1u << bit_index);
+    else
+        buffer[byte_index] &= std::byte(~(1u << bit_index)); 
+}
+    
 float16_t::float16_t(float value) {
     uint32_t fbits;
     std::memcpy(&fbits, &value, sizeof(float));
@@ -66,6 +75,19 @@ float16_t::operator float() const {
         fbits = sign | (exponent << 23) | (mantissa << 13);
     }
 
+    float result;
+    std::memcpy(&result, &fbits, sizeof(float));
+    return result;
+}
+
+bfloat16_t::bfloat16_t(float value) {
+    uint32_t fbits;
+    std::memcpy(&fbits, &value, sizeof(float)); 
+    bits = static_cast<uint16_t>(fbits >> 16);
+}
+
+bfloat16_t::operator float() const {
+    uint32_t fbits = static_cast<uint32_t>(bits) << 16;  
     float result;
     std::memcpy(&result, &fbits, sizeof(float));
     return result;

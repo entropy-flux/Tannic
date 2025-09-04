@@ -112,3 +112,55 @@ TEST(Float16Test, NaNPayloadPreserved) {
 
     EXPECT_TRUE(std::isnan(f));
 }
+
+using namespace tannic;
+
+TEST(BFloat16Test, ZeroAndSign) {
+    bfloat16_t hpos(0.0f);
+    bfloat16_t hneg(-0.0f);
+
+    EXPECT_EQ(hpos.bits, 0x0000); // +0
+    EXPECT_EQ(hneg.bits, 0x8000); // -0
+
+    EXPECT_EQ(static_cast<float>(hpos), 0.0f);
+    EXPECT_EQ(static_cast<float>(hneg), -0.0f);
+}
+
+TEST(BFloat16Test, InfinityAndNaN) {
+    float inf = std::numeric_limits<float>::infinity();
+    float nan = std::numeric_limits<float>::quiet_NaN();
+
+    bfloat16_t hpos_inf(inf);
+    bfloat16_t hneg_inf(-inf);
+    bfloat16_t hnan(nan);
+
+    EXPECT_EQ(hpos_inf.bits, 0x7F80); // +inf in BF16
+    EXPECT_EQ(hneg_inf.bits, 0xFF80); // -inf in BF16
+
+    EXPECT_TRUE(std::isinf(static_cast<float>(hpos_inf)));
+    EXPECT_TRUE(std::isinf(static_cast<float>(hneg_inf)));
+    EXPECT_TRUE(std::isnan(static_cast<float>(hnan)));
+}
+
+TEST(BFloat16Test, NormalRoundTrip) {
+    std::vector<float> values = { 1.0f, -1.0f, 3.14159f, 0.3333f, 65504.0f };
+
+    for (float f : values) {
+        bfloat16_t h(f);
+        float g = static_cast<float>(h);
+
+        float rel_error = std::abs(f - g) / std::abs(f);
+        EXPECT_LT(rel_error, 0.01f) << "Failed for value " << f;
+    }
+} 
+
+TEST(BFloat16Test, NaNPayloadPreserved) { 
+    uint32_t bits = 0x7FC12345;
+    float nan;
+    std::memcpy(&nan, &bits, sizeof(nan));
+
+    bfloat16_t h(nan);
+    float f = static_cast<float>(h);
+
+    EXPECT_TRUE(std::isnan(f));
+}

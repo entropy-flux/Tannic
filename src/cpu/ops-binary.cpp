@@ -7,13 +7,13 @@
     #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
         #include <stdfloat>
         using half = std::float16_t;
+        using bhalf = std::bfloat16_t;
         #define HAS_FLOAT16 1
     #else 
         #define HAS_FLOAT16 0 
-        struct half_placeholder { float value; };
-        using half = half_placeholder;
     #endif
-#endif
+#endif 
+
 
 namespace {   
 
@@ -153,8 +153,7 @@ struct Pow {
     inline auto operator()(A a, B b) const noexcept(noexcept(std::pow(a, b))) {
         return std::pow(a, b);
     }
-};
-
+}; 
   
 using BinaryOpKernel = status(*)( const tensor_t*, const tensor_t*, tensor_t*);      
 
@@ -205,7 +204,23 @@ constexpr auto dispatchAdd = []() {
     table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, half, float, Add>;
     table[index(float16, int64)]   = launchBinaryOpKernel<half, int64_t, double, Add>;
     table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, half, double, Add>;
-#endif
+
+    table[index(bfloat16, bfloat16)] = launchBinaryOpKernel<bhalf, bhalf, bhalf, Add>;
+    table[index(bfloat16, float32)]  = launchBinaryOpKernel<bhalf, float, float, Add>;
+    table[index(float32, bfloat16)]  = launchBinaryOpKernel<float, bhalf, float, Add>;
+    table[index(bfloat16, float64)]  = launchBinaryOpKernel<bhalf, double, double, Add>;
+    table[index(float64, bfloat16)]  = launchBinaryOpKernel<double, bhalf, double, Add>;
+
+    table[index(bfloat16, int8)]     = launchBinaryOpKernel<bhalf, int8_t, float, Add>;
+    table[index(int8, bfloat16)]     = launchBinaryOpKernel<int8_t, bhalf, float, Add>;
+    table[index(bfloat16, int16)]    = launchBinaryOpKernel<bhalf, int16_t, float, Add>;
+    table[index(int16, bfloat16)]    = launchBinaryOpKernel<int16_t, bhalf, float, Add>;
+    table[index(bfloat16, int32)]    = launchBinaryOpKernel<bhalf, int32_t, float, Add>;
+    table[index(int32, bfloat16)]    = launchBinaryOpKernel<int32_t, bhalf, float, Add>;
+    table[index(bfloat16, int64)]    = launchBinaryOpKernel<bhalf, int64_t, double, Add>;
+    table[index(int64, bfloat16)]    = launchBinaryOpKernel<int64_t, bhalf, double, Add>;
+
+    #endif
 
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Add>;
     table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Add>;
@@ -261,6 +276,21 @@ constexpr auto dispatchSub = []() {
     table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, half, float, Sub>;
     table[index(float16, int64)]   = launchBinaryOpKernel<half, int64_t, double, Sub>;
     table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, half, double, Sub>;
+
+    table[index(bfloat16, bfloat16)] = launchBinaryOpKernel<bhalf, bhalf, bhalf, Sub>;
+    table[index(bfloat16, float32)]  = launchBinaryOpKernel<bhalf, float, float, Sub>;
+    table[index(float32, bfloat16)]  = launchBinaryOpKernel<float, bhalf, float, Sub>;
+    table[index(bfloat16, float64)]  = launchBinaryOpKernel<bhalf, double, double, Sub>;
+    table[index(float64, bfloat16)]  = launchBinaryOpKernel<double, bhalf, double, Sub>;
+
+    table[index(bfloat16, int8)]     = launchBinaryOpKernel<bhalf, int8_t, float, Sub>;
+    table[index(int8, bfloat16)]     = launchBinaryOpKernel<int8_t, bhalf, float, Sub>;
+    table[index(bfloat16, int16)]    = launchBinaryOpKernel<bhalf, int16_t, float, Sub>;
+    table[index(int16, bfloat16)]    = launchBinaryOpKernel<int16_t, bhalf, float, Sub>;
+    table[index(bfloat16, int32)]    = launchBinaryOpKernel<bhalf, int32_t, float, Sub>;
+    table[index(int32, bfloat16)]    = launchBinaryOpKernel<int32_t, bhalf, float, Sub>;
+    table[index(bfloat16, int64)]    = launchBinaryOpKernel<bhalf, int64_t, double, Sub>;
+    table[index(int64, bfloat16)]    = launchBinaryOpKernel<int64_t, bhalf, double, Sub>;
 #endif
 
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Sub>;
@@ -317,7 +347,23 @@ constexpr auto dispatchMul = []() {
     table[index(int32, float16)]   = launchBinaryOpKernel<int32_t, half, float, Mul>;
     table[index(float16, int64)]   = launchBinaryOpKernel<half, int64_t, double, Mul>;
     table[index(int64, float16)]   = launchBinaryOpKernel<int64_t, half, double, Mul>;
-#endif
+
+
+    table[index(bfloat16, bfloat16)] = launchBinaryOpKernel<bhalf, bhalf, bhalf, Mul>;
+    table[index(bfloat16, float32)]  = launchBinaryOpKernel<bhalf, float, float, Mul>;
+    table[index(float32, bfloat16)]  = launchBinaryOpKernel<float, bhalf, float, Mul>;
+    table[index(bfloat16, float64)]  = launchBinaryOpKernel<bhalf, double, double, Mul>;
+    table[index(float64, bfloat16)]  = launchBinaryOpKernel<double, bhalf, double, Mul>;
+
+    table[index(bfloat16, int8)]     = launchBinaryOpKernel<bhalf, int8_t, float, Mul>;
+    table[index(int8, bfloat16)]     = launchBinaryOpKernel<int8_t, bhalf, float, Mul>;
+    table[index(bfloat16, int16)]    = launchBinaryOpKernel<bhalf, int16_t, float, Mul>;
+    table[index(int16, bfloat16)]    = launchBinaryOpKernel<int16_t, bhalf, float, Mul>;
+    table[index(bfloat16, int32)]    = launchBinaryOpKernel<bhalf, int32_t, float, Mul>;
+    table[index(int32, bfloat16)]    = launchBinaryOpKernel<int32_t, bhalf, float, Mul>;
+    table[index(bfloat16, int64)]    = launchBinaryOpKernel<bhalf, int64_t, double, Mul>;
+    table[index(int64, bfloat16)]    = launchBinaryOpKernel<int64_t, bhalf, double, Mul>;
+    #endif
 
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float, float, Mul>;
     table[index(float32, int32)] = launchBinaryOpKernel<float, int32_t, float, Mul>;
@@ -353,7 +399,22 @@ constexpr auto dispatchPow = []() {
     table[index(int32, float16)]   = launchBinaryOpKernel<int32_t,        half, float,  Pow>;
     table[index(float16, int64)]   = launchBinaryOpKernel<half, int64_t, double, Pow>;
     table[index(int64, float16)]   = launchBinaryOpKernel<int64_t,        half, double, Pow>;
-#endif
+
+    table[index(bfloat16, bfloat16)] = launchBinaryOpKernel<bhalf, bhalf, float, Pow>;
+    table[index(bfloat16, float32)]  = launchBinaryOpKernel<bhalf, float, float, Pow>;
+    table[index(float32, bfloat16)]  = launchBinaryOpKernel<float, bhalf, float, Pow>;
+    table[index(bfloat16, float64)]  = launchBinaryOpKernel<bhalf, double, double, Pow>;
+    table[index(float64, bfloat16)]  = launchBinaryOpKernel<double, bhalf, double, Pow>;
+
+    table[index(bfloat16, int8)]     = launchBinaryOpKernel<bhalf, int8_t, float, Pow>;
+    table[index(int8, bfloat16)]     = launchBinaryOpKernel<int8_t, bhalf, float, Pow>;
+    table[index(bfloat16, int16)]    = launchBinaryOpKernel<bhalf, int16_t, float, Pow>;
+    table[index(int16, bfloat16)]    = launchBinaryOpKernel<int16_t, bhalf, float, Pow>;
+    table[index(bfloat16, int32)]    = launchBinaryOpKernel<bhalf, int32_t, float, Pow>;
+    table[index(int32, bfloat16)]    = launchBinaryOpKernel<int32_t, bhalf, float, Pow>;
+    table[index(bfloat16, int64)]    = launchBinaryOpKernel<bhalf, int64_t, double, Pow>;
+    table[index(int64, bfloat16)]    = launchBinaryOpKernel<int64_t, bhalf, double, Pow>;
+    #endif
 
     table[index(int32, float32)] = launchBinaryOpKernel<int32_t, float,  float,  Pow>;
     table[index(float32, int32)] = launchBinaryOpKernel<float,   int32_t, float,  Pow>;

@@ -4,13 +4,12 @@
     #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
         #include <stdfloat>
         using half = std::float16_t;
+        using bhalf = std::bfloat16_t;
         #define HAS_FLOAT16 1
     #else 
         #define HAS_FLOAT16 0 
-        struct half_placeholder { float value; };
-        using half = half_placeholder;
     #endif
-#endif
+#endif 
 
 namespace {
 
@@ -102,21 +101,23 @@ constexpr static int index(type dtype) {
 }
 
 using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*, int);
-
 constexpr auto dispatchConcatKernel = []() {
     std::array<Kernel, index(TYPES)> table;
     table.fill(launchDefaultKernel);
+
     table[index(int8)]     = launchConcatKernel<int8_t>;
     table[index(int16)]    = launchConcatKernel<int16_t>;
     table[index(int32)]    = launchConcatKernel<int32_t>;
     table[index(int64)]    = launchConcatKernel<int64_t>;
 #if HAS_FLOAT16
     table[index(float16)]  = launchConcatKernel<half>;
+    table[index(bfloat16)] = launchConcatKernel<bhalf>; // <-- added BF16
 #endif
     table[index(float32)]  = launchConcatKernel<float>;
     table[index(float64)]  = launchConcatKernel<double>;
+
     return table;
-}();
+}(); 
 
 } // namespace
 

@@ -6,7 +6,7 @@
 using namespace tannic;
  
 int main() { 
-    Tensor X(float32, {1, 3, 7, 7});
+    Tensor X(bfloat16, {1, 3, 7, 7});
     X.initialize({
         { // batch dimension (1)
             { // channel 1
@@ -39,7 +39,7 @@ int main() {
         }
     }); 
     
-    Tensor b(float32, {1, 3, 1, 1});
+    Tensor b(bfloat16, {1, 3, 1, 1});
     b.initialize({
         { // batch dimension (1)
             { // channel 1

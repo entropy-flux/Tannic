@@ -5,13 +5,12 @@
     #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
         #include <stdfloat>
         using half = std::float16_t;
+        using bhalf = std::bfloat16_t;
         #define HAS_FLOAT16 1
     #else 
         #define HAS_FLOAT16 0 
-        struct half_placeholder { float value; };
-        using half = half_placeholder;
     #endif
-#endif
+#endif 
 
 namespace {
 
@@ -227,28 +226,31 @@ constexpr auto dispatchConv2D = []() {
     table[index(int32, int32)] = launchConv2DKernel<int32_t, int32_t, int32_t>;
     table[index(int64, int64)] = launchConv2DKernel<int64_t, int64_t, int64_t>;
 #if HAS_FLOAT16
-    table[index(float16, float16)] = launchConv2DKernel<half, half, half>;
+    table[index(float16, float16)]   = launchConv2DKernel<half, half, half>;
+    table[index(bfloat16, bfloat16)] = launchConv2DKernel<bhalf, bhalf, bhalf>; 
 #endif
     table[index(float32, float32)] = launchConv2DKernel<float, float, float>;
     table[index(float64, float64)] = launchConv2DKernel<double, double, double>;
     return table;
 }();
- 
-constexpr auto dispatchConv2DBiased = []() {
+
+ constexpr auto dispatchConv2DBiased = []() {
     std::array<Conv2DBiasedKernel, static_cast<int>(TYPES) * static_cast<int>(TYPES)> table;
     table.fill(launchDefaultConv2DBiasedKernel);
-    table[index(int8, int8)]   = launchConv2DKernelBiased<int8_t, int8_t, int8_t, int8_t>;
-    table[index(int16, int16)] = launchConv2DKernelBiased<int16_t, int16_t, int16_t, int16_t>;
-    table[index(int32, int32)] = launchConv2DKernelBiased<int32_t, int32_t, int32_t, int32_t>;
-    table[index(int64, int64)] = launchConv2DKernelBiased<int64_t, int64_t, int64_t, int64_t>;
-#if HAS_FLOAT16
-    table[index(float16, float16)] = launchConv2DKernelBiased<half, half, half, half>;
-#endif
-    table[index(float32, float32)] = launchConv2DKernelBiased<float, float, float, float>;
-    table[index(float64, float64)] = launchConv2DKernelBiased<double, double, double, double>;
-    return table;
-}();
 
+    table[index(int8, int8)]     = launchConv2DKernelBiased<int8_t, int8_t, int8_t, int8_t>;
+    table[index(int16, int16)]   = launchConv2DKernelBiased<int16_t, int16_t, int16_t, int16_t>;
+    table[index(int32, int32)]   = launchConv2DKernelBiased<int32_t, int32_t, int32_t, int32_t>;
+    table[index(int64, int64)]   = launchConv2DKernelBiased<int64_t, int64_t, int64_t, int64_t>;
+#if HAS_FLOAT16
+    table[index(float16, float16)]  = launchConv2DKernelBiased<half, half, half, half>;
+    table[index(bfloat16, bfloat16)] = launchConv2DKernelBiased<bhalf, bhalf, bhalf, bhalf>; // <-- added BF16
+#endif
+    table[index(float32, float32)]  = launchConv2DKernelBiased<float, float, float, float>;
+    table[index(float64, float64)]  = launchConv2DKernelBiased<double, double, double, double>;
+
+    return table;
+}();  
 
 } namespace cpu {
 

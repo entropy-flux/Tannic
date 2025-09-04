@@ -5,14 +5,12 @@
     #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
         #include <stdfloat>
         using half = std::float16_t;
+        using bhalf = std::bfloat16_t;
         #define HAS_FLOAT16 1
     #else 
         #define HAS_FLOAT16 0 
-        struct half_placeholder { float value; };
-        using half = half_placeholder;
     #endif
-#endif
- 
+#endif  
 
 namespace {
 
@@ -68,35 +66,23 @@ status launchRepeatsKernel(const tensor_t* src, tensor_t* dst, int axis, int rep
     );
     return SUCCESS;
 };
-
-constexpr static status launchDefaultKenel(const tensor_t* src, tensor_t* dst, int axis, int reps) {
-    return UNSUPPORTED_DTYPE;
-}
-
-constexpr static int index(type dtype) {
-    return static_cast<int>(dtype);
-} 
-
-using Kernel = status(*)( const tensor_t*, tensor_t*, int, int);      
-
-constexpr auto dispatchRepeatsKernel = []() {  
-    std::array<Kernel, index(TYPES)> table; table.fill(launchDefaultKenel);
-    table[index(int8)] = launchRepeatsKernel<int8_t>;
-    table[index(int16)] = launchRepeatsKernel<int16_t>;
-    table[index(int32)] = launchRepeatsKernel<int32_t>;
-    table[index(int64)] = launchRepeatsKernel<int64_t>;
-#if HAS_FLOAT16
-    table[index(float16)] = launchRepeatsKernel<half>;
-#endif
-    table[index(float32)] = launchRepeatsKernel<float>;
-    table[index(float64)] = launchRepeatsKernel<double>;
-    return table;
-}();  
-
+ 
 }  namespace cpu {
 
 status repeat(const tensor_t* src, tensor_t* dst, int dim, int reps) {
-    return dispatchRepeatsKernel[index(dst->dtype)](src, dst, dim, reps);
+    switch (dst->dtype) {
+        case int8:      return launchRepeatsKernel<int8_t>(src, dst, dim, reps);
+        case int16:     return launchRepeatsKernel<int16_t>(src, dst, dim, reps);
+        case int32:     return launchRepeatsKernel<int32_t>(src, dst, dim, reps);
+        case int64:     return launchRepeatsKernel<int64_t>(src, dst, dim, reps);
+#if HAS_FLOAT16
+        case float16:  return launchRepeatsKernel<half>(src, dst, dim, reps);
+        case bfloat16: return launchRepeatsKernel<bhalf>(src, dst, dim, reps);
+#endif
+        case float32:   return launchRepeatsKernel<float>(src, dst, dim, reps);
+        case float64:   return launchRepeatsKernel<double>(src, dst, dim, reps);
+        default:        return UNSUPPORTED_DTYPE;
+    }
 }
 
 }

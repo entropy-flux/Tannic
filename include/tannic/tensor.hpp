@@ -589,7 +589,8 @@ public:
                 case int16:   fill(int16_t{});   break;
                 case int32:   fill(int32_t{});   break;
                 case int64:   fill(int64_t{});   break;
-                case float16: fill(float16_t{}); break;   
+                case float16:  fill(float16_t{}) ; break;   
+                case bfloat16: fill(bfloat16_t{}); break;   
                 case float32: fill(float{});     break;
                 case float64: fill(double{});    break;
                 default: throw Exception("Unsupported dtype in assignment");
@@ -667,17 +668,15 @@ public:
                 case int16:   fill(int16_t{});   break;
                 case int32:   fill(int32_t{});   break;
                 case int64:   fill(int64_t{});   break;
-                case float16: fill(float16_t{}); break;   
+                case float16:  fill(float16_t{}) ; break;   
+                case bfloat16: fill(bfloat16_t{}); break;   
                 case float32: fill(float{});     break;
                 case float64: fill(double{});    break;
                 default: throw Exception("Unsupported dtype in assignment");
             } 
         }  
     }
-
-
-
-
+ 
     /**
      * @brief Assigns values to a 3D tensor from a triple-nested initializer list.
      *
@@ -761,7 +760,8 @@ public:
                 case int16:   fill(int16_t{});   break;
                 case int32:   fill(int32_t{});   break;
                 case int64:   fill(int64_t{});   break;
-                case float16: fill(float16_t{}); break;   
+                case float16:  fill(float16_t{}) ; break;   
+                case bfloat16: fill(bfloat16_t{}); break;   
                 case float32: fill(float{});     break;
                 case float64: fill(double{});    break;
                 default: throw Exception("Unsupported dtype in assignment");
@@ -878,7 +878,8 @@ public:
                 case int16:   fill(int16_t{});   break;
                 case int32:   fill(int32_t{});   break;
                 case int64:   fill(int64_t{});   break;
-                case float16: fill(float16_t{}); break;  
+                case float16:  fill(float16_t{}) ; break;   
+                case bfloat16: fill(bfloat16_t{}); break;   
                 case float32: fill(float{});     break;
                 case float64: fill(double{});    break;
                 default: throw Exception("Unsupported dtype in assignment");

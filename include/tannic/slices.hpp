@@ -384,7 +384,8 @@ void Slice<Source, Indexes...>::operator=(T value) {
         case int16:  { copy(tobytes(int16_t(value)), offset()); break; }
         case int32:  { copy(tobytes(int32_t(value)), offset()); break; }
         case int64:  { copy(tobytes(int64_t(value)), offset()); break; }
-        case float16:{ copy(tobytes(float16_t(value)), offset()); break; }
+        case float16:  { copy(tobytes(float16_t(value)),  offset()); break; }
+        case bfloat16: { copy(tobytes(bfloat16_t(value)), offset()); break; }
         case float32:{ copy(tobytes(float(value)),  offset()); break; }
         case float64:{ copy(tobytes(double(value)), offset()); break; }
         default: throw Exception("Unsupported dtype for assignment");
@@ -402,13 +403,14 @@ bool Slice<Source, Indexes...>::operator==(T value) const {
         case int16: {   int16_t casted = value; return compare(tobytes(casted), offset()); }
         case int32: {   int32_t casted = value; return compare(tobytes(casted), offset()); }
         case int64: {   int64_t casted = value; return compare(tobytes(casted), offset()); }
-        case float16: { float16_t half = value; return compare(tobytes(half) ,  offset()); }
-        case float32:  {  float casted = value; return compare(tobytes(casted), offset()); }
-        case float64:  { double casted = value; return compare(tobytes(casted), offset()); }  
+        case float16:   { float16_t half = value; return compare(tobytes(half) , offset()); }
+        case bfloat16: { bfloat16_t half = value; return compare(tobytes(half) , offset()); }
+        case float32: {  float casted = value; return compare(tobytes(casted), offset()); }
+        case float64: { double casted = value; return compare(tobytes(casted), offset()); }  
         default: throw Exception("Unsupported dtype for comparison");
     }
 }   
- 
+
 } // namespace tannic::expression
  
 #endif // SLICES_HPP 

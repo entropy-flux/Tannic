@@ -5,13 +5,12 @@
     #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
         #include <stdfloat>
         using half = std::float16_t;
+        using bhalf = std::bfloat16_t;
         #define HAS_FLOAT16 1
     #else 
         #define HAS_FLOAT16 0 
-        struct half_placeholder { float value; };
-        using half = half_placeholder;
     #endif
-#endif
+#endif  
 
 namespace {
 
@@ -75,6 +74,7 @@ bool allclose(const tensor_t* src0, const tensor_t* src1, double rtol, double at
     switch (src0->dtype) {  
 #if HAS_FLOAT16
         case float16: return launchAllcloseKernel<half>(src0, src1, rtol, atol);
+        case bfloat16: return launchAllcloseKernel<bhalf>(src0, src1, rtol, atol);
 #endif
         case float32: return launchAllcloseKernel<float>(src0, src1, rtol, atol);
         case float64: return launchAllcloseKernel<double>(src0, src1, rtol, atol);

@@ -71,8 +71,16 @@
 #include <complex>
 #include "runtime/types.h"
 
-namespace tannic { 
+namespace tannic {  
 
+struct boolean_t {
+    bool value = false;
+    boolean_t() : value(false) {}
+    template<typename T> boolean_t(T value) : value(static_cast<bool>(value)) {}
+    operator bool() const { return value; } 
+    void write(std::byte*, std::ptrdiff_t) const;  
+};  
+ 
 struct float16_t {
     uint16_t bits = 0; 
     float16_t() : bits(0) {}
@@ -81,8 +89,18 @@ struct float16_t {
     float16_t(double value) : float16_t(static_cast<float>(value)) {}
     float16_t(float); 
     operator float() const;
+}; 
+
+struct bfloat16_t {
+    uint16_t bits = 0; 
+    bfloat16_t() : bits(0) {}
+    template<std::integral T>
+    bfloat16_t(T value) : bfloat16_t(static_cast<float>(value)) {}
+    bfloat16_t(double value) : bfloat16_t(static_cast<float>(value)) {}
+    bfloat16_t(float); 
+    operator float() const;
 };
- 
+  
 /**
  * @brief Returns the size in bytes of a given tensor data type.
  * @param type The data type to query
@@ -109,6 +127,7 @@ constexpr inline std::size_t dsizeof(type type) {
         case int32:     return sizeof(int32_t);
         case int64:     return sizeof(int64_t);
         case float16:   return sizeof(float) / 2;
+        case bfloat16:  return sizeof(float) / 2;
         case float32:   return sizeof(float);
         case float64:   return 2 * sizeof(float);
         case complex64: return 2 * sizeof(float);     
@@ -163,6 +182,7 @@ constexpr inline std::string dnameof(type type) {
         case int32:      return "int32";
         case int64:      return "int64";
         case float16:    return "float16";
+        case bfloat16:    return "bfloat16";
         case float32:    return "float32";
         case float64:    return "float64";
         case complex64:  return "complex64";
@@ -200,6 +220,7 @@ constexpr inline uint8_t dcodeof(type type) {
         case int32:     return 14;
         case int64:     return 15;
         case float16:   return 23;
+        case bfloat16:  return 231;
         case float32:   return 24;
         case float64:   return 25;
         case complex64: return 35;     
@@ -227,6 +248,7 @@ constexpr inline type dtypeof(uint8_t code) {
         case 14: return int32;
         case 15: return int64;
         case 23: return float16;
+        case 231:return bfloat16;
         case 24: return float32;
         case 25: return float64;
         case 35: return complex64;
@@ -243,6 +265,7 @@ constexpr inline type dtypeof() {
     else if constexpr (std::is_same_v<T, int32_t>) return int32;
     else if constexpr (std::is_same_v<T, int64_t>) return int64;
     else if constexpr (std::is_same_v<T, float16_t>)   return float16;
+    else if constexpr (std::is_same_v<T, bfloat16_t>)  return bfloat16;
     else if constexpr (std::is_same_v<T, float>)   return float32;
     else if constexpr (std::is_same_v<T, double>)  return float64;
     else if constexpr (std::is_same_v<T, std::complex<float>>)  return complex64;

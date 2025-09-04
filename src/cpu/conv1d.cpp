@@ -1,16 +1,15 @@
 #include <array>
-#include "cpu/conv.hpp"
+#include "cpu/conv.hpp" 
 #ifndef HAS_FLOAT16
     #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
         #include <stdfloat>
         using half = std::float16_t;
+        using bhalf = std::bfloat16_t;
         #define HAS_FLOAT16 1
     #else 
         #define HAS_FLOAT16 0 
-        struct half_placeholder { float value; };
-        using half = half_placeholder;
     #endif
-#endif
+#endif 
 
 namespace {
 
@@ -102,21 +101,21 @@ constexpr static status launchDefaultConv1DKernel(
 }
 
 using Conv1DKernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*, const size_t, const size_t);
-
 constexpr auto dispatchConv1D = []() {
     std::array<Conv1DKernel, index(TYPES, TYPES)> table;
-    table.fill(launchDefaultConv1DKernel);
-    table[index(int8, int8)] = launchConv1DKernel<int8_t, int8_t, int8_t>;
+    table.fill(launchDefaultConv1DKernel); 
+    table[index(int8, int8)]   = launchConv1DKernel<int8_t, int8_t, int8_t>;
     table[index(int16, int16)] = launchConv1DKernel<int16_t, int16_t, int16_t>;
     table[index(int32, int32)] = launchConv1DKernel<int32_t, int32_t, int32_t>;
     table[index(int64, int64)] = launchConv1DKernel<int64_t, int64_t, int64_t>;
 #if HAS_FLOAT16
-    table[index(float16, float16)] = launchConv1DKernel<half, half, half>;
+    table[index(float16, float16)]  = launchConv1DKernel<half, half, half>;
+    table[index(bfloat16, bfloat16)] = launchConv1DKernel<bhalf, bhalf, bhalf>; // <-- added BF16
 #endif
-    table[index(float32, float32)] = launchConv1DKernel<float, float, float>;
-    table[index(float64, float64)] = launchConv1DKernel<double, double, double>;
+    table[index(float32, float32)]  = launchConv1DKernel<float, float, float>;
+    table[index(float64, float64)]  = launchConv1DKernel<double, double, double>;
     return table;
-}();
+}(); 
 
 } namespace cpu {
 

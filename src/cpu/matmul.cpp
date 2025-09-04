@@ -8,13 +8,13 @@
     #if defined(__STDCPP_FLOAT16_T__) && __STDCPP_FLOAT16_T__
         #include <stdfloat>
         using half = std::float16_t;
+        using bhalf = std::bfloat16_t;
         #define HAS_FLOAT16 1
     #else 
         #define HAS_FLOAT16 0 
-        struct half_placeholder { float value; };
-        using half = half_placeholder;
     #endif
-#endif
+#endif 
+
 
 namespace cpu {
  
@@ -225,6 +225,21 @@ constexpr auto dispatchGemm = []() {
     table[index(int32, float16)]   = launchGemmKernel<int32_t, half, float>;
     table[index(float16, int64)]   = launchGemmKernel<half, int64_t, double>;
     table[index(int64, float16)]   = launchGemmKernel<int64_t, half, double>;
+    
+    table[index(bfloat16, bfloat16)] = launchGemmKernel<bhalf, bhalf, bhalf>;
+    table[index(bfloat16, float32)]  = launchGemmKernel<bhalf, float, float>;
+    table[index(float32, bfloat16)]  = launchGemmKernel<float, bhalf, float>;
+    table[index(bfloat16, float64)]  = launchGemmKernel<bhalf, double, double>;
+    table[index(float64, bfloat16)]  = launchGemmKernel<double, bhalf, double>;
+
+    table[index(bfloat16, int8)]     = launchGemmKernel<bhalf, int8_t, float>;
+    table[index(int8, bfloat16)]     = launchGemmKernel<int8_t, bhalf, float>;
+    table[index(bfloat16, int16)]    = launchGemmKernel<bhalf, int16_t, float>;
+    table[index(int16, bfloat16)]    = launchGemmKernel<int16_t, bhalf, float>;
+    table[index(bfloat16, int32)]    = launchGemmKernel<bhalf, int32_t, float>;
+    table[index(int32, bfloat16)]    = launchGemmKernel<int32_t, bhalf, float>;
+    table[index(bfloat16, int64)]    = launchGemmKernel<bhalf, int64_t, double>;
+    table[index(int64, bfloat16)]    = launchGemmKernel<int64_t, bhalf, double>;
 #endif
     table[index(int32, float32)] = launchGemmKernel<int32_t, float, float>;
     table[index(float32, int32)] = launchGemmKernel<float, int32_t, float>;

@@ -34,6 +34,7 @@ enum type {
     int32,
     int64,
     float16,
+    bfloat16,
     float32,
     float64,
     complex64,   
