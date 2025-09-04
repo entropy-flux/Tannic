@@ -11,18 +11,40 @@ struct \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin}{Argmin}}
 \begin{DoxyCompactList}\small\item\em Finds the {\bfseries{indexes of minimum values}} along an axis. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum}{Argsum}}
 \begin{DoxyCompactList}\small\item\em Sums tensor values along an axis. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{Binary}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for a binary tensor operation. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1expression_1_1Cartesian}{Cartesian}}
 \begin{DoxyCompactList}\small\item\em Tag type for \doxylink{structtannic_1_1expression_1_1Cartesian}{Cartesian} (real/imaginary) complex number representation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Comparison}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for element-\/wise tensor comparisons. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{Complexification}}
 \begin{DoxyCompactList}\small\item\em Creates a complex tensor view from real components. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4}{Complexification$<$ Coordinates, Real, Imaginary $>$}}
 \item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4}{Complexification$<$ Coordinates, Source $>$}}
 \item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1EQ}{EQ}}
+\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{Expansion}}
-\begin{DoxyCompactList}\small\item\em Expression template for expanding (broadcasting) singleton dimensions of a tensor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for expanding (broadcasting) singleton dimensions of a tensor. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{Expression}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{Flatten}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for flattening a contiguous range of dimensions. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{Function}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for mathematical function operations. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1GE}{GE}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1GT}{GT}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1LE}{LE}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1LT}{LT}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1NE}{NE}}
+\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{Permutation}}
-\begin{DoxyCompactList}\small\item\em Expression template for reordering tensor dimensions according to a specified permutation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for reordering tensor dimensions according to a specified permutation. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1expression_1_1Polar}{Polar}}
 \begin{DoxyCompactList}\small\item\em Tag type for \doxylink{structtannic_1_1expression_1_1Polar}{Polar} (magnitude/angle) complex number representation. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{Realification}}
@@ -30,48 +52,109 @@ class \mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{Realification
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{Reduction}}
 \begin{DoxyCompactList}\small\item\em Lazy reduction expression. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{Slice}}
-\begin{DoxyCompactList}\small\item\em Expression template representing a tensor slice or subview. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template representing a tensor slice or subview. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{Squeeze}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for removing singleton dimensions from a tensor. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{Transformation}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for tensor transformations. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{Transpose}}
-\begin{DoxyCompactList}\small\item\em Expression template for transposing two dimensions of a tensor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for transposing two dimensions of a tensor. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Unary}{Unary}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for a unary tensor aritmetic operation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{Unsqueeze}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for inserting singleton dimensions into a tensor. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1View}{View}}
-\begin{DoxyCompactList}\small\item\em Expression template for viewing a tensor with a new shape. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for viewing a tensor with a new shape. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$Expression Real$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_ab9732ede6a977fed3895bf928a67748f}{complexify}} (Real \&\&real)
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a275ce372e2182c82316e081500746ac8}{operator==}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a55ca5075ef36aafcf96f32ca63828b0c}{operator!=}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_ae7e54ff135882809b772d1224cff79e3}{operator$<$}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_abab1adc773f6b6726fca346f6241a527}{operator$<$=}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a73cdabf87a5bcb2ff53ed1d8dadbf276}{operator$>$}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a448cb8f607776e8d6febc409b3e71436}{operator$>$=}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} \mbox{\hyperlink{namespacetannic_1_1expression_acf6a1b94b0f8ba3f6823c4c30255ad45}{allclose}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{first}}, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{second}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{double}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rtol}}=1\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{e}}-\/5\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{f}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{double}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{atol}}=1\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{e}}-\/8\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{f}})
+\begin{DoxyCompactList}\small\item\em Determine whether two tensors are element-\/wise equal within a tolerance. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Real$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_ab9732ede6a977fed3895bf928a67748f}{complexify}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Real}} \&\&real)
 \begin{DoxyCompactList}\small\item\em Creates a complex tensor view from interleaved real/imaginary data. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Real, Expression Imaginary$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}} (Real \&\&real, Imaginary \&\&imaginary)
+{\footnotesize template$<$Composable Real, Composable Imaginary$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Real}} \&\&real, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Imaginary}} \&\&imaginary)
 \begin{DoxyCompactList}\small\item\em Creates complex tensor from separate real and imaginary tensors ~\newline
  \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Magnitude, Expression Angle$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a94ab220f2ca090334605296af5f3de84}{polar}} (Magnitude \&\&rho, Angle \&\&theta)
+{\footnotesize template$<$Composable Magnitude, Composable Angle$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a94ab220f2ca090334605296af5f3de84}{polar}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Magnitude}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rho}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Angle}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{theta}})
 \begin{DoxyCompactList}\small\item\em Creates complex tensor from polar coordinates (magnitude/angle) \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Complex$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a0e5202d0e8bc3b22deddc6eabcb0df39}{realify}} (Complex \&\&\mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}})
+{\footnotesize template$<$Composable Complex$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a0e5202d0e8bc3b22deddc6eabcb0df39}{realify}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Complex}} \&\&\mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}})
 \begin{DoxyCompactList}\small\item\em Creates a real-\/valued view of complex tensor data. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{argmax}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a0cee5a6cd1bfafa984d9de0c89548424}{argmax}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} axis, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} keepdim=\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}})
 \begin{DoxyCompactList}\small\item\em Creates an \doxylink{structtannic_1_1expression_1_1Argmax}{Argmax} reduction. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3}{argmin}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_ae27f710a9c2d6f472de4c5b815277dcd}{argmin}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} axis, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} keepdim=\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}})
 \begin{DoxyCompactList}\small\item\em Creates an \doxylink{structtannic_1_1expression_1_1Argmin}{Argmin} reduction. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96}{sum}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a86e00b9acced8ebb951803f22ef7207e}{sum}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} axis, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} keepdim=\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}})
 \begin{DoxyCompactList}\small\item\em Creates a sum reduction. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2}{mean}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_af322dc9f370e4f50cfcacec0f6fbe527}{mean}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} axis, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} keepdim=\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}})
 \begin{DoxyCompactList}\small\item\em Creates a mean reduction. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source, Integral ... Indexes$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}{view}} (Source \&\&source, Indexes ... indexes)
+{\footnotesize template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{T}} $>$ }\\std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{tobytes}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{T}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{reference}})
+\item 
+{\footnotesize template$<$Composable Source, Integral ... Indexes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}{view}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Indexes}} ... \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{indexes}})
 \begin{DoxyCompactList}\small\item\em Creates a reshaped view of a tensor or expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}{transpose}} (Source \&\&source, int first, int second)
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}{transpose}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{first}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{second}})
 \begin{DoxyCompactList}\small\item\em Creates a transposed view of a tensor or expression by swapping two dimensions. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source, Integral ... Indexes$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a1f1dde31ec629ed3d6b2b979221cf802}{permute}} (Source \&\&source, Indexes... indexes)
+{\footnotesize template$<$Composable Source, Integral ... Indexes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a1f1dde31ec629ed3d6b2b979221cf802}{permute}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, Indexes... \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{indexes}})
 \begin{DoxyCompactList}\small\item\em Creates a permuted view of a tensor or expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source, Integral... Sizes$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a3e153f6fc540062b27409ba60926e869}{expand}} (Source \&\&source, Sizes... sizes)
-\begin{DoxyCompactList}\small\item\em Creates an expanded view of a tensor, broadcasting singleton dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\footnotesize template$<$Composable Source, Integral... Sizes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a3e153f6fc540062b27409ba60926e869}{expand}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, Sizes... \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{sizes}})
+\begin{DoxyCompactList}\small\item\em Creates an expanded view of a tensor, broadcasting singleton dimensions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_aeb6b00dc672b62ceb6217af46120894c}{squeeze}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source)
+\begin{DoxyCompactList}\small\item\em Removes all singleton dimensions from a tensor (squeeze). \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Source, Integral... Axes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_af3cfb1c4d6698824ae724c29c94e5d18}{unsqueeze}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, Axes... \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{axes}})
+\begin{DoxyCompactList}\small\item\em Inserts singleton dimensions at the specified axes (unsqueeze). \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_ae0573425cb00a0c994323d6453efa3ff}{flatten}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} start=0, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} end=-\/1)
+\begin{DoxyCompactList}\small\item\em Flattens dimensions of a tensor into a single dimension. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}\label{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61} 
+\Hypertarget{namespacetannic_1_1expression_acf6a1b94b0f8ba3f6823c4c30255ad45}\label{namespacetannic_1_1expression_acf6a1b94b0f8ba3f6823c4c30255ad45} 
+\index{tannic::expression@{tannic::expression}!allclose@{allclose}}
+\index{allclose@{allclose}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{allclose()}{allclose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} tannic\+::expression\+::allclose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&}]{second,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{double}}}]{rtol = {\ttfamily 1\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{e}}-\/5\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{f}}},  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{double}}}]{atol = {\ttfamily 1\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{e}}-\/8\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{f}}} }\end{DoxyParamCaption})}
+
+
+
+Determine whether two tensors are element-\/wise equal within a tolerance. 
+
+This function checks whether all elements of two tensors are close to each other, within a relative tolerance ({\ttfamily rtol}) and an absolute tolerance ({\ttfamily atol}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & The first tensor to compare. \\
+\hline
+{\em second} & The second tensor to compare. \\
+\hline
+{\em rtol} & Relative tolerance. Default = 1e-\/5. The allowable difference grows with the magnitude of the values. \\
+\hline
+{\em atol} & Absolute tolerance. Default = 1e-\/8. The minimum absolute tolerance for small values.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if all corresponding elements of {\ttfamily first} and {\ttfamily second} satisfy the condition\+: $ |a - b| \leq \text{atol} + \text{rtol} \times |b| $, false otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classtannic_1_1Exception}{tannic\+::\+Exception}} & if the tensors have mismatched shapes or incompatible environments. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{namespacetannic_1_1expression_a0cee5a6cd1bfafa984d9de0c89548424}\label{namespacetannic_1_1expression_a0cee5a6cd1bfafa984d9de0c89548424} 
 \index{tannic::expression@{tannic::expression}!argmax@{argmax}}
 \index{argmax@{argmax}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{argmax()}{argmax()}}
-{\footnotesize\ttfamily template$<$Expression Source$>$ \\
-constexpr auto tannic\+::expression\+::argmax (\begin{DoxyParamCaption}\item[{Source \&\&}]{source,  }\item[{int}]{axis = {\ttfamily -\/1},  }\item[{bool}]{keepdim = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::argmax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}}}]{axis,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}}}]{keepdim = {\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -84,28 +167,28 @@ Creates an \doxylink{structtannic_1_1expression_1_1Argmax}{Argmax} reduction.
 {\em keepdim} & If {\ttfamily true}, keeps reduced axis as size 1.\\
 \hline
 \end{DoxyParams}
-\hypertarget{namespacetannic_1_1expression_autotoc_md36}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md36}
+\hypertarget{namespacetannic_1_1expression_autotoc_md37}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md37}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X\ =\ \{\{3,\ 1,\ 4\},\ }
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{X}}\ =\ \{\{3,\ 1,\ 4\},\ }
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 5,\ 9\}\};\ \ \textcolor{comment}{//\ shape(2,\ 3)}}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{argmax}}(X,\ 0);\ \ \textcolor{comment}{//\ Reduce\ axis\ 0\ (rows)}}
+\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a0cee5a6cd1bfafa984d9de0c89548424}{argmax}}(X,\ 0);\ \ \textcolor{comment}{//\ Reduce\ axis\ 0\ (rows)}}
 \DoxyCodeLine{std::cout\ <<\ Y\ <<\ std::endl;}
 \DoxyCodeLine{\textcolor{comment}{//\ Y\ =\ [0,\ 1,\ 1]\ \ \ \ \ \ \ \ \ \ //\ Indexes\ of\ max\ values\ per\ column}}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{argmax}}(X,\ 1,\ \textcolor{comment}{/*keepdim=*\ /true);\ \ //\ Reduce\ axis\ 1\ (columns),\ keep\ dims}}
+\DoxyCodeLine{Tensor\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a0cee5a6cd1bfafa984d9de0c89548424}{argmax}}(X,\ 1,\ \textcolor{comment}{/*keepdim=*\ /true);\ \ //\ Reduce\ axis\ 1\ (columns),\ keep\ dims}}
 \DoxyCodeLine{\textcolor{comment}{std::cout\ <<\ Z\ <<\ std::endl;}}
 \DoxyCodeLine{\textcolor{comment}{//\ Z\ =\ [[2],}}
 \DoxyCodeLine{\textcolor{comment}{//\ \ \ \ \ \ [2]]\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Indexes\ of\ max\ values\ per\ row}}
 
 \end{DoxyCode}
- \Hypertarget{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3}\label{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3} 
+ \Hypertarget{namespacetannic_1_1expression_ae27f710a9c2d6f472de4c5b815277dcd}\label{namespacetannic_1_1expression_ae27f710a9c2d6f472de4c5b815277dcd} 
 \index{tannic::expression@{tannic::expression}!argmin@{argmin}}
 \index{argmin@{argmin}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{argmin()}{argmin()}}
-{\footnotesize\ttfamily template$<$Expression Source$>$ \\
-constexpr auto tannic\+::expression\+::argmin (\begin{DoxyParamCaption}\item[{Source \&\&}]{source,  }\item[{int}]{axis = {\ttfamily -\/1},  }\item[{bool}]{keepdim = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::argmin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}}}]{axis,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}}}]{keepdim = {\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -118,13 +201,13 @@ Creates an \doxylink{structtannic_1_1expression_1_1Argmin}{Argmin} reduction.
 {\em keepdim} & If {\ttfamily true}, keeps reduced axis as size 1.\\
 \hline
 \end{DoxyParams}
-\hypertarget{namespacetannic_1_1expression_autotoc_md37}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md37}
+\hypertarget{namespacetannic_1_1expression_autotoc_md38}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md38}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X\ =\ \{\{3,\ 1,\ 4\},\ }
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{X}}\ =\ \{\{3,\ 1,\ 4\},\ }
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 5,\ 9\}\};}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3}{argmin}}(X,\ 1);}
+\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_ae27f710a9c2d6f472de4c5b815277dcd}{argmin}}(X,\ 1);}
 \DoxyCodeLine{\textcolor{comment}{//\ Y\ =\ [1,\ 0]\ \ //\ Min\ indexes\ per\ row}}
 
 \end{DoxyCode}
@@ -132,8 +215,8 @@ Creates an \doxylink{structtannic_1_1expression_1_1Argmin}{Argmin} reduction.
 \index{tannic::expression@{tannic::expression}!complex@{complex}}
 \index{complex@{complex}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{complex()}{complex()}}
-{\footnotesize\ttfamily template$<$Expression Real, Expression Imaginary$>$ \\
-constexpr auto tannic\+::expression\+::complex (\begin{DoxyParamCaption}\item[{Real \&\&}]{real,  }\item[{Imaginary \&\&}]{imaginary }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Real, Composable Imaginary$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::complex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Real}} \&\&}]{real,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Imaginary}} \&\&}]{imaginary }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -150,15 +233,15 @@ Creates complex tensor from separate real and imaginary tensors ~\newline
 \begin{DoxyReturn}{Returns}
 Complex tensor combining both components
 \end{DoxyReturn}
-\hypertarget{namespacetannic_1_1expression_autotoc_md5}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{namespacetannic_1_1expression_autotoc_md5}
+\hypertarget{namespacetannic_1_1expression_autotoc_md6}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{namespacetannic_1_1expression_autotoc_md6}
 
 \begin{DoxyItemize}
 \item Both tensors must have identical shapes and strides
 \item Dtypes must match (float32→complex64, float64→complex128)
-\end{DoxyItemize}\hypertarget{namespacetannic_1_1expression_autotoc_md6}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md6}
+\end{DoxyItemize}\hypertarget{namespacetannic_1_1expression_autotoc_md7}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md7}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ r\ =\ \{1.0,\ 2.0\};\ \ \textcolor{comment}{//\ real\ parts}}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{r}}\ =\ \{1.0,\ 2.0\};\ \ \textcolor{comment}{//\ real\ parts}}
 \DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ i\ =\ \{3.0,\ 4.0\};\ \ \textcolor{comment}{//\ imag\ parts}}
 \DoxyCodeLine{}
 \DoxyCodeLine{Tensor\ c\ =\ complex(r,\ i);}
@@ -169,8 +252,8 @@ Complex tensor combining both components
 \index{tannic::expression@{tannic::expression}!complexify@{complexify}}
 \index{complexify@{complexify}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{complexify()}{complexify()}}
-{\footnotesize\ttfamily template$<$Expression Real$>$ \\
-constexpr auto tannic\+::expression\+::complexify (\begin{DoxyParamCaption}\item[{Real \&\&}]{real }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Real$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::complexify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Real}} \&\&}]{real }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -184,13 +267,13 @@ Creates a complex tensor view from interleaved real/imaginary data.
 \begin{DoxyReturn}{Returns}
 Complex tensor view with shape \mbox{[}...,N\mbox{]} and dtype complex64/128
 \end{DoxyReturn}
-\hypertarget{namespacetannic_1_1expression_autotoc_md3}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{namespacetannic_1_1expression_autotoc_md3}
+\hypertarget{namespacetannic_1_1expression_autotoc_md4}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{namespacetannic_1_1expression_autotoc_md4}
 
 \begin{DoxyItemize}
 \item Last dimension must be even-\/sized (pairs of values)
 \item Elements must be contiguous (stride 1 in last dimension)
 \item Dtype must be float32 or float64
-\end{DoxyItemize}\hypertarget{namespacetannic_1_1expression_autotoc_md4}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md4}
+\end{DoxyItemize}\hypertarget{namespacetannic_1_1expression_autotoc_md5}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md5}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{comment}{//\ float32\ input\ with\ shape\ [4]}}
@@ -205,8 +288,8 @@ Complex tensor view with shape \mbox{[}...,N\mbox{]} and dtype complex64/128
 \index{tannic::expression@{tannic::expression}!expand@{expand}}
 \index{expand@{expand}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{expand()}{expand()}}
-{\footnotesize\ttfamily template$<$Expression Source, Integral... Sizes$>$ \\
-constexpr auto tannic\+::expression\+::expand (\begin{DoxyParamCaption}\item[{Source \&\&}]{source,  }\item[{Sizes...}]{sizes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source, Integral... Sizes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::expand (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source,  }\item[{Sizes...}]{sizes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -242,19 +325,54 @@ An {\ttfamily \doxylink{classtannic_1_1expression_1_1Expansion}{Expansion}} obje
 \end{DoxyExceptions}
 Example usage\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X(float32,\ \{1,\ 3\});\ \textcolor{comment}{//\ shape:\ (1,\ 3)}}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{X}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float32}},\ \{1,\ 3\});\ \textcolor{comment}{//\ shape:\ (1,\ 3)}}
 \DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ expand(X,\ 4,\ 3);\ \ \textcolor{comment}{//\ shape:\ (4,\ 3),\ broadcasts\ along\ the\ first\ dimension}}
 \DoxyCodeLine{}
 \DoxyCodeLine{std::cout\ <<\ Y.shape()\ <<\ std::endl;\ \ \ \textcolor{comment}{//\ prints\ (4,\ 3)}}
 \DoxyCodeLine{std::cout\ <<\ Y.strides()\ <<\ std::endl;\ \textcolor{comment}{//\ prints\ (0,\ original\_stride[1])}}
 
 \end{DoxyCode}
- \Hypertarget{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2}\label{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2} 
+ \Hypertarget{namespacetannic_1_1expression_ae0573425cb00a0c994323d6453efa3ff}\label{namespacetannic_1_1expression_ae0573425cb00a0c994323d6453efa3ff} 
+\index{tannic::expression@{tannic::expression}!flatten@{flatten}}
+\index{flatten@{flatten}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{flatten()}{flatten()}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::flatten (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}}}]{start = {\ttfamily 0},  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}}}]{end = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Flattens dimensions of a tensor into a single dimension. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Source} & The expression or tensor type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The source tensor or expression. \\
+\hline
+{\em start\+\_\+dim} & First dimension to flatten (default = 0). \\
+\hline
+{\em end\+\_\+dim} & Last dimension to flatten (default = -\/1, meaning last dim). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A {\ttfamily \doxylink{classtannic_1_1expression_1_1Flatten}{Flatten}} view expression.
+\end{DoxyReturn}
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{X}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float32}},\ \{2,\ 3,\ 4\});}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ flatten(X,\ 1,\ -\/1);\ \textcolor{comment}{//\ shape:\ (2,\ 12)}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Z\ =\ flatten(X);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ shape:\ (24)}}
+
+\end{DoxyCode}
+ \Hypertarget{namespacetannic_1_1expression_af322dc9f370e4f50cfcacec0f6fbe527}\label{namespacetannic_1_1expression_af322dc9f370e4f50cfcacec0f6fbe527} 
 \index{tannic::expression@{tannic::expression}!mean@{mean}}
 \index{mean@{mean}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{mean()}{mean()}}
-{\footnotesize\ttfamily template$<$Expression Source$>$ \\
-constexpr auto tannic\+::expression\+::mean (\begin{DoxyParamCaption}\item[{Source \&\&}]{source,  }\item[{int}]{axis = {\ttfamily -\/1},  }\item[{bool}]{keepdim = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::mean (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}}}]{axis,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}}}]{keepdim = {\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -262,33 +380,75 @@ Creates a mean reduction.
 
 
 \begin{DoxyParams}{Parameters}
-{\em axis} & Axis to reduce ({\ttfamily -\/1} for last axis). \\
+{\em axis} & Axis to reduce. \\
 \hline
 {\em keepdim} & If {\ttfamily true}, keeps reduced axis as size 1.\\
 \hline
 \end{DoxyParams}
-\hypertarget{namespacetannic_1_1expression_autotoc_md39}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md39}
+\hypertarget{namespacetannic_1_1expression_autotoc_md40}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md40}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X\ =\ \{\{1.0,\ 2.0,\ 3.0\},}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{X}}\ =\ \{\{1.0,\ 2.0,\ 3.0\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{4.0,\ 5.0,\ 6.0\}\};\ \ \textcolor{comment}{//\ shape(2,\ 3)}}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2}{mean}}(X,\ 0);\ \ \textcolor{comment}{//\ Reduce\ axis\ 0\ (rows)}}
+\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_af322dc9f370e4f50cfcacec0f6fbe527}{mean}}(X,\ 0);\ \ \textcolor{comment}{//\ Reduce\ axis\ 0\ (rows)}}
 \DoxyCodeLine{std::cout\ <<\ Y\ <<\ std::endl;}
 \DoxyCodeLine{\textcolor{comment}{//\ Y\ =\ [2.5,\ 3.5,\ 4.5]\ \ //\ Mean\ of\ values\ per\ column}}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2}{mean}}(X,\ 1,\ \textcolor{comment}{/*keepdim=*\ /true);\ \ //\ Reduce\ axis\ 1\ (columns),\ keep\ dims}}
+\DoxyCodeLine{Tensor\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_af322dc9f370e4f50cfcacec0f6fbe527}{mean}}(X,\ 1,\ \textcolor{comment}{/*keepdim=*\ /true);\ \ //\ Reduce\ axis\ 1\ (columns),\ keep\ dims}}
 \DoxyCodeLine{\textcolor{comment}{std::cout\ <<\ Z\ <<\ std::endl;}}
 \DoxyCodeLine{\textcolor{comment}{//\ Z\ =\ [[2.0],}}
 \DoxyCodeLine{\textcolor{comment}{//\ \ \ \ \ \ [5.0]]\ \ \ \ \ \ \ \ \ \ //\ Mean\ of\ values\ per\ row}}
 
 \end{DoxyCode}
- \Hypertarget{namespacetannic_1_1expression_a1f1dde31ec629ed3d6b2b979221cf802}\label{namespacetannic_1_1expression_a1f1dde31ec629ed3d6b2b979221cf802} 
+ \Hypertarget{namespacetannic_1_1expression_a55ca5075ef36aafcf96f32ca63828b0c}\label{namespacetannic_1_1expression_a55ca5075ef36aafcf96f32ca63828b0c} 
+\index{tannic::expression@{tannic::expression}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily template$<$Composable First, Composable Second$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::operator!}}= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&}]{lhs,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_1_1expression_ae7e54ff135882809b772d1224cff79e3}\label{namespacetannic_1_1expression_ae7e54ff135882809b772d1224cff79e3} 
+\index{tannic::expression@{tannic::expression}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily template$<$Composable First, Composable Second$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::operator}}$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&}]{lhs,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_1_1expression_abab1adc773f6b6726fca346f6241a527}\label{namespacetannic_1_1expression_abab1adc773f6b6726fca346f6241a527} 
+\index{tannic::expression@{tannic::expression}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily template$<$Composable First, Composable Second$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::operator}}$<$= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&}]{lhs,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_1_1expression_a275ce372e2182c82316e081500746ac8}\label{namespacetannic_1_1expression_a275ce372e2182c82316e081500746ac8} 
+\index{tannic::expression@{tannic::expression}!operator==@{operator==}}
+\index{operator==@{operator==}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$Composable First, Composable Second$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::operator}}== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&}]{lhs,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_1_1expression_a73cdabf87a5bcb2ff53ed1d8dadbf276}\label{namespacetannic_1_1expression_a73cdabf87a5bcb2ff53ed1d8dadbf276} 
+\index{tannic::expression@{tannic::expression}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily template$<$Composable First, Composable Second$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::operator}}$>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&}]{lhs,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_1_1expression_a448cb8f607776e8d6febc409b3e71436}\label{namespacetannic_1_1expression_a448cb8f607776e8d6febc409b3e71436} 
+\index{tannic::expression@{tannic::expression}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily template$<$Composable First, Composable Second$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::operator}}$>$= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&}]{lhs,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+\Hypertarget{namespacetannic_1_1expression_a1f1dde31ec629ed3d6b2b979221cf802}\label{namespacetannic_1_1expression_a1f1dde31ec629ed3d6b2b979221cf802} 
 \index{tannic::expression@{tannic::expression}!permute@{permute}}
 \index{permute@{permute}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{permute()}{permute()}}
-{\footnotesize\ttfamily template$<$Expression Source, Integral ... Indexes$>$ \\
-constexpr auto tannic\+::expression\+::permute (\begin{DoxyParamCaption}\item[{Source \&\&}]{source,  }\item[{Indexes...}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source, Integral ... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::permute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source,  }\item[{Indexes...}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -313,7 +473,7 @@ A {\ttfamily \doxylink{classtannic_1_1expression_1_1Permutation}{Permutation}} v
 \end{DoxyReturn}
 Example\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X(float32,\ \{2,\ 3,\ 4\});}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{X}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float32}},\ \{2,\ 3,\ 4\});}
 \DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ permute(X,\ 2,\ 0,\ 1);\ \textcolor{comment}{//\ shape\ becomes\ (4,\ 2,\ 3)}}
 
 \end{DoxyCode}
@@ -321,8 +481,8 @@ Example\+:
 \index{tannic::expression@{tannic::expression}!polar@{polar}}
 \index{polar@{polar}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{polar()}{polar()}}
-{\footnotesize\ttfamily template$<$Expression Magnitude, Expression Angle$>$ \\
-constexpr auto tannic\+::expression\+::polar (\begin{DoxyParamCaption}\item[{Magnitude \&\&}]{rho,  }\item[{Angle \&\&}]{theta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Magnitude, Composable Angle$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::polar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Magnitude}} \&\&}]{rho,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Angle}} \&\&}]{theta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -338,15 +498,15 @@ Creates complex tensor from polar coordinates (magnitude/angle)
 \begin{DoxyReturn}{Returns}
 Complex tensor in \doxylink{structtannic_1_1expression_1_1Cartesian}{Cartesian} form
 \end{DoxyReturn}
-\hypertarget{namespacetannic_1_1expression_autotoc_md7}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{namespacetannic_1_1expression_autotoc_md7}
+\hypertarget{namespacetannic_1_1expression_autotoc_md8}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{namespacetannic_1_1expression_autotoc_md8}
 
 \begin{DoxyItemize}
 \item Both tensors must have identical shapes
 \item Angles must be in radians
-\end{DoxyItemize}\hypertarget{namespacetannic_1_1expression_autotoc_md8}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md8}
+\end{DoxyItemize}\hypertarget{namespacetannic_1_1expression_autotoc_md9}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md9}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ mag\ =\ \{1.0,\ 2.0\};\ \ \ \ \textcolor{comment}{//\ magnitudes}}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{mag}}\ =\ \{1.0,\ 2.0\};\ \ \ \ \textcolor{comment}{//\ magnitudes}}
 \DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ ang\ =\ \{0.0,\ M\_PI/2\};\ \textcolor{comment}{//\ angles\ }}
 \DoxyCodeLine{}
 \DoxyCodeLine{Tensor\ c\ =\ polar(mag,\ ang);}
@@ -357,8 +517,8 @@ Complex tensor in \doxylink{structtannic_1_1expression_1_1Cartesian}{Cartesian} 
 \index{tannic::expression@{tannic::expression}!realify@{realify}}
 \index{realify@{realify}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{realify()}{realify()}}
-{\footnotesize\ttfamily template$<$Expression Complex$>$ \\
-constexpr auto tannic\+::expression\+::realify (\begin{DoxyParamCaption}\item[{Complex \&\&}]{complex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Complex$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::realify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Complex}} \&\&}]{complex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -372,22 +532,22 @@ Creates a real-\/valued view of complex tensor data.
 \begin{DoxyReturn}{Returns}
 Real tensor view exposing \mbox{[}real, imag\mbox{]} components
 \end{DoxyReturn}
-\hypertarget{namespacetannic_1_1expression_autotoc_md9}{}\doxyparagraph{\texorpdfstring{Transformation Rules\+:}{Transformation Rules:}}\label{namespacetannic_1_1expression_autotoc_md9}
+\hypertarget{namespacetannic_1_1expression_autotoc_md10}{}\doxyparagraph{\texorpdfstring{Transformation Rules\+:}{Transformation Rules:}}\label{namespacetannic_1_1expression_autotoc_md10}
 
 \begin{DoxyItemize}
 \item Dtype\+: complex64 → float32, complex128 → float64
 \item \doxylink{classtannic_1_1Shape}{Shape}\+: \mbox{[}...,N\mbox{]} → \mbox{[}...,N,2\mbox{]} (adds dimension for components)
 \item Memory\+: Maintains same storage with adjusted strides
-\end{DoxyItemize}\hypertarget{namespacetannic_1_1expression_autotoc_md10}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{namespacetannic_1_1expression_autotoc_md10}
+\end{DoxyItemize}\hypertarget{namespacetannic_1_1expression_autotoc_md11}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{namespacetannic_1_1expression_autotoc_md11}
 
 \begin{DoxyItemize}
 \item Input must be complex64 or complex128
 \item Must have stride 1 in last dimension (contiguous complex pairs)
-\end{DoxyItemize}\hypertarget{namespacetannic_1_1expression_autotoc_md11}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md11}
+\end{DoxyItemize}\hypertarget{namespacetannic_1_1expression_autotoc_md12}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md12}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{comment}{//\ complex64\ input\ with\ shape\ [2]}}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ cplx\ =\ \{1+2i,\ 3+4i\};}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{cplx}}\ =\ \{1+2\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{i}},\ 3+4\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{i}}\};}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{comment}{//\ float32\ output\ with\ shape\ [2,2]\ }}
 \DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ real\_view\ =\ realify(cplx);}
@@ -395,12 +555,44 @@ Real tensor view exposing \mbox{[}real, imag\mbox{]} components
 \DoxyCodeLine{\textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ [3,\ 4]]\ }}
 
 \end{DoxyCode}
- \Hypertarget{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96}\label{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96} 
+ \Hypertarget{namespacetannic_1_1expression_aeb6b00dc672b62ceb6217af46120894c}\label{namespacetannic_1_1expression_aeb6b00dc672b62ceb6217af46120894c} 
+\index{tannic::expression@{tannic::expression}!squeeze@{squeeze}}
+\index{squeeze@{squeeze}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{squeeze()}{squeeze()}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::squeeze (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Removes all singleton dimensions from a tensor (squeeze). 
+
+This function returns a {\ttfamily \doxylink{classtannic_1_1expression_1_1Squeeze}{Squeeze}} expression that reinterprets the source tensor without its size-\/1 dimensions.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Source} & The expression or tensor type. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The source tensor or expression. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A {\ttfamily \doxylink{classtannic_1_1expression_1_1Squeeze}{Squeeze}} view expression.
+\end{DoxyReturn}
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{X}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float32}},\ \{1,\ 3,\ 1\});}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ squeeze(X);\ \textcolor{comment}{//\ shape:\ (3)}}
+
+\end{DoxyCode}
+ \Hypertarget{namespacetannic_1_1expression_a86e00b9acced8ebb951803f22ef7207e}\label{namespacetannic_1_1expression_a86e00b9acced8ebb951803f22ef7207e} 
 \index{tannic::expression@{tannic::expression}!sum@{sum}}
 \index{sum@{sum}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{sum()}{sum()}}
-{\footnotesize\ttfamily template$<$Expression Source$>$ \\
-constexpr auto tannic\+::expression\+::sum (\begin{DoxyParamCaption}\item[{Source \&\&}]{source,  }\item[{int}]{axis = {\ttfamily -\/1},  }\item[{bool}]{keepdim = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::sum (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}}}]{axis,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}}}]{keepdim = {\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -413,28 +605,35 @@ Creates a sum reduction.
 {\em keepdim} & If {\ttfamily true}, keeps reduced axis as size 1.\\
 \hline
 \end{DoxyParams}
-\hypertarget{namespacetannic_1_1expression_autotoc_md38}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md38}
+\hypertarget{namespacetannic_1_1expression_autotoc_md39}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1expression_autotoc_md39}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ X\ =\ \{\{1,\ 2,\ 3\},}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{X}}\ =\ \{\{1,\ 2,\ 3\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{4,\ 5,\ 6\}\};\ \ \textcolor{comment}{//\ shape(2,\ 3)}}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96}{sum}}(X,\ 0);\ \ \textcolor{comment}{//\ Reduce\ axis\ 0\ (rows)}}
+\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a86e00b9acced8ebb951803f22ef7207e}{sum}}(X,\ 0);\ \ \textcolor{comment}{//\ Reduce\ axis\ 0\ (rows)}}
 \DoxyCodeLine{std::cout\ <<\ Y\ <<\ std::endl;}
 \DoxyCodeLine{\textcolor{comment}{//\ Y\ =\ [5,\ 7,\ 9]\ \ \ \ \ \ \ //\ Sum\ of\ values\ per\ column}}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96}{sum}}(X,\ 1,\ \textcolor{comment}{/*keepdim=*\ /true);\ \ //\ Reduce\ axis\ 1\ (columns),\ keep\ dims}}
+\DoxyCodeLine{Tensor\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a86e00b9acced8ebb951803f22ef7207e}{sum}}(X,\ 1,\ \textcolor{comment}{/*keepdim=*\ /true);\ \ //\ Reduce\ axis\ 1\ (columns),\ keep\ dims}}
 \DoxyCodeLine{\textcolor{comment}{std::cout\ <<\ Z\ <<\ std::endl;}}
 \DoxyCodeLine{\textcolor{comment}{//\ Z\ =\ [[6],}}
 \DoxyCodeLine{\textcolor{comment}{//\ \ \ \ \ \ [15]]\ \ \ \ \ \ \ \ \ \ \ //\ Sum\ of\ values\ per\ row}}
 
 \end{DoxyCode}
- \Hypertarget{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}\label{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00} 
+ \Hypertarget{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}\label{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476} 
+\index{tannic::expression@{tannic::expression}!tobytes@{tobytes}}
+\index{tobytes@{tobytes}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{tobytes()}{tobytes()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{T}} $>$ \\
+std\+::byte \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \texorpdfstring{$\ast$}{*} tannic\+::expression\+::tobytes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{T}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&}]{reference }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}\label{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00} 
 \index{tannic::expression@{tannic::expression}!transpose@{transpose}}
 \index{transpose@{transpose}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{transpose()}{transpose()}}
-{\footnotesize\ttfamily template$<$Expression Source$>$ \\
-constexpr auto tannic\+::expression\+::transpose (\begin{DoxyParamCaption}\item[{Source \&\&}]{source,  }\item[{int}]{first,  }\item[{int}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::transpose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}}}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}}}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -457,12 +656,49 @@ Creates a transposed view of a tensor or expression by swapping two dimensions.
 \begin{DoxyReturn}{Returns}
 A {\ttfamily \doxylink{classtannic_1_1expression_1_1Transpose}{Transpose}} view expression. 
 \end{DoxyReturn}
-\Hypertarget{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}\label{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe} 
+\Hypertarget{namespacetannic_1_1expression_af3cfb1c4d6698824ae724c29c94e5d18}\label{namespacetannic_1_1expression_af3cfb1c4d6698824ae724c29c94e5d18} 
+\index{tannic::expression@{tannic::expression}!unsqueeze@{unsqueeze}}
+\index{unsqueeze@{unsqueeze}!tannic::expression@{tannic::expression}}
+\doxysubsubsection{\texorpdfstring{unsqueeze()}{unsqueeze()}}
+{\footnotesize\ttfamily template$<$Composable Source, Integral... Axes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::unsqueeze (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source,  }\item[{Axes...}]{axes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Inserts singleton dimensions at the specified axes (unsqueeze). 
+
+This function returns an {\ttfamily \doxylink{classtannic_1_1expression_1_1Unsqueeze}{Unsqueeze}} expression that reinterprets the source tensor with new dimensions of size 1 added.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Source} & The expression or tensor type. \\
+\hline
+{\em Axes} & One or more integral indices where new dimensions will be inserted. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em source} & The source tensor or expression. \\
+\hline
+{\em axes} & Axis indices (negative indices allowed). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An {\ttfamily \doxylink{classtannic_1_1expression_1_1Unsqueeze}{Unsqueeze}} view expression.
+\end{DoxyReturn}
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{X}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float32}},\ \{3\});}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ unsqueeze(X,\ 0);\ \ \textcolor{comment}{//\ shape:\ (1,\ 3)}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Z\ =\ unsqueeze(X,\ -\/1);\ \textcolor{comment}{//\ shape:\ (3,\ 1)}}
+
+\end{DoxyCode}
+ \Hypertarget{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}\label{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe} 
 \index{tannic::expression@{tannic::expression}!view@{view}}
 \index{view@{view}!tannic::expression@{tannic::expression}}
 \doxysubsubsection{\texorpdfstring{view()}{view()}}
-{\footnotesize\ttfamily template$<$Expression Source, Integral ... Indexes$>$ \\
-constexpr auto tannic\+::expression\+::view (\begin{DoxyParamCaption}\item[{Source \&\&}]{source,  }\item[{Indexes ...}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source, Integral ... Indexes$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} tannic\+::expression\+::view (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&}]{source,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Indexes}} ...}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 

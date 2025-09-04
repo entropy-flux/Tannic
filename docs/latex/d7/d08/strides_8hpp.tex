@@ -1,5 +1,10 @@
 \doxysection{include/tannic/strides.hpp File Reference}
 \hypertarget{strides_8hpp}{}\label{strides_8hpp}\index{include/tannic/strides.hpp@{include/tannic/strides.hpp}}
+
+
+Memory layout specification for tensor dimensions in the Tannic Tensor Library.  
+
+
 {\ttfamily \#include $<$array$>$}\newline
 {\ttfamily \#include $<$cstddef$>$}\newline
 {\ttfamily \#include $<$stdexcept$>$}\newline
@@ -8,20 +13,10 @@
 {\ttfamily \#include "{}shape.\+hpp"{}}\newline
 {\ttfamily \#include "{}indexing.\+hpp"{}}\newline
 {\ttfamily \#include "{}exceptions.\+hpp"{}}\newline
-Include dependency graph for strides.\+hpp\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{dd/d2d/strides_8hpp__incl}
-\end{center}
-\end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{de/d05/strides_8hpp__dep__incl}
-\end{center}
-\end{figure}
+Include dependency graph for strides.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -39,3 +34,30 @@ constexpr bool \mbox{\hyperlink{namespacetannic_a1c8ec7747a2d4ba830533d01fdeb35b
 \begin{DoxyCompactList}\small\item\em Equality comparison for strides. \end{DoxyCompactList}\item 
 std\+::ostream \& \mbox{\hyperlink{namespacetannic_a78e6118242dbf100a05da89b391dedb4}{tannic\+::operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&strides)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Memory layout specification for tensor dimensions in the Tannic Tensor Library. 
+
+\begin{DoxyAuthor}{Author}
+Eric Hermosis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+Defines {\ttfamily \doxylink{classtannic_1_1Strides}{tannic\+::\+Strides}}, which determines how elements are spaced in memory across tensor dimensions. Key features\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Memory layout control}}\+: Row-\/major (default), column-\/major, or custom striding.
+\item {\bfseries{Constexpr support}}\+: Compile-\/time stride computation.
+\item {\bfseries{Shape integration}}\+: Auto-\/computes contiguous strides from {\ttfamily Shape}.
+\item {\bfseries{Negative indexing}}\+: Python-\/style dimension access ~\newline
+
+\end{DoxyItemize}
+
+All expression-\/like objects in the library expose an {\ttfamily Strides} as part of their interface, making this file central to the Tannic design.
+
+\begin{DoxySeeAlso}{See also}
+Shape.\+hpp (tensor dimensions), Indexing.\+hpp (negative index handling) 
+\end{DoxySeeAlso}

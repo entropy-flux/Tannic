@@ -24,8 +24,10 @@ class \mbox{\hyperlink{classtannic_1_1Device}{Device}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Device}{Device} memory domain. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Device}{Device} enumeration singleton. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1Error}{Error}}
+\begin{DoxyCompactList}\small\item\em Represents serious, typically unrecoverable problems. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}
-\begin{DoxyCompactList}\small\item\em A simple generic exception type for the Tannic \doxylink{classtannic_1_1Tensor}{Tensor} Library. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Base class for recoverable runtime anomalies in the framework. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1Header}{Header}}
 \item 
 class \mbox{\hyperlink{classtannic_1_1Host}{Host}}
@@ -47,8 +49,8 @@ struct \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}
 \doxysubsubsection*{Concepts}
 \begin{DoxyCompactItemize}
 \item 
-concept \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}
-\begin{DoxyCompactList}\small\item\em Defines the core protocol for all expression-\/like types in the Tannic Tensor Library. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Operator}{Operator}}
 \begin{DoxyCompactList}\small\item\em Concept defining requirements for tensor operation types. \end{DoxyCompactList}\item 
 concept \mbox{\hyperlink{concepttannic_1_1Functional}{Functional}}
@@ -62,7 +64,9 @@ concept \mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}
 concept \mbox{\hyperlink{concepttannic_1_1Assignable}{Assignable}}
 \begin{DoxyCompactList}\small\item\em Concept for types that can assign values. \end{DoxyCompactList}\item 
 concept \mbox{\hyperlink{concepttannic_1_1Comparable}{Comparable}}
-\begin{DoxyCompactList}\small\item\em Concept for types that can compare their value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Concept for types that can compare their value. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}
+\begin{DoxyCompactList}\small\item\em Defines the core protocol for all expression-\/like types in the Tannic Tensor Library. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -70,6 +74,13 @@ using \mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{range}
 \begin{DoxyCompactList}\small\item\em Convenience alias for {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{tannic\+::indexing\+::\+Range}}. \end{DoxyCompactList}\item 
 using \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}} = std\+::variant$<$ \mbox{\hyperlink{classtannic_1_1Host}{Host}}, \mbox{\hyperlink{classtannic_1_1Device}{Device}} $>$
 \begin{DoxyCompactList}\small\item\em Memory environment variant type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}} \{ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a782f1dd694a3dd433925f3298d97bee1}{Tannic}}
+, \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a95b88f180e9eb5678e0f9ebac2cbe643}{Py\+Torch}}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -85,14 +96,18 @@ constexpr bool \mbox{\hyperlink{namespacetannic_a1c8ec7747a2d4ba830533d01fdeb35b
 \begin{DoxyCompactList}\small\item\em Equality comparison for strides. \end{DoxyCompactList}\item 
 std\+::ostream \& \mbox{\hyperlink{namespacetannic_a78e6118242dbf100a05da89b391dedb4}{operator$<$$<$}} (std\+::ostream \&os, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&strides)
 \item 
+void \mbox{\hyperlink{namespacetannic_acaa226116ce1f3dd66906ae2b1356275}{setiostyle}} (\mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}} style)
+\item 
 std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1a847102d1be0f3bdc61821df66844c0}{operator$<$$<$}} (std\+::ostream \&ostream, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&tensor)
 \item 
-{\footnotesize template$<$Expression Source$>$ }\\std\+::ostream \& \mbox{\hyperlink{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9}{operator$<$$<$}} (std\+::ostream \&ostream, Source source)
+{\footnotesize template$<$Composable Source$>$ }\\std\+::ostream \& \mbox{\hyperlink{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9}{operator$<$$<$}} (std\+::ostream \&ostream, Source source)
 \item 
-{\footnotesize template$<$Expression Multiplicand, Expression Multiplier$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}} (Multiplicand \&\&multiplicand, Multiplier \&\&multiplier, double scale=1.\+0)
+{\footnotesize template$<$Composable Multiplicand, Composable Multiplier$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}} (Multiplicand \&\&multiplicand, Multiplier \&\&multiplier, double scale=1.\+0)
 \begin{DoxyCompactList}\small\item\em Matrix multiplication convenience function. \end{DoxyCompactList}\item 
 constexpr std\+::size\+\_\+t \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}} (type type)
 \begin{DoxyCompactList}\small\item\em Returns the size in bytes of a given tensor data type. \end{DoxyCompactList}\item 
+constexpr std\+::size\+\_\+t \mbox{\hyperlink{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04}{nbytesof}} (type dtype, std\+::size\+\_\+t nelements)
+\begin{DoxyCompactList}\small\item\em Returns the total number of bytes required to store {\ttfamily nelements} elements of the given data type. \end{DoxyCompactList}\item 
 constexpr std\+::string \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}} (type type)
 \begin{DoxyCompactList}\small\item\em Returns the string name of a given tensor data type. \end{DoxyCompactList}\item 
 constexpr uint8\+\_\+t \mbox{\hyperlink{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}{dcodeof}} (type type)
@@ -132,6 +147,25 @@ Type-\/safe union of host and device memory environments. \Hypertarget{namespace
 Convenience alias for {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{tannic\+::indexing\+::\+Range}}. 
 
 This alias allows using {\ttfamily \doxylink{namespacetannic_affef8090e8f7ba383c67e15135664024}{tannic\+::range}} directly when declaring slices without fully qualifying the {\ttfamily \doxylink{structtannic_1_1indexing_1_1Range}{indexing\+::\+Range}} type. 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}\label{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66} 
+\index{tannic@{tannic}!IOStyle@{IOStyle}}
+\index{IOStyle@{IOStyle}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{IOStyle}{IOStyle}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{tannic\+::\+IOStyle}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Tannic@{Tannic}!tannic@{tannic}}\index{tannic@{tannic}!Tannic@{Tannic}}}\Hypertarget{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a782f1dd694a3dd433925f3298d97bee1}\label{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a782f1dd694a3dd433925f3298d97bee1} 
+Tannic&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PyTorch@{PyTorch}!tannic@{tannic}}\index{tannic@{tannic}!PyTorch@{PyTorch}}}\Hypertarget{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a95b88f180e9eb5678e0f9ebac2cbe643}\label{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a95b88f180e9eb5678e0f9ebac2cbe643} 
+Py\+Torch&\\
+\hline
+
+\end{DoxyEnumFields}
+
 
 \doxysubsection{Function Documentation}
 \Hypertarget{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}\label{namespacetannic_a7cc5a20569f733cb88c508ebb9119363} 
@@ -187,7 +221,7 @@ Returns the string name of a given tensor data type.
 \begin{DoxyReturn}{Returns}
 Human-\/readable type name ("{}none"{} for invalid types)
 \end{DoxyReturn}
-\hypertarget{namespacetannic_autotoc_md59}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md59}
+\hypertarget{namespacetannic_autotoc_md63}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md63}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(int32)\ <<\ std::endl\ \ \ \textcolor{comment}{//\ prints\ "{}int32"{}}}
@@ -213,13 +247,14 @@ Returns the size in bytes of a given tensor data type.
 Size of the type in bytes (0 for {\ttfamily none})
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-For complex types\+:
+
 \begin{DoxyItemize}
-\item {\ttfamily complex64} returns 8 (2 × float32)
-\item {\ttfamily complex128} returns 16 (2 × float64)
+\item {\ttfamily boolean} is stored as bit-\/packed (1 bit per element). Since the size is less than one byte, this function returns 0. To compute the actual storage requirement for N elements, use {\ttfamily (N + 7) / 8} bytes.
+\item {\ttfamily complex64} returns 8 (2 × float32).
+\item {\ttfamily complex128} returns 16 (2 × float64).
 \end{DoxyItemize}
 \end{DoxyNote}
-\hypertarget{namespacetannic_autotoc_md58}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md58}
+\hypertarget{namespacetannic_autotoc_md61}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md61}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(float32);\ \ \textcolor{comment}{//\ returns\ 4}}
@@ -267,7 +302,7 @@ This is the inverse operation of \doxylink{namespacetannic_a7cc5a20569f733cb88c5
 \index{tannic@{tannic}!matmul@{matmul}}
 \index{matmul@{matmul}!tannic@{tannic}}
 \doxysubsubsection{\texorpdfstring{matmul()}{matmul()}}
-{\footnotesize\ttfamily template$<$Expression Multiplicand, Expression Multiplier$>$ \\
+{\footnotesize\ttfamily template$<$Composable Multiplicand, Composable Multiplier$>$ \\
 constexpr auto tannic\+::matmul (\begin{DoxyParamCaption}\item[{Multiplicand \&\&}]{multiplicand,  }\item[{Multiplier \&\&}]{multiplier,  }\item[{double}]{scale = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -297,7 +332,42 @@ Transformation expression representing matrix multiplication
 \doxysubsubsection{\texorpdfstring{metadataof()}{metadataof()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1Metadata}{Metadata}}$<$ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} $>$ tannic\+::metadataof (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{tensor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}\label{namespacetannic_a8b7066a546d8d6a8605b695788c479f0} 
+\Hypertarget{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04}\label{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04} 
+\index{tannic@{tannic}!nbytesof@{nbytesof}}
+\index{nbytesof@{nbytesof}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{nbytesof()}{nbytesof()}}
+{\footnotesize\ttfamily constexpr std\+::size\+\_\+t tannic\+::nbytesof (\begin{DoxyParamCaption}\item[{type}]{dtype,  }\item[{std\+::size\+\_\+t}]{nelements }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Returns the total number of bytes required to store {\ttfamily nelements} elements of the given data type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The data type. \\
+\hline
+{\em nelements} & Number of elements. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total size in bytes required.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+
+\begin{DoxyItemize}
+\item For {\ttfamily boolean}, storage is bit-\/packed. The result is {\ttfamily (nelements + 7) / 8}.
+\item For all other types, result is {\ttfamily \doxylink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof(type)} \texorpdfstring{$\ast$}{*} nelements}.
+\end{DoxyItemize}
+\end{DoxyNote}
+\hypertarget{namespacetannic_autotoc_md62}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md62}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04}{nbytesof}}(float32,\ 10);\ \ \ \textcolor{comment}{//\ returns\ 40}}
+\DoxyCodeLine{\mbox{\hyperlink{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04}{nbytesof}}(complex64,\ 5);\ \ \textcolor{comment}{//\ returns\ 40}}
+\DoxyCodeLine{\mbox{\hyperlink{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04}{nbytesof}}(\textcolor{keywordtype}{boolean},\ 100);\ \ \textcolor{comment}{//\ returns\ 13}}
+
+\end{DoxyCode}
+ \Hypertarget{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}\label{namespacetannic_a8b7066a546d8d6a8605b695788c479f0} 
 \index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!tannic@{tannic}}
 \doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
@@ -313,7 +383,7 @@ Transformation expression representing matrix multiplication
 \index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!tannic@{tannic}}
 \doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
-{\footnotesize\ttfamily template$<$Expression Source$>$ \\
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
 std\+::ostream \& tannic\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{ostream,  }\item[{Source}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{namespacetannic_a1a847102d1be0f3bdc61821df66844c0}\label{namespacetannic_a1a847102d1be0f3bdc61821df66844c0} 
@@ -361,6 +431,12 @@ Equality comparison for strides.
 \begin{DoxyReturn}{Returns}
 True if all stride sizes are equal for each dimension. 
 \end{DoxyReturn}
+\Hypertarget{namespacetannic_acaa226116ce1f3dd66906ae2b1356275}\label{namespacetannic_acaa226116ce1f3dd66906ae2b1356275} 
+\index{tannic@{tannic}!setiostyle@{setiostyle}}
+\index{setiostyle@{setiostyle}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{setiostyle()}{setiostyle()}}
+{\footnotesize\ttfamily void tannic\+::setiostyle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}}}]{style }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
 
 
 \doxysubsection{Variable Documentation}

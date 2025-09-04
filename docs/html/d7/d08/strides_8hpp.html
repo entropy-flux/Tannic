@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('d7/d08/strides_8hpp.html','../../'); i
   <div class="headertitle"><div class="title">strides.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Memory layout specification for tensor dimensions in the Tannic Tensor Library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;array&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
@@ -222,7 +225,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a78e6118242dbf100a05da89b391dedb4" id="r_a78e6118242dbf100a05da89b391dedb4"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a78e6118242dbf100a05da89b391dedb4">tannic::operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;strides)</td></tr>
 <tr class="separator:a78e6118242dbf100a05da89b391dedb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Memory layout specification for tensor dimensions in the Tannic Tensor Library. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>Defines <code><a class="el" href="../../dc/deb/classtannic_1_1Strides.html" title="Represents the memory strides associated with a tensor shape.">tannic::Strides</a></code>, which determines how elements are spaced in memory across tensor dimensions. Key features:</p>
+<ul>
+<li><b>Memory layout control</b>: Row-major (default), column-major, or custom striding.</li>
+<li><b>Constexpr support</b>: Compile-time stride computation.</li>
+<li><b>Shape integration</b>: Auto-computes contiguous strides from <code>Shape</code>.</li>
+<li><b>Negative indexing</b>: Python-style dimension access <br  />
+</li>
+</ul>
+<p>All expression-like objects in the library expose an <code>Strides</code> as part of their interface, making this file central to the Tannic design.</p>
+<dl class="section see"><dt>See also</dt><dd>Shape.hpp (tensor dimensions), Indexing.hpp (negative index handling) </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('dd/de3/types_8hpp.html','../../'); ini
   <div class="headertitle"><div class="title">types.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Core type system for the Tannic Tensor Library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -216,6 +219,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aee5ef48cb75e37f65cc11ef67fbb9d25" id="r_aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a> (type type)</td></tr>
 <tr class="memdesc:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the size in bytes of a given tensor data type.  <br /></td></tr>
 <tr class="separator:aee5ef48cb75e37f65cc11ef67fbb9d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e047ef72e50f442b8fd458213bbdc04" id="r_a9e047ef72e50f442b8fd458213bbdc04"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">tannic::nbytesof</a> (type dtype, std::size_t nelements)</td></tr>
+<tr class="memdesc:a9e047ef72e50f442b8fd458213bbdc04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total number of bytes required to store <code>nelements</code> elements of the given data type.  <br /></td></tr>
+<tr class="separator:a9e047ef72e50f442b8fd458213bbdc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f6a29013277d9209efa113453cf0b2e" id="r_a1f6a29013277d9209efa113453cf0b2e"><td class="memItemLeft" align="right" valign="top">constexpr std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a> (type type)</td></tr>
 <tr class="memdesc:a1f6a29013277d9209efa113453cf0b2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the string name of a given tensor data type.  <br /></td></tr>
 <tr class="separator:a1f6a29013277d9209efa113453cf0b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -231,7 +237,40 @@ Functions</h2></td></tr>
 <tr class="memitem:a1c1a48f353ac51e8ae5affa4dccd2e4a" id="r_a1c1a48f353ac51e8ae5affa4dccd2e4a"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a1c1a48f353ac51e8ae5affa4dccd2e4a">tannic::operator&lt;&lt;</a> (std::ostream &amp;ostream, type type)</td></tr>
 <tr class="separator:a1c1a48f353ac51e8ae5affa4dccd2e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Core type system for the Tannic Tensor Library. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>Defines the fundamental data types supported by tensors and provides utilities for:</p>
+<h3><a class="anchor" id="autotoc_md58"></a>
+Supported Data Types</h3>
+<p>The <code>type</code> enum defines all supported numeric types: </p><div class="fragment"><div class="line"><span class="keyword">enum</span> type {</div>
+<div class="line">    none,       <span class="comment">// Invalid type </span></div>
+<div class="line">    <span class="keywordtype">boolean</span>     <span class="comment">// 1-bit-packed boolean (true, false).</span></div>
+<div class="line">    int8,       <span class="comment">// 8-bit integer</span></div>
+<div class="line">    int16,      <span class="comment">// 16-bit integer</span></div>
+<div class="line">    int32,      <span class="comment">// 32-bit integer</span></div>
+<div class="line">    int64,      <span class="comment">// 64-bit integer</span></div>
+<div class="line">    float16,    <span class="comment">// 16-bit float</span></div>
+<div class="line">    float32,    <span class="comment">// 32-bit float</span></div>
+<div class="line">    float64,    <span class="comment">// 64-bit float (double)</span></div>
+<div class="line">    complex64,  <span class="comment">// 64-bit complex (two float32)</span></div>
+<div class="line">    complex128, <span class="comment">// 128-bit complex (two float64)</span></div>
+<div class="line">    TYPES       <span class="comment">// Count of types</span></div>
+<div class="line">};</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md59"></a>
+Key Functions</h3>
+<ul>
+<li><code>dsizeof(type)</code>: Returns byte size of a type</li>
+<li><code>dnameof(type)</code>: Returns string name of a type</li>
+<li><code>dcodeof(type)</code>: Returns numeric code for serialization</li>
+<li><code>dtypeof(code)</code>: Converts code back to type enum</li>
+<li><code>operator&lt;&lt;</code>: Stream output support</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md60"></a>
+Example</h3>
+<p>std::cout &lt;&lt; dnameof(float32); // "float32" std::cout &lt;&lt; dsizeof(complex128); // 16 </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

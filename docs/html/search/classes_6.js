@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['header_0',['Header',['../d1/d69/structtannic_1_1Header.html',1,'tannic']]],
-  ['host_1',['Host',['../df/da7/classtannic_1_1Host.html',1,'tannic']]]
+  ['ge_0',['GE',['../d2/d2d/structtannic_1_1expression_1_1GE.html',1,'tannic::expression']]],
+  ['gt_1',['GT',['../d3/d70/structtannic_1_1expression_1_1GT.html',1,'tannic::expression']]]
 ];

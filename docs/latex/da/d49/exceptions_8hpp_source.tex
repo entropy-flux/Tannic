@@ -25,22 +25,35 @@
 \DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <exception>}}
 \DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{\ }
 \DoxyCodeLine{00032\ }
-\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Exception}{Exception}}\ :\ \textcolor{keyword}{public}\ std::exception\ \{}
-\DoxyCodeLine{00045\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00046\ \ \ \ \ std::string\ \mbox{\hyperlink{classtannic_1_1Exception_acc4253823005b369cfbfbcb0596ad7ee}{message}};}
-\DoxyCodeLine{00047\ \ \ \ \ }
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classtannic_1_1Exception_aee6f6175c79bb169dea234ed56ce6039}{Exception}}(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}{what}})}
-\DoxyCodeLine{00049\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1Exception_acc4253823005b369cfbfbcb0596ad7ee}{message}}(\mbox{\hyperlink{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}{what}})\ \{\}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}{what}}()\ const\ noexcept\textcolor{keyword}{\ override\ }\{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Exception_acc4253823005b369cfbfbcb0596ad7ee}{message}}.c\_str();}
-\DoxyCodeLine{00053\ \ \ \ \ \}}
-\DoxyCodeLine{00054\ \};\ }
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \}\ \textcolor{comment}{//\ namespace\ exception}}
-\DoxyCodeLine{00057\ }
-\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ EXCEPTIONS\_HPP}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Exception}{Exception}}\ :\ \textcolor{keyword}{public}\ std::exception\ \{}
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ std::string\ \mbox{\hyperlink{classtannic_1_1Exception_acc4253823005b369cfbfbcb0596ad7ee}{message}};}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classtannic_1_1Exception_aee6f6175c79bb169dea234ed56ce6039}{Exception}}(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}{what}})}
+\DoxyCodeLine{00052\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1Exception_acc4253823005b369cfbfbcb0596ad7ee}{message}}(\mbox{\hyperlink{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}{what}})\ \{\}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}{what}}()\ const\ noexcept\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Exception_acc4253823005b369cfbfbcb0596ad7ee}{message}}.c\_str();}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \};\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Error}{Error}}\ :\ \textcolor{keyword}{public}\ std::exception\ \{}
+\DoxyCodeLine{00076\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00077\ \ \ \ \ std::string\ \mbox{\hyperlink{classtannic_1_1Error_a39e5f5ff62fe0f88ce92843a4e3e5b23}{message}};}
+\DoxyCodeLine{00078\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classtannic_1_1Error_ad709a6332438c75dc887a6ea5e577975}{Error}}(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{classtannic_1_1Error_ac3c7c83a0b80b0f811ef672df3173291}{what}})}
+\DoxyCodeLine{00084\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1Error_a39e5f5ff62fe0f88ce92843a4e3e5b23}{message}}(\mbox{\hyperlink{classtannic_1_1Error_ac3c7c83a0b80b0f811ef672df3173291}{what}})\ \{\}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{classtannic_1_1Error_ac3c7c83a0b80b0f811ef672df3173291}{what}}()\ const\ noexcept\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Error_a39e5f5ff62fe0f88ce92843a4e3e5b23}{message}}.c\_str();}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \};\ \ \ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \}\ \textcolor{comment}{//\ namespace\ exception}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ EXCEPTIONS\_HPP}}
 
 \end{DoxyCode}

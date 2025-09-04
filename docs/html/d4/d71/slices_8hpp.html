@@ -93,10 +93,14 @@ $(document).ready(function(){initNavTree('d4/d71/slices_8hpp.html','../../'); in
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">slices.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements tensor slicing for expression templates in the Tannic Tensor Library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;tuple&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
@@ -209,7 +213,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html">tannic::expression::Slice&lt; Source, Indexes &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template representing a tensor slice or subview.  <a href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template representing a tensor slice or subview.  <a href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -218,8 +222,36 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d9/dd9/namespacetannic_1_1expression" id="r_d9/dd9/namespacetannic_1_1expression"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html">tannic::expression</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a229e8299f39cdaf07fd8ab88ab21b476" id="r_a229e8299f39cdaf07fd8ab88ab21b476"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">typename</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">T</a> &gt; </td></tr>
+<tr class="memitem:a229e8299f39cdaf07fd8ab88ab21b476"><td class="memTemplItemLeft" align="right" valign="top">std::byte <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">const</a> *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a229e8299f39cdaf07fd8ab88ab21b476">tannic::expression::tobytes</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">T</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">const</a> &amp;<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">reference</a>)</td></tr>
+<tr class="separator:a229e8299f39cdaf07fd8ab88ab21b476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements tensor slicing for expression templates in the Tannic Tensor Library. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 <br  />
+ </dd></dl>
+<p>Defines the <code>Slice</code> class template, which represents a view or subrange of a tensor without copying its data. It supports chained indexing, assignment, and comparison operations while preserving the underlying expression structure.</p>
+<p>Key features:</p><ul>
+<li>Zero-copy view into a tensor or tensor expression.</li>
+<li>Supports integer indexing and range slicing.</li>
+<li>Preserves shape, strides, and data type information.</li>
+<li>Works as part of the Tannic expression template framework.</li>
+</ul>
+<p>Example usage:</p>
+<div class="fragment"><div class="line">Tensor X(float32, {2,2,2}); X.initialize(); </div>
+<div class="line">X[0] = 1;    <span class="comment">//arbitrary types assignment support.</span></div>
+<div class="line">X[1] = 2.f;</div>
+<div class="line">std::cout &lt;&lt; X  &lt;&lt; std::endl; <span class="comment">// Tensor([[[1, 1], [1, 1]], </span></div>
+<div class="line">                             <span class="comment">//          [[2, 2], [2, 2]]] dtype=float32, shape=(2, 2, 2))</span></div>
+<div class="line">Tensor Y = X[1]; </div>
+<div class="line">std::cout &lt;&lt; Y &lt;&lt; std::endl; <span class="comment">// Tensor([[2, 2], </span></div>
+<div class="line">                            <span class="comment">//          [2, 2]] dtype=float32, shape=(2, 2))</span></div>
+<div class="line">std::cout &lt;&lt; Y[0] &lt;&lt; std::endl; <span class="comment">// Tensor([2, 2] dtype=float32, shape=(2))</span></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

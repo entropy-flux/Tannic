@@ -71,7 +71,14 @@
 #include <complex>
 #include "runtime/types.h"
 
-namespace tannic {
+namespace tannic { 
+
+struct float16_t {
+    uint16_t bits;
+};
+
+float16_t float32_to_float16(float);
+float float16_to_float32(float16_t); 
 
 /**
  * @brief Returns the size in bytes of a given tensor data type.

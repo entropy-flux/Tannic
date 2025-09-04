@@ -1,0 +1,111 @@
+\doxysection{tannic\+::expression\+::Binary\texorpdfstring{$<$}{<} Operation, Operand, Cooperand \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1expression_1_1Binary}{}\label{classtannic_1_1expression_1_1Binary}\index{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}}
+
+
+\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for a binary tensor operation.  
+
+
+
+
+{\ttfamily \#include $<$operations.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_a8fa9c1fe8f6cf694a58642f13196f795}{Binary}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}, \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operand}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{operand}}, \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Cooperand}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{cooperand}})
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_ab5c976ef9f8c2d18320b8489b831b141}{dtype}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_ae914aa31be0834ee7a18218f39243cfc}{shape}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_a4b9925ea17dbf66aae8ce53bb2322f64}{strides}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\item 
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_ad538b474e963268753595c5d04c8f108}{offset}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_a25f79a1644fbe89f707d28578dfb97b0}{forward}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Operation, Operand, Cooperand $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a819f1a15c9b9b73972f65caea4d78b60}{Expression}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}} operation, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operands}} $>$\+::\+Reference ... operands)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Operation, Operand, Cooperand $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}
+\item 
+std\+::tuple$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operands}} $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$Operator Operation, Composable Operand, Composable Cooperand$>$\newline
+class tannic\+::expression\+::\+Binary$<$ Operation, Operand, Cooperand $>$}
+\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for a binary tensor operation. 
+
+Represents a lazily evaluated binary operation between two expressions. The {\ttfamily \doxylink{classtannic_1_1expression_1_1Binary}{Binary}} class performs type promotion, shape broadcasting, and stride generation upon construction to prepare for efficient evaluation.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Operation} & A stateless functor implementing {\ttfamily void forward(\doxylink{classtannic_1_1Tensor}{Tensor} const\&, \doxylink{classtannic_1_1Tensor}{Tensor} const\&, \doxylink{classtannic_1_1Tensor}{Tensor}\&)}. \\
+\hline
+{\em Operand} & Left-\/hand-\/side expression satisfying the {\ttfamily Composable} concept. \\
+\hline
+{\em Cooperand} & Right-\/hand-\/side expression satisfying the {\ttfamily Composable} concept. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Binary_a8fa9c1fe8f6cf694a58642f13196f795}\label{classtannic_1_1expression_1_1Binary_a8fa9c1fe8f6cf694a58642f13196f795} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}!Binary@{Binary}}
+\index{Binary@{Binary}!tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}}
+\doxysubsubsection{\texorpdfstring{Binary()}{Binary()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand, Composable Cooperand$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operand}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Cooperand}} $>$\+::\+Binary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}}}]{operation,  }\item[{\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operand}} $>$\+::\+Reference}]{operand,  }\item[{\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Cooperand}} $>$\+::\+Reference}]{cooperand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Binary_ab5c976ef9f8c2d18320b8489b831b141}\label{classtannic_1_1expression_1_1Binary_ab5c976ef9f8c2d18320b8489b831b141} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand, Composable Cooperand$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operand}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Cooperand}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Binary_a25f79a1644fbe89f707d28578dfb97b0}\label{classtannic_1_1expression_1_1Binary_a25f79a1644fbe89f707d28578dfb97b0} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand, Composable Cooperand$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operand}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Cooperand}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classtannic_1_1expression_1_1Binary_ad538b474e963268753595c5d04c8f108}\label{classtannic_1_1expression_1_1Binary_ad538b474e963268753595c5d04c8f108} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand, Composable Cooperand$>$ \\
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operand}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Cooperand}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Binary_ae914aa31be0834ee7a18218f39243cfc}\label{classtannic_1_1expression_1_1Binary_ae914aa31be0834ee7a18218f39243cfc} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand, Composable Cooperand$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operand}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Cooperand}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Binary_a4b9925ea17dbf66aae8ce53bb2322f64}\label{classtannic_1_1expression_1_1Binary_a4b9925ea17dbf66aae8ce53bb2322f64} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand, Composable Cooperand$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operand}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Cooperand}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{operations_8hpp}{operations.\+hpp}}\item 
+include/tannic/\mbox{\hyperlink{tensor_8hpp}{tensor.\+hpp}}\end{DoxyCompactItemize}

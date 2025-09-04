@@ -2,15 +2,23 @@
 \hypertarget{index}{}\label{index}\index{Tannic@{Tannic}}
 \label{index_md_docs_2INDEX}%
 \Hypertarget{index_md_docs_2INDEX}%
- \hypertarget{index_autotoc_md61}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{index_autotoc_md61}
+ \hypertarget{index_autotoc_md65}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{index_autotoc_md65}
 While exploring the most recent models, I began noticing some weird patterns, CUDA kernels hardcoded as strings, pointers, and constexpr hacks embedded in Python sublanguages. I’m not saying this approach is inherently bad, but I couldn’t shake the feeling that it would be far more sane to rewrite everything directly in C++ using those features directly.
 
 On the other hand, many existing C++ frameworks, while fully native, are low-\/level and hard to use or extend. They often force developers to manage complex memory layouts or backend-\/specific details using macros, which makes adding new operations or integrating new hardware backends cumbersome.
 
-This insight led me to create Tannic, a lightweight, fully C++ tensor library designed from the ground up for clarity, composability, and extensibility. It maintains a Python-\/like API feel, so developers can enjoy familiar, intuitive syntax while working entirely in C++. The library is designed to be easy to adopt, easy to extend, and consistent in its behavior—even as new operations, data types, or backends are added.\hypertarget{index_autotoc_md62}{}\doxysection{\texorpdfstring{What is Tannic?}{What is Tannic?}}\label{index_autotoc_md62}
+This insight led me to create Tannic, a lightweight, fully C++ tensor library designed from the ground up for clarity, composability, and extensibility. It maintains a Python-\/like API feel, so developers can enjoy familiar, intuitive syntax while working entirely in C++. The library is designed to be easy to adopt, easy to extend, and consistent in its behavior—even as new operations, data types, or backends are added.\hypertarget{index_autotoc_md66}{}\doxysection{\texorpdfstring{What is Tannic?}{What is Tannic?}}\label{index_autotoc_md66}
 {\bfseries{Tannic}} is an extensible C++ tensor library built around a host–device execution model. Unlike monolithic frameworks, it provides only a minimal set of built‑in operators, focusing on a flexible architecture where new operations, data types, and backends can be added easily. This approach keeps the library lightweight while enabling adaptation to a wide range of computational needs.
 
 This library is designed to serve as the foundational core for a neural network inference framework, but is equally suited to other domains such as classical ML or physics simulations—all without requiring Python.
+
+You can find full examples of neural networks inference with the Tannic framework here\+:
+\begin{DoxyItemize}
+\item \href{https://github.com/entropy-flux/cnn-server-example}{\texttt{ CNN Server Example}} – demonstrates serving convolutional neural network models. ~\newline
+
+\item \href{https://github.com/entropy-flux/vit-server-example}{\texttt{ ViT Server Example}} – demonstrates serving Vision Transformer models. ~\newline
+
+\end{DoxyItemize}
 
 Below is a minimal example demonstrating tensor creation, initialization, basic indexing, and arithmetic operations with Tannic\+:
 
@@ -79,10 +87,10 @@ Giving\+:
 \DoxyCodeLine{\ \ \ \ \ \ \ \ [33.0131,\ 18.7881]])}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md63}{}\doxysection{\texorpdfstring{Status}{Status}}\label{index_autotoc_md63}
+\hypertarget{index_autotoc_md67}{}\doxysection{\texorpdfstring{Status}{Status}}\label{index_autotoc_md67}
 Note\+: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API—used to extend the library—is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.
 
-While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental-\/ too significant to ignore. At some point, it may be requirement for Tannic.\hypertarget{index_autotoc_md64}{}\doxysection{\texorpdfstring{Features}{Features}}\label{index_autotoc_md64}
+While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental-\/ too significant to ignore. At some point, it may be requirement for Tannic.\hypertarget{index_autotoc_md68}{}\doxysection{\texorpdfstring{Features}{Features}}\label{index_autotoc_md68}
 
 \begin{DoxyItemize}
 \item Dynamic typing\+: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization, but that also support compile time specifications thanks to constexpr.
@@ -91,7 +99,7 @@ While the library is currently written in C++23, the arrival of C++26, is shapin
 \item Advanced indexing and slicing\+: Intuitive multi-\/dimensional tensor access and manipulation.
 \item Host–\+Device execution model\+: Unified support for CPU and CUDA-\/enabled GPU computation within the same codebase. While the device backend is currently developed in CUDA, the design is not tied to it and can support other backends in the future.
 \item Minimal core operators\+: Only essential built-\/in operations to keep the library lightweight and extensible.
-\end{DoxyItemize}\hypertarget{index_autotoc_md65}{}\doxysection{\texorpdfstring{What is comming...}{What is comming...}}\label{index_autotoc_md65}
+\end{DoxyItemize}\hypertarget{index_autotoc_md69}{}\doxysection{\texorpdfstring{What is comming...}{What is comming...}}\label{index_autotoc_md69}
 
 \begin{DoxyItemize}
 \item {\bfseries{cu\+Blas and cu\+Tensor optional support}}\+: This may be added soon to accelerate tensor computations.
@@ -101,8 +109,8 @@ While the library is currently written in C++23, the arrival of C++26, is shapin
 \item {\bfseries{Additional backends}}\+: Expansion beyond CUDA to support other device backends is planned. Host-\/\+Device computational model can be used as well with other hardware vendors.
 \item {\bfseries{Multi GPU support}}. Unfortunately I don\textquotesingle{}t have either the expertise or the resources to add multigpu support, but the whole library was build taking this in mind so it won\textquotesingle{}t be a breaking change when added. ~\newline
 
-\end{DoxyItemize}\hypertarget{index_autotoc_md66}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_autotoc_md66}
-This guide is currently in a “works on my machine” state. If you encounter any issues while building Tannic, your feedback is greatly appreciated, please open an issue or submit a pull request. Contributions to improve this guide are also very welcome!\hypertarget{index_autotoc_md67}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{index_autotoc_md67}
+\end{DoxyItemize}\hypertarget{index_autotoc_md70}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{index_autotoc_md70}
+This guide is currently in a “works on my machine” state. If you encounter any issues while building Tannic, your feedback is greatly appreciated, please open an issue or submit a pull request. Contributions to improve this guide are also very welcome!\hypertarget{index_autotoc_md71}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{index_autotoc_md71}
 
 \begin{DoxyItemize}
 \item A C++23 compatible compiler.
@@ -113,14 +121,14 @@ This guide is currently in a “works on my machine” state. If you encounter a
 \item (Optional) CUDA Toolkit 12+\+: only required for GPU support
 \end{DoxyItemize}
 
-Other optional requirements may be added in the future. Also the arrival of C++26, is shaping up to be a huge and too significant to ignore. At some point, it may be requirement for Tannic.\hypertarget{index_autotoc_md68}{}\doxysubsection{\texorpdfstring{Clone the repository\+:}{Clone the repository:}}\label{index_autotoc_md68}
+Other optional requirements may be added in the future. Also the arrival of C++26, is shaping up to be a huge and too significant to ignore. At some point, it may be requirement for Tannic.\hypertarget{index_autotoc_md72}{}\doxysubsection{\texorpdfstring{Clone the repository\+:}{Clone the repository:}}\label{index_autotoc_md72}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git\ clone\ https://github.com/entropy-\/flux/Tannic.git}
 \DoxyCodeLine{cd\ Tannic\ }
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md69}{}\doxysubsection{\texorpdfstring{Debug build\+:}{Debug build:}}\label{index_autotoc_md69}
+\hypertarget{index_autotoc_md73}{}\doxysubsection{\texorpdfstring{Debug build\+:}{Debug build:}}\label{index_autotoc_md73}
 Use this for development — includes extra checks, assertions, and debug symbols for easier troubleshooting.
 
 
@@ -131,7 +139,7 @@ Use this for development — includes extra checks, assertions, and debug symbol
 \DoxyCodeLine{ctest\ -\/-\/output-\/on-\/failure}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md70}{}\doxysubsection{\texorpdfstring{Release build}{Release build}}\label{index_autotoc_md70}
+\hypertarget{index_autotoc_md74}{}\doxysubsection{\texorpdfstring{Release build}{Release build}}\label{index_autotoc_md74}
 Use this for deployment or benchmarking — builds with full compiler optimizations and without debug checks.
 
 
@@ -141,20 +149,20 @@ Use this for deployment or benchmarking — builds with full compiler optimizati
 \DoxyCodeLine{make\ -\/j\$(nproc)\ }
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md71}{}\doxysubsection{\texorpdfstring{Run the example}{Run the example}}\label{index_autotoc_md71}
+\hypertarget{index_autotoc_md75}{}\doxysubsection{\texorpdfstring{Run the example}{Run the example}}\label{index_autotoc_md75}
 You can run the example provided in the main.\+cpp from the build folder\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{cd\ build}
 \DoxyCodeLine{./main}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md72}{}\doxysubsection{\texorpdfstring{Include Tannic in your project}{Include Tannic in your project}}\label{index_autotoc_md72}
+\hypertarget{index_autotoc_md76}{}\doxysubsection{\texorpdfstring{Include Tannic in your project}{Include Tannic in your project}}\label{index_autotoc_md76}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ <tannic.hpp>}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md73}{}\doxysubsection{\texorpdfstring{CUDA support}{CUDA support}}\label{index_autotoc_md73}
+\hypertarget{index_autotoc_md77}{}\doxysubsection{\texorpdfstring{CUDA support}{CUDA support}}\label{index_autotoc_md77}
 CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detected during configuration. If no CUDA installation is found, Tannic will automatically fall back to a CPU‑only build. You can explicitly disable CUDA with\+:
 
 
@@ -164,7 +172,7 @@ CUDA support is enabled by default if a compatible CUDA toolkit (12+) is detecte
 \end{DoxyCode}
 
 
-These defaults provide a fast setup for development with the current state of the library. As Tannic evolves, CUDA configuration options and behavior may change.\hypertarget{index_autotoc_md74}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{index_autotoc_md74}
+These defaults provide a fast setup for development with the current state of the library. As Tannic evolves, CUDA configuration options and behavior may change.\hypertarget{index_autotoc_md78}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{index_autotoc_md78}
 To use Tannic, simply include it in your project and interact with it similarly to a Python framework\+:
 
 
@@ -198,7 +206,7 @@ To use Tannic, simply include it in your project and interact with it similarly 
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \{1.0f,\ 2.0f,\ 3.0f\}}
 \DoxyCodeLine{\ \ \ \ \};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ float\ tensor}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{argmax}}(Z)\ <<\ std::endl>>}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \mbox{\hyperlink{namespacetannic_1_1expression_a0cee5a6cd1bfafa984d9de0c89548424}{argmax}}(Z)\ <<\ std::endl>>}
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
@@ -267,8 +275,8 @@ Data types are dynamic to make it easier to serialize and deserialize tensors at
 \end{DoxyCode}
 
 
-This design also paves the way for future features such as tensor quantization.\hypertarget{index_autotoc_md75}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{index_autotoc_md75}
-Contributions to Tannic are welcome! Whether you’re reporting bugs, proposing features, improving documentation, or optimizing kernels, your help is greatly appreciated.\hypertarget{index_autotoc_md76}{}\doxysection{\texorpdfstring{Ways to Contribute}{Ways to Contribute}}\label{index_autotoc_md76}
+This design also paves the way for future features such as tensor quantization.\hypertarget{index_autotoc_md79}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{index_autotoc_md79}
+Contributions to Tannic are welcome! Whether you’re reporting bugs, proposing features, improving documentation, or optimizing kernels, your help is greatly appreciated.\hypertarget{index_autotoc_md80}{}\doxysection{\texorpdfstring{Ways to Contribute}{Ways to Contribute}}\label{index_autotoc_md80}
 
 \begin{DoxyItemize}
 \item {\bfseries{Write new test cases to cover code that is not yet tested}}. I’m using a test-\/driven approach to build the library, but some edge cases may still be missing.
@@ -304,7 +312,7 @@ This is especially important in CUDA tests, where manually copying device memory
 \item {\bfseries{Optimize builds}}. Currently there is a single CMake\+Lists.\+txt inside the cmake folder that compiles all the project. Decoupled builds for cpu and cuda backends will be a nice to have.
 \item {\bfseries{Optimize kernels}}. Kernels are currently unoptimized since I\textquotesingle{}m still focusing on builing necessary features. The kernels can be found on .cpp and .cu files inside src/cpu and src/cuda files.
 \item {\bfseries{New features}}. If you propose new features for the library, please ensure they align with the scope of a tensor library. For example, operations like tensor contractions would be a great addition, but machine learning components —such as neural network activation functions or attention mechanisms— are outside the scope. (Don’t worry—I\textquotesingle{}m building a separate neural networks library on top of this one!) That said, I’m always open to fresh ideas, so don’t hesitate to share your suggestions.
-\end{DoxyItemize}\hypertarget{index_autotoc_md77}{}\doxysection{\texorpdfstring{How to Contribute}{How to Contribute}}\label{index_autotoc_md77}
+\end{DoxyItemize}\hypertarget{index_autotoc_md81}{}\doxysection{\texorpdfstring{How to Contribute}{How to Contribute}}\label{index_autotoc_md81}
 Fork the repository and create a new branch for your feature or bug fix. Example\+:
 
 
@@ -321,7 +329,7 @@ Open a pull request describing\+:
 \item Implementation details if needed.
 \end{DoxyItemize}
 
-Target branch\+: PRs for now should just target main till the library matures.\hypertarget{index_autotoc_md78}{}\doxysection{\texorpdfstring{Project structure}{Project structure}}\label{index_autotoc_md78}
+Target branch\+: PRs for now should just target main till the library matures.\hypertarget{index_autotoc_md82}{}\doxysection{\texorpdfstring{Project structure}{Project structure}}\label{index_autotoc_md82}
 The project is organized into the following main components\+:
 
 
@@ -353,7 +361,7 @@ Then if it was created as a cuda stream will be recovered as\+:
 \end{DoxyItemize}
 \end{DoxyItemize}
 
-Currently what is in the src root folder is a mess, lot of code repetition and nasty helper functions with bunch of templates. I promise I will take the time to refactor this but after I find a way to dynamically add and remove nodes from a graph dynamically based on reference counting. This refactor won\textquotesingle{}t change anything on the public API.\hypertarget{index_autotoc_md79}{}\doxysection{\texorpdfstring{Creating new features.}{Creating new features.}}\label{index_autotoc_md79}
+Currently what is in the src root folder is a mess, lot of code repetition and nasty helper functions with bunch of templates. I promise I will take the time to refactor this but after I find a way to dynamically add and remove nodes from a graph dynamically based on reference counting. This refactor won\textquotesingle{}t change anything on the public API.\hypertarget{index_autotoc_md83}{}\doxysection{\texorpdfstring{Creating new features.}{Creating new features.}}\label{index_autotoc_md83}
 The C++ frontend is based on templated expressions, this means that when you write an expression, for example\+:
 
 
@@ -433,7 +441,7 @@ This allows a python alike behavior since you can chain operations on the same v
 \DoxyCodeLine{std::cout\ <<\ W[1]\ +\ Z[0];\ \textcolor{comment}{//\ IO\ supported\ for\ expressions.}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md80}{}\doxysubsection{\texorpdfstring{License \& Attribution}{License \& Attribution}}\label{index_autotoc_md80}
+\hypertarget{index_autotoc_md84}{}\doxysubsection{\texorpdfstring{License \& Attribution}{License \& Attribution}}\label{index_autotoc_md84}
 Tannic is licensed under the Apache License 2.\+0, a permissive open-\/source license that allows you to use, modify, and distribute the code freely—even in commercial projects.
 
 By contributing, you agree that your contributions will also be licensed under Apache 2.\+0 and that proper attribution is appreciated.

@@ -35,7 +35,6 @@
  *
  * Part of the Tannic Tensor Library.
  */
- 
 #include <utility>      
 #include <type_traits> 
  

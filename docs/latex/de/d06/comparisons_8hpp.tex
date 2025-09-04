@@ -1,0 +1,107 @@
+\doxysection{include/tannic/comparisons.hpp File Reference}
+\hypertarget{comparisons_8hpp}{}\label{comparisons_8hpp}\index{include/tannic/comparisons.hpp@{include/tannic/comparisons.hpp}}
+
+
+Defines element-\/wise comparison operations for tensor expressions.  
+
+
+{\ttfamily \#include "{}concepts.\+hpp"{}}\newline
+{\ttfamily \#include "{}expressions.\+hpp"{}}\newline
+{\ttfamily \#include "{}shape.\+hpp"{}}\newline
+{\ttfamily \#include "{}tensor.\+hpp"{}}\newline
+Include dependency graph for comparisons.\+hpp\+:
+% FIG 0
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison$<$ Criteria, First, Second $>$}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for element-\/wise tensor comparisons. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1EQ}{tannic\+::expression\+::\+EQ}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1NE}{tannic\+::expression\+::\+NE}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1GT}{tannic\+::expression\+::\+GT}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1GE}{tannic\+::expression\+::\+GE}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1LT}{tannic\+::expression\+::\+LT}}
+\item 
+struct \mbox{\hyperlink{structtannic_1_1expression_1_1LE}{tannic\+::expression\+::\+LE}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a275ce372e2182c82316e081500746ac8}{tannic\+::expression\+::operator==}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a55ca5075ef36aafcf96f32ca63828b0c}{tannic\+::expression\+::operator!=}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_ae7e54ff135882809b772d1224cff79e3}{tannic\+::expression\+::operator$<$}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_abab1adc773f6b6726fca346f6241a527}{tannic\+::expression\+::operator$<$=}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a73cdabf87a5bcb2ff53ed1d8dadbf276}{tannic\+::expression\+::operator$>$}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+{\footnotesize template$<$Composable First, Composable Second$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a448cb8f607776e8d6febc409b3e71436}{tannic\+::expression\+::operator$>$=}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{lhs}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} \&\&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rhs}})
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} \mbox{\hyperlink{namespacetannic_1_1expression_acf6a1b94b0f8ba3f6823c4c30255ad45}{tannic\+::expression\+::allclose}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{first}}, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{second}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{double}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rtol}}=1\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{e}}-\/5\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{f}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{double}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{atol}}=1\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{e}}-\/8\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{f}})
+\begin{DoxyCompactList}\small\item\em Determine whether two tensors are element-\/wise equal within a tolerance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines element-\/wise comparison operations for tensor expressions. 
+
+\begin{DoxyAuthor}{Author}
+Eric Hermosis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+This header provides {\bfseries{lazy-\/evaluated comparison operators}} for {\ttfamily Tensor} and expression types. All comparisons are element-\/wise and produce boolean tensors of the same shape as the operands. ~\newline
+
+
+Supported operators\+:
+\begin{DoxyItemize}
+\item Equality and inequality\+:
+\begin{DoxyItemize}
+\item {\ttfamily ==} (equal)
+\item {\ttfamily !=} (not equal)
+\end{DoxyItemize}
+\item Relational comparisons\+:
+\begin{DoxyItemize}
+\item {\ttfamily \texorpdfstring{$<$}{<}} (less than)
+\item {\ttfamily \texorpdfstring{$<$}{<}=} (less than or equal)
+\item {\ttfamily \texorpdfstring{$>$}{>}} (greater than)
+\item {\ttfamily \texorpdfstring{$>$}{>}=} (greater than or equal)
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{comparisons_8hpp_autotoc_md0}{}\doxysubsubsection{\texorpdfstring{Example}{Example}}\label{comparisons_8hpp_autotoc_md0}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <tannic.hpp>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{comparisons_8hpp}{tannic/comparisons.hpp}}>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ A\ =\ \{1,\ 2,\ 3,\ 4,\ 5\};}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ B\ =\ \{5,\ 4,\ 3,\ 2,\ 1\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ ==\ B:\ "{}}\ <<\ (A\ ==\ B)\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ !=\ B:\ "{}}\ <<\ (A\ !=\ B)\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ >\ \ B:\ "{}}\ <<\ (A\ >\ \ B)\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ >=\ B:\ "{}}\ <<\ (A\ >=\ B)\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ <\ \ B:\ "{}}\ <<\ (A\ <\ \ B)\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ <=\ B:\ "{}}\ <<\ (A\ <=\ B)\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Part of the Tannic Tensor Library. 

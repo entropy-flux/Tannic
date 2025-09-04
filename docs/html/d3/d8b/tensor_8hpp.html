@@ -94,10 +94,14 @@ $(document).ready(function(){initNavTree('d3/d8b/tensor_8hpp.html','../../'); in
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">tensor.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Core multidimensional tensor class for the Tannic Tensor Library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
@@ -278,15 +282,39 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d0/d1a/namespacetannic" id="r_d0/d1a/namespacetannic"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a22253ce740114e2dcc7042ce55e5cc66" id="r_a22253ce740114e2dcc7042ce55e5cc66"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a22253ce740114e2dcc7042ce55e5cc66">tannic::IOStyle</a> { <a class="el" href="../../d0/d1a/namespacetannic.html#a22253ce740114e2dcc7042ce55e5cc66a782f1dd694a3dd433925f3298d97bee1">tannic::Tannic</a>
+, <a class="el" href="../../d0/d1a/namespacetannic.html#a22253ce740114e2dcc7042ce55e5cc66a95b88f180e9eb5678e0f9ebac2cbe643">tannic::PyTorch</a>
+ }</td></tr>
+<tr class="separator:a22253ce740114e2dcc7042ce55e5cc66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:acaa226116ce1f3dd66906ae2b1356275" id="r_acaa226116ce1f3dd66906ae2b1356275"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#acaa226116ce1f3dd66906ae2b1356275">tannic::setiostyle</a> (<a class="el" href="../../d0/d1a/namespacetannic.html#a22253ce740114e2dcc7042ce55e5cc66">IOStyle</a> style)</td></tr>
+<tr class="separator:acaa226116ce1f3dd66906ae2b1356275"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a847102d1be0f3bdc61821df66844c0" id="r_a1a847102d1be0f3bdc61821df66844c0"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a1a847102d1be0f3bdc61821df66844c0">tannic::operator&lt;&lt;</a> (std::ostream &amp;ostream, <a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> const &amp;tensor)</td></tr>
 <tr class="separator:a1a847102d1be0f3bdc61821df66844c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd01ed73f7e0facffaec36ce3e22cfd9" id="r_abd01ed73f7e0facffaec36ce3e22cfd9"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
+<tr class="memitem:abd01ed73f7e0facffaec36ce3e22cfd9" id="r_abd01ed73f7e0facffaec36ce3e22cfd9"><td class="memTemplParams" colspan="2">template&lt;Composable Source&gt; </td></tr>
 <tr class="memitem:abd01ed73f7e0facffaec36ce3e22cfd9"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#abd01ed73f7e0facffaec36ce3e22cfd9">tannic::operator&lt;&lt;</a> (std::ostream &amp;ostream, Source source)</td></tr>
 <tr class="separator:abd01ed73f7e0facffaec36ce3e22cfd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Core multidimensional tensor class for the Tannic Tensor Library. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>Defines <code><a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">tannic::Tensor</a></code>, the primary data structure of the library, supporting:</p>
+<ul>
+<li><b>Dynamic dtypes</b>: No need for templates, data types can be passed to tensors as arguments to simplify serialization and IO operations.</li>
+<li><b>Memory management</b>: Host(CPU)/Device(eg. CUDA) allocation support.</li>
+<li><b>Math operators and functions</b>: Math operators like +,*,- and matmul supported, for both CPU and CUDA tensors.</li>
+<li><b>Slicing/views</b>: Python-like indexing (<code>operator[]</code>, <code>range</code>, <code>transpose</code>) with negative index.</li>
+<li><b>Eager evaluation</b>: Eager execution but allowing compile time optimizations like expression fusion using templates.</li>
+<li><b>Strided storage</b>: Non-contiguous layouts via <code>Shape</code> and <code>Strides</code>. <br  />
+</li>
+</ul>
+<dl class="section see"><dt>See also</dt><dd>Types.hpp(data types), Resources.hpp (Memory Managment), Functions.hpp (Supported functions) </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

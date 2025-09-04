@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('de/d49/views_8hpp.html','../../'); ini
   <div class="headertitle"><div class="title">views.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implements views for tensors in the Tannic Tensor Library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;numeric&gt;</code><br />
@@ -213,16 +216,25 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9f/classtannic_1_1expression_1_1View.html">tannic::expression::View&lt; Source &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for viewing a tensor with a new shape.  <a href="../../d2/d9f/classtannic_1_1expression_1_1View.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for viewing a tensor with a new shape.  <a href="../../d2/d9f/classtannic_1_1expression_1_1View.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html">tannic::expression::Transpose&lt; Source &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for transposing two dimensions of a tensor.  <a href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for transposing two dimensions of a tensor.  <a href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation&lt; Source, Indexes &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for reordering tensor dimensions according to a specified permutation.  <a href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for reordering tensor dimensions according to a specified permutation.  <a href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d10/classtannic_1_1expression_1_1Expansion.html">tannic::expression::Expansion&lt; Source &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for expanding (broadcasting) singleton dimensions of a tensor.  <a href="../../d0/d10/classtannic_1_1expression_1_1Expansion.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for expanding (broadcasting) singleton dimensions of a tensor.  <a href="../../d0/d10/classtannic_1_1expression_1_1Expansion.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dca/classtannic_1_1expression_1_1Squeeze.html">tannic::expression::Squeeze&lt; Source &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for removing singleton dimensions from a tensor.  <a href="../../d7/dca/classtannic_1_1expression_1_1Squeeze.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html">tannic::expression::Unsqueeze&lt; Source &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for inserting singleton dimensions into a tensor.  <a href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dbe/classtannic_1_1expression_1_1Flatten.html">tannic::expression::Flatten&lt; Source &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for flattening a contiguous range of dimensions.  <a href="../../d1/dbe/classtannic_1_1expression_1_1Flatten.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -234,24 +246,52 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5f5b6b37401a67689b7df785f85eefbe" id="r_a5f5b6b37401a67689b7df785f85eefbe"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral ... Indexes&gt; </td></tr>
-<tr class="memitem:a5f5b6b37401a67689b7df785f85eefbe"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe">tannic::expression::view</a> (Source &amp;&amp;source, Indexes ... indexes)</td></tr>
+<tr class="memitem:a5f5b6b37401a67689b7df785f85eefbe" id="r_a5f5b6b37401a67689b7df785f85eefbe"><td class="memTemplParams" colspan="2">template&lt;Composable Source, Integral ... Indexes&gt; </td></tr>
+<tr class="memitem:a5f5b6b37401a67689b7df785f85eefbe"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe">tannic::expression::view</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Indexes</a> ... <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">indexes</a>)</td></tr>
 <tr class="memdesc:a5f5b6b37401a67689b7df785f85eefbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a reshaped view of a tensor or expression.  <br /></td></tr>
 <tr class="separator:a5f5b6b37401a67689b7df785f85eefbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab43b77ed569cfeb4380abc2e6458aa00" id="r_ab43b77ed569cfeb4380abc2e6458aa00"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
-<tr class="memitem:ab43b77ed569cfeb4380abc2e6458aa00"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#ab43b77ed569cfeb4380abc2e6458aa00">tannic::expression::transpose</a> (Source &amp;&amp;source, int first, int second)</td></tr>
+<tr class="memitem:ab43b77ed569cfeb4380abc2e6458aa00" id="r_ab43b77ed569cfeb4380abc2e6458aa00"><td class="memTemplParams" colspan="2">template&lt;Composable Source&gt; </td></tr>
+<tr class="memitem:ab43b77ed569cfeb4380abc2e6458aa00"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#ab43b77ed569cfeb4380abc2e6458aa00">tannic::expression::transpose</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">int</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">first</a>, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">int</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">second</a>)</td></tr>
 <tr class="memdesc:ab43b77ed569cfeb4380abc2e6458aa00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a transposed view of a tensor or expression by swapping two dimensions.  <br /></td></tr>
 <tr class="separator:ab43b77ed569cfeb4380abc2e6458aa00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f1dde31ec629ed3d6b2b979221cf802" id="r_a1f1dde31ec629ed3d6b2b979221cf802"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral ... Indexes&gt; </td></tr>
-<tr class="memitem:a1f1dde31ec629ed3d6b2b979221cf802"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a1f1dde31ec629ed3d6b2b979221cf802">tannic::expression::permute</a> (Source &amp;&amp;source, Indexes... indexes)</td></tr>
+<tr class="memitem:a1f1dde31ec629ed3d6b2b979221cf802" id="r_a1f1dde31ec629ed3d6b2b979221cf802"><td class="memTemplParams" colspan="2">template&lt;Composable Source, Integral ... Indexes&gt; </td></tr>
+<tr class="memitem:a1f1dde31ec629ed3d6b2b979221cf802"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a1f1dde31ec629ed3d6b2b979221cf802">tannic::expression::permute</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source, Indexes... <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">indexes</a>)</td></tr>
 <tr class="memdesc:a1f1dde31ec629ed3d6b2b979221cf802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a permuted view of a tensor or expression.  <br /></td></tr>
 <tr class="separator:a1f1dde31ec629ed3d6b2b979221cf802"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e153f6fc540062b27409ba60926e869" id="r_a3e153f6fc540062b27409ba60926e869"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral... Sizes&gt; </td></tr>
-<tr class="memitem:a3e153f6fc540062b27409ba60926e869"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a3e153f6fc540062b27409ba60926e869">tannic::expression::expand</a> (Source &amp;&amp;source, Sizes... sizes)</td></tr>
+<tr class="memitem:a3e153f6fc540062b27409ba60926e869" id="r_a3e153f6fc540062b27409ba60926e869"><td class="memTemplParams" colspan="2">template&lt;Composable Source, Integral... Sizes&gt; </td></tr>
+<tr class="memitem:a3e153f6fc540062b27409ba60926e869"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a3e153f6fc540062b27409ba60926e869">tannic::expression::expand</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source, Sizes... <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">sizes</a>)</td></tr>
 <tr class="memdesc:a3e153f6fc540062b27409ba60926e869"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an expanded view of a tensor, broadcasting singleton dimensions.  <br /></td></tr>
 <tr class="separator:a3e153f6fc540062b27409ba60926e869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb6b00dc672b62ceb6217af46120894c" id="r_aeb6b00dc672b62ceb6217af46120894c"><td class="memTemplParams" colspan="2">template&lt;Composable Source&gt; </td></tr>
+<tr class="memitem:aeb6b00dc672b62ceb6217af46120894c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#aeb6b00dc672b62ceb6217af46120894c">tannic::expression::squeeze</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source)</td></tr>
+<tr class="memdesc:aeb6b00dc672b62ceb6217af46120894c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all singleton dimensions from a tensor (squeeze).  <br /></td></tr>
+<tr class="separator:aeb6b00dc672b62ceb6217af46120894c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3cfb1c4d6698824ae724c29c94e5d18" id="r_af3cfb1c4d6698824ae724c29c94e5d18"><td class="memTemplParams" colspan="2">template&lt;Composable Source, Integral... Axes&gt; </td></tr>
+<tr class="memitem:af3cfb1c4d6698824ae724c29c94e5d18"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#af3cfb1c4d6698824ae724c29c94e5d18">tannic::expression::unsqueeze</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source, Axes... <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">axes</a>)</td></tr>
+<tr class="memdesc:af3cfb1c4d6698824ae724c29c94e5d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts singleton dimensions at the specified axes (unsqueeze).  <br /></td></tr>
+<tr class="separator:af3cfb1c4d6698824ae724c29c94e5d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0573425cb00a0c994323d6453efa3ff" id="r_ae0573425cb00a0c994323d6453efa3ff"><td class="memTemplParams" colspan="2">template&lt;Composable Source&gt; </td></tr>
+<tr class="memitem:ae0573425cb00a0c994323d6453efa3ff"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#ae0573425cb00a0c994323d6453efa3ff">tannic::expression::flatten</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">int</a> start=0, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">int</a> end=-1)</td></tr>
+<tr class="memdesc:ae0573425cb00a0c994323d6453efa3ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flattens dimensions of a tensor into a single dimension.  <br /></td></tr>
+<tr class="separator:ae0573425cb00a0c994323d6453efa3ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements views for tensors in the Tannic Tensor Library. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 <br  />
+ </dd></dl>
+<p>This header defines expression templates for tensors views without copying data. These views operate on the underlying tensor metadata (shape, strides, and offset) to reinterpret how elements are accessed while preserving the original storage.</p>
+<p>Example usage:</p>
+<div class="fragment"><div class="line">Tensor X(float32, {2, 3}); X.initialize();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// View from (2, 3) to (3, 2)</span></div>
+<div class="line"><span class="keyword">auto</span> Y = view(X, 3, 2);</div>
+<div class="line">std::cout &lt;&lt; Y.shape() &lt;&lt; std::endl; <span class="comment">// (3, 2)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Swap the first and second dimensions</span></div>
+<div class="line"><span class="keyword">auto</span> Z = transpose(X, 0, 1);</div>
+<div class="line">std::cout &lt;&lt; Z.shape() &lt;&lt; std::endl; <span class="comment">// (3, 2)</span></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

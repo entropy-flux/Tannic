@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('d1/dee/resources_8hpp.html','../../');
   <div class="headertitle"><div class="title">resources.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Memory resource management for heterogeneous computing.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
 <code>#include &lt;span&gt;</code><br />
@@ -172,7 +175,24 @@ Typedefs</h2></td></tr>
 <tr class="memdesc:ab25d9deb845a2f968f245cc13c4a1f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Memory environment variant type.  <br /></td></tr>
 <tr class="separator:ab25d9deb845a2f968f245cc13c4a1f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Memory resource management for heterogeneous computing. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis <br  />
+ </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>Defines the abstract memory architecture:</p><ul>
+<li>Host: The primary execution environment and memory space (eg. CPU)</li>
+<li>Device: Secondary execution environments with separate memory spaces (eg. GPU)</li>
+<li>Explicit memory management interface for each domain</li>
+</ul>
+<p>The model enforces:</p><ol type="1">
+<li>Separate memory address spaces</li>
+<li>Distinct allocation semantics per domain <br  />
+</li>
+<li>Explicit data transfer requirements</li>
+</ol>
+<dl class="section warning"><dt>Warning</dt><dd>This interface is under active development and may undergo breaking changes in future releases. The host/device abstraction is particularly prone to API evolution as hardware capabilities advanc </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

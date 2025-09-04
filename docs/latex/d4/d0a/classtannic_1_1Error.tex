@@ -1,0 +1,84 @@
+\doxysection{tannic\+::Error Class Reference}
+\hypertarget{classtannic_1_1Error}{}\label{classtannic_1_1Error}\index{tannic::Error@{tannic::Error}}
+
+
+Represents serious, typically unrecoverable problems.  
+
+
+
+
+{\ttfamily \#include $<$exceptions.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1Error_ad709a6332438c75dc887a6ea5e577975}{Error}} (const std\+::string \&\mbox{\hyperlink{classtannic_1_1Error_ac3c7c83a0b80b0f811ef672df3173291}{what}})
+\begin{DoxyCompactList}\small\item\em Construct an \doxylink{classtannic_1_1Exception}{Exception} with a message. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1Error_ac3c7c83a0b80b0f811ef672df3173291}{what}} () const noexcept override
+\begin{DoxyCompactList}\small\item\em Retrieve the exception message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classtannic_1_1Error_a39e5f5ff62fe0f88ce92843a4e3e5b23}{message}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents serious, typically unrecoverable problems. 
+
+The \doxylink{classtannic_1_1Error}{Error} class is used for critical failures in the program or environment that should not normally be caught and handled. Examples include out-\/of-\/memory conditions or hardware failures.
+
+\begin{DoxyNote}{Note}
+While technically catchable, errors are conceptually distinct from exceptions and should rarely be handled in normal application logic. 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1Error_ad709a6332438c75dc887a6ea5e577975}\label{classtannic_1_1Error_ad709a6332438c75dc887a6ea5e577975} 
+\index{tannic::Error@{tannic::Error}!Error@{Error}}
+\index{Error@{Error}!tannic::Error@{tannic::Error}}
+\doxysubsubsection{\texorpdfstring{Error()}{Error()}}
+{\footnotesize\ttfamily tannic\+::\+Error\+::\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{what }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Construct an \doxylink{classtannic_1_1Exception}{Exception} with a message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em what} & Description of the exception. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1Error_ac3c7c83a0b80b0f811ef672df3173291}\label{classtannic_1_1Error_ac3c7c83a0b80b0f811ef672df3173291} 
+\index{tannic::Error@{tannic::Error}!what@{what}}
+\index{what@{what}!tannic::Error@{tannic::Error}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} tannic\+::\+Error\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [noexcept]}}
+
+
+
+Retrieve the exception message. 
+
+\begin{DoxyReturn}{Returns}
+C-\/style string of the exception message. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Overrides std\+::exception\+::what(). 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classtannic_1_1Error_a39e5f5ff62fe0f88ce92843a4e3e5b23}\label{classtannic_1_1Error_a39e5f5ff62fe0f88ce92843a4e3e5b23} 
+\index{tannic::Error@{tannic::Error}!message@{message}}
+\index{message@{message}!tannic::Error@{tannic::Error}}
+\doxysubsubsection{\texorpdfstring{message}{message}}
+{\footnotesize\ttfamily std\+::string tannic\+::\+Error\+::message}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{exceptions_8hpp}{exceptions.\+hpp}}\end{DoxyCompactItemize}

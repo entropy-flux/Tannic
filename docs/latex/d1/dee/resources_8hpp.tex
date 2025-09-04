@@ -1,18 +1,25 @@
 \doxysection{include/tannic/resources.hpp File Reference}
 \hypertarget{resources_8hpp}{}\label{resources_8hpp}\index{include/tannic/resources.hpp@{include/tannic/resources.hpp}}
+
+
+Memory resource management for heterogeneous computing.  
+
+
 {\ttfamily \#include $<$cstdint$>$}\newline
 {\ttfamily \#include $<$cstddef$>$}\newline
 {\ttfamily \#include $<$span$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
 {\ttfamily \#include $<$variant$>$}\newline
-Include dependency graph for resources.\+hpp\+:\nopagebreak
+Include dependency graph for resources.\+hpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d9/d08/resources_8hpp__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,3 +45,33 @@ namespace \mbox{\hyperlink{namespacetannic}{tannic}}
 \item 
 using \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{tannic\+::\+Environment}} = std\+::variant$<$ \mbox{\hyperlink{classtannic_1_1Host}{Host}}, \mbox{\hyperlink{classtannic_1_1Device}{Device}} $>$
 \begin{DoxyCompactList}\small\item\em Memory environment variant type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Memory resource management for heterogeneous computing. 
+
+\begin{DoxyAuthor}{Author}
+Eric Hermosis ~\newline
+ 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+Defines the abstract memory architecture\+:
+\begin{DoxyItemize}
+\item Host\+: The primary execution environment and memory space (eg. CPU)
+\item Device\+: Secondary execution environments with separate memory spaces (eg. GPU)
+\item Explicit memory management interface for each domain
+\end{DoxyItemize}
+
+The model enforces\+:
+\begin{DoxyEnumerate}
+\item Separate memory address spaces
+\item Distinct allocation semantics per domain ~\newline
+
+\item Explicit data transfer requirements
+\end{DoxyEnumerate}
+
+\begin{DoxyWarning}{Warning}
+This interface is under active development and may undergo breaking changes in future releases. The host/device abstraction is particularly prone to API evolution as hardware capabilities advanc 
+\end{DoxyWarning}

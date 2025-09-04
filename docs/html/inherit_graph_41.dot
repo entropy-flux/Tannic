@@ -1,0 +1,9 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="tannic::function::Log",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d9/d67/structtannic_1_1function_1_1Log.html",tooltip="Functor natural logarithm (ln(x)) Applies element-wise natural logarithm to tensor elements."];
+}

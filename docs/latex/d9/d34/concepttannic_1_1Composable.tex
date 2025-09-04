@@ -1,0 +1,19 @@
+\doxysection{tannic\+::Composable Concept Reference}
+\hypertarget{concepttannic_1_1Composable}{}\label{concepttannic_1_1Composable}\index{tannic::Composable@{tannic::Composable}}
+
+
+{\ttfamily \#include $<$concepts.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Composable}{tannic::Composable}}\ =\ \ \textcolor{keyword}{requires}(\textcolor{keyword}{const}\ T\ expression)\ \{}
+\DoxyCodeLine{\ \ \ \ \{\ expression.dtype()\ \ \ \}\ -\/>\ std::same\_as<type>;}
+\DoxyCodeLine{\ \ \ \ \{\ expression.shape()\ \ \ \}\ -\/>\ std::same\_as<Shape\ const\&>;}
+\DoxyCodeLine{\ \ \ \ \{\ expression.strides()\ \}\ -\/>\ std::same\_as<Strides\ const\&>;}
+\DoxyCodeLine{\ \ \ \ \ \ expression.offset();}
+\DoxyCodeLine{\ \ \ \ \ \ expression.forward();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

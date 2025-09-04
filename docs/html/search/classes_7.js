@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['log_0',['Log',['../d9/d67/structtannic_1_1function_1_1Log.html',1,'tannic::function']]]
+  ['header_0',['Header',['../d1/d69/structtannic_1_1Header.html',1,'tannic']]],
+  ['host_1',['Host',['../df/da7/classtannic_1_1Host.html',1,'tannic']]]
 ];

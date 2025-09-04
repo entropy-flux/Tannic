@@ -144,7 +144,7 @@
 \DoxyCodeLine{00276\ \ \ \ \ std::array<size\_type,\ limit>\ sizes\_\{\};}
 \DoxyCodeLine{00277\ \};}
 \DoxyCodeLine{00278\ }
-\DoxyCodeLine{00283\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacetannic_ab9024d05a23081306cb9f03929bd96d9}{operator==}}(\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ first,\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ second)\ \{}
+\DoxyCodeLine{00283\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ operator==(\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ first,\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ second)\ \{}
 \DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordflow}{if}\ (first.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}()\ !=\ second.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00285\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{Strides::rank\_type}}\ dimension\ =\ 0;\ dimension\ <\ first.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}();\ ++dimension)\ \{}
 \DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[dimension]\ !=\ second[dimension])\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}

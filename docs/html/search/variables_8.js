@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['magic_0',['magic',['../d1/d69/structtannic_1_1Header.html#a37f941716d16d127c74680486ead2b57',1,'tannic::Header::magic'],['../d0/d1a/namespacetannic.html#af5d559718f5807bf195a1845948fa3f1',1,'tannic::MAGIC']]],
-  ['message_1',['message',['../d9/d87/classtannic_1_1Exception.html#acc4253823005b369cfbfbcb0596ad7ee',1,'tannic::Exception']]]
+  ['nbytes_0',['nbytes',['../d1/d69/structtannic_1_1Header.html#a28670721388b16d66d7e5cc7a05a6eb5',1,'tannic::Header::nbytes'],['../d4/d78/structtannic_1_1Metadata_3_01Tensor_01_4.html#a95973d9032438a1071432993d9e06ad2',1,'tannic::Metadata&lt; Tensor &gt;::nbytes']]]
 ];

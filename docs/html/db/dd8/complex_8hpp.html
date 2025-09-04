@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('db/dd8/complex_8hpp.html','../../'); i
   <div class="headertitle"><div class="title">complex.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Complex number operations for the Tannic Tensor Library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d7/dd8/concepts_8hpp_source.html">concepts.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d3/d30/shape_8hpp_source.html">shape.hpp</a>&quot;</code><br />
@@ -223,25 +226,36 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab9732ede6a977fed3895bf928a67748f" id="r_ab9732ede6a977fed3895bf928a67748f"><td class="memTemplParams" colspan="2">template&lt;Expression Real&gt; </td></tr>
-<tr class="memitem:ab9732ede6a977fed3895bf928a67748f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#ab9732ede6a977fed3895bf928a67748f">tannic::expression::complexify</a> (Real &amp;&amp;real)</td></tr>
+<tr class="memitem:ab9732ede6a977fed3895bf928a67748f" id="r_ab9732ede6a977fed3895bf928a67748f"><td class="memTemplParams" colspan="2">template&lt;Composable Real&gt; </td></tr>
+<tr class="memitem:ab9732ede6a977fed3895bf928a67748f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#ab9732ede6a977fed3895bf928a67748f">tannic::expression::complexify</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Real</a> &amp;&amp;real)</td></tr>
 <tr class="memdesc:ab9732ede6a977fed3895bf928a67748f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a complex tensor view from interleaved real/imaginary data.  <br /></td></tr>
 <tr class="separator:ab9732ede6a977fed3895bf928a67748f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79760dbb305bbb78577f24479457c383" id="r_a79760dbb305bbb78577f24479457c383"><td class="memTemplParams" colspan="2">template&lt;Expression Real, Expression Imaginary&gt; </td></tr>
-<tr class="memitem:a79760dbb305bbb78577f24479457c383"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a79760dbb305bbb78577f24479457c383">tannic::expression::complex</a> (Real &amp;&amp;real, Imaginary &amp;&amp;imaginary)</td></tr>
+<tr class="memitem:a79760dbb305bbb78577f24479457c383" id="r_a79760dbb305bbb78577f24479457c383"><td class="memTemplParams" colspan="2">template&lt;Composable Real, Composable Imaginary&gt; </td></tr>
+<tr class="memitem:a79760dbb305bbb78577f24479457c383"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a79760dbb305bbb78577f24479457c383">tannic::expression::complex</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Real</a> &amp;&amp;real, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Imaginary</a> &amp;&amp;imaginary)</td></tr>
 <tr class="memdesc:a79760dbb305bbb78577f24479457c383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates complex tensor from separate real and imaginary tensors <br  />
   <br /></td></tr>
 <tr class="separator:a79760dbb305bbb78577f24479457c383"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94ab220f2ca090334605296af5f3de84" id="r_a94ab220f2ca090334605296af5f3de84"><td class="memTemplParams" colspan="2">template&lt;Expression Magnitude, Expression Angle&gt; </td></tr>
-<tr class="memitem:a94ab220f2ca090334605296af5f3de84"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a94ab220f2ca090334605296af5f3de84">tannic::expression::polar</a> (Magnitude &amp;&amp;rho, Angle &amp;&amp;theta)</td></tr>
+<tr class="memitem:a94ab220f2ca090334605296af5f3de84" id="r_a94ab220f2ca090334605296af5f3de84"><td class="memTemplParams" colspan="2">template&lt;Composable Magnitude, Composable Angle&gt; </td></tr>
+<tr class="memitem:a94ab220f2ca090334605296af5f3de84"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a94ab220f2ca090334605296af5f3de84">tannic::expression::polar</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Magnitude</a> &amp;&amp;<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">rho</a>, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Angle</a> &amp;&amp;<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">theta</a>)</td></tr>
 <tr class="memdesc:a94ab220f2ca090334605296af5f3de84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates complex tensor from polar coordinates (magnitude/angle)  <br /></td></tr>
 <tr class="separator:a94ab220f2ca090334605296af5f3de84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e5202d0e8bc3b22deddc6eabcb0df39" id="r_a0e5202d0e8bc3b22deddc6eabcb0df39"><td class="memTemplParams" colspan="2">template&lt;Expression Complex&gt; </td></tr>
-<tr class="memitem:a0e5202d0e8bc3b22deddc6eabcb0df39"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a0e5202d0e8bc3b22deddc6eabcb0df39">tannic::expression::realify</a> (Complex &amp;&amp;<a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a79760dbb305bbb78577f24479457c383">complex</a>)</td></tr>
+<tr class="memitem:a0e5202d0e8bc3b22deddc6eabcb0df39" id="r_a0e5202d0e8bc3b22deddc6eabcb0df39"><td class="memTemplParams" colspan="2">template&lt;Composable Complex&gt; </td></tr>
+<tr class="memitem:a0e5202d0e8bc3b22deddc6eabcb0df39"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a0e5202d0e8bc3b22deddc6eabcb0df39">tannic::expression::realify</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Complex</a> &amp;&amp;<a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a79760dbb305bbb78577f24479457c383">complex</a>)</td></tr>
 <tr class="memdesc:a0e5202d0e8bc3b22deddc6eabcb0df39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a real-valued view of complex tensor data.  <br /></td></tr>
 <tr class="separator:a0e5202d0e8bc3b22deddc6eabcb0df39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Complex number operations for the Tannic Tensor Library. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>This header provides functionality for working with complex numbers as tensors, including:</p>
+<ul>
+<li>Complex number creation with cartesian and polar coordinates.</li>
+<li>Real views from complex tensors. <br  />
+</li>
+</ul>
+<p>The functions here described provide the way to complexify real tensors or view complex tensors in real space. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -40,14 +40,7 @@ enum type {
     complex128,  
     TYPES
 };
-
-struct float16_t {
-    uint16_t bits;
-};
-
-float16_t float32_to_float16(float);
-float float16_to_float32(float16_t);
-
+ 
 #ifdef __cplusplus
 }
 } // namespace tannic

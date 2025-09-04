@@ -1,5 +1,10 @@
 \doxysection{include/tannic/tensor.hpp File Reference}
 \hypertarget{tensor_8hpp}{}\label{tensor_8hpp}\index{include/tannic/tensor.hpp@{include/tannic/tensor.hpp}}
+
+
+Core multidimensional tensor class for the Tannic Tensor Library.  
+
+
 {\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$memory$>$}\newline
 {\ttfamily \#include $<$cassert$>$}\newline
@@ -14,14 +19,16 @@
 {\ttfamily \#include "{}operations.\+hpp"{}}\newline
 {\ttfamily \#include "{}complex.\+hpp"{}}\newline
 {\ttfamily \#include "{}graph.\+hpp"{}}\newline
-Include dependency graph for tensor.\+hpp\+:\nopagebreak
+Include dependency graph for tensor.\+hpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{db/d1f/tensor_8hpp__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,10 +45,46 @@ class \mbox{\hyperlink{classtannic_1_1Tensor}{tannic\+::\+Tensor}}
 \item 
 namespace \mbox{\hyperlink{namespacetannic}{tannic}}
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{tannic\+::\+IOStyle}} \{ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a782f1dd694a3dd433925f3298d97bee1}{tannic\+::\+Tannic}}
+, \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a95b88f180e9eb5678e0f9ebac2cbe643}{tannic\+::\+Py\+Torch}}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{namespacetannic_acaa226116ce1f3dd66906ae2b1356275}{tannic\+::setiostyle}} (\mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}} style)
+\item 
 std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1a847102d1be0f3bdc61821df66844c0}{tannic\+::operator$<$$<$}} (std\+::ostream \&ostream, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&tensor)
 \item 
-{\footnotesize template$<$Expression Source$>$ }\\std\+::ostream \& \mbox{\hyperlink{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9}{tannic\+::operator$<$$<$}} (std\+::ostream \&ostream, Source source)
+{\footnotesize template$<$Composable Source$>$ }\\std\+::ostream \& \mbox{\hyperlink{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9}{tannic\+::operator$<$$<$}} (std\+::ostream \&ostream, Source source)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core multidimensional tensor class for the Tannic Tensor Library. 
+
+\begin{DoxyAuthor}{Author}
+Eric Hermosis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+Defines {\ttfamily \doxylink{classtannic_1_1Tensor}{tannic\+::\+Tensor}}, the primary data structure of the library, supporting\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Dynamic dtypes}}\+: No need for templates, data types can be passed to tensors as arguments to simplify serialization and IO operations.
+\item {\bfseries{Memory management}}\+: Host(\+CPU)/\+Device(eg. CUDA) allocation support.
+\item {\bfseries{Math operators and functions}}\+: Math operators like +,\texorpdfstring{$\ast$}{*},-\/ and matmul supported, for both CPU and CUDA tensors.
+\item {\bfseries{Slicing/views}}\+: Python-\/like indexing ({\ttfamily operator\mbox{[}\mbox{]}}, {\ttfamily range}, {\ttfamily transpose}) with negative index.
+\item {\bfseries{Eager evaluation}}\+: Eager execution but allowing compile time optimizations like expression fusion using templates.
+\item {\bfseries{Strided storage}}\+: Non-\/contiguous layouts via {\ttfamily Shape} and {\ttfamily Strides}. ~\newline
+
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See also}
+Types.\+hpp(data types), Resources.\+hpp (Memory Managment), Functions.\+hpp (Supported functions) 
+\end{DoxySeeAlso}

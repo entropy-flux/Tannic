@@ -11,8 +11,6 @@ struct \mbox{\hyperlink{structtannic_1_1function_1_1Cosh}{Cosh}}
 \begin{DoxyCompactList}\small\item\em Functor hyperbolic cosine Applies element-\/wise hyperbolic cosine to tensor elements. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Exp}{Exp}}
 \begin{DoxyCompactList}\small\item\em Functor exponential (e\texorpdfstring{$^\wedge$}{\string^}x) Applies element-\/wise exponential to tensor elements. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classtannic_1_1function_1_1Function}{Function}}
-\begin{DoxyCompactList}\small\item\em Expression template for mathematical function operations. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Log}{Log}}
 \begin{DoxyCompactList}\small\item\em Functor natural logarithm (ln(x)) Applies element-\/wise natural logarithm to tensor elements. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structtannic_1_1function_1_1Rsqrt}{Rsqrt}}
@@ -30,27 +28,27 @@ struct \mbox{\hyperlink{structtannic_1_1function_1_1Tanh}{Tanh}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}} (Operand \&\&operand)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}} (Operand \&\&operand)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated natural logarithm expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}} (Operand \&\&operand)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}} (Operand \&\&operand)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated exponential function expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b}{sqrt}} (Operand \&\&operand)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a53ac0b8bb4f3c86c64e8ffbdcb0a8c8b}{sqrt}} (Operand \&\&operand)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated square root expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_ae57777f5110c12a46eedfeb0e8bb10b8}{rsqrt}} (Operand \&\&operand, float epsilon=0.\+0f)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_ae57777f5110c12a46eedfeb0e8bb10b8}{rsqrt}} (Operand \&\&operand, float epsilon=0.\+0f)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated inverse square root expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_adf8029815df9c9b3b40179dd788a9ba8}{abs}} (Operand \&\&operand)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_adf8029815df9c9b3b40179dd788a9ba8}{abs}} (Operand \&\&operand)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated absolute value expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a8048b5991804efd638c160566eadb715}{sin}} (Operand \&\&operand)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a8048b5991804efd638c160566eadb715}{sin}} (Operand \&\&operand)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated sine function expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a4ee4a5baeff864c9605cc1c088ef9895}{cos}} (Operand \&\&operand)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a4ee4a5baeff864c9605cc1c088ef9895}{cos}} (Operand \&\&operand)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated cosine function expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a78acb787d42b68d6bf8fcc3fdafa6dc7}{tan}} (Operand \&\&operand)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a78acb787d42b68d6bf8fcc3fdafa6dc7}{tan}} (Operand \&\&operand)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated tangent function expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_af97a5da6ca19a282f6c4ec90d40fe468}{sinh}} (Operand \&\&operand)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_af97a5da6ca19a282f6c4ec90d40fe468}{sinh}} (Operand \&\&operand)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated hyperbolic sine expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a8419d8c9fe7bcb9ac418842fb3d726bd}{cosh}} (Operand \&\&operand)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a8419d8c9fe7bcb9ac418842fb3d726bd}{cosh}} (Operand \&\&operand)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated hyperbolic cosine expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a4d71856a8e51387988d8d3b1a3ac4f61}{tanh}} (Operand \&\&operand)
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1function_a4d71856a8e51387988d8d3b1a3ac4f61}{tanh}} (Operand \&\&operand)
 \begin{DoxyCompactList}\small\item\em Creates a lazy-\/evaluated hyperbolic tangent expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -59,7 +57,7 @@ struct \mbox{\hyperlink{structtannic_1_1function_1_1Tanh}{Tanh}}
 \index{tannic::function@{tannic::function}!abs@{abs}}
 \index{abs@{abs}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{abs()}{abs()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::abs (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -86,7 +84,7 @@ Functor expression representing element-\/wise \texorpdfstring{$\vert$}{|}operan
 \index{tannic::function@{tannic::function}!cos@{cos}}
 \index{cos@{cos}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{cos()}{cos()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::cos (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -113,7 +111,7 @@ Functor expression representing element-\/wise cos(operand)
 \index{tannic::function@{tannic::function}!cosh@{cosh}}
 \index{cosh@{cosh}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{cosh()}{cosh()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::cosh (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -140,7 +138,7 @@ Functor expression representing element-\/wise cosh(operand)
 \index{tannic::function@{tannic::function}!exp@{exp}}
 \index{exp@{exp}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{exp()}{exp()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::exp (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -167,7 +165,7 @@ Functor expression representing element-\/wise e\texorpdfstring{$^\wedge$}{\stri
 \index{tannic::function@{tannic::function}!log@{log}}
 \index{log@{log}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{log()}{log()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::log (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -197,7 +195,7 @@ Computes natural logarithm (base e) for each element
 \index{tannic::function@{tannic::function}!rsqrt@{rsqrt}}
 \index{rsqrt@{rsqrt}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{rsqrt()}{rsqrt()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::rsqrt (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand,  }\item[{float}]{epsilon = {\ttfamily 0.0f} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -227,7 +225,7 @@ Returns NaN for negative inputs
 \index{tannic::function@{tannic::function}!sin@{sin}}
 \index{sin@{sin}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{sin()}{sin()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::sin (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -254,7 +252,7 @@ Functor expression representing element-\/wise sin(operand)
 \index{tannic::function@{tannic::function}!sinh@{sinh}}
 \index{sinh@{sinh}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{sinh()}{sinh()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::sinh (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -281,7 +279,7 @@ Functor expression representing element-\/wise sinh(operand)
 \index{tannic::function@{tannic::function}!sqrt@{sqrt}}
 \index{sqrt@{sqrt}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{sqrt()}{sqrt()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::sqrt (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -311,7 +309,7 @@ Returns NaN for negative inputs
 \index{tannic::function@{tannic::function}!tan@{tan}}
 \index{tan@{tan}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{tan()}{tan()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::tan (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
@@ -341,7 +339,7 @@ Returns NaN where cosine equals zero
 \index{tannic::function@{tannic::function}!tanh@{tanh}}
 \index{tanh@{tanh}!tannic::function@{tannic::function}}
 \doxysubsubsection{\texorpdfstring{tanh()}{tanh()}}
-{\footnotesize\ttfamily template$<$Expression Operand$>$ \\
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::function\+::tanh (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 

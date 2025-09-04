@@ -1,5 +1,10 @@
 \doxysection{include/tannic/views.hpp File Reference}
 \hypertarget{views_8hpp}{}\label{views_8hpp}\index{include/tannic/views.hpp@{include/tannic/views.hpp}}
+
+
+Implements views for tensors in the Tannic Tensor Library.  
+
+
 {\ttfamily \#include $<$utility$>$}\newline
 {\ttfamily \#include $<$algorithm$>$}\newline
 {\ttfamily \#include $<$numeric$>$}\newline
@@ -10,31 +15,27 @@
 {\ttfamily \#include "{}strides.\+hpp"{}}\newline
 {\ttfamily \#include "{}concepts.\+hpp"{}}\newline
 {\ttfamily \#include "{}exceptions.\+hpp"{}}\newline
-Include dependency graph for views.\+hpp\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{dd/d76/views_8hpp__incl}
-\end{center}
-\end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d3/d92/views_8hpp__dep__incl}
-\end{center}
-\end{figure}
+Include dependency graph for views.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View$<$ Source $>$}}
-\begin{DoxyCompactList}\small\item\em Expression template for viewing a tensor with a new shape. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for viewing a tensor with a new shape. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{tannic\+::expression\+::\+Transpose$<$ Source $>$}}
-\begin{DoxyCompactList}\small\item\em Expression template for transposing two dimensions of a tensor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for transposing two dimensions of a tensor. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation$<$ Source, Indexes $>$}}
-\begin{DoxyCompactList}\small\item\em Expression template for reordering tensor dimensions according to a specified permutation. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for reordering tensor dimensions according to a specified permutation. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{tannic\+::expression\+::\+Expansion$<$ Source $>$}}
-\begin{DoxyCompactList}\small\item\em Expression template for expanding (broadcasting) singleton dimensions of a tensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for expanding (broadcasting) singleton dimensions of a tensor. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{tannic\+::expression\+::\+Squeeze$<$ Source $>$}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for removing singleton dimensions from a tensor. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze$<$ Source $>$}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for inserting singleton dimensions into a tensor. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{tannic\+::expression\+::\+Flatten$<$ Source $>$}}
+\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for flattening a contiguous range of dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -45,11 +46,47 @@ namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$Expression Source, Integral ... Indexes$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}{tannic\+::expression\+::view}} (Source \&\&source, Indexes ... indexes)
+{\footnotesize template$<$Composable Source, Integral ... Indexes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}{tannic\+::expression\+::view}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Indexes}} ... \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{indexes}})
 \begin{DoxyCompactList}\small\item\em Creates a reshaped view of a tensor or expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}{tannic\+::expression\+::transpose}} (Source \&\&source, int first, int second)
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}{tannic\+::expression\+::transpose}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{first}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{second}})
 \begin{DoxyCompactList}\small\item\em Creates a transposed view of a tensor or expression by swapping two dimensions. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source, Integral ... Indexes$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a1f1dde31ec629ed3d6b2b979221cf802}{tannic\+::expression\+::permute}} (Source \&\&source, Indexes... indexes)
+{\footnotesize template$<$Composable Source, Integral ... Indexes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a1f1dde31ec629ed3d6b2b979221cf802}{tannic\+::expression\+::permute}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, Indexes... \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{indexes}})
 \begin{DoxyCompactList}\small\item\em Creates a permuted view of a tensor or expression. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source, Integral... Sizes$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a3e153f6fc540062b27409ba60926e869}{tannic\+::expression\+::expand}} (Source \&\&source, Sizes... sizes)
-\begin{DoxyCompactList}\small\item\em Creates an expanded view of a tensor, broadcasting singleton dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\footnotesize template$<$Composable Source, Integral... Sizes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a3e153f6fc540062b27409ba60926e869}{tannic\+::expression\+::expand}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, Sizes... \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{sizes}})
+\begin{DoxyCompactList}\small\item\em Creates an expanded view of a tensor, broadcasting singleton dimensions. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_aeb6b00dc672b62ceb6217af46120894c}{tannic\+::expression\+::squeeze}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source)
+\begin{DoxyCompactList}\small\item\em Removes all singleton dimensions from a tensor (squeeze). \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Source, Integral... Axes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_af3cfb1c4d6698824ae724c29c94e5d18}{tannic\+::expression\+::unsqueeze}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, Axes... \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{axes}})
+\begin{DoxyCompactList}\small\item\em Inserts singleton dimensions at the specified axes (unsqueeze). \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_ae0573425cb00a0c994323d6453efa3ff}{tannic\+::expression\+::flatten}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} start=0, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} end=-\/1)
+\begin{DoxyCompactList}\small\item\em Flattens dimensions of a tensor into a single dimension. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements views for tensors in the Tannic Tensor Library. 
+
+\begin{DoxyAuthor}{Author}
+Eric Hermosis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 ~\newline
+ 
+\end{DoxyDate}
+This header defines expression templates for tensors views without copying data. These views operate on the underlying tensor metadata (shape, strides, and offset) to reinterpret how elements are accessed while preserving the original storage.
+
+Example usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Tensor\ X(float32,\ \{2,\ 3\});\ X.initialize();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ View\ from\ (2,\ 3)\ to\ (3,\ 2)}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a5f5b6b37401a67689b7df785f85eefbe}{view}}(X,\ 3,\ 2);}
+\DoxyCodeLine{std::cout\ <<\ Y.shape()\ <<\ std::endl;\ \textcolor{comment}{//\ (3,\ 2)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Swap\ the\ first\ and\ second\ dimensions}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_ab43b77ed569cfeb4380abc2e6458aa00}{transpose}}(X,\ 0,\ 1);}
+\DoxyCodeLine{std::cout\ <<\ Z.shape()\ <<\ std::endl;\ \textcolor{comment}{//\ (3,\ 2)}}
+
+\end{DoxyCode}
+ 

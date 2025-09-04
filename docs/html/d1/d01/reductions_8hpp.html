@@ -98,9 +98,13 @@ $(document).ready(function(){initNavTree('d1/d01/reductions_8hpp.html','../../')
   <div class="headertitle"><div class="title">reductions.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines reduction operations for tensor expressions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;array&gt;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d7/dd8/concepts_8hpp_source.html">concepts.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d8b/expressions_8hpp_source.html">expressions.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d73/traits_8hpp_source.html">traits.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d3/d30/shape_8hpp_source.html">shape.hpp</a>&quot;</code><br />
@@ -278,24 +282,35 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a83caa2ee55fd9f434b633d9eba583b61" id="r_a83caa2ee55fd9f434b633d9eba583b61"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
-<tr class="memitem:a83caa2ee55fd9f434b633d9eba583b61"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a83caa2ee55fd9f434b633d9eba583b61">tannic::expression::argmax</a> (Source &amp;&amp;source, int axis=-1, bool keepdim=false)</td></tr>
-<tr class="memdesc:a83caa2ee55fd9f434b633d9eba583b61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="../../dc/d3e/structtannic_1_1expression_1_1Argmax.html" title="Finds the indices of maximum values along an axis.">Argmax</a> reduction.  <br /></td></tr>
-<tr class="separator:a83caa2ee55fd9f434b633d9eba583b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa12d02d976951a8d0311e23af16e2ab3" id="r_aa12d02d976951a8d0311e23af16e2ab3"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
-<tr class="memitem:aa12d02d976951a8d0311e23af16e2ab3"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#aa12d02d976951a8d0311e23af16e2ab3">tannic::expression::argmin</a> (Source &amp;&amp;source, int axis=-1, bool keepdim=false)</td></tr>
-<tr class="memdesc:aa12d02d976951a8d0311e23af16e2ab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html" title="Finds the indexes of minimum values along an axis.">Argmin</a> reduction.  <br /></td></tr>
-<tr class="separator:aa12d02d976951a8d0311e23af16e2ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab256bfd94d0cccbceab6a094403ccc96" id="r_ab256bfd94d0cccbceab6a094403ccc96"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
-<tr class="memitem:ab256bfd94d0cccbceab6a094403ccc96"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#ab256bfd94d0cccbceab6a094403ccc96">tannic::expression::sum</a> (Source &amp;&amp;source, int axis=-1, bool keepdim=false)</td></tr>
-<tr class="memdesc:ab256bfd94d0cccbceab6a094403ccc96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a sum reduction.  <br /></td></tr>
-<tr class="separator:ab256bfd94d0cccbceab6a094403ccc96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82d37178b53fdae2ff53db01e563a4f2" id="r_a82d37178b53fdae2ff53db01e563a4f2"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
-<tr class="memitem:a82d37178b53fdae2ff53db01e563a4f2"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a82d37178b53fdae2ff53db01e563a4f2">tannic::expression::mean</a> (Source &amp;&amp;source, int axis=-1, bool keepdim=false)</td></tr>
-<tr class="memdesc:a82d37178b53fdae2ff53db01e563a4f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a mean reduction.  <br /></td></tr>
-<tr class="separator:a82d37178b53fdae2ff53db01e563a4f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cee5a6cd1bfafa984d9de0c89548424" id="r_a0cee5a6cd1bfafa984d9de0c89548424"><td class="memTemplParams" colspan="2">template&lt;Composable Source&gt; </td></tr>
+<tr class="memitem:a0cee5a6cd1bfafa984d9de0c89548424"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a0cee5a6cd1bfafa984d9de0c89548424">tannic::expression::argmax</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">int</a> axis, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">bool</a> keepdim=<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">false</a>)</td></tr>
+<tr class="memdesc:a0cee5a6cd1bfafa984d9de0c89548424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="../../dc/d3e/structtannic_1_1expression_1_1Argmax.html" title="Finds the indices of maximum values along an axis.">Argmax</a> reduction.  <br /></td></tr>
+<tr class="separator:a0cee5a6cd1bfafa984d9de0c89548424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae27f710a9c2d6f472de4c5b815277dcd" id="r_ae27f710a9c2d6f472de4c5b815277dcd"><td class="memTemplParams" colspan="2">template&lt;Composable Source&gt; </td></tr>
+<tr class="memitem:ae27f710a9c2d6f472de4c5b815277dcd"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#ae27f710a9c2d6f472de4c5b815277dcd">tannic::expression::argmin</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">int</a> axis, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">bool</a> keepdim=<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">false</a>)</td></tr>
+<tr class="memdesc:ae27f710a9c2d6f472de4c5b815277dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an <a class="el" href="../../d7/d32/structtannic_1_1expression_1_1Argmin.html" title="Finds the indexes of minimum values along an axis.">Argmin</a> reduction.  <br /></td></tr>
+<tr class="separator:ae27f710a9c2d6f472de4c5b815277dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86e00b9acced8ebb951803f22ef7207e" id="r_a86e00b9acced8ebb951803f22ef7207e"><td class="memTemplParams" colspan="2">template&lt;Composable Source&gt; </td></tr>
+<tr class="memitem:a86e00b9acced8ebb951803f22ef7207e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#a86e00b9acced8ebb951803f22ef7207e">tannic::expression::sum</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">int</a> axis, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">bool</a> keepdim=<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">false</a>)</td></tr>
+<tr class="memdesc:a86e00b9acced8ebb951803f22ef7207e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a sum reduction.  <br /></td></tr>
+<tr class="separator:a86e00b9acced8ebb951803f22ef7207e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af322dc9f370e4f50cfcacec0f6fbe527" id="r_af322dc9f370e4f50cfcacec0f6fbe527"><td class="memTemplParams" colspan="2">template&lt;Composable Source&gt; </td></tr>
+<tr class="memitem:af322dc9f370e4f50cfcacec0f6fbe527"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">constexpr</a> <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html#af322dc9f370e4f50cfcacec0f6fbe527">tannic::expression::mean</a> (<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">Source</a> &amp;&amp;source, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">int</a> axis, <a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">bool</a> keepdim=<a class="el" href="../../dc/dc3/classtannic_1_1expression_1_1Comparison.html">false</a>)</td></tr>
+<tr class="memdesc:af322dc9f370e4f50cfcacec0f6fbe527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a mean reduction.  <br /></td></tr>
+<tr class="separator:af322dc9f370e4f50cfcacec0f6fbe527"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines reduction operations for tensor expressions. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>This header provides reduction operations for tensor-like objects, implemented as expression templates. Currently supports:</p><ul>
+<li>argmax: Index of maximum value along axis optionally keeping the original rank.</li>
+<li>argmin: Index of minimum value along axis optionally keeping the original rank.</li>
+<li>sum: Sum of the values along axis optionally keeping the original rank.</li>
+<li>mean: Mean of the values along axis optionally keeping the original rank.</li>
+</ul>
+<p>All reductions are lazy-evaluated and maintain proper shape/dtype transformations. Part of the Tannic Tensor Library. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

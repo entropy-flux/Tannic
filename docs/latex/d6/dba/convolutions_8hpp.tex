@@ -1,5 +1,10 @@
 \doxysection{include/tannic/convolutions.hpp File Reference}
 \hypertarget{convolutions_8hpp}{}\label{convolutions_8hpp}\index{include/tannic/convolutions.hpp@{include/tannic/convolutions.hpp}}
+
+
+Defines tensor convolutional operations.  
+
+
 {\ttfamily \#include $<$tuple$>$}\newline
 {\ttfamily \#include $<$array$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
@@ -11,20 +16,15 @@
 {\ttfamily \#include "{}tensor.\+hpp"{}}\newline
 {\ttfamily \#include "{}exceptions.\+hpp"{}}\newline
 {\ttfamily \#include "{}transformations.\+hpp"{}}\newline
-Include dependency graph for convolutions.\+hpp\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d8/d77/convolutions_8hpp__incl}
-\end{center}
-\end{figure}
+Include dependency graph for convolutions.\+hpp\+:
+% FIG 0
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_011_01_4}{tannic\+::transformation\+::\+Convolution$<$ 1 $>$}}
-\begin{DoxyCompactList}\small\item\em Expression template for 1D convolution operations. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution_3_012_01_4}{tannic\+::transformation\+::\+Convolution$<$ 2 $>$}}
-\begin{DoxyCompactList}\small\item\em Expression template for 2D convolution operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+class \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution1D}{tannic\+::transformation\+::\+Convolution1D}}
+\begin{DoxyCompactList}\small\item\em Expression for 1D convolution operations. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution2D}{tannic\+::transformation\+::\+Convolution2D}}
+\begin{DoxyCompactList}\small\item\em Expression for 2D convolution operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,7 +35,29 @@ namespace \mbox{\hyperlink{namespacetannic_1_1transformation}{tannic\+::transfor
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$auto Dimension, Expression Signal, Expression Kernel$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a1298ce7dc6434ea0905a4eec46f4f2c3}{tannic\+::transformation\+::convolve}} (Signal \&\&signal, Kernel \&\&kernel, std\+::size\+\_\+t strides, std\+::size\+\_\+t padding)
-\begin{DoxyCompactList}\small\item\em Creates a 1D or 2D convolution expression with uniform strides and padding. \end{DoxyCompactList}\item 
-{\footnotesize template$<$auto Dimension, Expression Signal, Expression Kernel$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a7749a6d3ab09071315cb86b83b6dd379}{tannic\+::transformation\+::convolve}} (Signal \&\&signal, Kernel \&\&kernel, std\+::array$<$ std\+::size\+\_\+t, Dimension $>$ strides, std\+::array$<$ std\+::size\+\_\+t, Dimension $>$ padding)
-\begin{DoxyCompactList}\small\item\em Creates a 1D or 2D convolution expression with dimension-\/specific strides and padding. \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\footnotesize template$<$Composable Signal, Composable Kernel$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_ac18bf1542b1da07c49fd3e3b50fdcdbf}{tannic\+::transformation\+::convolve1D}} (Signal \&\&signal, Kernel \&\&kernel, std\+::size\+\_\+t stride, std\+::size\+\_\+t padding)
+\begin{DoxyCompactList}\small\item\em Creates a 1D convolution expression with uniform stride and padding. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Signal, Composable Kernel$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_ae1d1c303624f21e6e5f7a29feb268587}{tannic\+::transformation\+::convolve1D}} (Signal \&\&signal, Kernel \&\&kernel, std\+::array$<$ std\+::size\+\_\+t, 1 $>$ strides, std\+::array$<$ std\+::size\+\_\+t, 1 $>$ padding)
+\begin{DoxyCompactList}\small\item\em Creates a 1D convolution expression with explicit stride and padding arrays. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Signal, Composable Kernel$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a9e2fe216266f6568ed54452f04e062c8}{tannic\+::transformation\+::convolve2D}} (Signal \&\&signal, Kernel \&\&kernel, std\+::size\+\_\+t stride, std\+::size\+\_\+t padding)
+\begin{DoxyCompactList}\small\item\em Creates a 2D convolution expression with uniform stride and padding. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Signal, Composable Kernel$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a351f76d5ca8516413662d756055060f1}{tannic\+::transformation\+::convolve2D}} (Signal \&\&signal, Kernel \&\&kernel, std\+::array$<$ std\+::size\+\_\+t, 2 $>$ strides, std\+::array$<$ std\+::size\+\_\+t, 2 $>$ padding)
+\begin{DoxyCompactList}\small\item\em Creates a 2D convolution expression with explicit stride and padding arrays. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Signal, Composable Kernel, Composable Bias$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_aa29969c01f1e9ef0a78782f719dfa54c}{tannic\+::transformation\+::convolve2D}} (Signal \&\&signal, Kernel \&\&kernel, Bias \&\&bias, std\+::size\+\_\+t stride, std\+::size\+\_\+t padding)
+\begin{DoxyCompactList}\small\item\em Creates a biased 2D convolution expression with uniform stride and padding. \end{DoxyCompactList}\item 
+{\footnotesize template$<$Composable Signal, Composable Kernel, Composable Bias$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a6c6bd0aba5796f00e5c1697eb566dd39}{tannic\+::transformation\+::convolve2D}} (Signal \&\&signal, Kernel \&\&kernel, Bias \&\&bias, std\+::array$<$ std\+::size\+\_\+t, 2 $>$ strides, std\+::array$<$ std\+::size\+\_\+t, 2 $>$ padding)
+\begin{DoxyCompactList}\small\item\em Creates a biased 2D convolution expression with explicit stride and padding arrays. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines tensor convolutional operations. 
+
+\begin{DoxyAuthor}{Author}
+Eric Hermosis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+This header provides tensor convolution operations implemented as expression templates.
+
+Part of the Tannic Tensor Library. 

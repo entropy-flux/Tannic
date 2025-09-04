@@ -1,22 +1,17 @@
 \doxysection{include/tannic/concepts.hpp File Reference}
 \hypertarget{concepts_8hpp}{}\label{concepts_8hpp}\index{include/tannic/concepts.hpp@{include/tannic/concepts.hpp}}
+
+
+Defines core C++20 concepts used throughout the Tannic Tensor Library.  
+
+
 {\ttfamily \#include $<$concepts$>$}\newline
 {\ttfamily \#include $<$iterator$>$}\newline
 {\ttfamily \#include "{}types.\+hpp"{}}\newline
-Include dependency graph for concepts.\+hpp\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d8/d44/concepts_8hpp__incl}
-\end{center}
-\end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{da/d8f/concepts_8hpp__dep__incl}
-\end{center}
-\end{figure}
+Include dependency graph for concepts.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -25,8 +20,8 @@ namespace \mbox{\hyperlink{namespacetannic}{tannic}}
 \doxysubsubsection*{Concepts}
 \begin{DoxyCompactItemize}
 \item 
-concept \mbox{\hyperlink{concepttannic_1_1Expression}{tannic\+::\+Expression}}
-\begin{DoxyCompactList}\small\item\em Defines the core protocol for all expression-\/like types in the Tannic Tensor Library. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Composable}{tannic\+::\+Composable}}
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Operator}{tannic\+::\+Operator}}
 \begin{DoxyCompactList}\small\item\em Concept defining requirements for tensor operation types. \end{DoxyCompactList}\item 
 concept \mbox{\hyperlink{concepttannic_1_1Functional}{tannic\+::\+Functional}}
@@ -40,4 +35,19 @@ concept \mbox{\hyperlink{concepttannic_1_1Integral}{tannic\+::\+Integral}}
 concept \mbox{\hyperlink{concepttannic_1_1Assignable}{tannic\+::\+Assignable}}
 \begin{DoxyCompactList}\small\item\em Concept for types that can assign values. \end{DoxyCompactList}\item 
 concept \mbox{\hyperlink{concepttannic_1_1Comparable}{tannic\+::\+Comparable}}
-\begin{DoxyCompactList}\small\item\em Concept for types that can compare their value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Concept for types that can compare their value. \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Expression}{tannic\+::\+Expression}}
+\begin{DoxyCompactList}\small\item\em Defines the core protocol for all expression-\/like types in the Tannic Tensor Library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines core C++20 concepts used throughout the Tannic Tensor Library. 
+
+\begin{DoxyDate}{Date}
+2025
+\end{DoxyDate}
+This header the {\ttfamily \doxylink{concepttannic_1_1Expression}{tannic\+::\+Expression}} fundamental concept as a compile time interface for all operations defined in this library and a few other concepts used internally to validate template arguments in compile-\/time expressions.
+
+\begin{DoxyNote}{Note}
+Unless you are extending the library with your custom expressions you can skip this secction. 
+\end{DoxyNote}

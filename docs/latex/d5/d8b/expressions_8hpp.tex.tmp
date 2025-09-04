@@ -1,0 +1,21 @@
+\doxysection{include/tannic/expressions.hpp File Reference}
+\hypertarget{expressions_8hpp}{}\label{expressions_8hpp}\index{include/tannic/expressions.hpp@{include/tannic/expressions.hpp}}
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include "{}traits.\+hpp"{}}\newline
+{\ttfamily \#include "{}concepts.\+hpp"{}}\newline
+Include dependency graph for expressions.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Operation, Operands $>$}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacetannic}{tannic}}
+\item 
+namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
+\end{DoxyCompactItemize}

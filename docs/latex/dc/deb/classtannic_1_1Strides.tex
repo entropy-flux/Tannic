@@ -74,7 +74,7 @@ Represents the memory strides associated with a tensor shape.
 
 A {\ttfamily \doxylink{classtannic_1_1Strides}{Strides}} object can be constructed manually (via variadic arguments or iterators), or automatically from a {\ttfamily \doxylink{classtannic_1_1Shape}{Shape}} (default row-\/major/contiguous layout).
 
-Maximum rank is limited to {\ttfamily \doxylink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{Strides\+::limit} = 8} for constexpr compatibility and static layout. This limit may be removed in C++26 when std\+::vector become constexpr friendly.\hypertarget{classtannic_1_1Strides_autotoc_md44}{}\doxyparagraph{\texorpdfstring{Example (\+Contiguous Layout)\+:}{Example (Contiguous Layout):}}\label{classtannic_1_1Strides_autotoc_md44}
+Maximum rank is limited to {\ttfamily \doxylink{classtannic_1_1Strides_a11b903b9305e1258a3c5ddd3e3597e9f}{Strides\+::limit} = 8} for constexpr compatibility and static layout. This limit may be removed in C++26 when std\+::vector become constexpr friendly.\hypertarget{classtannic_1_1Strides_autotoc_md45}{}\doxyparagraph{\texorpdfstring{Example (\+Contiguous Layout)\+:}{Example (Contiguous Layout):}}\label{classtannic_1_1Strides_autotoc_md45}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
@@ -85,7 +85,7 @@ Maximum rank is limited to {\ttfamily \doxylink{classtannic_1_1Strides_a11b903b9
 \DoxyCodeLine{std::cout\ <<\ strides;\ \ \ \ \textcolor{comment}{//\ Output:\ Strides(12,\ 4,\ 1)}}
 
 \end{DoxyCode}
-\hypertarget{classtannic_1_1Strides_autotoc_md45}{}\doxyparagraph{\texorpdfstring{Example (\+Custom Strides)\+:}{Example (Custom Strides):}}\label{classtannic_1_1Strides_autotoc_md45}
+\hypertarget{classtannic_1_1Strides_autotoc_md46}{}\doxyparagraph{\texorpdfstring{Example (\+Custom Strides)\+:}{Example (Custom Strides):}}\label{classtannic_1_1Strides_autotoc_md46}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides(6,\ 2,\ 1);\ \textcolor{comment}{//\ Custom\ strides\ for\ a\ specific\ memory\ layout}}
@@ -151,7 +151,7 @@ Constructs strides from variadic size arguments.
 \begin{DoxyNote}{Note}
 Asserts if the number of dimensions (rank) exceeds {\ttfamily limit}.
 \end{DoxyNote}
-\hypertarget{classtannic_1_1Strides_autotoc_md46}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md46}
+\hypertarget{classtannic_1_1Strides_autotoc_md47}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md47}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{tannic::Strides}}\ s(6,\ 2,\ 1);}
@@ -184,7 +184,7 @@ Constructs strides from a pair of iterators.
 \begin{DoxyNote}{Note}
 Asserts if the number of dimensions exceeds {\ttfamily limit}.
 \end{DoxyNote}
-\hypertarget{classtannic_1_1Strides_autotoc_md47}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md47}
+\hypertarget{classtannic_1_1Strides_autotoc_md48}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md48}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{std::vector<std::size\_t>\ values\ =\ \{12,\ 4,\ 1\};}
@@ -206,7 +206,7 @@ Constructs strides from a shape assuming row-\/major layout.
 {\em shape} & \doxylink{classtannic_1_1Shape}{Shape} from which to compute contiguous strides.\\
 \hline
 \end{DoxyParams}
-\hypertarget{classtannic_1_1Strides_autotoc_md48}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md48}
+\hypertarget{classtannic_1_1Strides_autotoc_md49}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1Strides_autotoc_md49}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{tannic::Shape}}\ shape(2,\ 3,\ 4);}

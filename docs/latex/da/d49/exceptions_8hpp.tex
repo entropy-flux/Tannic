@@ -1,28 +1,38 @@
 \doxysection{include/tannic/exceptions.hpp File Reference}
 \hypertarget{exceptions_8hpp}{}\label{exceptions_8hpp}\index{include/tannic/exceptions.hpp@{include/tannic/exceptions.hpp}}
+
+
+Defines the exceptions used in the library. ~\newline
+  
+
+
 {\ttfamily \#include $<$exception$>$}\newline
 {\ttfamily \#include $<$string$>$}\newline
-Include dependency graph for exceptions.\+hpp\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=242pt]{d0/d5c/exceptions_8hpp__incl}
-\end{center}
-\end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d2/da2/exceptions_8hpp__dep__incl}
-\end{center}
-\end{figure}
+Include dependency graph for exceptions.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1Exception}{tannic\+::\+Exception}}
-\begin{DoxyCompactList}\small\item\em A simple generic exception type for the Tannic \doxylink{classtannic_1_1Tensor}{Tensor} Library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Base class for recoverable runtime anomalies in the framework. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classtannic_1_1Error}{tannic\+::\+Error}}
+\begin{DoxyCompactList}\small\item\em Represents serious, typically unrecoverable problems. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacetannic}{tannic}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the exceptions used in the library. ~\newline
+ 
+
+\begin{DoxyAuthor}{Author}
+Eric Hermosis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}

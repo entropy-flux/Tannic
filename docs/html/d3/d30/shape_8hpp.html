@@ -98,6 +98,10 @@ $(document).ready(function(){initNavTree('d3/d30/shape_8hpp.html','../../'); ini
   <div class="headertitle"><div class="title">shape.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines the <code>Shape</code> class for representing tensor dimensions. <br  />
+  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
@@ -223,7 +227,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a8b7066a546d8d6a8605b695788c479f0" id="r_a8b7066a546d8d6a8605b695788c479f0"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#a8b7066a546d8d6a8605b695788c479f0">tannic::operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;shape)</td></tr>
 <tr class="separator:a8b7066a546d8d6a8605b695788c479f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines the <code>Shape</code> class for representing tensor dimensions. <br  />
+ </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>Defines the <code>Shape</code> class, a compact, constexpr-friendly abstraction for representing the shape (i.e., dimensions) of tensors and expression-like objects. Shapes are integral to indexing, broadcasting, and tensor manipulation throughout the library.</p>
+<p>The shape supports:</p>
+<ul>
+<li>Compile-time construction (constexpr)</li>
+<li>Convenient initialization from iterators, lists, or variadic arguments</li>
+<li>Safe indexing, including Python-style negative indexing</li>
+</ul>
+<p>All expression-like objects in the library expose a <code>Shape</code> as part of their interface, making this file central to the Tannic design. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

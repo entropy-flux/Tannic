@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('d8/d71/transformations_8hpp.html','../
   <div class="headertitle"><div class="title">transformations.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines tensor transformation operations.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;tuple&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -265,64 +268,33 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html">tannic::transformation::Transformation&lt; Operation, Operands &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expression template for tensor transformations.  <a href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html">tannic::transformation::Composition</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d9/d4d/classtannic_1_1transformation_1_1Transformation.html" title="Expression template for tensor transformations.">Transformation</a> composition (Known as Matrix Multiplication) operation.  <a href="../../d4/d53/structtannic_1_1transformation_1_1Composition.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html">tannic::transformation::Outer</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the outer product operation between two vectors.  <a href="../../de/d42/structtannic_1_1transformation_1_1Outer.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html">tannic::transformation::Repetition</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html" title="Repetition operation along a specified axis.">Repetition</a> operation along a specified axis.  <a href="../../da/d5d/structtannic_1_1transformation_1_1Repetition.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html">tannic::transformation::Concatenation</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html" title="Concatenation operation along a specified axis.">Concatenation</a> operation along a specified axis.  <a href="../../dd/d77/structtannic_1_1transformation_1_1Concatenation.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d0a/structtannic_1_1transformation_1_1Repack.html">tannic::transformation::Repack</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d8/d0a/structtannic_1_1transformation_1_1Repack.html" title="Repack operation (makes a tensor contiguous in memory)">Repack</a> operation (makes a tensor contiguous in memory)  <a href="../../d8/d0a/structtannic_1_1transformation_1_1Repack.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd5/classtannic_1_1expression_1_1Transformation.html">tannic::expression::Transformation&lt; Operation, Operands &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for tensor transformations.  <a href="../../dc/dd5/classtannic_1_1expression_1_1Transformation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:d0/d1a/namespacetannic" id="r_d0/d1a/namespacetannic"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d9/dd9/namespacetannic_1_1expression" id="r_d9/dd9/namespacetannic_1_1expression"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd9/namespacetannic_1_1expression.html">tannic::expression</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:de/d75/namespacetannic_1_1transformation" id="r_de/d75/namespacetannic_1_1transformation"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html">tannic::transformation</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac79cd681ae5e04a088cff5347d2ee8f8" id="r_ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memTemplParams" colspan="2">template&lt;Expression Outer, Expression Inner&gt; </td></tr>
-<tr class="memitem:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#ac79cd681ae5e04a088cff5347d2ee8f8">tannic::transformation::composition</a> (<a class="el" href="../../de/d42/structtannic_1_1transformation_1_1Outer.html">Outer</a> &amp;&amp;<a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d">outer</a>, Inner &amp;&amp;inner, double scale)</td></tr>
-<tr class="memdesc:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a composition (matrix multiplication) expression.  <br /></td></tr>
-<tr class="separator:ac79cd681ae5e04a088cff5347d2ee8f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae536af65f2dee7cb7279c58f82b2e2d" id="r_aae536af65f2dee7cb7279c58f82b2e2d"><td class="memTemplParams" colspan="2">template&lt;Expression First, Expression Second&gt; </td></tr>
-<tr class="memitem:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aae536af65f2dee7cb7279c58f82b2e2d">tannic::transformation::outer</a> (First &amp;&amp;first, Second &amp;&amp;second)</td></tr>
-<tr class="memdesc:aae536af65f2dee7cb7279c58f82b2e2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an outer product expression.  <br /></td></tr>
-<tr class="separator:aae536af65f2dee7cb7279c58f82b2e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f49aca0f8b48ceb6f1992c5f34ab6fb" id="r_a4f49aca0f8b48ceb6f1992c5f34ab6fb"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
-<tr class="memitem:a4f49aca0f8b48ceb6f1992c5f34ab6fb"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#a4f49aca0f8b48ceb6f1992c5f34ab6fb">tannic::transformation::repeat</a> (Source &amp;&amp;source, int repeats, int axis=0)</td></tr>
-<tr class="memdesc:a4f49aca0f8b48ceb6f1992c5f34ab6fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a repetition transformation.  <br /></td></tr>
-<tr class="separator:a4f49aca0f8b48ceb6f1992c5f34ab6fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb2680136e1491dededb15e6f6169f77" id="r_adb2680136e1491dededb15e6f6169f77"><td class="memTemplParams" colspan="2">template&lt;Expression First, Expression Second&gt; </td></tr>
-<tr class="memitem:adb2680136e1491dededb15e6f6169f77"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#adb2680136e1491dededb15e6f6169f77">tannic::transformation::concatenate</a> (First &amp;&amp;first, Second &amp;&amp;second, int axis=0)</td></tr>
-<tr class="memdesc:adb2680136e1491dededb15e6f6169f77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to create a concatenation transformation.  <br /></td></tr>
-<tr class="separator:adb2680136e1491dededb15e6f6169f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebf273f7681ac116ae0eaa4eec3c83f6" id="r_aebf273f7681ac116ae0eaa4eec3c83f6"><td class="memTemplParams" colspan="2">template&lt;Expression Source&gt; </td></tr>
-<tr class="memitem:aebf273f7681ac116ae0eaa4eec3c83f6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aebf273f7681ac116ae0eaa4eec3c83f6">tannic::transformation::repack</a> (Source &amp;&amp;source)</td></tr>
-<tr class="memdesc:aebf273f7681ac116ae0eaa4eec3c83f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a repack transformation.  <br /></td></tr>
-<tr class="separator:aebf273f7681ac116ae0eaa4eec3c83f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2c2984309895146427e0685322baef0" id="r_aa2c2984309895146427e0685322baef0"><td class="memTemplParams" colspan="2">template&lt;Expression Source, Integral ... Indexes&gt; </td></tr>
-<tr class="memitem:aa2c2984309895146427e0685322baef0"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d75/namespacetannic_1_1transformation.html#aa2c2984309895146427e0685322baef0">tannic::transformation::reshape</a> (Source &amp;&amp;source, Indexes ... indexes)</td></tr>
-<tr class="memdesc:aa2c2984309895146427e0685322baef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a view but always repacks the tensor into a contiguous layout.  <br /></td></tr>
-<tr class="separator:aa2c2984309895146427e0685322baef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe303690a4d7ad0383f88855f6f0fce6" id="r_abe303690a4d7ad0383f88855f6f0fce6"><td class="memTemplParams" colspan="2">template&lt;Expression Multiplicand, Expression Multiplier&gt; </td></tr>
+<tr class="memitem:abe303690a4d7ad0383f88855f6f0fce6" id="r_abe303690a4d7ad0383f88855f6f0fce6"><td class="memTemplParams" colspan="2">template&lt;Composable Multiplicand, Composable Multiplier&gt; </td></tr>
 <tr class="memitem:abe303690a4d7ad0383f88855f6f0fce6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6">tannic::matmul</a> (Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier, double scale=1.0)</td></tr>
 <tr class="memdesc:abe303690a4d7ad0383f88855f6f0fce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrix multiplication convenience function.  <br /></td></tr>
 <tr class="separator:abe303690a4d7ad0383f88855f6f0fce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines tensor transformation operations. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>This header provides tensor transformation operations implemented as expression templates.</p>
+<p>Part of the Tannic Tensor Library. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

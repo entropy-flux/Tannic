@@ -32,8 +32,8 @@
 \DoxyCodeLine{00044\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
 \DoxyCodeLine{00045\ \ }
 \DoxyCodeLine{00046\ \textcolor{keyword}{class\ }Tensor;\ }
-\DoxyCodeLine{00047\ \ }
-\DoxyCodeLine{00048\ \textcolor{keyword}{namespace\ }expression\ \{\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1expression}{tannic::expression}}\ \{\ }
 \DoxyCodeLine{00049\ \ }
 \DoxyCodeLine{00057\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1expression_1_1Cartesian}{Cartesian}}\ \{}
 \DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structtannic_1_1expression_1_1Cartesian_a8523eb78f65c4c6da9e1b8c8d49fbf3d}{forward}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&);}
@@ -44,12 +44,12 @@
 \DoxyCodeLine{00070\ \};\ }
 \DoxyCodeLine{00071\ }
 \DoxyCodeLine{00072\ }
-\DoxyCodeLine{00085\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Coordinates,\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\ ...\ Sources>}
+\DoxyCodeLine{00085\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Coordinates}},\ \mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ ...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Sources}}>}
 \DoxyCodeLine{00086\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{Complexification}};}
 \DoxyCodeLine{00087\ }
 \DoxyCodeLine{00088\ \textcolor{comment}{//\ Single-\/source\ specialization\ (interleaved\ real/imaginary\ data)}}
-\DoxyCodeLine{00089\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Coordinates,\ Expression\ Source>}
-\DoxyCodeLine{00090\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{Complexification}}<Coordinates,\ Source>\ \{}
+\DoxyCodeLine{00089\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Coordinates,\ Composable\ Source>}
+\DoxyCodeLine{00090\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{Complexification}}<\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Coordinates}},\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}}>\ \{}
 \DoxyCodeLine{00091\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Source>::Reference}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_abfa0b7a4f4d84d1f430381fba6c99960}{source}};}
 \DoxyCodeLine{00093\ }
@@ -57,14 +57,14 @@
 \DoxyCodeLine{00099\ \ \ \ \ :\ \ \ source(source)\ }
 \DoxyCodeLine{00100\ \ \ \ \ \{\ }
 \DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (source.dtype())\ \{}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ dtype\_\ =\ complex64;\ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ dtype\_\ =\ complex128;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float32}}:\ dtype\_\ =\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{complex64}};\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float64}}:\ dtype\_\ =\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{complex128}};\ \textcolor{keywordflow}{break};}
 \DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ }
 \DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Complex\ view\ error:\ source\ tensor\ dtype\ must\ be\ float32\ or\ float64"{}});}
 \DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \}\ \ }
 \DoxyCodeLine{00107\ }
 \DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (source.strides()[-\/1]\ ==\ 1\ \&\&\ source.strides()[-\/2]\ ==\ 2)\ \{\ }
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ assert(source.shape().back()\ ==\ 2\ \&\&\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{assert}}(source.shape().back()\ ==\ 2\ \&\&\ }
 \DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Complex\ view\ error:\ last\ dimension\ must\ be\ size\ 2\ (real\ +\ imag)."{}});}
 \DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ shape\_\ =\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}(source.shape().begin(),\ source.shape().end()\ -\/\ 1);}
 \DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ strides\_\ =\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}(source.strides().begin(),\ source.strides().end()\ -\/\ 1);\ }
@@ -77,7 +77,7 @@
 \DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00120\ \ \ \ \ \}\ }
 \DoxyCodeLine{00121\ }
-\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a2fe6c4fda4d24839fbf8c5dc92ce5d30}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a2fe6c4fda4d24839fbf8c5dc92ce5d30}{dtype}}()\textcolor{keyword}{\ const\ }\{}
 \DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
 \DoxyCodeLine{00133\ \ \ \ \ \}}
 \DoxyCodeLine{00134\ }
@@ -98,14 +98,14 @@
 \DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ forward()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00180\ \ \ \ \ }
 \DoxyCodeLine{00181\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00182\ \ \ \ \ type\ dtype\_;\ }
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}}\ dtype\_;\ }
 \DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
 \DoxyCodeLine{00184\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
 \DoxyCodeLine{00185\ \};}
 \DoxyCodeLine{00186\ }
 \DoxyCodeLine{00187\ \textcolor{comment}{//\ Dual-\/source\ specialization\ (separate\ real/imaginary\ tensors)}}
-\DoxyCodeLine{00188\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Coordinates,\ Expression\ Real,\ Expression\ Imaginary>}
-\DoxyCodeLine{00189\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{Complexification}}<Coordinates,\ Real,\ Imaginary>\ \{}
+\DoxyCodeLine{00188\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Coordinates,\ Composable\ Real,\ Composable\ Imaginary>}
+\DoxyCodeLine{00189\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{Complexification}}<\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Coordinates}},\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Real}},\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Imaginary}}>\ \{}
 \DoxyCodeLine{00190\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Real>::Reference}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a765ddfa758f053ed6b199f41369e35dc}{real}};}
 \DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Imaginary>::Reference}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a0367d23806cd0e74d0c40a39a7834364}{imaginary}};}
@@ -117,16 +117,16 @@
 \DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (real.shape()\ !=\ imaginary.shape()\ |\ real.strides()\ !=\ imaginary.strides())\ }
 \DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Complexification\ error:\ real\ and\ imaginary\ part\ layouts\ must\ match"{}});}
 \DoxyCodeLine{00204\ }
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (real.dtype()\ ==\ float64\ ||\ imaginary.dtype()\ ==\ float64)\ \{}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ dtype\_\ =\ complex128;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (real.dtype()\ ==\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float64}}\ ||\ imaginary.dtype()\ ==\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float64}})\ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ dtype\_\ =\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{complex128}};}
 \DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \}\ }
 \DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ dtype\_\ =\ complex64;}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ dtype\_\ =\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{complex64}};}
 \DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \}\ }
 \DoxyCodeLine{00212\ \ \ \ \ \}\ }
 \DoxyCodeLine{00213\ }
-\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_acff24f7db0995fa5781b69fdfb1987a5}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_acff24f7db0995fa5781b69fdfb1987a5}{dtype}}()\textcolor{keyword}{\ const\ }\{}
 \DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
 \DoxyCodeLine{00220\ \ \ \ \ \}\ }
 \DoxyCodeLine{00221\ }
@@ -145,11 +145,11 @@
 \DoxyCodeLine{00254\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ forward()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00255\ \ \ \ \ }
 \DoxyCodeLine{00256\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00257\ \ \ \ \ type\ dtype\_;\ \ }
+\DoxyCodeLine{00257\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}}\ dtype\_;\ \ }
 \DoxyCodeLine{00258\ \};}
 \DoxyCodeLine{00259\ }
 \DoxyCodeLine{00260\ }
-\DoxyCodeLine{00289\ \textcolor{keyword}{template}<Expression\ Source>}
+\DoxyCodeLine{00289\ \textcolor{keyword}{template}<Composable\ Source>}
 \DoxyCodeLine{00290\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{Realification}}\ \{}
 \DoxyCodeLine{00291\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00292\ \ \ \ \ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Source>::Reference}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a4c94275ff00d70fa74326ea021694970}{source}};}
@@ -158,10 +158,10 @@
 \DoxyCodeLine{00299\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a4c94275ff00d70fa74326ea021694970}{source}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a4c94275ff00d70fa74326ea021694970}{source}})\ }
 \DoxyCodeLine{00300\ \ \ \ \ \{\ }
 \DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a4c94275ff00d70fa74326ea021694970}{source}}.dtype())\ \{}
-\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex64:\ \ dtype\_\ =\ float32;\ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex128:\ dtype\_\ =\ float64;\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{complex64}}:\ \ dtype\_\ =\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float32}};\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{complex128}}:\ dtype\_\ =\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{float64}};\ \textcolor{keywordflow}{break};}
 \DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false}\ \&\&\ }
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{assert}}(\textcolor{keyword}{false}\ \&\&\ }
 \DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Real\ view\ error:\ source\ tensor\ dtype\ must\ be\ complex64\ or\ complex128"{}});}
 \DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00308\ \ }
@@ -178,7 +178,7 @@
 \DoxyCodeLine{00319\ }
 \DoxyCodeLine{00320\ \ \ \ \ \}}
 \DoxyCodeLine{00321\ }
-\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a0f9bb911a1fc9fa7e5fa8f1c9bf77306}{dtype}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_a0f9bb911a1fc9fa7e5fa8f1c9bf77306}{dtype}}()\textcolor{keyword}{\ const\ }\{\ }
 \DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;\ }
 \DoxyCodeLine{00333\ \ \ \ \ \}}
 \DoxyCodeLine{00334\ }
@@ -198,40 +198,40 @@
 \DoxyCodeLine{00372\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{forward}}()\ \textcolor{keyword}{const};}
 \DoxyCodeLine{00373\ }
 \DoxyCodeLine{00374\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00375\ \ \ \ \ type\ dtype\_;}
+\DoxyCodeLine{00375\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}}\ dtype\_;}
 \DoxyCodeLine{00376\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
 \DoxyCodeLine{00377\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
 \DoxyCodeLine{00378\ \};\ \ \ }
 \DoxyCodeLine{00379\ }
 \DoxyCodeLine{00380\ }
-\DoxyCodeLine{00401\ \textcolor{keyword}{template}<Expression\ Real>}
-\DoxyCodeLine{00402\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_ab9732ede6a977fed3895bf928a67748f}{complexify}}(Real\&\&\ real)\ \{}
-\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{Complexification<Cartesian,\ Real>}}\{std::forward<Real>(real)\};}
+\DoxyCodeLine{00401\ \textcolor{keyword}{template}<Composable\ Real>}
+\DoxyCodeLine{00402\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_ab9732ede6a977fed3895bf928a67748f}{complexify}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Real}}\&\&\ real)\ \{}
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Complexification<Cartesian,\ Real>}}\{std::forward<Real>(real)\};}
 \DoxyCodeLine{00404\ \}}
 \DoxyCodeLine{00405\ }
-\DoxyCodeLine{00425\ \textcolor{keyword}{template}<Expression\ Real,\ Expression\ Imaginary>}
-\DoxyCodeLine{00426\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}}(Real\&\&\ real,\ Imaginary\&\&\ imaginary)\ \{}
-\DoxyCodeLine{00427\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{Complexification<Cartesian,\ Real,\ Imaginary>}}\{}
+\DoxyCodeLine{00425\ \textcolor{keyword}{template}<Composable\ Real,\ Composable\ Imaginary>}
+\DoxyCodeLine{00426\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Real}}\&\&\ real,\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Imaginary}}\&\&\ imaginary)\ \{}
+\DoxyCodeLine{00427\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Complexification<Cartesian,\ Real,\ Imaginary>}}\{}
 \DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ std::forward<Real>(real),\ }
 \DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ std::forward<Imaginary>(imaginary)}
 \DoxyCodeLine{00430\ \ \ \ \ \};}
 \DoxyCodeLine{00431\ \}}
 \DoxyCodeLine{00432\ }
-\DoxyCodeLine{00452\ \textcolor{keyword}{template}<Expression\ Magnitude,\ Expression\ Angle>}
-\DoxyCodeLine{00453\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a94ab220f2ca090334605296af5f3de84}{polar}}(Magnitude\&\&\ rho,\ Angle\&\&\ theta)\ \{}
-\DoxyCodeLine{00454\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{Complexification<Polar,\ Magnitude,\ Angle>}}\{}
-\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ std::forward<Magnitude>(rho),\ }
-\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ std::forward<Angle>(theta)}
+\DoxyCodeLine{00452\ \textcolor{keyword}{template}<Composable\ Magnitude,\ Composable\ Angle>}
+\DoxyCodeLine{00453\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a94ab220f2ca090334605296af5f3de84}{polar}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Magnitude}}\&\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rho}},\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Angle}}\&\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{theta}})\ \{}
+\DoxyCodeLine{00454\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Complexification<Polar,\ Magnitude,\ Angle>}}\{}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ std::forward<Magnitude>(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{rho}}),\ }
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ std::forward<Angle>(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{theta}})}
 \DoxyCodeLine{00457\ \ \ \ \ \};}
 \DoxyCodeLine{00458\ \}}
 \DoxyCodeLine{00459\ }
-\DoxyCodeLine{00485\ \textcolor{keyword}{template}<Expression\ Complex>}
-\DoxyCodeLine{00486\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a0e5202d0e8bc3b22deddc6eabcb0df39}{realify}}(Complex\&\&\ complex)\ \{}
-\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{Realification<Complex>}}\{std::forward<Complex>(\mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}})\};}
+\DoxyCodeLine{00485\ \textcolor{keyword}{template}<Composable\ Complex>}
+\DoxyCodeLine{00486\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_1_1expression_a0e5202d0e8bc3b22deddc6eabcb0df39}{realify}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Complex}}\&\&\ complex)\ \{}
+\DoxyCodeLine{00487\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Realification<Complex>}}\{std::forward<Complex>(\mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}})\};}
 \DoxyCodeLine{00488\ \}\ }
 \DoxyCodeLine{00489\ }
-\DoxyCodeLine{00490\ \}\ \textcolor{comment}{//\ namespace\ expression}}
-\DoxyCodeLine{00491\ }
+\DoxyCodeLine{00490\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00491\ \ \ \ \ }
 \DoxyCodeLine{00492\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{expression::complex}};}
 \DoxyCodeLine{00493\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_ab9732ede6a977fed3895bf928a67748f}{expression::complexify}};}
 \DoxyCodeLine{00494\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespacetannic_1_1expression_a0e5202d0e8bc3b22deddc6eabcb0df39}{expression::realify}};}

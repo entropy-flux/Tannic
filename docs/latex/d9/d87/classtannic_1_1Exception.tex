@@ -2,7 +2,7 @@
 \hypertarget{classtannic_1_1Exception}{}\label{classtannic_1_1Exception}\index{tannic::Exception@{tannic::Exception}}
 
 
-A simple generic exception type for the Tannic \doxylink{classtannic_1_1Tensor}{Tensor} Library.  
+Base class for recoverable runtime anomalies in the framework.  
 
 
 
@@ -13,9 +13,9 @@ A simple generic exception type for the Tannic \doxylink{classtannic_1_1Tensor}{
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classtannic_1_1Exception_aee6f6175c79bb169dea234ed56ce6039}{Exception}} (const std\+::string \&\mbox{\hyperlink{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}{what}})
-\item 
+\begin{DoxyCompactList}\small\item\em Construct an \doxylink{classtannic_1_1Exception}{Exception} with a message. \end{DoxyCompactList}\item 
 const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}{what}} () const noexcept override
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retrieve the exception message. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -24,12 +24,14 @@ std\+::string \mbox{\hyperlink{classtannic_1_1Exception_acc4253823005b369cfbfbcb
 
 
 \doxysubsection{Detailed Description}
-A simple generic exception type for the Tannic \doxylink{classtannic_1_1Tensor}{Tensor} Library. 
+Base class for recoverable runtime anomalies in the framework. 
 
-This class provides a lightweight generic exception mechanism during for the frontend of the library. ~\newline
+The \doxylink{classtannic_1_1Exception}{Exception} class represents conditions that can be thrown and potentially recovered from during normal program execution. Examples include invalid input, file not found, or other recoverable logical issues.
 
+\begin{DoxyNote}{Note}
+Exceptions are intended to be caught and handled. 
+\end{DoxyNote}
 
-This class is a simple generic \doxylink{classtannic_1_1Exception}{Exception} to avoid overengineering during initial development. As the library matures, this may be extended or replaced with more specialized exception types. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classtannic_1_1Exception_aee6f6175c79bb169dea234ed56ce6039}\label{classtannic_1_1Exception_aee6f6175c79bb169dea234ed56ce6039} 
@@ -40,6 +42,15 @@ This class is a simple generic \doxylink{classtannic_1_1Exception}{Exception} to
 
 
 
+Construct an \doxylink{classtannic_1_1Exception}{Exception} with a message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em what} & Description of the exception. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970}\label{classtannic_1_1Exception_a5feac1cfebef8372d4d65b1e03362970} 
 \index{tannic::Exception@{tannic::Exception}!what@{what}}
@@ -47,6 +58,16 @@ This class is a simple generic \doxylink{classtannic_1_1Exception}{Exception} to
 \doxysubsubsection{\texorpdfstring{what()}{what()}}
 {\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} tannic\+::\+Exception\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [noexcept]}}
 
+
+
+Retrieve the exception message. 
+
+\begin{DoxyReturn}{Returns}
+C-\/style string of the exception message. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Overrides std\+::exception\+::what(). 
+\end{DoxyNote}
 
 
 \doxysubsection{Member Data Documentation}

@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('da/d1d/buffer_8hpp.html','../../'); in
   <div class="headertitle"><div class="title">buffer.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Memory buffer management for tensor storage.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d1/dee/resources_8hpp_source.html">resources.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -157,7 +160,19 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d0/d1a/namespacetannic" id="r_d0/d1a/namespacetannic"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html">tannic</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Memory buffer management for tensor storage. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Hermosis <br  />
+ </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
+<p>Provides a basic memory buffer abstraction that:</p>
+<ul>
+<li>Manages allocation and ownership of raw memory</li>
+<li>Supports both host and device memory through environments</li>
+<li>Enforces move-only semantics for clear ownership</li>
+<li>Tracks memory region size and location </li>
+</ul>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

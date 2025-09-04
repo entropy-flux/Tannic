@@ -1,15 +1,22 @@
 \doxysection{include/tannic/reductions.hpp File Reference}
 \hypertarget{reductions_8hpp}{}\label{reductions_8hpp}\index{include/tannic/reductions.hpp@{include/tannic/reductions.hpp}}
+
+
+Defines reduction operations for tensor expressions.  
+
+
 {\ttfamily \#include $<$array$>$}\newline
 {\ttfamily \#include $<$cassert$>$}\newline
 {\ttfamily \#include "{}concepts.\+hpp"{}}\newline
+{\ttfamily \#include "{}expressions.\+hpp"{}}\newline
 {\ttfamily \#include "{}types.\+hpp"{}}\newline
 {\ttfamily \#include "{}traits.\+hpp"{}}\newline
 {\ttfamily \#include "{}shape.\+hpp"{}}\newline
 {\ttfamily \#include "{}tensor.\+hpp"{}}\newline
 {\ttfamily \#include "{}indexing.\+hpp"{}}\newline
 {\ttfamily \#include "{}exceptions.\+hpp"{}}\newline
-Include dependency graph for reductions.\+hpp\+:\nopagebreak
+Include dependency graph for reductions.\+hpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -39,11 +46,31 @@ namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a83caa2ee55fd9f434b633d9eba583b61}{tannic\+::expression\+::argmax}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a0cee5a6cd1bfafa984d9de0c89548424}{tannic\+::expression\+::argmax}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} axis, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} keepdim=\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}})
 \begin{DoxyCompactList}\small\item\em Creates an \doxylink{structtannic_1_1expression_1_1Argmax}{Argmax} reduction. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_aa12d02d976951a8d0311e23af16e2ab3}{tannic\+::expression\+::argmin}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_ae27f710a9c2d6f472de4c5b815277dcd}{tannic\+::expression\+::argmin}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} axis, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} keepdim=\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}})
 \begin{DoxyCompactList}\small\item\em Creates an \doxylink{structtannic_1_1expression_1_1Argmin}{Argmin} reduction. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_ab256bfd94d0cccbceab6a094403ccc96}{tannic\+::expression\+::sum}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_a86e00b9acced8ebb951803f22ef7207e}{tannic\+::expression\+::sum}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} axis, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} keepdim=\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}})
 \begin{DoxyCompactList}\small\item\em Creates a sum reduction. \end{DoxyCompactList}\item 
-{\footnotesize template$<$Expression Source$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a82d37178b53fdae2ff53db01e563a4f2}{tannic\+::expression\+::mean}} (Source \&\&source, int axis=-\/1, bool keepdim=false)
+{\footnotesize template$<$Composable Source$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{namespacetannic_1_1expression_af322dc9f370e4f50cfcacec0f6fbe527}{tannic\+::expression\+::mean}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} \&\&source, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} axis, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} keepdim=\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}})
 \begin{DoxyCompactList}\small\item\em Creates a mean reduction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines reduction operations for tensor expressions. 
+
+\begin{DoxyAuthor}{Author}
+Eric Hermosis 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+This header provides reduction operations for tensor-\/like objects, implemented as expression templates. Currently supports\+:
+\begin{DoxyItemize}
+\item argmax\+: Index of maximum value along axis optionally keeping the original rank.
+\item argmin\+: Index of minimum value along axis optionally keeping the original rank.
+\item sum\+: Sum of the values along axis optionally keeping the original rank.
+\item mean\+: Mean of the values along axis optionally keeping the original rank.
+\end{DoxyItemize}
+
+All reductions are lazy-\/evaluated and maintain proper shape/dtype transformations. Part of the Tannic Tensor Library. 

@@ -1,0 +1,108 @@
+\doxysection{tannic\+::expression\+::Function\texorpdfstring{$<$}{<} Functor, Argument \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1expression_1_1Function}{}\label{classtannic_1_1expression_1_1Function}\index{tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}}
+
+
+\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for mathematical function operations.  
+
+
+
+
+{\ttfamily \#include $<$functions.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a88f74235286c1f8b7eb06e77cff16cc4}{Function}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Functor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{functor}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Argument}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{argument}})
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a3e8b95d3c04387ba5d00ab1332fc5a9e}{dtype}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a75f64395367a5f7703509665322b5e96}{shape}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Function_aed1d1a12e8ace078d810c56216048def}{strides}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function_a618d9952a50dd9bcb2038d3d03c700f3}{offset}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function_aee2ef7326ed027804524ccf12c9d42ce}{forward}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Functor, Argument $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a819f1a15c9b9b73972f65caea4d78b60}{Expression}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Functor}} operation, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operands}} $>$\+::\+Reference ... operands)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Functor, Argument $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Functor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}
+\item 
+std\+::tuple$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operands}} $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$Functional Functor, Composable Argument$>$\newline
+class tannic\+::expression\+::\+Function$<$ Functor, Argument $>$}
+\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for mathematical function operations. 
+
+Represents a lazily evaluated unary function that takes a functor as argument and maps it to an argument. The actual computation is deferred until {\ttfamily \doxylink{classtannic_1_1expression_1_1Function_aee2ef7326ed027804524ccf12c9d42ce}{forward()}} is called.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Functor} & A mathematical functor satisfying the Functional concept \\
+\hline
+{\em Argument} & An expression type satisfying the {\ttfamily \doxylink{classtannic_1_1expression_1_1Expression}{Expression}} concept \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Function_a88f74235286c1f8b7eb06e77cff16cc4}\label{classtannic_1_1expression_1_1Function_a88f74235286c1f8b7eb06e77cff16cc4} 
+\index{tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}!Function@{Function}}
+\index{Function@{Function}!tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{Function()}{Function()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Composable Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{tannic\+::expression\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Functor}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Argument}} $>$\+::\+Function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Functor}}}]{functor,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Argument}} $>$\+::\+Reference}]{argument }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Function_a3e8b95d3c04387ba5d00ab1332fc5a9e}\label{classtannic_1_1expression_1_1Function_a3e8b95d3c04387ba5d00ab1332fc5a9e} 
+\index{tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Composable Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{tannic\+::expression\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Functor}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Argument}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Function_aee2ef7326ed027804524ccf12c9d42ce}\label{classtannic_1_1expression_1_1Function_aee2ef7326ed027804524ccf12c9d42ce} 
+\index{tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Composable Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{tannic\+::expression\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Functor}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Argument}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Function_a618d9952a50dd9bcb2038d3d03c700f3}\label{classtannic_1_1expression_1_1Function_a618d9952a50dd9bcb2038d3d03c700f3} 
+\index{tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Composable Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{auto}} \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{tannic\+::expression\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Functor}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Argument}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Function_a75f64395367a5f7703509665322b5e96}\label{classtannic_1_1expression_1_1Function_a75f64395367a5f7703509665322b5e96} 
+\index{tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Composable Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{tannic\+::expression\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Functor}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Argument}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Function_aed1d1a12e8ace078d810c56216048def}\label{classtannic_1_1expression_1_1Function_aed1d1a12e8ace078d810c56216048def} 
+\index{tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::expression::Function$<$ Functor, Argument $>$@{tannic::expression::Function$<$ Functor, Argument $>$}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily template$<$Functional Functor, Composable Argument$>$ \\
+\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Function}{tannic\+::expression\+::\+Function}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Functor}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Argument}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{functions_8hpp}{functions.\+hpp}}\end{DoxyCompactItemize}

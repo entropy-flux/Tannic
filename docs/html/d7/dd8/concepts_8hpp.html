@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('d7/dd8/concepts_8hpp.html','../../'); 
   <div class="headertitle"><div class="title">concepts.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines core C++20 concepts used throughout the Tannic Tensor Library.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;concepts&gt;</code><br />
 <code>#include &lt;iterator&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">types.hpp</a>&quot;</code><br />
@@ -207,8 +210,7 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
 Concepts</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d3b/concepttannic_1_1Expression.html">tannic::Expression</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the core protocol for all expression-like types in the Tannic Tensor Library. <br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d34/concepttannic_1_1Composable.html">tannic::Composable</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d6c/concepttannic_1_1Operator.html">tannic::Operator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept defining requirements for tensor operation types. <br /></td></tr>
@@ -231,8 +233,16 @@ Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d00/concepttannic_1_1Comparable.html">tannic::Comparable</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for types that can compare their value. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d3b/concepttannic_1_1Expression.html">tannic::Expression</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the core protocol for all expression-like types in the Tannic Tensor Library. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines core C++20 concepts used throughout the Tannic Tensor Library. </p>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<p>This header the <code><a class="el" href="../../d7/d3b/concepttannic_1_1Expression.html" title="Defines the core protocol for all expression-like types in the Tannic Tensor Library.">tannic::Expression</a></code> fundamental concept as a compile time interface for all operations defined in this library and a few other concepts used internally to validate template arguments in compile-time expressions.</p>
+<dl class="section note"><dt>Note</dt><dd>Unless you are extending the library with your custom expressions you can skip this secction. </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

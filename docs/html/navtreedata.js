@@ -25,27 +25,27 @@
 var NAVTREE =
 [
   [ "Tannic", "index.html", [
-    [ "Introduction", "index.html#autotoc_md61", null ],
-    [ "What is Tannic?", "index.html#autotoc_md62", null ],
-    [ "Status", "index.html#autotoc_md63", null ],
-    [ "Features", "index.html#autotoc_md64", null ],
-    [ "What is comming...", "index.html#autotoc_md65", null ],
-    [ "Installation", "index.html#autotoc_md66", [
-      [ "Requirements", "index.html#autotoc_md67", null ],
-      [ "Clone the repository:", "index.html#autotoc_md68", null ],
-      [ "Debug build:", "index.html#autotoc_md69", null ],
-      [ "Release build", "index.html#autotoc_md70", null ],
-      [ "Run the example", "index.html#autotoc_md71", null ],
-      [ "Include Tannic in your project", "index.html#autotoc_md72", null ],
-      [ "CUDA support", "index.html#autotoc_md73", null ]
+    [ "Introduction", "index.html#autotoc_md65", null ],
+    [ "What is Tannic?", "index.html#autotoc_md66", null ],
+    [ "Status", "index.html#autotoc_md67", null ],
+    [ "Features", "index.html#autotoc_md68", null ],
+    [ "What is comming...", "index.html#autotoc_md69", null ],
+    [ "Installation", "index.html#autotoc_md70", [
+      [ "Requirements", "index.html#autotoc_md71", null ],
+      [ "Clone the repository:", "index.html#autotoc_md72", null ],
+      [ "Debug build:", "index.html#autotoc_md73", null ],
+      [ "Release build", "index.html#autotoc_md74", null ],
+      [ "Run the example", "index.html#autotoc_md75", null ],
+      [ "Include Tannic in your project", "index.html#autotoc_md76", null ],
+      [ "CUDA support", "index.html#autotoc_md77", null ]
     ] ],
-    [ "Usage", "index.html#autotoc_md74", null ],
-    [ "Contributing", "index.html#autotoc_md75", null ],
-    [ "Ways to Contribute", "index.html#autotoc_md76", null ],
-    [ "How to Contribute", "index.html#autotoc_md77", null ],
-    [ "Project structure", "index.html#autotoc_md78", null ],
-    [ "Creating new features.", "index.html#autotoc_md79", [
-      [ "License & Attribution", "index.html#autotoc_md80", null ]
+    [ "Usage", "index.html#autotoc_md78", null ],
+    [ "Contributing", "index.html#autotoc_md79", null ],
+    [ "Ways to Contribute", "index.html#autotoc_md80", null ],
+    [ "How to Contribute", "index.html#autotoc_md81", null ],
+    [ "Project structure", "index.html#autotoc_md82", null ],
+    [ "Creating new features.", "index.html#autotoc_md83", [
+      [ "License & Attribution", "index.html#autotoc_md84", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -53,7 +53,8 @@ var NAVTREE =
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ]
+        [ "Typedefs", "namespacemembers_type.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
     [ "Concepts", "concepts.html", "concepts" ],
@@ -78,9 +79,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d6/de5/structtannic_1_1operation_1_1Subtraction.html",
-"da/d93/classtannic_1_1Tensor.html#ab27984c26f8fa4ecdea9ca97bd3da082",
-"dd/d0f/classtannic_1_1expression_1_1Slice.html#a5d11cdc8bf08fd7cbfa7784dec7dadaa"
+"d4/d50/classtannic_1_1Buffer.html#af1a9b423b277aa1d226e30dad2ba31e1",
+"da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee",
+"dc/deb/classtannic_1_1Strides.html#a2cf3a00885beb9093058aa45904f9d60",
+"functions_r.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

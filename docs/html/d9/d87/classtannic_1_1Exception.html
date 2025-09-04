@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('d9/d87/classtannic_1_1Exception.html',
 </div><!--header-->
 <div class="contents">
 
-<p>A simple generic exception type for the Tannic <a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a> Library.  
+<p>Base class for recoverable runtime anomalies in the framework.  
  <a href="../../d9/d87/classtannic_1_1Exception.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../da/d49/exceptions_8hpp_source.html">exceptions.hpp</a>&gt;</code></p>
@@ -107,8 +107,10 @@ $(document).ready(function(){initNavTree('d9/d87/classtannic_1_1Exception.html',
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aee6f6175c79bb169dea234ed56ce6039" id="r_aee6f6175c79bb169dea234ed56ce6039"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d87/classtannic_1_1Exception.html#aee6f6175c79bb169dea234ed56ce6039">Exception</a> (const std::string &amp;<a class="el" href="../../d9/d87/classtannic_1_1Exception.html#a5feac1cfebef8372d4d65b1e03362970">what</a>)</td></tr>
+<tr class="memdesc:aee6f6175c79bb169dea234ed56ce6039"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an <a class="el" href="../../d9/d87/classtannic_1_1Exception.html" title="Base class for recoverable runtime anomalies in the framework.">Exception</a> with a message.  <br /></td></tr>
 <tr class="separator:aee6f6175c79bb169dea234ed56ce6039"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5feac1cfebef8372d4d65b1e03362970" id="r_a5feac1cfebef8372d4d65b1e03362970"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d87/classtannic_1_1Exception.html#a5feac1cfebef8372d4d65b1e03362970">what</a> () const noexcept override</td></tr>
+<tr class="memdesc:a5feac1cfebef8372d4d65b1e03362970"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the exception message.  <br /></td></tr>
 <tr class="separator:a5feac1cfebef8372d4d65b1e03362970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -117,10 +119,9 @@ Public Attributes</h2></td></tr>
 <tr class="separator:acc4253823005b369cfbfbcb0596ad7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A simple generic exception type for the Tannic <a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a> Library. </p>
-<p>This class provides a lightweight generic exception mechanism during for the frontend of the library. <br  />
-</p>
-<p>This class is a simple generic <a class="el" href="../../d9/d87/classtannic_1_1Exception.html" title="A simple generic exception type for the Tannic Tensor Library.">Exception</a> to avoid overengineering during initial development. As the library matures, this may be extended or replaced with more specialized exception types. </p>
+<div class="textblock"><p>Base class for recoverable runtime anomalies in the framework. </p>
+<p>The <a class="el" href="../../d9/d87/classtannic_1_1Exception.html" title="Base class for recoverable runtime anomalies in the framework.">Exception</a> class represents conditions that can be thrown and potentially recovered from during normal program execution. Examples include invalid input, file not found, or other recoverable logical issues.</p>
+<dl class="section note"><dt>Note</dt><dd>Exceptions are intended to be caught and handled. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aee6f6175c79bb169dea234ed56ce6039" name="aee6f6175c79bb169dea234ed56ce6039"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aee6f6175c79bb169dea234ed56ce6039">&#9670;&#160;</a></span>Exception()</h2>
@@ -145,6 +146,14 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Construct an <a class="el" href="../../d9/d87/classtannic_1_1Exception.html" title="Base class for recoverable runtime anomalies in the framework.">Exception</a> with a message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">what</td><td>Description of the exception. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -171,6 +180,10 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieve the exception message. </p>
+<dl class="section return"><dt>Returns</dt><dd>C-style string of the exception message. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Overrides std::exception::what(). </dd></dl>
 
 </div>
 </div>
