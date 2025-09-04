@@ -25,8 +25,7 @@
  * This header provides tensor transformation operations implemented as expression templates. 
  *
  * Part of the Tannic Tensor Library.
- */
-
+ */ 
 #include <tuple>
 #include <array>
 #include <vector>
@@ -43,7 +42,7 @@ namespace tannic {
 
 class Tensor;  
 
-namespace transformation {
+} namespace tannic::expression {
 
 /**
  * @brief Expression template for tensor transformations
@@ -54,66 +53,37 @@ namespace transformation {
  * @tparam Operation The transformation operation type
  * @tparam Operands Variadic template for input expressions
  */
-template<class Operation, Expression ... Operands>
-class Transformation {
-public:
-    Operation operation;
-    std::tuple<typename Trait<Operands>::Reference...> operands;
-
-    /**
-     * @brief Constructs a Transformation expression
-     * @param operation The transformation operation
-     * @param operands Input tensor expressions
-     */
-    constexpr Transformation(Operation operation, typename Trait<Operands>::Reference... operands)
-    :   operation(operation)
-    ,   operands(operands...) 
+template<class Operation, Composable ... Operands>
+class Transformation : public Expression<Operation, Operands...> {
+public:  
+    constexpr Transformation(Operation operation, typename Trait<Operands>::Reference... operands)  
+    :   Expression<Operation, Operands...>(operation, operands...)
     ,   dtype_(operation.promote(operands.dtype()...))
     ,   shape_(operation.transform(operands.shape()...)) 
     ,   strides_(shape_)
     {}
-    
-    /**
-     * @brief Gets the result data type after promotion
-     * @return Promoted data type
-     */
+     
     constexpr type dtype() const {
         return dtype_;
     }
-
-    /**
-     * @brief Gets the broadcasted output shape
-     * @return Shape after broadcasting and transformation
-     */
+ 
     constexpr Shape const& shape() const {
         return shape_;
     }
-
-    /**
-     * @brief Gets the computed strides for the result
-     * @return Strides based on output shape (row-major)
-     */
+ 
     constexpr Strides const& strides() const {
         return strides_;
     } 
-
-    /**
-     * @brief Gets the data offset (always 0 for new tensors)
-     * @return Always returns 0
-     */
+ 
     std::ptrdiff_t offset() const {
         return 0;
     }
-
-    /**
-     * @brief Evaluates the transformation
-     * @return New tensor containing the transformed result
-     */
+ 
     Tensor forward() const {
         Tensor result(dtype_, shape_);
         std::apply([&](const auto&... arguments) {
-            return operation.forward(arguments.forward()..., result);
-        }, operands);
+            return this->operation.forward(arguments.forward()..., result);
+        }, this->operands);
         return result;
     }
 
@@ -122,6 +92,10 @@ private:
     Shape shape_; 
     Strides strides_;
 };
+
+} namespace tannic::transformation {
+
+using tannic::expression::Transformation;
 
 /**
  * @brief Helper function to compute type promotion table indices
@@ -473,7 +447,7 @@ struct Repack {
  * @param inner Inner tensor operand
  * @return Transformation expression representing the composition
  */
-template<Expression Outer, Expression Inner>
+template<Composable Outer, Composable Inner>
 constexpr auto composition(Outer&& outer, Inner&& inner, double scale) {
     return Transformation<Composition, Outer, Inner>{
         {scale}, 
@@ -490,7 +464,7 @@ constexpr auto composition(Outer&& outer, Inner&& inner, double scale) {
  * @param second Right tensor operand
  * @return Transformation expression representing the outer product
  */
-template<Expression First, Expression Second>
+template<Composable First, Composable Second>
 constexpr auto outer(First&& first, Second&& second) {
     return Transformation<Outer, First, Second>(
         {},
@@ -509,7 +483,7 @@ constexpr auto outer(First&& first, Second&& second) {
  * @param axis Axis along which to repeat.
  * @return Transformation expression representing repetition.
  */
-template<Expression Source>
+template<Composable Source>
 constexpr auto repeat(Source&& source, int repeats, int axis = 0) {
     return Transformation<Repetition, Source>(
         {repeats, indexing::normalize(axis, source.shape().rank())},
@@ -528,7 +502,7 @@ constexpr auto repeat(Source&& source, int repeats, int axis = 0) {
  * @param axis Axis along which to concatenate.
  * @return Transformation expression representing concatenation.
  */
-template<Expression First, Expression Second>
+template<Composable First, Composable Second>
 constexpr auto concatenate(First&& first, Second&& second, int axis = 0) {
     if(axis < 0) 
         throw Exception("Negative index not supported in concat");
@@ -549,7 +523,7 @@ constexpr auto concatenate(First&& first, Second&& second, int axis = 0) {
  * @param source Tensor to be repacked.
  * @return Transformation expression representing repack.
  */
-template<Expression Source>
+template<Composable Source>
 constexpr auto repack(Source&& source) {
     return Transformation<Repack, Source>(
         {},
@@ -565,14 +539,14 @@ constexpr auto repack(Source&& source) {
  * @param source Tensor to be reshaped.
  * @return Transformation expression representing reshape.
  */
-template<Expression Source, Integral ... Indexes>
+template<Composable Source, Integral ... Indexes>
 constexpr auto reshape(Source&& source, Indexes ... indexes) {
     return expression::View<Transformation<Repack, Source>>(
         repack(source), indexes...
     );
 } 
 
-} // namespace transformation
+} namespace tannic {
 
 using transformation::outer;
 using transformation::repeat;
@@ -588,7 +562,7 @@ using transformation::reshape;
  * @param multiplier Right tensor operand
  * @return Transformation expression representing matrix multiplication
  */
-template<Expression Multiplicand, Expression Multiplier>
+template<Composable Multiplicand, Composable Multiplier>
 constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier, double scale = 1.0) {
     return transformation::composition(
         std::forward<Multiplicand>(multiplicand),

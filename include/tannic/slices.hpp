@@ -24,9 +24,9 @@
  * @date 2025  
  * @brief Implements tensor slicing for expression templates in the Tannic Tensor Library.
  *
- * This header defines the `Slice` class template, which represents a view or subrange
- * of a tensor without copying its data. It supports chained indexing, assignment,
- * and comparison operations while preserving the underlying expression structure.
+ * Defines the `Slice` class template, which represents a view or subrange of a tensor without 
+ * copying its data. It supports chained indexing, assignment, and comparison operations while
+ * preserving the underlying expression structure.
  *
  * Key features:
  * - Zero-copy view into a tensor or tensor expression.
@@ -83,7 +83,7 @@ namespace tannic::expression {
  *
  * This class does not own the underlying data; it merely refers to a subset of it.
  */
-template <Expression Source, class... Indexes>
+template <Composable Source, class... Indexes>
 class Slice {  
 public:    
 
@@ -344,7 +344,7 @@ inline std::byte const* tobytes(T const& reference) {
     return reinterpret_cast<std::byte const*>(&reference);
 }  
 
-template <Expression Source, class... Indexes>
+template <Composable Source, class... Indexes>
 template <typename T>
 void Slice<Source, Indexes...>::operator=(T value) {    
     auto copy = [this](std::byte const* value, std::ptrdiff_t offset) {
@@ -390,7 +390,7 @@ void Slice<Source, Indexes...>::operator=(T value) {
     } 
 }
 
-template <Expression Source, class... Indexes>
+template <Composable Source, class... Indexes>
 template <typename T>
 bool Slice<Source, Indexes...>::operator==(T value) const {    
     if (rank() != 0)

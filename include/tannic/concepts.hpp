@@ -82,7 +82,7 @@ class Tensor;
  * ```
  */
 template<typename T>
-concept Expression = requires(const T expression) {
+concept Composable = requires(const T expression) {
     { expression.dtype()   } -> std::same_as<type>;
     { expression.shape()   } -> std::same_as<Shape const&>;
     { expression.strides() } -> std::same_as<Strides const&>;

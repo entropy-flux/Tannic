@@ -22,12 +22,11 @@
  * @file shape.hpp
  * @author Eric Hermosis
  * @date 2025
- * @brief Defines the `tannic::Shape` class for representing tensor dimensions.   
+ * @brief Defines the `Shape` class for representing tensor dimensions.   
  * 
- * This file is part of the Tannic Tensor Library and defines the `Shape` class,
- * a compact, constexpr-friendly abstraction for representing the shape (i.e., dimensions)
- * of tensors and expression-like objects. Shapes are integral to indexing, broadcasting,
- * and tensor manipulation throughout the library.
+ * Defines the `Shape` class, a compact, constexpr-friendly abstraction for representing
+ * the shape (i.e., dimensions) of tensors and expression-like objects. Shapes are integral
+ * to indexing, broadcasting, and tensor manipulation throughout the library.
  *
  * The shape supports:
  * 

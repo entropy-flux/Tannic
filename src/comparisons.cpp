@@ -67,15 +67,15 @@ bool allclose(Tensor const& first, Tensor const& second, double rtol, double ato
     if (std::holds_alternative<Host>(first.environment())) {
         if (!std::holds_alternative<Host>(second.environment()))
             throw Exception("Cannot compare tensors from different environmments");
-        tensor_t* fst = get_tensor(first.node()->id);
-        tensor_t* sec = get_tensor(second.node()->id);
+        tensor_t* fst = get_tensor(first.id());
+        tensor_t* sec = get_tensor(second.id());
         return cpu::allclose(fst, sec, rtol, atol);
     } else if (std::holds_alternative<Device>(first.environment())) {
         if (!std::holds_alternative<Device>(second.environment()))
             throw Exception("Cannot compare tensors from different environmments");
         
-        tensor_t* fst = get_tensor(first.node()->id);
-        tensor_t* sec = get_tensor(second.node()->id);
+        tensor_t* fst = get_tensor(first.id());
+        tensor_t* sec = get_tensor(second.id());
 
         device_t device = fst->environment.resource.device;
         stream_t stream = pop_stream(&device);

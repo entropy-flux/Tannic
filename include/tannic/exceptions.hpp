@@ -22,7 +22,7 @@
  * @file exceptions.hpp
  * @author Eric Hermosis
  * @date 2025
- * @brief Defines the excception types used in the library.  
+ * @brief Defines the exceptions used in the library.  
 **/
 
 #include <exception>

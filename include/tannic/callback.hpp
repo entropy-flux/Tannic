@@ -46,8 +46,8 @@ public:
         output.initialize(input.environment());  
 
         if (std::holds_alternative<Host>(output.environment())) {
-            tensor_t* src = get_tensor(input.node()->id);
-            tensor_t* dst = get_tensor(output.node()->id);
+            tensor_t* src = get_tensor(input.id());
+            tensor_t* dst = get_tensor(output.id());
             auto status = host_fn(src, dst);
             if (status != SUCCESS) {
                 throw std::runtime_error("Unsupported dtype");
@@ -57,8 +57,8 @@ public:
         else {  
             Device const& resource = std::get<Device>(output.environment());
             device_t dvc{resource.id(), resource.blocking() ? SYNC : ASYNC};
-            tensor_t* src = get_tensor(input.node()->id);
-            tensor_t* dst = get_tensor(output.node()->id);
+            tensor_t* src = get_tensor(input.id());
+            tensor_t* dst = get_tensor(output.id());
             stream_t stream = pop_stream(&dvc);
             auto status = device_fn(src, dst, stream);
             put_stream(&dvc, stream);
@@ -69,8 +69,8 @@ public:
     }
 
     void operator()(Tensor const& first, Tensor const& second, Tensor& output){   
-        tensor_t* src0 = get_tensor(first.node()->id);
-        tensor_t* src1 = get_tensor(second.node()->id);
+        tensor_t* src0 = get_tensor(first.id());
+        tensor_t* src1 = get_tensor(second.id());
         environment_t environment;
         auto status = resolve_two_environment(&src0->environment, &src1->environment, &environment);
         if(status != SUCCESS) {
@@ -80,7 +80,7 @@ public:
             case HOST: {
                 host_t resource = environment.resource.host;
                 output.initialize(Host());  
-                tensor_t* dst = get_tensor(output.node()->id);
+                tensor_t* dst = get_tensor(output.id());
                 auto status = host_fn(src0, src1, dst);    
                 if(status != SUCCESS) {
                     throw std::runtime_error("Unsupported dtype");
@@ -92,7 +92,7 @@ public:
                 device_t dvc = environment.resource.device; 
                 output.initialize(Device(dvc.id));  
                 stream_t stream = pop_stream(&dvc);
-                tensor_t* dst = get_tensor(output.node()->id);
+                tensor_t* dst = get_tensor(output.id());
                 auto status = device_fn(src0, src1, dst, stream);
                 put_stream(&dvc, stream);
                 if(status != SUCCESS) {
@@ -108,9 +108,9 @@ public:
 
 
     void operator()(Tensor const& first, Tensor const& second, Tensor const& third, Tensor& output) {   
-        tensor_t* src0 = get_tensor(first.node()->id);
-        tensor_t* src1 = get_tensor(second.node()->id);
-        tensor_t* src2 = get_tensor(third.node()->id);
+        tensor_t* src0 = get_tensor(first.id());
+        tensor_t* src1 = get_tensor(second.id());
+        tensor_t* src2 = get_tensor(third.id());
 
         environment_t environment;
         auto status = resolve_three_environment(&src0->environment, &src1->environment,  &src2->environment, &environment);
@@ -121,7 +121,7 @@ public:
         switch (environment.environment) {
             case HOST: {
                 output.initialize(Host());  
-                tensor_t* dst = get_tensor(output.node()->id);
+                tensor_t* dst = get_tensor(output.id());
                 auto status = host_fn(src0, src1, src2, dst);    
                 if(status != SUCCESS) {
                     throw std::runtime_error("Unsupported dtype");
@@ -133,7 +133,7 @@ public:
                 device_t dvc = environment.resource.device; 
                 output.initialize(Device(dvc.id));  
                 stream_t stream = pop_stream(&dvc);
-                tensor_t* dst = get_tensor(output.node()->id);
+                tensor_t* dst = get_tensor(output.id());
                 auto status = device_fn(src0, src1, src2, dst, stream);
                 put_stream(&dvc, stream);
                 if(status != SUCCESS) {

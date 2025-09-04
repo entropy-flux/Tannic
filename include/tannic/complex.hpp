@@ -82,11 +82,11 @@ struct Polar {
  * 1. From interleaved real/imaginary data (single tensor)
  * 2. From separate real and imaginary tensors
  */
-template<class Coordinates, Expression ... Sources>
+template<class Coordinates, Composable ... Sources>
 class Complexification;
 
 // Single-source specialization (interleaved real/imaginary data)
-template<class Coordinates, Expression Source>
+template<class Coordinates, Composable Source>
 class Complexification<Coordinates, Source> {
 public:
     typename Trait<Source>::Reference source;
@@ -185,7 +185,7 @@ private:
 };
 
 // Dual-source specialization (separate real/imaginary tensors)
-template<class Coordinates, Expression Real, Expression Imaginary>
+template<class Coordinates, Composable Real, Composable Imaginary>
 class Complexification<Coordinates, Real, Imaginary> {
 public:
     typename Trait<Real>::Reference real;
@@ -286,7 +286,7 @@ private:
  * //              [3, 4]] 
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 class Realification {
 public:
     typename Trait<Source>::Reference source;
@@ -398,7 +398,7 @@ private:
  * // cplx = [1+2i, 3+4i]
  * ```
  */
-template<Expression Real>
+template<Composable Real>
 constexpr auto complexify(Real&& real) {
     return Complexification<Cartesian, Real>{std::forward<Real>(real)};
 }
@@ -422,7 +422,7 @@ constexpr auto complexify(Real&& real) {
  * // c = [1+3i, 2+4i] 
  * ```
  */
-template<Expression Real, Expression Imaginary>
+template<Composable Real, Composable Imaginary>
 constexpr auto complex(Real&& real, Imaginary&& imaginary) {
     return Complexification<Cartesian, Real, Imaginary>{
         std::forward<Real>(real), 
@@ -449,7 +449,7 @@ constexpr auto complex(Real&& real, Imaginary&& imaginary) {
  * // c = [1+0i, 0+2i]  // cos(0)=1, sin(π/2)=1
  * ```
  */
-template<Expression Magnitude, Expression Angle>
+template<Composable Magnitude, Composable Angle>
 constexpr auto polar(Magnitude&& rho, Angle&& theta) {
     return Complexification<Polar, Magnitude, Angle>{
         std::forward<Magnitude>(rho), 
@@ -482,7 +482,7 @@ constexpr auto polar(Magnitude&& rho, Angle&& theta) {
  * //              [3, 4]] 
  * ```
  */
-template<Expression Complex>
+template<Composable Complex>
 constexpr auto realify(Complex&& complex) {
     return Realification<Complex>{std::forward<Complex>(complex)};
 } 

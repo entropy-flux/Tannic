@@ -231,7 +231,7 @@ public:
  * @return Transformation expression representing the 1D convolution operation
  * @throws Exception if stride is zero
  */
-template<Expression Signal, Expression Kernel>
+template<Composable Signal, Composable Kernel>
 constexpr auto convolve1D(Signal&& signal, Kernel&& kernel, std::size_t stride, std::size_t padding) {
     if (stride == 0)
         throw Exception("Stride must be non-zero for Conv1D.");
@@ -255,7 +255,7 @@ constexpr auto convolve1D(Signal&& signal, Kernel&& kernel, std::size_t stride, 
  * @return Transformation expression representing the 1D convolution operation
  * @throws Exception if stride is zero
  */
-template<Expression Signal, Expression Kernel>
+template<Composable Signal, Composable Kernel>
 constexpr auto convolve1D(
     Signal&& signal, Kernel&& kernel,
     std::array<std::size_t, 1> strides,
@@ -281,7 +281,7 @@ constexpr auto convolve1D(
  * @return Transformation expression representing the 2D convolution operation
  * @throws Exception if stride is zero
  */
-template<Expression Signal, Expression Kernel>
+template<Composable Signal, Composable Kernel>
 constexpr auto convolve2D(Signal&& signal, Kernel&& kernel, std::size_t stride, std::size_t padding) {
     if (stride == 0)
         throw Exception("Stride must be non-zero for Conv2D.");
@@ -303,7 +303,7 @@ constexpr auto convolve2D(Signal&& signal, Kernel&& kernel, std::size_t stride, 
  * @return Transformation expression representing the 2D convolution operation
  * @throws Exception if any stride value is zero
  */
-template<Expression Signal, Expression Kernel>
+template<Composable Signal, Composable Kernel>
 constexpr auto convolve2D(
     Signal&& signal, Kernel&& kernel,
     std::array<std::size_t, 2> strides,
@@ -330,7 +330,7 @@ constexpr auto convolve2D(
  * @return Transformation expression representing the biased 2D convolution operation
  * @throws Exception if stride is zero
  */
-template<Expression Signal, Expression Kernel, Expression Bias>
+template<Composable Signal, Composable Kernel, Composable Bias>
 constexpr auto convolve2D(Signal&& signal, Kernel&& kernel, Bias&& bias, std::size_t stride, std::size_t padding) {
     if (stride == 0)
         throw Exception("Stride must be non-zero for Conv2D.");
@@ -354,7 +354,7 @@ constexpr auto convolve2D(Signal&& signal, Kernel&& kernel, Bias&& bias, std::si
  * @return Transformation expression representing the biased 2D convolution operation
  * @throws Exception if any stride value is zero
  */
-template<Expression Signal, Expression Kernel, Expression Bias>
+template<Composable Signal, Composable Kernel, Composable Bias>
 constexpr auto convolve2D(
     Signal&& signal, Kernel&& kernel, Bias&& bias,
     std::array<std::size_t, 2> strides,

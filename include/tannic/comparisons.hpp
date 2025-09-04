@@ -63,6 +63,7 @@
  */
 
 #include "concepts.hpp"
+#include "expressions.hpp"
 #include "shape.hpp"
 #include "tensor.hpp"
 
@@ -80,21 +81,15 @@ namespace tannic::expression {
  * @tparam First    The left-hand expression type
  * @tparam Second   The right-hand expression type
  */
-template<class Criteria, Expression First, Expression Second>
-class Comparison {
-public:  
-    Criteria criteria;
-    typename Trait<First>::Reference first;
-    typename Trait<Second>::Reference second;
-
+template<class Criteria, Composable First, Composable Second>
+class Comparison : public Expression<Criteria, First, Second> {
+public:   
     /**
      * @brief Constructs a comparison expression.
      * @throws Exception if the tensor shapes differ.
      */
     constexpr Comparison(Criteria criteria, typename Trait<First>::Reference first, typename Trait<Second>::Reference second) 
-    :   criteria(criteria)
-    ,   first(first)
-    ,   second(second)
+    :   Expression<Criteria, First, Second>(criteria, first, second)
     ,   shape_(first.shape())
     ,   strides_(shape_)
     {
@@ -120,7 +115,7 @@ public:
     
     Tensor forward() const {
         Tensor result(boolean, shape_, strides_, 0);
-        criteria.forward(first, second, result);
+        this->operation.forward(std::get<0>(this->operands), std::get<1>(this->operands), result);
         return result;
     }
 
@@ -155,32 +150,32 @@ struct LE {
     void forward(Tensor const&, Tensor const&, Tensor&) const;
 };
 
-template<Expression First, Expression Second>
+template<Composable First, Composable Second>
 constexpr auto operator==(First&& lhs, Second&& rhs) {
     return Comparison<EQ, First, Second>({}, lhs, rhs);
 }
 
-template<Expression First, Expression Second>
+template<Composable First, Composable Second>
 constexpr auto operator!=(First&& lhs, Second&& rhs) {
     return Comparison<NE, First, Second>({}, lhs, rhs);
 }
 
-template<Expression First, Expression Second>
+template<Composable First, Composable Second>
 constexpr auto operator<(First&& lhs, Second&& rhs) {
     return Comparison<LT, First, Second>({}, lhs, rhs);
 }
 
-template<Expression First, Expression Second>
+template<Composable First, Composable Second>
 constexpr auto operator<=(First&& lhs, Second&& rhs) {
     return Comparison<LE, First, Second>({}, lhs, rhs);
 }
 
-template<Expression First, Expression Second>
+template<Composable First, Composable Second>
 constexpr auto operator>(First&& lhs, Second&& rhs) {
     return Comparison<GT, First, Second>({}, lhs, rhs);
 }
 
-template<Expression First, Expression Second>
+template<Composable First, Composable Second>
 constexpr auto operator>=(First&& lhs, Second&& rhs) {
     return Comparison<GE, First, Second>({}, lhs, rhs);
 }
@@ -212,11 +207,11 @@ bool allclose(Tensor const& first, Tensor const& second, double rtol = 1e-5f, do
     
 using expression::operator==;
 using expression::operator!=;
-using expression::operator<;
+using expression::operator< ;
 using expression::operator<=;
-using expression::operator>;
+using expression::operator> ;
 using expression::operator>=;
-using expression::allclose;
+using expression::allclose  ;
 
 } // namespace tannic
  

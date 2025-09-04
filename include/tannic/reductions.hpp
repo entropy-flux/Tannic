@@ -51,17 +51,15 @@
 #include <cassert>
 
 #include "concepts.hpp"
+#include "expressions.hpp"
 #include "types.hpp"
 #include "traits.hpp"
 #include "shape.hpp" 
 #include "tensor.hpp" 
 #include "indexing.hpp"
 #include "exceptions.hpp"
- 
 
 namespace tannic::expression {
- 
-
 /**
  * @brief Lazy reduction expression.
  *
@@ -71,15 +69,11 @@ namespace tannic::expression {
  * @tparam Reducer Policy defining the reduction (e.g., `Argmax`).
  * @tparam Operand Input satisfying the `Expression` concept..
  */
-template<class Reducer, Expression Operand>
-class Reduction {
-public:
-    Reducer reducer;
-    typename Trait<Operand>::Reference operand;
- 
+template<class Reducer, Composable Operand>
+class Reduction : public Expression<Reducer, Operand> {
+public: 
     constexpr Reduction(Reducer reducer, typename Trait<Operand>::Reference operand)
-    :   reducer(reducer)
-    ,   operand(operand)
+    :   Expression<Reducer, Operand>(reducer, operand)
     ,   dtype_(reducer.reduce(operand.dtype()))
     ,   shape_(reducer.reduce(operand.shape()))
     ,   strides_(shape_) {}
@@ -101,9 +95,9 @@ public:
     }
  
     Tensor forward() const {   
-        Tensor source = operand.forward();
-        Tensor result(dtype(), shape(), strides(), offset());          
-        reducer.forward(source, result);
+        Tensor source = std::get<0>(this->operands).forward();
+        Tensor result(dtype(),shape(), strides(), offset());          
+        this->operation.forward(source, result);
         return result;
     } 
 
@@ -297,7 +291,7 @@ struct Argmean {
  * //      [2]]              // Indexes of max values per row
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 constexpr auto argmax(Source&& source, int axis, bool keepdim = false) {  
     return Reduction<Argmax, Source>{
         {indexing::normalize(axis, source.shape().rank()), keepdim}, std::forward<Source>(source) 
@@ -319,7 +313,7 @@ constexpr auto argmax(Source&& source, int axis, bool keepdim = false) {
  * // Y = [1, 0]  // Min indexes per row
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 constexpr auto argmin(Source&& source, int axis, bool keepdim = false) {  
     return Reduction<Argmin, Source>{ 
         {indexing::normalize(axis, source.shape().rank()), keepdim}, std::forward<Source>(source) 
@@ -346,7 +340,7 @@ constexpr auto argmin(Source&& source, int axis, bool keepdim = false) {
  * //      [15]]           // Sum of values per row
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 constexpr auto sum(Source&& source, int axis, bool keepdim = false) {
     return Reduction<Argsum, Source>{
         {indexing::normalize(axis, source.shape().rank()), keepdim},
@@ -374,7 +368,7 @@ constexpr auto sum(Source&& source, int axis, bool keepdim = false) {
  * //      [5.0]]          // Mean of values per row
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 constexpr auto mean(Source&& source, int axis, bool keepdim = false) {
     return Reduction<Argmean, Source>{
         {indexing::normalize(axis, source.shape().rank()), keepdim},

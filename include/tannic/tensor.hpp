@@ -144,7 +144,7 @@ public:
      * @tparam Expression Expression type satisfying the `Expression` concept.
      * @param expression An expression to evaluate and store as a tensor.
      */
-    template <Expression Expression>
+    template <Composable Expression>
     Tensor(const Expression& expression) {
         *this = expression.forward(); 
     } 
@@ -155,7 +155,7 @@ public:
      * @param expression Expression to evaluate.
      * @return Reference to `*this`.
      */
-    template <Expression Expression>
+    template <Composable Expression>
     Tensor& operator=(const Expression& expression) {
         *this = expression.forward(); 
         return *this;
@@ -1100,34 +1100,34 @@ public:
     }
 
 protected:    
-    template <Expression Source, class... Indexes> 
+    template <Composable Source, class... Indexes> 
     friend class expression::Slice;
 
-    template <Expression Source> 
+    template <Composable Source> 
     friend class expression::Transpose;
 
-    template <Expression Source>
+    template <Composable Source>
     friend class expression::View; 
 
-    template <Expression Source>
+    template <Composable Source>
     friend class expression::Squeeze; 
 
-    template <Expression Source>
+    template <Composable Source>
     friend class expression::Unsqueeze;
 
-    template <Expression Source, Integral... Indexes> 
+    template <Composable Source, Integral... Indexes> 
     friend class expression::Permutation; 
 
-    template <Expression Source>
+    template <Composable Source>
     friend class expression::Expansion;
  
-    template <Expression Source>
+    template <Composable Source>
     friend class expression::Flatten;
 
-    template <class Coordinates, Expression... Sources>
+    template <class Coordinates, Composable... Sources>
     friend class expression::Complexification;
 
-    template <Expression Source>
+    template <Composable Source>
     friend class expression::Realification;
 
     void assign(std::byte const*, std::ptrdiff_t); 
@@ -1137,8 +1137,8 @@ protected:
      
 
 public:
-    Node* node() const { 
-        return node_.get();
+    uintptr_t id() const {
+        return node_->id;
     } 
 
 private:
@@ -1168,76 +1168,76 @@ inline void setiostyle(IOStyle style) {
 
 std::ostream& operator<<(std::ostream& ostream, Tensor const& tensor);  
 
-template<Expression Source> 
+template<Composable Source> 
 inline std::ostream& operator<<(std::ostream& ostream, Source source) {
     Tensor tensor = source.forward();  
     ostream << tensor;
     return ostream;
 } 
 
-template<class Operation, Expression Operand>
-Tensor operation::Unary<Operation, Operand>::forward() const { 
+template<class Operation, Composable Operand>
+Tensor expression::Unary<Operation, Operand>::forward() const { 
     Tensor result(dtype(), shape(), strides(), offset());  
-    operation.forward(operand, result);
+    this->operation.forward(std::get<0>(this->operands), result);
     return result;
 }
 
-template<Operator Operation, Expression Operand, Expression Cooperand>
-Tensor operation::Binary<Operation, Operand, Cooperand>::forward() const {
+template<Operator Operation, Composable Operand, Composable Cooperand>
+Tensor expression::Binary<Operation, Operand, Cooperand>::forward() const {
     Tensor result(dtype(), shape(), strides());
-    operation.forward(operand, cooperand, result);
+    this->operation.forward(std::get<0>(this->operands), std::get<1>(this->operands), result);
     return result;
 }  
 
-template<Expression Source>
+template<Composable Source>
 Tensor expression::View<Source>::forward() const { 
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
  
-template<Expression Source>
+template<Composable Source>
 Tensor expression::Squeeze<Source>::forward() const { 
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
  
-template<Expression Source>
+template<Composable Source>
 Tensor expression::Unsqueeze<Source>::forward() const { 
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
  
-template<Expression Source>
+template<Composable Source>
 Tensor expression::Flatten<Source>::forward() const { 
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 } 
 
-template<Expression Source, Integral... Indexes>
+template<Composable Source, Integral... Indexes>
 Tensor expression::Permutation<Source, Indexes...>::forward() const {   
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }         
  
-template<Expression Source>
+template<Composable Source>
 Tensor expression::Transpose<Source>::forward() const { 
     Tensor source = source_.forward(); 
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }   
 
-template<Expression Source>
+template<Composable Source>
 Tensor expression::Expansion<Source>::forward() const { 
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
  
-template<Expression Source, class... Indexes>
+template<Composable Source, class... Indexes>
 Tensor expression::Slice<Source, Indexes...>::forward() const {   
     Tensor source = source_.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }         
 
-template<Expression Source, class... Indexes>
+template<Composable Source, class... Indexes>
 void expression::Slice<Source, Indexes...>::assign(std::byte const* value, std::ptrdiff_t offset) { 
     if constexpr (Trait<Source>::is_assignable) {
         source_.assign(value, offset); 
@@ -1249,7 +1249,7 @@ void expression::Slice<Source, Indexes...>::assign(std::byte const* value, std::
     }
 }  
 
-template<Expression Source, class... Indexes>
+template<Composable Source, class... Indexes>
 void expression::Slice<Source, Indexes...>::assign(bool const* value, std::ptrdiff_t offset) { 
     if constexpr (Trait<Source>::is_assignable) {
         source_.assign(value, offset); 
@@ -1262,7 +1262,7 @@ void expression::Slice<Source, Indexes...>::assign(bool const* value, std::ptrdi
 }  
 
 
-template<Expression Source, class... Indexes>
+template<Composable Source, class... Indexes>
 bool expression::Slice<Source, Indexes...>::compare(std::byte const* value, std::ptrdiff_t offset) const { 
     if constexpr (Trait<Source>::is_comparable) {
         return source_.compare(value, offset); 
@@ -1274,21 +1274,21 @@ bool expression::Slice<Source, Indexes...>::compare(std::byte const* value, std:
     }
 }  
  
-template<class Coordinates, Expression Source>
+template<class Coordinates, Composable Source>
 Tensor expression::Complexification<Coordinates, Source>::forward() const {
     Tensor real = source.forward();
     Tensor complex(dtype(), shape(), strides(), offset(), real.buffer_); 
     return complex; 
 } 
 
-template<class Coordinates, Expression Real, Expression Imaginary>
+template<class Coordinates, Composable Real, Composable Imaginary>
 Tensor expression::Complexification<Coordinates, Real, Imaginary>::forward() const {  
     Tensor result(dtype(), shape(), strides(), offset());
     Coordinates::forward(real.forward(), imaginary.forward(), result);
     return result;
 } 
 
-template<Expression Source>
+template<Composable Source>
 Tensor expression::Realification<Source>::forward() const {
     Tensor complex = source.forward();
     Tensor real(dtype(), shape(), strides(), offset(), complex.buffer_); 

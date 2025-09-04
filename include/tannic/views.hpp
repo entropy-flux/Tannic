@@ -60,7 +60,7 @@ namespace tannic {
 
 class Tensor;
 
-namespace expression {   
+} namespace tannic::expression {   
    
 /**
  * @class View
@@ -80,10 +80,9 @@ namespace expression {
  * auto Y = view(X, 3, 2); // new shape: (3, 2)
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 class View {
-public:  
-
+public:    
     /**
      * @brief Construct a reshaped view of the source tensor.
      *
@@ -102,9 +101,8 @@ public:
  
         std::size_t source_elements = std::accumulate(
             source.shape().begin(), source.shape().end(), 1ULL, std::multiplies<>{}
-        );
+        ); 
 
-        // Step 3. Handle -1 (infer axis)
         int infer_axis = -1;
         std::size_t known_product = 1;
         for (std::size_t i = 0; i < requested.size(); ++i) {
@@ -207,7 +205,7 @@ private:
  * auto Z = X.transpose(0, 1); // oop syntax.
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 class Transpose {
 public: 
 
@@ -299,7 +297,7 @@ private:
  * @note The number of indices in the permutation must match the rank of the tensor.
  *       Otherwise, an exception is thrown.
  */
-template<Expression Source, Integral ... Indexes>
+template<Composable Source, Integral ... Indexes>
 class Permutation {
 public:
     /**
@@ -394,7 +392,7 @@ private:
  * auto Y = expand(X, 4, 3); // shape becomes (4, 3)
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 class Expansion {
 public:
     /**
@@ -519,7 +517,7 @@ private:
  * auto Y = squeeze(X); // shape becomes (3)
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 class Squeeze {
 public:
     /**
@@ -615,7 +613,7 @@ private:
  * auto Z = unsqueeze(X, -1);  // shape becomes (3, 1)
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 class Unsqueeze {
 public:
     /**
@@ -728,7 +726,7 @@ private:
  * auto Z = flatten(X);        // shape becomes (24)
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 class Flatten {
 public:
     constexpr Flatten(typename Trait<Source>::Reference source, int start = 0, int end = -1)
@@ -836,7 +834,7 @@ private:
  * @param indexes Dimension sizes for the new shape.
  * @return A `View` view expression.
  */
-template<Expression Source, Integral ... Indexes>
+template<Composable Source, Integral ... Indexes>
 constexpr auto view(Source&& source, Indexes ... indexes) {
     return View<Source>(
         std::forward<Source>(source), indexes...
@@ -853,7 +851,7 @@ constexpr auto view(Source&& source, Indexes ... indexes) {
  * @param second Second dimension index to swap.
  * @return A `Transpose` view expression.
  */
-template<Expression Source>
+template<Composable Source>
 constexpr auto transpose(Source&& source, int first, int second) {
     return Transpose<Source>(
         std::forward<Source>(source),
@@ -876,7 +874,7 @@ constexpr auto transpose(Source&& source, int first, int second) {
  * auto Y = permute(X, 2, 0, 1); // shape becomes (4, 2, 3)
  * ```
  */
-template<Expression Source, Integral ... Indexes>
+template<Composable Source, Integral ... Indexes>
 constexpr auto permute(Source&& source, Indexes... indexes) {
     return Permutation<Source, Indexes...>(
         std::forward<Source>(source), 
@@ -911,7 +909,7 @@ constexpr auto permute(Source&& source, Indexes... indexes) {
  * std::cout << Y.strides() << std::endl; // prints (0, original_stride[1])
  * ```
  */
-template<Expression Source, Integral... Sizes>
+template<Composable Source, Integral... Sizes>
 constexpr auto expand(Source&& source, Sizes... sizes) {
     return Expansion<Source>(std::forward<Source>(source), sizes...);
 }
@@ -933,7 +931,7 @@ constexpr auto expand(Source&& source, Sizes... sizes) {
  * auto Y = squeeze(X); // shape: (3)
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 constexpr auto squeeze(Source&& source) {
     return Squeeze<Source>(std::forward<Source>(source));
 }
@@ -958,7 +956,7 @@ constexpr auto squeeze(Source&& source) {
  * auto Z = unsqueeze(X, -1); // shape: (3, 1)
  * ```
  */
-template<Expression Source, Integral... Axes>
+template<Composable Source, Integral... Axes>
 constexpr auto unsqueeze(Source&& source, Axes... axes) {
     return Unsqueeze<Source>(std::forward<Source>(source), axes...);
 }
@@ -980,13 +978,13 @@ constexpr auto unsqueeze(Source&& source, Axes... axes) {
  * auto Z = flatten(X);        // shape: (24)
  * ```
  */
-template<Expression Source>
+template<Composable Source>
 constexpr auto flatten(Source&& source, int start = 0, int end   = -1) {
     return Flatten<Source>(std::forward<Source>(source), start, end);
 }
 
 
-} // namespace expression
+} namespace tannic {
 
 using expression::view;
 using expression::transpose;

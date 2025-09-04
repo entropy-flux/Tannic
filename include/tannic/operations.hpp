@@ -40,6 +40,7 @@
 #include <type_traits> 
  
 #include "concepts.hpp"
+#include "expressions.hpp"
 #include "types.hpp"
 #include "shape.hpp"
 #include "strides.hpp"   
@@ -49,7 +50,7 @@ namespace tannic {
 
 class Tensor;    
 
-} namespace tannic::operation {  
+} namespace tannic::expression {  
 
 /**
  * @brief Expression template for a unary tensor aritmetic operation.
@@ -58,74 +59,31 @@ class Tensor;
  * This template enables deferred execution and composability at compile time.
  *
  * @tparam Operation A stateless operation implementing `void forward(Tensor const&, Tensor&)`.
- * @tparam Operand An expression type satisfying the `Expression` concept.
- */
-template<class Operation, Expression Operand>
-class Unary { 
-public:
-    Operation operation;
-    Trait<Operand>::Reference operand; 
-
-    /**
-     * @brief Constructs a Unary expression.
-     * @param operation Operation functor (e.g., `Negation`).
-     * @param operand Operand expression.
-     */
+ * @tparam Operand An expression type satisfying the `Composable` concept.
+ */ 
+template<class Operation, Composable Operand>
+class Unary : public Expression<Operation, Operand> { 
+public: 
     constexpr Unary(Operation operation, Trait<Operand>::Reference operand)
-    :   operation(operation)
-    ,   operand(operand)
+    :   Expression<Operation, Operand>(operation, operand)
     {}  
  
-    /**
-     * @brief Returns the data type of the result.
-     *
-     * Since the unary operation acts element-wise and does not change type,
-     * this returns the same type as the operand.
-     *
-     * @return Data type of the operand.
-     */
     constexpr type dtype() const {
-        return operand.dtype();
+        return std::get<0>(this->operands).dtype();
     } 
-
-    /**
-     * @brief Returns the shape of the result.
-     *
-     * The output of a unary operation has the exact same shape as the operand.
-     *
-     * @return Shape of the operand.
-     */
+    
     constexpr Shape const& shape() const {
-        return operand.shape();
+        return std::get<0>(this->operands).shape();
     } 
  
-
-    /**
-     * @brief Returns the strides of the result.
-     *
-     * The output tensor has the same memory layout as the operand,
-     * so the strides are forwarded directly.
-     *
-     * @return Strides of the operand.
-     */
     constexpr Strides const& strides() const {
-        return operand.strides();
+        return std::get<0>(this->operands).strides();
     }  
 
-
-    /**
-     * @brief Returns the offset of the expression.
-     * 
-     * @return Always returns operand offset.
-     */
     std::ptrdiff_t offset() const {
-        return operand.offset();
+        return std::get<0>(this->operands).offset();
     }
 
-    /**
-     * @brief Evaluates the unary expression and returns a Tensor.
-     * @return Resulting Tensor after applying the unary operation.
-     */
     Tensor forward() const;
 };
 
@@ -137,81 +95,31 @@ public:
  * upon construction to prepare for efficient evaluation.
  *
  * @tparam Operation A stateless functor implementing `void forward(Tensor const&, Tensor const&, Tensor&)`.
- * @tparam Operand Left-hand-side expression satisfying the `Expression` concept.
- * @tparam Cooperand Right-hand-side expression satisfying the `Expression` concept.
+ * @tparam Operand Left-hand-side expression satisfying the `Composable` concept.
+ * @tparam Cooperand Right-hand-side expression satisfying the `Composable` concept.
  */
-template<Operator Operation, Expression Operand, Expression Cooperand>
-class Binary {
-public:
-    Operation operation;
-    Trait<Operand>::Reference operand;
-    Trait<Cooperand>::Reference cooperand;
-
-    /**
-     * @brief Constructs a Binary expression.
-     *
-     * - Computes `dtype` by promoting the operand and cooperand types.
-     * - Computes `shape` via NumPy-style broadcasting.
-     * - Computes `strides` based on the resulting shape.
-     *
-     * @param operation Binary operation functor (e.g., `Addition`).
-     * @param operand Left-hand-side expression.
-     * @param cooperand Right-hand-side expression.
-     */
+template<Operator Operation, Composable Operand, Composable Cooperand>
+class Binary : public Expression<Operation, Operand, Cooperand> {
+public: 
     constexpr Binary(Operation operation, Trait<Operand>::Reference operand, Trait<Cooperand>::Reference cooperand)
-    :   operation(operation)
-    ,   operand(operand)
-    ,   cooperand(cooperand)
+    :   Expression<Operation, Operand, Cooperand>(operation, operand, cooperand)
     ,   dtype_(operation.promote(operand.dtype(), cooperand.dtype()))
     ,   shape_(operation.broadcast(operand.shape(), cooperand.shape()))
     ,   strides_(shape_)
     {} 
 
-
-    /**
-     * @brief Returns the promoted data type of the result.
-     *
-     * The data type is computed using a type promotion rule (based on the `type` enum),
-     * choosing the higher-precision or broader type between the two operands.
-     *
-     * @return Promoted type of the two operands.
-     */
     constexpr type dtype() const {
         return dtype_;
     } 
 
-    /**
-     * @brief Returns the shape of the result.
-     *
-     * The shape is computed via broadcasting rules, similar to NumPy or PyTorch.
-     * Dimensions are aligned from the right, and incompatible sizes throw.
-     *
-     * @return Broadcasted shape between the two operands.
-     */
     constexpr Shape const& shape() const {
         return shape_;
     }
-
-    /**
-     * @brief Returns the output strides for the result tensor.
-     *
-     * The strides are computed based on the broadcasted output shape
-     * and follow a standard row-major memory layout (like C arrays).
-     *
-     * @return Computed strides for the broadcasted shape.
-     */
+    
     constexpr Strides const& strides() const {
         return strides_;
     } 
 
-    /**
-     * @brief Returns the offset of the expression.
-     *
-     * Binary expressions are assumed to have zero offset. Since the result is 
-     * a new tensor.
-     *
-     * @return Always returns 0.
-     */
     std::ptrdiff_t offset() const {
         return 0;
     }
@@ -222,8 +130,12 @@ private:
     type dtype_;
     Shape shape_;
     Strides strides_;
-};       
+};     
   
+} namespace tannic::operation {
+
+using tannic::expression::Unary;
+using tannic::expression::Binary;
     
 /**
  * @brief Promotes two data types to the higher precision type.
@@ -463,7 +375,7 @@ struct Exponentiation {
  * @param operand The input expression to negate.
  * @return A unary expression representing element-wise negation.
  */
-template<Expression Operand>
+template<Composable Operand>
 constexpr auto operator-(Operand&& operand) {
     return Unary<Negation, Operand>{{}, std::forward<Operand>(operand)};
 }  
@@ -484,7 +396,7 @@ constexpr auto operator-(Operand&& operand) {
  * @param addend Second operand.
  * @return A binary expression representing element-wise addition.
  */
-template<Expression Augend, Expression Addend>
+template<Composable Augend, Composable Addend>
 constexpr auto operator+(Augend&& augend, Addend&& addend) {
     return Binary<Addition, Augend, Addend>{{}, std::forward<Augend>(augend), std::forward<Addend>(addend)};
 }
@@ -505,7 +417,7 @@ constexpr auto operator+(Augend&& augend, Addend&& addend) {
  * @param minuend Second operand.
  * @return A binary expression representing element-wise subtraction.
  */
-template<Expression Subtrahend, Expression Minuend>
+template<Composable Subtrahend, Composable Minuend>
 constexpr auto operator-(Subtrahend&& subtrahend, Minuend&& minuend) {
     return Binary<Subtraction, Subtrahend, Minuend>{{}, std::forward<Subtrahend>(subtrahend), std::forward<Minuend>(minuend)};
 }
@@ -526,7 +438,7 @@ constexpr auto operator-(Subtrahend&& subtrahend, Minuend&& minuend) {
  * @param multiplier Second operand.
  * @return A binary expression representing element-wise multiplication.
  */
-template<Expression Multiplicand, Expression Multiplier>
+template<Composable Multiplicand, Composable Multiplier>
 constexpr auto operator*(Multiplicand&& multiplicand, Multiplier&& multiplier) {
     return Binary<Multiplication, Multiplicand, Multiplier>{{}, std::forward<Multiplicand>(multiplicand), std::forward<Multiplier>(multiplier)};
 }  
@@ -550,7 +462,7 @@ constexpr auto operator*(Multiplicand&& multiplicand, Multiplier&& multiplier) {
  * auto result = A ^ B;
  * ```
  */
-template<Expression Base, Expression Exponent>
+template<Composable Base, Composable Exponent>
 constexpr auto operator^(Base&& base, Exponent&& exponent) {
     return Binary<Exponentiation, Base, Exponent>{{}, std::forward<Base>(base), std::forward<Exponent>(exponent)};
 } 
