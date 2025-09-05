@@ -1,3 +1,6 @@
+#ifndef SCALAR_HPP
+#define SCALAR_HPP
+
 #include <iostream> 
 #include <variant>
 #include <complex>
@@ -9,8 +12,7 @@ namespace tannic {
 
 class Scalar {
 public:
-    using Value = std::variant<
-        bool,
+    using Value = std::variant< 
         int8_t,
         int16_t,
         int32_t,
@@ -47,7 +49,6 @@ public:
         }
     }
 
-
     template <typename T>
     constexpr T get() const { return std::get<T>(value_); }  
 
@@ -61,10 +62,5 @@ private:
 };
 
 } // namespace tannic
-
-using namespace tannic;
-
-int main() {  
-    Scalar X(3, float16);
-    std::cout << X.dtype() << std::endl;
-}
+ 
+#endif // SCALAR_HPP
