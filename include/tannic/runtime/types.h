@@ -26,8 +26,8 @@ extern "C" {
 #include <stdint.h> 
 #endif 
 
-enum type { 
-    unknown,
+enum type {  
+    any,
     boolean, 
     int8,
     int16,
@@ -39,6 +39,7 @@ enum type {
     float64,
     complex64,   
     complex128,  
+    unknown,
     TYPES
 };
  

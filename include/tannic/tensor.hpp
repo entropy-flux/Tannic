@@ -101,6 +101,10 @@ public:
     using rank_type = uint8_t;      ///< Type used for rank (number of dimensions).
     using size_type = std::size_t;  ///< Type used for size and shape dimensions.
 
+
+    Tensor() = default;
+
+
     /**
      * @brief Constructs an uninitialized tensor with default (contiguous) strides.
      * @param dtype Data type of the tensor.
@@ -1119,12 +1123,12 @@ public:
 
 private:
     // Note: I didn't decide yet if put all this inside Node.
-    // That will speed tensor copies but disallow make the tensors
+    // That will speed tensor copies but make the tensors
     // only runtime since shared ptrs don't support constexpr.
     // For now kernel optimization is more important. 
-    type dtype_;
-    Shape shape_; 
-    Strides strides_; 
+    type dtype_ = any;
+    Shape shape_{}; 
+    Strides strides_{}; 
     std::size_t nelements_ = 1;
     std::ptrdiff_t offset_ = 0;    
     mutable std::shared_ptr<Buffer> buffer_ = nullptr;

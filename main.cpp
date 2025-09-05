@@ -1,4 +1,5 @@
 #include <iostream>
+#include <print>
 #include <tannic.hpp> 
 #include <tannic/functions.hpp>
 #include <tannic/transformations.hpp> 
@@ -57,6 +58,5 @@ int main() {
     std::cout << X << std::endl;
     std::cout << b << std::endl;
 
-    Tensor result = X + b;  
-    std::cout << result;
+    Tensor result = X + b;   
 }
