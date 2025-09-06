@@ -32,13 +32,13 @@
  
 #include <concepts>
 #include <iterator>   
-#include "types.hpp"
-#include "scalars.hpp"
+#include "types.hpp" 
 
 namespace tannic {
 
 class Shape;
 class Strides;
+class Scalar;
 class Tensor; 
 
 /**
@@ -147,6 +147,23 @@ concept Iterator = std::input_iterator<T>;
 template<typename T>
 concept Integral = std::is_integral_v<T>; 
 
+
+/**
+ * @concept Arithmetic
+ * @brief The arithmetic concept in C++ defines a type constraint that evaluates to 
+ * true for standard arithmetic types (std::is_arithmetic_v<T>), as well as 
+ * for float16_t, bfloat16_t, and std::complex<float> or std::complex<double>. 
+ * This concept is useful for constraining templates to types that represent 
+ * numeric values, including some extended or specialized numeric types.
+ */
+template<typename T>
+concept Arithmetic =
+    std::is_arithmetic_v<T> ||
+    std::same_as<T, float16_t> ||
+    std::same_as<T, bfloat16_t> ||
+    std::same_as<T, std::complex<float>> ||
+    std::same_as<T, std::complex<double>>;
+    
 
 /**
  * @concept Assignable

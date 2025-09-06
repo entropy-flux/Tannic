@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <iostream>  
 #include "types.hpp"  
+#include "concepts.hpp"
 #include "exceptions.hpp"
 
 namespace tannic {
@@ -26,13 +27,13 @@ public:
         std::complex<double> 
     >;
 
-    template <typename T>
+    template <Arithmetic T>
     constexpr Scalar(T value) 
     :   dtype_(dtypeof<T>())   
     ,   value_(value) 
     {}
 
-    template <typename T>
+    template <Arithmetic T>
     constexpr Scalar(T value, type dtype) 
     :   dtype_(dtype) {
         switch (dtype) { 
