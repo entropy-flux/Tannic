@@ -115,9 +115,7 @@ static constexpr auto index(type first, type second) {
  * - Shape broadcasting for batch dimensions
  * - Support for vectors, matrices, and higher-rank tensors
  */ 
-struct Composition {    
-    double scale = 1.0;
-
+struct Composition {      
     /**
      * @brief Type promotion rules table
      *
@@ -464,9 +462,9 @@ struct Repack {
  * @return Transformation expression representing the composition
  */
 template<Composable Outer, Composable Inner>
-constexpr auto composition(Outer&& outer, Inner&& inner, double scale) {
-    return Transformation<Composition, Outer, Inner>{
-        {scale}, 
+constexpr auto composition(Outer&& outer, Inner&& inner) {
+    return Transformation<Composition, Outer, Inner> {
+        {},
         std::forward<Outer>(outer), 
         std::forward<Inner>(inner)
     };
@@ -579,11 +577,10 @@ using transformation::reshape;
  * @return Transformation expression representing matrix multiplication
  */
 template<Composable Multiplicand, Composable Multiplier>
-constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier, double scale = 1.0) {
+constexpr auto matmul(Multiplicand&& multiplicand, Multiplier&& multiplier) {
     return transformation::composition(
         std::forward<Multiplicand>(multiplicand),
-        std::forward<Multiplier>(multiplier),
-        scale
+        std::forward<Multiplier>(multiplier)
     );
 }
 

@@ -25,8 +25,7 @@ void gemmKernel(
     const S1* B_ptr,
     D* C_ptr,
     size_t M, size_t N, size_t K,
-    size_t A_ld, size_t B_ld, size_t C_ld,
-    D alpha
+    size_t A_ld, size_t B_ld, size_t C_ld
 ) {   
     for (int i = 0; i < M; ++i) {
         for (int j = 0; j < N; ++j) {
@@ -36,7 +35,7 @@ void gemmKernel(
                 size_t B_idx = B_trans ? j * B_ld + k : k * B_ld + j;
                 sum += static_cast<D>(A_ptr[A_idx]) * static_cast<D>(B_ptr[B_idx]);
             }
-            C_ptr[i * C_ld + j] = alpha *sum;
+            C_ptr[i * C_ld + j] = sum;
         }
     }
 }
@@ -51,15 +50,14 @@ void gemmKernel<float, float, float>(
     const float* B_ptr,
     float* C_ptr,
     size_t M, size_t N, size_t K,
-    size_t A_ld, size_t B_ld, size_t C_ld,
-    float alpha
+    size_t A_ld, size_t B_ld, size_t C_ld
 ) {   
     cblas_sgemm(
         CblasRowMajor, 
         A_trans ? CblasTrans : CblasNoTrans, 
         B_trans ? CblasTrans : CblasNoTrans,
         M, N, K,
-        alpha, A_ptr, A_ld, B_ptr, B_ld,
+        1.0f, A_ptr, A_ld, B_ptr, B_ld,
         0.0f, C_ptr, C_ld 
     );  
 } 
@@ -71,16 +69,15 @@ void gemmKernel<double, double, double>(
     const double* B_ptr,
     double* C_ptr,
     size_t M, size_t N, size_t K,
-    size_t A_ld, size_t B_ld, size_t C_ld, 
-    double alpha
+    size_t A_ld, size_t B_ld, size_t C_ld
 ) {   
     cblas_dgemm(
         CblasRowMajor, 
         A_trans ? CblasTrans : CblasNoTrans, 
         B_trans ? CblasTrans : CblasNoTrans,
         M, N, K,
-        alpha, A_ptr, A_ld, B_ptr, B_ld,
-        0.0f, C_ptr, C_ld
+        1.0, A_ptr, A_ld, B_ptr, B_ld,
+        0.0, C_ptr, C_ld
     );
 }
 
@@ -126,7 +123,7 @@ void computeOffsets(
 
 
 template<typename S0, typename S1, typename D>
-status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, double alpha) {  
+status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {  
     size_t M = dst->shape.sizes[dst->rank - 2];
     size_t N = dst->shape.sizes[dst->rank - 1];
     size_t K = src0->shape.sizes[src0->rank - 1];
@@ -157,7 +154,7 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
                 A_trans, B_trans,
                 A_ptr, B_ptr, C_ptr,
                 M, N, K,
-                A_ld, B_ld, C_ld, static_cast<D>(alpha)
+                A_ld, B_ld, C_ld
             );
         } 
     }
@@ -170,7 +167,7 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
             A_trans, B_trans,
             A_ptr, B_ptr, C_ptr,
             M, N, K,
-            A_ld, B_ld, C_ld, static_cast<D>(alpha)
+            A_ld, B_ld, C_ld
         );
     }
 
@@ -178,13 +175,13 @@ status launchGemmKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* ds
 } 
  
 
-using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*, double);        
+using Kernel = status(*)(const tensor_t*, const tensor_t*, tensor_t*);        
  
 constexpr static inline auto index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 } 
 
-constexpr static  status launchDefaultKernel(const tensor_t*, const tensor_t*, tensor_t*, double alpha) {
+constexpr static  status launchDefaultKernel(const tensor_t*, const tensor_t*, tensor_t*) {
     return UNSUPPORTED_DTYPE;
 };
 
@@ -253,8 +250,8 @@ constexpr auto dispatchGemm = []() {
     return table;
 }();  
 
-status gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, double alpha) {   
-    return dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst, alpha); 
+status gemm(const tensor_t* src0, const tensor_t* src1, tensor_t* dst) {   
+    return dispatchGemm[index(src0->dtype, src1->dtype)](src0, src1, dst); 
 } 
 
 } 

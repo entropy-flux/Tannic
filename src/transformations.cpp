@@ -32,8 +32,8 @@ namespace tannic::transformation {
 
 void Composition::forward(Tensor const& first, Tensor const& second, Tensor& output) const { 
     Callback callback(
-        [&](const tensor_t* a, const tensor_t* b, tensor_t* out) -> status { return cpu::gemm(a, b, out, scale); },
-        [&](const tensor_t* a, const tensor_t* b, tensor_t* out, stream_t stream) -> status { return cuda::gemm(a, b, out, stream, scale); }
+        [&](const tensor_t* a, const tensor_t* b, tensor_t* out) -> status { return cpu::gemm(a, b, out); },
+        [&](const tensor_t* a, const tensor_t* b, tensor_t* out, stream_t stream) -> status { return cuda::gemm(a, b, out, stream); }
     );
     callback(first, second, output);
 } 
