@@ -94,14 +94,14 @@ constexpr static inline int index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(TYPES) * static_cast<int>(second);
 }  
  
-constexpr static status launchDefaultBinaryOpKernel(const tensor_t* src0, const scalar_t* src1, tensor_t* dst) {
+constexpr static status launchDefaultScaleOpKernel(const tensor_t* src0, const scalar_t* src1, tensor_t* dst) {
     return UNSUPPORTED_DTYPE;
 };     
 
 using Kernel = status(*)(const tensor_t*, const scalar_t*, tensor_t*);
 
 constexpr auto dispatchMul = []() {
-    std::array<Kernel, index(TYPES, TYPES)> table; table.fill(launchDefaultBinaryOpKernel); 
+    std::array<Kernel, index(TYPES, TYPES)> table; table.fill(launchDefaultScaleOpKernel); 
     table[index(int8 , int8)]  = launchScaleOpKernel<uint8_t, uint8_t, uint8_t, Mul>;
     table[index(int16, int16)] = launchScaleOpKernel<uint16_t, uint16_t, uint16_t, Mul>;
     table[index(int32, int32)] = launchScaleOpKernel<uint32_t, uint32_t, uint32_t, Mul>;

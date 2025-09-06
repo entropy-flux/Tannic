@@ -36,7 +36,7 @@ Below is a minimal example demonstrating tensor creation, initialization, basic 
 using namespace tannic;
 
 int main() { 
-    Tensor X(float16, {2,2}); //  X.initialize(Device()) // for CUDA support
+    Tensor X(float32, {2,2}); //  X.initialize(Device()) // for CUDA support
     
     X[0, range{0,-1}] = 1;  
     X[1,0] = 3;             
@@ -46,7 +46,7 @@ int main() {
     Y[0,0] = 4;                            
     Y[0,1] = 6;    
     
-    Y = log(X) + Y * Y - exp(X) + matmul(X, Y.transpose()); // assign expressions dynamically like in python 
+    Y = log(X) + Y * Y - exp(X) + 3 * matmul(X, Y.transpose()); // assign expressions dynamically like in python 
  
     // broadcasting and type promotions supported. 
     std::cout << Y; 
@@ -56,8 +56,8 @@ int main() {
 It will output: 
 
 ```
-Tensor([[23.2817, 43.2817], 
-        [33.0131, 18.7881]] dtype=float32, shape=(2, 2))
+Tensor([[43.2812, 63.2812]
+      , [105, 90.75]], dtype=float16, shape=(2, 2))
 ```
 
 Equivalent PyTorch code for comparison:
@@ -65,25 +65,25 @@ Equivalent PyTorch code for comparison:
 ```python
 import torch
  
-X = torch.zeros((2, 2), dtype=torch.float32)
+X = torch.zeros((2, 2), dtype=torch.float16)
  
 X[0, 0:] = 1       
 X[1, 0] = 3
 X[1, 1] = 4
  
-Y = torch.zeros((1, 2), dtype=torch.float32)
+Y = torch.zeros((1, 2), dtype=torch.float16)
  
 Y[0, 0] = 4     
 Y[0, 1] = 6       
-Y = torch.log(X) + Y * Y - torch.exp(X) + torch.matmul(X, Y.t())
+Y = torch.log(X) + Y * Y - torch.exp(X) + 3 * torch.matmul(X, Y.t())
 print(Y) 
 ```  
 
 Giving:
 
 ```
-tensor([[23.2817, 43.2817],
-        [33.0131, 18.7881]])
+tensor([[ 43.2812,  63.2812],
+        [105.0000,  90.7500]], dtype=torch.float16)
 ```
  
 ## Status

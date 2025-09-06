@@ -16,14 +16,10 @@ inline status add(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw
 inline status mul(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
 inline status sub(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
 inline status pow(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); } 
-}
-#endif 
-
-namespace cuda {
 inline status scale(const tensor_t*, const scalar_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); };     
 }
-
-
+#endif 
+ 
 namespace tannic::operation {  
  
 void Negation::forward(Tensor const& input, Tensor& output) const {

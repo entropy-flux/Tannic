@@ -157,20 +157,36 @@ struct Composition {
         table[index(int32, float16)]  = float32;  
         table[index(float16, int32)]  = float32;
         table[index(int64, float16)]  = float64;   
-        table[index(float16, int64)]  = float64;
+        table[index(float16, int64)]  = float64;  
 
         table[index(float16, float16)] = float16;
         table[index(float16, float32)] = float32;
         table[index(float32, float16)] = float32;
         table[index(float16, float64)] = float64;
         table[index(float64, float16)] = float64;
+ 
+        table[index(int8, bfloat16)]   = bfloat16;
+        table[index(bfloat16, int8)]   = bfloat16;
+        table[index(int16, bfloat16)]  = bfloat16;
+        table[index(bfloat16, int16)]  = bfloat16;
+        table[index(int32, bfloat16)]  = float32;
+        table[index(bfloat16, int32)]  = float32;
+        table[index(int64, bfloat16)]  = float64;
+        table[index(bfloat16, int64)]  = float64;
+
+        table[index(bfloat16, bfloat16)] = bfloat16;
+        table[index(bfloat16, float16)]  = float16;
+        table[index(float16, bfloat16)]  = float16;
+        table[index(bfloat16, float32)]  = float32;
+        table[index(float32, bfloat16)]  = float32;
+        table[index(bfloat16, float64)]  = float64;
+        table[index(float64, bfloat16)]  = float64;
 
         table[index(int32, float32)] = float32;
         table[index(float32, int32)] = float32;
         table[index(int32, float64)] = float64;
         table[index(float64, int32)] = float64; 
-        
-        // Float promotions
+         
         table[index(float32, float32)] = float32;
         table[index(float32, float64)] = float64;
         table[index(float64, float32)] = float64;

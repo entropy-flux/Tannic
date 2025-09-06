@@ -27,4 +27,6 @@ status sub(const tensor_t*, const tensor_t*, tensor_t*, stream_t);
 status mul(const tensor_t*, const tensor_t*, tensor_t*, stream_t);   
 status pow(const tensor_t*, const tensor_t*, tensor_t*, stream_t);
 
+status scale(const tensor_t*, const scalar_t*, tensor_t*, stream_t);     
+
 } // namespace cuda
