@@ -1169,6 +1169,14 @@ Tensor expression::Binary<Operation, Operand, Cooperand>::forward() const {
     return result;
 }  
 
+
+template<Operator Operation, Composable Operand>
+Tensor expression::Binary<Operation, Operand, Scalar>::forward() const {
+    Tensor result(dtype(), shape(), strides());
+    this->operation.forward(std::get<0>(this->operands), std::get<1>(this->operands), result);
+    return result;
+}  
+
 template<Composable Source>
 Tensor expression::View<Source>::forward() const { 
     Tensor source = source_.forward();

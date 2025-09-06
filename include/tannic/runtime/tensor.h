@@ -42,6 +42,11 @@ enum layout {
     STRIDED
 };
 
+struct scalar_t {
+    const void* address;
+    type dtype;
+};
+
 struct shape_t {
     union {
         const size_t* address;

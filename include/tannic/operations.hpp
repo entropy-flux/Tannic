@@ -44,6 +44,7 @@
 #include "shape.hpp"
 #include "strides.hpp"   
 #include "traits.hpp"
+#include "scalars.hpp"
  
 namespace tannic {
 
@@ -130,7 +131,34 @@ private:
     Shape shape_;
     Strides strides_;
 };     
-  
+   
+ 
+template<Operator Operation, Composable Operand>
+class Binary<Operation, Operand, Scalar> : public Expression<Operation, Operand, Scalar> {
+public: 
+    constexpr Binary(Operation operation, Trait<Operand>::Reference operand, Scalar scale)
+    :   Expression<Operation, Operand, Scalar>(operation, operand, scale) 
+    {} 
+
+    constexpr type dtype() const {
+        return std::get<0>(this->operands).dtype();
+    } 
+
+    constexpr Shape const& shape() const {
+        return std::get<0>(this->operands).shape();
+    }
+    
+    constexpr Strides const& strides() const {
+        return std::get<0>(this->operands).strides();
+    } 
+
+    std::ptrdiff_t offset() const {
+        return 0;
+    }
+
+    Tensor forward() const; 
+};      
+
 } namespace tannic::operation {
 
 using tannic::expression::Unary;
@@ -278,7 +306,8 @@ struct Addition {
  * ```
  */ 
 struct Multiplication {
-    void forward(Tensor const&, Tensor const&, Tensor&) const; 
+    void forward(Tensor const&, Tensor const&, Tensor&) const;  
+    void forward(Tensor const&, Scalar const&, Tensor&) const; 
 
     constexpr static type promote(type first, type second) {
         return operation::promote(first, second);
@@ -441,6 +470,27 @@ template<Composable Multiplicand, Composable Multiplier>
 constexpr auto operator*(Multiplicand&& multiplicand, Multiplier&& multiplier) {
     return Binary<Multiplication, Multiplicand, Multiplier>{{}, std::forward<Multiplicand>(multiplicand), std::forward<Multiplier>(multiplier)};
 }  
+ 
+
+template<Composable Multiplicand, typename T>
+requires std::is_arithmetic_v<std::decay_t<T>>
+constexpr auto operator*(Multiplicand&& multiplicand, T&& multiplier) {
+    return Binary<Multiplication, Multiplicand, Scalar>{
+        {},
+        std::forward<Multiplicand>(multiplicand),
+        Scalar(std::forward<T>(multiplier), multiplicand.dtype())
+    };
+}
+
+template<typename T, Composable Multiplier>
+requires std::is_arithmetic_v<std::decay_t<T>>
+constexpr auto operator*(T&& multiplicand, Multiplier&& multiplier) {
+    return Binary<Multiplication, Multiplier, Scalar>{
+        {}, 
+        std::forward<Multiplier>(multiplier),
+        Scalar(std::forward<T>(multiplicand), multiplier.dtype())
+    };
+}
 
 
 /**

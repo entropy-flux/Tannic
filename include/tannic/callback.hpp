@@ -68,7 +68,32 @@ public:
         } 
     }
 
-    void operator()(Tensor const& first, Tensor const& second, Tensor& output){   
+    void operator()(Tensor const& tensor, Scalar const& scalar, Tensor& output) {
+        tensor_t* src0 = get_tensor(tensor.id());
+        scalar_t  sc1{scalar.address(), scalar.dtype() };
+        output.initialize(tensor.environment());  
+        if (std::holds_alternative<Host>(output.environment())) {
+            tensor_t* dst = get_tensor(output.id());
+            auto status = host_fn(src0, &sc1, dst);
+            if (status != SUCCESS) {
+                throw std::runtime_error("Unsupported dtype");
+            }
+        } 
+        else {  
+            Device const& resource = std::get<Device>(output.environment());
+            device_t dvc{resource.id(), resource.blocking() ? SYNC : ASYNC};
+            tensor_t* dst = get_tensor(output.id());
+            stream_t stream = pop_stream(&dvc);
+            auto status = device_fn(src0, &sc1, dst, stream);
+            put_stream(&dvc, stream);
+            if (status != SUCCESS) {
+                throw std::runtime_error("Unsupported dtype");
+            }
+        }
+    }
+
+
+    void operator()(Tensor const& first, Tensor const& second, Tensor& output) {   
         tensor_t* src0 = get_tensor(first.id());
         tensor_t* src1 = get_tensor(second.id());
         environment_t environment;

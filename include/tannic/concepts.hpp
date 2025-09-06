@@ -33,6 +33,7 @@
 #include <concepts>
 #include <iterator>   
 #include "types.hpp"
+#include "scalars.hpp"
 
 namespace tannic {
 
@@ -82,13 +83,14 @@ class Tensor;
  * ```
  */
 template<typename T>
-concept Composable = requires(const T expression) {
-    { expression.dtype()   } -> std::same_as<type>;
-    { expression.shape()   } -> std::same_as<Shape const&>;
-    { expression.strides() } -> std::same_as<Strides const&>;
-      expression.offset();
-      expression.forward();
-}; 
+concept Composable = std::same_as<T, Scalar> || ( requires(const T expression) {
+        { expression.dtype()   } -> std::same_as<type>;
+        { expression.shape()   } -> std::same_as<Shape const&>;
+        { expression.strides() } -> std::same_as<Strides const&>;
+          expression.offset();
+          expression.forward();
+    }
+);
 
 /**
  * @brief Concept defining requirements for tensor operation types

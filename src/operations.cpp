@@ -15,9 +15,14 @@ inline status neg(const tensor_t*, tensor_t*, stream_t) { throw std::runtime_err
 inline status add(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
 inline status mul(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
 inline status sub(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
-inline status pow(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); }
+inline status pow(const tensor_t*, const tensor_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); } 
 }
 #endif 
+
+namespace cuda {
+inline status scale(const tensor_t*, const scalar_t*, tensor_t*, stream_t) { throw std::runtime_error("CUDA not available"); };     
+}
+
 
 namespace tannic::operation {  
  
@@ -34,7 +39,12 @@ void Addition::forward(Tensor const& first, Tensor const& second, Tensor& output
 void Multiplication::forward(Tensor const& first, Tensor const& second, Tensor& output) const { 
     Callback callback(cpu::mul, cuda::mul);
     callback(first, second, output);
-}
+} 
+
+void Multiplication::forward(Tensor const& first, Scalar const& second, Tensor& output) const { 
+    Callback callback(cpu::scale, cuda::scale);
+    callback(first, second, output);
+} 
 
 void Subtraction::forward(Tensor const& first, Tensor const& second, Tensor& output) const { 
     Callback callback(cpu::sub, cuda::sub);

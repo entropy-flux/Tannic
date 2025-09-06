@@ -6,8 +6,9 @@
 #include <complex>
 #include <cstdint>
 #include <iostream>  
-#include <tannic.hpp>  
- 
+#include "types.hpp"  
+#include "exceptions.hpp"
+
 namespace tannic {
 
 class Scalar {
@@ -26,13 +27,13 @@ public:
     >;
 
     template <typename T>
-    constexpr Scalar(T&& value) 
+    constexpr Scalar(T value) 
     :   dtype_(dtypeof<T>())   
-    ,   value_(std::forward<T>(value))  
+    ,   value_(value) 
     {}
 
     template <typename T>
-    constexpr Scalar(T&& value, type dtype) 
+    constexpr Scalar(T value, type dtype) 
     :   dtype_(dtype) {
         switch (dtype) { 
             case int8:       value_ = static_cast<int8_t>(value);  break;
@@ -50,12 +51,29 @@ public:
     }
 
     template <typename T>
-    constexpr T get() const { return std::get<T>(value_); }  
+    constexpr T get() const {  
+        if (!std::holds_alternative<T>(value_)) 
+            throw Exception("Variant type mismatch in Scalar::get");
+        return std::get<T>(value_);
+    }  
 
     constexpr type dtype() const {
         return dtype_;
     }
-    
+
+
+    const void* address() const {
+        return std::visit([](auto const& value) -> const void* {
+            return &value;
+        }, value_);
+    }
+ 
+    void* address() {
+        return std::visit([](auto& value) -> void* {
+            return &value;
+        }, value_);
+    }
+
 private:
     type dtype_;
     Value value_;
