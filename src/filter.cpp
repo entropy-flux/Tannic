@@ -11,6 +11,7 @@ using tannic::tensor_t;
 using tannic::stream_t;
 using tannic::device_t;
 inline status triu(const tensor_t*, tensor_t*, stream_t, int k) { throw std::runtime_error("CUDA not available"); }
+inline status tril(const tensor_t*, tensor_t*, stream_t, int k) { throw std::runtime_error("CUDA not available"); }
 }
 #endif
 
