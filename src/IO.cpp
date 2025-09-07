@@ -105,7 +105,7 @@ std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
             self(dim + 1, idx, self);
             if (i + 1 != tensor->shape.sizes[dim]) {
                 os << ", ";
-                if (dim == 0 && iostyle == IOStyle::Tannic) os << "\n        ";
+                if (dim == 0) os << "\n        ";
             }
         }
         os << close_bracket;
