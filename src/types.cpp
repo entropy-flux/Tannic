@@ -31,7 +31,7 @@ float16_t::float16_t(float value) {
         }
     } else if (exponent >= 31) { 
         half = static_cast<uint16_t>(sign | 0x7C00);
-    } else { // Normal
+    } else {
         half = static_cast<uint16_t>(sign | (exponent << 10) | (mantissa >> 13));
         if (mantissa & 0x00001000) half++; 
     }
