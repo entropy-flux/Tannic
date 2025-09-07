@@ -18,6 +18,17 @@ struct element_ref {
     size_t bit_index;  
 };
 
+template <typename T>
+static void print_floating(std::ostream& os, T v) {
+    if (std::isinf(v)) {
+        os << (v > 0 ? "inf" : "-inf");
+    } else if (std::isnan(v)) {
+        os << "nan";
+    } else {
+        os << v;
+    }
+}
+
 static void print(std::ostream& os, element_ref elem, type dtype) {
     switch (dtype) {
         case boolean: {
@@ -26,27 +37,39 @@ static void print(std::ostream& os, element_ref elem, type dtype) {
             os << (v ? "true" : "false");
             break;
         }
-        case int8: os << static_cast<int>(*static_cast<const int8_t*>(elem.address)); break;
-        case int16: os << *static_cast<const int16_t*>(elem.address); break;
-        case int32: os << *static_cast<const int32_t*>(elem.address); break;
-        case int64: os << *static_cast<const int64_t*>(elem.address); break;
-        case float16:  os << *static_cast<const float16_t*>(elem.address); break;
-        case bfloat16: os << *static_cast<const bfloat16_t*>(elem.address); break;
-        case float32: os << *static_cast<const float*>(elem.address); break;
-        case float64: os << *static_cast<const double*>(elem.address); break;
+        case int8:    os << static_cast<int>(*static_cast<const int8_t*>(elem.address)); break;
+        case int16:   os << *static_cast<const int16_t*>(elem.address); break;
+        case int32:   os << *static_cast<const int32_t*>(elem.address); break;
+        case int64:   os << *static_cast<const int64_t*>(elem.address); break;
+
+        case float16:  print_floating(os, *static_cast<const float16_t*>(elem.address)); break;
+        case bfloat16: print_floating(os, *static_cast<const bfloat16_t*>(elem.address)); break;
+        case float32:  print_floating(os, *static_cast<const float*>(elem.address)); break;
+        case float64:  print_floating(os, *static_cast<const double*>(elem.address)); break;
+
         case complex64: {
             const float* c = static_cast<const float*>(elem.address);
-            os << "(" << c[0] << (c[1]>=0 ? "+" : "") << c[1] << "j)";
+            os << "(";
+            print_floating(os, c[0]);
+            os << (c[1] >= 0 ? "+" : "");
+            print_floating(os, c[1]);
+            os << "j)";
             break;
         }
         case complex128: {
             const double* c = static_cast<const double*>(elem.address);
-            os << "(" << c[0] << (c[1]>=0 ? "+" : "") << c[1] << "j)";
+            os << "(";
+            print_floating(os, c[0]);
+            os << (c[1] >= 0 ? "+" : "");
+            print_floating(os, c[1]);
+            os << "j)";
             break;
         }
+
         default: os << "?";
     }
 }
+
  
 std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
     os << "Tensor(";
@@ -85,7 +108,7 @@ std::ostream& operator<<(std::ostream& os, const tensor_t* tensor) {
                 if (dim == 0 && iostyle == IOStyle::Tannic) os << "\n        ";
             }
         }
-        os << close_bracket << "\n      ";
+        os << close_bracket;
     };
 
     std::vector<size_t> indices(tensor->rank, 0);
