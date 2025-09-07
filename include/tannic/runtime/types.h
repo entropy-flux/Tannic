@@ -41,7 +41,7 @@ enum type {
     complex128,  
     unknown,
     TYPES
-};
+}; 
  
 #ifdef __cplusplus
 }

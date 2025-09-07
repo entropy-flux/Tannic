@@ -72,15 +72,7 @@
 #include "runtime/types.h"
 
 namespace tannic {  
-
-struct boolean_t {
-    bool value = false;
-    boolean_t() : value(false) {}
-    template<typename T> boolean_t(T value) : value(static_cast<bool>(value)) {}
-    operator bool() const { return value; } 
-    void write(std::byte*, std::ptrdiff_t) const;  
-};  
- 
+  
 struct float16_t {
     uint16_t bits = 0; 
     float16_t() : bits(0) {}

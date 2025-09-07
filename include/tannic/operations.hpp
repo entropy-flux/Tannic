@@ -45,6 +45,7 @@
 #include "strides.hpp"   
 #include "traits.hpp"
 #include "scalars.hpp"
+#include "limits.hpp"
  
 namespace tannic {
 
@@ -163,6 +164,10 @@ public:
 
 using tannic::expression::Unary;
 using tannic::expression::Binary;
+using tannic::expression::Sign;
+using tannic::expression::Zero;
+using tannic::expression::One;
+using tannic::expression::Infinity;
     
 /**
  * @brief Promotes two data types to the higher precision type.
@@ -408,6 +413,10 @@ constexpr auto operator-(Operand&& operand) {
     return Unary<Negation, Operand>{{}, std::forward<Operand>(operand)};
 }  
 
+constexpr auto operator-(Infinity<Sign::Positive>&& operand) {
+    return Infinity<Sign::Negative>(operand.dtype(), operand.shape());
+}   
+
 /**
  * @brief Element-wise addition of two tensor expressions.
  *
@@ -428,6 +437,18 @@ template<Composable Augend, Composable Addend>
 constexpr auto operator+(Augend&& augend, Addend&& addend) {
     return Binary<Addition, Augend, Addend>{{}, std::forward<Augend>(augend), std::forward<Addend>(addend)};
 }
+
+template<Composable Addend>
+constexpr auto operator+(Zero const& zero, Addend&& addend) {
+    return std::forward<Addend>(addend); // just return the other operand
+}
+
+// Fast-path: Composable + Zero
+template<Composable Augend>
+constexpr auto operator+(Augend&& augend, Zero const& zero) {
+    return std::forward<Augend>(augend); // just return the other operand
+}
+
 
 
 /**
@@ -470,7 +491,26 @@ template<Composable Multiplicand, Composable Multiplier>
 constexpr auto operator*(Multiplicand&& multiplicand, Multiplier&& multiplier) {
     return Binary<Multiplication, Multiplicand, Multiplier>{{}, std::forward<Multiplicand>(multiplicand), std::forward<Multiplier>(multiplier)};
 }  
- 
+
+template<Composable Multiplier>
+constexpr auto operator*(Zero const& zero, Multiplier&& multiplier) {
+    return zero;
+}
+
+template<Composable Multiplicand>
+constexpr auto operator*(Multiplicand&& multiplicand, Zero const& zero) {
+    return zero;
+}
+
+template<Composable Multiplier>
+constexpr auto operator*(One const& one, Multiplier&& multiplier) {
+    return std::forward<Multiplier>(multiplier); 
+}
+
+template<Composable Multiplicand>
+constexpr auto operator*(Multiplicand&& multiplicand, One const& one) {
+    return std::forward<Multiplicand>(multiplicand); 
+} 
 
 template<Composable Multiplicand, typename T>
 requires std::is_arithmetic_v<std::decay_t<T>>

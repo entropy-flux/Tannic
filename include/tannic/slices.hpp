@@ -344,7 +344,7 @@ inline std::byte const* tobytes(T const& reference) {
     if constexpr (std::is_same_v<T, float16_t>) {
         return reinterpret_cast<std::byte const*>(&reference.bits);
     } 
-    
+ 
     else {
         return reinterpret_cast<std::byte const*>(&reference);
     }
