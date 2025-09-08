@@ -3,6 +3,8 @@
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
+namespace \mbox{\hyperlink{namespacetannic_1_1comparison}{comparison}}
+\item 
 namespace \mbox{\hyperlink{namespacetannic_1_1expression}{expression}}
 \item 
 namespace \mbox{\hyperlink{namespacetannic_1_1function}{function}}
@@ -16,6 +18,8 @@ namespace \mbox{\hyperlink{namespacetannic_1_1transformation}{transformation}}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structtannic_1_1bfloat16__t}{bfloat16\+\_\+t}}
+\item 
 class \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}}
 \begin{DoxyCompactList}\small\item\em Managed memory buffer with explicit ownership. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Callback}{Callback}}
@@ -28,6 +32,8 @@ class \mbox{\hyperlink{classtannic_1_1Error}{Error}}
 \begin{DoxyCompactList}\small\item\em Represents serious, typically unrecoverable problems. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}
 \begin{DoxyCompactList}\small\item\em Base class for recoverable runtime anomalies in the framework. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtannic_1_1float16__t}{float16\+\_\+t}}
+\item 
 struct \mbox{\hyperlink{structtannic_1_1Header}{Header}}
 \item 
 class \mbox{\hyperlink{classtannic_1_1Host}{Host}}
@@ -37,6 +43,8 @@ struct \mbox{\hyperlink{structtannic_1_1Metadata}{Metadata}}
 struct \mbox{\hyperlink{structtannic_1_1Metadata_3_01Tensor_01_4}{Metadata$<$ Tensor $>$}}
 \item 
 struct \mbox{\hyperlink{structtannic_1_1Node}{Node}}
+\item 
+class \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}}
 \item 
 class \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}
 \begin{DoxyCompactList}\small\item\em Represents the shape (dimensions) of an tensor-\/like expression. \end{DoxyCompactList}\item 
@@ -61,6 +69,8 @@ concept \mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}
 \begin{DoxyCompactList}\small\item\em Requires a type to satisfy the C++20 {\ttfamily std\+::input\+\_\+iterator} concept. \end{DoxyCompactList}\item 
 concept \mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}
 \begin{DoxyCompactList}\small\item\em Requires a type to be an integral type (e.\+g., {\ttfamily int}, {\ttfamily std\+::size\+\_\+t}). \end{DoxyCompactList}\item 
+concept \mbox{\hyperlink{concepttannic_1_1Arithmetic}{Arithmetic}}
+\begin{DoxyCompactList}\small\item\em The arithmetic concept in C++ defines a type constraint that evaluates to true for standard arithmetic types (std\+::is\+\_\+arithmetic\+\_\+v$<$\+T$>$), as well as for float16\+\_\+t, bfloat16\+\_\+t, and std\+::complex$<$float$>$ or std\+::complex$<$double$>$. \end{DoxyCompactList}\item 
 concept \mbox{\hyperlink{concepttannic_1_1Assignable}{Assignable}}
 \begin{DoxyCompactList}\small\item\em Concept for types that can assign values. \end{DoxyCompactList}\item 
 concept \mbox{\hyperlink{concepttannic_1_1Comparable}{Comparable}}
@@ -84,6 +94,8 @@ enum class \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{I
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+{\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_aeea1315998b11e5e17dd828547094ebd}{triangular}} (Operand \&\&operand, Position position=Position\+::\+Upper, int offset=0)
+\item 
 \mbox{\hyperlink{structtannic_1_1Header}{Header}} \mbox{\hyperlink{namespacetannic_aa966b765f458a1a30f3baf663db8ad5e}{headerof}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&tensor)
 \item 
 \mbox{\hyperlink{structtannic_1_1Metadata}{Metadata}}$<$ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} $>$ \mbox{\hyperlink{namespacetannic_a86aef25866193018eadfb21fa69465f7}{metadataof}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&tensor)
@@ -102,7 +114,7 @@ std\+::ostream \& \mbox{\hyperlink{namespacetannic_a1a847102d1be0f3bdc61821df668
 \item 
 {\footnotesize template$<$Composable Source$>$ }\\std\+::ostream \& \mbox{\hyperlink{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9}{operator$<$$<$}} (std\+::ostream \&ostream, Source source)
 \item 
-{\footnotesize template$<$Composable Multiplicand, Composable Multiplier$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}} (Multiplicand \&\&multiplicand, Multiplier \&\&multiplier, double scale=1.\+0)
+{\footnotesize template$<$Composable Multiplicand, Composable Multiplier$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}} (Multiplicand \&\&multiplicand, Multiplier \&\&multiplier)
 \begin{DoxyCompactList}\small\item\em Matrix multiplication convenience function. \end{DoxyCompactList}\item 
 constexpr std\+::size\+\_\+t \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}} (type type)
 \begin{DoxyCompactList}\small\item\em Returns the size in bytes of a given tensor data type. \end{DoxyCompactList}\item 
@@ -298,12 +310,12 @@ This is the inverse operation of \doxylink{namespacetannic_a7cc5a20569f733cb88c5
 \doxysubsubsection{\texorpdfstring{headerof()}{headerof()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1Header}{Header}} tannic\+::headerof (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{tensor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-\Hypertarget{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}\label{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6} 
+\Hypertarget{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}\label{namespacetannic_a3681656aa208b88dfc79a1806cf669b6} 
 \index{tannic@{tannic}!matmul@{matmul}}
 \index{matmul@{matmul}!tannic@{tannic}}
 \doxysubsubsection{\texorpdfstring{matmul()}{matmul()}}
 {\footnotesize\ttfamily template$<$Composable Multiplicand, Composable Multiplier$>$ \\
-constexpr auto tannic\+::matmul (\begin{DoxyParamCaption}\item[{Multiplicand \&\&}]{multiplicand,  }\item[{Multiplier \&\&}]{multiplier,  }\item[{double}]{scale = {\ttfamily 1.0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+constexpr auto tannic\+::matmul (\begin{DoxyParamCaption}\item[{Multiplicand \&\&}]{multiplicand,  }\item[{Multiplier \&\&}]{multiplier }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 
@@ -436,6 +448,13 @@ True if all stride sizes are equal for each dimension.
 \index{setiostyle@{setiostyle}!tannic@{tannic}}
 \doxysubsubsection{\texorpdfstring{setiostyle()}{setiostyle()}}
 {\footnotesize\ttfamily void tannic\+::setiostyle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}}}]{style }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{namespacetannic_aeea1315998b11e5e17dd828547094ebd}\label{namespacetannic_aeea1315998b11e5e17dd828547094ebd} 
+\index{tannic@{tannic}!triangular@{triangular}}
+\index{triangular@{triangular}!tannic@{tannic}}
+\doxysubsubsection{\texorpdfstring{triangular()}{triangular()}}
+{\footnotesize\ttfamily template$<$Composable Operand$>$ \\
+constexpr auto tannic\+::triangular (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand,  }\item[{Position}]{position = {\ttfamily Position\+:\+:Upper},  }\item[{int}]{offset = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
 
 

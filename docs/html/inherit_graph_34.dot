@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::expression\l::Transpose\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d0/dd9/classtannic_1_1expression_1_1Transpose.html",tooltip="Expression template for transposing two dimensions of a tensor."];
+  Node0 [id="Node000000",label="tannic::expression\l::Triangular",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$da/dc6/structtannic_1_1expression_1_1Triangular.html",tooltip=" "];
 }

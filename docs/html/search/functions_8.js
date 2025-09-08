@@ -1,4 +1,10 @@
 var searchData=
 [
-  ['log_0',['log',['../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b',1,'tannic::function']]]
+  ['id_0',['id',['../df/da7/classtannic_1_1Host.html#a44d3fb44daeda17f43cce11ca2452eee',1,'tannic::Host::id()'],['../d3/d46/classtannic_1_1Device.html#a30fa398c0cec1af2dd802fb3c5002ff0',1,'tannic::Device::id()'],['../da/d93/classtannic_1_1Tensor.html#a6094dfc0c4ae70a26bacd898de6a3215',1,'tannic::Tensor::id()']]],
+  ['infinity_1',['Infinity',['../df/daf/classtannic_1_1expression_1_1Infinity.html#a81d92595cd067a306b5d9856e218ef12',1,'tannic::expression::Infinity']]],
+  ['initialize_2',['initialize',['../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c',1,'tannic::Tensor::initialize(Environment environment=Host{}) const'],['../da/d93/classtannic_1_1Tensor.html#a3a52cb61b4145d02dd20e40934689f81',1,'tannic::Tensor::initialize(std::initializer_list&lt; T &gt; values, Environment environment=Host{})'],['../da/d93/classtannic_1_1Tensor.html#af04f30b6a7bcb783170d17617d90b70e',1,'tannic::Tensor::initialize(std::initializer_list&lt; std::initializer_list&lt; T &gt; &gt; const &amp;values, Environment environment=Host{})'],['../da/d93/classtannic_1_1Tensor.html#adb95241997821b2425869bf6076e029f',1,'tannic::Tensor::initialize(std::initializer_list&lt; std::initializer_list&lt; std::initializer_list&lt; T &gt; &gt; &gt; const &amp;values, Environment environment=Host{})'],['../da/d93/classtannic_1_1Tensor.html#a1b94366e95eeb7d5987d0e1e024b2d63',1,'tannic::Tensor::initialize(std::initializer_list&lt; std::initializer_list&lt; std::initializer_list&lt; std::initializer_list&lt; T &gt; &gt; &gt; &gt; values, Environment environment=Host{})']]],
+  ['instance_3',['instance',['../d9/dd4/classtannic_1_1Devices.html#a08e873a9357bba7615b7cd1f041d257c',1,'tannic::Devices']]],
+  ['is_5fcontiguous_4',['is_contiguous',['../da/d93/classtannic_1_1Tensor.html#aaa9f6eae57c44e544cad56e2553923c0',1,'tannic::Tensor']]],
+  ['is_5finitialized_5',['is_initialized',['../da/d93/classtannic_1_1Tensor.html#a608af294e14a31a695a727931d236f2f',1,'tannic::Tensor']]],
+  ['is_5fsingleton_6',['is_singleton',['../da/d93/classtannic_1_1Tensor.html#a54b467a1b3d9cb2ee342a9617955ecc8',1,'tannic::Tensor']]]
 ];

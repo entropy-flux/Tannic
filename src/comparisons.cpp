@@ -28,7 +28,7 @@ status ge(const tensor_t*, const tensor_t*, tensor_t*, stream_t) {throw std::run
 status lt(const tensor_t*, const tensor_t*, tensor_t*, stream_t) {throw std::runtime_error("CUDA not available");}
 status le(const tensor_t*, const tensor_t*, tensor_t*, stream_t) {throw std::runtime_error("CUDA not available");}
 
-} namespace tannic::expression { 
+} namespace tannic::comparison { 
 
 void EQ::forward(Tensor const& first, Tensor const& second, Tensor& target) const {
     Callback callback(cpu::eq, cuda::eq);

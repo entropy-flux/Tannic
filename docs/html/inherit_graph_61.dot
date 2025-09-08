@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::transformation\l::Convolution1D",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$db/dd5/classtannic_1_1transformation_1_1Convolution1D.html",tooltip="Expression for 1D convolution operations."];
+  Node0 [id="Node000000",label="tannic::Scalar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d8/da0/classtannic_1_1Scalar.html",tooltip=" "];
 }

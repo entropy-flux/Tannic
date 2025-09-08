@@ -12,18 +12,18 @@ Computes the {\bfseries{mean}} along an axis.
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a32ddf3c89c13a43e954ac533e770377d}{reduce}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} dtype) \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr type \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a32ddf3c89c13a43e954ac533e770377d}{reduce}} (type dtype) const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a41172422d762d18cf304bec44dd8f8b4}{reduce}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&shape) \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a41172422d762d18cf304bec44dd8f8b4}{reduce}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&shape) const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{void}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{input}}, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{output}}) \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+void \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_aa0370460d86841841bf8c0a01fbf94b8}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&input, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&output) const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a7944f517159156416c133ccefbf3e0b7}{axis}}
+int \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a7944f517159156416c133ccefbf3e0b7}{axis}}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a2433342825247ab024b0876a33e7f984}{keepdim}} = \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}}
+bool \mbox{\hyperlink{structtannic_1_1expression_1_1Argmean_a2433342825247ab024b0876a33e7f984}{keepdim}} = false
 \end{DoxyCompactItemize}
 
 
@@ -48,19 +48,19 @@ Requires floating-\/point input ({\ttfamily float32}/{\ttfamily float64}). ~\new
 \index{tannic::expression::Argmean@{tannic::expression::Argmean}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Argmean@{tannic::expression::Argmean}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{void}} tannic\+::expression\+::\+Argmean\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&}]{input,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{output }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily void tannic\+::expression\+::\+Argmean\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{input,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{output }\end{DoxyParamCaption}) const}
 
 \Hypertarget{structtannic_1_1expression_1_1Argmean_a41172422d762d18cf304bec44dd8f8b4}\label{structtannic_1_1expression_1_1Argmean_a41172422d762d18cf304bec44dd8f8b4} 
 \index{tannic::expression::Argmean@{tannic::expression::Argmean}!reduce@{reduce}}
 \index{reduce@{reduce}!tannic::expression::Argmean@{tannic::expression::Argmean}}
 \doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::expression\+::\+Argmean\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&}]{shape }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::expression\+::\+Argmean\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{shape }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{structtannic_1_1expression_1_1Argmean_a32ddf3c89c13a43e954ac533e770377d}\label{structtannic_1_1expression_1_1Argmean_a32ddf3c89c13a43e954ac533e770377d} 
 \index{tannic::expression::Argmean@{tannic::expression::Argmean}!reduce@{reduce}}
 \index{reduce@{reduce}!tannic::expression::Argmean@{tannic::expression::Argmean}}
 \doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} tannic\+::expression\+::\+Argmean\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}}}]{dtype }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily constexpr type tannic\+::expression\+::\+Argmean\+::reduce (\begin{DoxyParamCaption}\item[{type}]{dtype }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -69,13 +69,13 @@ Requires floating-\/point input ({\ttfamily float32}/{\ttfamily float64}). ~\new
 \index{tannic::expression::Argmean@{tannic::expression::Argmean}!axis@{axis}}
 \index{axis@{axis}!tannic::expression::Argmean@{tannic::expression::Argmean}}
 \doxysubsubsection{\texorpdfstring{axis}{axis}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} tannic\+::expression\+::\+Argmean\+::axis}
+{\footnotesize\ttfamily int tannic\+::expression\+::\+Argmean\+::axis}
 
 \Hypertarget{structtannic_1_1expression_1_1Argmean_a2433342825247ab024b0876a33e7f984}\label{structtannic_1_1expression_1_1Argmean_a2433342825247ab024b0876a33e7f984} 
 \index{tannic::expression::Argmean@{tannic::expression::Argmean}!keepdim@{keepdim}}
 \index{keepdim@{keepdim}!tannic::expression::Argmean@{tannic::expression::Argmean}}
 \doxysubsubsection{\texorpdfstring{keepdim}{keepdim}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} tannic\+::expression\+::\+Argmean\+::keepdim = \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{false}}}
+{\footnotesize\ttfamily bool tannic\+::expression\+::\+Argmean\+::keepdim = false}
 
 
 

@@ -73,4 +73,19 @@ digraph "include/tannic/operations.hpp"
   Node24 -> Node21 [id="edge41_Node000024_Node000021",color="steelblue1",style="solid",tooltip=" "];
   Node24 -> Node22 [id="edge42_Node000024_Node000022",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node15 [id="edge43_Node000001_Node000015",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node27 [id="edge44_Node000001_Node000027",color="steelblue1",style="solid",tooltip=" "];
+  Node27 [id="Node000027",label="scalars.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d3/d3c/scalars_8hpp.html",tooltip=" "];
+  Node27 -> Node8 [id="edge45_Node000027_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node27 -> Node28 [id="edge46_Node000027_Node000028",color="steelblue1",style="solid",tooltip=" "];
+  Node28 [id="Node000028",label="variant",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node27 -> Node11 [id="edge47_Node000027_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node27 -> Node9 [id="edge48_Node000027_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node27 -> Node7 [id="edge49_Node000027_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node27 -> Node4 [id="edge50_Node000027_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node27 -> Node22 [id="edge51_Node000027_Node000022",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node29 [id="edge52_Node000001_Node000029",color="steelblue1",style="solid",tooltip=" "];
+  Node29 [id="Node000029",label="limits.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/df0/limits_8hpp.html",tooltip=" "];
+  Node29 -> Node7 [id="edge53_Node000029_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node29 -> Node16 [id="edge54_Node000029_Node000016",color="steelblue1",style="solid",tooltip=" "];
+  Node29 -> Node24 [id="edge55_Node000029_Node000024",color="steelblue1",style="solid",tooltip=" "];
 }

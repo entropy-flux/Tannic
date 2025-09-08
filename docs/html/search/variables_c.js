@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['source_0',['source',['../df/dd0/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4.html#abfa0b7a4f4d84d1f430381fba6c99960',1,'tannic::expression::Complexification&lt; Coordinates, Source &gt;::source'],['../db/d96/classtannic_1_1expression_1_1Realification.html#a4c94275ff00d70fa74326ea021694970',1,'tannic::expression::Realification::source']]],
-  ['start_1',['start',['../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80',1,'tannic::indexing::Range']]],
-  ['stop_2',['stop',['../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872',1,'tannic::indexing::Range']]],
-  ['strides_3',['strides',['../db/dd5/classtannic_1_1transformation_1_1Convolution1D.html#a7e60fddc256efaf0ab3678dae7aa4b4d',1,'tannic::transformation::Convolution1D::strides'],['../d7/d4c/classtannic_1_1transformation_1_1Convolution2D.html#a0eede559ab00e4fc450c4b7d39328d94',1,'tannic::transformation::Convolution2D::strides']]]
+  ['rank_0',['rank',['../d4/d78/structtannic_1_1Metadata_3_01Tensor_01_4.html#a470f184f4c9e0270afccfea49b3ed131',1,'tannic::Metadata&lt; Tensor &gt;']]],
+  ['real_1',['real',['../d1/d19/classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4.html#a765ddfa758f053ed6b199f41369e35dc',1,'tannic::expression::Complexification&lt; Coordinates, Real, Imaginary &gt;']]]
 ];

@@ -79,10 +79,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d4/d50/classtannic_1_1Buffer.html#af1a9b423b277aa1d226e30dad2ba31e1",
-"da/d93/classtannic_1_1Tensor.html#a52e251e55f66349fa482ee2894554aee",
-"dc/deb/classtannic_1_1Strides.html#a2cf3a00885beb9093058aa45904f9d60",
-"functions_r.html"
+"d3/d8b/tensor_8hpp_source.html",
+"d8/d27/structtannic_1_1expression_1_1Argmean.html#a7944f517159156416c133ccefbf3e0b7",
+"db/d13/concepttannic_1_1Functional.html",
+"dd/de3/types_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

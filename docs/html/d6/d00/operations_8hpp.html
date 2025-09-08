@@ -93,7 +93,8 @@ $(document).ready(function(){initNavTree('d6/d00/operations_8hpp.html','../../')
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">operations.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -108,6 +109,8 @@ $(document).ready(function(){initNavTree('d6/d00/operations_8hpp.html','../../')
 <code>#include &quot;<a class="el" href="../../d3/d30/shape_8hpp_source.html">shape.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d7/d08/strides_8hpp_source.html">strides.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../df/d73/traits_8hpp_source.html">traits.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/d3c/scalars_8hpp_source.html">scalars.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d7/df0/limits_8hpp_source.html">limits.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for operations.hpp:</div>
 <div class="dyncontent">
@@ -212,6 +215,23 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html">tannic::expression::Binary&lt; Operation, Operand, Cooperand &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for a binary tensor operation.  <a href="../../d6/d5f/classtannic_1_1expression_1_1Binary.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/da1/classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4.html">tannic::expression::Binary&lt; Operation, Operand, Scalar &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/deb/structtannic_1_1operation_1_1Negation.html">tannic::operation::Negation</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unary element-wise negation of a tensor expression.  <a href="../../d6/deb/structtannic_1_1operation_1_1Negation.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/da3/structtannic_1_1operation_1_1Addition.html">tannic::operation::Addition</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary element-wise addition of two tensor expressions.  <a href="../../d9/da3/structtannic_1_1operation_1_1Addition.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dcf/structtannic_1_1operation_1_1Multiplication.html">tannic::operation::Multiplication</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary element-wise multiplication of two tensor expressions.  <a href="../../d0/dcf/structtannic_1_1operation_1_1Multiplication.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html">tannic::operation::Subtraction</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary element-wise subtraction of two tensor expressions.  <a href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d23/structtannic_1_1operation_1_1Exponentiation.html">tannic::operation::Exponentiation</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary element-wise exponentiation of two tensor expressions.  <a href="../../db/d23/structtannic_1_1operation_1_1Exponentiation.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -221,6 +241,57 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d7/d7a/namespacetannic_1_1operation" id="r_d7/d7a/namespacetannic_1_1operation"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html">tannic::operation</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:acf566907df5853e93fe6b49872ed6b01" id="r_acf566907df5853e93fe6b49872ed6b01"><td class="memTemplParams" colspan="2">template&lt;Composable Operand&gt; </td></tr>
+<tr class="memitem:acf566907df5853e93fe6b49872ed6b01"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#acf566907df5853e93fe6b49872ed6b01">tannic::operation::operator-</a> (Operand &amp;&amp;operand)</td></tr>
+<tr class="memdesc:acf566907df5853e93fe6b49872ed6b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Element-wise negation of a tensor expression.  <br /></td></tr>
+<tr class="separator:acf566907df5853e93fe6b49872ed6b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5df22702686df93a8c1e83acee04a24" id="r_af5df22702686df93a8c1e83acee04a24"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#af5df22702686df93a8c1e83acee04a24">tannic::operation::operator-</a> (<a class="el" href="../../df/daf/classtannic_1_1expression_1_1Infinity.html">Infinity</a>&lt; Sign::Positive &gt; &amp;&amp;operand)</td></tr>
+<tr class="separator:af5df22702686df93a8c1e83acee04a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0ecafc7bebd99d7498fd2b815539040" id="r_ac0ecafc7bebd99d7498fd2b815539040"><td class="memTemplParams" colspan="2">template&lt;Composable Augend, Composable Addend&gt; </td></tr>
+<tr class="memitem:ac0ecafc7bebd99d7498fd2b815539040"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#ac0ecafc7bebd99d7498fd2b815539040">tannic::operation::operator+</a> (Augend &amp;&amp;augend, Addend &amp;&amp;addend)</td></tr>
+<tr class="memdesc:ac0ecafc7bebd99d7498fd2b815539040"><td class="mdescLeft">&#160;</td><td class="mdescRight">Element-wise addition of two tensor expressions.  <br /></td></tr>
+<tr class="separator:ac0ecafc7bebd99d7498fd2b815539040"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b1c907daed791c65c10424fb4de80f2" id="r_a5b1c907daed791c65c10424fb4de80f2"><td class="memTemplParams" colspan="2">template&lt;Composable Addend&gt; </td></tr>
+<tr class="memitem:a5b1c907daed791c65c10424fb4de80f2"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#a5b1c907daed791c65c10424fb4de80f2">tannic::operation::operator+</a> (<a class="el" href="../../d8/dc7/classtannic_1_1expression_1_1Zero.html">Zero</a> const &amp;zero, Addend &amp;&amp;addend)</td></tr>
+<tr class="separator:a5b1c907daed791c65c10424fb4de80f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdc75ec7c0ab453ada8bb3cd1a3cafee" id="r_abdc75ec7c0ab453ada8bb3cd1a3cafee"><td class="memTemplParams" colspan="2">template&lt;Composable Augend&gt; </td></tr>
+<tr class="memitem:abdc75ec7c0ab453ada8bb3cd1a3cafee"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#abdc75ec7c0ab453ada8bb3cd1a3cafee">tannic::operation::operator+</a> (Augend &amp;&amp;augend, <a class="el" href="../../d8/dc7/classtannic_1_1expression_1_1Zero.html">Zero</a> const &amp;zero)</td></tr>
+<tr class="separator:abdc75ec7c0ab453ada8bb3cd1a3cafee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a179b2c13fdccd0a5c6ec02d3800abfb6" id="r_a179b2c13fdccd0a5c6ec02d3800abfb6"><td class="memTemplParams" colspan="2">template&lt;Composable Subtrahend, Composable Minuend&gt; </td></tr>
+<tr class="memitem:a179b2c13fdccd0a5c6ec02d3800abfb6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#a179b2c13fdccd0a5c6ec02d3800abfb6">tannic::operation::operator-</a> (Subtrahend &amp;&amp;subtrahend, Minuend &amp;&amp;minuend)</td></tr>
+<tr class="memdesc:a179b2c13fdccd0a5c6ec02d3800abfb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Element-wise subtraction of two tensor expressions.  <br /></td></tr>
+<tr class="separator:a179b2c13fdccd0a5c6ec02d3800abfb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5590027235472667a74b3a2740101b30" id="r_a5590027235472667a74b3a2740101b30"><td class="memTemplParams" colspan="2">template&lt;Composable Multiplicand, Composable Multiplier&gt; </td></tr>
+<tr class="memitem:a5590027235472667a74b3a2740101b30"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#a5590027235472667a74b3a2740101b30">tannic::operation::operator*</a> (Multiplicand &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</td></tr>
+<tr class="memdesc:a5590027235472667a74b3a2740101b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Element-wise multiplication of two tensor expressions.  <br /></td></tr>
+<tr class="separator:a5590027235472667a74b3a2740101b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdd1d60a55cf3c3b4147d2dc16280059" id="r_afdd1d60a55cf3c3b4147d2dc16280059"><td class="memTemplParams" colspan="2">template&lt;Composable Multiplier&gt; </td></tr>
+<tr class="memitem:afdd1d60a55cf3c3b4147d2dc16280059"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#afdd1d60a55cf3c3b4147d2dc16280059">tannic::operation::operator*</a> (<a class="el" href="../../d8/dc7/classtannic_1_1expression_1_1Zero.html">Zero</a> const &amp;zero, Multiplier &amp;&amp;multiplier)</td></tr>
+<tr class="separator:afdd1d60a55cf3c3b4147d2dc16280059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e9c1342b7e6d8de219f6c3891f8aa3c" id="r_a1e9c1342b7e6d8de219f6c3891f8aa3c"><td class="memTemplParams" colspan="2">template&lt;Composable Multiplicand&gt; </td></tr>
+<tr class="memitem:a1e9c1342b7e6d8de219f6c3891f8aa3c"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#a1e9c1342b7e6d8de219f6c3891f8aa3c">tannic::operation::operator*</a> (Multiplicand &amp;&amp;multiplicand, <a class="el" href="../../d8/dc7/classtannic_1_1expression_1_1Zero.html">Zero</a> const &amp;zero)</td></tr>
+<tr class="separator:a1e9c1342b7e6d8de219f6c3891f8aa3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8bb4411635f655610b06b249dc34f14" id="r_ab8bb4411635f655610b06b249dc34f14"><td class="memTemplParams" colspan="2">template&lt;Composable Multiplier&gt; </td></tr>
+<tr class="memitem:ab8bb4411635f655610b06b249dc34f14"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#ab8bb4411635f655610b06b249dc34f14">tannic::operation::operator*</a> (<a class="el" href="../../d2/db0/classtannic_1_1expression_1_1One.html">One</a> const &amp;one, Multiplier &amp;&amp;multiplier)</td></tr>
+<tr class="separator:ab8bb4411635f655610b06b249dc34f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92aff21251056d6b688038c9749793a7" id="r_a92aff21251056d6b688038c9749793a7"><td class="memTemplParams" colspan="2">template&lt;Composable Multiplicand&gt; </td></tr>
+<tr class="memitem:a92aff21251056d6b688038c9749793a7"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#a92aff21251056d6b688038c9749793a7">tannic::operation::operator*</a> (Multiplicand &amp;&amp;multiplicand, <a class="el" href="../../d2/db0/classtannic_1_1expression_1_1One.html">One</a> const &amp;one)</td></tr>
+<tr class="separator:a92aff21251056d6b688038c9749793a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7cd145d0d4c3fdedb6128d5eb01b0dc" id="r_ae7cd145d0d4c3fdedb6128d5eb01b0dc"><td class="memTemplParams" colspan="2">template&lt;Composable Multiplicand, typename T &gt; <br />
+requires std::is_arithmetic_v&lt;std::decay_t&lt;T&gt;&gt;</td></tr>
+<tr class="memitem:ae7cd145d0d4c3fdedb6128d5eb01b0dc"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#ae7cd145d0d4c3fdedb6128d5eb01b0dc">tannic::operation::operator*</a> (Multiplicand &amp;&amp;multiplicand, T &amp;&amp;multiplier)</td></tr>
+<tr class="separator:ae7cd145d0d4c3fdedb6128d5eb01b0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a81ae9c0976ab834150c9df88244ca5" id="r_a3a81ae9c0976ab834150c9df88244ca5"><td class="memTemplParams" colspan="2">template&lt;typename T , Composable Multiplier&gt; <br />
+requires std::is_arithmetic_v&lt;std::decay_t&lt;T&gt;&gt;</td></tr>
+<tr class="memitem:a3a81ae9c0976ab834150c9df88244ca5"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#a3a81ae9c0976ab834150c9df88244ca5">tannic::operation::operator*</a> (T &amp;&amp;multiplicand, Multiplier &amp;&amp;multiplier)</td></tr>
+<tr class="separator:a3a81ae9c0976ab834150c9df88244ca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22f701767e5ab9dd10789ae8933d25a6" id="r_a22f701767e5ab9dd10789ae8933d25a6"><td class="memTemplParams" colspan="2">template&lt;Composable Base, Composable Exponent&gt; </td></tr>
+<tr class="memitem:a22f701767e5ab9dd10789ae8933d25a6"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d7a/namespacetannic_1_1operation.html#a22f701767e5ab9dd10789ae8933d25a6">tannic::operation::operator^</a> (Base &amp;&amp;base, Exponent &amp;&amp;exponent)</td></tr>
+<tr class="memdesc:a22f701767e5ab9dd10789ae8933d25a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Element-wise exponentiation of two tensor expressions.  <br /></td></tr>
+<tr class="separator:a22f701767e5ab9dd10789ae8933d25a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines expression templates tensor aritmetic operations. </p>

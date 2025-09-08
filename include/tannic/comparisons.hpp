@@ -68,7 +68,6 @@
 #include "tensor.hpp"
 
 namespace tannic::expression {
-
  
 /**
  * @brief Expression template for element-wise tensor comparisons.
@@ -125,6 +124,10 @@ private:
     Strides strides_;
 
 };
+
+} namespace tannic::comparison {
+
+using expression::Comparison;
 
 struct EQ {
     void forward(Tensor const&, Tensor const&, Tensor&) const;
@@ -205,13 +208,13 @@ bool allclose(Tensor const& first, Tensor const& second, double rtol = 1e-5f, do
 
 } namespace tannic {
     
-using expression::operator==;
-using expression::operator!=;
-using expression::operator< ;
-using expression::operator<=;
-using expression::operator> ;
-using expression::operator>=;
-using expression::allclose  ;
+using comparison::operator==;
+using comparison::operator!=;
+using comparison::operator< ;
+using comparison::operator<=;
+using comparison::operator> ;
+using comparison::operator>=;
+using comparison::allclose  ;
 
 } // namespace tannic
  

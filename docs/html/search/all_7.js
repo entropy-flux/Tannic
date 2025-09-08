@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['ge_0',['GE',['../d2/d2d/structtannic_1_1expression_1_1GE.html',1,'tannic::expression']]],
-  ['graph_2ehpp_1',['graph.hpp',['../d9/de9/graph_8hpp.html',1,'']]],
-  ['gt_2',['GT',['../d3/d70/structtannic_1_1expression_1_1GT.html',1,'tannic::expression']]]
+  ['get_0',['get',['../d8/da0/classtannic_1_1Scalar.html#abffff5c6408b712d269f00e52fa3d364',1,'tannic::Scalar']]],
+  ['graph_2ehpp_1',['graph.hpp',['../d9/de9/graph_8hpp.html',1,'']]]
 ];

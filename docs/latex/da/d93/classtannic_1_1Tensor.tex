@@ -19,6 +19,8 @@ using \mbox{\hyperlink{classtannic_1_1Tensor_a7763d4fac9b2cb12f84e363475ddfafb}{
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}} ()=default
+\item 
 \mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}} (type \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})
 \begin{DoxyCompactList}\small\item\em Constructs an uninitialized tensor with default (contiguous) strides. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classtannic_1_1Tensor_a3410eb0c4a1e751e40a7df2153be804c}{Tensor}} (type \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}}, \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}}, std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}}=0)
@@ -170,7 +172,7 @@ The {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}} class is the primary da
 \DoxyCodeLine{Y[0,0]\ =\ 4;}
 \DoxyCodeLine{Y[0,1]\ =\ 6;\ \ \ \ }
 \DoxyCodeLine{}
-\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(X)\ +\ Y\ *\ Y\ -\/\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(X)\ +\ \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}}(X,\ Y.transpose());}
+\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(X)\ +\ Y\ *\ Y\ -\/\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(X)\ +\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(X,\ Y.transpose());}
 
 \end{DoxyCode}
 
@@ -201,10 +203,16 @@ Type used for size and shape dimensions.
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}\label{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34} 
+\index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
+\index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/10]}}
+{\footnotesize\ttfamily tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
 \Hypertarget{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}\label{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67} 
 \index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
 \index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
-\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/9]}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/10]}}
 {\footnotesize\ttfamily tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{type}]{dtype,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -221,7 +229,7 @@ Constructs an uninitialized tensor with default (contiguous) strides.
 \Hypertarget{classtannic_1_1Tensor_a3410eb0c4a1e751e40a7df2153be804c}\label{classtannic_1_1Tensor_a3410eb0c4a1e751e40a7df2153be804c} 
 \index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
 \index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
-\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/9]}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/10]}}
 {\footnotesize\ttfamily tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{type}]{dtype,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}}]{shape,  }\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}}]{strides,  }\item[{std\+::ptrdiff\+\_\+t}]{offset = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -242,7 +250,7 @@ Constructs an uninitialized tensor with custom strides and offset.
 \Hypertarget{classtannic_1_1Tensor_ad7d3de73d311b6f56db0f177b55f816c}\label{classtannic_1_1Tensor_ad7d3de73d311b6f56db0f177b55f816c} 
 \index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
 \index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
-\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/9]}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [4/10]}}
 {\footnotesize\ttfamily template$<$Composable Expression$>$ \\
 tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{const Expression \&}]{expression }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -263,7 +271,7 @@ Constructs a tensor by forwarding an {\ttfamily Expression}-\/like object.
 \Hypertarget{classtannic_1_1Tensor_ad8ad3467f72373f252ae508db497dba5}\label{classtannic_1_1Tensor_ad8ad3467f72373f252ae508db497dba5} 
 \index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
 \index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
-\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [4/9]}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [5/10]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ T $>$ const \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -287,7 +295,7 @@ This constructor allows {\bfseries{direct construction of 1D tensors}} using bra
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}}\ X\ \{1.0f,\ 2.0f,\ 3.0f,\ 4.0f\};\ \ \textcolor{comment}{//\ 1D\ tensor\ of\ shape\ \{4\},\ dtype=float32}}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}}\ X\ \{1.0f,\ 2.0f,\ 3.0f,\ 4.0f\};\ \ \textcolor{comment}{//\ 1D\ tensor\ of\ shape\ \{4\},\ dtype=float32}}
 
 \end{DoxyCode}
 
@@ -295,7 +303,7 @@ This constructor allows {\bfseries{direct construction of 1D tensors}} using bra
 The tensor is immediately initialized on host, contiguous in memory, and its dtype is deduced from {\ttfamily T}. \Hypertarget{classtannic_1_1Tensor_a2b68f74f33c3fef0994ed0e1b2ab7ea6}\label{classtannic_1_1Tensor_a2b68f74f33c3fef0994ed0e1b2ab7ea6} 
 \index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
 \index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
-\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [5/9]}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [6/10]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ T $>$ $>$ const \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -317,7 +325,7 @@ This constructor allows {\bfseries{direct construction of 2D tensors}}\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}}\ Y\ =\ \{}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}}\ Y\ =\ \{}
 \DoxyCodeLine{\ \ \ \ \{1.0f,\ 2.0f,\ 3.0f\},}
 \DoxyCodeLine{\ \ \ \ \{4.0f,\ 5.0f,\ 6.0f\}}
 \DoxyCodeLine{\};\ \ \textcolor{comment}{//\ 2D\ tensor\ of\ shape\ \{2,3\},\ dtype=float32}}
@@ -328,7 +336,7 @@ This constructor allows {\bfseries{direct construction of 2D tensors}}\+:
 All inner lists (rows) must have the same length. The tensor is contiguous in memory. \Hypertarget{classtannic_1_1Tensor_a41160801d006d080557931a56cff88cd}\label{classtannic_1_1Tensor_a41160801d006d080557931a56cff88cd} 
 \index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
 \index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
-\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [6/9]}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [7/10]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ T $>$ $>$ $>$ const \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -350,7 +358,7 @@ This constructor allows {\bfseries{direct construction of 3D tensors}}\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}}\ Z\ =\ \{}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}}\ Z\ =\ \{}
 \DoxyCodeLine{\ \ \ \ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \{1.0f,\ 2.0f\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \{3.0f,\ 4.0f\}}
@@ -367,7 +375,7 @@ This constructor allows {\bfseries{direct construction of 3D tensors}}\+:
 All matrices must have the same number of rows, and all rows must have the same number of columns. The tensor is contiguous in memory. \Hypertarget{classtannic_1_1Tensor_a92c11fcadbe1de00ae8a3aa51987e195}\label{classtannic_1_1Tensor_a92c11fcadbe1de00ae8a3aa51987e195} 
 \index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
 \index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
-\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [7/9]}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [8/10]}}
 {\footnotesize\ttfamily template$<$typename T $>$ \\
 tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ T $>$ $>$ $>$ $>$ const \&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -389,7 +397,7 @@ This constructor allows {\bfseries{direct construction of 4D tensors}}\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}}\ X\ =\ \{}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}}\ X\ =\ \{}
 \DoxyCodeLine{\ \ \ \ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{1.0f,\ 2.0f\},}
@@ -418,13 +426,13 @@ This constructor allows {\bfseries{direct construction of 4D tensors}}\+:
 All inner tensors must have consistent dimensions. The tensor is contiguous in memory. \Hypertarget{classtannic_1_1Tensor_ade301df08b17e0660280c62d9cdd4fe7}\label{classtannic_1_1Tensor_ade301df08b17e0660280c62d9cdd4fe7} 
 \index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
 \index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
-\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [8/9]}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [9/10]}}
 {\footnotesize\ttfamily tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{type}]{dtype,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}}]{shape,  }\item[{std\+::ptrdiff\+\_\+t}]{offset,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} $>$}]{storage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classtannic_1_1Tensor_ace47b4a9fcb1068b6a5084b2816e4e7f}\label{classtannic_1_1Tensor_ace47b4a9fcb1068b6a5084b2816e4e7f} 
 \index{tannic::Tensor@{tannic::Tensor}!Tensor@{Tensor}}
 \index{Tensor@{Tensor}!tannic::Tensor@{tannic::Tensor}}
-\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [9/9]}}
+\doxysubsubsection{\texorpdfstring{Tensor()}{Tensor()}\hspace{0.1cm}{\footnotesize\ttfamily [10/10]}}
 {\footnotesize\ttfamily tannic\+::\+Tensor\+::\+Tensor (\begin{DoxyParamCaption}\item[{type}]{dtype,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}}}]{shape,  }\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}}}]{strides,  }\item[{std\+::ptrdiff\+\_\+t}]{offset,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}} $>$}]{storage }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
@@ -553,7 +561,7 @@ This operator assigns values to an {\bfseries{existing 4D tensor}}\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}}\ W(float32,\ \{2,\ 2,\ 2,\ 2\});\ \ }
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}}\ W(float32,\ \{2,\ 2,\ 2,\ 2\});\ \ }
 \DoxyCodeLine{W.initialize(\{}
 \DoxyCodeLine{\ \ \ \ \{}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
@@ -614,7 +622,7 @@ This operator assigns values to an {\bfseries{existing 3D tensor}}\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}}\ Z(float32,\ \{2,\ 1,\ 3\});}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}}\ Z(float32,\ \{2,\ 1,\ 3\});}
 \DoxyCodeLine{Z.initialize(\{}
 \DoxyCodeLine{\ \ \ \ \{\ \{0.0f,\ 1.0f,\ 2.0f\}\ \},}
 \DoxyCodeLine{\ \ \ \ \{\ \{3.0f,\ 4.0f,\ 5.0f\}\ \}}
@@ -660,7 +668,7 @@ This operator assigns values to an {\bfseries{existing 2D tensor}}\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}}\ Y(float32,\ \{2,\ 3\});}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}}\ Y(float32,\ \{2,\ 3\});}
 \DoxyCodeLine{Y.initialize(\{}
 \DoxyCodeLine{\ \ \ \ \{1,\ 2,\ 3\},}
 \DoxyCodeLine{\ \ \ \ \{4,\ 5,\ 6\}}
@@ -705,7 +713,7 @@ This operator assigns values to an {\bfseries{existing 1D tensor}}\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}}\ X(float32,\ \{3\});}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}}\ X(float32,\ \{3\});}
 \DoxyCodeLine{X.initialize(\{1,\ 2,\ 3\});\ \ \textcolor{comment}{//\ values\ cast\ to\ float32}}
 
 \end{DoxyCode}

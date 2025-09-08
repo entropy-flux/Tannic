@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::Strides",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$dc/deb/classtannic_1_1Strides.html",tooltip="Represents the memory strides associated with a tensor shape."];
+  Node0 [id="Node000000",label="tannic::Node",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$df/d85/structtannic_1_1Node.html",tooltip=" "];
 }

@@ -45,830 +45,818 @@
 \DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1Tensor_ab57635886a913849763fd6f8a3681239}{rank\_type}}\ =\ uint8\_t;\ \ \ \ \ \ }
 \DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1Tensor_a7763d4fac9b2cb12f84e363475ddfafb}{size\_type}}\ =\ std::size\_t;\ \ }
 \DoxyCodeLine{00103\ }
-\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})}
-\DoxyCodeLine{00110\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
-\DoxyCodeLine{00111\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
-\DoxyCodeLine{00112\ \ \ \ \ ,\ \ \ strides\_(shape\_)\ }
-\DoxyCodeLine{00113\ \ \ \ \ ,\ \ \ offset\_(0)\ \ \{}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ nelements\_\ =\ std::accumulate(shape\_.\mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}}(),\ shape\_.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}(),\ 1ULL,\ std::multiplies<>\{\});\ }
-\DoxyCodeLine{00115\ \ \ \ \ \}}
-\DoxyCodeLine{00116\ }
-\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3410eb0c4a1e751e40a7df2153be804c}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}},\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}}\ =\ 0)}
-\DoxyCodeLine{00125\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
-\DoxyCodeLine{00126\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
-\DoxyCodeLine{00127\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}})\ }
-\DoxyCodeLine{00128\ \ \ \ \ ,\ \ \ offset\_(\mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}})\ \ }
-\DoxyCodeLine{00129\ \ \ \ \ \{\ \ \ \ }
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ std::size\_t\ expected\ =\ 1;}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ dimension\ =\ 0;\ dimension\ <\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}();\ ++dimension)\ \{\ }
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ index\ =\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ -\/\ 1\ -\/\ dimension;\ \ \ }
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strides\_[index]\ !=\ expected)\ \{}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_contiguous\_\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ nelements\_\ *=\ shape\_[index];}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ expected\ *=\ shape\_[index];}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \}\ \ \ }
-\DoxyCodeLine{00139\ \ \ \ \ \}}
-\DoxyCodeLine{00140\ }
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Expression>}
-\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ad7d3de73d311b6f56db0f177b55f816c}{Tensor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\&\ expression)\ \{}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ *\textcolor{keyword}{this}\ =\ expression.forward();\ }
-\DoxyCodeLine{00150\ \ \ \ \ \}\ }
-\DoxyCodeLine{00151\ }
-\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Expression>}
-\DoxyCodeLine{00159\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_aa74c128ad7859e3e48d431e2a6dfeecf}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\&\ expression)\ \{}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ *\textcolor{keyword}{this}\ =\ expression.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();\ }
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00162\ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00163\ \ }
-\DoxyCodeLine{00164\ \textcolor{keyword}{public}:\ \ }
-\DoxyCodeLine{00167\ }
-\DoxyCodeLine{00169\ \ \ \ \ type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;\ }
-\DoxyCodeLine{00171\ \ \ \ \ \}\ }
-\DoxyCodeLine{00172\ }
-\DoxyCodeLine{00174\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ab57635886a913849763fd6f8a3681239}{rank\_type}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ }
-\DoxyCodeLine{00176\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00177\ }
-\DoxyCodeLine{00179\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}}()\textcolor{keyword}{\ const\ }\{\ \ }
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;\ }
-\DoxyCodeLine{00181\ \ \ \ \ \}}
-\DoxyCodeLine{00182\ }
-\DoxyCodeLine{00184\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{Shape::size\_type}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a575b57c01f3b63ca0edbaa18964fbe10}{size}}(\textcolor{keywordtype}{int}\ dimension)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_[dimension];}
-\DoxyCodeLine{00186\ \ \ \ \ \}}
-\DoxyCodeLine{00187\ }
-\DoxyCodeLine{00189\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;\ }
-\DoxyCodeLine{00191\ \ \ \ \ \}\ }
-\DoxyCodeLine{00192\ \ }
-\DoxyCodeLine{00194\ \ \ \ \ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ offset\_;}
-\DoxyCodeLine{00196\ \ \ \ \ \}\ }
-\DoxyCodeLine{00197\ \ \ \ \ }
-\DoxyCodeLine{00199\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_ae859b2c47650e8d01c5a6979a0b199b2}{nelements}}()\textcolor{keyword}{\ const\ }\{\ \ }
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nelements\_;}
-\DoxyCodeLine{00201\ \ \ \ \ \}\ }
-\DoxyCodeLine{00202\ }
-\DoxyCodeLine{00204\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}}()\textcolor{keyword}{\ const\ }\{\ \ }
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04}{nbytesof}}(dtype\_,\ nelements\_);}
-\DoxyCodeLine{00206\ \ \ \ \ \}\ }
-\DoxyCodeLine{00207\ }
-\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_aaa9f6eae57c44e544cad56e2553923c0}{is\_contiguous}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is\_contiguous\_;}
-\DoxyCodeLine{00211\ \ \ \ \ \}}
-\DoxyCodeLine{00212\ }
-\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_a54b467a1b3d9cb2ee342a9617955ecc8}{is\_singleton}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (nelements\_\ ==\ 1);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a432bc6e8f152fe13c47fc7a7c97a7f67}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})}
+\DoxyCodeLine{00114\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
+\DoxyCodeLine{00115\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
+\DoxyCodeLine{00116\ \ \ \ \ ,\ \ \ strides\_(shape\_)\ }
+\DoxyCodeLine{00117\ \ \ \ \ ,\ \ \ offset\_(0)\ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ nelements\_\ =\ std::accumulate(shape\_.\mbox{\hyperlink{classtannic_1_1Shape_a40e88392c8869e2ed911019eef8aad26}{begin}}(),\ shape\_.\mbox{\hyperlink{classtannic_1_1Shape_aa03bdbd1a3b17fff0c03a364c5a46d83}{end}}(),\ 1ULL,\ std::multiplies<>\{\});\ }
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00128\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3410eb0c4a1e751e40a7df2153be804c}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}},\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}}\ =\ 0)}
+\DoxyCodeLine{00129\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
+\DoxyCodeLine{00130\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
+\DoxyCodeLine{00131\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}})\ }
+\DoxyCodeLine{00132\ \ \ \ \ ,\ \ \ offset\_(\mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}})\ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \{\ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ std::size\_t\ expected\ =\ 1;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ dimension\ =\ 0;\ dimension\ <\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}();\ ++dimension)\ \{\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ index\ =\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ -\/\ 1\ -\/\ dimension;\ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strides\_[index]\ !=\ expected)\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_contiguous\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ nelements\_\ *=\ shape\_[index];}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ expected\ *=\ shape\_[index];}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ \}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Expression>}
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ad7d3de73d311b6f56db0f177b55f816c}{Tensor}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\&\ expression)\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ *\textcolor{keyword}{this}\ =\ expression.forward();\ }
+\DoxyCodeLine{00154\ \ \ \ \ \}\ }
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Expression>}
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_aa74c128ad7859e3e48d431e2a6dfeecf}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\&\ expression)\ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ *\textcolor{keyword}{this}\ =\ expression.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00166\ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00167\ \ }
+\DoxyCodeLine{00168\ \textcolor{keyword}{public}:\ \ }
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00173\ \ \ \ \ type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;\ }
+\DoxyCodeLine{00175\ \ \ \ \ \}\ }
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00178\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ab57635886a913849763fd6f8a3681239}{rank\_type}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_.\mbox{\hyperlink{classtannic_1_1Shape_a35f7ff956c2e5dcb77b0165bb4e21522}{rank}}();\ }
+\DoxyCodeLine{00180\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00183\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}}()\textcolor{keyword}{\ const\ }\{\ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;\ }
+\DoxyCodeLine{00185\ \ \ \ \ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00188\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape_a4492b986a7ff6d75c916746693c449b6}{Shape::size\_type}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a575b57c01f3b63ca0edbaa18964fbe10}{size}}(\textcolor{keywordtype}{int}\ dimension)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_[dimension];}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00193\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;\ }
+\DoxyCodeLine{00195\ \ \ \ \ \}\ }
+\DoxyCodeLine{00196\ \ }
+\DoxyCodeLine{00198\ \ \ \ \ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ offset\_;}
+\DoxyCodeLine{00200\ \ \ \ \ \}\ }
+\DoxyCodeLine{00201\ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_ae859b2c47650e8d01c5a6979a0b199b2}{nelements}}()\textcolor{keyword}{\ const\ }\{\ \ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nelements\_;}
+\DoxyCodeLine{00205\ \ \ \ \ \}\ }
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00208\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a4064f4b6e988d2ccdff1a4c5f7357f43}{nbytes}}()\textcolor{keyword}{\ const\ }\{\ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04}{nbytesof}}(dtype\_,\ nelements\_);}
+\DoxyCodeLine{00210\ \ \ \ \ \}\ }
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_aaa9f6eae57c44e544cad56e2553923c0}{is\_contiguous}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is\_contiguous\_;}
 \DoxyCodeLine{00215\ \ \ \ \ \}}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ }
-\DoxyCodeLine{00218\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}()\ \{\ }
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00222\ \ \ \ \ \}\ }
-\DoxyCodeLine{00223\ }
-\DoxyCodeLine{00225\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_afa045be0c377ee3127a5a9d97c5b1fcb}{forward}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00229\ \ \ \ \ \}\ }
-\DoxyCodeLine{00231\ \ }
-\DoxyCodeLine{00232\ \ }
-\DoxyCodeLine{00233\ \textcolor{keyword}{public}:\ \ \ }
-\DoxyCodeLine{00236\ }
-\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00242\ \ \ \ }
-\DoxyCodeLine{00247\ \ \ \ \ std::byte*\ \mbox{\hyperlink{classtannic_1_1Tensor_a104cf81bd4da1b3e8e96e2ad2644f941}{bytes}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}std::byte*\textcolor{keyword}{>}(buffer\_-\/>address())\ +\ offset\_;}
-\DoxyCodeLine{00249\ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00250\ }
-\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer\_\ ?\ true\ :\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00257\ \ \ \ \ \}\ }
-\DoxyCodeLine{00258\ }
-\DoxyCodeLine{00264\ \ \ \ \ \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
-\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Cannot\ get\ resource\ of\ an\ initializer\ tensor."{}});\ }
-\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer\_-\/>environment();}
-\DoxyCodeLine{00268\ \ \ \ \ \}\ \ \ }
-\DoxyCodeLine{00270\ }
-\DoxyCodeLine{00271\ \textcolor{keyword}{public}:\ }
-\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00288\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ad8ad3467f72373f252ae508db497dba5}{Tensor}}(std::initializer\_list<T>\ \textcolor{keyword}{const}\&\ values)}
-\DoxyCodeLine{00289\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}<T>())}
-\DoxyCodeLine{00290\ \ \ \ \ ,\ \ \ shape\_(\{values.size()\})}
-\DoxyCodeLine{00291\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
-\DoxyCodeLine{00292\ \ \ \ \ ,\ \ \ offset\_(0)}
-\DoxyCodeLine{00293\ \ \ \ \ ,\ \ \ nelements\_(shape\_[0])\ \{}
-\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{\ }
-\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
-\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;\ }
-\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ values)\ \{}
-\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
-\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00302\ }
-\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
-\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
-\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
-\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ values)\ \{}
-\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((std::byte\ \textcolor{keyword}{const}*)(\&value),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00311\ \ \ \ \ \}}
-\DoxyCodeLine{00312\ }
-\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00332\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a2b68f74f33c3fef0994ed0e1b2ab7ea6}{Tensor}}(std::initializer\_list<std::initializer\_list<T>>\ \textcolor{keyword}{const}\&\ values)}
-\DoxyCodeLine{00333\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}<T>())}
-\DoxyCodeLine{00334\ \ \ \ \ ,\ \ \ shape\_(\{values.size(),\ values.begin()-\/>size()\})}
-\DoxyCodeLine{00335\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
-\DoxyCodeLine{00336\ \ \ \ \ ,\ \ \ offset\_(0)\ }
-\DoxyCodeLine{00337\ \ \ \ \ ,\ \ \ nelements\_(shape\_[0]\ *\ shape\_[1])}
-\DoxyCodeLine{00338\ \ \ \ \ \{}
-\DoxyCodeLine{00339\ }
-\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{\ }
-\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
-\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;\ \ \ }
-\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ values)\ \{}
-\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
-\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
-\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
-\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00352\ }
-\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
-\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
-\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;\ \ \ }
-\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ row\ :\ values)\ \{}
-\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
-\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
-\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((std::byte\ \textcolor{keyword}{const}*)(\&value),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00365\ \ \ \ \ \}}
-\DoxyCodeLine{00366\ }
-\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00393\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a41160801d006d080557931a56cff88cd}{Tensor}}(std::initializer\_list<std::initializer\_list<std::initializer\_list<T>>>\ \textcolor{keyword}{const}\&\ values)}
-\DoxyCodeLine{00394\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}<T>())}
-\DoxyCodeLine{00395\ \ \ \ \ ,\ \ \ shape\_(\{values.size(),\ values.begin()-\/>size(),\ values.begin()-\/>begin()-\/>size()\})}
-\DoxyCodeLine{00396\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
-\DoxyCodeLine{00397\ \ \ \ \ ,\ \ \ offset\_(0)}
-\DoxyCodeLine{00398\ \ \ \ \ ,\ \ \ nelements\_(shape\_[0]\ *\ shape\_[1]\ *\ shape\_[2])}
-\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00400\ \ \ \ \ \{}
-\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{\ }
-\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
-\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;\ \ \ }
-\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ values)\ \{}
-\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ matrices\ must\ have\ the\ same\ number\ of\ rows"{}});}
-\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
-\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[2])}
-\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
-\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
-\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
-\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00417\ }
-\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
-\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
-\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;\ \ \ }
-\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ values)\ \{}
-\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ matrices\ must\ have\ the\ same\ number\ of\ rows"{}});}
-\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
-\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[2])}
-\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
-\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
-\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((std::byte\ \textcolor{keyword}{const}*)(\&value),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00434\ \ \ \ \ \}\ \ \ }
-\DoxyCodeLine{00435\ \ }
-\DoxyCodeLine{00436\ }
-\DoxyCodeLine{00473\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00474\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a92c11fcadbe1de00ae8a3aa51987e195}{Tensor}}(std::initializer\_list<std::initializer\_list<std::initializer\_list<std::initializer\_list<T>>>>\ \textcolor{keyword}{const}\&\ values)}
-\DoxyCodeLine{00475\ \ \ \ \ :\ \ \ \ dtype\_(\mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}<T>())}
-\DoxyCodeLine{00476\ \ \ \ \ ,\ \ \ \ shape\_(\{}
-\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ values.size(),}
-\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ values.begin()-\/>size(),}
-\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ values.begin()-\/>begin()-\/>size(),}
-\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ values.begin()-\/>begin()-\/>begin()-\/>size()}
-\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \})}
-\DoxyCodeLine{00482\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
-\DoxyCodeLine{00483\ \ \ \ \ ,\ \ \ offset\_(0)}
-\DoxyCodeLine{00484\ \ \ \ \ ,\ \ \ nelements\_(shape\_[0]\ *\ shape\_[1]\ *\ shape\_[2]\ *\ shape\_[3])}
-\DoxyCodeLine{00485\ \ \ \ \ \{}
-\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{\ }
-\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
-\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;}
-\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ tensor3D\ :\ values)\ \{}
-\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tensor3D.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ 3D\ tensors\ must\ have\ the\ same\ number\ of\ matrices"{}});}
-\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ tensor3D)\ \{}
-\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[2])}
-\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ matrices\ must\ have\ the\ same\ number\ of\ rows"{}});}
-\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
-\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[3])}
-\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
-\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
-\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
-\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00507\ }
-\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \ }
-\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
-\DoxyCodeLine{00510\ }
-\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
-\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ tensor3D\ :\ values)\ \{}
-\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tensor3D.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ 3D\ tensors\ must\ have\ the\ same\ number\ of\ matrices"{}});}
-\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ tensor3D)\ \{}
-\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[2])}
-\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ matrices\ must\ have\ the\ same\ number\ of\ rows"{}});}
-\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
-\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[3])}
-\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
-\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
-\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((std::byte\ \textcolor{keyword}{const}*)(\&value),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00529\ \ \ \ \ \}}
-\DoxyCodeLine{00530\ }
-\DoxyCodeLine{00531\ }
-\DoxyCodeLine{00532\ \textcolor{keyword}{public}:\ }
-\DoxyCodeLine{00557\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00558\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_a3a52cb61b4145d02dd20e40934689f81}{initialize}}(std::initializer\_list<T>\ values,\ \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \{}
-\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_aaa9f6eae57c44e544cad56e2553923c0}{is\_contiguous}}())}
-\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Assign\ to\ initializer\ list\ supported\ only\ for\ contiguous\ tensors"{}});}
-\DoxyCodeLine{00561\ \ \ \ \ \ \ }
-\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ !=\ 1\ ||\ shape\_[0]\ !=\ values.size())}
-\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Shape\ mismatch\ in\ assignment\ from\ initializer\_list"{}});}
-\DoxyCodeLine{00564\ \ }
-\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())\ }
-\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}});}
-\DoxyCodeLine{00567\ }
-\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{}
-\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;}
-\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ values)\ \{}
-\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
-\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
-\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ fill\ =\ [\textcolor{keyword}{this},\ \&values](\textcolor{keyword}{auto}\ cast)\ \{\ }
-\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Cast\ =\ \textcolor{keyword}{decltype}(cast);}
-\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
-\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ value\ :\ values)\ \{}
-\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<Cast,\ float16\_t>)\ \{\ }
-\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ as\_float\ =\ value;}
-\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ float16\_t\ casted\ =\ float32\_to\_float16(as\_float);}
-\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ }
-\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cast\ casted\ =\ value;}
-\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ }
-\DoxyCodeLine{00592\ }
-\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (dtype\_)\ \{}
-\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ fill(int8\_t\{\});\ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ fill(int16\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ fill(int32\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ fill(int64\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ fill(float16\_t\{\});\ \textcolor{keywordflow}{break};\ \ \ }
-\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ fill(\textcolor{keywordtype}{float}\{\});\ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ fill(\textcolor{keywordtype}{double}\{\});\ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Unsupported\ dtype\ in\ assignment"{}});}
-\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00604\ \ \ \ \ \}}
-\DoxyCodeLine{00605\ \ }
-\DoxyCodeLine{00632\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00633\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_af04f30b6a7bcb783170d17617d90b70e}{initialize}}(std::initializer\_list<std::initializer\_list<T>>\ \textcolor{keyword}{const}\ \&\ values,\ \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \{}
-\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_aaa9f6eae57c44e544cad56e2553923c0}{is\_contiguous}}())}
-\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Assign\ to\ initializer\ list\ supported\ only\ for\ contiguous\ tensors"{}});\ }
-\DoxyCodeLine{00636\ \ }
-\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ !=\ 2\ ||\ shape\_[0]\ !=\ values.size()\ ||\ shape\_[1]\ !=\ values.begin()-\/>size())}
-\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Shape\ mismatch\ in\ assignment\ from\ nested\ initializer\_list"{}});\ }
-\DoxyCodeLine{00639\ }
-\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())\ }
-\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}});}
-\DoxyCodeLine{00642\ }
-\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{}
-\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;}
-\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ values)\ \{}
-\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Row\ length\ mismatch\ in\ assignment\ from\ initializer\_list"{}});}
-\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
-\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
-\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00654\ }
-\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
-\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ fill\ =\ [\textcolor{keyword}{this},\ \&values](\textcolor{keyword}{auto}\ cast)\ \{\ }
-\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Cast\ =\ \textcolor{keyword}{decltype}(cast);}
-\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
-\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ values)\ \{}
-\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Row\ length\ mismatch\ in\ assignment\ from\ initializer\_list"{}});}
-\DoxyCodeLine{00662\ }
-\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ value\ :\ row)\ \{}
-\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<Cast,\ float16\_t>)\ \{}
-\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ as\_float\ =\ value;}
-\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ float16\_t\ casted\ =\ float32\_to\_float16(as\_float);}
-\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cast\ casted\ =\ value;}
-\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00676\ }
-\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (dtype\_)\ \{}
-\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ fill(int8\_t\{\});\ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ fill(int16\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ fill(int32\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ fill(int64\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ fill(float16\_t\{\});\ \textcolor{keywordflow}{break};\ \ \ }
-\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ fill(\textcolor{keywordtype}{float}\{\});\ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ fill(\textcolor{keywordtype}{double}\{\});\ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Unsupported\ dtype\ in\ assignment"{}});}
-\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00688\ \ \ \ \ \}}
-\DoxyCodeLine{00689\ }
-\DoxyCodeLine{00690\ }
-\DoxyCodeLine{00691\ }
-\DoxyCodeLine{00692\ }
-\DoxyCodeLine{00722\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00723\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_adb95241997821b2425869bf6076e029f}{initialize}}(std::initializer\_list<std::initializer\_list<std::initializer\_list<T>>>\ \textcolor{keyword}{const}\&\ values,\ \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \{}
-\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_aaa9f6eae57c44e544cad56e2553923c0}{is\_contiguous}}())}
-\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Assign\ to\ initializer\ list\ supported\ only\ for\ contiguous\ tensors"{}});}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_a54b467a1b3d9cb2ee342a9617955ecc8}{is\_singleton}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (nelements\_\ ==\ 1);}
+\DoxyCodeLine{00219\ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}()\ \{\ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00226\ \ \ \ \ \}\ }
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_afa045be0c377ee3127a5a9d97c5b1fcb}{forward}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00233\ \ \ \ \ \}\ }
+\DoxyCodeLine{00235\ \ }
+\DoxyCodeLine{00236\ \ }
+\DoxyCodeLine{00237\ \textcolor{keyword}{public}:\ \ \ }
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00246\ \ \ \ }
+\DoxyCodeLine{00251\ \ \ \ \ std::byte*\ \mbox{\hyperlink{classtannic_1_1Tensor_a104cf81bd4da1b3e8e96e2ad2644f941}{bytes}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}std::byte*\textcolor{keyword}{>}(buffer\_-\/>address())\ +\ offset\_;}
+\DoxyCodeLine{00253\ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer\_\ ?\ true\ :\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00261\ \ \ \ \ \}\ }
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00268\ \ \ \ \ \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Cannot\ get\ resource\ of\ an\ initializer\ tensor."{}});\ }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buffer\_-\/>environment();}
+\DoxyCodeLine{00272\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00292\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ad8ad3467f72373f252ae508db497dba5}{Tensor}}(std::initializer\_list<T>\ \textcolor{keyword}{const}\&\ values)}
+\DoxyCodeLine{00293\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}<T>())}
+\DoxyCodeLine{00294\ \ \ \ \ ,\ \ \ shape\_(\{values.size()\})}
+\DoxyCodeLine{00295\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
+\DoxyCodeLine{00296\ \ \ \ \ ,\ \ \ offset\_(0)}
+\DoxyCodeLine{00297\ \ \ \ \ ,\ \ \ nelements\_(shape\_[0])\ \{}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{\ }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;\ }
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ values)\ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ values)\ \{}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((std::byte\ \textcolor{keyword}{const}*)(\&value),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00315\ \ \ \ \ \}}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00336\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a2b68f74f33c3fef0994ed0e1b2ab7ea6}{Tensor}}(std::initializer\_list<std::initializer\_list<T>>\ \textcolor{keyword}{const}\&\ values)}
+\DoxyCodeLine{00337\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}<T>())}
+\DoxyCodeLine{00338\ \ \ \ \ ,\ \ \ shape\_(\{values.size(),\ values.begin()-\/>size()\})}
+\DoxyCodeLine{00339\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
+\DoxyCodeLine{00340\ \ \ \ \ ,\ \ \ offset\_(0)\ }
+\DoxyCodeLine{00341\ \ \ \ \ ,\ \ \ nelements\_(shape\_[0]\ *\ shape\_[1])}
+\DoxyCodeLine{00342\ \ \ \ \ \{}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{\ }
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;\ \ \ }
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ values)\ \{}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;\ \ \ }
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ row\ :\ values)\ \{}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((std::byte\ \textcolor{keyword}{const}*)(\&value),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00369\ \ \ \ \ \}}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00396\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00397\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a41160801d006d080557931a56cff88cd}{Tensor}}(std::initializer\_list<std::initializer\_list<std::initializer\_list<T>>>\ \textcolor{keyword}{const}\&\ values)}
+\DoxyCodeLine{00398\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}<T>())}
+\DoxyCodeLine{00399\ \ \ \ \ ,\ \ \ shape\_(\{values.size(),\ values.begin()-\/>size(),\ values.begin()-\/>begin()-\/>size()\})}
+\DoxyCodeLine{00400\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
+\DoxyCodeLine{00401\ \ \ \ \ ,\ \ \ offset\_(0)}
+\DoxyCodeLine{00402\ \ \ \ \ ,\ \ \ nelements\_(shape\_[0]\ *\ shape\_[1]\ *\ shape\_[2])}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00404\ \ \ \ \ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{\ }
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;\ \ \ }
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ values)\ \{}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ matrices\ must\ have\ the\ same\ number\ of\ rows"{}});}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[2])}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;\ \ \ }
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ values)\ \{}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ matrices\ must\ have\ the\ same\ number\ of\ rows"{}});}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[2])}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((std::byte\ \textcolor{keyword}{const}*)(\&value),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00438\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00439\ \ }
+\DoxyCodeLine{00440\ }
+\DoxyCodeLine{00477\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00478\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a92c11fcadbe1de00ae8a3aa51987e195}{Tensor}}(std::initializer\_list<std::initializer\_list<std::initializer\_list<std::initializer\_list<T>>>>\ \textcolor{keyword}{const}\&\ values)}
+\DoxyCodeLine{00479\ \ \ \ \ :\ \ \ \ dtype\_(\mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}<T>())}
+\DoxyCodeLine{00480\ \ \ \ \ ,\ \ \ \ shape\_(\{}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ values.size(),}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \ \ \ \ values.begin()-\/>size(),}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ values.begin()-\/>begin()-\/>size(),}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ values.begin()-\/>begin()-\/>begin()-\/>size()}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \})}
+\DoxyCodeLine{00486\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
+\DoxyCodeLine{00487\ \ \ \ \ ,\ \ \ offset\_(0)}
+\DoxyCodeLine{00488\ \ \ \ \ ,\ \ \ nelements\_(shape\_[0]\ *\ shape\_[1]\ *\ shape\_[2]\ *\ shape\_[3])}
+\DoxyCodeLine{00489\ \ \ \ \ \{}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{\ }
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ tensor3D\ :\ values)\ \{}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tensor3D.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ 3D\ tensors\ must\ have\ the\ same\ number\ of\ matrices"{}});}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ tensor3D)\ \{}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[2])}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ matrices\ must\ have\ the\ same\ number\ of\ rows"{}});}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[3])}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00511\ }
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \ }
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ tensor3D\ :\ values)\ \{}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tensor3D.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ 3D\ tensors\ must\ have\ the\ same\ number\ of\ matrices"{}});}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ tensor3D)\ \{}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[2])}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ matrices\ must\ have\ the\ same\ number\ of\ rows"{}});}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[3])}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ rows\ must\ have\ the\ same\ number\ of\ columns"{}});}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((std::byte\ \textcolor{keyword}{const}*)(\&value),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00533\ \ \ \ \ \}}
+\DoxyCodeLine{00534\ }
+\DoxyCodeLine{00535\ }
+\DoxyCodeLine{00536\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00561\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00562\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_a3a52cb61b4145d02dd20e40934689f81}{initialize}}(std::initializer\_list<T>\ values,\ \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \{}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_aaa9f6eae57c44e544cad56e2553923c0}{is\_contiguous}}())}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Assign\ to\ initializer\ list\ supported\ only\ for\ contiguous\ tensors"{}});}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ }
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ !=\ 1\ ||\ shape\_[0]\ !=\ values.size())}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Shape\ mismatch\ in\ assignment\ from\ initializer\_list"{}});}
+\DoxyCodeLine{00568\ \ }
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())\ }
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}});}
+\DoxyCodeLine{00571\ }
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ values)\ \{}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ fill\ =\ [\textcolor{keyword}{this},\ \&values](\textcolor{keyword}{auto}\ cast)\ \{\ }
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Cast\ =\ \textcolor{keyword}{decltype}(cast);}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ value\ :\ values)\ \{\ }
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cast\ casted(value);}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ }
+\DoxyCodeLine{00590\ }
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (dtype\_)\ \{}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ fill(int8\_t\{\});\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ fill(int16\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ fill(int32\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ fill(int64\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ \ fill(float16\_t\{\})\ ;\ \textcolor{keywordflow}{break};\ \ \ }
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ bfloat16:\ fill(bfloat16\_t\{\});\ \textcolor{keywordflow}{break};\ \ \ }
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ fill(\textcolor{keywordtype}{float}\{\});\ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ fill(\textcolor{keywordtype}{double}\{\});\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Unsupported\ dtype\ in\ assignment"{}});}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00603\ \ \ \ \ \}}
+\DoxyCodeLine{00604\ \ }
+\DoxyCodeLine{00631\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00632\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_af04f30b6a7bcb783170d17617d90b70e}{initialize}}(std::initializer\_list<std::initializer\_list<T>>\ \textcolor{keyword}{const}\ \&\ values,\ \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \{}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_aaa9f6eae57c44e544cad56e2553923c0}{is\_contiguous}}())}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Assign\ to\ initializer\ list\ supported\ only\ for\ contiguous\ tensors"{}});\ }
+\DoxyCodeLine{00635\ \ }
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ !=\ 2\ ||\ shape\_[0]\ !=\ values.size()\ ||\ shape\_[1]\ !=\ values.begin()-\/>size())}
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Shape\ mismatch\ in\ assignment\ from\ nested\ initializer\_list"{}});\ }
+\DoxyCodeLine{00638\ }
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())\ }
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}});}
+\DoxyCodeLine{00641\ }
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ values)\ \{}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Row\ length\ mismatch\ in\ assignment\ from\ initializer\_list"{}});}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00653\ }
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ fill\ =\ [\textcolor{keyword}{this},\ \&values](\textcolor{keyword}{auto}\ cast)\ \{\ }
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Cast\ =\ \textcolor{keyword}{decltype}(cast);}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ values)\ \{}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Row\ length\ mismatch\ in\ assignment\ from\ initializer\_list"{}});}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ value\ :\ row)\ \{\ }
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cast\ casted(value);}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00669\ }
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (dtype\_)\ \{}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ fill(int8\_t\{\});\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ fill(int16\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ fill(int32\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ fill(int64\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ \ fill(float16\_t\{\})\ ;\ \textcolor{keywordflow}{break};\ \ \ }
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ bfloat16:\ fill(bfloat16\_t\{\});\ \textcolor{keywordflow}{break};\ \ \ }
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ fill(\textcolor{keywordtype}{float}\{\});\ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ fill(\textcolor{keywordtype}{double}\{\});\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Unsupported\ dtype\ in\ assignment"{}});}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00682\ \ \ \ \ \}}
+\DoxyCodeLine{00683\ \ }
+\DoxyCodeLine{00713\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00714\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_adb95241997821b2425869bf6076e029f}{initialize}}(std::initializer\_list<std::initializer\_list<std::initializer\_list<T>>>\ \textcolor{keyword}{const}\&\ values,\ \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \{}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_aaa9f6eae57c44e544cad56e2553923c0}{is\_contiguous}}())}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Assign\ to\ initializer\ list\ supported\ only\ for\ contiguous\ tensors"{}});}
+\DoxyCodeLine{00717\ }
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ !=\ 3\ }
+\DoxyCodeLine{00719\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[0]\ !=\ values.size()\ }
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[1]\ !=\ values.begin()-\/>size()\ }
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[2]\ !=\ values.begin()-\/>begin()-\/>size())}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Shape\ mismatch\ in\ assignment\ from\ triple-\/nested\ initializer\_list"{}});}
+\DoxyCodeLine{00723\ }
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())\ }
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}});}
 \DoxyCodeLine{00726\ }
-\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ !=\ 3\ }
-\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[0]\ !=\ values.size()\ }
-\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[1]\ !=\ values.begin()-\/>size()\ }
-\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[2]\ !=\ values.begin()-\/>begin()-\/>size())}
-\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Shape\ mismatch\ in\ assignment\ from\ triple-\/nested\ initializer\_list"{}});}
-\DoxyCodeLine{00732\ }
-\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())\ }
-\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}});}
-\DoxyCodeLine{00735\ }
-\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{}
-\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;}
-\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ values)\ \{}
-\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Matrix\ row\ count\ mismatch"{}});}
-\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
-\DoxyCodeLine{00742\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[2])}
-\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Row\ length\ mismatch"{}});}
-\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
-\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
-\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00751\ }
-\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
-\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ fill\ =\ [\textcolor{keyword}{this},\ \&values](\textcolor{keyword}{auto}\ cast)\ \{\ }
-\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Cast\ =\ \textcolor{keyword}{decltype}(cast);}
-\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
-\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ values)\ \{}
-\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Matrix\ row\ count\ mismatch"{}});}
-\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
-\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[2])}
-\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Row\ length\ mismatch"{}});}
-\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ value\ :\ row)\ \{}
-\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<Cast,\ float16\_t>)\ \{}
-\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ as\_float\ =\ value;}
-\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ float16\_t\ casted\ =\ float32\_to\_float16(as\_float);}
-\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cast\ casted\ =\ value;}
-\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00776\ }
-\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (dtype\_)\ \{}
-\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ fill(int8\_t\{\});\ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ fill(int16\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ fill(int32\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ fill(int64\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ fill(float16\_t\{\});\ \textcolor{keywordflow}{break};\ \ \ }
-\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ fill(\textcolor{keywordtype}{float}\{\});\ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ fill(\textcolor{keywordtype}{double}\{\});\ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Unsupported\ dtype\ in\ assignment"{}});}
-\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00788\ \}\ }
-\DoxyCodeLine{00789\ }
-\DoxyCodeLine{00830\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00831\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1b94366e95eeb7d5987d0e1e024b2d63}{initialize}}(std::initializer\_list<std::initializer\_list<std::initializer\_list<std::initializer\_list<T>>>>\ values,\ \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \{}
-\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_aaa9f6eae57c44e544cad56e2553923c0}{is\_contiguous}}())}
-\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Assign\ to\ initializer\ list\ supported\ only\ for\ contiguous\ tensors"{}});}
-\DoxyCodeLine{00834\ }
-\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ !=\ 4\ }
-\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[0]\ !=\ values.size()\ }
-\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[1]\ !=\ values.begin()-\/>size()\ }
-\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[2]\ !=\ values.begin()-\/>begin()-\/>size()\ }
-\DoxyCodeLine{00839\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[3]\ !=\ values.begin()-\/>begin()-\/>begin()-\/>size())}
-\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Shape\ mismatch\ in\ assignment\ from\ quadruple-\/nested\ initializer\_list"{}});}
-\DoxyCodeLine{00841\ }
-\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())\ }
-\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}});}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ values)\ \{}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Matrix\ row\ count\ mismatch"{}});}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[2])}
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Row\ length\ mismatch"{}});}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ fill\ =\ [\textcolor{keyword}{this},\ \&values](\textcolor{keyword}{auto}\ cast)\ \{\ }
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Cast\ =\ \textcolor{keyword}{decltype}(cast);}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ values)\ \{}
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Matrix\ row\ count\ mismatch"{}});}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[2])}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Row\ length\ mismatch"{}});}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ value\ :\ row)\ \{\ }
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cast\ casted(value);}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00761\ }
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (dtype\_)\ \{}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ fill(int8\_t\{\});\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ fill(int16\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ fill(int32\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ fill(int64\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ \ fill(float16\_t\{\})\ ;\ \textcolor{keywordflow}{break};\ \ \ }
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ bfloat16:\ fill(bfloat16\_t\{\});\ \textcolor{keywordflow}{break};\ \ \ }
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ fill(\textcolor{keywordtype}{float}\{\});\ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ fill(\textcolor{keywordtype}{double}\{\});\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Unsupported\ dtype\ in\ assignment"{}});}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00774\ \}\ }
+\DoxyCodeLine{00775\ }
+\DoxyCodeLine{00816\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00817\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1b94366e95eeb7d5987d0e1e024b2d63}{initialize}}(std::initializer\_list<std::initializer\_list<std::initializer\_list<std::initializer\_list<T>>>>\ values,\ \mbox{\hyperlink{namespacetannic_ab25d9deb845a2f968f245cc13c4a1f43}{Environment}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}\ =\ \mbox{\hyperlink{classtannic_1_1Host}{Host}}\{\})\ \{}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_aaa9f6eae57c44e544cad56e2553923c0}{is\_contiguous}}())}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Assign\ to\ initializer\ list\ supported\ only\ for\ contiguous\ tensors"{}});}
+\DoxyCodeLine{00820\ }
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ !=\ 4\ }
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[0]\ !=\ values.size()\ }
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[1]\ !=\ values.begin()-\/>size()\ }
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[2]\ !=\ values.begin()-\/>begin()-\/>size()\ }
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \ \ \ \ ||\ shape\_[3]\ !=\ values.begin()-\/>begin()-\/>begin()-\/>size())}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Shape\ mismatch\ in\ assignment\ from\ quadruple-\/nested\ initializer\_list"{}});}
+\DoxyCodeLine{00827\ }
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())\ }
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}});}
+\DoxyCodeLine{00830\ }
+\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{}
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ tensor3D\ :\ values)\ \{}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tensor3D.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}3D\ tensor\ count\ mismatch"{}});}
+\DoxyCodeLine{00836\ }
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ tensor3D)\ \{}
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[2])}
+\DoxyCodeLine{00839\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Matrix\ row\ count\ mismatch"{}});}
+\DoxyCodeLine{00840\ }
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[3])}
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Row\ length\ mismatch"{}});}
 \DoxyCodeLine{00844\ }
-\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\_\ ==\ \textcolor{keywordtype}{boolean})\ \{}
-\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \ \ \ \ std::ptrdiff\_t\ index\ =\ 0;}
-\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ tensor3D\ :\ values)\ \{}
-\DoxyCodeLine{00848\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tensor3D.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}3D\ tensor\ count\ mismatch"{}});}
-\DoxyCodeLine{00850\ }
-\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ tensor3D)\ \{}
-\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[2])}
-\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Matrix\ row\ count\ mismatch"{}});}
-\DoxyCodeLine{00854\ }
-\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
-\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[3])}
-\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Row\ length\ mismatch"{}});}
-\DoxyCodeLine{00858\ }
-\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
-\DoxyCodeLine{00860\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
-\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
-\DoxyCodeLine{00869\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ fill\ =\ [\textcolor{keyword}{this},\ \&values](\textcolor{keyword}{auto}\ cast)\ \{\ }
-\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Cast\ =\ \textcolor{keyword}{decltype}(cast);}
-\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
-\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ tensor3D\ :\ values)\ \{}
-\DoxyCodeLine{00873\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tensor3D.size()\ !=\ shape\_[1])}
-\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}3D\ tensor\ count\ mismatch"{}});}
-\DoxyCodeLine{00875\ }
-\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ tensor3D)\ \{}
-\DoxyCodeLine{00877\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[2])}
-\DoxyCodeLine{00878\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Matrix\ row\ count\ mismatch"{}});}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ value\ :\ row)\ \{}
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}((\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*)(\&value),\ index);}
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00848\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ }
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ fill\ =\ [\textcolor{keyword}{this},\ \&values](\textcolor{keyword}{auto}\ cast)\ \{\ }
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }Cast\ =\ \textcolor{keyword}{decltype}(cast);}
+\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ 0;}
+\DoxyCodeLine{00858\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ tensor3D\ :\ values)\ \{}
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tensor3D.size()\ !=\ shape\_[1])}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}3D\ tensor\ count\ mismatch"{}});}
+\DoxyCodeLine{00861\ }
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ matrix\ :\ tensor3D)\ \{}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.size()\ !=\ shape\_[2])}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Matrix\ row\ count\ mismatch"{}});}
+\DoxyCodeLine{00865\ }
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[3])\ }
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Row\ length\ mismatch"{}});}
+\DoxyCodeLine{00869\ }
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ value\ :\ row)\ \{}
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cast\ casted(value);}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
+\DoxyCodeLine{00873\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
+\DoxyCodeLine{00874\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00875\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00876\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00877\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00878\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
 \DoxyCodeLine{00879\ }
-\DoxyCodeLine{00880\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ row\ :\ matrix)\ \{}
-\DoxyCodeLine{00881\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row.size()\ !=\ shape\_[3])}
-\DoxyCodeLine{00882\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Row\ length\ mismatch"{}});}
-\DoxyCodeLine{00883\ }
-\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ value\ :\ row)\ \{}
-\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<Cast,\ float16\_t>)\ \{}
-\DoxyCodeLine{00886\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ as\_float\ =\ value;}
-\DoxyCodeLine{00887\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ float16\_t\ casted\ =\ float32\_to\_float16(as\_float);}
-\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00890\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cast\ casted\ =\ value;}
-\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(\mbox{\hyperlink{namespacetannic_1_1expression_a229e8299f39cdaf07fd8ab88ab21b476}{expression::tobytes}}(casted),\ index\ *\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype\_));}
-\DoxyCodeLine{00892\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00893\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++index;}
-\DoxyCodeLine{00894\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00895\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00896\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00897\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00898\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00899\ }
-\DoxyCodeLine{00900\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (dtype\_)\ \{}
-\DoxyCodeLine{00901\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ fill(int8\_t\{\});\ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00902\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ fill(int16\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00903\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ fill(int32\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00904\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ fill(int64\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00905\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ fill(float16\_t\{\});\ \textcolor{keywordflow}{break};\ \ }
-\DoxyCodeLine{00906\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ fill(\textcolor{keywordtype}{float}\{\});\ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00907\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ fill(\textcolor{keywordtype}{double}\{\});\ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00908\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Unsupported\ dtype\ in\ assignment"{}});}
-\DoxyCodeLine{00909\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00910\ \ \ \ \ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00911\ \ \ \ \ \}\ }
-\DoxyCodeLine{00912\ \ \ \ \ }
-\DoxyCodeLine{00913\ \textcolor{keyword}{public}:\ }
-\DoxyCodeLine{00916\ }
-\DoxyCodeLine{00940\ \ \ \ \ \textcolor{keyword}{template}<Integral\ Index>}
-\DoxyCodeLine{00941\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_addd20f7c75af9c8bdc7f6e87e4b5785b}{operator[]}}(Index\ index)\textcolor{keyword}{\ const\ }\{\ \ \ }
-\DoxyCodeLine{00942\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
-\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
-\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{expression::Slice<Tensor,\ Index>}}(*\textcolor{keyword}{this},\ std::make\_tuple(index));}
-\DoxyCodeLine{00945\ \ \ \ \ \}}
-\DoxyCodeLine{00946\ }
-\DoxyCodeLine{00961\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a45f09412a47ac74d30ac11968583afa7}{operator[]}}(\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing::Range}}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}})\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{00962\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
-\DoxyCodeLine{00963\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
-\DoxyCodeLine{00964\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{expression::Slice<Tensor,\ indexing::Range>}}(*\textcolor{keyword}{this},\ std::make\_tuple(\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}));}
-\DoxyCodeLine{00965\ \ \ \ \ \}\ }
-\DoxyCodeLine{00966\ }
-\DoxyCodeLine{00984\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }...\ Indexes>}
-\DoxyCodeLine{00985\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a02fcaeee20dea90506e7afde810f9132}{operator[]}}(Indexes...\ indexes)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00986\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
-\DoxyCodeLine{00987\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
-\DoxyCodeLine{00988\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice}}<\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}},\ Indexes...>(*\textcolor{keyword}{this},\ std::make\_tuple(indexes...));}
-\DoxyCodeLine{00989\ \ \ \ \ \}\ }
-\DoxyCodeLine{00990\ }
-\DoxyCodeLine{00991\ }
-\DoxyCodeLine{00999\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a2970d79712c97bca7c781c3d7987fb0b}{transpose}}(\textcolor{keywordtype}{int}\ first\ =\ -\/1,\ \textcolor{keywordtype}{int}\ second\ =\ -\/2)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{01000\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
-\DoxyCodeLine{01001\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
-\DoxyCodeLine{01002\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{expression::Transpose<Tensor>}}(*\textcolor{keyword}{this},\ std::make\_pair<int,\ int>(std::move(first),\ std::move(second)));}
-\DoxyCodeLine{01003\ \ \ \ \ \}\ \ }
-\DoxyCodeLine{01004\ \ }
-\DoxyCodeLine{01011\ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}\ ...\ Indexes>}
-\DoxyCodeLine{01012\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_abd011ab0b62713d6f0b0b807db52d2c6}{permute}}(Indexes...\ indexes)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{01013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
-\DoxyCodeLine{01014\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
-\DoxyCodeLine{01015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{expression::Permutation}}<\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}},\ Indexes...>(*\textcolor{keyword}{this},\ std::make\_tuple(indexes...));}
-\DoxyCodeLine{01016\ \ \ \ \ \}\ }
-\DoxyCodeLine{01017\ }
-\DoxyCodeLine{01024\ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}\ ...\ Sizes>}
-\DoxyCodeLine{01025\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_ad8a06c269d4e7f3c806a40f509435b34}{view}}(Sizes...\ sizes)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{01026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
-\DoxyCodeLine{01027\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
-\DoxyCodeLine{01028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{expression::View<Tensor>}}(*\textcolor{keyword}{this},\ sizes...);}
-\DoxyCodeLine{01029\ \ \ \ \ \}\ }
+\DoxyCodeLine{00880\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (dtype\_)\ \{}
+\DoxyCodeLine{00881\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ fill(int8\_t\{\});\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00882\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ fill(int16\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00883\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ fill(int32\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ fill(int64\_t\{\});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ \ fill(float16\_t\{\})\ ;\ \textcolor{keywordflow}{break};\ \ \ }
+\DoxyCodeLine{00886\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ bfloat16:\ fill(bfloat16\_t\{\});\ \textcolor{keywordflow}{break};\ \ \ }
+\DoxyCodeLine{00887\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ fill(\textcolor{keywordtype}{float}\{\});\ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ fill(\textcolor{keywordtype}{double}\{\});\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Unsupported\ dtype\ in\ assignment"{}});}
+\DoxyCodeLine{00890\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00892\ \ \ \ \ \}\ }
+\DoxyCodeLine{00893\ \ \ \ \ }
+\DoxyCodeLine{00894\ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00897\ }
+\DoxyCodeLine{00921\ \ \ \ \ \textcolor{keyword}{template}<Integral\ Index>}
+\DoxyCodeLine{00922\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_addd20f7c75af9c8bdc7f6e87e4b5785b}{operator[]}}(Index\ index)\textcolor{keyword}{\ const\ }\{\ \ \ }
+\DoxyCodeLine{00923\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
+\DoxyCodeLine{00925\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice<Tensor,\ Index>}}(*\textcolor{keyword}{this},\ std::make\_tuple(index));}
+\DoxyCodeLine{00926\ \ \ \ \ \}}
+\DoxyCodeLine{00927\ }
+\DoxyCodeLine{00942\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a45f09412a47ac74d30ac11968583afa7}{operator[]}}(\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{indexing::Range}}\ \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}})\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{00943\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{00944\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
+\DoxyCodeLine{00945\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice<Tensor,\ indexing::Range>}}(*\textcolor{keyword}{this},\ std::make\_tuple(\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{range}}));}
+\DoxyCodeLine{00946\ \ \ \ \ \}\ }
+\DoxyCodeLine{00947\ }
+\DoxyCodeLine{00965\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }...\ Indexes>}
+\DoxyCodeLine{00966\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a02fcaeee20dea90506e7afde810f9132}{operator[]}}(Indexes...\ indexes)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00967\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{00968\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
+\DoxyCodeLine{00969\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice}}<\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}},\ Indexes...>(*\textcolor{keyword}{this},\ std::make\_tuple(indexes...));}
+\DoxyCodeLine{00970\ \ \ \ \ \}\ }
+\DoxyCodeLine{00971\ }
+\DoxyCodeLine{00972\ }
+\DoxyCodeLine{00980\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a2970d79712c97bca7c781c3d7987fb0b}{transpose}}(\textcolor{keywordtype}{int}\ first\ =\ -\/1,\ \textcolor{keywordtype}{int}\ second\ =\ -\/2)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00981\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{00982\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
+\DoxyCodeLine{00983\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{expression::Transpose<Tensor>}}(*\textcolor{keyword}{this},\ std::make\_pair<int,\ int>(std::move(first),\ std::move(second)));}
+\DoxyCodeLine{00984\ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00985\ \ }
+\DoxyCodeLine{00992\ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}\ ...\ Indexes>}
+\DoxyCodeLine{00993\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_abd011ab0b62713d6f0b0b807db52d2c6}{permute}}(Indexes...\ indexes)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00994\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{00995\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
+\DoxyCodeLine{00996\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{expression::Permutation}}<\mbox{\hyperlink{classtannic_1_1Tensor_a976200a0e67254cba616672f58963c34}{Tensor}},\ Indexes...>(*\textcolor{keyword}{this},\ std::make\_tuple(indexes...));}
+\DoxyCodeLine{00997\ \ \ \ \ \}\ }
+\DoxyCodeLine{00998\ }
+\DoxyCodeLine{01005\ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}\ ...\ Sizes>}
+\DoxyCodeLine{01006\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_ad8a06c269d4e7f3c806a40f509435b34}{view}}(Sizes...\ sizes)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{01008\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();\ }
+\DoxyCodeLine{01009\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1View}{expression::View<Tensor>}}(*\textcolor{keyword}{this},\ sizes...);}
+\DoxyCodeLine{01010\ \ \ \ \ \}\ }
+\DoxyCodeLine{01011\ }
+\DoxyCodeLine{01024\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a52e251e55f66349fa482ee2894554aee}{squeeze}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{01026\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
+\DoxyCodeLine{01027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{expression::Squeeze<Tensor>}}(*\textcolor{keyword}{this});}
+\DoxyCodeLine{01028\ \ \ \ \ \}}
+\DoxyCodeLine{01029\ \ }
 \DoxyCodeLine{01030\ }
-\DoxyCodeLine{01043\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_a52e251e55f66349fa482ee2894554aee}{squeeze}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{01044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
-\DoxyCodeLine{01045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}();}
-\DoxyCodeLine{01046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{expression::Squeeze<Tensor>}}(*\textcolor{keyword}{this});}
-\DoxyCodeLine{01047\ \ \ \ \ \}}
-\DoxyCodeLine{01048\ \ }
-\DoxyCodeLine{01049\ }
-\DoxyCodeLine{01064\ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}...\ Axes>}
-\DoxyCodeLine{01065\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_acc757159be586ad0dbba4fce36360fed}{unsqueeze}}(Axes...\ axes)\ \{}
-\DoxyCodeLine{01066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{expression::Unsqueeze<Tensor>}}(*\textcolor{keyword}{this},\ axes...);}
-\DoxyCodeLine{01067\ \ \ \ \ \}}
-\DoxyCodeLine{01069\ }
-\DoxyCodeLine{01070\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{01071\ }
-\DoxyCodeLine{01072\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ade301df08b17e0660280c62d9cdd4fe7}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}},\ std::shared\_ptr<Buffer>\ storage)}
-\DoxyCodeLine{01073\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
-\DoxyCodeLine{01074\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
-\DoxyCodeLine{01075\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})}
-\DoxyCodeLine{01076\ \ \ \ \ ,\ \ \ offset\_(\mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}})\ \ \ }
-\DoxyCodeLine{01077\ \ \ \ \ ,\ \ \ buffer\_(std::move(storage))\ }
-\DoxyCodeLine{01078\ \ \ \ \ \{}
-\DoxyCodeLine{01079\ \ \ \ \ \ \ \ \ nelements\_\ =\ std::accumulate(shape\_.begin(),\ shape\_.end(),\ 1ULL,\ std::multiplies<>\{\});\ }
+\DoxyCodeLine{01045\ \ \ \ \ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}...\ Axes>}
+\DoxyCodeLine{01046\ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{classtannic_1_1Tensor_acc757159be586ad0dbba4fce36360fed}{unsqueeze}}(Axes...\ axes)\ \{}
+\DoxyCodeLine{01047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{expression::Unsqueeze<Tensor>}}(*\textcolor{keyword}{this},\ axes...);}
+\DoxyCodeLine{01048\ \ \ \ \ \}}
+\DoxyCodeLine{01050\ }
+\DoxyCodeLine{01051\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{01052\ }
+\DoxyCodeLine{01053\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ade301df08b17e0660280c62d9cdd4fe7}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}},\ std::shared\_ptr<Buffer>\ storage)}
+\DoxyCodeLine{01054\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
+\DoxyCodeLine{01055\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
+\DoxyCodeLine{01056\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})}
+\DoxyCodeLine{01057\ \ \ \ \ ,\ \ \ offset\_(\mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}})\ \ \ }
+\DoxyCodeLine{01058\ \ \ \ \ ,\ \ \ buffer\_(std::move(storage))\ }
+\DoxyCodeLine{01059\ \ \ \ \ \{}
+\DoxyCodeLine{01060\ \ \ \ \ \ \ \ \ nelements\_\ =\ std::accumulate(shape\_.begin(),\ shape\_.end(),\ 1ULL,\ std::multiplies<>\{\});\ }
+\DoxyCodeLine{01061\ \ \ \ \ \ \ \ \ node\_\ =\ std::make\_shared<Node>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{01062\ \ \ \ \ \}}
+\DoxyCodeLine{01063\ }
+\DoxyCodeLine{01064\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ace47b4a9fcb1068b6a5084b2816e4e7f}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}},\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}},\ std::shared\_ptr<Buffer>\ storage)}
+\DoxyCodeLine{01065\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
+\DoxyCodeLine{01066\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
+\DoxyCodeLine{01067\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}})}
+\DoxyCodeLine{01068\ \ \ \ \ ,\ \ \ offset\_(\mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}})\ \ \ }
+\DoxyCodeLine{01069\ \ \ \ \ ,\ \ \ buffer\_(std::move(storage))\ }
+\DoxyCodeLine{01070\ \ \ \ \ \{\ \ }
+\DoxyCodeLine{01071\ \ \ \ \ \ \ \ \ std::size\_t\ expected\ =\ 1;}
+\DoxyCodeLine{01072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ dimension\ =\ 0;\ dimension\ <\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}();\ ++dimension)\ \{\ }
+\DoxyCodeLine{01073\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ index\ =\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ -\/\ 1\ -\/\ dimension;\ \ \ \textcolor{comment}{//\ walk\ backward\ logically}}
+\DoxyCodeLine{01074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strides\_[index]\ !=\ expected)\ \{}
+\DoxyCodeLine{01075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_contiguous\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{01076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{01077\ \ \ \ \ \ \ \ \ \ \ \ \ nelements\_\ *=\ shape\_[index];}
+\DoxyCodeLine{01078\ \ \ \ \ \ \ \ \ \ \ \ \ expected\ *=\ shape\_[index];}
+\DoxyCodeLine{01079\ \ \ \ \ \ \ \ \ \}\ \ \ }
 \DoxyCodeLine{01080\ \ \ \ \ \ \ \ \ node\_\ =\ std::make\_shared<Node>(*\textcolor{keyword}{this});}
 \DoxyCodeLine{01081\ \ \ \ \ \}}
 \DoxyCodeLine{01082\ }
-\DoxyCodeLine{01083\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor_ace47b4a9fcb1068b6a5084b2816e4e7f}{Tensor}}(type\ \mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}},\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}},\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}},\ std::shared\_ptr<Buffer>\ storage)}
-\DoxyCodeLine{01084\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}})}
-\DoxyCodeLine{01085\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}})\ }
-\DoxyCodeLine{01086\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}})}
-\DoxyCodeLine{01087\ \ \ \ \ ,\ \ \ offset\_(\mbox{\hyperlink{classtannic_1_1Tensor_a64e1ab26b63bda193b0252b840aacc5a}{offset}})\ \ \ }
-\DoxyCodeLine{01088\ \ \ \ \ ,\ \ \ buffer\_(std::move(storage))\ }
-\DoxyCodeLine{01089\ \ \ \ \ \{\ \ }
-\DoxyCodeLine{01090\ \ \ \ \ \ \ \ \ std::size\_t\ expected\ =\ 1;}
-\DoxyCodeLine{01091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ dimension\ =\ 0;\ dimension\ <\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}();\ ++dimension)\ \{\ }
-\DoxyCodeLine{01092\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ index\ =\ \mbox{\hyperlink{classtannic_1_1Tensor_a36f544f8a69e20e944cbec6aec0beefa}{rank}}()\ -\/\ 1\ -\/\ dimension;\ \ \ \textcolor{comment}{//\ walk\ backward\ logically}}
-\DoxyCodeLine{01093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strides\_[index]\ !=\ expected)\ \{}
-\DoxyCodeLine{01094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_contiguous\_\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{01095\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{01096\ \ \ \ \ \ \ \ \ \ \ \ \ nelements\_\ *=\ shape\_[index];}
-\DoxyCodeLine{01097\ \ \ \ \ \ \ \ \ \ \ \ \ expected\ *=\ shape\_[index];}
-\DoxyCodeLine{01098\ \ \ \ \ \ \ \ \ \}\ \ \ }
-\DoxyCodeLine{01099\ \ \ \ \ \ \ \ \ node\_\ =\ std::make\_shared<Node>(*\textcolor{keyword}{this});}
-\DoxyCodeLine{01100\ \ \ \ \ \}}
+\DoxyCodeLine{01083\ \textcolor{keyword}{protected}:\ \ \ \ }
+\DoxyCodeLine{01084\ \ \ \ \ \textcolor{keyword}{template}\ <\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ Source,\ \textcolor{keyword}{class}...\ Indexes>\ }
+\DoxyCodeLine{01085\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice}};}
+\DoxyCodeLine{01086\ }
+\DoxyCodeLine{01087\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>\ }
+\DoxyCodeLine{01088\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{expression::Transpose}};}
+\DoxyCodeLine{01089\ }
+\DoxyCodeLine{01090\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
+\DoxyCodeLine{01091\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1View}{expression::View}};\ }
+\DoxyCodeLine{01092\ }
+\DoxyCodeLine{01093\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
+\DoxyCodeLine{01094\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{expression::Squeeze}};\ }
+\DoxyCodeLine{01095\ }
+\DoxyCodeLine{01096\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
+\DoxyCodeLine{01097\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{expression::Unsqueeze}};}
+\DoxyCodeLine{01098\ }
+\DoxyCodeLine{01099\ \ \ \ \ \textcolor{keyword}{template}\ <\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ Source,\ \mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}...\ Indexes>\ }
+\DoxyCodeLine{01100\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{expression::Permutation}};\ }
 \DoxyCodeLine{01101\ }
-\DoxyCodeLine{01102\ \textcolor{keyword}{protected}:\ \ \ \ }
-\DoxyCodeLine{01103\ \ \ \ \ \textcolor{keyword}{template}\ <\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ Source,\ \textcolor{keyword}{class}...\ Indexes>\ }
-\DoxyCodeLine{01104\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Slice}{expression::Slice}};}
-\DoxyCodeLine{01105\ }
-\DoxyCodeLine{01106\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>\ }
-\DoxyCodeLine{01107\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Transpose}{expression::Transpose}};}
-\DoxyCodeLine{01108\ }
-\DoxyCodeLine{01109\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
-\DoxyCodeLine{01110\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1View}{expression::View}};\ }
-\DoxyCodeLine{01111\ }
-\DoxyCodeLine{01112\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
-\DoxyCodeLine{01113\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{expression::Squeeze}};\ }
-\DoxyCodeLine{01114\ }
-\DoxyCodeLine{01115\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
-\DoxyCodeLine{01116\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{expression::Unsqueeze}};}
-\DoxyCodeLine{01117\ }
-\DoxyCodeLine{01118\ \ \ \ \ \textcolor{keyword}{template}\ <\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ Source,\ \mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}...\ Indexes>\ }
-\DoxyCodeLine{01119\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{expression::Permutation}};\ }
-\DoxyCodeLine{01120\ }
-\DoxyCodeLine{01121\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
-\DoxyCodeLine{01122\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{expression::Expansion}};}
-\DoxyCodeLine{01123\ \ }
-\DoxyCodeLine{01124\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
-\DoxyCodeLine{01125\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{expression::Flatten}};}
-\DoxyCodeLine{01126\ }
-\DoxyCodeLine{01127\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class\ }Coordinates,\ \mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}...\ Sources>}
-\DoxyCodeLine{01128\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{expression::Complexification}};}
-\DoxyCodeLine{01129\ }
-\DoxyCodeLine{01130\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
-\DoxyCodeLine{01131\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{expression::Realification}};}
-\DoxyCodeLine{01132\ }
-\DoxyCodeLine{01133\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(std::byte\ \textcolor{keyword}{const}*,\ std::ptrdiff\_t);\ }
-\DoxyCodeLine{01134\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_afa4b6a6ffd6c1af179a2280b124da7ac}{assign}}(\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*,\ std::ptrdiff\_t);\ }
-\DoxyCodeLine{01135\ }
-\DoxyCodeLine{01136\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_ae5d53f0606904d652ef67b1d99909e55}{compare}}(std::byte\ \textcolor{keyword}{const}*,\ std::ptrdiff\_t)\ \textcolor{keyword}{const};\ }
-\DoxyCodeLine{01137\ \ \ \ \ \ }
+\DoxyCodeLine{01102\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
+\DoxyCodeLine{01103\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{expression::Expansion}};}
+\DoxyCodeLine{01104\ \ }
+\DoxyCodeLine{01105\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
+\DoxyCodeLine{01106\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{expression::Flatten}};}
+\DoxyCodeLine{01107\ }
+\DoxyCodeLine{01108\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class\ }Coordinates,\ \mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}...\ Sources>}
+\DoxyCodeLine{01109\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{expression::Complexification}};}
+\DoxyCodeLine{01110\ }
+\DoxyCodeLine{01111\ \ \ \ \ \textcolor{keyword}{template}\ <Composable\ Source>}
+\DoxyCodeLine{01112\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{expression::Realification}};}
+\DoxyCodeLine{01113\ }
+\DoxyCodeLine{01114\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(std::byte\ \textcolor{keyword}{const}*,\ std::ptrdiff\_t);\ }
+\DoxyCodeLine{01115\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Tensor_afa4b6a6ffd6c1af179a2280b124da7ac}{assign}}(\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*,\ std::ptrdiff\_t);\ }
+\DoxyCodeLine{01116\ }
+\DoxyCodeLine{01117\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1Tensor_ae5d53f0606904d652ef67b1d99909e55}{compare}}(std::byte\ \textcolor{keyword}{const}*,\ std::ptrdiff\_t)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{01118\ \ \ \ \ }
+\DoxyCodeLine{01119\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{01120\ \ \ \ \ uintptr\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node\_-\/>id;}
+\DoxyCodeLine{01122\ \ \ \ \ \}\ }
+\DoxyCodeLine{01123\ }
+\DoxyCodeLine{01124\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{01125\ \ \ \ \ \textcolor{comment}{//\ Note:\ I\ didn't\ decide\ yet\ if\ put\ all\ this\ inside\ Node.}}
+\DoxyCodeLine{01126\ \ \ \ \ \textcolor{comment}{//\ That\ will\ speed\ tensor\ copies\ but\ make\ the\ tensors}}
+\DoxyCodeLine{01127\ \ \ \ \ \textcolor{comment}{//\ only\ runtime\ since\ shared\ ptrs\ don't\ support\ constexpr.}}
+\DoxyCodeLine{01128\ \ \ \ \ \textcolor{comment}{//\ For\ now\ kernel\ optimization\ is\ more\ important.\ }}
+\DoxyCodeLine{01129\ \ \ \ \ type\ dtype\_\ =\ any;}
+\DoxyCodeLine{01130\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_\{\};\ }
+\DoxyCodeLine{01131\ \ \ \ \ Strides\ strides\_\{\};\ }
+\DoxyCodeLine{01132\ \ \ \ \ std::size\_t\ nelements\_\ =\ 1;}
+\DoxyCodeLine{01133\ \ \ \ \ std::ptrdiff\_t\ offset\_\ =\ 0;\ \ \ \ }
+\DoxyCodeLine{01134\ \ \ \ \ \textcolor{keyword}{mutable}\ std::shared\_ptr<Buffer>\ buffer\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{01135\ \ \ \ \ \textcolor{keyword}{mutable}\ std::shared\_ptr<Node>\ node\_\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{01136\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_contiguous\_\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{01137\ \};\ \ \ \ }
 \DoxyCodeLine{01138\ }
-\DoxyCodeLine{01139\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{01140\ \ \ \ \ uintptr\_t\ \mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{01141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node\_-\/>id;}
-\DoxyCodeLine{01142\ \ \ \ \ \}\ }
+\DoxyCodeLine{01139\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}}\ \{}
+\DoxyCodeLine{01140\ \ \ \ \ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a782f1dd694a3dd433925f3298d97bee1}{Tannic}},}
+\DoxyCodeLine{01141\ \ \ \ \ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a95b88f180e9eb5678e0f9ebac2cbe643}{PyTorch}}}
+\DoxyCodeLine{01142\ \};\ }
 \DoxyCodeLine{01143\ }
-\DoxyCodeLine{01144\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{01145\ \ \ \ \ \textcolor{comment}{//\ Note:\ I\ didn't\ decide\ yet\ if\ put\ all\ this\ inside\ Node.}}
-\DoxyCodeLine{01146\ \ \ \ \ \textcolor{comment}{//\ That\ will\ speed\ tensor\ copies\ but\ disallow\ make\ the\ tensors}}
-\DoxyCodeLine{01147\ \ \ \ \ \textcolor{comment}{//\ only\ runtime\ since\ shared\ ptrs\ don't\ support\ constexpr.}}
-\DoxyCodeLine{01148\ \ \ \ \ \textcolor{comment}{//\ For\ now\ kernel\ optimization\ is\ more\ important.\ }}
-\DoxyCodeLine{01149\ \ \ \ \ type\ dtype\_;}
-\DoxyCodeLine{01150\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;\ }
-\DoxyCodeLine{01151\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;\ }
-\DoxyCodeLine{01152\ \ \ \ \ std::size\_t\ nelements\_\ =\ 1;}
-\DoxyCodeLine{01153\ \ \ \ \ std::ptrdiff\_t\ offset\_\ =\ 0;\ \ \ \ }
-\DoxyCodeLine{01154\ \ \ \ \ \textcolor{keyword}{mutable}\ std::shared\_ptr<Buffer>\ buffer\_\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{01155\ \ \ \ \ \textcolor{keyword}{mutable}\ std::shared\_ptr<Node>\ node\_\ =\ \textcolor{keyword}{nullptr};}
-\DoxyCodeLine{01156\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_contiguous\_\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{01157\ \};\ \ \ \ }
-\DoxyCodeLine{01158\ }
-\DoxyCodeLine{01159\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}}\ \{}
-\DoxyCodeLine{01160\ \ \ \ \ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a782f1dd694a3dd433925f3298d97bee1}{Tannic}},}
-\DoxyCodeLine{01161\ \ \ \ \ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a95b88f180e9eb5678e0f9ebac2cbe643}{PyTorch}}}
-\DoxyCodeLine{01162\ \};\ }
-\DoxyCodeLine{01163\ }
-\DoxyCodeLine{01164\ \textcolor{keyword}{static}\ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}}\ iostyle\ =\ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a95b88f180e9eb5678e0f9ebac2cbe643}{IOStyle::PyTorch}};}
-\DoxyCodeLine{01165\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacetannic_acaa226116ce1f3dd66906ae2b1356275}{setiostyle}}(\mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}}\ style)\ \{}
-\DoxyCodeLine{01166\ \ \ \ \ iostyle\ =\ style;}
-\DoxyCodeLine{01167\ \}}
-\DoxyCodeLine{01168\ }
-\DoxyCodeLine{01169\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ ostream,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ tensor);\ \ }
-\DoxyCodeLine{01170\ }
-\DoxyCodeLine{01171\ \textcolor{keyword}{template}<Composable\ Source>\ }
-\DoxyCodeLine{01172\ \textcolor{keyword}{inline}\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ ostream,\ Source\ source)\ \{}
-\DoxyCodeLine{01173\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ tensor\ =\ source.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();\ \ }
-\DoxyCodeLine{01174\ \ \ \ \ ostream\ <<\ tensor;}
-\DoxyCodeLine{01175\ \ \ \ \ \textcolor{keywordflow}{return}\ ostream;}
-\DoxyCodeLine{01176\ \}\ }
-\DoxyCodeLine{01177\ }
-\DoxyCodeLine{01178\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Operation,\ Composable\ Operand>}
-\DoxyCodeLine{01179\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Unary_a8e353e45bb09a8c5f02323afd88c14f2}{expression::Unary<Operation,\ Operand>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{01180\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{result}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a2cd31d96cb96ce4cb785e7d36343b8ea}{dtype}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7d7526a84f620fa1ee0b73a51ce2137f}{shape}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a0bb211f808eb0d002a079df08e7e305d}{strides}}(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a404621de31ee27352f6c6180d2019f77}{offset}}());\ \ }
-\DoxyCodeLine{01181\ \ \ \ \ this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}.\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a230e1b46f74c72862ff8d1d9cb52872e}{forward}}(std::get<0>(this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}),\ result);}
-\DoxyCodeLine{01182\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{result}};}
-\DoxyCodeLine{01183\ \}}
-\DoxyCodeLine{01184\ }
-\DoxyCodeLine{01185\ \textcolor{keyword}{template}<Operator\ Operation,\ Composable\ Operand,\ Composable\ Cooperand>}
-\DoxyCodeLine{01186\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_a25f79a1644fbe89f707d28578dfb97b0}{expression::Binary<Operation,\ Operand,\ Cooperand>::forward}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{01187\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{result}}(dtype(),\ shape(),\ strides());}
-\DoxyCodeLine{01188\ \ \ \ \ this-\/>operation.forward(std::get<0>(this-\/>operands),\ std::get<1>(this-\/>operands),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{result}});}
-\DoxyCodeLine{01189\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{result}};}
-\DoxyCodeLine{01190\ \}\ \ }
-\DoxyCodeLine{01191\ }
+\DoxyCodeLine{01144\ \textcolor{keyword}{static}\ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}}\ iostyle\ =\ \mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66a95b88f180e9eb5678e0f9ebac2cbe643}{IOStyle::PyTorch}};}
+\DoxyCodeLine{01145\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacetannic_acaa226116ce1f3dd66906ae2b1356275}{setiostyle}}(\mbox{\hyperlink{namespacetannic_a22253ce740114e2dcc7042ce55e5cc66}{IOStyle}}\ style)\ \{}
+\DoxyCodeLine{01146\ \ \ \ \ iostyle\ =\ style;}
+\DoxyCodeLine{01147\ \}}
+\DoxyCodeLine{01148\ }
+\DoxyCodeLine{01149\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ ostream,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ tensor);\ \ }
+\DoxyCodeLine{01150\ }
+\DoxyCodeLine{01151\ \textcolor{keyword}{template}<Composable\ Source>\ }
+\DoxyCodeLine{01152\ \textcolor{keyword}{inline}\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ ostream,\ Source\ source)\ \{}
+\DoxyCodeLine{01153\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ tensor\ =\ source.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();\ \ }
+\DoxyCodeLine{01154\ \ \ \ \ ostream\ <<\ tensor;}
+\DoxyCodeLine{01155\ \ \ \ \ \textcolor{keywordflow}{return}\ ostream;}
+\DoxyCodeLine{01156\ \}\ }
+\DoxyCodeLine{01157\ }
+\DoxyCodeLine{01158\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Operation,\ Composable\ Operand>}
+\DoxyCodeLine{01159\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Unary_a8e353e45bb09a8c5f02323afd88c14f2}{expression::Unary<Operation,\ Operand>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{01160\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(dtype(),\ shape(),\ strides(),\ offset());\ \ }
+\DoxyCodeLine{01161\ \ \ \ \ this-\/>operation.forward(std::get<0>(this-\/>operands),\ result);}
+\DoxyCodeLine{01162\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{01163\ \}}
+\DoxyCodeLine{01164\ }
+\DoxyCodeLine{01165\ \textcolor{keyword}{template}<Operator\ Operation,\ Composable\ Operand,\ Composable\ Cooperand>}
+\DoxyCodeLine{01166\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_a25f79a1644fbe89f707d28578dfb97b0}{expression::Binary<Operation,\ Operand,\ Cooperand>::forward}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01167\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(dtype(),\ shape(),\ strides());}
+\DoxyCodeLine{01168\ \ \ \ \ this-\/>operation.forward(std::get<0>(this-\/>operands),\ std::get<1>(this-\/>operands),\ result);}
+\DoxyCodeLine{01169\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{01170\ \}\ \ }
+\DoxyCodeLine{01171\ }
+\DoxyCodeLine{01172\ }
+\DoxyCodeLine{01173\ \textcolor{keyword}{template}<Operator\ Operation,\ Composable\ Operand>}
+\DoxyCodeLine{01174\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_a25f79a1644fbe89f707d28578dfb97b0}{expression::Binary<Operation,\ Operand,\ Scalar>::forward}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01175\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(dtype(),\ shape(),\ strides());}
+\DoxyCodeLine{01176\ \ \ \ \ this-\/>operation.forward(std::get<0>(this-\/>operands),\ std::get<1>(this-\/>operands),\ result);}
+\DoxyCodeLine{01177\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{01178\ \}\ \ }
+\DoxyCodeLine{01179\ }
+\DoxyCodeLine{01180\ \textcolor{keyword}{template}<Composable\ Source>}
+\DoxyCodeLine{01181\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1View_a7b5ad72ef32e48690f972e19f9ffb359}{expression::View<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{01182\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
+\DoxyCodeLine{01183\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
+\DoxyCodeLine{01184\ \}}
+\DoxyCodeLine{01185\ \ }
+\DoxyCodeLine{01186\ \textcolor{keyword}{template}<Composable\ Source>}
+\DoxyCodeLine{01187\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze_ac2a8030beb9a432be416010cef03c443}{expression::Squeeze<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{01188\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
+\DoxyCodeLine{01189\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
+\DoxyCodeLine{01190\ \}}
+\DoxyCodeLine{01191\ \ }
 \DoxyCodeLine{01192\ \textcolor{keyword}{template}<Composable\ Source>}
-\DoxyCodeLine{01193\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1View_a7b5ad72ef32e48690f972e19f9ffb359}{expression::View<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{01193\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a9408a46e9118e87e8c2cd756f11e1d35}{expression::Unsqueeze<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
 \DoxyCodeLine{01194\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
 \DoxyCodeLine{01195\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
 \DoxyCodeLine{01196\ \}}
 \DoxyCodeLine{01197\ \ }
 \DoxyCodeLine{01198\ \textcolor{keyword}{template}<Composable\ Source>}
-\DoxyCodeLine{01199\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze_ac2a8030beb9a432be416010cef03c443}{expression::Squeeze<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{01199\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten_a4204391399bab2401f3e8dad1b32cb6e}{expression::Flatten<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
 \DoxyCodeLine{01200\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
 \DoxyCodeLine{01201\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
-\DoxyCodeLine{01202\ \}}
-\DoxyCodeLine{01203\ \ }
-\DoxyCodeLine{01204\ \textcolor{keyword}{template}<Composable\ Source>}
-\DoxyCodeLine{01205\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a9408a46e9118e87e8c2cd756f11e1d35}{expression::Unsqueeze<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{01202\ \}\ }
+\DoxyCodeLine{01203\ }
+\DoxyCodeLine{01204\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ Source,\ \mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}...\ Indexes>}
+\DoxyCodeLine{01205\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_a43662c2291a6a72e55a00a02a6352778}{expression::Permutation<Source,\ Indexes...>::forward}}()\textcolor{keyword}{\ const\ }\{\ \ \ }
 \DoxyCodeLine{01206\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
 \DoxyCodeLine{01207\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
-\DoxyCodeLine{01208\ \}}
+\DoxyCodeLine{01208\ \}\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{01209\ \ }
 \DoxyCodeLine{01210\ \textcolor{keyword}{template}<Composable\ Source>}
-\DoxyCodeLine{01211\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten_a4204391399bab2401f3e8dad1b32cb6e}{expression::Flatten<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{01212\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
+\DoxyCodeLine{01211\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936}{expression::Transpose<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{01212\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();\ }
 \DoxyCodeLine{01213\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
-\DoxyCodeLine{01214\ \}\ }
+\DoxyCodeLine{01214\ \}\ \ \ }
 \DoxyCodeLine{01215\ }
-\DoxyCodeLine{01216\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}},\ \mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Indexes}}>}
-\DoxyCodeLine{01217\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_a43662c2291a6a72e55a00a02a6352778}{expression::Permutation<Source,\ Indexes...>::forward}}()\textcolor{keyword}{\ const\ }\{\ \ \ }
+\DoxyCodeLine{01216\ \textcolor{keyword}{template}<Composable\ Source>}
+\DoxyCodeLine{01217\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion_a42b680e78facefa7626fe7908a06a8a7}{expression::Expansion<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
 \DoxyCodeLine{01218\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
 \DoxyCodeLine{01219\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
-\DoxyCodeLine{01220\ \}\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01220\ \}}
 \DoxyCodeLine{01221\ \ }
-\DoxyCodeLine{01222\ \textcolor{keyword}{template}<Composable\ Source>}
-\DoxyCodeLine{01223\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transpose_a120a795cc81e1cf1be4e728d7f4c5936}{expression::Transpose<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{01224\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();\ }
+\DoxyCodeLine{01222\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ Source,\ \textcolor{keyword}{class}...\ Indexes>}
+\DoxyCodeLine{01223\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{expression::Slice<Source,\ Indexes...>::forward}}()\textcolor{keyword}{\ const\ }\{\ \ \ }
+\DoxyCodeLine{01224\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
 \DoxyCodeLine{01225\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
-\DoxyCodeLine{01226\ \}\ \ \ }
+\DoxyCodeLine{01226\ \}\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{01227\ }
-\DoxyCodeLine{01228\ \textcolor{keyword}{template}<Composable\ Source>}
-\DoxyCodeLine{01229\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion_a42b680e78facefa7626fe7908a06a8a7}{expression::Expansion<Source>::forward}}()\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{01230\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
-\DoxyCodeLine{01231\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
-\DoxyCodeLine{01232\ \}}
-\DoxyCodeLine{01233\ \ }
-\DoxyCodeLine{01234\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Indexes}}>}
-\DoxyCodeLine{01235\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_a89d4dcdc63309ba723807d78f2e650d0}{expression::Slice<Source,\ Indexes...>::forward}}()\textcolor{keyword}{\ const\ }\{\ \ \ }
-\DoxyCodeLine{01236\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ source\_.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
-\DoxyCodeLine{01237\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}(dtype(),\ shape(),\ strides(),\ offset(),\ source.buffer\_);}
-\DoxyCodeLine{01238\ \}\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{01228\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ Source,\ \textcolor{keyword}{class}...\ Indexes>}
+\DoxyCodeLine{01229\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff}{expression::Slice<Source,\ Indexes...>::assign}}(std::byte\ \textcolor{keyword}{const}*\ value,\ std::ptrdiff\_t\ offset)\ \{\ }
+\DoxyCodeLine{01230\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\mbox{\hyperlink{structtannic_1_1Trait}{Trait<Source>::is\_assignable}})\ \{}
+\DoxyCodeLine{01231\ \ \ \ \ \ \ \ \ source\_.assign(value,\ offset);\ }
+\DoxyCodeLine{01232\ \ \ \ \ \}\ }
+\DoxyCodeLine{01233\ }
+\DoxyCodeLine{01234\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01235\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ tensor\ =\ forward();}
+\DoxyCodeLine{01236\ \ \ \ \ \ \ \ \ tensor.\mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(value,\ offset);}
+\DoxyCodeLine{01237\ \ \ \ \ \}}
+\DoxyCodeLine{01238\ \}\ \ }
 \DoxyCodeLine{01239\ }
-\DoxyCodeLine{01240\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Indexes}}>}
-\DoxyCodeLine{01241\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff}{expression::Slice<Source,\ Indexes...>::assign}}(std::byte\ \textcolor{keyword}{const}*\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{value}},\ std::ptrdiff\_t\ offset)\ \{\ }
+\DoxyCodeLine{01240\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ Source,\ \textcolor{keyword}{class}...\ Indexes>}
+\DoxyCodeLine{01241\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff}{expression::Slice<Source,\ Indexes...>::assign}}(\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*\ value,\ std::ptrdiff\_t\ offset)\ \{\ }
 \DoxyCodeLine{01242\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\mbox{\hyperlink{structtannic_1_1Trait}{Trait<Source>::is\_assignable}})\ \{}
-\DoxyCodeLine{01243\ \ \ \ \ \ \ \ \ source\_.assign(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{value}},\ offset);\ }
+\DoxyCodeLine{01243\ \ \ \ \ \ \ \ \ source\_.assign(value,\ offset);\ }
 \DoxyCodeLine{01244\ \ \ \ \ \}\ }
 \DoxyCodeLine{01245\ }
 \DoxyCodeLine{01246\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{01247\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tensor}}\ =\ forward();}
-\DoxyCodeLine{01248\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tensor}}.assign(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{value}},\ offset);}
+\DoxyCodeLine{01247\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ tensor\ =\ forward();}
+\DoxyCodeLine{01248\ \ \ \ \ \ \ \ \ tensor.\mbox{\hyperlink{classtannic_1_1Tensor_adf4c49f9887498bb45b5d0b78a520602}{assign}}(value,\ offset);}
 \DoxyCodeLine{01249\ \ \ \ \ \}}
 \DoxyCodeLine{01250\ \}\ \ }
 \DoxyCodeLine{01251\ }
-\DoxyCodeLine{01252\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Indexes}}>}
-\DoxyCodeLine{01253\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_af670e5fd637111c77061a76f55b179ff}{expression::Slice<Source,\ Indexes...>::assign}}(\textcolor{keywordtype}{bool}\ \textcolor{keyword}{const}*\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{value}},\ std::ptrdiff\_t\ offset)\ \{\ }
-\DoxyCodeLine{01254\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\mbox{\hyperlink{structtannic_1_1Trait}{Trait<Source>::is\_assignable}})\ \{}
-\DoxyCodeLine{01255\ \ \ \ \ \ \ \ \ source\_.assign(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{value}},\ offset);\ }
-\DoxyCodeLine{01256\ \ \ \ \ \}\ }
-\DoxyCodeLine{01257\ }
-\DoxyCodeLine{01258\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{01259\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tensor}}\ =\ forward();}
-\DoxyCodeLine{01260\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tensor}}.assign(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{value}},\ offset);}
-\DoxyCodeLine{01261\ \ \ \ \ \}}
-\DoxyCodeLine{01262\ \}\ \ }
-\DoxyCodeLine{01263\ }
-\DoxyCodeLine{01264\ }
-\DoxyCodeLine{01265\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}},\ \textcolor{keyword}{class}...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Indexes}}>}
-\DoxyCodeLine{01266\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a}{expression::Slice<Source,\ Indexes...>::compare}}(std::byte\ \textcolor{keyword}{const}*\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{value}},\ std::ptrdiff\_t\ offset)\textcolor{keyword}{\ const\ }\{\ }
-\DoxyCodeLine{01267\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\mbox{\hyperlink{structtannic_1_1Trait}{Trait<Source>::is\_comparable}})\ \{}
-\DoxyCodeLine{01268\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ source\_.compare(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{value}},\ offset);\ }
-\DoxyCodeLine{01269\ \ \ \ \ \}\ }
-\DoxyCodeLine{01270\ }
-\DoxyCodeLine{01271\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{01272\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tensor}}\ =\ forward();}
-\DoxyCodeLine{01273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tensor}}.compare(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{value}},\ offset);}
-\DoxyCodeLine{01274\ \ \ \ \ \}}
-\DoxyCodeLine{01275\ \}\ \ }
-\DoxyCodeLine{01276\ \ }
-\DoxyCodeLine{01277\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Coordinates,\ Composable\ Source>}
-\DoxyCodeLine{01278\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{expression::Complexification<Coordinates,\ Source>::forward}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{01279\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ real\ =\ source.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
-\DoxyCodeLine{01280\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}}(dtype(),\ shape(),\ strides(),\ offset(),\ real.buffer\_);\ }
-\DoxyCodeLine{01281\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}};\ }
-\DoxyCodeLine{01282\ \}\ }
-\DoxyCodeLine{01283\ }
-\DoxyCodeLine{01284\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Coordinates,\ Composable\ Real,\ Composable\ Imaginary>}
-\DoxyCodeLine{01285\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{expression::Complexification<Coordinates,\ Real,\ Imaginary>::forward}}()\textcolor{keyword}{\ const\ }\{\ \ }
-\DoxyCodeLine{01286\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{result}}(dtype(),\ shape(),\ strides(),\ offset());}
-\DoxyCodeLine{01287\ \ \ \ \ Coordinates::forward(real.forward(),\ imaginary.forward(),\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{result}});}
-\DoxyCodeLine{01288\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{result}};}
-\DoxyCodeLine{01289\ \}\ }
-\DoxyCodeLine{01290\ }
-\DoxyCodeLine{01291\ \textcolor{keyword}{template}<Composable\ Source>}
-\DoxyCodeLine{01292\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{expression::Realification<Source>::forward}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{01293\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}}\ =\ source.\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a230e1b46f74c72862ff8d1d9cb52872e}{forward}}();}
-\DoxyCodeLine{01294\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ real(dtype(),\ shape(),\ strides(),\ offset(),\ \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}}.buffer\_);\ }
-\DoxyCodeLine{01295\ \ \ \ \ \textcolor{keywordflow}{return}\ real;\ }
-\DoxyCodeLine{01296\ \}}
-\DoxyCodeLine{01297\ }
-\DoxyCodeLine{01298\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{01299\ }
-\DoxyCodeLine{01300\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TENSOR\_HPP}}
+\DoxyCodeLine{01252\ }
+\DoxyCodeLine{01253\ \textcolor{keyword}{template}<\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ Source,\ \textcolor{keyword}{class}...\ Indexes>}
+\DoxyCodeLine{01254\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Slice_abd2d3e77db09d40e48aa8420aae1d84a}{expression::Slice<Source,\ Indexes...>::compare}}(std::byte\ \textcolor{keyword}{const}*\ value,\ std::ptrdiff\_t\ offset)\textcolor{keyword}{\ const\ }\{\ }
+\DoxyCodeLine{01255\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (\mbox{\hyperlink{structtannic_1_1Trait}{Trait<Source>::is\_comparable}})\ \{}
+\DoxyCodeLine{01256\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ source\_.compare(value,\ offset);\ }
+\DoxyCodeLine{01257\ \ \ \ \ \}\ }
+\DoxyCodeLine{01258\ }
+\DoxyCodeLine{01259\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{01260\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ tensor\ =\ forward();}
+\DoxyCodeLine{01261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tensor.\mbox{\hyperlink{classtannic_1_1Tensor_ae5d53f0606904d652ef67b1d99909e55}{compare}}(value,\ offset);}
+\DoxyCodeLine{01262\ \ \ \ \ \}}
+\DoxyCodeLine{01263\ \}\ \ }
+\DoxyCodeLine{01264\ \ }
+\DoxyCodeLine{01265\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Coordinates,\ Composable\ Source>}
+\DoxyCodeLine{01266\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{expression::Complexification<Coordinates,\ Source>::forward}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01267\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ real\ =\ source.\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
+\DoxyCodeLine{01268\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}}(dtype(),\ shape(),\ strides(),\ offset(),\ real.buffer\_);\ }
+\DoxyCodeLine{01269\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}};\ }
+\DoxyCodeLine{01270\ \}\ }
+\DoxyCodeLine{01271\ }
+\DoxyCodeLine{01272\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Coordinates,\ Composable\ Real,\ Composable\ Imaginary>}
+\DoxyCodeLine{01273\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{expression::Complexification<Coordinates,\ Real,\ Imaginary>::forward}}()\textcolor{keyword}{\ const\ }\{\ \ }
+\DoxyCodeLine{01274\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(dtype(),\ shape(),\ strides(),\ offset());}
+\DoxyCodeLine{01275\ \ \ \ \ Coordinates::forward(real.forward(),\ imaginary.forward(),\ result);}
+\DoxyCodeLine{01276\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{01277\ \}\ }
+\DoxyCodeLine{01278\ }
+\DoxyCodeLine{01279\ \textcolor{keyword}{template}<Composable\ Source>}
+\DoxyCodeLine{01280\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Realification_adbe2b04640e086b7b7415d1e15f2976d}{expression::Realification<Source>::forward}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{01281\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}}\ =\ source.forward();}
+\DoxyCodeLine{01282\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ real(dtype(),\ shape(),\ strides(),\ offset(),\ \mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}}.buffer\_);\ }
+\DoxyCodeLine{01283\ \ \ \ \ \textcolor{keywordflow}{return}\ real;\ }
+\DoxyCodeLine{01284\ \}}
+\DoxyCodeLine{01285\ }
+\DoxyCodeLine{01286\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{01287\ }
+\DoxyCodeLine{01288\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TENSOR\_HPP}}
 
 \end{DoxyCode}

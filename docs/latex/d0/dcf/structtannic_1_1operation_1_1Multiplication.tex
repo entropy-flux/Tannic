@@ -2,7 +2,7 @@
 \hypertarget{structtannic_1_1operation_1_1Multiplication}{}\label{structtannic_1_1operation_1_1Multiplication}\index{tannic::operation::Multiplication@{tannic::operation::Multiplication}}
 
 
-\doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise multiplication of two tensor expressions.  
+Binary element-\/wise multiplication of two tensor expressions.  
 
 
 
@@ -13,32 +13,34 @@
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&) const
+\item 
+void \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_acb8ba5b42492431317197848f8f21913}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&, \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}} const \&, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&) const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{constexpr}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_a56241feabefc53d7ab7af1d9f7dabf9e}{promote}} (\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{first}}, \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{second}})
+static constexpr type \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_a56241feabefc53d7ab7af1d9f7dabf9e}{promote}} (type first, type second)
 \item 
-\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c71ff9099ce111774a171651975354}{broadcast}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{const}} \&\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{first}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{const}} \&\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{second}})
+static constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c71ff9099ce111774a171651975354}{broadcast}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&first, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&second)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise multiplication of two tensor expressions. 
+Binary element-\/wise multiplication of two tensor expressions. 
 
-Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1_1Binary}{Binary}\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Multiplication}{Multiplication}, Multiplicand, Multiplier\texorpdfstring{$>$}{>}} expression. Computation is deferred until {\ttfamily \doxylink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{forward()}} is called or assigned to a {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}}. Supports broadcasting and type promotion.\hypertarget{structtannic_1_1operation_1_1Multiplication_autotoc_md28}{}\doxyparagraph{\texorpdfstring{Example\+: Multiplication}{Example: Multiplication}}\label{structtannic_1_1operation_1_1Multiplication_autotoc_md28}
+Used to build a lazily evaluated {\ttfamily Binary\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Multiplication}{Multiplication}, Multiplicand, Multiplier\texorpdfstring{$>$}{>}} expression. Computation is deferred until {\ttfamily \doxylink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{forward()}} is called or assigned to a {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}}. Supports broadcasting and type promotion.\hypertarget{structtannic_1_1operation_1_1Multiplication_autotoc_md29}{}\doxyparagraph{\texorpdfstring{Example\+: Multiplication}{Example: Multiplication}}\label{structtannic_1_1operation_1_1Multiplication_autotoc_md29}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{A}}(\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{float32}},\ \{2,\ 2\});\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{A}}.initialize();}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{A}}[0,\ 0]\ =\ 1;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{A}}[0,\ 1]\ =\ 2;}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{A}}[1,\ 0]\ =\ 3;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{A}}[1,\ 1]\ =\ 4;}
+\DoxyCodeLine{Tensor\ A(float32,\ \{2,\ 2\});\ A.initialize();}
+\DoxyCodeLine{A[0,\ 0]\ =\ 1;\ A[0,\ 1]\ =\ 2;}
+\DoxyCodeLine{A[1,\ 0]\ =\ 3;\ A[1,\ 1]\ =\ 4;}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{B}}(\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{float32}},\ \{2,\ 2\});\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{B}}.initialize();}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{B}}[0,\ 0]\ =\ 10;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{B}}[0,\ 1]\ =\ 20;}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{B}}[1,\ 0]\ =\ 30;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{B}}[1,\ 1]\ =\ 40;}
+\DoxyCodeLine{Tensor\ B(float32,\ \{2,\ 2\});\ B.initialize();}
+\DoxyCodeLine{B[0,\ 0]\ =\ 10;\ B[0,\ 1]\ =\ 20;}
+\DoxyCodeLine{B[1,\ 0]\ =\ 30;\ B[1,\ 1]\ =\ 40;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{C}}\ =\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{A}}\ *\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{B}};}
-\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{C}}.forward();}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ C\ =\ A\ *\ B;}
+\DoxyCodeLine{std::cout\ <<\ C.forward();}
 \DoxyCodeLine{\textcolor{comment}{//\ Output:\ [[10,\ 40],\ [90,\ 160]]}}
 
 \end{DoxyCode}
@@ -49,19 +51,25 @@ Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1
 \index{tannic::operation::Multiplication@{tannic::operation::Multiplication}!broadcast@{broadcast}}
 \index{broadcast@{broadcast}!tannic::operation::Multiplication@{tannic::operation::Multiplication}}
 \doxysubsubsection{\texorpdfstring{broadcast()}{broadcast()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::operation\+::\+Multiplication\+::broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{const}} \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{const}} \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily static constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::operation\+::\+Multiplication\+::broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{structtannic_1_1operation_1_1Multiplication_acb8ba5b42492431317197848f8f21913}\label{structtannic_1_1operation_1_1Multiplication_acb8ba5b42492431317197848f8f21913} 
+\index{tannic::operation::Multiplication@{tannic::operation::Multiplication}!forward@{forward}}
+\index{forward@{forward}!tannic::operation::Multiplication@{tannic::operation::Multiplication}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void tannic\+::operation\+::\+Multiplication\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{,  }\item[{\mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}} const \&}]{,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{ }\end{DoxyParamCaption}) const}
 
 \Hypertarget{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}\label{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6} 
 \index{tannic::operation::Multiplication@{tannic::operation::Multiplication}!forward@{forward}}
 \index{forward@{forward}!tannic::operation::Multiplication@{tannic::operation::Multiplication}}
-\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily void tannic\+::operation\+::\+Multiplication\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{ }\end{DoxyParamCaption}) const}
 
 \Hypertarget{structtannic_1_1operation_1_1Multiplication_a56241feabefc53d7ab7af1d9f7dabf9e}\label{structtannic_1_1operation_1_1Multiplication_a56241feabefc53d7ab7af1d9f7dabf9e} 
 \index{tannic::operation::Multiplication@{tannic::operation::Multiplication}!promote@{promote}}
 \index{promote@{promote}!tannic::operation::Multiplication@{tannic::operation::Multiplication}}
 \doxysubsubsection{\texorpdfstring{promote()}{promote()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{constexpr}} \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{type}} tannic\+::operation\+::\+Multiplication\+::promote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{type}}}]{first,  }\item[{\mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication_ae6c7d6f38e5d3d418daf127962a4c0f6}{type}}}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily static constexpr type tannic\+::operation\+::\+Multiplication\+::promote (\begin{DoxyParamCaption}\item[{type}]{first,  }\item[{type}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 
 

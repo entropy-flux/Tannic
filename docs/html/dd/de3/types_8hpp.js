@@ -1,5 +1,7 @@
 var types_8hpp =
 [
+    [ "tannic::float16_t", "d5/d2c/structtannic_1_1float16__t.html", "d5/d2c/structtannic_1_1float16__t" ],
+    [ "tannic::bfloat16_t", "d0/d17/structtannic_1_1bfloat16__t.html", "d0/d17/structtannic_1_1bfloat16__t" ],
     [ "dcodeof", "dd/de3/types_8hpp.html#a7cc5a20569f733cb88c508ebb9119363", null ],
     [ "dnameof", "dd/de3/types_8hpp.html#a1f6a29013277d9209efa113453cf0b2e", null ],
     [ "dsizeof", "dd/de3/types_8hpp.html#aee5ef48cb75e37f65cc11ef67fbb9d25", null ],

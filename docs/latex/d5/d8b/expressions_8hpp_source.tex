@@ -14,12 +14,12 @@
 \DoxyCodeLine{00010\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Operation,\ Composable\ ...\ Operands>}
 \DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}\ \{}
 \DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00013\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}};}
+\DoxyCodeLine{00013\ \ \ \ \ Operation\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}};}
 \DoxyCodeLine{00014\ \ \ \ \ std::tuple<typename\ Trait<Operands>::Reference...>\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}};}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a819f1a15c9b9b73972f65caea4d78b60}{Expression}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operation}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}},\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operands>::Reference}}\ ...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}})\ }
-\DoxyCodeLine{00017\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}(std::\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{move}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}))}
-\DoxyCodeLine{00018\ \ \ \ \ ,\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}(std::\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{make\_tuple}}(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}...))\ \{\}}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a819f1a15c9b9b73972f65caea4d78b60}{Expression}}(Operation\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}},\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operands>::Reference}}\ ...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}})\ }
+\DoxyCodeLine{00017\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}(std::move(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}))}
+\DoxyCodeLine{00018\ \ \ \ \ ,\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}(std::make\_tuple(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}...))\ \{\}}
 \DoxyCodeLine{00019\ \};}
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00021\ \}\ }

@@ -2,7 +2,7 @@
 \hypertarget{structtannic_1_1operation_1_1Subtraction}{}\label{structtannic_1_1operation_1_1Subtraction}\index{tannic::operation::Subtraction@{tannic::operation::Subtraction}}
 
 
-\doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise subtraction of two tensor expressions.  
+Binary element-\/wise subtraction of two tensor expressions.  
 
 
 
@@ -17,28 +17,28 @@ void \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{constexpr}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_a69625f3aac4b5506ddf327c2c234fe91}{promote}} (\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{first}}, \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{type}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{second}})
+static constexpr type \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_a69625f3aac4b5506ddf327c2c234fe91}{promote}} (type first, type second)
 \item 
-\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_ab5950a49b85a9e14ae7a2387fbf970b9}{broadcast}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{const}} \&\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{first}}, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{const}} \&\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{second}})
+static constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_ab5950a49b85a9e14ae7a2387fbf970b9}{broadcast}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&first, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&second)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\doxylink{classtannic_1_1operation_1_1Binary}{Binary} element-\/wise subtraction of two tensor expressions. 
+Binary element-\/wise subtraction of two tensor expressions. 
 
-Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1_1Binary}{Binary}\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Subtraction}{Subtraction}, Subtrahend, Minuend\texorpdfstring{$>$}{>}} expression. Computation is deferred until {\ttfamily \doxylink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{forward()}} is called or assigned to a {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}}. Supports broadcasting and type promotion.\hypertarget{structtannic_1_1operation_1_1Subtraction_autotoc_md29}{}\doxyparagraph{\texorpdfstring{Example\+: Subtraction}{Example: Subtraction}}\label{structtannic_1_1operation_1_1Subtraction_autotoc_md29}
+Used to build a lazily evaluated {\ttfamily Binary\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Subtraction}{Subtraction}, Subtrahend, Minuend\texorpdfstring{$>$}{>}} expression. Computation is deferred until {\ttfamily \doxylink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{forward()}} is called or assigned to a {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}}. Supports broadcasting and type promotion.\hypertarget{structtannic_1_1operation_1_1Subtraction_autotoc_md30}{}\doxyparagraph{\texorpdfstring{Example\+: Subtraction}{Example: Subtraction}}\label{structtannic_1_1operation_1_1Subtraction_autotoc_md30}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{A}}(\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{float32}},\ \{2,\ 2\});\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{A}}.initialize();}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{A}}[0,\ 0]\ =\ 5;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{A}}[0,\ 1]\ =\ 7;}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{A}}[1,\ 0]\ =\ 9;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{A}}[1,\ 1]\ =\ 11;}
+\DoxyCodeLine{Tensor\ A(float32,\ \{2,\ 2\});\ A.initialize();}
+\DoxyCodeLine{A[0,\ 0]\ =\ 5;\ A[0,\ 1]\ =\ 7;}
+\DoxyCodeLine{A[1,\ 0]\ =\ 9;\ A[1,\ 1]\ =\ 11;}
 \DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{B}}(\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{float32}},\ \{2,\ 2\});\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{B}}.initialize();}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{B}}[0,\ 0]\ =\ 1;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{B}}[0,\ 1]\ =\ 2;}
-\DoxyCodeLine{\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{B}}[1,\ 0]\ =\ 3;\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{B}}[1,\ 1]\ =\ 4;}
+\DoxyCodeLine{Tensor\ B(float32,\ \{2,\ 2\});\ B.initialize();}
+\DoxyCodeLine{B[0,\ 0]\ =\ 1;\ B[0,\ 1]\ =\ 2;}
+\DoxyCodeLine{B[1,\ 0]\ =\ 3;\ B[1,\ 1]\ =\ 4;}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{C}}\ =\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{A}}\ -\/\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{B}};}
-\DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{C}}.forward();}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ C\ =\ A\ -\/\ B;}
+\DoxyCodeLine{std::cout\ <<\ C.forward();}
 \DoxyCodeLine{\textcolor{comment}{//\ Output:\ [[4,\ 5],\ [6,\ 7]]}}
 
 \end{DoxyCode}
@@ -49,7 +49,7 @@ Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1
 \index{tannic::operation::Subtraction@{tannic::operation::Subtraction}!broadcast@{broadcast}}
 \index{broadcast@{broadcast}!tannic::operation::Subtraction@{tannic::operation::Subtraction}}
 \doxysubsubsection{\texorpdfstring{broadcast()}{broadcast()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::operation\+::\+Subtraction\+::broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{const}} \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{const}} \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily static constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::operation\+::\+Subtraction\+::broadcast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}\label{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3} 
 \index{tannic::operation::Subtraction@{tannic::operation::Subtraction}!forward@{forward}}
@@ -61,7 +61,7 @@ Used to build a lazily evaluated {\ttfamily \doxylink{classtannic_1_1operation_1
 \index{tannic::operation::Subtraction@{tannic::operation::Subtraction}!promote@{promote}}
 \index{promote@{promote}!tannic::operation::Subtraction@{tannic::operation::Subtraction}}
 \doxysubsubsection{\texorpdfstring{promote()}{promote()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{static}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{constexpr}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{type}} tannic\+::operation\+::\+Subtraction\+::promote (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{type}}}]{first,  }\item[{\mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{type}}}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily static constexpr type tannic\+::operation\+::\+Subtraction\+::promote (\begin{DoxyParamCaption}\item[{type}]{first,  }\item[{type}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [constexpr]}}
 
 
 

@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::function::Sqrt",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/df8/structtannic_1_1function_1_1Sqrt.html",tooltip="Functor square root (√x) Applies element-wise square root to tensor elements."];
+  Node0 [id="Node000000",label="tannic::function::Sin",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d5/d31/structtannic_1_1function_1_1Sin.html",tooltip="Functor sine Applies element-wise sine to tensor elements (radians)"];
 }

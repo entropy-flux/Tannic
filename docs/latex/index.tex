@@ -40,7 +40,7 @@ Below is a minimal example demonstrating tensor creation, initialization, basic 
 \DoxyCodeLine{\ \ \ \ Y[0,0]\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\ \ \ \ Y[0,1]\ =\ 6;\ \ \ \ }
 \DoxyCodeLine{\ \ \ \ }
-\DoxyCodeLine{\ \ \ \ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(X)\ +\ Y\ *\ Y\ -\/\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(X)\ +\ \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}}(X,\ Y.transpose());\ \textcolor{comment}{//\ assign\ expressions\ dynamically\ like\ in\ python}}
+\DoxyCodeLine{\ \ \ \ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(X)\ +\ Y\ *\ Y\ -\/\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(X)\ +\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(X,\ Y.transpose());\ \textcolor{comment}{//\ assign\ expressions\ dynamically\ like\ in\ python}}
 \DoxyCodeLine{\ \ \ \ std::cout\ <<\ Y;\ }
 \DoxyCodeLine{\}}
 
@@ -193,7 +193,7 @@ To use Tannic, simply include it in your project and interact with it similarly 
 \DoxyCodeLine{\ \ \ \ Y[0,0]\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\ \ \ \ Y[0,1]\ =\ 6;\ \ \ \ }
 \DoxyCodeLine{\ \ \ \ }
-\DoxyCodeLine{\ \ \ \ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(X)\ +\ Y\ *\ Y\ -\/\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(X)\ +\ \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}}(X,\ Y.transpose());\ \textcolor{comment}{//\ assign\ expressions\ dynamically\ like\ in\ python}}
+\DoxyCodeLine{\ \ \ \ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(X)\ +\ Y\ *\ Y\ -\/\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(X)\ +\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(X,\ Y.transpose());\ \textcolor{comment}{//\ assign\ expressions\ dynamically\ like\ in\ python}}
 \DoxyCodeLine{\ \ \ \ std::cout\ <<\ Y;}
 \DoxyCodeLine{\ \ \ \ }
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ Z\ =\ \{}
@@ -244,7 +244,7 @@ The library is built around the Host-\/\+Device computational model, so in order
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ Y(float32,\ \{1,2\});\ Y.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Device}{Device}}());}
 \DoxyCodeLine{\ \ \ \ ...}
 \DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(X)\ +\ Y\ *\ Y\ -\/\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(X)\ +\ \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}}(X,\ Y.transpose());\ \textcolor{comment}{//\ assign\ expressions\ dynamically\ like\ in\ python}}
+\DoxyCodeLine{\ \ \ \ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(X)\ +\ Y\ *\ Y\ -\/\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(X)\ +\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(X,\ Y.transpose());\ \textcolor{comment}{//\ assign\ expressions\ dynamically\ like\ in\ python}}
 \DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Y\ is\ now\ calculated\ using\ CUDA.}}
 \DoxyCodeLine{\ \ \ \ ...}
 \DoxyCodeLine{\}}
@@ -366,7 +366,7 @@ The C++ frontend is based on templated expressions, this means that when you wri
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ expr\ =\ \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}}(X,\ Y)\ +\ Z;}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ expr\ =\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(X,\ Y)\ +\ Z;}
 
 \end{DoxyCode}
 
@@ -426,7 +426,7 @@ Finally the computation will be done when calling forward or when the expression
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ W\ =\ \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}}(X,\ Y)\ +\ Z;}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ W\ =\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(X,\ Y)\ +\ Z;}
 
 \end{DoxyCode}
 
@@ -435,7 +435,7 @@ This allows a python alike behavior since you can chain operations on the same v
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ W\ =\ \mbox{\hyperlink{namespacetannic_abe303690a4d7ad0383f88855f6f0fce6}{matmul}}(X,\ Y)\ +\ Z;}
+\DoxyCodeLine{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ W\ =\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(X,\ Y)\ +\ Z;}
 \DoxyCodeLine{W\ =\ W\ *\ \mbox{\hyperlink{namespacetannic_1_1function_a9ec44a47e78a5e28b75b76573d98e06b}{log}}(Z);}
 \DoxyCodeLine{W\ =\ W\ *\ \mbox{\hyperlink{namespacetannic_1_1function_a1a8e818c37a5236e4481677e70ce6209}{exp}}(Y)\ +\ X[1];\ }
 \DoxyCodeLine{std::cout\ <<\ W[1]\ +\ Z[0];\ \textcolor{comment}{//\ IO\ supported\ for\ expressions.}}

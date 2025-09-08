@@ -12,35 +12,35 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7df77d427763ca71419898742d1e44e6}{Comparison}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{criteria}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{first}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{second}})
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7df77d427763ca71419898742d1e44e6}{Comparison}} (Criteria criteria, typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ First $>$\+::\+Reference first, typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Second $>$\+::\+Reference second)
 \begin{DoxyCompactList}\small\item\em Constructs a comparison expression. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a2cd31d96cb96ce4cb785e7d36343b8ea}{dtype}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a2cd31d96cb96ce4cb785e7d36343b8ea}{dtype}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7d7526a84f620fa1ee0b73a51ce2137f}{shape}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7d7526a84f620fa1ee0b73a51ce2137f}{shape}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a0bb211f808eb0d002a079df08e7e305d}{strides}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a0bb211f808eb0d002a079df08e7e305d}{strides}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a404621de31ee27352f6c6180d2019f77}{offset}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a404621de31ee27352f6c6180d2019f77}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a230e1b46f74c72862ff8d1d9cb52872e}{forward}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a230e1b46f74c72862ff8d1d9cb52872e}{forward}} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Criteria, First, Second $>$}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a819f1a15c9b9b73972f65caea4d78b60}{Expression}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}} operation, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operands}} $>$\+::\+Reference ... operands)
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a819f1a15c9b9b73972f65caea4d78b60}{Expression}} (Criteria operation, typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference ... operands)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Criteria, First, Second $>$}}}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}
+Criteria \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}
 \item 
-std\+::tuple$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Operands}} $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}
+std\+::tuple$<$ typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\subsubsection*{template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7df77d427763ca71419898742d1e44e6}{class}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7df77d427763ca71419898742d1e44e6}{Criteria}}, Composable First, Composable Second$>$\newline
+\subsubsection*{template$<$class Criteria, Composable First, Composable Second$>$\newline
 class tannic\+::expression\+::\+Comparison$<$ Criteria, First, Second $>$}
 \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for element-\/wise tensor comparisons. 
 
@@ -48,7 +48,7 @@ Represents a lazy comparison between two tensor expressions. The actual boolean 
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em Criteria} & The comparison functor (e.\+g., {\ttfamily \doxylink{structtannic_1_1expression_1_1EQ}{EQ}}, {\ttfamily \doxylink{structtannic_1_1expression_1_1LT}{LT}}) \\
+{\em Criteria} & The comparison functor (e.\+g., {\ttfamily EQ}, {\ttfamily LT}) \\
 \hline
 {\em First} & The left-\/hand expression type \\
 \hline
@@ -62,8 +62,8 @@ Represents a lazy comparison between two tensor expressions. The actual boolean 
 \index{tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}!Comparison@{Comparison}}
 \index{Comparison@{Comparison}!tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}}
 \doxysubsubsection{\texorpdfstring{Comparison()}{Comparison()}}
-{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{class}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}} , Composable First, Composable Second$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} $>$\+::\+Comparison (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}}}]{criteria,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}} $>$\+::\+Reference}]{first,  }\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} $>$\+::\+Reference}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$class Criteria , Composable First, Composable Second$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ Criteria, First, Second $>$\+::\+Comparison (\begin{DoxyParamCaption}\item[{Criteria}]{criteria,  }\item[{typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ First $>$\+::\+Reference}]{first,  }\item[{typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Second $>$\+::\+Reference}]{second }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -81,36 +81,36 @@ Constructs a comparison expression.
 \index{tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}!dtype@{dtype}}
 \index{dtype@{dtype}!tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}}
 \doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
-{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{class}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}} , Composable First, Composable Second$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$class Criteria , Composable First, Composable Second$>$ \\
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ Criteria, First, Second $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Comparison_a230e1b46f74c72862ff8d1d9cb52872e}\label{classtannic_1_1expression_1_1Comparison_a230e1b46f74c72862ff8d1d9cb52872e} 
 \index{tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
-{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{class}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}} , Composable First, Composable Second$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$class Criteria , Composable First, Composable Second$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ Criteria, First, Second $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Comparison_a404621de31ee27352f6c6180d2019f77}\label{classtannic_1_1expression_1_1Comparison_a404621de31ee27352f6c6180d2019f77} 
 \index{tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}!offset@{offset}}
 \index{offset@{offset}!tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}}
 \doxysubsubsection{\texorpdfstring{offset()}{offset()}}
-{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{class}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}} , Composable First, Composable Second$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$class Criteria , Composable First, Composable Second$>$ \\
+constexpr std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ Criteria, First, Second $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Comparison_a7d7526a84f620fa1ee0b73a51ce2137f}\label{classtannic_1_1expression_1_1Comparison_a7d7526a84f620fa1ee0b73a51ce2137f} 
 \index{tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
-{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{class}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}} , Composable First, Composable Second$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$class Criteria , Composable First, Composable Second$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ Criteria, First, Second $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Comparison_a0bb211f808eb0d002a079df08e7e305d}\label{classtannic_1_1expression_1_1Comparison_a0bb211f808eb0d002a079df08e7e305d} 
 \index{tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::expression::Comparison$<$ Criteria, First, Second $>$@{tannic::expression::Comparison$<$ Criteria, First, Second $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
-{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{class}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}} , Composable First, Composable Second$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Criteria}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{First}}, \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Second}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$class Criteria , Composable First, Composable Second$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison}}$<$ Criteria, First, Second $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 

@@ -1,0 +1,91 @@
+\doxysection{scalars.\+hpp}
+\hypertarget{scalars_8hpp_source}{}\label{scalars_8hpp_source}\index{include/tannic/scalars.hpp@{include/tannic/scalars.hpp}}
+\mbox{\hyperlink{scalars_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SCALAR\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SCALAR\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}\ \ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{types_8hpp}{types.hpp}}"{}}\ \ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{concepts_8hpp}{concepts.hpp}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exceptions_8hpp}{exceptions.hpp}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1Scalar_a57dfb6604608bac4c1bd2fa6e1990f1c}{Value}}\ =\ std::variant<\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int8\_t}},}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int16\_t}},}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int32\_t}},}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int64\_t}},}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1float16__t}{float16\_t}},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtannic_1_1bfloat16__t}{bfloat16\_t}},}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{float}},\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{double}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::complex<float>,\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::complex<double>\ }
+\DoxyCodeLine{00028\ \ \ \ \ >;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{template}\ <Arithmetic\ T>}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Scalar_aa05fc0ae18b10e32bcd3ee15fbf0d9c6}{Scalar}}(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{T}}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}})\ }
+\DoxyCodeLine{00032\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}<\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{T}}>())\ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ ,\ \ \ value\_(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}})\ }
+\DoxyCodeLine{00034\ \ \ \ \ \{\}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{template}\ <Arithmetic\ T>}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Scalar_a5195c8e3a6cda761918b54746ece78c2}{Scalar}}(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{T}}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}},\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{type}}\ \mbox{\hyperlink{classtannic_1_1Scalar_a46c9c53513d749817e0327a892ed18b7}{dtype}})\ }
+\DoxyCodeLine{00038\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1Scalar_a46c9c53513d749817e0327a892ed18b7}{dtype}})\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{classtannic_1_1Scalar_a46c9c53513d749817e0327a892ed18b7}{dtype}})\ \{\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int8}}:\ \ \ \ \ \ \ value\_\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int8\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}});\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int16}}:\ \ \ \ \ \ value\_\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int16\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int32}}:\ \ \ \ \ \ value\_\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int32\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int64}}:\ \ \ \ \ \ value\_\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{int64\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{float16}}:\ \ \ \ value\_\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structtannic_1_1float16__t}{float16\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}});\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{bfloat16}}:\ \ \ value\_\ =\ \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{structtannic_1_1bfloat16__t}{bfloat16\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{float32}}:\ \ \ \ value\_\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{float64}}:\ \ \ \ value\_\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}});\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{complex64}}:\ \ value\_\ =\ std::complex<float>(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}});\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{complex128}}:\ value\_\ =\ std::complex<double>(\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Unsupported\ Scalar\ dtype"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{T}}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{get}}()\textcolor{keyword}{\ const\ }\{\ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::holds\_alternative<T>(value\_))\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Variant\ type\ mismatch\ in\ Scalar::get"{}});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::get<T>(value\_);}
+\DoxyCodeLine{00059\ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{type}}\ \mbox{\hyperlink{classtannic_1_1Scalar_a46c9c53513d749817e0327a892ed18b7}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classtannic_1_1Scalar_a6193d612173f75e9acb11ff6c6f5711d}{address}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::visit([](\textcolor{keyword}{auto}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}})\ -\/>\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \},\ value\_);}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classtannic_1_1Scalar_ae534ae75bef7b62906d7e9d58ce19e0d}{address}}()\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::visit([](\textcolor{keyword}{auto}\&\ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}})\ -\/>\ \textcolor{keywordtype}{void}*\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \&\mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{value}};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \},\ value\_);}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Scalar_abffff5c6408b712d269f00e52fa3d364}{type}}\ dtype\_;}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Scalar_a57dfb6604608bac4c1bd2fa6e1990f1c}{Value}}\ value\_;}
+\DoxyCodeLine{00081\ \};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00084\ \ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SCALAR\_HPP}}
+
+\end{DoxyCode}

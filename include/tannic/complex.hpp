@@ -295,28 +295,28 @@ public:
      * @class Realification
      * @brief Creates a real-valued view of complex tensor data
      */
+
     constexpr Realification(Trait<Source>::Reference source)
-    :   source(source) 
-    { 
+    :   source(source) { 
         switch (source.dtype()) {
             case complex64:  dtype_ = float32; break;
             case complex128: dtype_ = float64; break;
             default:
-                assert(false && 
-                       "Real view error: source tensor dtype must be complex64 or complex128");
+                throw Exception("Real view error: source tensor dtype must be complex64 or complex128");
         }
  
-        if (source.strides()[-1] == 1) {  
-            shape_ = Shape(source.shape().begin(), source.shape().end());
-            shape_.expand(2);  
-
-            strides_ = Strides(source.strides().begin(), source.strides().end());
-            strides_.expand(1);  
-            strides_[-2] = 2;
-        } else {
-            throw Exception("Real view error: source tensor is not in interleaved real/imag format"); 
+        if (source.strides()[-1] != 1) {
+            throw Exception("Real view error: source tensor is not in interleaved real/imag format");
         }
-
+ 
+        shape_ = Shape(source.shape().begin(), source.shape().end());
+        shape_.expand(2);
+ 
+        strides_ = Strides(source.strides().begin(), source.strides().end());
+        strides_.expand(1);  
+        for (auto dimension = 0; dimension < strides_.rank() - 1; ++dimension) {
+            strides_[dimension] *= 2;   
+        }
     }
 
     /**

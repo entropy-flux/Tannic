@@ -24,56 +24,67 @@
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <concepts>}}
 \DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <iterator>}\ \ \ }
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{types_8hpp}{types.hpp}}"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{types_8hpp}{types.hpp}}"{}}\ }
 \DoxyCodeLine{00036\ }
 \DoxyCodeLine{00037\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
 \DoxyCodeLine{00038\ }
 \DoxyCodeLine{00039\ \textcolor{keyword}{class\ }Shape;}
 \DoxyCodeLine{00040\ \textcolor{keyword}{class\ }Strides;}
-\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }Tensor;\ }
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00084\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00085\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ =\ \textcolor{keyword}{requires}(\textcolor{keyword}{const}\ T\ expression)\ \{}
-\DoxyCodeLine{00086\ \ \ \ \ \{\ expression.dtype()\ \ \ \}\ -\/>\ std::same\_as<type>;}
-\DoxyCodeLine{00087\ \ \ \ \ \{\ expression.shape()\ \ \ \}\ -\/>\ std::same\_as<Shape\ const\&>;}
-\DoxyCodeLine{00088\ \ \ \ \ \{\ expression.strides()\ \}\ -\/>\ std::same\_as<Strides\ const\&>;}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ expression.offset();}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ expression.forward();}
-\DoxyCodeLine{00091\ \};\ }
-\DoxyCodeLine{00092\ }
-\DoxyCodeLine{00108\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00109\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Operator}{Operator}}\ =\ \textcolor{keyword}{requires}(T\ operation,\ \textcolor{keyword}{const}\ Shape\&\ first,\ \textcolor{keyword}{const}\ Shape\&\ second)\ \{}
-\DoxyCodeLine{00110\ \ \ \ \ \{\ T::promote(type\{\},\ type\{\})\ \}\ -\/>\ std::same\_as<type>;}
-\DoxyCodeLine{00111\ \ \ \ \ \{\ T::broadcast(first,\ second)\ \}\ -\/>\ std::same\_as<Shape>;\ }
-\DoxyCodeLine{00112\ \};}
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00122\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Function>}
-\DoxyCodeLine{00123\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Functional}{Functional}}\ =\ \textcolor{keyword}{requires}(Function\ function,\ \textcolor{keyword}{const}\ Tensor\&\ input,\ Tensor\&\ output)\ \{}
-\DoxyCodeLine{00124\ \ \ \ \ \{\ function(input,\ output)\ \}\ -\/>\ std::same\_as<void>;}
-\DoxyCodeLine{00125\ \};}
-\DoxyCodeLine{00126\ }
-\DoxyCodeLine{00131\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00132\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Iterable}{Iterable}}\ =\ \textcolor{keyword}{requires}(T\ type)\ \{\ std::begin(type);\ std::end(type);\ \};\ \ \ }
-\DoxyCodeLine{00133\ }
-\DoxyCodeLine{00138\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00139\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}\ =\ std::input\_iterator<T>;\ \ }
-\DoxyCodeLine{00140\ }
-\DoxyCodeLine{00145\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00146\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}\ =\ std::is\_integral\_v<T>;\ }
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00169\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00170\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Assignable}{Assignable}}\ =\ \textcolor{keyword}{requires}(T\ t,\ \textcolor{keyword}{const}\ std::byte*\ ptr,\ std::ptrdiff\_t\ offset)\ \{}
-\DoxyCodeLine{00171\ \ \ \ \ \{\ t.assign(ptr,\ offset)\ \}\ -\/>\ std::same\_as<void>;}
-\DoxyCodeLine{00172\ \};}
-\DoxyCodeLine{00173\ }
-\DoxyCodeLine{00193\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00194\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Comparable}{Comparable}}\ =\ \textcolor{keyword}{requires}(\textcolor{keyword}{const}\ T\ t,\ \textcolor{keyword}{const}\ std::byte*\ ptr,\ std::ptrdiff\_t\ offset)\ \{}
-\DoxyCodeLine{00195\ \ \ \ \ \{\ t.compare(ptr,\ offset)\ \}\ -\/>\ std::same\_as<bool>;}
-\DoxyCodeLine{00196\ \};\ }
-\DoxyCodeLine{00197\ \ }
-\DoxyCodeLine{00198\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00199\ }
-\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONCEPTS\_HPP}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{class\ }Scalar;}
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }Tensor;\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00086\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}\ =\ std::same\_as<T,\ Scalar>\ ||\ (\ \textcolor{keyword}{requires}(\textcolor{keyword}{const}\ T\ expression)\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{\ expression.dtype()\ \ \ \}\ -\/>\ std::same\_as<type>;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{\ expression.shape()\ \ \ \}\ -\/>\ std::same\_as<Shape\ const\&>;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \{\ expression.strides()\ \}\ -\/>\ std::same\_as<Strides\ const\&>;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ expression.offset();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ expression.forward();}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ );}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00111\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Operator}{Operator}}\ =\ \textcolor{keyword}{requires}(T\ operation,\ \textcolor{keyword}{const}\ Shape\&\ first,\ \textcolor{keyword}{const}\ Shape\&\ second)\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \{\ T::promote(type\{\},\ type\{\})\ \}\ -\/>\ std::same\_as<type>;}
+\DoxyCodeLine{00113\ \ \ \ \ \{\ T::broadcast(first,\ second)\ \}\ -\/>\ std::same\_as<Shape>;\ }
+\DoxyCodeLine{00114\ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00124\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Function>}
+\DoxyCodeLine{00125\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Functional}{Functional}}\ =\ \textcolor{keyword}{requires}(Function\ function,\ \textcolor{keyword}{const}\ Tensor\&\ input,\ Tensor\&\ output)\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \{\ function(input,\ output)\ \}\ -\/>\ std::same\_as<void>;}
+\DoxyCodeLine{00127\ \};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00134\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Iterable}{Iterable}}\ =\ \textcolor{keyword}{requires}(T\ type)\ \{\ std::begin(type);\ std::end(type);\ \};\ \ \ }
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00140\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00141\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}\ =\ std::input\_iterator<T>;\ \ }
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00147\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00148\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}\ =\ std::is\_integral\_v<T>;\ }
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00159\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00160\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Arithmetic}{Arithmetic}}\ =}
+\DoxyCodeLine{00161\ \ \ \ \ std::is\_arithmetic\_v<T>\ ||}
+\DoxyCodeLine{00162\ \ \ \ \ std::same\_as<T,\ float16\_t>\ ||}
+\DoxyCodeLine{00163\ \ \ \ \ std::same\_as<T,\ bfloat16\_t>\ ||}
+\DoxyCodeLine{00164\ \ \ \ \ std::same\_as<T,\ std::complex<float>>\ ||}
+\DoxyCodeLine{00165\ \ \ \ \ std::same\_as<T,\ std::complex<double>>;}
+\DoxyCodeLine{00166\ \ \ \ \ }
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00188\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00189\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Assignable}{Assignable}}\ =\ \textcolor{keyword}{requires}(T\ t,\ \textcolor{keyword}{const}\ std::byte*\ ptr,\ std::ptrdiff\_t\ offset)\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \{\ t.assign(ptr,\ offset)\ \}\ -\/>\ std::same\_as<void>;}
+\DoxyCodeLine{00191\ \};}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00212\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00213\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Comparable}{Comparable}}\ =\ \textcolor{keyword}{requires}(\textcolor{keyword}{const}\ T\ t,\ \textcolor{keyword}{const}\ std::byte*\ ptr,\ std::ptrdiff\_t\ offset)\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \{\ t.compare(ptr,\ offset)\ \}\ -\/>\ std::same\_as<bool>;}
+\DoxyCodeLine{00215\ \};\ }
+\DoxyCodeLine{00216\ \ }
+\DoxyCodeLine{00217\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONCEPTS\_HPP}}
 
 \end{DoxyCode}

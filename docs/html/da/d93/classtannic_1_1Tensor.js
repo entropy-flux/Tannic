@@ -2,6 +2,7 @@ var classtannic_1_1Tensor =
 [
     [ "rank_type", "da/d93/classtannic_1_1Tensor.html#ab57635886a913849763fd6f8a3681239", null ],
     [ "size_type", "da/d93/classtannic_1_1Tensor.html#a7763d4fac9b2cb12f84e363475ddfafb", null ],
+    [ "Tensor", "da/d93/classtannic_1_1Tensor.html#a976200a0e67254cba616672f58963c34", null ],
     [ "Tensor", "da/d93/classtannic_1_1Tensor.html#a432bc6e8f152fe13c47fc7a7c97a7f67", null ],
     [ "Tensor", "da/d93/classtannic_1_1Tensor.html#a3410eb0c4a1e751e40a7df2153be804c", null ],
     [ "Tensor", "da/d93/classtannic_1_1Tensor.html#ad7d3de73d311b6f56db0f177b55f816c", null ],

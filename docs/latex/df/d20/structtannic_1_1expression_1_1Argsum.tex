@@ -12,18 +12,18 @@ Sums tensor values along an axis.
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a64716b4c33e2ec4ee5d7e8055254f37d}{reduce}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} dtype) \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr type \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a64716b4c33e2ec4ee5d7e8055254f37d}{reduce}} (type dtype) const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a33287265068ee818db6878d70753b574}{reduce}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&shape) \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a33287265068ee818db6878d70753b574}{reduce}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&shape) const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{void}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{input}}, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{output}}) \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+void \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&input, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&output) const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a79e75eb9ba3e4075ef14c36735d3ae04}{axis}}
+int \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a79e75eb9ba3e4075ef14c36735d3ae04}{axis}}
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a35cc26c059df57051eb2800a1d38a188}{keepdim}}
+bool \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a35cc26c059df57051eb2800a1d38a188}{keepdim}}
 \end{DoxyCompactItemize}
 
 
@@ -51,19 +51,19 @@ Preserves input dtype. Use {\ttfamily keepdim=true} to maintain shape for broadc
 \index{tannic::expression::Argsum@{tannic::expression::Argsum}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Argsum@{tannic::expression::Argsum}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{void}} tannic\+::expression\+::\+Argsum\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&}]{input,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{output }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily void tannic\+::expression\+::\+Argsum\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{input,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{output }\end{DoxyParamCaption}) const}
 
 \Hypertarget{structtannic_1_1expression_1_1Argsum_a33287265068ee818db6878d70753b574}\label{structtannic_1_1expression_1_1Argsum_a33287265068ee818db6878d70753b574} 
 \index{tannic::expression::Argsum@{tannic::expression::Argsum}!reduce@{reduce}}
 \index{reduce@{reduce}!tannic::expression::Argsum@{tannic::expression::Argsum}}
 \doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::expression\+::\+Argsum\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \&}]{shape }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::expression\+::\+Argsum\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{shape }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \Hypertarget{structtannic_1_1expression_1_1Argsum_a64716b4c33e2ec4ee5d7e8055254f37d}\label{structtannic_1_1expression_1_1Argsum_a64716b4c33e2ec4ee5d7e8055254f37d} 
 \index{tannic::expression::Argsum@{tannic::expression::Argsum}!reduce@{reduce}}
 \index{reduce@{reduce}!tannic::expression::Argsum@{tannic::expression::Argsum}}
 \doxysubsubsection{\texorpdfstring{reduce()}{reduce()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} tannic\+::expression\+::\+Argsum\+::reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}}}]{dtype }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily constexpr type tannic\+::expression\+::\+Argsum\+::reduce (\begin{DoxyParamCaption}\item[{type}]{dtype }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -72,13 +72,13 @@ Preserves input dtype. Use {\ttfamily keepdim=true} to maintain shape for broadc
 \index{tannic::expression::Argsum@{tannic::expression::Argsum}!axis@{axis}}
 \index{axis@{axis}!tannic::expression::Argsum@{tannic::expression::Argsum}}
 \doxysubsubsection{\texorpdfstring{axis}{axis}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{int}} tannic\+::expression\+::\+Argsum\+::axis}
+{\footnotesize\ttfamily int tannic\+::expression\+::\+Argsum\+::axis}
 
 \Hypertarget{structtannic_1_1expression_1_1Argsum_a35cc26c059df57051eb2800a1d38a188}\label{structtannic_1_1expression_1_1Argsum_a35cc26c059df57051eb2800a1d38a188} 
 \index{tannic::expression::Argsum@{tannic::expression::Argsum}!keepdim@{keepdim}}
 \index{keepdim@{keepdim}!tannic::expression::Argsum@{tannic::expression::Argsum}}
 \doxysubsubsection{\texorpdfstring{keepdim}{keepdim}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{bool}} tannic\+::expression\+::\+Argsum\+::keepdim}
+{\footnotesize\ttfamily bool tannic\+::expression\+::\+Argsum\+::keepdim}
 
 
 

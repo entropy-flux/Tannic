@@ -5,6 +5,7 @@
 
 #include "tensor.hpp"
 #include "complex.hpp" 
+#include "comparisons.hpp"
 
 using namespace tannic;
 
@@ -64,4 +65,39 @@ TEST_F(ComplexTests, HostPolarConversionManual) {
         ASSERT_NEAR(real_val, expected_real[idx], 1e-3f) << "Real part mismatch at index " << idx;
         ASSERT_NEAR(imag_val, expected_imag[idx], 1e-3f) << "Imag part mismatch at index " << idx;
     }
+}
+
+
+Tensor freq_cis(
+    type dtype,
+    size_t model_dimension,
+    size_t sequence_length_limit,
+    double theta = 10000.0
+) {
+        auto scale = std::log(theta) / static_cast<double>(model_dimension);
+        Tensor rho = ones(dtype, {sequence_length_limit, model_dimension / 2});
+        Tensor phi(dtype, {sequence_length_limit, model_dimension / 2}); 
+        for(auto position = 0; position < sequence_length_limit; position++) {
+            for(auto dimension = 0; dimension < model_dimension / 2; dimension++) { 
+                phi[position, dimension] = position * std::exp(-2 * dimension * scale); 
+            }
+        } 
+        return polar(rho, phi);
+}
+
+TEST_F(ComplexTests, LlamaFreqCis) { 
+    Tensor X_expected(float64, {8, 3, 2}); X_expected.initialize({
+        { {1.0000f, 0.0000f}, {1.0000f, 0.0000f}, {1.0000f, 0.0000f} },
+        { {0.5403f, 0.8415f}, {0.9989f, 0.0464f}, {1.0000f, 0.0022f} },
+        { {-0.4161f, 0.9093f}, {0.9957f, 0.0927f}, {1.0000f, 0.0043f} },
+        { {-0.9900f, 0.1411f}, {0.9903f, 0.1388f}, {1.0000f, 0.0065f} },
+        { {-0.6536f, -0.7568f}, {0.9828f, 0.1846f}, {1.0000f, 0.0086f} },
+        { {0.2837f, -0.9589f}, {0.9732f, 0.2300f}, {0.9999f, 0.0108f} },
+        { {0.9602f, -0.2794f}, {0.9615f, 0.2749f}, {0.9999f, 0.0129f} },
+        { {0.7539f, 0.6570f}, {0.9477f, 0.3192f}, {0.9999f, 0.0151f} }
+    }); 
+
+
+    Tensor X = freq_cis(float64, 6, 8);  
+    EXPECT_TRUE(allclose(X_expected, realify(X), 0.1, 0.1));
 }

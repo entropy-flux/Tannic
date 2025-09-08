@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['matmul_0',['matmul',['../d0/d1a/namespacetannic.html#abe303690a4d7ad0383f88855f6f0fce6',1,'tannic']]],
-  ['mean_1',['mean',['../d9/dd9/namespacetannic_1_1expression.html#af322dc9f370e4f50cfcacec0f6fbe527',1,'tannic::expression']]],
-  ['metadataof_2',['metadataof',['../d0/d1a/namespacetannic.html#a86aef25866193018eadfb21fa69465f7',1,'tannic']]]
+  ['log_0',['log',['../dd/d74/namespacetannic_1_1function.html#a9ec44a47e78a5e28b75b76573d98e06b',1,'tannic::function']]]
 ];

@@ -1,0 +1,88 @@
+\doxysection{tannic\+::expression\+::Binary\texorpdfstring{$<$}{<} Operation, Operand, Scalar \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4}{}\label{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4}\index{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}}
+
+
+{\ttfamily \#include $<$operations.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a893426f06fcad7248c0fa847818f1bf1}{Binary}} (Operation \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}, \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operand $>$\+::\+Reference operand, \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}} scale)
+\item 
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a1dcfa70cd3eaecd4c9c6df6c58bcd88c}{dtype}} () const
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_ac73b5eeaa90faaad09ca35f27d549042}{shape}} () const
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a7045ca14e9c2051df51894124cb8fe3e}{strides}} () const
+\item 
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a6d3dea40951473378ef703047d4e1b78}{offset}} () const
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_ad2d5bb50c2c71c81b377d6c820f534ea}{forward}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Operation, Operand, Scalar $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a819f1a15c9b9b73972f65caea4d78b60}{Expression}} (Operation operation, typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference ... operands)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Operation, Operand, Scalar $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+Operation \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}
+\item 
+std\+::tuple$<$ typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a893426f06fcad7248c0fa847818f1bf1}\label{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a893426f06fcad7248c0fa847818f1bf1} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}!Binary@{Binary}}
+\index{Binary@{Binary}!tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{Binary()}{Binary()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ Operation, Operand, \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}} $>$\+::\+Binary (\begin{DoxyParamCaption}\item[{Operation}]{operation,  }\item[{\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operand $>$\+::\+Reference}]{operand,  }\item[{\mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}}}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a1dcfa70cd3eaecd4c9c6df6c58bcd88c}\label{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a1dcfa70cd3eaecd4c9c6df6c58bcd88c} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand$>$ \\
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ Operation, Operand, \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_ad2d5bb50c2c71c81b377d6c820f534ea}\label{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_ad2d5bb50c2c71c81b377d6c820f534ea} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ Operation, Operand, \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a6d3dea40951473378ef703047d4e1b78}\label{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a6d3dea40951473378ef703047d4e1b78} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand$>$ \\
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ Operation, Operand, \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_ac73b5eeaa90faaad09ca35f27d549042}\label{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_ac73b5eeaa90faaad09ca35f27d549042} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ Operation, Operand, \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a7045ca14e9c2051df51894124cb8fe3e}\label{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4_a7045ca14e9c2051df51894124cb8fe3e} 
+\index{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::expression::Binary$<$ Operation, Operand, Scalar $>$@{tannic::expression::Binary$<$ Operation, Operand, Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily template$<$Operator Operation, Composable Operand$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ Operation, Operand, \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{operations_8hpp}{operations.\+hpp}}\item 
+include/tannic/\mbox{\hyperlink{tensor_8hpp}{tensor.\+hpp}}\end{DoxyCompactItemize}

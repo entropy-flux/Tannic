@@ -12,17 +12,17 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$Integral... Sizes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1View_ae2cba300b3fa4c438c0e1edf3ddc8ed3}{View}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::\+Reference source, Sizes... \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{sizes}})
+{\footnotesize template$<$Integral... Sizes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1View_ae2cba300b3fa4c438c0e1edf3ddc8ed3}{View}} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, Sizes... sizes)
 \begin{DoxyCompactList}\small\item\em Construct a reshaped view of the source tensor. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1View_a96b3a4db8ae1b05bc0a4a2e1f8fab3f5}{dtype}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1View_a96b3a4db8ae1b05bc0a4a2e1f8fab3f5}{dtype}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1View_a3ced07a49e01a73338c4107a17329107}{shape}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1View_a3ced07a49e01a73338c4107a17329107}{shape}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1View_ab5304bd359a6017c8456710f18242c47}{strides}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1View_ab5304bd359a6017c8456710f18242c47}{strides}} () const
 \item 
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1View_a9fb35e53915721dbc56055518e225fc0}{offset}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1View_a9fb35e53915721dbc56055518e225fc0}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1View_a7b5ad72ef32e48690f972e19f9ffb359}{forward}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1View_a7b5ad72ef32e48690f972e19f9ffb359}{forward}} () const
 \end{DoxyCompactItemize}
 
 
@@ -55,7 +55,7 @@ Example\+:
 \doxysubsubsection{\texorpdfstring{View()}{View()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 template$<$Integral... Sizes$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::\+View (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::\+Reference}]{source,  }\item[{Sizes...}]{sizes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ Source $>$\+::\+View (\begin{DoxyParamCaption}\item[{typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference}]{source,  }\item[{Sizes...}]{sizes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -86,7 +86,7 @@ Construct a reshaped view of the source tensor.
 \index{dtype@{dtype}!tannic::expression::View$<$ Source $>$@{tannic::expression::View$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ Source $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \begin{DoxyReturn}{Returns}
 The runtime data type of the tensor elements.
@@ -96,14 +96,14 @@ This simply forwards the call to the underlying source expression’s {\ttfamily
 \index{forward@{forward}!tannic::expression::View$<$ Source $>$@{tannic::expression::View$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1View_a9fb35e53915721dbc56055518e225fc0}\label{classtannic_1_1expression_1_1View_a9fb35e53915721dbc56055518e225fc0} 
 \index{tannic::expression::View$<$ Source $>$@{tannic::expression::View$<$ Source $>$}!offset@{offset}}
 \index{offset@{offset}!tannic::expression::View$<$ Source $>$@{tannic::expression::View$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{offset()}{offset()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ Source $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \begin{DoxyReturn}{Returns}
 The byte offset of the reshaped view from the start of the storage.
@@ -113,7 +113,7 @@ This value is forwarded from the source expression’s {\ttfamily \doxylink{clas
 \index{shape@{shape}!tannic::expression::View$<$ Source $>$@{tannic::expression::View$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ Source $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \begin{DoxyReturn}{Returns}
 The shape of the reshaped view.
@@ -124,7 +124,7 @@ In a reshape, this value is explicitly provided in the constructor through {\ttf
 \index{strides@{strides}!tannic::expression::View$<$ Source $>$@{tannic::expression::View$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1View}{tannic\+::expression\+::\+View}}$<$ Source $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \begin{DoxyReturn}{Returns}
 The strides of the reshaped view.

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['_7ebuffer_0',['~Buffer',['../d4/d50/classtannic_1_1Buffer.html#a7c75111cb4c087e0a37c7bc6a30c27cd',1,'tannic::Buffer']]],
-  ['_7edevices_1',['~Devices',['../d9/dd4/classtannic_1_1Devices.html#a513783c8846b32def70425c651f08c1d',1,'tannic::Devices']]],
-  ['_7enode_2',['~Node',['../df/d85/structtannic_1_1Node.html#a94744396f5f2071630eecf560d1e9c04',1,'tannic::Node']]]
+  ['what_0',['what',['../d9/d87/classtannic_1_1Exception.html#a5feac1cfebef8372d4d65b1e03362970',1,'tannic::Exception::what()'],['../d4/d0a/classtannic_1_1Error.html#ac3c7c83a0b80b0f811ef672df3173291',1,'tannic::Error::what()']]]
 ];

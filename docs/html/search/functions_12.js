@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['what_0',['what',['../d9/d87/classtannic_1_1Exception.html#a5feac1cfebef8372d4d65b1e03362970',1,'tannic::Exception::what()'],['../d4/d0a/classtannic_1_1Error.html#ac3c7c83a0b80b0f811ef672df3173291',1,'tannic::Error::what()']]]
+  ['view_0',['view',['../d2/d9f/classtannic_1_1expression_1_1View.html#ae2cba300b3fa4c438c0e1edf3ddc8ed3',1,'tannic::expression::View::View()'],['../da/d93/classtannic_1_1Tensor.html#ad8a06c269d4e7f3c806a40f509435b34',1,'tannic::Tensor::view()'],['../d9/dd9/namespacetannic_1_1expression.html#a5f5b6b37401a67689b7df785f85eefbe',1,'tannic::expression::view()']]]
 ];

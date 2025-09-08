@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pytorch_0',['PyTorch',['../d0/d1a/namespacetannic.html#a22253ce740114e2dcc7042ce55e5cc66a95b88f180e9eb5678e0f9ebac2cbe643',1,'tannic']]]
+  ['lower_0',['Lower',['../d9/dd9/namespacetannic_1_1expression.html#a6098dcc67057f7f812acbf68a80f6cf0ab75fcdd2d72d9e000beab48622402d93',1,'tannic::expression']]]
 ];

@@ -12,17 +12,17 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$Integral... Axes$>$ }\\\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a5e362538d7340ed873e80a1c70bd8c6b}{Unsqueeze}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::\+Reference source, Axes... \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{axes}})
+{\footnotesize template$<$Integral... Axes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a5e362538d7340ed873e80a1c70bd8c6b}{Unsqueeze}} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, Axes... axes)
 \begin{DoxyCompactList}\small\item\em Construct an unsqueezed view of the source tensor. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a7ee95913f844a7df71955284b2ab32e3}{dtype}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a7ee95913f844a7df71955284b2ab32e3}{dtype}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a99cbdfb1c021f6fb3c06f19e160d67db}{shape}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a99cbdfb1c021f6fb3c06f19e160d67db}{shape}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}} \& \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a79a8d6ee2039937f10a62c5eb40e2d11}{strides}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a79a8d6ee2039937f10a62c5eb40e2d11}{strides}} () const
 \item 
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_ade4bf0181936c6482c78bef2c4c1af68}{offset}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_ade4bf0181936c6482c78bef2c4c1af68}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a9408a46e9118e87e8c2cd756f11e1d35}{forward}} () \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze_a9408a46e9118e87e8c2cd756f11e1d35}{forward}} () const
 \end{DoxyCompactItemize}
 
 
@@ -54,7 +54,7 @@ Example\+:
 \doxysubsubsection{\texorpdfstring{Unsqueeze()}{Unsqueeze()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 template$<$Integral... Axes$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::\+Unsqueeze (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{typename}} \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::\+Reference}]{source,  }\item[{Axes...}]{axes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ Source $>$\+::\+Unsqueeze (\begin{DoxyParamCaption}\item[{typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference}]{source,  }\item[{Axes...}]{axes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -69,7 +69,7 @@ Construct an unsqueezed view of the source tensor.
 \begin{DoxyParams}{Parameters}
 {\em source} & Reference to the source expression or tensor. \\
 \hline
-{\em axes} & One or more dimension indices (negative indices allowed).\\
+{\em axes} & \doxylink{classtannic_1_1expression_1_1One}{One} or more dimension indices (negative indices allowed).\\
 \hline
 \end{DoxyParams}
 Example\+:
@@ -91,7 +91,7 @@ Example\+:
 \index{dtype@{dtype}!tannic::expression::Unsqueeze$<$ Source $>$@{tannic::expression::Unsqueeze$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{type}} \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ Source $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \begin{DoxyReturn}{Returns}
 The runtime data type of the tensor elements.
@@ -101,14 +101,14 @@ This is forwarded directly from the source expression. Unsqueezing does not alte
 \index{forward@{forward}!tannic::expression::Unsqueeze$<$ Source $>$@{tannic::expression::Unsqueeze$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1Unsqueeze_ade4bf0181936c6482c78bef2c4c1af68}\label{classtannic_1_1expression_1_1Unsqueeze_ade4bf0181936c6482c78bef2c4c1af68} 
 \index{tannic::expression::Unsqueeze$<$ Source $>$@{tannic::expression::Unsqueeze$<$ Source $>$}!offset@{offset}}
 \index{offset@{offset}!tannic::expression::Unsqueeze$<$ Source $>$@{tannic::expression::Unsqueeze$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{offset()}{offset()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ Source $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \begin{DoxyReturn}{Returns}
 The byte offset of the unsqueezed tensor from the start of storage.
@@ -118,7 +118,7 @@ This is forwarded from the source tensor since unsqueezing does not change the s
 \index{shape@{shape}!tannic::expression::Unsqueeze$<$ Source $>$@{tannic::expression::Unsqueeze$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ Source $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \begin{DoxyReturn}{Returns}
 The shape of the unsqueezed tensor.
@@ -138,7 +138,7 @@ Example\+:
 \index{strides@{strides}!tannic::expression::Unsqueeze$<$ Source $>$@{tannic::expression::Unsqueeze$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{constexpr}} \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{const}}  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Source}} $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Unsqueeze}{tannic\+::expression\+::\+Unsqueeze}}$<$ Source $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 \begin{DoxyReturn}{Returns}
 The strides of the unsqueezed tensor.

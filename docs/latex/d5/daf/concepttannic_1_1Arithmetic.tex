@@ -1,0 +1,29 @@
+\doxysection{tannic\+::Arithmetic Concept Reference}
+\hypertarget{concepttannic_1_1Arithmetic}{}\label{concepttannic_1_1Arithmetic}\index{tannic::Arithmetic@{tannic::Arithmetic}}
+
+
+The arithmetic concept in C++ defines a type constraint that evaluates to true for standard arithmetic types (std\+::is\+\_\+arithmetic\+\_\+v$<$\+T$>$), as well as for float16\+\_\+t, bfloat16\+\_\+t, and std\+::complex$<$float$>$ or std\+::complex$<$double$>$.  
+
+
+
+
+{\ttfamily \#include $<$concepts.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Arithmetic}{tannic::Arithmetic}}\ =\ }
+\DoxyCodeLine{\ \ \ \ std::is\_arithmetic\_v<T>\ ||}
+\DoxyCodeLine{\ \ \ \ std::same\_as<T,\ float16\_t>\ ||}
+\DoxyCodeLine{\ \ \ \ std::same\_as<T,\ bfloat16\_t>\ ||}
+\DoxyCodeLine{\ \ \ \ std::same\_as<T,\ std::complex<float>>\ ||}
+\DoxyCodeLine{\ \ \ \ std::same\_as<T,\ std::complex<double>>}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+The arithmetic concept in C++ defines a type constraint that evaluates to true for standard arithmetic types (std\+::is\+\_\+arithmetic\+\_\+v$<$\+T$>$), as well as for float16\+\_\+t, bfloat16\+\_\+t, and std\+::complex$<$float$>$ or std\+::complex$<$double$>$. 
+
+This concept is useful for constraining templates to types that represent numeric values, including some extended or specialized numeric types. 

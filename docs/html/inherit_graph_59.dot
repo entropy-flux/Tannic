@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::Trait\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d1/d96/structtannic_1_1Trait.html",tooltip=" "];
+  Node0 [id="Node000000",label="tannic::operation::\lNegation",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d6/deb/structtannic_1_1operation_1_1Negation.html",tooltip="Unary element-wise negation of a tensor expression."];
 }

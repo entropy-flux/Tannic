@@ -1,0 +1,87 @@
+\doxysection{tannic\+::expression\+::Filter\texorpdfstring{$<$}{<} Rule, Operand \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1expression_1_1Filter}{}\label{classtannic_1_1expression_1_1Filter}\index{tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}}
+
+
+{\ttfamily \#include $<$filter.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Filter_a770505a49db6c85b9732ce241b8c1514}{Filter}} (Rule mask, \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operand $>$\+::\+Reference operand)
+\item 
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Filter_adb7e6e3a49bdd6c0e40639a562e0f837}{dtype}} () const
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Filter_ac33941955cf930683b96282452d9bc46}{shape}} () const
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Filter_ab04fc7c7f75d2ad098d60c269ee12494}{strides}} () const
+\item 
+constexpr std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Filter_ab6bed49b34c1e9ebe96473a9c6c38dbf}{offset}} () const
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Filter_aaa1898b5eea0c9a3f84ff6e269d342ba}{forward}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Rule, Operand $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a819f1a15c9b9b73972f65caea4d78b60}{Expression}} (Rule operation, typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference ... operands)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Rule, Operand $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+Rule \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}
+\item 
+std\+::tuple$<$ typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Filter_a770505a49db6c85b9732ce241b8c1514}\label{classtannic_1_1expression_1_1Filter_a770505a49db6c85b9732ce241b8c1514} 
+\index{tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}!Filter@{Filter}}
+\index{Filter@{Filter}!tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{Filter()}{Filter()}}
+{\footnotesize\ttfamily template$<$class Rule , Composable Operand$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Filter}{tannic\+::expression\+::\+Filter}}$<$ Rule, Operand $>$\+::\+Filter (\begin{DoxyParamCaption}\item[{Rule}]{mask,  }\item[{\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operand $>$\+::\+Reference}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classtannic_1_1expression_1_1Filter_adb7e6e3a49bdd6c0e40639a562e0f837}\label{classtannic_1_1expression_1_1Filter_adb7e6e3a49bdd6c0e40639a562e0f837} 
+\index{tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
+{\footnotesize\ttfamily template$<$class Rule , Composable Operand$>$ \\
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Filter}{tannic\+::expression\+::\+Filter}}$<$ Rule, Operand $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Filter_aaa1898b5eea0c9a3f84ff6e269d342ba}\label{classtannic_1_1expression_1_1Filter_aaa1898b5eea0c9a3f84ff6e269d342ba} 
+\index{tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily template$<$class Rule , Composable Operand$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Filter}{tannic\+::expression\+::\+Filter}}$<$ Rule, Operand $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Filter_ab6bed49b34c1e9ebe96473a9c6c38dbf}\label{classtannic_1_1expression_1_1Filter_ab6bed49b34c1e9ebe96473a9c6c38dbf} 
+\index{tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily template$<$class Rule , Composable Operand$>$ \\
+constexpr std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Filter}{tannic\+::expression\+::\+Filter}}$<$ Rule, Operand $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Filter_ac33941955cf930683b96282452d9bc46}\label{classtannic_1_1expression_1_1Filter_ac33941955cf930683b96282452d9bc46} 
+\index{tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{shape()}{shape()}}
+{\footnotesize\ttfamily template$<$class Rule , Composable Operand$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Filter}{tannic\+::expression\+::\+Filter}}$<$ Rule, Operand $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+\Hypertarget{classtannic_1_1expression_1_1Filter_ab04fc7c7f75d2ad098d60c269ee12494}\label{classtannic_1_1expression_1_1Filter_ab04fc7c7f75d2ad098d60c269ee12494} 
+\index{tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::expression::Filter$<$ Rule, Operand $>$@{tannic::expression::Filter$<$ Rule, Operand $>$}}
+\doxysubsubsection{\texorpdfstring{strides()}{strides()}}
+{\footnotesize\ttfamily template$<$class Rule , Composable Operand$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Filter}{tannic\+::expression\+::\+Filter}}$<$ Rule, Operand $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/tannic/\mbox{\hyperlink{filter_8hpp}{filter.\+hpp}}\end{DoxyCompactItemize}

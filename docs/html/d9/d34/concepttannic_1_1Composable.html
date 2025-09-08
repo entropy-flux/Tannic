@@ -98,14 +98,15 @@ $(document).ready(function(){initNavTree('d9/d34/concepttannic_1_1Composable.htm
 <p><code>#include &lt;<a class="el" href="../../d7/dd8/concepts_8hpp_source.html">concepts.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="../../d9/d34/concepttannic_1_1Composable.html">tannic::Composable</a> =  <span class="keyword">requires</span>(<span class="keyword">const</span> T expression) {</div>
-<div class="line">    { expression.dtype()   } -&gt; std::same_as&lt;type&gt;;</div>
-<div class="line">    { expression.shape()   } -&gt; std::same_as&lt;Shape const&amp;&gt;;</div>
-<div class="line">    { expression.strides() } -&gt; std::same_as&lt;Strides const&amp;&gt;;</div>
-<div class="line">      expression.offset();</div>
-<div class="line">      expression.forward();</div>
-<div class="line">}</div>
-<div class="ttc" id="aconcepttannic_1_1Composable_html"><div class="ttname"><a href="../../d9/d34/concepttannic_1_1Composable.html">tannic::Composable</a></div><div class="ttdef"><b>Definition</b> concepts.hpp:85</div></div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="../../d9/d34/concepttannic_1_1Composable.html">tannic::Composable</a> =  std::same_as&lt;T, Scalar&gt; || ( <span class="keyword">requires</span>(<span class="keyword">const</span> T expression) {</div>
+<div class="line">        { expression.dtype()   } -&gt; std::same_as&lt;type&gt;;</div>
+<div class="line">        { expression.shape()   } -&gt; std::same_as&lt;Shape const&amp;&gt;;</div>
+<div class="line">        { expression.strides() } -&gt; std::same_as&lt;Strides const&amp;&gt;;</div>
+<div class="line">          expression.offset();</div>
+<div class="line">          expression.forward();</div>
+<div class="line">    }</div>
+<div class="line">)</div>
+<div class="ttc" id="aconcepttannic_1_1Composable_html"><div class="ttname"><a href="../../d9/d34/concepttannic_1_1Composable.html">tannic::Composable</a></div><div class="ttdef"><b>Definition</b> concepts.hpp:86</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

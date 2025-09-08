@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['tensor_2ehpp_0',['tensor.hpp',['../d3/d8b/tensor_8hpp.html',1,'']]],
-  ['traits_2ehpp_1',['traits.hpp',['../df/d73/traits_8hpp.html',1,'']]],
-  ['transformations_2ehpp_2',['transformations.hpp',['../d8/d71/transformations_8hpp.html',1,'']]],
-  ['types_2ehpp_3',['types.hpp',['../dd/de3/types_8hpp.html',1,'']]]
+  ['scalars_2ehpp_0',['scalars.hpp',['../d3/d3c/scalars_8hpp.html',1,'']]],
+  ['serialization_2ehpp_1',['serialization.hpp',['../d8/d21/serialization_8hpp.html',1,'']]],
+  ['shape_2ehpp_2',['shape.hpp',['../d3/d30/shape_8hpp.html',1,'']]],
+  ['slices_2ehpp_3',['slices.hpp',['../d4/d71/slices_8hpp.html',1,'']]],
+  ['strides_2ehpp_4',['strides.hpp',['../d7/d08/strides_8hpp.html',1,'']]]
 ];

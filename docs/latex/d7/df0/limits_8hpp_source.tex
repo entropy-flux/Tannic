@@ -1,0 +1,155 @@
+\doxysection{limits.\+hpp}
+\hypertarget{limits_8hpp_source}{}\label{limits_8hpp_source}\index{include/tannic/limits.hpp@{include/tannic/limits.hpp}}
+\mbox{\hyperlink{limits_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2025\ Eric\ Hermosis}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ This\ file\ is\ part\ of\ the\ Tannic\ Tensor\ Library.}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Licensed\ under\ the\ Apache\ License,\ Version\ 2.0\ (the\ "{}License"{});}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ you\ may\ not\ use\ this\ file\ except\ in\ compliance\ with\ the\ License.}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ You\ may\ obtain\ a\ copy\ of\ the\ License\ at}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ http://www.apache.org/licenses/LICENSE-\/2.0}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Unless\ required\ by\ applicable\ law\ or\ agreed\ to\ in\ writing,\ software}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ distributed\ under\ the\ License\ is\ distributed\ on\ an\ "{}AS\ IS"{}\ BASIS,}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ WITHOUT\ WARRANTIES\ OR\ CONDITIONS\ OF\ ANY\ KIND,\ either\ express\ or\ implied.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ See\ the\ License\ for\ the\ specific\ language\ governing\ permissions\ and}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ limitations\ under\ the\ License.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ LIMITS\_HPP}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ LIMITS\_HPP}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{types_8hpp}{types.hpp}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shape_8hpp}{shape.hpp}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{strides_8hpp}{strides.hpp}}"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }Tensor;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1expression}{tannic::expression}}\ \{}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Zero}{Zero}}\ \{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Zero_a80a2df2dbacc0de624baade46caac11b}{Zero}}(type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Zero_a5ce8b8d431a44da93b2e8799cc23f17a}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Zero_a15a1cbe14c5809f492612095b4e36263}{shape}})}
+\DoxyCodeLine{00034\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Zero_a5ce8b8d431a44da93b2e8799cc23f17a}{dtype}})}
+\DoxyCodeLine{00035\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Zero_a15a1cbe14c5809f492612095b4e36263}{shape}})\ }
+\DoxyCodeLine{00036\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Zero_a15a1cbe14c5809f492612095b4e36263}{shape}})}
+\DoxyCodeLine{00037\ \ \ \ \ \{\}\ }
+\DoxyCodeLine{00038\ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Zero_a5ce8b8d431a44da93b2e8799cc23f17a}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Zero_a15a1cbe14c5809f492612095b4e36263}{shape}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Zero_aa8faa42e763b32892d120b4749bf5040}{strides}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
+\DoxyCodeLine{00049\ \ \ \ \ \}\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{constexpr}\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1expression_1_1Zero_a7e8b4566aec6fc059643fac130430df8}{offset}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Zero_aec6f8c3da2cec88646dbf8257b0e1acc}{forward}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ \ \ \ \ type\ dtype\_;}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1One}{One}}\ \{}
+\DoxyCodeLine{00064\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1One_a8dfded0fe3f3eb4c099d2286ae43ca9f}{One}}(type\ \mbox{\hyperlink{classtannic_1_1expression_1_1One_afde8247c1e6c5a6010db13dcb0a2529d}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1One_a21edf1070424a02e1a46362040c5874f}{shape}})}
+\DoxyCodeLine{00066\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1expression_1_1One_afde8247c1e6c5a6010db13dcb0a2529d}{dtype}})}
+\DoxyCodeLine{00067\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1expression_1_1One_a21edf1070424a02e1a46362040c5874f}{shape}})\ }
+\DoxyCodeLine{00068\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1expression_1_1One_a21edf1070424a02e1a46362040c5874f}{shape}})}
+\DoxyCodeLine{00069\ \ \ \ \ \{\}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1One_afde8247c1e6c5a6010db13dcb0a2529d}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1One_a21edf1070424a02e1a46362040c5874f}{shape}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1One_ad1dbc985fca400db5a3707bc1bc77be9}{strides}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{constexpr}\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1expression_1_1One_a688ba61e4c8185b130265c1de133c5ca}{offset}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1One_ad25787a6cbffaa5ebfbf6ef623fc65a3}{forward}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00090\ \ \ \ \ type\ dtype\_;}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
+\DoxyCodeLine{00093\ \};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacetannic_1_1expression_a6653c49f47dbd1d0a90c4b61feab3777}{Sign}}\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{namespacetannic_1_1expression_a6653c49f47dbd1d0a90c4b61feab3777a3289297424e01eda5b788c083bbf3147}{Positive}},}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{namespacetannic_1_1expression_a6653c49f47dbd1d0a90c4b61feab3777affb9356ff2b7da85c75c92fa7ea03b8b}{Negative}}}
+\DoxyCodeLine{00098\ \};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{keyword}{template}<Sign\ Sign>}
+\DoxyCodeLine{00101\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Infinity}{Infinity}}\ \{}
+\DoxyCodeLine{00102\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_a81d92595cd067a306b5d9856e218ef12}{Infinity}}(type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_ab34a9a5fca5c81e9bd08d0d2f41b00fa}{dtype}},\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_ab825ed42ddb616a3b8e6de4385015776}{shape}})}
+\DoxyCodeLine{00104\ \ \ \ \ :\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_ab34a9a5fca5c81e9bd08d0d2f41b00fa}{dtype}})}
+\DoxyCodeLine{00105\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_ab825ed42ddb616a3b8e6de4385015776}{shape}})\ }
+\DoxyCodeLine{00106\ \ \ \ \ ,\ \ \ strides\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_ab825ed42ddb616a3b8e6de4385015776}{shape}})}
+\DoxyCodeLine{00107\ \ \ \ \ \{\}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_ab34a9a5fca5c81e9bd08d0d2f41b00fa}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_ab825ed42ddb616a3b8e6de4385015776}{shape}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_a8acd0b408f215c06171d8cec86afbfb3}{strides}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{constexpr}\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_a1f800fb5cca4ee4424850260a331c182}{offset}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Infinity_aa1d4c63e68598fbafb7df4d3b859e6db}{forward}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00128\ \ \ \ \ type\ dtype\_;}
+\DoxyCodeLine{00129\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
+\DoxyCodeLine{00131\ \};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ zeros(type\ dtype,\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ shape)\ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Zero}{expression::Zero}}(dtype,\ shape);}
+\DoxyCodeLine{00137\ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ ones(type\ dtype,\ Shape\ \textcolor{keyword}{const}\&\ shape)\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{return}\ expression::One(dtype,\ shape);}
+\DoxyCodeLine{00141\ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ infinity(type\ dtype,\ Shape\ \textcolor{keyword}{const}\&\ shape)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{return}\ expression::Infinity<expression::Sign::Positive>(dtype,\ shape);}
+\DoxyCodeLine{00145\ \}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LIMITS\_HPP}}
+
+\end{DoxyCode}

@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::Trait\< T \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d1/d96/structtannic_1_1Trait.html",tooltip=" "];
+  Node0 [id="Node000000",label="tannic::operation::\lSubtraction",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d6/de5/structtannic_1_1operation_1_1Subtraction.html",tooltip="Binary element-wise subtraction of two tensor expressions."];
 }
