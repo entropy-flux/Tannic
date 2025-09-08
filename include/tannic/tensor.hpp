@@ -1115,13 +1115,14 @@ protected:
     void assign(bool const*, std::ptrdiff_t); 
 
     bool compare(std::byte const*, std::ptrdiff_t) const; 
+    void copy(Tensor const& other);
     
 public:
     uintptr_t id() const {
         return node_->id;
     } 
 
-private:
+private: 
     // Note: I didn't decide yet if put all this inside Node.
     // That will speed tensor copies but make the tensors
     // only runtime since shared ptrs don't support constexpr.
@@ -1247,8 +1248,17 @@ void expression::Slice<Source, Indexes...>::assign(bool const* value, std::ptrdi
         Tensor tensor = forward();
         tensor.assign(value, offset);
     }
-}  
+}   
 
+template <Composable Source, class... Indexes>
+template <Composable Expression>
+void expression::Slice<Source, Indexes...>::operator=(Expression expression) { 
+    if(this->shape() != expression.shape()) {
+        throw Exception("Cannot copy tensors with different shapes");
+    }
+    Tensor target = this->forward(); 
+    target.copy(expression.forward());
+} 
 
 template<Composable Source, class... Indexes>
 bool expression::Slice<Source, Indexes...>::compare(std::byte const* value, std::ptrdiff_t offset) const { 

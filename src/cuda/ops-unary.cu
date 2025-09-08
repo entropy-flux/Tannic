@@ -271,7 +271,7 @@ status neg(const tensor_t* src, tensor_t* dst, stream_t stream) {
     }
 }
 
-status cpy(const tensor_t* src, tensor_t* dst, stream_t stream) {
+status repack(const tensor_t* src, tensor_t* dst, stream_t stream) {
     switch (src->dtype) {
         case int8:
             return launchUnaryOpKernel<int8_t, int8_t, Cpy>(src, dst, stream);

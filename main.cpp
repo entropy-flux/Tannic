@@ -10,7 +10,7 @@ Tensor freq_cis(
     size_t sequence_length_limit,
     double theta = 10000.0
 ) {
-        auto scale = std::log(theta) / static_cast<double>(model_dimension);
+        auto scale = std::log(theta) / model_dimension;
         Tensor rho = ones(dtype, {sequence_length_limit, model_dimension / 2});
         Tensor phi(dtype, {sequence_length_limit, model_dimension / 2}); 
         for(auto position = 0; position < sequence_length_limit; position++) {

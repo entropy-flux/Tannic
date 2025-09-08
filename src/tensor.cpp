@@ -1,12 +1,15 @@
 #include "bindings.hpp" 
 #include "types.hpp"
 #include "tensor.hpp"
+#include "callback.hpp"
 #include "runtime/streams.h"   
+#include "cpu/cpy.hpp"
 #include <ostream>
 #include <cstring>
 #include <functional> 
 #ifdef CUDA
 #include "cuda/mem.cuh" 
+#include "cuda/cpy.cuh"
 #else 
 namespace cuda {
 using tannic::tensor_t;
@@ -14,6 +17,7 @@ using tannic::stream_t;
 using tannic::device_t;
 inline void copyFromHost(const device_t* resource, const void* src , void* dst, size_t nbytes) { throw std::runtime_error("CUDA copyFromHost called without CUDA support"); }
 inline bool compareFromHost(const device_t* resource, const void* hst_ptr, const void* dvc_ptr, size_t nbytes) {throw std::runtime_error("CUDA compareFromHost called without CUDA support"); }
+inline status cpy(const tensor_t* src, tensor_t* dst, stream_t stream) {throw std::runtime_error("CUDA compareFromHost called without CUDA support"); }
 } // namespace cuda0
 #endif
 
@@ -66,5 +70,10 @@ bool Tensor::compare(std::byte const* hst_ptr, std::ptrdiff_t offset) const {
         return cuda::compareFromHost(&device, (void const*)(hst_ptr), lcl_ptr, dsizeof(dtype_));
     }
 }  
+
+void Tensor::copy(Tensor const& other) {
+    Callback callback(cpu::cpy, cuda::cpy); 
+    callback(other, *this);
+}
 
 } // namespace tannic

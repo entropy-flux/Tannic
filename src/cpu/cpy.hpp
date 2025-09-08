@@ -2,12 +2,11 @@
 #include "runtime/tensor.h"
 #include "runtime/resources.h"
 #include "runtime/status.h" 
-#include "runtime/streams.h"
 
 using namespace tannic;
 
-namespace cuda {
+namespace cpu {
 
-status cpy(const tensor_t* src, tensor_t* dst, stream_t stream);
+status cpy(const tensor_t* src, tensor_t* dst);
 
 }

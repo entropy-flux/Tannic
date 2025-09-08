@@ -8,7 +8,7 @@ using namespace tannic;
 
 namespace cuda {   
     
-status cpy (const tensor_t*, tensor_t*, stream_t);
+status repack (const tensor_t*, tensor_t*, stream_t);
 status log (const tensor_t*, tensor_t*, stream_t);
 status exp (const tensor_t*, tensor_t*, stream_t);
 status sqrt (const tensor_t*, tensor_t*, stream_t);

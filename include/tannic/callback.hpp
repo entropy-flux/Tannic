@@ -43,7 +43,8 @@ public:
     ,   device_fn(device) {}
 
     void operator()(Tensor const& input, Tensor& output) const {    
-        output.initialize(input.environment());  
+        if (!output.is_initialized())
+            output.initialize(input.environment());  
 
         if (std::holds_alternative<Host>(output.environment())) {
             tensor_t* src = get_tensor(input.id());
@@ -69,6 +70,9 @@ public:
     }
 
     void operator()(Tensor const& tensor, Scalar const& scalar, Tensor& output) {
+        if (!output.is_initialized())
+            output.initialize(tensor.environment());  
+
         tensor_t* src0 = get_tensor(tensor.id());
         scalar_t  sc1{scalar.address(), scalar.dtype() };
         output.initialize(tensor.environment());  

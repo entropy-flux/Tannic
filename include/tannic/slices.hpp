@@ -86,7 +86,6 @@ namespace tannic::expression {
 template <Composable Source, class... Indexes>
 class Slice {  
 public:    
-
     /**
      * @brief Create a slice from a source expression and an index tuple.
      * @param source   Reference to the source expression.
@@ -186,11 +185,11 @@ public:
      * tensor[{0,2}][1] = 42; // assign 42 to elements in rows 0..1, column 1
      * ```
      */
-    template<typename T>
+    template<Arithmetic T>
     void operator=(T value);
-
-
-
+ 
+    template<Composable Expression>
+    void operator=(Expression expression); 
     /**
      * @brief Compares a scalar value to the element in a rank-0 slice.
      *
@@ -213,7 +212,7 @@ public:
      * }
      * ```
      */
-    template<typename T>
+    template<Arithmetic T>
     bool operator==(T value) const;  
 
     /**
@@ -351,7 +350,7 @@ inline std::byte const* tobytes(T const& reference) {
 } 
 
 template <Composable Source, class... Indexes>
-template <typename T>
+template <Arithmetic T>
 void Slice<Source, Indexes...>::operator=(T value) {    
     auto copy = [this](std::byte const* value, std::ptrdiff_t offset) {
         if(rank() == 0) { 
@@ -393,7 +392,7 @@ void Slice<Source, Indexes...>::operator=(T value) {
 }
 
 template <Composable Source, class... Indexes>
-template <typename T>
+template <Arithmetic T>
 bool Slice<Source, Indexes...>::operator==(T value) const {    
     if (rank() != 0)
         throw Exception("Cannot compare an scalar to a non scalar slice");

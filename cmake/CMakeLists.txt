@@ -39,8 +39,7 @@ if(CUDA_ENABLED)
     file(GLOB_RECURSE SRC_CU_FILES src/*.cu)
     list(APPEND SRC_FILES ${SRC_CU_FILES})
 endif() 
-
-# Robust OpenBLAS detection
+ 
 find_path(OPENBLAS_INCLUDE_DIR
     NAMES cblas.h
     PATHS /usr/include /usr/local/include /opt/openblas/include

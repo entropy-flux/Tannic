@@ -7,7 +7,7 @@ using namespace tannic;
 
 namespace cpu {  
      
-status cpy( const tensor_t*, tensor_t*); 
+status repack( const tensor_t*, tensor_t*); 
 status log( const tensor_t*, tensor_t*); 
 status exp( const tensor_t*, tensor_t*); 
 status sqrt( const tensor_t*, tensor_t*); 
