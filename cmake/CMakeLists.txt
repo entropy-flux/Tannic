@@ -16,7 +16,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if(CUDA_ENABLED)
     set(CMAKE_CUDA_STANDARD 20)
-    set(CMAKE_CUDA_ARCHITECTURES 86)
+    set(CMAKE_CUDA_ARCHITECTURES native)
 endif() 
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -117,25 +117,25 @@ file(GLOB TEST_FILES
 
 if(TEST_FILES)
     enable_testing()
-    add_executable(tests ${TEST_FILES})
 
-    target_include_directories(tests PRIVATE include)
-    target_link_libraries(tests PRIVATE tannic)
+    foreach(filename ${TEST_FILES})
 
-    if(CUDA_ENABLED)
-        set_target_properties(tests PROPERTIES
-            CUDA_SEPARABLE_COMPILATION ON
-            CUDA_STANDARD 20
-        )
-        target_link_libraries(tests PRIVATE CUDA::cudart)
-    endif()
+      get_filename_component(testname ${filename} NAME_WE)
+    
+      add_executable(${testname} ${filename})
+      target_include_directories(${testname} PRIVATE include)
+      target_link_libraries(${testname} PRIVATE tannic)
+      target_link_libraries(${testname} PUBLIC tannic GTest::gtest_main)
+    
+      if(CUDA_ENABLED)
+          set_target_properties(${testname} PROPERTIES
+              CUDA_SEPARABLE_COMPILATION ON
+              CUDA_STANDARD 20
+          )
+          target_link_libraries(${testname} PRIVATE CUDA::cudart)
+      endif()
 
-    if(GTest_FOUND)
-        target_link_libraries(tests PRIVATE GTest::gtest_main)
-    else()
-        target_link_libraries(tests PRIVATE gtest_main)
-    endif()
+      add_test(${testname} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${testname})
 
-    include(GoogleTest)
-    gtest_discover_tests(tests)
+    endforeach(filename ${TEST_FILES})
 endif()
