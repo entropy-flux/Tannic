@@ -95,29 +95,31 @@ public:
      * @brief Constructs complex view from interleaved data
      * @param source Tensor with alternating real/imaginary values
      */
+
     constexpr Complexification(Trait<Source>::Reference source)
-    :   source(source) 
-    { 
+    :   source(source) {
         switch (source.dtype()) {
             case float32: dtype_ = complex64; break;
             case float64: dtype_ = complex128; break;
-            default: 
+            default:
                 throw Exception("Complex view error: source tensor dtype must be float32 or float64");
-        }  
-
-        if (source.strides()[-1] == 1 && source.strides()[-2] == 2) { 
-        assert(source.shape().back() == 2 && 
-            "Complex view error: last dimension must be size 2 (real + imag).");
-            shape_ = Shape(source.shape().begin(), source.shape().end() - 1);
-            strides_ = Strides(source.strides().begin(), source.strides().end() - 1); 
-            strides_[-1] = 1; 
-        } else { 
-            throw Exception(
-                "Complex view error: source tensor is not contiguous in last two dimensions. "
-                "Cannot create complex view safely."
-            );
         }
-    } 
+
+        if (source.shape().back() != 2) {
+            throw Exception("Complex view error: last dimension must be size 2 (real + imag).");
+        }
+ 
+        shape_   = Shape(source.shape().begin(), source.shape().end() - 1); 
+        strides_ = Strides(source.strides().begin(), source.strides().end() - 1);
+
+        for (int dimension = 0; dimension < strides_.rank(); ++dimension) {
+            strides_[dimension] /= 2;
+        } 
+        
+        strides_[-1] = 1;  
+    }
+
+
 
     /**
      * @brief Returns the complex dtype of the view

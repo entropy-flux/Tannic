@@ -101,3 +101,20 @@ TEST_F(ComplexTests, LlamaFreqCis) {
     Tensor X = freq_cis(float64, 6, 8);  
     EXPECT_TRUE(allclose(X_expected, realify(X), 0.1, 0.1));
 }
+
+TEST_F(ComplexTests, ComplexifyTest) { 
+    Tensor freqs(float64, {8, 3, 2}); 
+    freqs.initialize({
+        { {1.0000f, 0.0000f}, {1.0000f, 0.0000f}, {1.0000f, 0.0000f} },
+        { {0.5403f, 0.8415f}, {0.9989f, 0.0464f}, {1.0000f, 0.0022f} },
+        { {-0.4161f, 0.9093f}, {0.9957f, 0.0927f}, {1.0000f, 0.0043f} },
+        { {-0.9900f, 0.1411f}, {0.9903f, 0.1388f}, {1.0000f, 0.0065f} },
+        { {-0.6536f, -0.7568f}, {0.9828f, 0.1846f}, {1.0000f, 0.0086f} },
+        { {0.2837f, -0.9589f}, {0.9732f, 0.2300f}, {0.9999f, 0.0108f} },
+        { {0.9602f, -0.2794f}, {0.9615f, 0.2749f}, {0.9999f, 0.0129f} },
+        { {0.7539f, 0.6570f}, {0.9477f, 0.3192f}, {0.9999f, 0.0151f} }
+    }); 
+    Tensor cplx = complexify(freqs);
+    Tensor real = realify(cplx);
+    EXPECT_TRUE(allclose(freqs, real));
+}
