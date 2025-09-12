@@ -314,8 +314,6 @@ public:
         } 
     }
 
-    
-
     /**
      * @brief Constructs a 2D tensor from a nested initializer list.
      *
@@ -334,7 +332,7 @@ public:
      *
      * All inner lists (rows) must have the same length. The tensor is contiguous in memory.
      */
-    template<typename T>
+    template<Arithmetic T>
     Tensor(std::initializer_list<std::initializer_list<T>> const& values)
     :   dtype_(dtypeof<T>())
     ,   shape_({values.size(), values.begin()->size()})
@@ -395,7 +393,7 @@ public:
      * All matrices must have the same number of rows, and all rows must have the same number of columns.
      * The tensor is contiguous in memory.
      */
-    template<typename T>
+    template<Arithmetic T>
     Tensor(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values)
     :   dtype_(dtypeof<T>())
     ,   shape_({values.size(), values.begin()->size(), values.begin()->begin()->size()})
@@ -476,7 +474,7 @@ public:
      *
      * All inner tensors must have consistent dimensions. The tensor is contiguous in memory.
      */
-    template<typename T>
+    template<Arithmetic T>
     Tensor(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const& values)
     :    dtype_(dtypeof<T>())
     ,    shape_({
@@ -560,7 +558,7 @@ public:
      * - Values are cast to the tensor’s existing dtype before being written.
      * - This ensures that the tensor’s dtype does not change after assignment.
      */ 
-    template<typename T>
+    template<Arithmetic T>
     void initialize(std::initializer_list<T> values, Environment environment = Host{}) {
         if (!is_contiguous())
             throw Exception("Assign to initializer list supported only for contiguous tensors");
@@ -630,7 +628,7 @@ public:
      * Type conversion:
      * - Values are cast to the tensor’s existing dtype before being written.
      */
-    template<typename T>
+    template<Arithmetic T>
     void initialize(std::initializer_list<std::initializer_list<T>> const & values, Environment environment = Host{}) {
         if (!is_contiguous())
             throw Exception("Assign to initializer list supported only for contiguous tensors"); 
@@ -712,7 +710,7 @@ public:
      * - Values are cast to the tensor’s existing dtype before being written.
      * - This ensures that the tensor’s dtype does not change after assignment.
      */
-    template<typename T>
+    template<Arithmetic T>
     void initialize(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values, Environment environment = Host{}) {
         if (!is_contiguous())
             throw Exception("Assign to initializer list supported only for contiguous tensors");
@@ -815,7 +813,7 @@ public:
      * Type conversion:
      * - Values are cast to the tensor’s existing dtype before being written.
      */
-    template<typename T>
+    template<Arithmetic T>
     void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> values, Environment environment = Host{}) {
         if (!is_contiguous())
             throw Exception("Assign to initializer list supported only for contiguous tensors");
@@ -894,7 +892,7 @@ public:
     } 
 
 
-    template<typename T>
+    template<Arithmetic T>
     void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>>> values, Environment environment = Host{}) {
         if (!is_contiguous())
             throw Exception("Assign to initializer list supported only for contiguous tensors");

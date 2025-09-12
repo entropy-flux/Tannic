@@ -28,7 +28,7 @@ struct Trait {
     using Reference = std::decay_t<T>;;
     static constexpr bool is_assignable = Assignable<Reference>;
     static constexpr bool is_comparable = Comparable<Reference>;
-}; 
+};  
 
 } // namespace TANNIC
 
