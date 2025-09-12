@@ -1,4 +1,6 @@
 #include <cuda_runtime.h>
+#include <cuda_fp16.h>     
+#include <cuda_bf16.h>       
 #include "triang.cuh"
 
 namespace {
@@ -8,8 +10,16 @@ struct Upper {
     Upper(int diag = 0) : k(diag) {}
 
     template<typename T>
-    __device__ T operator()(T value, size_t i, size_t j) const noexcept {
+    __device__ __forceinline__ T operator()(T value, size_t i, size_t j) const noexcept {
         return (j >= i + k) ? value : T(0);
+    }
+
+    __device__ __forceinline__ __half operator()(__half value, size_t i, size_t j) const noexcept {
+        return (j >= i + k) ? value : __float2half(0.0f);
+    }
+
+    __device__ __forceinline__ __nv_bfloat16 operator()(__nv_bfloat16 value, size_t i, size_t j) const noexcept {
+        return (j >= i + k) ? value : __float2bfloat16(0.0f);
     }
 };
 
@@ -18,8 +28,16 @@ struct Lower {
     Lower(int diag = 0) : k(diag) {}
 
     template<typename T>
-    __device__ T operator()(T value, size_t i, size_t j) const noexcept {
+    __device__ __forceinline__ T operator()(T value, size_t i, size_t j) const noexcept {
         return (j <= i + k) ? value : T(0);
+    }
+
+    __device__ __forceinline__ __half operator()(__half value, size_t i, size_t j) const noexcept {
+        return (j <= i + k) ? value : __float2half(0.0f);
+    }
+
+    __device__ __forceinline__ __nv_bfloat16 operator()(__nv_bfloat16 value, size_t i, size_t j) const noexcept {
+        return (j <= i + k) ? value : __float2bfloat16(0.0f);
     }
 };
  
@@ -52,7 +70,7 @@ __global__ void stridedTriangularKernel(
 template<typename T, class Fn>
 status launchTriangularKernel(const tensor_t* src, tensor_t* dst, Fn tri, stream_t stream) {
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
-    if (src->rank != 2) return UNSUPPORTED_DTYPE;
+    if (src->rank != 2) return ERROR;
 
     size_t rows = src->shape.sizes[0];
     size_t cols = src->shape.sizes[1];
@@ -81,26 +99,30 @@ status launchTriangularKernel(const tensor_t* src, tensor_t* dst, Fn tri, stream
 } // namespace
 
 namespace cuda {
-
+ 
 status triu(const tensor_t* src, tensor_t* dst, stream_t stream, int k) {
     Upper tri(k);
     switch (src->dtype) {
-        case int32:    return launchTriangularKernel<int32_t>(src, dst, tri, stream);
-        case int64:    return launchTriangularKernel<int64_t>(src, dst, tri, stream);
-        case float32:  return launchTriangularKernel<float>(src, dst, tri, stream);
-        case float64:  return launchTriangularKernel<double>(src, dst, tri, stream);  
-        default:       return UNSUPPORTED_DTYPE;
+        case int32:     return launchTriangularKernel<int32_t>(src, dst, tri, stream);
+        case int64:     return launchTriangularKernel<int64_t>(src, dst, tri, stream);
+        case float16:   return launchTriangularKernel<__half>(src, dst, tri, stream);
+        case bfloat16:  return launchTriangularKernel<__nv_bfloat16>(src, dst, tri, stream);
+        case float32:   return launchTriangularKernel<float>(src, dst, tri, stream);
+        case float64:   return launchTriangularKernel<double>(src, dst, tri, stream);  
+        default:        return UNSUPPORTED_DTYPE;
     }
 }
 
 status tril(const tensor_t* src, tensor_t* dst, stream_t stream, int k) {
     Lower tri(k);
     switch (src->dtype) {
-        case int32:    return launchTriangularKernel<int32_t>(src, dst, tri, stream);
-        case int64:    return launchTriangularKernel<int64_t>(src, dst, tri, stream);
-        case float32:  return launchTriangularKernel<float>(src, dst, tri, stream);
-        case float64:  return launchTriangularKernel<double>(src, dst, tri, stream);   
-        default:       return UNSUPPORTED_DTYPE;
+        case int32:     return launchTriangularKernel<int32_t>(src, dst, tri, stream);
+        case int64:     return launchTriangularKernel<int64_t>(src, dst, tri, stream);
+        case float16:   return launchTriangularKernel<__half>(src, dst, tri, stream);
+        case bfloat16:  return launchTriangularKernel<__nv_bfloat16>(src, dst, tri, stream);
+        case float32:   return launchTriangularKernel<float>(src, dst, tri, stream);
+        case float64:   return launchTriangularKernel<double>(src, dst, tri, stream);   
+        default:        return UNSUPPORTED_DTYPE;
     }
 }
 

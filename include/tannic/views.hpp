@@ -92,48 +92,59 @@ public:
      *
      * @throws Assertion failure if the number of elements in the new shape
      *         does not match the number of elements in the source.
-     */
+     */ 
+  
     template<Integral... Sizes>  
     constexpr View(typename Trait<Source>::Reference source, Sizes... sizes)
     :   source_(source)
     { 
         std::array<long long, sizeof...(Sizes)> requested{ static_cast<long long>(sizes)... };
- 
-        std::size_t source_elements = std::accumulate(
-            source.shape().begin(), source.shape().end(), 1ULL, std::multiplies<>{}
-        ); 
-
-        int infer_axis = -1;
-        std::size_t known_product = 1;
-        for (std::size_t i = 0; i < requested.size(); ++i) {
-            if (requested[i] == -1) {
-                if (infer_axis != -1)
-                    throw Exception("Only one dimension can be inferred (-1) in view");
-                infer_axis = static_cast<int>(i);
-            } else if (requested[i] < 0) {
-                throw Exception("Invalid negative dimension in view");
-            } else {
-                known_product *= static_cast<std::size_t>(requested[i]);
+  
+        std::size_t nelements = 1;
+        std::size_t stride = 1;
+        for (auto dimension = 0; dimension < source.shape().rank(); ++dimension) {
+            auto index = source.shape().rank() - 1 - dimension; 
+            if (source.strides()[index] != stride) {
+                throw Exception("Only contiguous tensors allowed in view");
             }
+            nelements *= source.shape()[dimension];
+            stride *= source.shape()[index];
         }
+        
+        int inferred = -1;
+        std::size_t accumulated = 1; 
+        for (auto dimension = 0; dimension < requested.size(); ++dimension) { 
+            auto index = requested.size() - 1 - dimension; 
 
-        if (infer_axis != -1) {
-            if (source_elements % known_product != 0)
-                throw Exception("Cannot infer dimension: source elements not divisible");
-            requested[infer_axis] = static_cast<long long>(source_elements / known_product);
+            if (requested[dimension] == -1) {
+                if (inferred != -1) throw Exception("Only one dimension can be inferred (-1) in view");
+                inferred = dimension;
+            } 
+            
+            else if (requested[dimension] < 0) {
+                throw Exception("Invalid negative dimension in view");
+            } 
+            
+            else {
+                accumulated *= requested[dimension];
+            }
+            shape_.expand(requested[dimension]);
+            strides_.expand(1);
         }
  
-        for (auto v : requested) {
-            shape_.expand(static_cast<std::size_t>(v));
-        }
- 
-        std::size_t new_elements = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{});
-        if (new_elements != source_elements)
+        if (inferred != -1) {
+            if (nelements % accumulated != 0) throw Exception("Cannot infer dimension: source elements not divisible");
+            shape_[inferred] = nelements / accumulated; 
+        } 
+
+        else if (accumulated != nelements) {
             throw Exception("Shape mismatch: view must preserve total number of elements");
- 
-        strides_ = Strides(shape_);
-    }
+        }
 
+        for (auto dimension = shape_.rank() - 2; dimension >= 0; --dimension) {
+            strides_[dimension] = strides_[dimension + 1] * shape_[dimension + 1];
+        } 
+    }
 
     /**
      * @return The runtime data type of the tensor elements.
