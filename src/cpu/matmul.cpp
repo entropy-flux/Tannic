@@ -39,6 +39,7 @@ void gemmKernel(
         }
     }
 }
+ 
 
 #ifdef BLAS
 #include <cblas.h>   
@@ -183,7 +184,7 @@ constexpr static inline auto index(type first, type second) {
 
 constexpr static  status launchDefaultKernel(const tensor_t*, const tensor_t*, tensor_t*) {
     return UNSUPPORTED_DTYPE;
-};
+}; 
 
 constexpr auto dispatchGemm = []() {
     std::array<Kernel, index(TYPES, TYPES)> table; table.fill(launchDefaultKernel); 
@@ -223,20 +224,20 @@ constexpr auto dispatchGemm = []() {
     table[index(float16, int64)]   = launchGemmKernel<half, int64_t, double>;
     table[index(int64, float16)]   = launchGemmKernel<int64_t, half, double>;
     
-    table[index(bfloat16, bfloat16)] = launchGemmKernel<bhalf, bhalf, bhalf>;
-    table[index(bfloat16, float32)]  = launchGemmKernel<bhalf, float, float>;
-    table[index(float32, bfloat16)]  = launchGemmKernel<float, bhalf, float>;
-    table[index(bfloat16, float64)]  = launchGemmKernel<bhalf, double, double>;
-    table[index(float64, bfloat16)]  = launchGemmKernel<double, bhalf, double>;
+    table[index(tannic::bfloat16, tannic::bfloat16)] = launchGemmKernel<bhalf, bhalf, bhalf>;
+    table[index(tannic::bfloat16, tannic::float32)]  = launchGemmKernel<bhalf, float, float>;
+    table[index(tannic::float32, tannic::bfloat16)]  = launchGemmKernel<float, bhalf, float>;
+    table[index(tannic::bfloat16, tannic::float64)]  = launchGemmKernel<bhalf, double, double>;
+    table[index(tannic::float64, tannic::bfloat16)]  = launchGemmKernel<double, bhalf, double>;
 
-    table[index(bfloat16, int8)]     = launchGemmKernel<bhalf, int8_t, float>;
-    table[index(int8, bfloat16)]     = launchGemmKernel<int8_t, bhalf, float>;
-    table[index(bfloat16, int16)]    = launchGemmKernel<bhalf, int16_t, float>;
-    table[index(int16, bfloat16)]    = launchGemmKernel<int16_t, bhalf, float>;
-    table[index(bfloat16, int32)]    = launchGemmKernel<bhalf, int32_t, float>;
-    table[index(int32, bfloat16)]    = launchGemmKernel<int32_t, bhalf, float>;
-    table[index(bfloat16, int64)]    = launchGemmKernel<bhalf, int64_t, double>;
-    table[index(int64, bfloat16)]    = launchGemmKernel<int64_t, bhalf, double>;
+    table[index(tannic::bfloat16, tannic::int8)]     = launchGemmKernel<bhalf, int8_t, float>;
+    table[index(tannic::int8, tannic::bfloat16)]     = launchGemmKernel<int8_t, bhalf, float>;
+    table[index(tannic::bfloat16, tannic::int16)]    = launchGemmKernel<bhalf, int16_t, float>;
+    table[index(tannic::int16, tannic::bfloat16)]    = launchGemmKernel<int16_t, bhalf, float>;
+    table[index(tannic::bfloat16, tannic::int32)]    = launchGemmKernel<bhalf, int32_t, float>;
+    table[index(tannic::int32, tannic::bfloat16)]    = launchGemmKernel<int32_t, bhalf, float>;
+    table[index(tannic::bfloat16, tannic::int64)]    = launchGemmKernel<bhalf, int64_t, double>;
+    table[index(tannic::int64, tannic::bfloat16)]    = launchGemmKernel<int64_t, bhalf, double>;
 #endif
     table[index(int32, float32)] = launchGemmKernel<int32_t, float, float>;
     table[index(float32, int32)] = launchGemmKernel<float, int32_t, float>;

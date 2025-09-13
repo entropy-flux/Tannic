@@ -56,10 +56,7 @@ status launchCpyKernel(const tensor_t* src, const tensor_t* dst) {
         src_strides.sizes[dim] = src->strides.sizes[dim];
         dst_shape.sizes[dim] = dst->shape.sizes[dim];
         dst_strides.sizes[dim] = dst->strides.sizes[dim];
-    } 
-
-    std::cout << src->size << dst->size << std::endl; 
-    
+    }  
      
     
     stridedCpyKernel<S, D>(
