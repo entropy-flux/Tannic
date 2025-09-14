@@ -16,33 +16,7 @@
 //
  
 #ifndef VIEWS_HPP
-#define VIEWS_HPP 
-
-/**
- * @file views.hpp 
- * @author Eric Hermosis
- * @date 2025  
- * @brief Implements views for tensors in the Tannic Tensor Library.
- * 
- * This header defines expression templates for tensors views
- * without copying data. These views operate on the underlying tensor metadata
- * (shape, strides, and offset) to reinterpret how elements are accessed while
- * preserving the original storage.
- *
- * Example usage:
- *
- * ```cpp
- * Tensor X(float32, {2, 3}); X.initialize();
- * 
- * // View from (2, 3) to (3, 2)
- * auto Y = view(X, 3, 2);
- * std::cout << Y.shape() << std::endl; // (3, 2)
- *
- * // Swap the first and second dimensions
- * auto Z = transpose(X, 0, 1);
- * std::cout << Z.shape() << std::endl; // (3, 2)
- * ```
- */
+#define VIEWS_HPP  
 
 #include <utility> 
 #include <algorithm>

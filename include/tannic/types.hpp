@@ -64,7 +64,6 @@
  * std::cout << dsizeof(complex128); // 16
  */
 
-
 #include <iostream>
 #include <cstdint>  
 #include <string>   

@@ -30,6 +30,7 @@ class Function : public Expression<Functor, Argument> {
 public: 
     constexpr Function(Functor functor, typename Trait<Argument>::Reference argument)
     :   Expression<Functor, Argument>(functor, argument)
+    ,   strides_(argument.shape())
     {}
     
     constexpr type dtype() const {
@@ -41,19 +42,22 @@ public:
     }  
     
     constexpr Strides const& strides() const {
-        return std::get<0>(this->operands).strides();
+        return strides_;
     }
     
     auto offset() const {
-        return std::get<0>(this->operands).offset();
+        return 0;
     }
  
     Tensor forward(Context const& context) const {
         Tensor source = std::get<0>(this->operands).forward(context);
-        Tensor target(dtype(), shape(), strides(), offset());
+        Tensor target(dtype(), shape());
         this->operation(source, target);
         return target;
     } 
+
+private:
+    Strides strides_; 
 };
 
 } namespace tannic::function {

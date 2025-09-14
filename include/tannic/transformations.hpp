@@ -330,7 +330,7 @@ constexpr auto repeat(Source&& source, int repeats, int axis = 0) {
 }
 
 
-/**
+/**<
  * @brief Helper function to create a concatenation transformation.
  * 
  * @tparam First Left tensor expression type.
