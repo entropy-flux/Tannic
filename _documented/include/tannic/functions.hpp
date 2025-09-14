@@ -15,7 +15,35 @@
 
 #ifndef FUNCTIONS_HPP
 #define FUNCTIONS_HPP
- 
+
+/**
+ * @file functions.hpp
+ * @author Eric Hermosis
+ * @date 2025
+ * @brief Defines mathematical function operations for tensor expressions. 
+ *
+ * This header provides lazy-evaluated mathematical functions for tensor-like objects,
+ * implemented as expression templates. All operations are element-wise and maintain
+ * the original tensor's shape and strides.
+ *
+ * Includes the following mathematical functions:
+ * - Basic functions:
+ *   * log() - Natural logarithm (ln)
+ *   * exp() - Exponential (e^x)
+ *   * sqrt() - Square root (√x)
+ *   * abs() - Absolute value (|x|)
+ * - Trigonometric functions (radians):
+ *   * sin() - Sine
+ *   * cos() - Cosine
+ *   * tan() - Tangent
+ * - Hyperbolic functions:
+ *   * sinh() - Hyperbolic sine
+ *   * cosh() - Hyperbolic cosine
+ *   * tanh() - Hyperbolic tangent
+ * 
+ * Part of the Tannic Tensor Library.
+ */
+
 #include "concepts.hpp"
 #include "expressions.hpp"
 #include "traits.hpp" 
@@ -24,7 +52,16 @@
 #include "tensor.hpp"  
 
 namespace tannic::expression {  
-    
+/**
+ * @brief Expression template for mathematical function operations.
+ *
+ * Represents a lazily evaluated unary function that takes a functor as argument
+ * and maps it to an argument.
+ * The actual computation is deferred until `forward()` is called.
+ *
+ * @tparam Functor A mathematical functor satisfying the Functional concept
+ * @tparam Argument An expression type satisfying the `Expression` concept
+ */ 
 template<Functional Functor, Composable Argument>
 class Function : public Expression<Functor, Argument> {
 public: 
@@ -49,7 +86,7 @@ public:
     }
  
     Tensor forward(Context const& context) const {
-        Tensor source = std::get<0>(this->operands).forward(context);
+        Tensor source = std::get<0>(this->operands).forward();
         Tensor target(dtype(), shape(), strides(), offset());
         this->operation(source, target);
         return target;
@@ -60,6 +97,10 @@ public:
 
 using tannic::expression::Function;
 
+/**
+ * @brief Functor natural logarithm (ln(x))
+ * Applies element-wise natural logarithm to tensor elements
+ */
 struct Log {
     void operator()(Tensor const&, Tensor&) const;
 };

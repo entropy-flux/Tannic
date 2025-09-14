@@ -62,10 +62,38 @@ class Tensor;
 
 } namespace tannic::expression {   
    
+/**
+ * @class View
+ * @brief Expression template for viewing a tensor with a new shape.
+ *
+ * @tparam Source The expression or tensor type being reshaped.
+ *
+ * The `View` view changes how the elements of a tensor are indexed
+ * by updating its shape and recomputing its strides without moving data.
+ *
+ * This operation requires that the total number of elements in the new
+ * shape matches the original tensor's total number of elements.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {2, 3});
+ * auto Y = view(X, 3, 2); // new shape: (3, 2)
+ * ```
+ */
 template<Composable Source>
 class View {
 public:    
-
+    /**
+     * @brief Construct a reshaped view of the source tensor.
+     *
+     * @tparam Indexes Integral dimension sizes of the new shape.
+     * @param source Reference to the source expression or tensor.
+     * @param sizes Dimension sizes for the reshaped view.
+     *
+     * @throws Assertion failure if the number of elements in the new shape
+     *         does not match the number of elements in the source.
+     */ 
+  
     template<Integral... Sizes>  
     constexpr View(typename Trait<Source>::Reference source, Sizes... sizes)
     :   source_(source)
@@ -117,24 +145,52 @@ public:
             strides_[dimension] = strides_[dimension + 1] * shape_[dimension + 1];
         } 
     }
-    
+
+    /**
+     * @return The runtime data type of the tensor elements.
+     *
+     * This simply forwards the call to the underlying source expression’s
+     * `dtype`. Since a view (reshape or transpose) does not alter
+     * the actual stored values.
+     */
     constexpr type dtype() const {
         return source_.dtype();
     }
-    
+
+    /**
+     * @return The shape of the reshaped view.
+     *
+     * In a reshape, this value is explicitly provided in the constructor
+     * through `indexes...` and stored in `shape_`.  
+     */
     constexpr Shape const& shape() const {
         return shape_;
     }
 
+    /**
+     * @return The strides of the reshaped view.
+     *
+     * For a reshape, strides are recomputed from the new `shape_` so that
+     * the element layout in memory matches the original data ordering. 
+     */
     constexpr Strides const& strides() const {
         return strides_;
     }
 
+    /**
+     * @return The byte offset of the reshaped view from the start of the storage.
+     *
+     * This value is forwarded from the source expression’s `offset()` method.
+     * The offset represents the memory position (in bytes) where the first
+     * element of the view begins relative to the start of the underlying
+     * storage buffer. Since reshape do not move elements in
+     * memory, the offset is unchanged from the source tensor.
+     */
     std::ptrdiff_t offset() const {
         return source_.offset();
     }
  
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     Shape shape_;
@@ -143,10 +199,33 @@ private:
 };   
 
 
+/**
+ * @class Transpose
+ * @brief Expression template for transposing two dimensions of a tensor.
+ *
+ * @tparam Source The expression or tensor type being transposed.
+ *
+ * The `Transpose` view swaps the shape and strides of two dimensions
+ * without moving data. This is useful for reordering axes for operations
+ * like matrix multiplication.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {2, 3});
+ * auto Y = transpose(X, 0, 1); // shape becomes (3, 2)
+ * auto Z = X.transpose(0, 1); // oop syntax.
+ * ```
+ */
 template<Composable Source>
 class Transpose {
 public: 
 
+    /**
+     * @brief Construct a transposed view of the source tensor.
+     *
+     * @param source Reference to the source expression or tensor.
+     * @param dimensions A pair of dimension indices to swap.
+     */
     constexpr Transpose(typename Trait<Source>::Reference source, std::pair<int, int> dimensions)
     :   shape_(source.shape()) 
     ,   strides_(source.strides())
@@ -156,24 +235,50 @@ public:
         std::swap(shape_[indexing::normalize(dimensions.first, rank)], shape_[indexing::normalize(dimensions.second, rank)]); 
         std::swap(strides_[indexing::normalize(dimensions.first, rank)], strides_[indexing::normalize(dimensions.second, rank)]);   
     }
-    
+
+    /**
+     * @return The data type of the tensor elements.
+     *
+     * Transposing does not change the element type. This value is
+     * returned from the source expression's `dtype()`.
+     */
     constexpr type dtype() const {
         return source_.dtype();
     } 
-    
+        
+    /**
+     * @return The shape of the transposed view.
+     *
+     * The shape is initially copied from the source tensor, then
+     * in the constructor the two specified dimensions are swapped.
+     */
     constexpr Shape const& shape() const {
         return shape_;
     } 
 
+    /**
+     * @return The strides of the transposed view.
+     *
+     * Strides are copied from the source tensor in the constructor,
+     * and then the strides for the two swapped dimensions are exchanged
+     * to match the new layout in memory.
+     */
     constexpr Strides const& strides() const {
         return strides_;
     }  
 
+    /**
+     * @return The byte offset of the transposed view from the start of the storage.
+     *
+     * This is taken directly from the source expression’s `offset()` because
+     * transposing only changes how dimensions are indexed, not where the
+     * first element is stored.
+     */
     std::ptrdiff_t offset() const {
         return source_.offset();
     }
 
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     Shape shape_; 
@@ -183,11 +288,40 @@ private:
 };   
 
 
-
+/**
+ * @class Permutation
+ * @brief Expression template for reordering tensor dimensions according to a specified permutation.
+ *
+ * @tparam Source The expression or tensor type being permuted.
+ * @tparam Indexes A parameter pack of integral indices defining the permutation order.
+ *
+ * The `Permutation` view reorders the dimensions of a tensor according to a
+ * user-specified sequence of indices. This changes how elements are accessed
+ * along each axis, but does not move the underlying data in memory.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {2, 3, 4});
+ * auto Y = permute(X, 2, 0, 1); // shape becomes (4, 2, 3)
+ * ```
+ *
+ * @note The number of indices in the permutation must match the rank of the tensor.
+ *       Otherwise, an exception is thrown.
+ */
 template<Composable Source, Integral ... Indexes>
 class Permutation {
 public:
-
+    /**
+     * @brief Constructs a permuted view of the source tensor.
+     *
+     * @param source Reference to the source expression or tensor.
+     * @param indexes A tuple of dimension indices specifying the new order.
+     *
+     * @throws Exception if the number of indices does not match the source tensor's rank.
+     *
+     * This constructor normalizes the indices to ensure they are valid for the tensor's rank,
+     * and then expands the `shape_` and `strides_` of the permuted view accordingly.
+     */
     constexpr Permutation(typename Trait<Source>::Reference source, std::tuple<Indexes...> indexes) 
     :   source_(source)
     {
@@ -204,26 +338,46 @@ public:
         }, indexes);
     }
 
-    
+    /**
+     * @return The data type of the tensor elements.
+     *
+     * The element type remains the same as the source tensor.
+     */
     constexpr type dtype() const { 
         return source_.dtype(); 
     }
-    
+
+    /**
+     * @return The shape of the permuted view.
+     *
+     * The shape is reordered according to the permutation indices provided
+     * in the constructor.
+     */
     constexpr Shape const& shape() const { 
         return shape_; 
     }
 
-    
+    /**
+     * @return The strides of the permuted view.
+     *
+     * Strides are reordered to match the permuted axes, ensuring that
+     * element access corresponds to the new dimension order.
+     */
     constexpr Strides const& strides() const { 
         return strides_; 
     }
 
-    
+    /**
+     * @return The byte offset of the permuted view from the start of the storage.
+     *
+     * This forwards directly from the source tensor. The data buffer is not
+     * moved, so the offset remains the same.
+     */
     std::ptrdiff_t offset() const { 
         return source_.offset(); 
     } 
 
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     Shape shape_{};
@@ -233,9 +387,34 @@ private:
 
 
 
+/**
+ * @class Expansion
+ * @brief Expression template for expanding (broadcasting) singleton dimensions of a tensor.
+ *
+ * @tparam Source The expression or tensor type being expanded.
+ *
+ * The `Expansion` view allows a tensor to be broadcast along dimensions where the original
+ * size is 1, enabling operations with larger tensors without copying data. Only dimensions
+ * with size 1 in the source tensor can be expanded; other dimensions must match the target shape.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {1, 3});
+ * auto Y = expand(X, 4, 3); // shape becomes (4, 3)
+ * ```
+ */
 template<Composable Source>
 class Expansion {
 public:
+    /**
+     * @brief Construct an expansion view.
+     *
+     * Stores reference to the source tensor and the requested target sizes. 
+     *
+     * @tparam Sizes Integral dimension sizes of the target shape.
+     * @param source Reference to the source tensor or expression.
+     * @param sizes Dimension sizes for the expanded view.
+     */    
     template<Integral... Sizes>
     constexpr Expansion(typename Trait<Source>::Reference source, Sizes... sizes)
     :   source_(source) {
@@ -279,23 +458,54 @@ public:
         }
     }
 
-    constexpr type dtype() const {
-        return source_.dtype();
+
+    /**
+     * @return The data type of the tensor elements.
+     *
+     * Broadcasting does not change the element type, so the dtype
+     * is forwarded from the source tensor.
+     */
+    constexpr type dtype() const { 
+        return source_.dtype(); 
     }
 
+    /**
+     * @return The shape of the expanded view.
+     *
+     * Calculation:
+     * - Returns the requested target shape stored in the constructor.
+     * - Validates that non-singleton dimensions of the source match the requested size.
+     *
+     * @throws Exception if a non-singleton dimension in the source does not match the target.
+     */
     constexpr Shape const& shape() const { 
         return shape_; 
     }
 
+
+    /**
+     * @return The strides of the expanded view.
+     *
+     * Calculation:
+     * - Copy the source strides.
+     * - For each dimension where the source size is 1 and target size > 1, set stride to 0.
+     *   This ensures the same memory element is repeated along expanded dimensions.
+     */
     constexpr Strides const& strides() const { 
         return strides_; 
     }
 
+    /**
+     * @return The byte offset of the expanded view from the start of the storage.
+     *
+     * The offset is the same as the source tensor, because broadcasting
+     * does not change the underlying data location.
+     */
     std::ptrdiff_t offset() const { 
         return source_.offset(); 
     }
 
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     Shape shape_;
@@ -303,9 +513,32 @@ private:
     typename Trait<Source>::Reference source_;
 };
 
+/**
+ * @class Squeeze
+ * @brief Expression template for removing singleton dimensions from a tensor.
+ *
+ * @tparam Source The expression or tensor type being squeezed.
+ *
+ * The `Squeeze` view removes dimensions of size 1 from the shape of a tensor.
+ * This changes only the tensor metadata (shape and strides), not the underlying storage.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {1, 3, 1});
+ * auto Y = squeeze(X); // shape becomes (3)
+ * ```
+ */
 template<Composable Source>
 class Squeeze {
 public:
+    /**
+     * @brief Construct a squeezed view of the source tensor.
+     *
+     * @param source Reference to the source expression or tensor.
+     *
+     * This constructor removes all dimensions of size 1 from the source shape.
+     * Strides corresponding to those singleton dimensions are also removed.
+     */
     constexpr Squeeze(typename Trait<Source>::Reference source)
     : source_(source) {
         for (auto dimension = 0; dimension < source.shape().rank(); ++dimension) {
@@ -315,24 +548,57 @@ public:
             }
         }
     }
-    
+
+    /**
+     * @return The runtime data type of the tensor elements.
+     *
+     * This is forwarded directly from the source expression.
+     * Squeezing does not alter the tensor’s dtype.
+     */
     constexpr type dtype() const { 
         return source_.dtype(); 
     }
 
+    /**
+     * @return The shape of the squeezed tensor.
+     *
+     * Calculation:
+     * - Copies the source shape.
+     * - Removes all dimensions of size 1.
+     *
+     * Example:
+     * - Source shape: (1, 3, 1) → Squeezed shape: (3)
+     */
     constexpr Shape const& shape() const { 
         return shape_; 
     }
 
+    /**
+     * @return The strides of the squeezed tensor.
+     *
+     * Calculation:
+     * - Copies the source strides.
+     * - Removes strides corresponding to dimensions of size 1.
+     *
+     * Example:
+     * - Source strides: (3, 1, 1) with shape (1, 3, 1)
+     * - Result after squeeze: (1) with shape (3)
+     */
     constexpr Strides const& strides() const { 
         return strides_; 
     }
-    
+
+    /**
+     * @return The byte offset of the squeezed tensor from the start of storage.
+     *
+     * This is forwarded from the source tensor since squeezing
+     * does not change the starting position of the data.
+     */
     std::ptrdiff_t offset() const { 
         return source_.offset(); 
     }
 
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     Shape shape_{};
@@ -341,10 +607,39 @@ private:
 };
 
 
+
+/**
+ * @class Unsqueeze
+ * @brief Expression template for inserting singleton dimensions into a tensor.
+ *
+ * @tparam Source The expression or tensor type being unsqueezed.
+ *
+ * The `Unsqueeze` view adds new dimensions of size 1 at specified axes.
+ * This changes only the tensor metadata (shape and strides), not the underlying storage.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {3});
+ * auto Y = unsqueeze(X, 0);   // shape becomes (1, 3)
+ * auto Z = unsqueeze(X, -1);  // shape becomes (3, 1)
+ * ```
+ */
 template<Composable Source>
 class Unsqueeze {
 public:
-
+    /**
+     * @brief Construct an unsqueezed view of the source tensor.
+     *
+     * @tparam Axes Integral indices where new dimensions of size 1 should be inserted.
+     * @param source Reference to the source expression or tensor.
+     * @param axes One or more dimension indices (negative indices allowed).
+     *
+     * Example:
+     * - `unsqueeze(X, 0)` inserts a new axis before the first dimension.
+     * - `unsqueeze(X, -1)` inserts a new axis after the last dimension.
+     *
+     * @throws Exception if any normalized axis index is invalid.
+     */
     template<Integral... Axes>
     constexpr Unsqueeze(typename Trait<Source>::Reference source, Axes... axes)
     : source_(source) {
@@ -368,24 +663,55 @@ public:
             }
         }
     }
-    
+
+    /**
+     * @return The runtime data type of the tensor elements.
+     *
+     * This is forwarded directly from the source expression.
+     * Unsqueezing does not alter the tensor’s dtype.
+     */
     constexpr type dtype() const { 
         return source_.dtype(); 
     }
 
+    /**
+     * @return The shape of the unsqueezed tensor.
+     *
+     * Calculation:
+     * - Copies the source shape.
+     * - Inserts size-1 dimensions at the specified axes.
+     *
+     * Example:
+     * - Source shape: (3)
+     * - unsqueeze(X, 0) → shape: (1, 3)
+     */
     constexpr Shape const& shape() const { 
         return shape_; 
     }
 
+    /**
+     * @return The strides of the unsqueezed tensor.
+     *
+     * Calculation:
+     * - Copies the source strides.
+     * - Inserts strides for new singleton dimensions.
+     *   These strides are set to repeat the same memory element along the axis.
+     */
     constexpr Strides const& strides() const { 
         return strides_; 
     }
 
+    /**
+     * @return The byte offset of the unsqueezed tensor from the start of storage.
+     *
+     * This is forwarded from the source tensor since unsqueezing
+     * does not change the starting position of the data.
+     */
     std::ptrdiff_t offset() const { 
         return source_.offset(); 
     }
 
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     Shape shape_{};
@@ -393,7 +719,24 @@ private:
     typename Trait<Source>::Reference source_;
 };
 
-
+  
+/**
+ * @class Flatten
+ * @brief Expression template for flattening a contiguous range of dimensions.
+ *
+ * @tparam Source The expression or tensor type being flattened.
+ *
+ * The `Flatten` view collapses dimensions between `start_dim` and `end_dim`
+ * into a single dimension. This operation only modifies tensor metadata
+ * (shape and strides) and does not move data.
+ *
+ * Example:
+ * ```cpp
+ * Tensor X(float32, {2, 3, 4});
+ * auto Y = flatten(X, 1, -1); // shape becomes (2, 12)
+ * auto Z = flatten(X);        // shape becomes (24)
+ * ```
+ */
 template<Composable Source>
 class Flatten {
 public:
@@ -426,22 +769,58 @@ public:
         }
     }
 
-    
-    constexpr type dtype() const { 
-        return source_.dtype(); 
-    }
+    /**
+     * @return The runtime data type of the tensor elements.
+     *
+     * This is forwarded directly from the source expression.
+     * Flatten does not alter the tensor’s dtype.
+     */
+    constexpr type dtype() const { return source_.dtype(); }
 
+        /**
+     * @return The shape of the flattened tensor.
+     *
+     * Calculation:
+     * - Dimensions before `start` are copied unchanged.
+     * - Dimensions between `start` and `end` (inclusive) are collapsed
+     *   into a single dimension equal to the product of their sizes.
+     * - Dimensions after `end` are copied unchanged.
+     *
+     * Example:
+     * - Source shape: (2, 3, 4), start_dim = 1, end_dim = -1
+     * - Flattened shape: (2, 12)
+     */
     constexpr Shape const& shape() const { 
         return shape_; 
     }
 
+    /**
+     * @return The strides of the flattened tensor.
+     *
+     * Calculation:
+     * - Strides before `start` are copied unchanged.
+     * - The collapsed dimension is assigned the stride of the
+     *   *last* flattened dimension (`end`).  
+     *   This ensures contiguous indexing across the merged block.
+     * - Strides after `end_dim` are copied unchanged.
+     *
+     * Example:
+     * - Source strides: (12, 4, 1) with shape (2, 3, 4)
+     * - Flattened (start=1, end=-1) → strides: (12, 1) with shape (2, 12)
+     */
     constexpr Strides const& strides() const { 
         return strides_; 
     }
 
+    /**
+     * @return The byte offset of the unsqueezed tensor from the start of storage.
+     *
+     * This is forwarded from the source tensor since flatten
+     * does not change the starting position of the data.
+     */
     std::ptrdiff_t offset() const { return source_.offset(); }
 
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     Shape shape_{};

@@ -52,7 +52,7 @@ public:
         return 0;
     }
   
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     type dtype_;
@@ -84,7 +84,7 @@ public:
         return 0;
     }
     
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     type dtype_;
@@ -122,7 +122,7 @@ public:
         return 0;
     }
     
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     type dtype_;

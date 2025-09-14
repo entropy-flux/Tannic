@@ -16,6 +16,16 @@
 #ifndef TRANSFORMATIONS_HPP
 #define TRANSFORMATIONS_HPP 
 
+/**
+ * @file transformations.hpp
+ * @author Eric Hermosis
+ * @date 2025
+ * @brief Defines tensor transformation operations.
+ *
+ * This header provides tensor transformation operations implemented as expression templates. 
+ *
+ * Part of the Tannic Tensor Library.
+ */ 
 #include <tuple>
 #include <array>
 #include <vector>
@@ -34,6 +44,15 @@ class Tensor;
 
 } namespace tannic::expression {
 
+/**
+ * @brief Expression template for tensor transformations
+ *
+ * Represents a lazily evaluated transformation operation between multiple tensors.
+ * Handles type promotion, shape broadcasting, and proper stride computation.
+ *
+ * @tparam Operation The transformation operation type
+ * @tparam Operands Variadic template for input expressions
+ */
 template<class Operation, Composable ... Operands>
 class Transformation : public Expression<Operation, Operands...> {
 public:  
@@ -60,10 +79,10 @@ public:
         return 0;
     }
  
-    Tensor forward(Context const& context) const {
+    Tensor forward() const {
         Tensor result(dtype_, shape_);
         std::apply([&](const auto&... arguments) {
-            return this->operation.forward(arguments.forward(context)..., result);
+            return this->operation.forward(arguments.forward()..., result);
         }, this->operands);
         return result;
     }
@@ -78,15 +97,37 @@ private:
 
 using tannic::expression::Transformation;
 
+/**
+ * @brief Helper function to compute type promotion table indices
+ * @param first  First type
+ * @param second Second type
+ * @return Index into promotion table
+ */
 static constexpr auto index(type first, type second) {
     return static_cast<int>(first) + static_cast<int>(second) * static_cast<int>(TYPES);
 }  
 
+/**
+ * @brief Transformation composition (Known as Matrix Multiplication) operation
+ *
+ * Implements tensor composition with:
+ * - Automatic type promotion
+ * - Shape broadcasting for batch dimensions
+ * - Support for vectors, matrices, and higher-rank tensors
+ */ 
 struct Composition {      
-
+    /**
+     * @brief Type promotion rules table
+     *
+     * Defines promotion rules for all type combinations:
+     * - Integer operations promote to avoid overflow
+     * - Mixed integer/float promotes to float
+     * - Operations preserve highest precision
+     */
     static constexpr auto promotions = []() {
         std::array<type, index(TYPES, TYPES)> table{};  
         table.fill(unknown);
+        // Integer promotions
         table[index(int8, int8)]   = int32;
         table[index(int8, int16)]  = int32;
         table[index(int8, int32)]  = int32;
@@ -151,13 +192,50 @@ struct Composition {
         return table;
     }();  
  
+    /**
+     * @brief Promotes two operand types to a common type for composition operations
+     * @param inner Type of the inner (right) operand
+     * @param outer Type of the outer (left) operand 
+     * @return Promoted type according to the composition rules
+     * @throws assertion error if the type combination is unsupported
+     *
+     * @details This promotion system:
+     * 1. Uses a precomputed promotion table for all valid type combinations
+     * 2. Ensures safe arithmetic by:
+     *    - Promoting integers to avoid overflow (e.g., int8 → int32)
+     *    - Promoting mixed integer/float to float
+     *    - Preserving higher precision when types differ
+     * 3. Explicitly rejects invalid combinations via assertion
+     *
+     * Example promotions:
+     * 
+     * ```
+     * promote(int8, int32) → int32  // Integer widening
+     * promote(int32, float32) → float32  // Mixed to float
+     * promote(float32, float64) → float64  // Precision preservation
+     * ```
+     */
     constexpr static type promote(type inner, type outer) {
         type dtype = promotions[index(inner, outer)];
         if (dtype == unknown) 
             throw Exception("Unsuported dtypes");
         return dtype;
     }
-    
+
+    /**
+     * @brief Computes transformed output shape for composition
+     * @param first First operand shape
+     * @param second Second operand shape
+     * @return Broadcasted output shape
+     * @throws assertion error if shapes are incompatible
+     *
+     * @details Handles multiple cases:
+     * 1. Vector-vector: (n) × (n) → scalar (empty shape)
+     * 2. Matrix-vector: (m,n) × (n) → (m)
+     * 3. Vector-matrix: (n) × (n,k) → (k)
+     * 4. Matrix-matrix: (m,n) × (n,k) → (m,k)
+     * 5. Batched operations: (...,m,n) × (...,n,k) → (...,m,k)
+     */
     static constexpr Shape transform(Shape const& first, Shape const& second) {
         auto first_rank = first.rank();
         auto second_rank = second.rank();
@@ -165,36 +243,41 @@ struct Composition {
         if (first_rank == 1 && second_rank == 1) {
             if (first_rank != 1 | second_rank != 1)
                 throw Exception("dimensions must match for dot product");
-            return Shape{};  
+            return Shape{};  // Scalar result
         }
           
         if (first_rank == 1 && second_rank == 2) {
             if (first[0] != second[0])
                 throw Exception("Matrix inner dimensions do not match");
             if (first[0] != second[0])
-            return Shape{second[0]}; 
+            return Shape{second[0]};  // Vector result
         }
          
+        // Vector-matrix multiplication
         if (first_rank == 2 && second_rank == 1) {
             if (first[1] != second[0])
                 throw Exception("Matrix inner dimensions do not match");
-            return Shape{first[0]}; 
+            return Shape{first[0]};  // Vector result
         }  
 
         if (first_rank < 2 | second_rank < 2) 
             throw Exception("Inputs must have rank >= 2");
         
+        // Handle batch dimensions
         Shape first_batches(first.begin(), first.end() - 2);
         Shape second_batches(second.begin(), second.end() - 2);
         Shape batches = operation::broadcast(first_batches, second_batches);
         
+        // Check matrix inner dimensions
         auto K1 = *(first.end() - 1);
         auto K2 = *(second.end() - 2);   
         assert(K1 == K2 && "Inner dimensions must match for matmul");
         
+        // Get output matrix dimensions
         auto M = *(first.end() - 2);
         auto N = *(second.end() - 1);
         
+        // Combine batch and matrix dimensions
         std::vector<Shape::size_type> result(batches.begin(), batches.end());
         result.push_back(M);
         result.push_back(N);
@@ -204,13 +287,40 @@ struct Composition {
     void forward(Tensor const& outer, Tensor const& inner, Tensor& result) const; 
 }; 
  
-
+/**
+ * @brief Represents the outer product operation between two vectors. 
+ * 
+ * The outer product of two vectors with shapes (n) and (m) results in 
+ * a matrix of shape (n, m). Currently, only vectors are supported — tensors 
+ * with rank greater than 1 are not supported, but this may be extended in the future.
+ */
 struct Outer { 
-    
+    /**
+     * @brief Type promotion for the outer product operation
+     * 
+     * Promotes two operand types to the higher precision type.  
+     * @param first Type of the first operand (left)
+     * @param second Type of the second operand (right)
+     * @return Promoted type for outer product computation
+     */
     static constexpr type promote(type first, type second) {
         return static_cast<int>(first) > static_cast<int>(second) ? first : second;
     }
 
+    /**
+     * @brief Computes output shape for the outer product of two vectors 
+     * @param first Shape of the first tensor 
+     * @param second Shape of the second tensor  
+     * @return Shape of the resulting outer product tensor
+     * 
+     * @throws assertion error if either input tensor is not rank 1
+     * for now outer product only support vectors and not general tensors
+     * but this may change in the future.
+     * 
+     * @details The outer product of two vectors with shapes (n) and (m) 
+     * produces a matrix of shape (n, m).
+     * Outer product is not defined here for tensors with rank > 1.
+     */
     static constexpr Shape transform(Shape const& first, Shape const& second) {
         if(first.rank() != 1 | second.rank() != 1) 
             throw Exception("Outer product of tensors with rank more than 1 not supported");
@@ -220,14 +330,35 @@ struct Outer {
     void forward(Tensor const& first, Tensor const& second, Tensor& result) const;
 };  
 
+/**
+ * @brief Repetition operation along a specified axis.
+ * 
+ * Replicates the tensor data along a given axis multiple times.
+ */
 struct Repetition {
     int repeats;
     int axis;
-
+     
+    /**
+     * @brief Type promotion for repetition operation.
+     * 
+     * Repetition does not change data type.
+     * 
+     * @param dtype Original tensor data type.
+     * @return Same data type.
+     */
     constexpr type promote(type dtype) const {
         return dtype;
     }
 
+    /**
+     * @brief Computes output shape after repetition.
+     * 
+     * Multiplies the size of the specified axis by repeats.
+     * 
+     * @param shape Input tensor shape.
+     * @return Output shape after repetition.
+     */
     constexpr Shape transform(Shape shape) const {
         shape[indexing::normalize(axis, shape.rank())] *= repeats; 
         return shape;
@@ -237,14 +368,38 @@ struct Repetition {
 };
 
 
+/**
+ * @brief Concatenation operation along a specified axis.
+ * 
+ * Concatenates two tensors of the same rank and dtype along a given axis.
+ */
 struct Concatenation {
     int axis;
+    /**
+     * @brief Type promotion for concatenation.
+     * 
+     * Requires both tensors to have identical data types.
+     * 
+     * @param first Left tensor dtype.
+     * @param second Right tensor dtype.
+     * @return Data type (same as inputs).
+     */
     constexpr auto promote(type first, type second) const {
         if(first != second)
             throw Exception("Cannot concatenate tensors of different dtypes");
         return first;
     } 
 
+    /**
+     * @brief Computes output shape after concatenation.
+     * 
+     * Validates that all dimensions except the concatenation axis are equal.
+     * Output shape is input shapes with concatenation axis dimension summed.
+     * 
+     * @param first Left tensor shape.
+     * @param second Right tensor shape.
+     * @return Output shape after concatenation.
+     */
     constexpr Shape transform(Shape const& first, Shape const& second) {
         assert(first.rank() == second.rank() && "Ranks must match for concatenation");
         Shape result = first;
@@ -264,16 +419,37 @@ struct Concatenation {
     void forward(Tensor const&, Tensor const&, Tensor&) const;
 };
 
-
+/**
+ * @brief Repack operation (makes a tensor contiguous in memory)
+ *
+ * Ensures the tensor is stored contiguously (row-major order).
+ * Does not change shape or dtype.
+ */
 struct Repack {
+    /**
+     * @brief Type promotion for repack.
+     * 
+     * Repack does not change dtype.
+     */
     constexpr type promote(type dtype) const {
         return dtype;
     }
-    
+
+    /**
+     * @brief Computes output shape after repack.
+     *
+     * Repack does not change the shape.
+     */
     constexpr Shape transform(Shape const& shape) const {
         return shape;
     }
-    
+
+    /**
+     * @brief Copies the tensor data to a contiguous layout if needed.
+     * 
+     * @param source Input tensor.
+     * @param result Output tensor with contiguous layout.
+     */
     void forward(Tensor const& source, Tensor& result) const;
 }; 
 

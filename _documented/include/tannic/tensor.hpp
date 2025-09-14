@@ -17,7 +17,30 @@
  
 #ifndef TENSOR_HPP
 #define TENSOR_HPP 
- 
+
+/**
+ * @file tensor.hpp
+ * @author Eric Hermosis
+ * @date 2025
+ * @brief Core multidimensional tensor class for the Tannic Tensor Library. 
+ * 
+ * Defines `tannic::Tensor`, the primary data structure of the library, supporting:
+ * 
+ * - **Dynamic dtypes**: No need for templates, data types can be passed to tensors as arguments to simplify serialization and IO operations.
+ * 
+ * - **Memory management**: Host(CPU)/Device(eg. CUDA) allocation support.
+ * 
+ * - **Math operators and functions**: Math operators like +,*,- and matmul supported, for both CPU and CUDA tensors. 
+ * 
+ * - **Slicing/views**: Python-like indexing (`operator[]`, `range`, `transpose`) with negative index.
+ * 
+ * - **Eager evaluation**: Eager execution but allowing compile time optimizations like expression fusion using templates.
+ * 
+ * - **Strided storage**: Non-contiguous layouts via `Shape` and `Strides`.  
+ *
+ * @see Types.hpp(data types), Resources.hpp (Memory Managment), Functions.hpp (Supported functions)
+ */
+
 #include <iostream>  
 #include <memory>
 #include <cassert> 
@@ -33,18 +56,60 @@
 #include "operations.hpp" 
 #include "complex.hpp"
 #include "graph.hpp"
-#include "context.hpp"
 
 namespace tannic {  
- 
+
+/**
+ * @class Tensor
+ * @brief A multidimensional, strided tensor data structure.
+ * 
+ * The `Tensor` class is the primary data structure in the Tannic Tensor Library.
+ * It represents a dynamic typed intention of a computation. It supports
+ * slicing, transposition, and expression composition.
+ *
+ * #### Evaluation Mode:
+ * 
+ * - Tensors are currently **eager** : expressions assigned to them are immediately evaluated and stored.
+ * - A lazy `constexpr` evaluation mode is planned for future versions, enabling compile-time computational graphs.
+ *
+ * #### Memory:
+ *  
+ * - Host and Device (e.g., CUDA) allocations are supported using environments like `Host()` or `Device()`.
+ * - Memory can be explicitly allocated via `initialize(Host())` or initialize(Device()).
+ * 
+ * #### Example:
+ * 
+ * ```cpp
+ * using namespace tannic; 
+ *
+ * Tensor X(float32, {2,2}); X.initialize(); // or X.initialize(Device()); for CUDA support   
+ * X[0, range{0,-1}] = 1; 
+ * X[1,0] = 3;
+ * X[1,1] = 4;   
+ *  
+ * Tensor Y(float32, {1,2}); Y.initialize();  // or X.initialize(Device()); for CUDA support   
+ * Y[0,0] = 4;
+ * Y[0,1] = 6;    
+ * 
+ * std::cout << log(X) + Y * Y - exp(X) + matmul(X, Y.transpose());
+ * ```
+ *
+ * This example demonstrates eager initialization, advanced indexing, broadcasting, and composite expression evaluation.
+ */
 class Tensor {
 public: 
-    using rank_type = uint8_t;     
-    using size_type = std::size_t;   
+    using rank_type = uint8_t;      ///< Type used for rank (number of dimensions).
+    using size_type = std::size_t;  ///< Type used for size and shape dimensions.
 
 
     Tensor() = default;
- 
+
+
+    /**
+     * @brief Constructs an uninitialized tensor with default (contiguous) strides.
+     * @param dtype Data type of the tensor.
+     * @param shape Shape (dimensions) of the tensor.
+     */
     Tensor(type dtype, Shape shape)
     :   dtype_(dtype)
     ,   shape_(shape) 
@@ -52,7 +117,14 @@ public:
     ,   offset_(0)  {
         nelements_ = std::accumulate(shape_.begin(), shape_.end(), 1ULL, std::multiplies<>{}); 
     }
- 
+
+    /**
+     * @brief Constructs an uninitialized tensor with custom strides and offset.
+     * @param dtype Data type of the tensor.
+     * @param shape Shape of the tensor.
+     * @param strides Strides per dimension.
+     * @param offset Byte offset from start of underlying memory buffer.
+     */
     Tensor(type dtype, Shape shape, Strides strides, std::ptrdiff_t offset = 0)
     :   dtype_(dtype)
     ,   shape_(shape) 
@@ -69,53 +141,75 @@ public:
             expected *= shape_[index];
         }   
     }
- 
+
+
+    /**
+     * @brief Constructs a tensor by forwarding an `Expression`-like object.
+     * @tparam Expression Expression type satisfying the `Expression` concept.
+     * @param expression An expression to evaluate and store as a tensor.
+     */
     template <Composable Expression>
     Tensor(const Expression& expression) {
-        Context context{};
-        *this = expression.forward(context); 
+        *this = expression.forward(); 
     } 
- 
+
+    /**
+     * @brief Assigns the result of an expression to the tensor.
+     * @tparam Expression Expression type satisfying the `Expression` concept.
+     * @param expression Expression to evaluate.
+     * @return Reference to `*this`.
+     */
     template <Composable Expression>
     Tensor& operator=(const Expression& expression) {
-        Context context{};
-        *this = expression.forward(context); 
+        *this = expression.forward(); 
         return *this;
     }  
  
-public:   
+public:  
+    /// @name Metadata Access (May be constexpr in the future.)
+    /// @{
+
+    /// Returns the tensor's data type.
     type dtype() const { 
         return dtype_; 
     } 
- 
+
+    /// Returns the number of dimensions (rank) of the tensor.
     rank_type rank() const { 
         return shape_.rank(); 
-    }           
+    }          
 
+    /// Returns the tensor's shape (dimension sizes per dimension).
     Shape const& shape() const {  
         return shape_; 
     }
- 
+
+    /// Returns the tensor's size at a given dimension.
     Shape::size_type size(int dimension) const {
         return shape_[dimension];
     }
- 
+
+    /// Returns the tensor's strides (step sizes per dimension).
     Strides const& strides() const { 
         return strides_; 
     } 
-  
+ 
+    /// Returns the offset of the tensor in the current buffer. 
     std::ptrdiff_t offset() const {
         return offset_;
     } 
-     
+    
+    /// Returns the total number of elements of the tensor.
     std::size_t nelements() const {  
         return nelements_;
-    }  
+    } 
 
+    /// Returns the total number of bytes occupied by the tensor's elements.
     std::size_t nbytes() const {  
         return nbytesof(dtype_, nelements_);
     } 
- 
+
+    /// Returns whether the tensor's elements are in contiguous layout or not.
     bool is_contiguous() const {
         return is_contiguous_;
     }
@@ -123,39 +217,77 @@ public:
     bool is_singleton() const {
         return (nelements_ == 1);
     }
-       
-    Tensor& forward(Context const& context) { 
+      
+    /// Returns a reference to this tensor (const-qualified).
+    Tensor& forward() { 
         if (!is_initialized())
             initialize(); 
         return *this;
     } 
- 
-    Tensor const& forward(Context const& context) const {
+
+    /// Returns a reference to this tensor (non-const).
+    Tensor const& forward() const {
         if (!is_initialized())
             initialize(); 
         return *this;
-    }   
+    } 
+    /// @}
  
-public:    
+ 
+public:   
+    /// @name Memory Management (Always runtime.)
+    /// @{
+
+    /**
+     * @brief Allocates the memory buffer for the tensor.
+     * @param environment Memory environment (defaults to `Host{}`).
+     */
     void initialize(Environment environment = Host{}) const;
-    
+   
+    /**
+     * @brief Returns a pointer to the beginning of the tensor's data (accounting for offset).
+     * @return Pointer to the tensor's data in bytes.
+     */
     std::byte* bytes() const {
         return static_cast<std::byte*>(buffer_->address()) + offset_;
     }  
-    
+
+    /**
+     * @brief Checks whether the tensor has been initialized with memory.
+     * @return True if initialized, false otherwise.
+     */
     bool is_initialized() const {
         return buffer_ ? true : false;
     } 
 
+    /**
+     * @brief Returns a reference to the environment variant used to allocate this tensor's buffer.
+     * @return Environment reference.
+     * @note Asserts if the tensor is not initialized.
+     */
     Environment const& environment() const {
         if (!is_initialized())
             throw Exception("Cannot get resource of an initializer tensor."); 
         return buffer_->environment();
     }   
-    
+    /// @
 
 public: 
-
+    /**
+     * @brief Constructs a 1D tensor from an initializer list.
+     *
+     * @tparam T Element type (deduced from the initializer list).
+     * @param values A list of values to populate the tensor.
+     *
+     * @details
+     * This constructor allows **direct construction of 1D tensors** using brace-enclosed lists:
+     *
+     * ```cpp
+     * Tensor X {1.0f, 2.0f, 3.0f, 4.0f};  // 1D tensor of shape {4}, dtype=float32
+     * ```
+     *
+     * The tensor is immediately initialized on host, contiguous in memory, and its dtype is deduced from `T`.
+     */
     template<Arithmetic T>
     Tensor(std::initializer_list<T> const& values)
     :   dtype_(dtypeof<T>())
@@ -182,6 +314,24 @@ public:
         } 
     }
 
+    /**
+     * @brief Constructs a 2D tensor from a nested initializer list.
+     *
+     * @tparam T Element type (deduced from the nested initializer list).
+     * @param values A nested list of values (rows) to populate the tensor.
+     *
+     * @details
+     * This constructor allows **direct construction of 2D tensors**:
+     *
+     * ```cpp
+     * Tensor Y = {
+     *     {1.0f, 2.0f, 3.0f},
+     *     {4.0f, 5.0f, 6.0f}
+     * };  // 2D tensor of shape {2,3}, dtype=float32
+     * ```
+     *
+     * All inner lists (rows) must have the same length. The tensor is contiguous in memory.
+     */
     template<Arithmetic T>
     Tensor(std::initializer_list<std::initializer_list<T>> const& values)
     :   dtype_(dtypeof<T>())
@@ -218,6 +368,31 @@ public:
         } 
     }
 
+    /**
+     * @brief Constructs a 3D tensor from a triple-nested initializer list.
+     *
+     * @tparam T Element type (deduced from the nested lists).
+     * @param values A triple-nested list of values (matrices) to populate the tensor.
+     *
+     * @details
+     * This constructor allows **direct construction of 3D tensors**:
+     *
+     * ```cpp
+     * Tensor Z = {
+     *     {
+     *         {1.0f, 2.0f},
+     *         {3.0f, 4.0f}
+     *     },
+     *     {
+     *         {5.0f, 6.0f},
+     *         {7.0f, 8.0f}
+     *     }
+     * };  // 3D tensor of shape {2,2,2}, dtype=float32
+     * ```
+     *
+     * All matrices must have the same number of rows, and all rows must have the same number of columns.
+     * The tensor is contiguous in memory.
+     */
     template<Arithmetic T>
     Tensor(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values)
     :   dtype_(dtypeof<T>())
@@ -263,6 +438,42 @@ public:
     }   
  
 
+    /**
+     * @brief Constructs a 4D tensor from a quadruple-nested initializer list.
+     *
+     * @tparam T Element type (deduced from the nested lists).
+     * @param values A quadruple-nested list of values (tensors) to populate the 4D tensor.
+     *
+     * @details
+     * This constructor allows **direct construction of 4D tensors**:
+     *
+     * ```cpp
+     * Tensor X = {
+     *     {
+     *         {
+     *             {1.0f, 2.0f},
+     *             {3.0f, 4.0f}
+     *         },
+     *         {
+     *             {5.0f, 6.0f},
+     *             {7.0f, 8.0f}
+     *         }
+     *     },
+     *     {
+     *         {
+     *             {9.0f, 10.0f},
+     *             {11.0f, 12.0f}
+     *         },
+     *         {
+     *             {13.0f, 14.0f},
+     *             {15.0f, 16.0f}
+     *         }
+     *     }
+     * };  // 4D tensor of shape {2,2,2,2}, dtype=float32
+     * ```
+     *
+     * All inner tensors must have consistent dimensions. The tensor is contiguous in memory.
+     */
     template<Arithmetic T>
     Tensor(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const& values)
     :    dtype_(dtypeof<T>())
@@ -323,7 +534,30 @@ public:
 
 
 public: 
-
+    /**
+     * @brief Assigns values to a 1D tensor from an initializer list.
+     *
+     * @tparam T Element type of the initializer list.
+     * @param values A list of values to assign to the tensor.
+     *
+     * @details
+     * This operator assigns values to an **existing 1D tensor**:
+     *
+     * ```cpp
+     * Tensor X(float32, {3});
+     * X.initialize({1, 2, 3});  // values cast to float32
+     * ```
+     *
+     * Requirements:
+     * - The tensor must already be initialized.
+     * - The tensor must be rank-1.
+     * - The tensor must be contiguous.
+     * - The size of `values` must match the tensor shape.
+     *
+     * Type conversion:
+     * - Values are cast to the tensor’s existing dtype before being written.
+     * - This ensures that the tensor’s dtype does not change after assignment.
+     */ 
     template<Arithmetic T>
     void initialize(std::initializer_list<T> values, Environment environment = Host{}) {
         if (!is_contiguous())
@@ -368,7 +602,32 @@ public:
         } 
     }
  
-    
+    /**
+     * @brief Assigns values to a 2D tensor from a nested initializer list.
+     *
+     * @tparam T Element type of the nested initializer list.
+     * @param values A nested list of values to assign to the tensor (rows).
+     *
+     * @details
+     * This operator assigns values to an **existing 2D tensor**:
+     *
+     * ```cpp
+     * Tensor Y(float32, {2, 3});
+     * Y.initialize({
+     *     {1, 2, 3},
+     *     {4, 5, 6}
+     * });  // values cast to float32
+     * ```
+     *
+     * Requirements:
+     * - The tensor must already be initialized.
+     * - The tensor must be rank-2.
+     * - The tensor must be contiguous.
+     * - All rows must have the same length, matching the tensor’s second dimension.
+     *
+     * Type conversion:
+     * - Values are cast to the tensor’s existing dtype before being written.
+     */
     template<Arithmetic T>
     void initialize(std::initializer_list<std::initializer_list<T>> const & values, Environment environment = Host{}) {
         if (!is_contiguous())
@@ -422,6 +681,35 @@ public:
         }  
     }
  
+    /**
+     * @brief Assigns values to a 3D tensor from a triple-nested initializer list.
+     *
+     * @tparam T Element type of the nested initializer list.
+     * @param values A triple-nested list of values (matrices) to assign to the tensor.
+     * @param environment Target environment for initialization (default: Host).
+     *
+     * @details
+     * This operator assigns values to an **existing 3D tensor**:
+     *
+     * ```cpp
+     * Tensor Z(float32, {2, 1, 3});
+     * Z.initialize({
+     *     { {0.0f, 1.0f, 2.0f} },
+     *     { {3.0f, 4.0f, 5.0f} }
+     * });  // values cast to float32
+     * ```
+     *
+     * Requirements:
+     * - The tensor must already be initialized.
+     * - The tensor must be rank-3.
+     * - The tensor must be contiguous.
+     * - All matrices must have the same number of rows, and all rows must have the same number of columns,
+     *   matching the tensor’s shape.
+     *
+     * Type conversion:
+     * - Values are cast to the tensor’s existing dtype before being written.
+     * - This ensures that the tensor’s dtype does not change after assignment.
+     */
     template<Arithmetic T>
     void initialize(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values, Environment environment = Host{}) {
         if (!is_contiguous())
@@ -485,6 +773,46 @@ public:
         } 
 } 
 
+    /**
+     * @brief Assigns values to a 4D tensor from a quadruple-nested initializer list.
+     *
+     * @tparam T Element type of the nested initializer list.
+     * @param values A quadruple-nested list of values to assign to the tensor.
+     *
+     * @details
+     * This operator assigns values to an **existing 4D tensor**:
+     *
+     * ```cpp
+     * Tensor W(float32, {2, 2, 2, 2});  
+     * W.initialize({
+     *     {
+     *         {
+     *             {1,  2}, {3,  4}
+     *         },
+     *         {
+     *             {5,  6}, {7,  8}
+     *         }
+     *     },
+     *     {
+     *         {
+     *             {9, 10}, {11, 12}
+     *         },
+     *         {
+     *             {13, 14}, {15, 16}
+     *         }
+     *     }
+     * });  // values cast to float32
+     * ```
+     *
+     * Requirements:
+     * - The tensor must already be initialized.
+     * - The tensor must be rank-4.
+     * - The tensor must be contiguous.
+     * - All nested dimensions must match the tensor’s shape.
+     *
+     * Type conversion:
+     * - Values are cast to the tensor’s existing dtype before being written.
+     */
     template<Arithmetic T>
     void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> values, Environment environment = Host{}) {
         if (!is_contiguous())
@@ -654,7 +982,32 @@ public:
 
     
 public: 
+    /// @name Indexing, Slicing and Views.
+    /// @{
 
+    /**
+     * @brief Indexes the tensor with a single integral index.
+     * @param index The index to access.
+     * @return A slice expression representing the sub-tensor.
+     * 
+     * #### Example:
+     * 
+     * ```cpp
+     * using namespace tannic; 
+     *
+     * Tensor X(float32, {2,2,2}); X.initialize(); 
+     * X[0] = 1;    //arbitrary types assignment support.
+     * X[1] = 2.f;
+     * std::cout << X  << std::endl; // Tensor([[[1, 1], [1, 1]], 
+     *                              //          [[2, 2], [2, 2]]] dtype=float32, shape=(2, 2, 2))
+     * 
+     * Tensor Y = X[1]; 
+     * std::cout << Y << std::endl; // Tensor([[2, 2], 
+     *                             //          [2, 2]] dtype=float32, shape=(2, 2))
+     *  
+     * std::cout << Y[0] << std::endl; // Tensor([2, 2] dtype=float32, shape=(2))
+     * ```
+     */
     template<Integral Index>
     auto operator[](Index index) const {   
         if (!is_initialized())
@@ -662,12 +1015,43 @@ public:
         return expression::Slice<Tensor, Index>(*this, std::make_tuple(index));
     }
 
+    /**
+     * @brief Indexes the tensor with a `Range` object.
+     * @param range Range to apply to the first dimension.
+     * @return A slice expression representing the sub-tensor.
+     * 
+     * #### Example:
+     * 
+     * ```cpp
+     * using namespace tannic; 
+     *
+     * Tensor X(float32, {2,2,2}); X.initialize();  
+     * X[{0,1}] = 5; // same as X[range{0,1}] = 5
+     * ```
+     */
     auto operator[](indexing::Range range) const { 
         if (!is_initialized())
             initialize(); 
         return expression::Slice<Tensor, indexing::Range>(*this, std::make_tuple(range));
     } 
 
+    /**
+     * @brief Indexes the tensor with multiple indices (e.g., integers or ranges).
+     * @tparam Indexes Variadic index types.
+     * @param indexes Indices to apply.
+     * @return A slice expression representing the sub-tensor.
+     * 
+     * #### Example:
+     * 
+     * ```cpp
+     * using namespace tannic; 
+     *
+     * Tensor X(float32, {2,2}); X.initialize(); // or X.initialize(Device()); for CUDA support   
+     * X[0, range{0,-1}] = 1;  //  fills [0,0] and [0,1] with 1.
+     * X[1,0] = 3;
+     * X[1,1] = 4;       
+     * ```
+     */
     template<class ... Indexes>
     auto operator[](Indexes... indexes) const {
         if (!is_initialized())
@@ -675,12 +1059,26 @@ public:
         return expression::Slice<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
     } 
 
+
+    /**
+     * @brief Returns a view of the tensor with two dimensions transposed.
+     * @param first First dimension to swap (default: -1).
+     * @param second Second dimension to swap (default: -2).
+     * @return Transpose expression.
+     * 
+     */
     auto transpose(int first = -1, int second = -2) const {
         if (!is_initialized())
             initialize(); 
         return expression::Transpose<Tensor>(*this, std::make_pair<int, int>(std::move(first), std::move(second)));
     }  
  
+    /**
+     * @brief Returns a view of the tensor with dimensions permuted.
+     * @param indexes Indices to permute
+     * @return Permutation expression.
+     * 
+     */
     template<Integral ... Indexes>
     auto permute(Indexes... indexes) const {
         if (!is_initialized())
@@ -688,6 +1086,12 @@ public:
         return expression::Permutation<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
     } 
 
+     /**
+     * @brief Returns a view of the tensor with given sizes.
+     * @param sizes sizes of the new shape of the tensor
+     * @return View expression.
+     * 
+     */
     template<Integral ... Sizes>
     auto view(Sizes... sizes) const {
         if (!is_initialized())
@@ -695,17 +1099,45 @@ public:
         return expression::View<Tensor>(*this, sizes...);
     } 
 
+    /**
+     * @brief Returns a view of the tensor with all dimensions of size 1 removed.
+     * @return Squeeze expression.
+     *
+     * #### Example:
+     * ```cpp
+     * using namespace tannic;
+     *
+     * Tensor X(float32, {1, 3, 1, 5}); X.initialize();
+     * Tensor Y = X.squeeze();     // shape = (3, 5)
+     * ```
+     */
     auto squeeze() const {
         if (!is_initialized())
             initialize();
         return expression::Squeeze<Tensor>(*this);
     }
  
+
+    /**
+     * @brief Returns a view of the tensor with a dimension of size 1 inserted at the given axis.
+     * @param axis Dimension index where the new axis is inserted (supports negative indexing).
+     * @return Unsqueeze expression.
+     *
+     * #### Example:
+     * ```cpp
+     * using namespace tannic;
+     *
+     * Tensor X(float32, {3, 5}); X.initialize();
+     * Tensor Y = X.unsqueeze(0);   // shape = (1, 3, 5)
+     * Tensor Z = X.unsqueeze(2);   // shape = (3, 1, 5)
+     * ```
+     */
     template<Integral... Axes>
     auto unsqueeze(Axes... axes) {
         return expression::Unsqueeze<Tensor>(*this, axes...);
     }
-    
+    /// @}
+
 public:
 
     Tensor(type dtype, Shape shape, std::ptrdiff_t offset, std::shared_ptr<Buffer> storage)
@@ -781,6 +1213,10 @@ public:
     } 
 
 private: 
+    // Note: I didn't decide yet if put all this inside Node.
+    // That will speed tensor copies but make the tensors
+    // only runtime since shared ptrs don't support constexpr.
+    // For now kernel optimization is more important. 
     type dtype_ = any;
     Shape shape_{}; 
     Strides strides_{}; 
@@ -805,21 +1241,20 @@ std::ostream& operator<<(std::ostream& ostream, Tensor const& tensor);
 
 template<Composable Source> 
 inline std::ostream& operator<<(std::ostream& ostream, Source source) {
-    Context context{};
-    Tensor tensor = source.forward(context);  
+    Tensor tensor = source.forward();  
     ostream << tensor;
     return ostream;
 } 
 
 template<class Operation, Composable Operand>
-Tensor expression::Unary<Operation, Operand>::forward(Context const& context) const { 
+Tensor expression::Unary<Operation, Operand>::forward() const { 
     Tensor result(dtype(), shape(), strides(), offset());  
     this->operation.forward(std::get<0>(this->operands), result);
     return result;
 }
 
 template<Operator Operation, Composable Operand, Composable Cooperand>
-Tensor expression::Binary<Operation, Operand, Cooperand>::forward(Context const& context) const {
+Tensor expression::Binary<Operation, Operand, Cooperand>::forward() const {
     Tensor result(dtype(), shape(), strides());
     this->operation.forward(std::get<0>(this->operands), std::get<1>(this->operands), result);
     return result;
@@ -827,58 +1262,58 @@ Tensor expression::Binary<Operation, Operand, Cooperand>::forward(Context const&
 
 
 template<Operator Operation, Composable Operand>
-Tensor expression::Binary<Operation, Operand, Scalar>::forward(Context const& context) const {
+Tensor expression::Binary<Operation, Operand, Scalar>::forward() const {
     Tensor result(dtype(), shape(), strides());
     this->operation.forward(std::get<0>(this->operands), std::get<1>(this->operands), result);
     return result;
 }  
 
 template<Composable Source>
-Tensor expression::View<Source>::forward(Context const& context) const { 
-    Tensor source = source_.forward(context);
-    return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
+Tensor expression::View<Source>::forward() const { 
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
  
 template<Composable Source>
-Tensor expression::Squeeze<Source>::forward(Context const& context) const { 
-    Tensor source = source_.forward(context);
-    return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
+Tensor expression::Squeeze<Source>::forward() const { 
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
  
 template<Composable Source>
-Tensor expression::Unsqueeze<Source>::forward(Context const& context) const { 
-    Tensor source = source_.forward(context);
-    return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
+Tensor expression::Unsqueeze<Source>::forward() const { 
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
  
 template<Composable Source>
-Tensor expression::Flatten<Source>::forward(Context const& context) const { 
-    Tensor source = source_.forward(context);
-    return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
+Tensor expression::Flatten<Source>::forward() const { 
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 } 
 
 template<Composable Source, Integral... Indexes>
-Tensor expression::Permutation<Source, Indexes...>::forward(Context const& context) const {   
-    Tensor source = source_.forward(context);
-    return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
+Tensor expression::Permutation<Source, Indexes...>::forward() const {   
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }         
  
 template<Composable Source>
-Tensor expression::Transpose<Source>::forward(Context const& context) const { 
-    Tensor source = source_.forward(context); 
-    return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
+Tensor expression::Transpose<Source>::forward() const { 
+    Tensor source = source_.forward(); 
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }   
 
 template<Composable Source>
-Tensor expression::Expansion<Source>::forward(Context const& context) const { 
-    Tensor source = source_.forward(context);
-    return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
+Tensor expression::Expansion<Source>::forward() const { 
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
  
 template<Composable Source, class... Indexes>
-Tensor expression::Slice<Source, Indexes...>::forward(Context const& context) const {   
-    Tensor source = source_.forward(context);
-    return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
+Tensor expression::Slice<Source, Indexes...>::forward() const {   
+    Tensor source = source_.forward();
+    return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }         
 
 template<Composable Source, class... Indexes>
@@ -888,8 +1323,7 @@ void expression::Slice<Source, Indexes...>::assign(std::byte const* value, std::
     } 
 
     else {
-        Context context{};
-        Tensor tensor = this->forward(context);
+        Tensor tensor = forward();
         tensor.assign(value, offset);
     }
 }  
@@ -901,8 +1335,7 @@ void expression::Slice<Source, Indexes...>::assign(bool const* value, std::ptrdi
     } 
 
     else {
-        Context context{};
-        Tensor tensor = this->forward(context);
+        Tensor tensor = forward();
         tensor.assign(value, offset);
     }
 }   
@@ -913,9 +1346,8 @@ void expression::Slice<Source, Indexes...>::operator=(Expression expression) {
     if(this->shape() != expression.shape()) {
         throw Exception("Cannot copy tensors with different shapes");
     }
-    Context context{};
-    Tensor target = this->forward(context); 
-    target.copy(expression.forward(context));
+    Tensor target = this->forward(); 
+    target.copy(expression.forward());
 } 
 
 template<Composable Source, class... Indexes>
@@ -925,29 +1357,28 @@ bool expression::Slice<Source, Indexes...>::compare(std::byte const* value, std:
     } 
 
     else {
-        Context constext{};
-        Tensor tensor = forward(constext);
+        Tensor tensor = forward();
         return tensor.compare(value, offset);
     }
 }  
  
 template<class Coordinates, Composable Source>
-Tensor expression::Complexification<Coordinates, Source>::forward(Context const& context) const {
-    Tensor real = source.forward(context);
+Tensor expression::Complexification<Coordinates, Source>::forward() const {
+    Tensor real = source.forward();
     Tensor complex(dtype(), shape(), strides(), offset(), real.buffer_); 
     return complex; 
 } 
 
 template<class Coordinates, Composable Real, Composable Imaginary>
-Tensor expression::Complexification<Coordinates, Real, Imaginary>::forward(Context const& context) const {  
+Tensor expression::Complexification<Coordinates, Real, Imaginary>::forward() const {  
     Tensor result(dtype(), shape(), strides(), offset());
-    Coordinates::forward(real.forward(context), imaginary.forward(context), result);
+    Coordinates::forward(real.forward(), imaginary.forward(), result);
     return result;
 } 
 
 template<Composable Source>
-Tensor expression::Realification<Source>::forward(Context const& context) const {
-    Tensor complex = source.forward(context);
+Tensor expression::Realification<Source>::forward() const {
+    Tensor complex = source.forward();
     Tensor real(dtype(), shape(), strides(), offset(), complex.buffer_); 
     return real; 
 }

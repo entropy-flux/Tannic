@@ -51,7 +51,7 @@ public:
     }
 
     Tensor forward(Context const& context) const {
-        Tensor source = std::get<0>(this->operands).forward(context);
+        Tensor source = std::get<0>(this->operands).forward();
         Tensor target(source.dtype(), source.shape(), source.strides());
         this->operation.forward(source, target);
         return target;

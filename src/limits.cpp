@@ -6,7 +6,7 @@
 
 namespace tannic::expression {
 
-Tensor Zero::forward() const {
+Tensor Zero::forward(Context const& context) const {
     Tensor result(dtype_, shape_);
     result.initialize();
 
@@ -59,7 +59,7 @@ Tensor Zero::forward() const {
     return result;
 }
 
-Tensor One::forward() const {
+Tensor One::forward(Context const& context) const {
     Tensor result(dtype_, shape_);
     result.initialize();
 
@@ -114,7 +114,7 @@ Tensor One::forward() const {
 }
 
 template<>
-Tensor Infinity<Sign::Positive>::forward() const {
+Tensor Infinity<Sign::Positive>::forward(Context const& context) const {
     Tensor result(dtype_, shape_);
     result.initialize();
 
@@ -150,7 +150,7 @@ Tensor Infinity<Sign::Positive>::forward() const {
 } 
 
 template<>
-Tensor Infinity<Sign::Negative>::forward() const {
+Tensor Infinity<Sign::Negative>::forward(Context const& context) const {
     Tensor result(dtype_, shape_);
     result.initialize();
 

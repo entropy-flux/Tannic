@@ -18,6 +18,22 @@
 #ifndef COMPLEX_HPP
 #define COMPLEX_HPP
 
+/**
+ * @file complex.hpp 
+ * @author Eric Hermosis
+ * @date 2025 
+ * @brief Complex number operations for the Tannic Tensor Library
+ *
+ * This header provides functionality for working with complex numbers as tensors,
+ * including:
+ * 
+ * - Complex number creation with cartesian and polar coordinates.
+ * - Real views from complex tensors.  
+ * 
+ * The functions here described provide the way to complexify real tensors or view
+ * complex tensors in real space.
+ */
+
 #include "concepts.hpp"
 #include "types.hpp"
 #include "shape.hpp"
@@ -31,18 +47,45 @@ class Tensor;
 
 } namespace tannic::expression { 
  
+/**
+ * @struct Cartesian
+ * @brief Tag type for Cartesian (real/imaginary) complex number representation
+ *
+ * Used to distinguish between Cartesian and Polar representations when
+ * creating complex numbers from components.
+ */
 struct Cartesian {
     static void forward(Tensor const&, Tensor const&, Tensor&);
 };
- 
+
+/**
+ * @struct Polar  
+ * @brief Tag type for Polar (magnitude/angle) complex number representation
+ *
+ * Used to distinguish between Cartesian and Polar representations when
+ * creating complex numbers from components.
+ */ 
 struct Polar {  
     static void forward(Tensor const&, Tensor const&, Tensor&);
 }; 
 
- 
+
+/**
+ * @class Complexification
+ * @brief Creates a complex tensor view from real components
+ *
+ * @tparam Coordinates Representation type (Cartesian or Polar)
+ * @tparam Source Source tensor type(s)
+ *
+ * Provides two ways to create complex tensors:
+ * 
+ * 1. From interleaved real/imaginary data (single tensor)
+ * 2. From separate real and imaginary tensors
+ */
 template<class Coordinates, Composable ... Sources>
 class Complexification;
- 
+
+// Single-source specialization (interleaved real/imaginary data)
 template<class Coordinates, Composable Source>
 class Complexification<Coordinates, Source> {
 public:
@@ -135,20 +178,25 @@ public:
         return source.offset();
     } 
  
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
     
 private:
     type dtype_; 
     Shape shape_;
     Strides strides_;
 };
- 
+
+// Dual-source specialization (separate real/imaginary tensors)
 template<class Coordinates, Composable Real, Composable Imaginary>
 class Complexification<Coordinates, Real, Imaginary> {
 public:
     typename Trait<Real>::Reference real;
     typename Trait<Imaginary>::Reference imaginary;
-  
+ 
+    /**
+     * @brief Returns the complex dtype of the combined tensor
+     * @return complex128 if either input is float64, otherwise complex64
+     */
     constexpr Complexification(typename Trait<Real>::Reference real, typename Trait<Imaginary>::Reference imaginary)
     :   real(real)
     ,   imaginary(imaginary)
@@ -164,34 +212,92 @@ public:
             dtype_ = complex64;
         } 
     } 
- 
+
+    /**
+     * @brief Returns the complex dtype of the combined tensor
+     * @return complex128 if either input is float64, otherwise complex64
+     */
     constexpr type dtype() const {
         return dtype_;
     } 
- 
+
+    /**
+     * @brief Returns the shape of the complex tensor
+     * @return Same shape as input tensors
+     *
+     * #### Requirements:
+     * 
+     * - Real and imaginary tensors must have identical shapes
+     */
     constexpr Shape const& shape() const {
         return real.shape();
     }
- 
+
+    /**
+     * @brief Returns the strides of the complex tensor
+     * @return Same strides as input tensors
+     *
+     * #### Requirements:
+     *  
+     * - Real and imaginary tensors must have identical strides
+     */
     constexpr Strides const& strides() const {
         return real.strides();
-    } 
+    }
 
+    /**
+     * @brief Returns the offset of the complex expression.
+     * @return Since a new tensor is created the offset is 0.
+     */
     std::ptrdiff_t offset() const {
         return 0;
     } 
  
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
     
 private:
     type dtype_;  
 };
- 
+
+
+/** 
+ * @brief Creates a real-valued view of complex tensor data
+ *
+ * @tparam Source Complex tensor type
+ * 
+ * #### Transformation Rules:
+ * 
+ * - type: complex64 → float32, complex128 → float64
+ * - Shape: [...,N] → [...,N,2] (adds dimension for components)
+ * - Memory: Maintains same storage with adjusted strides
+ *
+ * #### Requirements:
+ * 
+ * - Input must be complex64 or complex128
+ * - Must have stride 1 in last dimension (contiguous complex pairs)
+ *
+ * #### Example:
+ * 
+ * ```cpp
+ * // complex64 input with shape [2]
+ * Tensor cplx = {1+2i, 3+4i};
+ * 
+ * // float32 output with shape [2,2] 
+ * Tensor real_view = realify(cplx);
+ * // real_view = [[1, 2],  // real, imag components
+ * //              [3, 4]] 
+ * ```
+ */
 template<Composable Source>
 class Realification {
 public:
     typename Trait<Source>::Reference source;
- 
+
+    /**
+     * @class Realification
+     * @brief Creates a real-valued view of complex tensor data
+     */
+
     constexpr Realification(Trait<Source>::Reference source)
     :   source(source) { 
         switch (source.dtype()) {
@@ -213,16 +319,50 @@ public:
         for (auto dimension = 0; dimension < strides_.rank() - 1; ++dimension) {
             strides_[dimension] *= 2;   
         }
-    } 
+    }
 
+    /**
+     * @brief Returns the real dtype of the view
+     * @return float32 if source was complex64, float64 if complex128
+     *
+     * #### Transformation Rule:
+     * 
+     * complex64 → float32  
+     * complex128 → float64
+     */
     constexpr type dtype() const { 
         return dtype_; 
     }
- 
+
+
+    /**
+     * @brief Returns the shape of the real view
+     * @return Shape with last dimension expanded to 2
+     *
+     * #### Transformation Rule:
+     * 
+     * [...,N] → [...,N,2]
+     *
+     * Example:
+     * ```cpp
+     * Tensor cplx({2});       // [a+bi, c+di]
+     * auto real = realify(cplx);
+     * real.shape();           // Returns [2,2]
+     * ```
+     */
     constexpr Shape const& shape() const { 
         return shape_; 
     }
- 
+
+    /**
+     * @brief Returns the strides of the real view
+     * @return Strides adjusted for component access
+     *
+     * #### Transformation Rules:
+     * 
+     * - Last stride becomes 1 (contiguous components)
+     * - Penultimate stride doubles (distance between complex numbers)
+     */
     constexpr Strides const& strides() const { 
         return strides_; 
     }
@@ -231,7 +371,7 @@ public:
         return source.offset(); 
     }
 
-    Tensor forward(Context const& context) const;
+    Tensor forward() const;
 
 private:
     type dtype_;
@@ -239,8 +379,6 @@ private:
     Strides strides_;
 };   
 
-
-/****************************************************************************/
 
 /**
  * @brief Creates a complex tensor view from interleaved real/imaginary data

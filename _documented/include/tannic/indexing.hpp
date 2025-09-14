@@ -17,7 +17,19 @@
 
 #ifndef INDEXING_HPP
 #define INDEXING_HPP
- 
+
+/**
+ * @file indexing.hpp 
+ * @author Eric Hermosis
+ * @date 2025  
+ * @brief Utilities for index normalization and slicing ranges in the Tannic Tensor Library.
+ *
+ * This header defines helper structures and functions for working with tensor
+ * indices and slices. The utilities are inspired by Python's negative indexing
+ * and range semantics, providing a consistent and safe interface for 
+ * normalizing indices into valid positive ranges within tensor dimensions. 
+ */
+
 #include <cassert> 
 #include "concepts.hpp"
 #include "exceptions.hpp"
