@@ -13,6 +13,8 @@ You can find examples of neural networks inference with the tannic framework her
 
 📖 Full documentation: [API Reference](https://entropy-flux.github.io/Tannic/)   
 
+Note: Class documentation was removed from headers since it was slowing down development, but will be added again in the future. 
+
 ---
 
 ## Table of Contents
