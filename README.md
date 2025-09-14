@@ -9,6 +9,7 @@ This library is designed to serve as the foundational core for a neural network 
 You can find examples of neural networks inference with the tannic framework here: 
 - [CNN Server Example](https://github.com/entropy-flux/cnn-server-example) – demonstrates serving convolutional neural network models.  
 - [ViT Server Example](https://github.com/entropy-flux/vit-server-example) – demonstrates serving Vision Transformer models.  
+- [LLaMa3 Text Completion Server Example](https://github.com/entropy-flux/llama3-server-example) – demonstrates serving a transformer server for text completion tasks.
 
 📖 Full documentation: [API Reference](https://entropy-flux.github.io/Tannic/)   
 
