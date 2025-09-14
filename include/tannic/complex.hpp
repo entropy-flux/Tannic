@@ -48,11 +48,6 @@ class Complexification<Coordinates, Source> {
 public:
     typename Trait<Source>::Reference source;
 
-    /**
-     * @brief Constructs complex view from interleaved data
-     * @param source Tensor with alternating real/imaginary values
-     */
-
     constexpr Complexification(Trait<Source>::Reference source)
     :   source(source) {
         switch (source.dtype()) {
@@ -76,61 +71,18 @@ public:
         strides_[-1] = 1;  
     }
 
-
-
-    /**
-     * @brief Returns the complex dtype of the view
-     * @return complex64 if source was float32, complex128 if float64
-     *
-     * #### Transformation Rule:
-     * 
-     * float32 → complex64  
-     * float64 → complex128
-     */
     constexpr type dtype() const {
         return dtype_;
     }
-
-    /**
-     * @brief Returns the shape of the complex view
-     * @return Shape with last dimension halved
-     *
-     * #### Transformation Rule:
-     * 
-     * [...,2N] → [...,N]
-     *
-     * #### Example:
-     * 
-     * ```cpp
-     * Tensor real({4});       // [a,b,c,d] (interpreted as 2 complex numbers)
-     * auto cplx = complexify(real);
-     * cplx.shape();           // Returns [2]
-     * ```
-     */
+    
     constexpr Shape const& shape() const {
         return shape_;
     }
 
-
-    /**
-     * @brief Returns the strides of the complex view
-     * @return Strides adjusted for complex elements
-     *
-     * #### Transformation Rules:
-     * 
-     * - Last stride becomes 1 (contiguous complex numbers)
-     * - Other strides are halved to maintain correct spacing
-     */
     constexpr Strides const& strides() const {
         return strides_;
     }
 
-
-    /**
-     * @brief Returns the offset of the view.
-     * @return Since the this class represents a view the offset is just
-     * the offset of the source.
-     */
     std::ptrdiff_t offset() const {
         return source.offset();
     } 

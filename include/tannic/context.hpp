@@ -20,7 +20,11 @@
 
 namespace tannic {
   
-class Context {};
+class Context {
+    // This will be used to pass future information backwards during forward pass
+    // plan and optimize execution and infer devices
+    // For now is just a placeholder
+};
     
 } // namespace TANNIC
 

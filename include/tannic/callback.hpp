@@ -26,7 +26,8 @@
 
 namespace tannic {
 
-// WARNING: THIS FILE IS UNDER ACTIVE DEVELOPMENT!.
+// WARNING: THIS FILE IS UNDER ACTIVE DEVELOPMENT!. WILL BE HEAVILY REFACTORED
+// AND SOME FUNCTIONALITIES MOVED TO OTHER FILES LIKE THE NEW context.hpp
 
 static inline tensor_t* get_tensor(uintptr_t id) {
     return reinterpret_cast<node_t*>(id)->target;
