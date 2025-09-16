@@ -685,7 +685,7 @@ public:
     auto permute(Indexes... indexes) const {
         if (!is_initialized())
             initialize(); 
-        return expression::Permutation<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
+        return expression::Permutation<Tensor, Indexes...>(*this, indexes...);
     } 
 
     template<Integral ... Sizes>
