@@ -51,8 +51,7 @@ host_t structure(Host const& resource) {
 device_t structure(Device const& resource) {
     // OLD FUNCTION TO BE DELETED.
     return device_t{
-        .id = resource.id(),
-        .traits = resource.blocking() ? SYNC : ASYNC
+        .id = resource.id()
     };
 }
 
@@ -130,10 +129,7 @@ status resolve_two_environment(const environment_t* a, const environment_t* b, e
         }
 
         result_out->environment = DEVICE;
-        result_out->resource.device.id = a->resource.device.id;
-        result_out->resource.device.traits =
-            (a->resource.device.traits == ASYNC || b->resource.device.traits == ASYNC)
-            ? ASYNC : SYNC;
+        result_out->resource.device.id = a->resource.device.id; 
     }
     else if (a->environment == DEVICE) {
         return INCOMPATIBLE_DEVICES;
@@ -166,8 +162,7 @@ status resolve_three_environment(
     result_out->resource.host.traits = PAGEABLE;
 
     bool any_device = false;
-    int device_id = -1;
-    enum device device_traits = SYNC;
+    int device_id = -1; 
 
     const environment_t* envs[3] = {a, b, c};
 
@@ -176,13 +171,11 @@ status resolve_three_environment(
         if (env->environment == DEVICE) {
             if (!any_device) { 
                 any_device = true;
-                device_id = env->resource.device.id;
-                device_traits = env->resource.device.traits;
+                device_id = env->resource.device.id; 
             } else { 
                 if (env->resource.device.id != device_id) {
                     return INCOMPATIBLE_DEVICES;
-                }   
-                if (env->resource.device.traits == ASYNC) device_traits = ASYNC;
+                }    
             }
         } else { 
             if (env->resource.host.traits & MAPPED) result_out->resource.host.traits = MAPPED;
@@ -192,8 +185,7 @@ status resolve_three_environment(
 
     if (any_device) {
         result_out->environment = DEVICE;
-        result_out->resource.device.id = device_id;
-        result_out->resource.device.traits = device_traits;
+        result_out->resource.device.id = device_id; 
     }
 
     return SUCCESS;

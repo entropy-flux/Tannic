@@ -51,8 +51,8 @@ Node::Node(Tensor const& target) {
                 .environment = DEVICE,
                 .resource = {
                     .device = device_t {
-                        .id = resource.id(),
-                        .traits = resource.blocking() ? SYNC : ASYNC}
+                        .id = resource.id() 
+                    }
                 },
             },
             .size = target.nelements(),

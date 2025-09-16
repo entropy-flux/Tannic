@@ -4,9 +4,8 @@
  
 using namespace tannic; 
 TEST(TestCUDADevice, TestCUDAAlloc) {
-    Device device(0, false);
-    ASSERT_EQ(device.id(), 0);
-    ASSERT_EQ(device.blocking(), false);
+    Device device(0);
+    ASSERT_EQ(device.id(), 0); 
     void* ptr1 = device.allocate(256); 
     void* ptr2 = device.allocate(256);
     void* ptr3 = device.allocate(256);

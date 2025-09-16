@@ -160,7 +160,7 @@ public:
      * @param id Target device identifier (0-based)
      * @param blocking Enable synchronous operation mode
      */
-    Device(int id = 0, bool blocking = false); 
+    Device(int id = 0); 
 
     /**
      * @brief Allocates device memory  
@@ -183,15 +183,10 @@ public:
      */
     int id() const noexcept { 
         return id_; 
-    }
-    
-    bool blocking() const {
-        return blocking_;
-    }
+    } 
 
 private:
-    int id_ = 0;
-    bool blocking_ = false;
+    int id_ = 0; 
 };
 
 /*

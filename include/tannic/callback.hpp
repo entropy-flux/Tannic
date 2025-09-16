@@ -58,7 +58,7 @@ public:
 
         else {  
             Device const& resource = std::get<Device>(output.environment());
-            device_t dvc{resource.id(), resource.blocking() ? SYNC : ASYNC};
+            device_t dvc{resource.id() };
             tensor_t* src = get_tensor(input.id());
             tensor_t* dst = get_tensor(output.id());
             stream_t stream = pop_stream(&dvc);
@@ -86,7 +86,7 @@ public:
         } 
         else {  
             Device const& resource = std::get<Device>(output.environment());
-            device_t dvc{resource.id(), resource.blocking() ? SYNC : ASYNC};
+            device_t dvc{resource.id() };
             tensor_t* dst = get_tensor(output.id());
             stream_t stream = pop_stream(&dvc);
             auto status = device_fn(src0, &sc1, dst, stream);

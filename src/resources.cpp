@@ -41,9 +41,8 @@ Devices::Devices() {
     count_ = cuda::getDeviceCount();
 }
 
-Device::Device(int id, bool blocking) 
-:   id_(id)
-,   blocking_(blocking) { 
+Device::Device(int id) 
+:   id_(id) { 
     if (id < 0 || id >= Devices::count()) {
         throw std::out_of_range("Invalid device ID"); 
     } 
