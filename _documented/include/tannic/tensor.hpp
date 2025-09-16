@@ -1083,7 +1083,7 @@ public:
     auto permute(Indexes... indexes) const {
         if (!is_initialized())
             initialize(); 
-        return expression::Permutation<Tensor, Indexes...>(*this, std::make_tuple(indexes...));
+        return expression::Permutation<Tensor, Indexes...>(*this, indexes...);
     } 
 
      /**
@@ -1096,7 +1096,7 @@ public:
     auto view(Sizes... sizes) const {
         if (!is_initialized())
             initialize(); 
-        return expression::View<Tensor>(*this, sizes...);
+        return expression::Reshape<Tensor>(*this, sizes...);
     } 
 
     /**
@@ -1178,7 +1178,7 @@ protected:
     friend class expression::Transpose;
 
     template <Composable Source>
-    friend class expression::View; 
+    friend class expression::Reshape; 
 
     template <Composable Source>
     friend class expression::Squeeze; 
@@ -1269,8 +1269,8 @@ Tensor expression::Binary<Operation, Operand, Scalar>::forward() const {
 }  
 
 template<Composable Source>
-Tensor expression::View<Source>::forward() const { 
-    Tensor source = source_.forward();
+Tensor expression::Reshape<Source>::forward() const { 
+    Tensor source = source.forward();
     return Tensor(dtype(), shape(), strides(), offset(), source.buffer_);
 }
  

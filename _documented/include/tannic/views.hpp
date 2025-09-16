@@ -81,7 +81,7 @@ class Tensor;
  * ```
  */
 template<Composable Source>
-class View {
+class Reshape {
 public:    
     /**
      * @brief Construct a reshaped view of the source tensor.
@@ -95,8 +95,8 @@ public:
      */ 
   
     template<Integral... Sizes>  
-    constexpr View(typename Trait<Source>::Reference source, Sizes... sizes)
-    :   source_(source)
+    constexpr Reshape(typename Trait<Source>::Reference source, Sizes... sizes)
+    :   source(source)
     { 
         std::array<long long, sizeof...(Sizes)> requested{ static_cast<long long>(sizes)... };
   
@@ -154,7 +154,7 @@ public:
      * the actual stored values.
      */
     constexpr type dtype() const {
-        return source_.dtype();
+        return source.dtype();
     }
 
     /**
@@ -187,7 +187,7 @@ public:
      * memory, the offset is unchanged from the source tensor.
      */
     std::ptrdiff_t offset() const {
-        return source_.offset();
+        return source.offset();
     }
  
     Tensor forward() const;
@@ -195,7 +195,7 @@ public:
 private:
     Shape shape_;
     Strides strides_;
-    typename Trait<Source>::Reference source_;                
+    typename Trait<Source>::Reference source;                
 };   
 
 
@@ -847,7 +847,7 @@ private:
  */
 template<Composable Source, Integral ... Indexes>
 constexpr auto view(Source&& source, Indexes ... indexes) {
-    return View<Source>(
+    return Reshape<Source>(
         std::forward<Source>(source), indexes...
     );
 } 

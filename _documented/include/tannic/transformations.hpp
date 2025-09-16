@@ -555,7 +555,7 @@ constexpr auto repack(Source&& source) {
  */
 template<Composable Source, Integral ... Indexes>
 constexpr auto reshape(Source&& source, Indexes ... indexes) {
-    return expression::View<Transformation<Repack, Source>>(
+    return expression::Reshape<Transformation<Repack, Source>>(
         repack(source), indexes...
     );
 } 

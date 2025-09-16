@@ -34,14 +34,19 @@ namespace tannic {
 
 class Tensor;
 
-} namespace tannic::expression {   
-   
+} namespace tannic::expression {    
+
+
 template<Composable Source>
 class View {
+    // tag to be used later in derivatives
+};
+    
+template<Composable Source>
+class Reshape : public View<Source> {
 public:    
-
     template<Integral... Sizes>  
-    constexpr View(typename Trait<Source>::Reference source, Sizes... sizes)
+    constexpr Reshape(typename Trait<Source>::Reference source, Sizes... sizes)
     :   source_(source)
     { 
         std::array<long long, sizeof...(Sizes)> requested{ static_cast<long long>(sizes)... };
@@ -118,9 +123,8 @@ private:
 
 
 template<Composable Source>
-class Transpose {
+class Transpose : public View<Source> {
 public: 
-
     constexpr Transpose(typename Trait<Source>::Reference source, std::pair<int, int> dimensions)
     :   shape_(source.shape()) 
     ,   strides_(source.strides())
@@ -156,26 +160,23 @@ private:
     std::pair<int, int> dimensions_;
 };   
 
-
-
-template<Composable Source, Integral ... Indexes>
-class Permutation {
+template<Composable Source>
+class Permutation : public View<Source> {
 public:
 
-    constexpr Permutation(typename Trait<Source>::Reference source, std::tuple<Indexes...> indexes) 
-    :   source_(source)
+    template<Integral... Indexes>
+    constexpr Permutation(typename Trait<Source>::Reference source, Indexes... indexes)
+        : source_(source)
     {
         if (sizeof...(Indexes) != source_.shape().rank()) {
             throw Exception("Permutation rank must equal tensor rank");
         }
 
-        std::apply([&](auto... indexes) {
-            (([&]{
-                int dimension = indexing::normalize(indexes, source_.shape().rank());
-                shape_.expand(source_.shape()[dimension]);
-                strides_.expand(source_.strides()[dimension]);
-            }()), ...);
-        }, indexes);
+        (([&]{
+            int dimension = indexing::normalize(indexes, source_.shape().rank());
+            shape_.expand(source_.shape()[dimension]);
+            strides_.expand(source_.strides()[dimension]);
+        }()), ...);
     }
 
     
@@ -208,7 +209,7 @@ private:
 
 
 template<Composable Source>
-class Expansion {
+class Expansion : public View<Source> {
 public:
     template<Integral... Sizes>
     constexpr Expansion(typename Trait<Source>::Reference source, Sizes... sizes)
@@ -278,7 +279,7 @@ private:
 };
 
 template<Composable Source>
-class Squeeze {
+class Squeeze : public View<Source> {
 public:
     constexpr Squeeze(typename Trait<Source>::Reference source)
     : source_(source) {
@@ -316,7 +317,7 @@ private:
 
 
 template<Composable Source>
-class Unsqueeze {
+class Unsqueeze : public View<Source> {
 public:
 
     template<Integral... Axes>
@@ -369,7 +370,7 @@ private:
 
 
 template<Composable Source>
-class Flatten {
+class Flatten : public View<Source> {
 public:
     constexpr Flatten(typename Trait<Source>::Reference source, int start = 0, int end = -1)
     :   source_(source) {
@@ -442,7 +443,7 @@ private:
  */
 template<Composable Source, Integral ... Indexes>
 constexpr auto view(Source&& source, Indexes ... indexes) {
-    return View<Source>(
+    return Reshape<Source>(
         std::forward<Source>(source), indexes...
     );
 } 
@@ -482,9 +483,8 @@ constexpr auto transpose(Source&& source, int first, int second) {
  */
 template<Composable Source, Integral ... Indexes>
 constexpr auto permute(Source&& source, Indexes... indexes) {
-    return Permutation<Source, Indexes...>(
-        std::forward<Source>(source), 
-        std::make_tuple(indexes...)
+    return Permutation<Source>(
+        std::forward<Source>(source), indexes...
     );
 }
 

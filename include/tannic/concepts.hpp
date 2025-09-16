@@ -70,8 +70,8 @@ concept Iterable = requires(T type) { std::begin(type); std::end(type); };
 template <typename T>
 concept Iterator = std::input_iterator<T>;  
 
-template<typename T>
-concept Integral = std::is_integral_v<T>; 
+template<class T>
+concept Integral = std::integral<std::remove_cvref_t<T>>;
 
 template<typename T>
 concept Arithmetic =

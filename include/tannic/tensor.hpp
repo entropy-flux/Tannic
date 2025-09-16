@@ -692,7 +692,7 @@ public:
     auto view(Sizes... sizes) const {
         if (!is_initialized())
             initialize(); 
-        return expression::View<Tensor>(*this, sizes...);
+        return expression::Reshape<Tensor>(*this, sizes...);
     } 
 
     auto squeeze() const {
@@ -746,7 +746,7 @@ protected:
     friend class expression::Transpose;
 
     template <Composable Source>
-    friend class expression::View; 
+    friend class expression::Reshape; 
 
     template <Composable Source>
     friend class expression::Squeeze; 
@@ -754,7 +754,7 @@ protected:
     template <Composable Source>
     friend class expression::Unsqueeze;
 
-    template <Composable Source, Integral... Indexes> 
+    template <Composable Source> 
     friend class expression::Permutation; 
 
     template <Composable Source>
@@ -834,7 +834,7 @@ Tensor expression::Binary<Operation, Operand, Scalar>::forward(Context const& co
 }  
 
 template<Composable Source>
-Tensor expression::View<Source>::forward(Context const& context) const { 
+Tensor expression::Reshape<Source>::forward(Context const& context) const { 
     Tensor source = source_.forward(context);
     return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
 }
@@ -857,8 +857,8 @@ Tensor expression::Flatten<Source>::forward(Context const& context) const {
     return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
 } 
 
-template<Composable Source, Integral... Indexes>
-Tensor expression::Permutation<Source, Indexes...>::forward(Context const& context) const {   
+template<Composable Source>
+Tensor expression::Permutation<Source>::forward(Context const& context) const {   
     Tensor source = source_.forward(context);
     return Tensor(this->dtype(), shape(), strides(), offset(), source.buffer_);
 }         
