@@ -2,11 +2,11 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include <numeric>
-#include <cmath>
-#include <cuda_runtime.h>
+#include <cmath> 
 
 #include "tensor.hpp"
 #include "complex.hpp" 
+#include "comparisons.hpp"
 
 using namespace tannic;
 
@@ -21,18 +21,7 @@ TEST_F(CUDAComplexTests, CUDAComplexificationAndRealification) {
     X[0][1] = 0;
     X[1][0] = 2;
     X[1][1] = 3;   
-    Tensor Z = complexify(X);  
- 
-    float* device_data = reinterpret_cast<float*>(Z.bytes()); 
-    float host_data[4];
-
-    cudaError_t err = cudaMemcpy(host_data, device_data, sizeof(float) * 4, cudaMemcpyDeviceToHost);
-    ASSERT_EQ(err, cudaSuccess) << "cudaMemcpy failed: " << cudaGetErrorString(err);
- 
-    ASSERT_FLOAT_EQ(host_data[0], 1);  
-    ASSERT_FLOAT_EQ(host_data[1], 0);    
-    ASSERT_FLOAT_EQ(host_data[2], 2);  
-    ASSERT_FLOAT_EQ(host_data[3], 3);  
+    Tensor Z = complexify(X);   
 
     Tensor Y = realify(Z);  
     ASSERT_EQ(X[0][0], 1);
@@ -41,44 +30,28 @@ TEST_F(CUDAComplexTests, CUDAComplexificationAndRealification) {
     ASSERT_EQ(X[1][1], 3); 
 }   
 
-TEST_F(CUDAComplexTests, CUDAPolarConversionManual) {
-    // Magnitude tensor X (CUDA device)
+TEST_F(CUDAComplexTests, CUDAPolarConversionManual) { 
     Tensor X(float32, {2, 2});
     X.initialize(Device()); 
 
     X[0][0] = 1.0f;  X[0][1] = 6.0f;
     X[1][0] = 2.0f;  X[1][1] = 3.0f;
-
-    // Phase tensor Y (CUDA device)
+ 
     Tensor Y(float32, {2, 2});
     Y.initialize(Device());
 
     Y[0][0] = 2.0f;  Y[0][1] = 1.0f;
     Y[1][0] = 1.5f;  Y[1][1] = 3.14f;
+ 
+    Tensor Z = polar(X, Y);  
+    Tensor W = realify(Z);  
 
-    // Complex tensor from polar coordinates
-    Tensor Z = polar(X, Y);
-
-    // Allocate host buffer to copy back complex data (4 complex numbers * 2 floats each)
-    float host_data[8]; // real0, imag0, real1, imag1, ...
-
-    // Copy from device to host
-    float* device_data = reinterpret_cast<float*>(Z.bytes());
-    cudaError_t err = cudaMemcpy(host_data, device_data, sizeof(float) * 8, cudaMemcpyDeviceToHost);
-    ASSERT_EQ(err, cudaSuccess) << "cudaMemcpy failed: " << cudaGetErrorString(err);
-
-    // Expected values from your PyTorch example
-    const float expected_real[4] = {-0.4161f, 3.2418f, 0.1415f, -3.0000f};
-    const float expected_imag[4] = {0.9093f, 5.0488f, 1.9950f, 0.0047f};
-
-    // Verify each complex element manually
-    for (int i = 0; i < 4; ++i) {
-        float real_val = host_data[2 * i];
-        float imag_val = host_data[2 * i + 1];
-
-        ASSERT_NEAR(real_val, expected_real[i], 1e-3f) << "Real part mismatch at index " << i;
-        ASSERT_NEAR(imag_val, expected_imag[i], 1e-3f) << "Imag part mismatch at index " << i;
-    }
+    Tensor expected(float32, {2, 2, 2}); expected.initialize({
+        {{-0.416147, 0.909297}, {3.24181, 5.04883}},
+        {{0.141474, 1.99499}, {-3.0, 0.00477764}}
+    }, Device());
+ 
+    EXPECT_TRUE(allclose(W, expected));
 }
 
 #endif

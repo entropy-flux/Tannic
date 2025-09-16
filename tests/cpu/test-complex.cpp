@@ -37,33 +37,28 @@ TEST_F(ComplexTests, ComplexificationAndRealification) {
     ASSERT_EQ(X[1][1], 3); 
 }  
 
-TEST_F(ComplexTests, HostPolarConversionManual) { 
+TEST_F(ComplexTests, HostPolarConversionManual) {  
     Tensor X(float32, {2, 2});
-    X.initialize(Host());
+    X.initialize(); 
 
     X[0][0] = 1.0f;  X[0][1] = 6.0f;
     X[1][0] = 2.0f;  X[1][1] = 3.0f;
  
     Tensor Y(float32, {2, 2});
-    Y.initialize(Host());
+    Y.initialize();
 
     Y[0][0] = 2.0f;  Y[0][1] = 1.0f;
     Y[1][0] = 1.5f;  Y[1][1] = 3.14f;
  
-    Tensor Z = polar(X, Y);
- 
-    float* data = reinterpret_cast<float*>(Z.bytes());
- 
-    const float expected_real[4] = {-0.4161f, 3.2418f, 0.1415f, -3.0000f};
-    const float expected_imag[4] = {0.9093f, 5.0488f, 1.9950f, 0.0047f};
- 
-    for (int idx = 0; idx < 4; ++idx) {
-        float real_val = data[2 * idx];     
-        float imag_val = data[2 * idx + 1];   
+    Tensor Z = polar(X, Y);  
+    Tensor W = realify(Z);  
 
-        ASSERT_NEAR(real_val, expected_real[idx], 1e-3f) << "Real part mismatch at index " << idx;
-        ASSERT_NEAR(imag_val, expected_imag[idx], 1e-3f) << "Imag part mismatch at index " << idx;
-    }
+    Tensor expected(float32, {2, 2, 2}); expected.initialize({
+        {{-0.416147, 0.909297}, {3.24181, 5.04883}},
+        {{0.141474, 1.99499}, {-3.0, 0.00477764}}
+    });
+ 
+    EXPECT_TRUE(allclose(W, expected));
 }
 
 Tensor freq_cis(
