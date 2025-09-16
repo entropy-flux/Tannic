@@ -12,7 +12,7 @@ int main() {
     X[1,0] = 3;
     X[1][1] = 4;   
     
-    std::cout <<  X.strides() << X.shape() << std::endl;
+    std::cout <<  X << std::endl;
 } 
 
 

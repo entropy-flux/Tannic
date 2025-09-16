@@ -91,7 +91,7 @@ void print(std::ostream& os, const tensor_t* tensor) {
     auto get_element = [&](const std::vector<size_t>& indices) -> element_t {
         size_t elem_offset = 0;
         for (size_t dim = 0; dim < tensor->rank; ++dim) {
-            elem_offset += indices[dim] * static_cast<size_t>(tensor->strides.sizes[dim]);
+            elem_offset += indices[dim] * static_cast<size_t>(tensor->strides.address[dim]);
         }
         if (tensor->dtype == boolean) {
             size_t byte_index = elem_offset / 8;
@@ -114,10 +114,10 @@ void print(std::ostream& os, const tensor_t* tensor) {
         char close =  ']';
 
         os << open;
-        for (size_t i = 0; i < tensor->shape.sizes[dim]; ++i) {
+        for (size_t i = 0; i < tensor->shape.address[dim]; ++i) {
             idx[dim] = i;
             self(dim + 1, idx, self);
-            if (i + 1 != tensor->shape.sizes[dim]) {
+            if (i + 1 != tensor->shape.address[dim]) {
                 os << ", ";
                 if (dim == 0) os << "\n        ";
             }
@@ -130,7 +130,7 @@ void print(std::ostream& os, const tensor_t* tensor) {
 
     os << ", dtype=" << tensor->dtype << ", shape=(";
     for (size_t dim = 0; dim < tensor->rank; ++dim) {
-        os << tensor->shape.sizes[dim];
+        os << tensor->shape.address[dim];
         if (dim + 1 != tensor->rank) os << ", ";
     }
     os << "))";

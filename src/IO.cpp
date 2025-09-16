@@ -30,13 +30,8 @@ std::ostream& operator<<(std::ostream& os, Strides const& strides) {
 
 std::ostream& operator<<(std::ostream& os, const Tensor& tensor) {
     const Environment& alloc = tensor.environment();
-    shape_t shape{};
-    strides_t strides{};
-
-    for (int dimension = 0; dimension < tensor.rank(); ++dimension) {
-        shape.sizes[dimension] = tensor.shape()[dimension];
-        strides.sizes[dimension] = tensor.strides()[dimension];
-    }
+    shape_t shape{tensor.shape().address()};
+    strides_t strides{tensor.strides().address()}; 
 
     if (std::holds_alternative<Host>(alloc)) {
         Host const& resource = std::get<Host>(alloc);
