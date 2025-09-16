@@ -66,86 +66,45 @@ using tannic::expression::Function;
 
 struct Log {
     void operator()(Tensor const&, Tensor&) const;
-};
+}; 
 
-/**
- * @brief Functor exponential (e^x)
- * Applies element-wise exponential to tensor elements
- */
 struct Exp {
     void operator()(Tensor const&, Tensor&) const;
 };
 
-/**
- * @brief Functor square root (√x)
- * Applies element-wise square root to tensor elements
- */
 struct Sqrt { 
     void operator()(Tensor const&, Tensor&) const;
 };
 
-/**
- * @brief Functor inverse square root (1/√x)
- * Applies element-wise inverse square root to tensor elements
- */
 struct Rsqrt { 
     float epsilon = 0.0f;
     void operator()(Tensor const&, Tensor&) const;
 };
 
-
-/**
- * @brief Functor absolute value (|x|)
- * Applies element-wise absolute value to tensor elements
- */
 struct Abs { 
     void operator()(Tensor const&, Tensor&) const;
 };
 
-/**
- * @brief Functor sine
- * Applies element-wise sine to tensor elements (radians)
- */
 struct Sin {
     void operator()(Tensor const&, Tensor&) const;
 };
 
-/**
- * @brief Functor cosine
- * Applies element-wise cosine to tensor elements (radians)
- */
 struct Cos { 
     void operator()(Tensor const&, Tensor&) const;
 };
 
-/**
- * @brief Functor tangent
- * Applies element-wise tangent to tensor elements (radians)
- */
 struct Tan { 
     void operator()(Tensor const&, Tensor&) const;
 };
 
-/**
- * @brief Functor hyperbolic sine
- * Applies element-wise hyperbolic sine to tensor elements
- */
 struct Sinh { 
     void operator()(Tensor const&, Tensor&) const;
 };
 
-/**
- * @brief Functor hyperbolic cosine
- * Applies element-wise hyperbolic cosine to tensor elements
- */
 struct Cosh { 
     void operator()(Tensor const&, Tensor&) const;
 };
 
-/**
- * @brief Functor hyperbolic tangent
- * Applies element-wise hyperbolic tangent to tensor elements
- */
 struct Tanh { 
     void operator()(Tensor const&, Tensor&) const;
 };

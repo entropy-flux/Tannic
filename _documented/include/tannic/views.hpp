@@ -96,7 +96,7 @@ public:
   
     template<Integral... Sizes>  
     constexpr Reshape(typename Trait<Source>::Reference source, Sizes... sizes)
-    :   source(source)
+    :   source_(source)
     { 
         std::array<long long, sizeof...(Sizes)> requested{ static_cast<long long>(sizes)... };
   
@@ -154,7 +154,7 @@ public:
      * the actual stored values.
      */
     constexpr type dtype() const {
-        return source.dtype();
+        return source_.dtype();
     }
 
     /**
@@ -187,7 +187,7 @@ public:
      * memory, the offset is unchanged from the source tensor.
      */
     std::ptrdiff_t offset() const {
-        return source.offset();
+        return source_.offset();
     }
  
     Tensor forward() const;
@@ -195,7 +195,7 @@ public:
 private:
     Shape shape_;
     Strides strides_;
-    typename Trait<Source>::Reference source;                
+    typename Trait<Source>::Reference source_;                
 };   
 
 
