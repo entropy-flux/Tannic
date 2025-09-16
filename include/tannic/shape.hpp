@@ -309,18 +309,7 @@ constexpr bool operator==(Shape const& first, Shape const& second) {
     return true;
 }  
 
-inline std::ostream& operator<<(std::ostream& os, Shape const& shape) {
-    os << "Shape(";
-    for (Shape::rank_type dimension = 0; dimension < shape.rank(); ++dimension) {
-        os << static_cast<unsigned int>(shape[dimension]);
-        if (dimension + 1 < shape.rank()) {
-            os << ", ";
-        }
-    }
-    os << ")";
-    return os;
-} 
-
+std::ostream& operator<<(std::ostream& os, Shape const& shape);
 
 } // namespace tannic
 

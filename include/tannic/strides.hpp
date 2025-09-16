@@ -288,17 +288,7 @@ constexpr bool operator==(Strides const& first, Strides const& second) {
     return true;
 }
 
-inline std::ostream& operator<<(std::ostream& os, Strides const& strides) {
-    os << "Strides(";
-    for (Strides::rank_type dimension = 0; dimension < strides.rank(); ++dimension) {
-        os << static_cast<unsigned int>(strides[dimension]);
-        if (dimension + 1 < strides.rank()) {
-            os << ", ";
-        }
-    }
-    os << ")";
-    return os;
-} 
+std::ostream& operator<<(std::ostream& os, Strides const& strides);
 
 } // namespace tannic
 

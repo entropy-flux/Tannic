@@ -69,7 +69,6 @@ status launchRepeatsKernel(const tensor_t* src, tensor_t* dst, int axis, int rep
         } 
     }
 
-
     size_t dim_size = src->shape.sizes[axis];
     size_t total_work = outer_ne * dim_size * reps * inner_ne;
 
