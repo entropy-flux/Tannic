@@ -6,7 +6,7 @@ While exploring the most recent models, I began noticing some weird patterns, CU
 
 On the other hand, many existing C++ frameworks, while fully native, are low-level and hard to use or extend. They often force developers to manage complex memory layouts or backend-specific details using macros, which makes adding new operations or integrating new hardware backends cumbersome.
 
-This insight led me to create Tannic, a lightweight, fully C++ tensor library designed from the ground up for clarity, composability, and extensibility. It maintains a Python-like API feel, so developers can enjoy familiar, intuitive syntax while working entirely in C++. The library is designed to be easy to adopt, easy to extend, and consistent in its behavior—even as new operations, data types, or backends are added.
+This insight led me to create Tannic, a lightweight, fully C++ tensor library designed from the ground up for clarity, composability, and extensibility. It maintains a Python-like API feel, so developers can enjoy familiar, intuitive syntax while working entirely in C++. The library is designed to be easy to adopt, easy to extend, and consistent in its behavior even as new operations, data types, or backends are added.
 
 ## What is Tannic?
 
@@ -14,12 +14,12 @@ This insight led me to create Tannic, a lightweight, fully C++ tensor library de
 Unlike monolithic frameworks, it provides only a minimal set of built‑in operators, focusing on a flexible architecture where new operations, data types, and backends can be added easily.
 This approach keeps the library lightweight while enabling adaptation to a wide range of computational needs.
 
-This library is designed to serve as the foundational core for a neural network inference framework, but is equally suited to other domains such as classical ML or physics simulations—all without requiring Python. 
+This library is designed to serve as the foundational core for a neural network inference framework, but is equally suited to other domains such as classical ML or physics simulations, all without requiring Python. 
 
 You can find full examples of neural networks inference with the Tannic framework here: 
 - [CNN Server Example](https://github.com/entropy-flux/cnn-server-example) – demonstrates serving convolutional neural network models.  
 - [ViT Server Example](https://github.com/entropy-flux/vit-server-example) – demonstrates serving Vision Transformer models.  
-
+- [LLaMa3 Server Example](https://github.com/entropy-flux/llama3-server-example) – demonstrates serving LlaMa3 transformer model for text completion tasks.
 
 Below is a minimal example demonstrating tensor creation, initialization, basic indexing, and arithmetic operations with Tannic:
 
