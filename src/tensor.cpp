@@ -76,4 +76,8 @@ void Tensor::copy(Tensor const& other) {
     callback(other, *this);
 }
 
+Tensor Tensor::to(Environment const& environment) const {
+    
+}
+
 } // namespace tannic

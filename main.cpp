@@ -5,14 +5,11 @@
 using namespace tannic;
  
 int main() {  
-    std::cout << "Working example of the tensor library" << std::endl;
-
-    Tensor X(float16, {2,2}); // X.initialize(Device()); for CUDA support   
-    X[0, range{0,-1}] = 1; 
-    X[1,0] = 3;
-    X[1][1] = 4;   
-    
-    std::cout <<  X << std::endl;
+    Tensor X = {1, 2, 3, 4, 5};
+    Tensor Y = X;         // Cheap copy,  
+    Tensor Z = Y[{1, 3}]; // Cheap view
+    Z[{0, -1}] = 5;
+    std::cout << X << std::endl;
 } 
 
 

@@ -737,6 +737,8 @@ public:
         }   
         node_ = std::make_shared<Node>(*this);
     }
+public:
+    Tensor to(Environment const& environment) const;
 
 protected:    
     template <Composable Source, class... Indexes> 

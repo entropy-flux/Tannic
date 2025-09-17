@@ -192,7 +192,7 @@ struct Argmean {
     void forward(Tensor const& input, Tensor& output) const;
 };
 
-/******************************************************************************* */
+/********************************************************************************/
 /**
  * @brief Creates an Argmax reduction.
  * @param axis Axis to reduce (`-1` for last axis). 
