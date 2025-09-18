@@ -17,15 +17,10 @@ int main() {
     X[1,0] = 3;
     X[1][1] = 4;   
     
-    Tensor Y = X.to(Device()); 
-    Tensor Z = Y.to(Host());
-    std::cout << Z * X << std::endl;
+    Tensor Y(float32, {1,2}); // or X.initialize(Device()); for CUDA support   
+    Y[0,0] = 4;
+    Y[0,1] = 6;   
+    Y = log(X) + Y * Y - exp(X) + matmul(X, Y.transpose());
+    std::cout << Y; /* Tensor([[23.2817, 43.2817], 
+                              [33.0131, 18.7881]] dtype=float32, shape=(2, 2))*/
 } 
-/*
-
-
-(64, 16, 4, 1)
-(64, 4, 16, 1)
-(64, 4, 16, 2, 1)
-
-*/

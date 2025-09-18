@@ -18,6 +18,9 @@ using tannic::device_t;
 inline void copyFromHost(const device_t* resource, const void* src , void* dst, size_t nbytes) { throw std::runtime_error("CUDA copyFromHost called without CUDA support"); }
 inline bool compareFromHost(const device_t* resource, const void* hst_ptr, const void* dvc_ptr, size_t nbytes) {throw std::runtime_error("CUDA compareFromHost called without CUDA support"); }
 inline status cpy(const tensor_t* src, tensor_t* dst, stream_t stream) {throw std::runtime_error("CUDA compareFromHost called without CUDA support"); }
+
+inline status copy(const tensor_t* src, tensor_t* dst, size_t nbytes, stream_t stream){throw std::runtime_error("CUDA compareFromHost called without CUDA support"); }
+
 } // namespace cuda0
 #endif
 
