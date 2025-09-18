@@ -22,7 +22,7 @@ inline void deallocate(const device_t*, void*) { throw std::runtime_error("CUDA 
 namespace tannic { 
 
 void* Host::allocate(std::size_t nbytes) const {     
-    if(pageable_) {
+    if(trait_ == Trait::Pageable) {
         return std::malloc(nbytes);
     } else {
         throw std::runtime_error("Pinned memory not supported yet!");
@@ -30,7 +30,7 @@ void* Host::allocate(std::size_t nbytes) const {
 }
 
 void Host::deallocate(void* address, std::size_t nbytes) const {  
-    if(pageable_) {
+    if(trait_ == Trait::Pageable) {
         std::free(address); 
     } else {
         throw std::runtime_error("Pinned memory not supported yet!");

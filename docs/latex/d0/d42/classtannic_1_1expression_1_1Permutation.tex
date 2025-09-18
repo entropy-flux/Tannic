@@ -1,10 +1,5 @@
-\doxysection{tannic\+::expression\+::Permutation\texorpdfstring{$<$}{<} Source, Indexes \texorpdfstring{$>$}{>} Class Template Reference}
-\hypertarget{classtannic_1_1expression_1_1Permutation}{}\label{classtannic_1_1expression_1_1Permutation}\index{tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}}
-
-
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for reordering tensor dimensions according to a specified permutation.  
-
-
+\doxysection{tannic\+::expression\+::Permutation\texorpdfstring{$<$}{<} Source \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classtannic_1_1expression_1_1Permutation}{}\label{classtannic_1_1expression_1_1Permutation}\index{tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}}
 
 
 {\ttfamily \#include $<$views.\+hpp$>$}
@@ -12,122 +7,68 @@
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_a9a5b4f76ae16a397d5c41f5fb7a0eaed}{Permutation}} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, std\+::tuple$<$ Indexes... $>$ indexes)
-\begin{DoxyCompactList}\small\item\em Constructs a permuted view of the source tensor. \end{DoxyCompactList}\item 
-constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_ab78ea700fcfb15159f25a0012fda03cd}{dtype}} () const
+{\footnotesize template$<$Integral... Indexes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_a05bcc678db1dbab0a39a4614d9e660ae}{Permutation}} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, Indexes... indexes)
 \item 
-constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_a9bccb831073a19713787cc60eedf661f}{shape}} () const
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_ae3f4c983e43b6df6dd5979c4b5197fc4}{dtype}} () const
 \item 
-constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_a55ad049888c69930b0ed33c14654192c}{strides}} () const
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_ad6b319970878c80b9d11c881d969bbfa}{shape}} () const
 \item 
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_a20c79668aa038a3c06de9e22190ee36f}{offset}} () const
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_a9ce475a68b473ea0c0b1a2cce16bf524}{strides}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_a43662c2291a6a72e55a00a02a6352778}{forward}} () const
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_aedda1612a96e796dcad70c7a53443c26}{offset}} () const
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation_af67aa76b945f679cb5d1bb190acc1d09}{forward}} (\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&context) const
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-\subsubsection*{template$<$Composable Source, Integral ... Indexes$>$\newline
-class tannic\+::expression\+::\+Permutation$<$ Source, Indexes $>$}
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for reordering tensor dimensions according to a specified permutation. 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Source} & The expression or tensor type being permuted. \\
-\hline
-{\em Indexes} & A parameter pack of integral indices defining the permutation order.\\
-\hline
-\end{DoxyTemplParams}
-The {\ttfamily \doxylink{classtannic_1_1expression_1_1Permutation}{Permutation}} view reorders the dimensions of a tensor according to a user-\/specified sequence of indices. This changes how elements are accessed along each axis, but does not move the underlying data in memory.
-
-Example\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ X(float32,\ \{2,\ 3,\ 4\});}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a1f1dde31ec629ed3d6b2b979221cf802}{permute}}(X,\ 2,\ 0,\ 1);\ \textcolor{comment}{//\ shape\ becomes\ (4,\ 2,\ 3)}}
-
-\end{DoxyCode}
-
-
-\begin{DoxyNote}{Note}
-The number of indices in the permutation must match the rank of the tensor. Otherwise, an exception is thrown. 
-\end{DoxyNote}
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classtannic_1_1expression_1_1Permutation_a9a5b4f76ae16a397d5c41f5fb7a0eaed}\label{classtannic_1_1expression_1_1Permutation_a9a5b4f76ae16a397d5c41f5fb7a0eaed} 
-\index{tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}!Permutation@{Permutation}}
-\index{Permutation@{Permutation}!tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}}
+\Hypertarget{classtannic_1_1expression_1_1Permutation_a05bcc678db1dbab0a39a4614d9e660ae}\label{classtannic_1_1expression_1_1Permutation_a05bcc678db1dbab0a39a4614d9e660ae} 
+\index{tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}!Permutation@{Permutation}}
+\index{Permutation@{Permutation}!tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{Permutation()}{Permutation()}}
-{\footnotesize\ttfamily template$<$Composable Source, Integral ... Indexes$>$ \\
-constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source, Indexes $>$\+::\+Permutation (\begin{DoxyParamCaption}\item[{typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference}]{source,  }\item[{std\+::tuple$<$ Indexes... $>$}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+template$<$Integral... Indexes$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source $>$\+::\+Permutation (\begin{DoxyParamCaption}\item[{typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference}]{source,  }\item[{Indexes...}]{indexes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
-
-Constructs a permuted view of the source tensor. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em source} & Reference to the source expression or tensor. \\
-\hline
-{\em indexes} & A tuple of dimension indices specifying the new order.\\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{classtannic_1_1Exception}{Exception}} & if the number of indices does not match the source tensor\textquotesingle{}s rank.\\
-\hline
-\end{DoxyExceptions}
-This constructor normalizes the indices to ensure they are valid for the tensor\textquotesingle{}s rank, and then expands the {\ttfamily shape\+\_\+} and {\ttfamily strides\+\_\+} of the permuted view accordingly. 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classtannic_1_1expression_1_1Permutation_ab78ea700fcfb15159f25a0012fda03cd}\label{classtannic_1_1expression_1_1Permutation_ab78ea700fcfb15159f25a0012fda03cd} 
-\index{tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}!dtype@{dtype}}
-\index{dtype@{dtype}!tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}}
+\Hypertarget{classtannic_1_1expression_1_1Permutation_ae3f4c983e43b6df6dd5979c4b5197fc4}\label{classtannic_1_1expression_1_1Permutation_ae3f4c983e43b6df6dd5979c4b5197fc4} 
+\index{tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}!dtype@{dtype}}
+\index{dtype@{dtype}!tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{dtype()}{dtype()}}
-{\footnotesize\ttfamily template$<$Composable Source, Integral ... Indexes$>$ \\
-constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source, Indexes $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The data type of the tensor elements.
-\end{DoxyReturn}
-The element type remains the same as the source tensor. \Hypertarget{classtannic_1_1expression_1_1Permutation_a43662c2291a6a72e55a00a02a6352778}\label{classtannic_1_1expression_1_1Permutation_a43662c2291a6a72e55a00a02a6352778} 
-\index{tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}!forward@{forward}}
-\index{forward@{forward}!tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}}
+\Hypertarget{classtannic_1_1expression_1_1Permutation_af67aa76b945f679cb5d1bb190acc1d09}\label{classtannic_1_1expression_1_1Permutation_af67aa76b945f679cb5d1bb190acc1d09} 
+\index{tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}!forward@{forward}}
+\index{forward@{forward}!tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
-{\footnotesize\ttfamily template$<$Composable Source, Integral... Indexes$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source, Indexes $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&}]{context }\end{DoxyParamCaption}) const}
 
-\Hypertarget{classtannic_1_1expression_1_1Permutation_a20c79668aa038a3c06de9e22190ee36f}\label{classtannic_1_1expression_1_1Permutation_a20c79668aa038a3c06de9e22190ee36f} 
-\index{tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}!offset@{offset}}
-\index{offset@{offset}!tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}}
+\Hypertarget{classtannic_1_1expression_1_1Permutation_aedda1612a96e796dcad70c7a53443c26}\label{classtannic_1_1expression_1_1Permutation_aedda1612a96e796dcad70c7a53443c26} 
+\index{tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}!offset@{offset}}
+\index{offset@{offset}!tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{offset()}{offset()}}
-{\footnotesize\ttfamily template$<$Composable Source, Integral ... Indexes$>$ \\
-std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source, Indexes $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\begin{DoxyReturn}{Returns}
-The byte offset of the permuted view from the start of the storage.
-\end{DoxyReturn}
-This forwards directly from the source tensor. The data buffer is not moved, so the offset remains the same. \Hypertarget{classtannic_1_1expression_1_1Permutation_a9bccb831073a19713787cc60eedf661f}\label{classtannic_1_1expression_1_1Permutation_a9bccb831073a19713787cc60eedf661f} 
-\index{tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}!shape@{shape}}
-\index{shape@{shape}!tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}}
+\Hypertarget{classtannic_1_1expression_1_1Permutation_ad6b319970878c80b9d11c881d969bbfa}\label{classtannic_1_1expression_1_1Permutation_ad6b319970878c80b9d11c881d969bbfa} 
+\index{tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}!shape@{shape}}
+\index{shape@{shape}!tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
-{\footnotesize\ttfamily template$<$Composable Source, Integral ... Indexes$>$ \\
-constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source, Indexes $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The shape of the permuted view.
-\end{DoxyReturn}
-The shape is reordered according to the permutation indices provided in the constructor. \Hypertarget{classtannic_1_1expression_1_1Permutation_a55ad049888c69930b0ed33c14654192c}\label{classtannic_1_1expression_1_1Permutation_a55ad049888c69930b0ed33c14654192c} 
-\index{tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}!strides@{strides}}
-\index{strides@{strides}!tannic::expression::Permutation$<$ Source, Indexes $>$@{tannic::expression::Permutation$<$ Source, Indexes $>$}}
+\Hypertarget{classtannic_1_1expression_1_1Permutation_a9ce475a68b473ea0c0b1a2cce16bf524}\label{classtannic_1_1expression_1_1Permutation_a9ce475a68b473ea0c0b1a2cce16bf524} 
+\index{tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}!strides@{strides}}
+\index{strides@{strides}!tannic::expression::Permutation$<$ Source $>$@{tannic::expression::Permutation$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
-{\footnotesize\ttfamily template$<$Composable Source, Integral ... Indexes$>$ \\
-constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source, Indexes $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily template$<$Composable Source$>$ \\
+constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Permutation}{tannic\+::expression\+::\+Permutation}}$<$ Source $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The strides of the permuted view.
-\end{DoxyReturn}
-\doxylink{classtannic_1_1Strides}{Strides} are reordered to match the permuted axes, ensuring that element access corresponds to the new dimension order. 
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

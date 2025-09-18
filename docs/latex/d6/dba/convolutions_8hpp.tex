@@ -1,10 +1,5 @@
 \doxysection{include/tannic/convolutions.hpp File Reference}
 \hypertarget{convolutions_8hpp}{}\label{convolutions_8hpp}\index{include/tannic/convolutions.hpp@{include/tannic/convolutions.hpp}}
-
-
-Defines tensor convolutional operations.  
-
-
 {\ttfamily \#include $<$tuple$>$}\newline
 {\ttfamily \#include $<$array$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
@@ -22,9 +17,9 @@ Include dependency graph for convolutions.\+hpp\+:
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution1D}{tannic\+::transformation\+::\+Convolution1D}}
-\begin{DoxyCompactList}\small\item\em Expression for 1D convolution operations. \end{DoxyCompactList}\item 
+\item 
 class \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution2D}{tannic\+::transformation\+::\+Convolution2D}}
-\begin{DoxyCompactList}\small\item\em Expression for 2D convolution operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,17 +42,3 @@ namespace \mbox{\hyperlink{namespacetannic_1_1transformation}{tannic\+::transfor
 \begin{DoxyCompactList}\small\item\em Creates a biased 2D convolution expression with uniform stride and padding. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Composable Signal, Composable Kernel, Composable Bias$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1transformation_a6c6bd0aba5796f00e5c1697eb566dd39}{tannic\+::transformation\+::convolve2D}} (Signal \&\&signal, Kernel \&\&kernel, Bias \&\&bias, std\+::array$<$ std\+::size\+\_\+t, 2 $>$ strides, std\+::array$<$ std\+::size\+\_\+t, 2 $>$ padding)
 \begin{DoxyCompactList}\small\item\em Creates a biased 2D convolution expression with explicit stride and padding arrays. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Detailed Description}
-Defines tensor convolutional operations. 
-
-\begin{DoxyAuthor}{Author}
-Eric Hermosis 
-\end{DoxyAuthor}
-\begin{DoxyDate}{Date}
-2025 
-\end{DoxyDate}
-This header provides tensor convolution operations implemented as expression templates.
-
-Part of the Tannic Tensor Library. 

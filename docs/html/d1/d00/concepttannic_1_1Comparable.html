@@ -95,23 +95,14 @@ $(document).ready(function(){initNavTree('d1/d00/concepttannic_1_1Comparable.htm
 </div><!--header-->
 <div class="contents">
 
-<p>Concept for types that can compare their value.  
-<a href="../../d1/d00/concepttannic_1_1Comparable.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="../../d7/dd8/concepts_8hpp_source.html">concepts.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="../../d1/d00/concepttannic_1_1Comparable.html">tannic::Comparable</a> =  <span class="keyword">requires</span>(<span class="keyword">const</span> T t, <span class="keyword">const</span> std::byte* ptr, std::ptrdiff_t offset) {</div>
 <div class="line">    { t.compare(ptr, offset) } -&gt; std::same_as&lt;bool&gt;;</div>
 <div class="line">}</div>
-<div class="ttc" id="aconcepttannic_1_1Comparable_html"><div class="ttname"><a href="../../d1/d00/concepttannic_1_1Comparable.html">tannic::Comparable</a></div><div class="ttdoc">Concept for types that can compare their value.</div><div class="ttdef"><b>Definition</b> concepts.hpp:213</div></div>
-</div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Concept for types that can compare their value. </p>
-<p>A type <code>T</code> satisfies this concept if it provides a method:</p>
-<div class="fragment"><div class="line"><span class="keywordtype">bool</span> compare(<span class="keyword">const</span> std::byte* ptr, std::ptrdiff_t offset) <span class="keyword">const</span>;</div>
-</div><!-- fragment --><p>This function must take a pointer to a raw byte buffer and an offset, then return <code>true</code> if the object is equal to the value at that memory location, or <code>false</code> otherwise.</p>
-<p>This concept is mainly used internally when comparing tensor elements, and enables the usage of slices from custom data structures beside the <code>Tensor</code> class. </p>
-</div></div><!-- contents -->
+<div class="ttc" id="aconcepttannic_1_1Comparable_html"><div class="ttname"><a href="../../d1/d00/concepttannic_1_1Comparable.html">tannic::Comparable</a></div><div class="ttdef"><b>Definition</b> concepts.hpp:90</div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

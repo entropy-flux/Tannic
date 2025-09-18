@@ -2,18 +2,13 @@
 \hypertarget{classtannic_1_1expression_1_1Squeeze}{}\label{classtannic_1_1expression_1_1Squeeze}\index{tannic::expression::Squeeze$<$ Source $>$@{tannic::expression::Squeeze$<$ Source $>$}}
 
 
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for removing singleton dimensions from a tensor.  
-
-
-
-
 {\ttfamily \#include $<$views.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze_a8ec4e95cb5ad41ccdb0e290f988d2fda}{Squeeze}} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source)
-\begin{DoxyCompactList}\small\item\em Construct a squeezed view of the source tensor. \end{DoxyCompactList}\item 
+\item 
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze_ab62b6246032ab13f83ba8f355d002d22}{dtype}} () const
 \item 
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze_a92fff713048f88a253288e70148f5dd4}{shape}} () const
@@ -22,29 +17,9 @@ constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyp
 \item 
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze_a7b726b6a846e715cd02cec3095e435cf}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze_ac2a8030beb9a432be416010cef03c443}{forward}} () const
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze_a8a585d474761c053b0bcd8a4b5f84109}{forward}} (\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&context) const
 \end{DoxyCompactItemize}
 
-
-\doxysubsection{Detailed Description}
-\subsubsection*{template$<$Composable Source$>$\newline
-class tannic\+::expression\+::\+Squeeze$<$ Source $>$}
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for removing singleton dimensions from a tensor. 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Source} & The expression or tensor type being squeezed.\\
-\hline
-\end{DoxyTemplParams}
-The {\ttfamily \doxylink{classtannic_1_1expression_1_1Squeeze}{Squeeze}} view removes dimensions of size 1 from the shape of a tensor. This changes only the tensor metadata (shape and strides), not the underlying storage.
-
-Example\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ X(float32,\ \{1,\ 3,\ 1\});}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_aeb6b00dc672b62ceb6217af46120894c}{squeeze}}(X);\ \textcolor{comment}{//\ shape\ becomes\ (3)}}
-
-\end{DoxyCode}
- 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Squeeze_a8ec4e95cb5ad41ccdb0e290f988d2fda}\label{classtannic_1_1expression_1_1Squeeze_a8ec4e95cb5ad41ccdb0e290f988d2fda} 
@@ -56,15 +31,6 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{tannic\+::expre
 
 
 
-Construct a squeezed view of the source tensor. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em source} & Reference to the source expression or tensor.\\
-\hline
-\end{DoxyParams}
-This constructor removes all dimensions of size 1 from the source shape. \doxylink{classtannic_1_1Strides}{Strides} corresponding to those singleton dimensions are also removed. 
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Squeeze_ab62b6246032ab13f83ba8f355d002d22}\label{classtannic_1_1expression_1_1Squeeze_ab62b6246032ab13f83ba8f355d002d22} 
 \index{tannic::expression::Squeeze$<$ Source $>$@{tannic::expression::Squeeze$<$ Source $>$}!dtype@{dtype}}
@@ -73,15 +39,12 @@ This constructor removes all dimensions of size 1 from the source shape. \doxyli
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{tannic\+::expression\+::\+Squeeze}}$<$ Source $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The runtime data type of the tensor elements.
-\end{DoxyReturn}
-This is forwarded directly from the source expression. Squeezing does not alter the tensor’s dtype. \Hypertarget{classtannic_1_1expression_1_1Squeeze_ac2a8030beb9a432be416010cef03c443}\label{classtannic_1_1expression_1_1Squeeze_ac2a8030beb9a432be416010cef03c443} 
+\Hypertarget{classtannic_1_1expression_1_1Squeeze_a8a585d474761c053b0bcd8a4b5f84109}\label{classtannic_1_1expression_1_1Squeeze_a8a585d474761c053b0bcd8a4b5f84109} 
 \index{tannic::expression::Squeeze$<$ Source $>$@{tannic::expression::Squeeze$<$ Source $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Squeeze$<$ Source $>$@{tannic::expression::Squeeze$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{tannic\+::expression\+::\+Squeeze}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{tannic\+::expression\+::\+Squeeze}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&}]{context }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1Squeeze_a7b726b6a846e715cd02cec3095e435cf}\label{classtannic_1_1expression_1_1Squeeze_a7b726b6a846e715cd02cec3095e435cf} 
 \index{tannic::expression::Squeeze$<$ Source $>$@{tannic::expression::Squeeze$<$ Source $>$}!offset@{offset}}
@@ -90,49 +53,21 @@ This is forwarded directly from the source expression. Squeezing does not alter 
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{tannic\+::expression\+::\+Squeeze}}$<$ Source $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\begin{DoxyReturn}{Returns}
-The byte offset of the squeezed tensor from the start of storage.
-\end{DoxyReturn}
-This is forwarded from the source tensor since squeezing does not change the starting position of the data. \Hypertarget{classtannic_1_1expression_1_1Squeeze_a92fff713048f88a253288e70148f5dd4}\label{classtannic_1_1expression_1_1Squeeze_a92fff713048f88a253288e70148f5dd4} 
+\Hypertarget{classtannic_1_1expression_1_1Squeeze_a92fff713048f88a253288e70148f5dd4}\label{classtannic_1_1expression_1_1Squeeze_a92fff713048f88a253288e70148f5dd4} 
 \index{tannic::expression::Squeeze$<$ Source $>$@{tannic::expression::Squeeze$<$ Source $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::expression::Squeeze$<$ Source $>$@{tannic::expression::Squeeze$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{tannic\+::expression\+::\+Squeeze}}$<$ Source $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The shape of the squeezed tensor.
-\end{DoxyReturn}
-Calculation\+:
-\begin{DoxyItemize}
-\item Copies the source shape.
-\item Removes all dimensions of size 1.
-\end{DoxyItemize}
-
-Example\+:
-\begin{DoxyItemize}
-\item Source shape\+: (1, 3, 1) → Squeezed shape\+: (3) 
-\end{DoxyItemize}\Hypertarget{classtannic_1_1expression_1_1Squeeze_af844977b0fbb87dcb08b1b22d9c83945}\label{classtannic_1_1expression_1_1Squeeze_af844977b0fbb87dcb08b1b22d9c83945} 
+\Hypertarget{classtannic_1_1expression_1_1Squeeze_af844977b0fbb87dcb08b1b22d9c83945}\label{classtannic_1_1expression_1_1Squeeze_af844977b0fbb87dcb08b1b22d9c83945} 
 \index{tannic::expression::Squeeze$<$ Source $>$@{tannic::expression::Squeeze$<$ Source $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::expression::Squeeze$<$ Source $>$@{tannic::expression::Squeeze$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Squeeze}{tannic\+::expression\+::\+Squeeze}}$<$ Source $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The strides of the squeezed tensor.
-\end{DoxyReturn}
-Calculation\+:
-\begin{DoxyItemize}
-\item Copies the source strides.
-\item Removes strides corresponding to dimensions of size 1.
-\end{DoxyItemize}
 
-Example\+:
-\begin{DoxyItemize}
-\item Source strides\+: (3, 1, 1) with shape (1, 3, 1)
-\item Result after squeeze\+: (1) with shape (3) 
-\end{DoxyItemize}
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

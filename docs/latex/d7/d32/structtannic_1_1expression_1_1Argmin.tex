@@ -2,11 +2,6 @@
 \hypertarget{structtannic_1_1expression_1_1Argmin}{}\label{structtannic_1_1expression_1_1Argmin}\index{tannic::expression::Argmin@{tannic::expression::Argmin}}
 
 
-Finds the {\bfseries{indexes of minimum values}} along an axis.  
-
-
-
-
 {\ttfamily \#include $<$reductions.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -26,21 +21,6 @@ int \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a9511d56e6095709027e77
 bool \mbox{\hyperlink{structtannic_1_1expression_1_1Argmin_a2c2eb8c098052a5cd70a6b755ec2dddf}{keepdim}}
 \end{DoxyCompactItemize}
 
-
-\doxysubsection{Detailed Description}
-Finds the {\bfseries{indexes of minimum values}} along an axis. 
-
-Identical to {\ttfamily \doxylink{structtannic_1_1expression_1_1Argmax}{Argmax}} but for minima. Output dtype is {\ttfamily int64}. Use {\ttfamily keepdim=true} to maintain shape for broadcasting.\hypertarget{structtannic_1_1expression_1_1Argmin_autotoc_md34}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{structtannic_1_1expression_1_1Argmin_autotoc_md34}
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ X\ =\ \{\{3,\ 1,\ 4\},\ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 5,\ 9\}\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_ae27f710a9c2d6f472de4c5b815277dcd}{argmin}}(X,\ 1);}
-\DoxyCodeLine{\textcolor{comment}{//\ Y\ =\ [1,\ 0]\ \ //\ Min\ indexes\ per\ row}}
-
-\end{DoxyCode}
- 
 
 \doxysubsection{Member Function Documentation}
 \Hypertarget{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819}\label{structtannic_1_1expression_1_1Argmin_a4f7a8964a2fa07e164e3170024bc1819} 

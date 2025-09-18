@@ -44,7 +44,7 @@ digraph "include/tannic/strides.hpp"
   Node15 -> Node5 [id="edge50_Node000015_Node000005",color="steelblue1",style="solid",tooltip=" "];
   Node15 -> Node6 [id="edge51_Node000015_Node000006",color="steelblue1",style="solid",tooltip=" "];
   Node15 -> Node19 [id="edge52_Node000015_Node000019",color="steelblue1",style="solid",tooltip=" "];
-  Node19 [id="Node000019",label="indexing.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/d1d/indexing_8hpp.html",tooltip="Utilities for index normalization and slicing ranges in the Tannic Tensor Library."];
+  Node19 [id="Node000019",label="indexing.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/d1d/indexing_8hpp.html",tooltip=" "];
   Node19 -> Node17 [id="edge53_Node000019_Node000017",color="steelblue1",style="solid",tooltip=" "];
   Node19 -> Node6 [id="edge54_Node000019_Node000006",color="steelblue1",style="solid",tooltip=" "];
   Node19 -> Node20 [id="edge55_Node000019_Node000020",color="steelblue1",style="solid",tooltip=" "];

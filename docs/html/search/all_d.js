@@ -1,12 +1,7 @@
 var searchData=
 [
-  ['nbytes_0',['nbytes',['../d1/d69/structtannic_1_1Header.html#a28670721388b16d66d7e5cc7a05a6eb5',1,'tannic::Header::nbytes'],['../d4/d78/structtannic_1_1Metadata_3_01Tensor_01_4.html#a95973d9032438a1071432993d9e06ad2',1,'tannic::Metadata&lt; Tensor &gt;::nbytes'],['../d4/d50/classtannic_1_1Buffer.html#aa987fe955f172709b13a5a07b6abca61',1,'tannic::Buffer::nbytes()'],['../da/d93/classtannic_1_1Tensor.html#a4064f4b6e988d2ccdff1a4c5f7357f43',1,'tannic::Tensor::nbytes()']]],
-  ['nbytesof_1',['nbytesof',['../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04',1,'tannic']]],
-  ['negation_2',['negation',['../d6/deb/structtannic_1_1operation_1_1Negation.html#autotoc_md27',1,'Example: Unary negation'],['../d6/deb/structtannic_1_1operation_1_1Negation.html',1,'tannic::operation::Negation']]],
-  ['negative_3',['Negative',['../d9/dd9/namespacetannic_1_1expression.html#a6653c49f47dbd1d0a90c4b61feab3777affb9356ff2b7da85c75c92fa7ea03b8b',1,'tannic::expression']]],
-  ['nelements_4',['nelements',['../da/d93/classtannic_1_1Tensor.html#ae859b2c47650e8d01c5a6979a0b199b2',1,'tannic::Tensor']]],
-  ['new_20features_5',['Creating new features.',['../index.html#autotoc_md83',1,'']]],
-  ['node_6',['node',['../df/d85/structtannic_1_1Node.html#a7255ee5cd9e1ccbc60a004175a178f31',1,'tannic::Node::Node(const Node &amp;)=delete'],['../df/d85/structtannic_1_1Node.html#a7580011f85d2a5de6a5abea0c053a6e0',1,'tannic::Node::Node(Node &amp;&amp;other) noexcept'],['../df/d85/structtannic_1_1Node.html#ad62ca85f8cefbb34228233a7844e8bac',1,'tannic::Node::Node(Tensor const &amp;)'],['../df/d85/structtannic_1_1Node.html',1,'tannic::Node']]],
-  ['normalize_7',['normalize',['../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85',1,'tannic::indexing::normalize(Index index, Size bound)'],['../d1/d17/namespacetannic_1_1indexing.html#aa32d55359b2e4a8162a3859edd089e0a',1,'tannic::indexing::normalize(Range range, Size size)']]],
-  ['numpy_20pytorch_20behavior_20_3a_8',['Example (NumPy/PyTorch behavior):',['../df/d20/structtannic_1_1expression_1_1Argsum.html#autotoc_md35',1,'']]]
+  ['header_0',['Header',['../d1/d69/structtannic_1_1Header.html',1,'tannic']]],
+  ['headerof_1',['headerof',['../d0/d1a/namespacetannic.html#aa966b765f458a1a30f3baf663db8ad5e',1,'tannic']]],
+  ['host_2',['host',['../df/da7/classtannic_1_1Host.html',1,'tannic::Host'],['../df/da7/classtannic_1_1Host.html#a1830de43bc0b0ca2dfef20ffad434596',1,'tannic::Host::Host()']]],
+  ['how_20to_20contribute_3',['How to Contribute',['../index.html#autotoc_md48',1,'']]]
 ];

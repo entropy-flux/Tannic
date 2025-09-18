@@ -32,10 +32,10 @@
 \DoxyCodeLine{00028\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1expression}{tannic::expression}}\ \{}
 \DoxyCodeLine{00029\ }
 \DoxyCodeLine{00030\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Rule,\ Composable\ Operand>}
-\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Filter}{Filter}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}<Rule,\ Operand>\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Filter}{Filter}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{Expression}}<Rule,\ Operand>\ \{}
 \DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Filter_a770505a49db6c85b9732ce241b8c1514}{Filter}}(Rule\ mask,\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operand>::Reference}}\ operand)\ }
-\DoxyCodeLine{00034\ \ \ \ \ :\ \ \ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}<Rule,\ Operand>(mask,\ operand)}
+\DoxyCodeLine{00034\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{Expression}}<Rule,\ Operand>(mask,\ operand)}
 \DoxyCodeLine{00035\ \ \ \ \ \{\}}
 \DoxyCodeLine{00036\ }
 \DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Filter_adb7e6e3a49bdd6c0e40639a562e0f837}{dtype}}()\textcolor{keyword}{\ const\ }\{}
@@ -54,8 +54,8 @@
 \DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
 \DoxyCodeLine{00051\ \ \ \ \ \}}
 \DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Filter_aaa1898b5eea0c9a3f84ff6e269d342ba}{forward}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ std::get<0>(this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}).\mbox{\hyperlink{classtannic_1_1Tensor_a24efaf36c2ec793288c470e5e92ad397}{forward}}();}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Filter_a0ec28c2296f1d72ec15bcb394a1689a0}{forward}}(\mbox{\hyperlink{classtannic_1_1Context}{Context}}\ \textcolor{keyword}{const}\&\ context)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ source\ =\ std::get<0>(this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}).\mbox{\hyperlink{classtannic_1_1Tensor_acd7c6d84c9b4a6540573306a1cbc4e37}{forward}}(context);}
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ target(source.\mbox{\hyperlink{classtannic_1_1Tensor_ae2ed5e8543bccbf5a65a6a38f9b0aaea}{dtype}}(),\ source.\mbox{\hyperlink{classtannic_1_1Tensor_a81394f7df9e3334bad0cad7a890d090e}{shape}}(),\ source.\mbox{\hyperlink{classtannic_1_1Tensor_a9ddcd9641feaa0640993c593a184f302}{strides}}());}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}.forward(source,\ target);}
 \DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ target;}

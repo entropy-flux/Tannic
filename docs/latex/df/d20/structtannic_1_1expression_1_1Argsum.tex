@@ -2,11 +2,6 @@
 \hypertarget{structtannic_1_1expression_1_1Argsum}{}\label{structtannic_1_1expression_1_1Argsum}\index{tannic::expression::Argsum@{tannic::expression::Argsum}}
 
 
-Sums tensor values along an axis.  
-
-
-
-
 {\ttfamily \#include $<$reductions.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -26,25 +21,6 @@ int \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a79e75eb9ba3e4075ef14c
 bool \mbox{\hyperlink{structtannic_1_1expression_1_1Argsum_a35cc26c059df57051eb2800a1d38a188}{keepdim}}
 \end{DoxyCompactItemize}
 
-
-\doxysubsection{Detailed Description}
-Sums tensor values along an axis. 
-
-Preserves input dtype. Use {\ttfamily keepdim=true} to maintain shape for broadcasting.\hypertarget{structtannic_1_1expression_1_1Argsum_autotoc_md35}{}\doxyparagraph{\texorpdfstring{Example (\+Num\+Py/\+Py\+Torch behavior)\+:}{Example (NumPy/PyTorch behavior):}}\label{structtannic_1_1expression_1_1Argsum_autotoc_md35}
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ X\ =\ \{\{1,\ 2\},\ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{3,\ 4\}\};\ \ \textcolor{comment}{//\ shape(2,\ 2)}}
-\DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a86e00b9acced8ebb951803f22ef7207e}{sum}}(X,\ 0);\ \ \textcolor{comment}{//\ Sum\ over\ rows}}
-\DoxyCodeLine{\textcolor{comment}{//\ Y\ =\ [4,\ 6]\ \ \ \ \ \ \ \ \ \ //\ 1+3=4,\ 2+4=6}}
-\DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a86e00b9acced8ebb951803f22ef7207e}{sum}}(X,\ 1,\ \textcolor{comment}{/*keepdim=*\ /true);}}
-\DoxyCodeLine{\textcolor{comment}{//\ Z\ =\ [[3],\ \ \ \ \ \ \ \ \ \ \ //\ 1+2=3}}
-\DoxyCodeLine{\textcolor{comment}{//\ \ \ \ \ \ [7]]\ \ \ \ \ \ \ \ \ \ \ //\ 3+4=7}}
-
-\end{DoxyCode}
- 
 
 \doxysubsection{Member Function Documentation}
 \Hypertarget{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3}\label{structtannic_1_1expression_1_1Argsum_a3c9ee70d92c6afaca8923205effe84a3} 

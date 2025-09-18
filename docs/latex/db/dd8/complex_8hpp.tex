@@ -1,10 +1,5 @@
 \doxysection{include/tannic/complex.hpp File Reference}
 \hypertarget{complex_8hpp}{}\label{complex_8hpp}\index{include/tannic/complex.hpp@{include/tannic/complex.hpp}}
-
-
-Complex number operations for the Tannic Tensor Library.  
-
-
 {\ttfamily \#include "{}concepts.\+hpp"{}}\newline
 {\ttfamily \#include "{}types.\+hpp"{}}\newline
 {\ttfamily \#include "{}shape.\+hpp"{}}\newline
@@ -19,15 +14,15 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structtannic_1_1expression_1_1Cartesian}{tannic\+::expression\+::\+Cartesian}}
-\begin{DoxyCompactList}\small\item\em Tag type for \doxylink{structtannic_1_1expression_1_1Cartesian}{Cartesian} (real/imaginary) complex number representation. \end{DoxyCompactList}\item 
+\item 
 struct \mbox{\hyperlink{structtannic_1_1expression_1_1Polar}{tannic\+::expression\+::\+Polar}}
-\begin{DoxyCompactList}\small\item\em Tag type for \doxylink{structtannic_1_1expression_1_1Polar}{Polar} (magnitude/angle) complex number representation. \end{DoxyCompactList}\item 
+\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4}{tannic\+::expression\+::\+Complexification$<$ Coordinates, Source $>$}}
 \item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4}{tannic\+::expression\+::\+Complexification$<$ Coordinates, Real, Imaginary $>$}}
 \item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Realification}{tannic\+::expression\+::\+Realification$<$ Source $>$}}
-\begin{DoxyCompactList}\small\item\em Creates a real-\/valued view of complex tensor data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,24 +42,3 @@ namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
 \begin{DoxyCompactList}\small\item\em Creates complex tensor from polar coordinates (magnitude/angle) \end{DoxyCompactList}\item 
 {\footnotesize template$<$Composable Complex$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1expression_a0e5202d0e8bc3b22deddc6eabcb0df39}{tannic\+::expression\+::realify}} (Complex \&\&\mbox{\hyperlink{namespacetannic_1_1expression_a79760dbb305bbb78577f24479457c383}{complex}})
 \begin{DoxyCompactList}\small\item\em Creates a real-\/valued view of complex tensor data. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Detailed Description}
-Complex number operations for the Tannic Tensor Library. 
-
-\begin{DoxyAuthor}{Author}
-Eric Hermosis 
-\end{DoxyAuthor}
-\begin{DoxyDate}{Date}
-2025 
-\end{DoxyDate}
-This header provides functionality for working with complex numbers as tensors, including\+:
-
-
-\begin{DoxyItemize}
-\item Complex number creation with cartesian and polar coordinates.
-\item Real views from complex tensors. ~\newline
-
-\end{DoxyItemize}
-
-The functions here described provide the way to complexify real tensors or view complex tensors in real space. 

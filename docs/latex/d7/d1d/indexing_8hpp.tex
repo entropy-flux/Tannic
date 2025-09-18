@@ -1,10 +1,5 @@
 \doxysection{include/tannic/indexing.hpp File Reference}
 \hypertarget{indexing_8hpp}{}\label{indexing_8hpp}\index{include/tannic/indexing.hpp@{include/tannic/indexing.hpp}}
-
-
-Utilities for index normalization and slicing ranges in the Tannic Tensor Library.  
-
-
 {\ttfamily \#include $<$cassert$>$}\newline
 {\ttfamily \#include "{}concepts.\+hpp"{}}\newline
 {\ttfamily \#include "{}exceptions.\+hpp"{}}\newline
@@ -36,16 +31,3 @@ using \mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{tannic
 \begin{DoxyCompactList}\small\item\em Normalize a possibly-\/negative index into the valid range {\ttfamily \mbox{[}0, bound)}. \end{DoxyCompactList}\item 
 {\footnotesize template$<$Integral Size$>$ }\\constexpr \mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}} \mbox{\hyperlink{namespacetannic_1_1indexing_aa32d55359b2e4a8162a3859edd089e0a}{tannic\+::indexing\+::normalize}} (\mbox{\hyperlink{structtannic_1_1indexing_1_1Range}{Range}} \mbox{\hyperlink{namespacetannic_affef8090e8f7ba383c67e15135664024}{range}}, Size size)
 \begin{DoxyCompactList}\small\item\em Normalize a slicing range into valid {\ttfamily \mbox{[}start, stop)} indices. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Detailed Description}
-Utilities for index normalization and slicing ranges in the Tannic Tensor Library. 
-
-\begin{DoxyAuthor}{Author}
-Eric Hermosis 
-\end{DoxyAuthor}
-\begin{DoxyDate}{Date}
-2025 ~\newline
- 
-\end{DoxyDate}
-This header defines helper structures and functions for working with tensor indices and slices. The utilities are inspired by Python\textquotesingle{}s negative indexing and range semantics, providing a consistent and safe interface for normalizing indices into valid positive ranges within tensor dimensions. 

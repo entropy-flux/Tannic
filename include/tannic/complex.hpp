@@ -222,7 +222,7 @@ constexpr auto complexify(Real&& real) {
 /**
  * @brief Creates complex tensor from separate real and imaginary tensors  
  * @param real Tensor containing real components
- * @param imag Tensor containing imaginary components
+ * @param imaginary Tensor containing imaginary components
  * @return Complex tensor combining both components
  *
  * #### Requirements:

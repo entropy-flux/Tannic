@@ -2,11 +2,6 @@
 \hypertarget{classtannic_1_1expression_1_1Binary}{}\label{classtannic_1_1expression_1_1Binary}\index{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}}
 
 
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for a binary tensor operation.  
-
-
-
-
 {\ttfamily \#include $<$operations.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -22,7 +17,7 @@ constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyp
 \item 
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_ad538b474e963268753595c5d04c8f108}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_a25f79a1644fbe89f707d28578dfb97b0}{forward}} () const
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_ab8d32e3a9080235bc4252f85cafd179e}{forward}} (\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&context) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Operation, Operand, Cooperand $>$}}}
 \begin{DoxyCompactItemize}
@@ -37,24 +32,6 @@ Operation \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07c
 \item 
 std\+::tuple$<$ typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}
 \end{DoxyCompactItemize}
-
-
-\doxysubsection{Detailed Description}
-\subsubsection*{template$<$Operator Operation, Composable Operand, Composable Cooperand$>$\newline
-class tannic\+::expression\+::\+Binary$<$ Operation, Operand, Cooperand $>$}
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for a binary tensor operation. 
-
-Represents a lazily evaluated binary operation between two expressions. The {\ttfamily \doxylink{classtannic_1_1expression_1_1Binary}{Binary}} class performs type promotion, shape broadcasting, and stride generation upon construction to prepare for efficient evaluation.
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Operation} & A stateless functor implementing {\ttfamily void forward(\doxylink{classtannic_1_1Tensor}{Tensor} const\&, \doxylink{classtannic_1_1Tensor}{Tensor} const\&, \doxylink{classtannic_1_1Tensor}{Tensor}\&)}. \\
-\hline
-{\em Operand} & Left-\/hand-\/side expression satisfying the {\ttfamily Composable} concept. \\
-\hline
-{\em Cooperand} & Right-\/hand-\/side expression satisfying the {\ttfamily Composable} concept. \\
-\hline
-\end{DoxyTemplParams}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -75,12 +52,12 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expres
 {\footnotesize\ttfamily template$<$Operator Operation, Composable Operand, Composable Cooperand$>$ \\
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ Operation, Operand, Cooperand $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\Hypertarget{classtannic_1_1expression_1_1Binary_a25f79a1644fbe89f707d28578dfb97b0}\label{classtannic_1_1expression_1_1Binary_a25f79a1644fbe89f707d28578dfb97b0} 
+\Hypertarget{classtannic_1_1expression_1_1Binary_ab8d32e3a9080235bc4252f85cafd179e}\label{classtannic_1_1expression_1_1Binary_ab8d32e3a9080235bc4252f85cafd179e} 
 \index{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$Operator Operation, Composable Operand, Composable Cooperand$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ Operation, Operand, Cooperand $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary}}$<$ Operation, Operand, Cooperand $>$\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&}]{context }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1Binary_ad538b474e963268753595c5d04c8f108}\label{classtannic_1_1expression_1_1Binary_ad538b474e963268753595c5d04c8f108} 
 \index{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$@{tannic::expression::Binary$<$ Operation, Operand, Cooperand $>$}!offset@{offset}}

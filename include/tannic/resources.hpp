@@ -46,7 +46,6 @@
 #include <variant>   
 
 namespace tannic {
-
 /**
  * @brief Host memory domain
  * 
@@ -59,6 +58,10 @@ namespace tannic {
  */
 class Host {
 public: 
+    enum class Trait {
+        Pageable,
+        Pinned
+    };
 
     /**
      * @brief Constructs a host memory environment  
@@ -91,16 +94,15 @@ public:
     int id() const { return -1; } 
 
     bool pageable() const {
-        return pageable_;
+        return trait_ == Trait::Pageable ? true : false;
     }
 
     bool pinned() const {
-        return pinned_;
+        return trait_ == Trait::Pinned ? true : false;
     }
 
 private:
-    bool pageable_ = true; 
-    bool pinned_ = false;
+    Trait trait_ = Trait::Pageable; 
 };  
 
 

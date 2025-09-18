@@ -60,13 +60,13 @@ environment_t structure(Environment const& environment) {
     if (std::holds_alternative<Host>(environment)) {
         Host const& resource = std::get<Host>(environment);
         return environment_t{
-            .environment = HOST,
+            .kind = HOST,
             .resource = {.host = structure(resource)},
         };
     } else {
         Device const& resource = std::get<Device>(environment);
         return environment_t{
-            .environment = DEVICE,
+            .kind = DEVICE,
             .resource = {.device = structure(resource)},
         };
     }
@@ -91,7 +91,7 @@ tensor_t structure(Tensor const& tensor) {
             .strides = strides,
             .dtype = tensor.dtype(),
             .environment = {
-                .environment = HOST,
+                .kind = HOST,
                 .resource = {.host = structure(resource)},
             },
             .size = tensor.nelements(),
@@ -106,7 +106,7 @@ tensor_t structure(Tensor const& tensor) {
             .strides = strides,
             .dtype = tensor.dtype(),
             .environment = {
-                .environment = DEVICE,
+                .kind = DEVICE,
                 .resource = {.device = structure(resource)},
             },
             .size = tensor.nelements(),
@@ -120,28 +120,25 @@ status resolve_two_environment(const environment_t* a, const environment_t* b, e
         return NULL_ALLOCATOR;
     }
 
-    result_out->environment = HOST;
+    result_out->kind = HOST;
     result_out->resource.host.traits = PAGEABLE;
 
-    if (a->environment == DEVICE && b->environment == DEVICE) {
+    if (a->kind == DEVICE && b->kind == DEVICE) {
         if (a->resource.device.id != b->resource.device.id) {
             return INCOMPATIBLE_DEVICES;
         }
 
-        result_out->environment = DEVICE;
+        result_out->kind = DEVICE;
         result_out->resource.device.id = a->resource.device.id; 
     }
-    else if (a->environment == DEVICE) {
+    else if (a->kind == DEVICE) {
         return INCOMPATIBLE_DEVICES;
     }
-    else if (b->environment == DEVICE) {
+    else if (b->kind == DEVICE) {
         return INCOMPATIBLE_DEVICES;
     }
     else {
-        if ((a->resource.host.traits & MAPPED) || (b->resource.host.traits & MAPPED)) {
-            result_out->resource.host.traits = MAPPED;
-        }
-        else if ((a->resource.host.traits & PINNED) || (b->resource.host.traits & PINNED)) {
+        if ((a->resource.host.traits & PINNED) || (b->resource.host.traits & PINNED)) {
             result_out->resource.host.traits = PINNED;
         }
     }
@@ -158,7 +155,7 @@ status resolve_three_environment(
         return NULL_ALLOCATOR;
     }
  
-    result_out->environment = HOST;
+    result_out->kind = HOST;
     result_out->resource.host.traits = PAGEABLE;
 
     bool any_device = false;
@@ -168,7 +165,7 @@ status resolve_three_environment(
 
     for (int i = 0; i < 3; ++i) {
         const auto& env = envs[i];
-        if (env->environment == DEVICE) {
+        if (env->kind == DEVICE) {
             if (!any_device) { 
                 any_device = true;
                 device_id = env->resource.device.id; 
@@ -178,13 +175,12 @@ status resolve_three_environment(
                 }    
             }
         } else { 
-            if (env->resource.host.traits & MAPPED) result_out->resource.host.traits = MAPPED;
-            else if (env->resource.host.traits & PINNED) result_out->resource.host.traits = PINNED;
+            if (env->resource.host.traits & PINNED) result_out->resource.host.traits = PINNED;
         }
     }
 
     if (any_device) {
-        result_out->environment = DEVICE;
+        result_out->kind = DEVICE;
         result_out->resource.device.id = device_id; 
     }
 

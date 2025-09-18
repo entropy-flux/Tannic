@@ -5,6 +5,7 @@ var dir_6d3c05c59a583f51c81ffba8a622a25e =
     [ "comparisons.hpp", "de/d06/comparisons_8hpp.html", "de/d06/comparisons_8hpp" ],
     [ "complex.hpp", "db/dd8/complex_8hpp.html", "db/dd8/complex_8hpp" ],
     [ "concepts.hpp", "d7/dd8/concepts_8hpp.html", "d7/dd8/concepts_8hpp" ],
+    [ "context.hpp", "d2/da3/context_8hpp.html", "d2/da3/context_8hpp" ],
     [ "convolutions.hpp", "d6/dba/convolutions_8hpp.html", "d6/dba/convolutions_8hpp" ],
     [ "exceptions.hpp", "da/d49/exceptions_8hpp.html", "da/d49/exceptions_8hpp" ],
     [ "expressions.hpp", "d5/d8b/expressions_8hpp.html", "d5/d8b/expressions_8hpp" ],

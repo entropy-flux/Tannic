@@ -2,11 +2,6 @@
 \hypertarget{classtannic_1_1expression_1_1Transformation}{}\label{classtannic_1_1expression_1_1Transformation}\index{tannic::expression::Transformation$<$ Operation, Operands $>$@{tannic::expression::Transformation$<$ Operation, Operands $>$}}
 
 
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for tensor transformations.  
-
-
-
-
 {\ttfamily \#include $<$transformations.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -22,7 +17,7 @@ constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyp
 \item 
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_a413f66e43823590b0423c5be9fc6fc1d}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_a0be87ad59e08daf3d55207cc84796004}{forward}} () const
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_abbecc48190a40c020c7f92dc8c173c31}{forward}} (\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&context) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Operation, Operands... $>$}}}
 \begin{DoxyCompactItemize}
@@ -37,22 +32,6 @@ Operation \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07c
 \item 
 std\+::tuple$<$ typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}
 \end{DoxyCompactItemize}
-
-
-\doxysubsection{Detailed Description}
-\subsubsection*{template$<$class Operation, Composable ... Operands$>$\newline
-class tannic\+::expression\+::\+Transformation$<$ Operation, Operands $>$}
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for tensor transformations. 
-
-Represents a lazily evaluated transformation operation between multiple tensors. Handles type promotion, shape broadcasting, and proper stride computation.
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Operation} & The transformation operation type \\
-\hline
-{\em Operands} & Variadic template for input expressions \\
-\hline
-\end{DoxyTemplParams}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -73,12 +52,12 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{tannic\+
 {\footnotesize\ttfamily template$<$class Operation , Composable ... Operands$>$ \\
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{tannic\+::expression\+::\+Transformation}}$<$ Operation, Operands $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\Hypertarget{classtannic_1_1expression_1_1Transformation_a0be87ad59e08daf3d55207cc84796004}\label{classtannic_1_1expression_1_1Transformation_a0be87ad59e08daf3d55207cc84796004} 
+\Hypertarget{classtannic_1_1expression_1_1Transformation_abbecc48190a40c020c7f92dc8c173c31}\label{classtannic_1_1expression_1_1Transformation_abbecc48190a40c020c7f92dc8c173c31} 
 \index{tannic::expression::Transformation$<$ Operation, Operands $>$@{tannic::expression::Transformation$<$ Operation, Operands $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Transformation$<$ Operation, Operands $>$@{tannic::expression::Transformation$<$ Operation, Operands $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$class Operation , Composable ... Operands$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{tannic\+::expression\+::\+Transformation}}$<$ Operation, Operands $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{tannic\+::expression\+::\+Transformation}}$<$ Operation, Operands $>$\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&}]{context }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Transformation_a413f66e43823590b0423c5be9fc6fc1d}\label{classtannic_1_1expression_1_1Transformation_a413f66e43823590b0423c5be9fc6fc1d} 
 \index{tannic::expression::Transformation$<$ Operation, Operands $>$@{tannic::expression::Transformation$<$ Operation, Operands $>$}!offset@{offset}}

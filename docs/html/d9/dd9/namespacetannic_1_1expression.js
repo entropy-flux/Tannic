@@ -22,6 +22,7 @@ var namespacetannic_1_1expression =
     [ "Polar", "d3/dd3/structtannic_1_1expression_1_1Polar.html", null ],
     [ "Realification", "db/d96/classtannic_1_1expression_1_1Realification.html", "db/d96/classtannic_1_1expression_1_1Realification" ],
     [ "Reduction", "da/dc5/classtannic_1_1expression_1_1Reduction.html", "da/dc5/classtannic_1_1expression_1_1Reduction" ],
+    [ "Reshape", "d2/dd8/classtannic_1_1expression_1_1Reshape.html", "d2/dd8/classtannic_1_1expression_1_1Reshape" ],
     [ "Slice", "dd/d0f/classtannic_1_1expression_1_1Slice.html", "dd/d0f/classtannic_1_1expression_1_1Slice" ],
     [ "Squeeze", "d7/dca/classtannic_1_1expression_1_1Squeeze.html", "d7/dca/classtannic_1_1expression_1_1Squeeze" ],
     [ "Transformation", "dc/dd5/classtannic_1_1expression_1_1Transformation.html", "dc/dd5/classtannic_1_1expression_1_1Transformation" ],
@@ -29,7 +30,7 @@ var namespacetannic_1_1expression =
     [ "Triangular", "da/dc6/structtannic_1_1expression_1_1Triangular.html", "da/dc6/structtannic_1_1expression_1_1Triangular" ],
     [ "Unary", "d3/d73/classtannic_1_1expression_1_1Unary.html", "d3/d73/classtannic_1_1expression_1_1Unary" ],
     [ "Unsqueeze", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze" ],
-    [ "View", "d2/d9f/classtannic_1_1expression_1_1View.html", "d2/d9f/classtannic_1_1expression_1_1View" ],
+    [ "View", "d2/d9f/classtannic_1_1expression_1_1View.html", null ],
     [ "Zero", "d8/dc7/classtannic_1_1expression_1_1Zero.html", "d8/dc7/classtannic_1_1expression_1_1Zero" ],
     [ "Position", "d9/dd9/namespacetannic_1_1expression.html#a6098dcc67057f7f812acbf68a80f6cf0", [
       [ "Upper", "d9/dd9/namespacetannic_1_1expression.html#a6098dcc67057f7f812acbf68a80f6cf0a19de5b94f7b83900d4b296d9fa491aec", null ],

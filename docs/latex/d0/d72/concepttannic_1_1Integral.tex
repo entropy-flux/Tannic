@@ -2,21 +2,12 @@
 \hypertarget{concepttannic_1_1Integral}{}\label{concepttannic_1_1Integral}\index{tannic::Integral@{tannic::Integral}}
 
 
-Requires a type to be an integral type (e.\+g., {\ttfamily int}, {\ttfamily std\+::size\+\_\+t}).  
-
-
-
-
 {\ttfamily \#include $<$concepts.\+hpp$>$}
 
 \doxysubsection{Concept definition}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Integral}{tannic::Integral}}\ =\ \ std::is\_integral\_v<T>}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{concepttannic_1_1Integral}{tannic::Integral}}\ =\ \ std::integral<std::remove\_cvref\_t<T>>}
 
 \end{DoxyCode}
-
-
-\doxysubsection{Detailed Description}
-Requires a type to be an integral type (e.\+g., {\ttfamily int}, {\ttfamily std\+::size\+\_\+t}). 

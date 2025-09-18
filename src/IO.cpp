@@ -42,7 +42,7 @@ std::ostream& operator<<(std::ostream& os, const Tensor& tensor) {
             .strides = strides,
             .dtype = tensor.dtype(),
             .environment = {
-                .environment = HOST,
+                .kind = HOST,
                 .resource = {.host = structure(resource)},
             }
         };
@@ -62,7 +62,7 @@ std::ostream& operator<<(std::ostream& os, const Tensor& tensor) {
             .strides = strides,
             .dtype = tensor.dtype(),
             .environment = {
-                .environment = DEVICE,
+                .kind = DEVICE,
                 .resource = {.device = structure(resource)},
             }
         };

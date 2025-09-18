@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['range_0',['Range',['../de/dea/structtannic_1_1indexing_1_1Range.html',1,'tannic::indexing']]],
-  ['realification_1',['realification',['../d6/d98/classRealification.html',1,'Realification'],['../db/d96/classtannic_1_1expression_1_1Realification.html',1,'tannic::expression::Realification&lt; Source &gt;']]],
-  ['reduction_2',['Reduction',['../da/dc5/classtannic_1_1expression_1_1Reduction.html',1,'tannic::expression']]],
-  ['rsqrt_3',['Rsqrt',['../dc/db8/structtannic_1_1function_1_1Rsqrt.html',1,'tannic::function']]]
+  ['scalar_0',['Scalar',['../d8/da0/classtannic_1_1Scalar.html',1,'tannic']]],
+  ['shape_1',['Shape',['../db/da7/classtannic_1_1Shape.html',1,'tannic']]],
+  ['slice_2',['Slice',['../dd/d0f/classtannic_1_1expression_1_1Slice.html',1,'tannic::expression']]],
+  ['squeeze_3',['Squeeze',['../d7/dca/classtannic_1_1expression_1_1Squeeze.html',1,'tannic::expression']]],
+  ['strides_4',['Strides',['../dc/deb/classtannic_1_1Strides.html',1,'tannic']]],
+  ['subtraction_5',['Subtraction',['../d6/de5/structtannic_1_1operation_1_1Subtraction.html',1,'tannic::operation']]]
 ];

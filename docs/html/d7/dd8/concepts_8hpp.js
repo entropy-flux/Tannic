@@ -8,6 +8,5 @@ var concepts_8hpp =
     [ "tannic::Integral", "d0/d72/concepttannic_1_1Integral.html", null ],
     [ "tannic::Arithmetic", "d5/daf/concepttannic_1_1Arithmetic.html", null ],
     [ "tannic::Assignable", "d1/dfb/concepttannic_1_1Assignable.html", null ],
-    [ "tannic::Comparable", "d1/d00/concepttannic_1_1Comparable.html", null ],
-    [ "tannic::Expression", "d7/d3b/concepttannic_1_1Expression.html", null ]
+    [ "tannic::Comparable", "d1/d00/concepttannic_1_1Comparable.html", null ]
 ];

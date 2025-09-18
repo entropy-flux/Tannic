@@ -2,22 +2,17 @@
 \hypertarget{classtannic_1_1transformation_1_1Convolution1D}{}\label{classtannic_1_1transformation_1_1Convolution1D}\index{tannic::transformation::Convolution1D@{tannic::transformation::Convolution1D}}
 
 
-Expression for 1D convolution operations.  
-
-
-
-
 {\ttfamily \#include $<$convolutions.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 constexpr type \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution1D_ae9291d6f47c31bc5a7bba96df46696b1}{promote}} (type signal, type kernel) const
-\begin{DoxyCompactList}\small\item\em Type promotion for 1D convolution. \end{DoxyCompactList}\item 
+\item 
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution1D_a394184a71b12266ffb32fafaf6080820}{transform}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&signal, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&kernel) const
-\begin{DoxyCompactList}\small\item\em Computes output shape for 1D convolution. \end{DoxyCompactList}\item 
+\item 
 void \mbox{\hyperlink{classtannic_1_1transformation_1_1Convolution1D_ade30f31ac58d9070f6385c3d0af84bd9}{forward}} (\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&signal, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&kernel, \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&result) const
-\begin{DoxyCompactList}\small\item\em Performs the forward pass of 1D convolution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,16 +22,6 @@ std\+::array$<$ std\+::size\+\_\+t, 1 $>$ \mbox{\hyperlink{classtannic_1_1transf
 \begin{DoxyCompactList}\small\item\em Padding values for the convolution operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-Expression for 1D convolution operations. 
-
-Implements 1D convolution with\+:
-\begin{DoxyItemize}
-\item Input and kernel dtype validation
-\item Automatic output shape calculation
-\item Support for strides and padding 
-\end{DoxyItemize}
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtannic_1_1transformation_1_1Convolution1D_ade30f31ac58d9070f6385c3d0af84bd9}\label{classtannic_1_1transformation_1_1Convolution1D_ade30f31ac58d9070f6385c3d0af84bd9} 
 \index{tannic::transformation::Convolution1D@{tannic::transformation::Convolution1D}!forward@{forward}}
@@ -44,46 +29,12 @@ Implements 1D convolution with\+:
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily void tannic\+::transformation\+::\+Convolution1\+D\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{signal,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} const \&}]{kernel,  }\item[{\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \&}]{result }\end{DoxyParamCaption}) const}
 
-
-
-Performs the forward pass of 1D convolution. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em signal} & Input signal tensor \\
-\hline
-{\em kernel} & Convolution kernel tensor \\
-\hline
-{\em result} & Output tensor to store convolution result \\
-\hline
-\end{DoxyParams}
 \Hypertarget{classtannic_1_1transformation_1_1Convolution1D_ae9291d6f47c31bc5a7bba96df46696b1}\label{classtannic_1_1transformation_1_1Convolution1D_ae9291d6f47c31bc5a7bba96df46696b1} 
 \index{tannic::transformation::Convolution1D@{tannic::transformation::Convolution1D}!promote@{promote}}
 \index{promote@{promote}!tannic::transformation::Convolution1D@{tannic::transformation::Convolution1D}}
 \doxysubsubsection{\texorpdfstring{promote()}{promote()}}
 {\footnotesize\ttfamily constexpr type tannic\+::transformation\+::\+Convolution1\+D\+::promote (\begin{DoxyParamCaption}\item[{type}]{signal,  }\item[{type}]{kernel }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-
-
-Type promotion for 1D convolution. 
-
-Requires both signal and kernel to have identical data types.
-
-
-\begin{DoxyParams}{Parameters}
-{\em signal} & Data type of the input signal tensor \\
-\hline
-{\em kernel} & Data type of the kernel tensor \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Data type (same as inputs) 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{classtannic_1_1Exception}{Exception}} & if signal and kernel dtypes don\textquotesingle{}t match \\
-\hline
-\end{DoxyExceptions}
 \Hypertarget{classtannic_1_1transformation_1_1Convolution1D_a394184a71b12266ffb32fafaf6080820}\label{classtannic_1_1transformation_1_1Convolution1D_a394184a71b12266ffb32fafaf6080820} 
 \index{tannic::transformation::Convolution1D@{tannic::transformation::Convolution1D}!transform@{transform}}
 \index{transform@{transform}!tannic::transformation::Convolution1D@{tannic::transformation::Convolution1D}}
@@ -91,34 +42,6 @@ Data type (same as inputs)
 {\footnotesize\ttfamily constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} tannic\+::transformation\+::\+Convolution1\+D\+::transform (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{signal,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{kernel }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
-
-Computes output shape for 1D convolution. 
-
-Calculates the output shape based on input signal shape, kernel shape, strides, and padding using the standard convolution formula.
-
-
-\begin{DoxyParams}{Parameters}
-{\em signal} & \doxylink{classtannic_1_1Shape}{Shape} of the input signal tensor (N, C\+\_\+in, L\+\_\+in) \\
-\hline
-{\em kernel} & \doxylink{classtannic_1_1Shape}{Shape} of the kernel tensor (C\+\_\+out, K\+\_\+in, K\+\_\+len) \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Output shape after 1D convolution (N, C\+\_\+out, L\+\_\+out) 
-\end{DoxyReturn}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{classtannic_1_1Exception}{Exception}} & if input ranks are not 3 or channel dimensions don\textquotesingle{}t match\\
-\hline
-\end{DoxyExceptions}
-Expected input shapes\+:
-\begin{DoxyItemize}
-\item Signal\+: \mbox{[}batch\+\_\+size, input\+\_\+channels, signal\+\_\+length\mbox{]}
-\item Kernel\+: \mbox{[}output\+\_\+channels, input\+\_\+channels, kernel\+\_\+length\mbox{]}
-\item Output\+: \mbox{[}batch\+\_\+size, output\+\_\+channels, output\+\_\+length\mbox{]}
-\end{DoxyItemize}
-
-Output length formula\+: L\+\_\+out = (L\+\_\+in + 2\texorpdfstring{$\ast$}{*}padding -\/ K\+\_\+len) / stride + 1 
 
 \doxysubsection{Member Data Documentation}
 \Hypertarget{classtannic_1_1transformation_1_1Convolution1D_a5b175d7fe3cd5ea09c51e3c978764f6e}\label{classtannic_1_1transformation_1_1Convolution1D_a5b175d7fe3cd5ea09c51e3c978764f6e} 

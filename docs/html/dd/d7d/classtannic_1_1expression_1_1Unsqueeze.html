@@ -98,16 +98,12 @@ $(document).ready(function(){initNavTree('dd/d7d/classtannic_1_1expression_1_1Un
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for inserting singleton dimensions into a tensor.  
- <a href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="../../de/d49/views_8hpp_source.html">views.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5e362538d7340ed873e80a1c70bd8c6b" id="r_a5e362538d7340ed873e80a1c70bd8c6b"><td class="memTemplParams" colspan="2">template&lt;Integral... Axes&gt; </td></tr>
 <tr class="memitem:a5e362538d7340ed873e80a1c70bd8c6b"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html#a5e362538d7340ed873e80a1c70bd8c6b">Unsqueeze</a> (typename <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Source &gt;::Reference source, Axes... axes)</td></tr>
-<tr class="memdesc:a5e362538d7340ed873e80a1c70bd8c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an unsqueezed view of the source tensor.  <br /></td></tr>
 <tr class="separator:a5e362538d7340ed873e80a1c70bd8c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ee95913f844a7df71955284b2ab32e3" id="r_a7ee95913f844a7df71955284b2ab32e3"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html#a7ee95913f844a7df71955284b2ab32e3">dtype</a> () const</td></tr>
 <tr class="separator:a7ee95913f844a7df71955284b2ab32e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,25 +113,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a79a8d6ee2039937f10a62c5eb40e2d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade4bf0181936c6482c78bef2c4c1af68" id="r_ade4bf0181936c6482c78bef2c4c1af68"><td class="memItemLeft" align="right" valign="top">std::ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html#ade4bf0181936c6482c78bef2c4c1af68">offset</a> () const</td></tr>
 <tr class="separator:ade4bf0181936c6482c78bef2c4c1af68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9408a46e9118e87e8c2cd756f11e1d35" id="r_a9408a46e9118e87e8c2cd756f11e1d35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html#a9408a46e9118e87e8c2cd756f11e1d35">forward</a> () const</td></tr>
-<tr class="separator:a9408a46e9118e87e8c2cd756f11e1d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d4502e7dbea6c5b0f37d5bb0dcfc5bc" id="r_a2d4502e7dbea6c5b0f37d5bb0dcfc5bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html#a2d4502e7dbea6c5b0f37d5bb0dcfc5bc">forward</a> (<a class="el" href="../../d4/d73/classtannic_1_1Context.html">Context</a> const &amp;context) const</td></tr>
+<tr class="separator:a2d4502e7dbea6c5b0f37d5bb0dcfc5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;Composable Source&gt;<br />
-class tannic::expression::Unsqueeze&lt; Source &gt;</div><p><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for inserting singleton dimensions into a tensor. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Source</td><td>The expression or tensor type being unsqueezed.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>The <code><a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html" title="Expression template for inserting singleton dimensions into a tensor.">Unsqueeze</a></code> view adds new dimensions of size 1 at specified axes. This changes only the tensor metadata (shape and strides), not the underlying storage.</p>
-<p>Example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {3});</div>
-<div class="line"><span class="keyword">auto</span> Y = <a class="code hl_function" href="../../d9/dd9/namespacetannic_1_1expression.html#af3cfb1c4d6698824ae724c29c94e5d18">unsqueeze</a>(X, 0);   <span class="comment">// shape becomes (1, 3)</span></div>
-<div class="line"><span class="keyword">auto</span> Z = <a class="code hl_function" href="../../d9/dd9/namespacetannic_1_1expression.html#af3cfb1c4d6698824ae724c29c94e5d18">unsqueeze</a>(X, -1);  <span class="comment">// shape becomes (3, 1)</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition</b> tensor.hpp:99</div></div>
-<div class="ttc" id="anamespacetannic_1_1expression_html_af3cfb1c4d6698824ae724c29c94e5d18"><div class="ttname"><a href="../../d9/dd9/namespacetannic_1_1expression.html#af3cfb1c4d6698824ae724c29c94e5d18">tannic::expression::unsqueeze</a></div><div class="ttdeci">constexpr auto unsqueeze(Source &amp;&amp;source, Axes... axes)</div><div class="ttdoc">Inserts singleton dimensions at the specified axes (unsqueeze).</div><div class="ttdef"><b>Definition</b> views.hpp:960</div></div>
-</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5e362538d7340ed873e80a1c70bd8c6b" name="a5e362538d7340ed873e80a1c70bd8c6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5e362538d7340ed873e80a1c70bd8c6b">&#9670;&#160;</a></span>Unsqueeze()</h2>
 
@@ -174,31 +155,6 @@ template&lt;Integral... Axes&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Construct an unsqueezed view of the source tensor. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Axes</td><td>Integral indices where new dimensions of size 1 should be inserted. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">source</td><td>Reference to the source expression or tensor. </td></tr>
-    <tr><td class="paramname">axes</td><td><a class="el" href="../../d2/db0/classtannic_1_1expression_1_1One.html">One</a> or more dimension indices (negative indices allowed).</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Example:</p><ul>
-<li><code>unsqueeze(X, 0)</code> inserts a new axis before the first dimension.</li>
-<li><code>unsqueeze(X, -1)</code> inserts a new axis after the last dimension.</li>
-</ul>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="../../d9/d87/classtannic_1_1Exception.html" title="Base class for recoverable runtime anomalies in the framework.">Exception</a></td><td>if any normalized axis index is invalid. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -226,13 +182,11 @@ template&lt;Composable Source&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The runtime data type of the tensor elements.</dd></dl>
-<p>This is forwarded directly from the source expression. Unsqueezing does not alter the tensor’s dtype. </p>
 
 </div>
 </div>
-<a id="a9408a46e9118e87e8c2cd756f11e1d35" name="a9408a46e9118e87e8c2cd756f11e1d35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9408a46e9118e87e8c2cd756f11e1d35">&#9670;&#160;</a></span>forward()</h2>
+<a id="a2d4502e7dbea6c5b0f37d5bb0dcfc5bc" name="a2d4502e7dbea6c5b0f37d5bb0dcfc5bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d4502e7dbea6c5b0f37d5bb0dcfc5bc">&#9670;&#160;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -242,7 +196,8 @@ template&lt;Composable Source&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <a class="el" href="../../dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html">tannic::expression::Unsqueeze</a>&lt; Source &gt;::forward </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d4/d73/classtannic_1_1Context.html">Context</a> const &amp;&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -274,8 +229,6 @@ template&lt;Composable Source&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The byte offset of the unsqueezed tensor from the start of storage.</dd></dl>
-<p>This is forwarded from the source tensor since unsqueezing does not change the starting position of the data. </p>
 
 </div>
 </div>
@@ -303,15 +256,6 @@ template&lt;Composable Source&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The shape of the unsqueezed tensor.</dd></dl>
-<p>Calculation:</p><ul>
-<li>Copies the source shape.</li>
-<li>Inserts size-1 dimensions at the specified axes.</li>
-</ul>
-<p>Example:</p><ul>
-<li>Source shape: (3)</li>
-<li>unsqueeze(X, 0) → shape: (1, 3) </li>
-</ul>
 
 </div>
 </div>
@@ -339,11 +283,6 @@ template&lt;Composable Source&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The strides of the unsqueezed tensor.</dd></dl>
-<p>Calculation:</p><ul>
-<li>Copies the source strides.</li>
-<li>Inserts strides for new singleton dimensions. These strides are set to repeat the same memory element along the axis. </li>
-</ul>
 
 </div>
 </div>

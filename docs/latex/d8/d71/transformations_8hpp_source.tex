@@ -20,342 +20,340 @@
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ TRANSFORMATIONS\_HPP}}
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ TRANSFORMATIONS\_HPP\ }}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <tuple>}}
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <array>}}
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <cassert>}}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{concepts_8hpp}{concepts.hpp}}"{}}}
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{types_8hpp}{types.hpp}}"{}}}
-\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{traits_8hpp}{traits.hpp}}"{}}}
-\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shape_8hpp}{shape.hpp}}"{}}\ }
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tensor_8hpp}{tensor.hpp}}"{}}\ }
-\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exceptions_8hpp}{exceptions.hpp}}"{}}}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ \textcolor{keyword}{class\ }Tensor;\ \ }
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1expression}{tannic::expression}}\ \{}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00056\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Operation,\ Composable\ ...\ Operands>}
-\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{Transformation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}<Operation,\ Operands...>\ \{}
-\DoxyCodeLine{00058\ \textcolor{keyword}{public}:\ \ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_a81567154e44e3efc412e606343e8769c}{Transformation}}(Operation\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}},\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operands>::Reference}}...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}})\ \ }
-\DoxyCodeLine{00060\ \ \ \ \ :\ \ \ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}<Operation,\ Operands...>(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}},\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}...)}
-\DoxyCodeLine{00061\ \ \ \ \ ,\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}.promote(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}.\mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_ab4c9559dd3fd276a86737c0ac8b9bed5}{dtype}}()...))}
-\DoxyCodeLine{00062\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}.transform(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}.\mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_af1e5153f405dc74e74aacfc5f324b487}{shape}}()...))\ }
-\DoxyCodeLine{00063\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
-\DoxyCodeLine{00064\ \ \ \ \ \{\}}
-\DoxyCodeLine{00065\ \ \ \ \ \ }
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_ab4c9559dd3fd276a86737c0ac8b9bed5}{dtype}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
-\DoxyCodeLine{00068\ \ \ \ \ \}}
-\DoxyCodeLine{00069\ \ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_af1e5153f405dc74e74aacfc5f324b487}{shape}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
-\DoxyCodeLine{00072\ \ \ \ \ \}}
-\DoxyCodeLine{00073\ \ }
-\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_a2731d73ca71a62d397936d649173aac8}{strides}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
-\DoxyCodeLine{00076\ \ \ \ \ \}\ }
-\DoxyCodeLine{00077\ \ }
-\DoxyCodeLine{00078\ \ \ \ \ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_a413f66e43823590b0423c5be9fc6fc1d}{offset}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00080\ \ \ \ \ \}}
-\DoxyCodeLine{00081\ \ }
-\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_a0be87ad59e08daf3d55207cc84796004}{forward}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(dtype\_,\ shape\_);}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ std::apply([\&](\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&...\ arguments)\ \{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}.forward(arguments.forward()...,\ result);}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \},\ this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}});}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
-\DoxyCodeLine{00088\ \ \ \ \ \}}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00091\ \ \ \ \ type\ dtype\_;}
-\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;\ }
-\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
-\DoxyCodeLine{00094\ \};}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00096\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1transformation}{tannic::transformation}}\ \{}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00098\ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{tannic::expression::Transformation}};}
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00106\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ index(type\ first,\ type\ second)\ \{}
-\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(first)\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(second)\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(TYPES);}
-\DoxyCodeLine{00108\ \}\ \ }
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00118\ \textcolor{keyword}{struct\ }Composition\ \{\ \ \ \ \ \ }
-\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ promotions\ =\ []()\ \{}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ std::array<type,\ index(TYPES,\ TYPES)>\ table\{\};\ \ }
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ table.fill(unknown);}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Integer\ promotions}}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ table[index(int8,\ int8)]\ \ \ =\ int32;}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ table[index(int8,\ int16)]\ \ =\ int32;}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ table[index(int8,\ int32)]\ \ =\ int32;}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ table[index(int8,\ int64)]\ \ =\ int64;\ \ }
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ table[index(int16,\ int8)]\ \ \ \ =\ int32;}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ table[index(int16,\ int16)]\ \ \ =\ int32;}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ table[index(int16,\ int32)]\ \ \ =\ int32;}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ table[index(int16,\ int64)]\ \ \ =\ int64;\ }
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ table[index(int32,\ int8)]\ \ \ \ =\ int32;}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ table[index(int32,\ int16)]\ \ \ =\ int32;}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ table[index(int32,\ int32)]\ \ \ =\ int64;}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ table[index(int32,\ int64)]\ \ \ =\ int64;\ }
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ table[index(int64,\ int8)]\ \ \ \ =\ int64;}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ table[index(int64,\ int16)]\ \ \ =\ int64;}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ table[index(int64,\ int32)]\ \ \ =\ int64;}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ table[index(int64,\ int64)]\ \ \ =\ int64;\ \ }
-\DoxyCodeLine{00150\ \ \ \ \ }
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ table[index(int8,\ float16)]\ \ \ =\ float16;}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ table[index(float16,\ int8)]\ \ \ =\ float16;}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ table[index(int16,\ float16)]\ \ =\ float16;}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ table[index(float16,\ int16)]\ \ =\ float16;}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ table[index(int32,\ float16)]\ \ =\ float32;\ \ }
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ table[index(float16,\ int32)]\ \ =\ float32;}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ table[index(int64,\ float16)]\ \ =\ float64;\ \ \ }
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ table[index(float16,\ int64)]\ \ =\ float64;\ \ }
-\DoxyCodeLine{00159\ }
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ table[index(float16,\ float16)]\ =\ float16;}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ table[index(float16,\ float32)]\ =\ float32;}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ table[index(float32,\ float16)]\ =\ float32;}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ table[index(float16,\ float64)]\ =\ float64;}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ table[index(float64,\ float16)]\ =\ float64;}
-\DoxyCodeLine{00165\ \ }
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ table[index(int8,\ bfloat16)]\ \ \ =\ bfloat16;}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ int8)]\ \ \ =\ bfloat16;}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ table[index(int16,\ bfloat16)]\ \ =\ bfloat16;}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ int16)]\ \ =\ bfloat16;}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ table[index(int32,\ bfloat16)]\ \ =\ float32;}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ int32)]\ \ =\ float32;}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ table[index(int64,\ bfloat16)]\ \ =\ float64;}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ int64)]\ \ =\ float64;}
-\DoxyCodeLine{00174\ }
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ bfloat16)]\ =\ bfloat16;}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ float16)]\ \ =\ float16;}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ table[index(float16,\ bfloat16)]\ \ =\ float16;}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ float32)]\ \ =\ float32;}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ table[index(float32,\ bfloat16)]\ \ =\ float32;}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ float64)]\ \ =\ float64;}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ table[index(float64,\ bfloat16)]\ \ =\ float64;}
-\DoxyCodeLine{00182\ }
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ table[index(int32,\ float32)]\ =\ float32;}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ table[index(float32,\ int32)]\ =\ float32;}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ table[index(int32,\ float64)]\ =\ float64;}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ table[index(float64,\ int32)]\ =\ float64;\ }
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ table[index(float32,\ float32)]\ =\ float32;}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ table[index(float32,\ float64)]\ =\ float64;}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ table[index(float64,\ float32)]\ =\ float64;}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ table[index(float64,\ float64)]\ =\ float64;\ }
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ table;}
-\DoxyCodeLine{00193\ \ \ \ \ \}();\ \ }
-\DoxyCodeLine{00194\ \ }
-\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{static}\ type\ promote(type\ inner,\ type\ outer)\ \{}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ type\ dtype\ =\ promotions[index(inner,\ outer)];}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\ ==\ unknown)\ }
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Unsuported\ dtypes"{}});}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;}
-\DoxyCodeLine{00223\ \ \ \ \ \}}
-\DoxyCodeLine{00224\ }
-\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Shape\ transform(Shape\ \textcolor{keyword}{const}\&\ first,\ Shape\ \textcolor{keyword}{const}\&\ second)\ \{}
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ first\_rank\ =\ first.rank();}
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ second\_rank\ =\ second.rank();}
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 1\ \&\&\ second\_rank\ ==\ 1)\ \{}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ !=\ 1\ |\ second\_rank\ !=\ 1)}
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}dimensions\ must\ match\ for\ dot\ product"{}});}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shape\{\};\ \ \textcolor{comment}{//\ Scalar\ result}}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 1\ \&\&\ second\_rank\ ==\ 2)\ \{}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[0]\ !=\ second[0])}
-\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Matrix\ inner\ dimensions\ do\ not\ match"{}});}
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[0]\ !=\ second[0])}
-\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shape\{second[0]\};\ \ \textcolor{comment}{//\ Vector\ result}}
-\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vector-\/matrix\ multiplication}}
-\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 2\ \&\&\ second\_rank\ ==\ 1)\ \{}
-\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[1]\ !=\ second[0])}
-\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Matrix\ inner\ dimensions\ do\ not\ match"{}});}
-\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shape\{first[0]\};\ \ \textcolor{comment}{//\ Vector\ result}}
-\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00262\ }
-\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ <\ 2\ |\ second\_rank\ <\ 2)\ }
-\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Inputs\ must\ have\ rank\ >=\ 2"{}});}
-\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ batch\ dimensions}}
-\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ Shape\ first\_batches(first.begin(),\ first.end()\ -\/\ 2);}
-\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ Shape\ second\_batches(second.begin(),\ second.end()\ -\/\ 2);}
-\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ Shape\ batches\ =\ operation::broadcast(first\_batches,\ second\_batches);}
-\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ matrix\ inner\ dimensions}}
-\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ K1\ =\ *(first.end()\ -\/\ 1);}
-\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ K2\ =\ *(second.end()\ -\/\ 2);\ \ \ }
-\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ assert(K1\ ==\ K2\ \&\&\ \textcolor{stringliteral}{"{}Inner\ dimensions\ must\ match\ for\ matmul"{}});}
-\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ output\ matrix\ dimensions}}
-\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ M\ =\ *(first.end()\ -\/\ 2);}
-\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ N\ =\ *(second.end()\ -\/\ 1);}
-\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Combine\ batch\ and\ matrix\ dimensions}}
-\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ std::vector<Shape::size\_type>\ result(batches.begin(),\ batches.end());}
-\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ result.push\_back(M);}
-\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ result.push\_back(N);}
-\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shape(result);}
-\DoxyCodeLine{00285\ \ \ \ \ \}}
-\DoxyCodeLine{00286\ }
-\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&\ outer,\ Tensor\ \textcolor{keyword}{const}\&\ inner,\ Tensor\&\ result)\ \textcolor{keyword}{const};\ }
-\DoxyCodeLine{00288\ \};\ }
-\DoxyCodeLine{00289\ \ }
-\DoxyCodeLine{00297\ \textcolor{keyword}{struct\ }Outer\ \{\ }
-\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ type\ promote(type\ first,\ type\ second)\ \{}
-\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(first)\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(second)\ ?\ first\ :\ second;}
-\DoxyCodeLine{00308\ \ \ \ \ \}}
-\DoxyCodeLine{00309\ }
-\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Shape\ transform(Shape\ \textcolor{keyword}{const}\&\ first,\ Shape\ \textcolor{keyword}{const}\&\ second)\ \{}
-\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(first.rank()\ !=\ 1\ |\ second.rank()\ !=\ 1)\ }
-\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Outer\ product\ of\ tensors\ with\ rank\ more\ than\ 1\ not\ supported"{}});}
-\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shape(first[0],\ second[0]);}
-\DoxyCodeLine{00328\ \ \ \ \ \}}
-\DoxyCodeLine{00329\ \ }
-\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&\ first,\ Tensor\ \textcolor{keyword}{const}\&\ second,\ Tensor\&\ result)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00331\ \};\ \ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{concepts_8hpp}{concepts.hpp}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{types_8hpp}{types.hpp}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{traits_8hpp}{traits.hpp}}"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shape_8hpp}{shape.hpp}}"{}}\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tensor_8hpp}{tensor.hpp}}"{}}\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{exceptions_8hpp}{exceptions.hpp}}"{}}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }Tensor;\ \ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1expression}{tannic::expression}}\ \{}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{template}<\textcolor{keyword}{class\ }Operation,\ Composable\ ...\ Operands>}
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{Transformation}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{Expression}}<Operation,\ Operands...>\ \{}
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:\ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_a81567154e44e3efc412e606343e8769c}{Transformation}}(Operation\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}},\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Operands>::Reference}}...\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}})\ \ }
+\DoxyCodeLine{00041\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{Expression}}<Operation,\ Operands...>(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}},\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}...)}
+\DoxyCodeLine{00042\ \ \ \ \ ,\ \ \ dtype\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}.promote(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}.\mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_ab4c9559dd3fd276a86737c0ac8b9bed5}{dtype}}()...))}
+\DoxyCodeLine{00043\ \ \ \ \ ,\ \ \ shape\_(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}.transform(\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}.\mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_af1e5153f405dc74e74aacfc5f324b487}{shape}}()...))\ }
+\DoxyCodeLine{00044\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
+\DoxyCodeLine{00045\ \ \ \ \ \{\}}
+\DoxyCodeLine{00046\ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_ab4c9559dd3fd276a86737c0ac8b9bed5}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype\_;}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_af1e5153f405dc74e74aacfc5f324b487}{shape}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_a2731d73ca71a62d397936d649173aac8}{strides}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
+\DoxyCodeLine{00057\ \ \ \ \ \}\ }
+\DoxyCodeLine{00058\ \ }
+\DoxyCodeLine{00059\ \ \ \ \ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_a413f66e43823590b0423c5be9fc6fc1d}{offset}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation_abbecc48190a40c020c7f92dc8c173c31}{forward}}(\mbox{\hyperlink{classtannic_1_1Context}{Context}}\ \textcolor{keyword}{const}\&\ context)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(dtype\_,\ shape\_);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ std::apply([\&](\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&...\ arguments)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}.forward(arguments.forward(context)...,\ result);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \},\ this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00072\ \ \ \ \ type\ dtype\_;}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;\ }
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1transformation}{tannic::transformation}}\ \{}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{tannic::expression::Transformation}};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ index(type\ first,\ type\ second)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(first)\ +\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(second)\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(TYPES);}
+\DoxyCodeLine{00083\ \}\ \ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{struct\ }Composition\ \{\ \ \ \ \ \ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ promotions\ =\ []()\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ std::array<type,\ index(TYPES,\ TYPES)>\ table\{\};\ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ table.fill(unknown);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ table[index(int8,\ int8)]\ \ \ =\ int32;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ table[index(int8,\ int16)]\ \ =\ int32;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ table[index(int8,\ int32)]\ \ =\ int32;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ table[index(int8,\ int64)]\ \ =\ int64;\ \ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ table[index(int16,\ int8)]\ \ \ \ =\ int32;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ table[index(int16,\ int16)]\ \ \ =\ int32;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ table[index(int16,\ int32)]\ \ \ =\ int32;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ table[index(int16,\ int64)]\ \ \ =\ int64;\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ table[index(int32,\ int8)]\ \ \ \ =\ int32;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ table[index(int32,\ int16)]\ \ \ =\ int32;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ table[index(int32,\ int32)]\ \ \ =\ int64;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ table[index(int32,\ int64)]\ \ \ =\ int64;\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ table[index(int64,\ int8)]\ \ \ \ =\ int64;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ table[index(int64,\ int16)]\ \ \ =\ int64;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ table[index(int64,\ int32)]\ \ \ =\ int64;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ table[index(int64,\ int64)]\ \ \ =\ int64;\ \ }
+\DoxyCodeLine{00109\ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ table[index(int8,\ float16)]\ \ \ =\ float16;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ table[index(float16,\ int8)]\ \ \ =\ float16;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ table[index(int16,\ float16)]\ \ =\ float16;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ table[index(float16,\ int16)]\ \ =\ float16;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ table[index(int32,\ float16)]\ \ =\ float32;\ \ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ table[index(float16,\ int32)]\ \ =\ float32;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ table[index(int64,\ float16)]\ \ =\ float64;\ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ table[index(float16,\ int64)]\ \ =\ float64;\ \ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ table[index(float16,\ float16)]\ =\ float16;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ table[index(float16,\ float32)]\ =\ float32;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ table[index(float32,\ float16)]\ =\ float32;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ table[index(float16,\ float64)]\ =\ float64;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ table[index(float64,\ float16)]\ =\ float64;}
+\DoxyCodeLine{00124\ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ table[index(int8,\ bfloat16)]\ \ \ =\ bfloat16;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ int8)]\ \ \ =\ bfloat16;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ table[index(int16,\ bfloat16)]\ \ =\ bfloat16;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ int16)]\ \ =\ bfloat16;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ table[index(int32,\ bfloat16)]\ \ =\ float32;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ int32)]\ \ =\ float32;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ table[index(int64,\ bfloat16)]\ \ =\ float64;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ int64)]\ \ =\ float64;}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ bfloat16)]\ =\ bfloat16;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ float16)]\ \ =\ float16;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ table[index(float16,\ bfloat16)]\ \ =\ float16;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ float32)]\ \ =\ float32;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ table[index(float32,\ bfloat16)]\ \ =\ float32;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ table[index(bfloat16,\ float64)]\ \ =\ float64;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ table[index(float64,\ bfloat16)]\ \ =\ float64;}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ table[index(int32,\ float32)]\ =\ float32;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ table[index(float32,\ int32)]\ =\ float32;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ table[index(int32,\ float64)]\ =\ float64;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ table[index(float64,\ int32)]\ =\ float64;\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ table[index(float32,\ float32)]\ =\ float32;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ table[index(float32,\ float64)]\ =\ float64;}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ table[index(float64,\ float32)]\ =\ float64;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ table[index(float64,\ float64)]\ =\ float64;\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ table;}
+\DoxyCodeLine{00152\ \ \ \ \ \}();\ \ }
+\DoxyCodeLine{00153\ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{static}\ type\ promote(type\ inner,\ type\ outer)\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ type\ dtype\ =\ promotions[index(inner,\ outer)];}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\ ==\ unknown)\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Unsuported\ dtypes"{}});}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;}
+\DoxyCodeLine{00159\ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Shape\ transform(Shape\ \textcolor{keyword}{const}\&\ first,\ Shape\ \textcolor{keyword}{const}\&\ second)\ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ first\_rank\ =\ first.rank();}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ second\_rank\ =\ second.rank();}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 1\ \&\&\ second\_rank\ ==\ 1)\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ !=\ 1\ |\ second\_rank\ !=\ 1)}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}dimensions\ must\ match\ for\ dot\ product"{}});}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shape\{\};\ \ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 1\ \&\&\ second\_rank\ ==\ 2)\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[0]\ !=\ second[0])}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Matrix\ inner\ dimensions\ do\ not\ match"{}});}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[0]\ !=\ second[0])}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shape\{second[0]\};\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ ==\ 2\ \&\&\ second\_rank\ ==\ 1)\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[1]\ !=\ second[0])}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Matrix\ inner\ dimensions\ do\ not\ match"{}});}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shape\{first[0]\};\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_rank\ <\ 2\ |\ second\_rank\ <\ 2)\ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Inputs\ must\ have\ rank\ >=\ 2"{}});}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ Shape\ first\_batches(first.begin(),\ first.end()\ -\/\ 2);}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ Shape\ second\_batches(second.begin(),\ second.end()\ -\/\ 2);}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ Shape\ batches\ =\ operation::broadcast(first\_batches,\ second\_batches);}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ K1\ =\ *(first.end()\ -\/\ 1);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ K2\ =\ *(second.end()\ -\/\ 2);\ \ \ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ assert(K1\ ==\ K2\ \&\&\ \textcolor{stringliteral}{"{}Inner\ dimensions\ must\ match\ for\ matmul"{}});}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ M\ =\ *(first.end()\ -\/\ 2);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ N\ =\ *(second.end()\ -\/\ 1);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ std::vector<Shape::size\_type>\ result(batches.begin(),\ batches.end());}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ result.push\_back(M);}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ result.push\_back(N);}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shape(result);}
+\DoxyCodeLine{00202\ \ \ \ \ \}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&\ outer,\ Tensor\ \textcolor{keyword}{const}\&\ inner,\ Tensor\&\ result)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00205\ \};\ }
+\DoxyCodeLine{00206\ \ }
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \textcolor{keyword}{struct\ }Outer\ \{\ }
+\DoxyCodeLine{00209\ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ type\ promote(type\ first,\ type\ second)\ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(first)\ >\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(second)\ ?\ first\ :\ second;}
+\DoxyCodeLine{00212\ \ \ \ \ \}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Shape\ transform(Shape\ \textcolor{keyword}{const}\&\ first,\ Shape\ \textcolor{keyword}{const}\&\ second)\ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(first.rank()\ !=\ 1\ |\ second.rank()\ !=\ 1)\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Outer\ product\ of\ tensors\ with\ rank\ more\ than\ 1\ not\ supported"{}});}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Shape(first[0],\ second[0]);}
+\DoxyCodeLine{00218\ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&\ first,\ Tensor\ \textcolor{keyword}{const}\&\ second,\ Tensor\&\ result)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00221\ \};\ \ }
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \textcolor{keyword}{struct\ }Repetition\ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keywordtype}{int}\ repeats;}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{int}\ axis;}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ promote(type\ dtype)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;}
+\DoxyCodeLine{00229\ \ \ \ \ \}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{keyword}{constexpr}\ Shape\ transform(Shape\ shape)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ shape[\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ shape.rank())]\ *=\ repeats;\ }
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape;}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00237\ \};}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \textcolor{keyword}{struct\ }Concatenation\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{int}\ axis;}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ promote(type\ first,\ type\ second)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(first\ !=\ second)}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Cannot\ concatenate\ tensors\ of\ different\ dtypes"{}});}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ first;}
+\DoxyCodeLine{00246\ \ \ \ \ \}\ }
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keyword}{constexpr}\ Shape\ transform(Shape\ \textcolor{keyword}{const}\&\ first,\ Shape\ \textcolor{keyword}{const}\&\ second)\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ assert(first.rank()\ ==\ second.rank()\ \&\&\ \textcolor{stringliteral}{"{}Ranks\ must\ match\ for\ concatenation"{}});}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ Shape\ result\ =\ first;}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ dimension\ =\ 0;\ dimension\ <\ first.rank();\ ++dimension)\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dimension\ ==\ axis)\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result[dimension]\ =\ first[dimension]\ +\ second[dimension];}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[dimension]\ !=\ second[dimension])}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ dimensions\ except\ concat\ axis\ must\ match"{}});}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00262\ \ \ \ \ \}}
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00265\ \};}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \textcolor{keyword}{struct\ }Repack\ \{}
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ promote(type\ dtype)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;}
+\DoxyCodeLine{00271\ \ \ \ \ \}}
+\DoxyCodeLine{00272\ \ \ \ \ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keyword}{constexpr}\ Shape\ transform(Shape\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape;}
+\DoxyCodeLine{00275\ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ }
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&\ source,\ Tensor\&\ result)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00278\ \};\ }
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00288\ \textcolor{keyword}{template}<Composable\ Outer,\ Composable\ Inner>}
+\DoxyCodeLine{00289\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ composition(Outer\&\&\ outer,\ Inner\&\&\ inner)\ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keywordflow}{return}\ Transformation<Composition,\ Outer,\ Inner>\ \{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \{\},}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ std::forward<Outer>(outer),\ }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ std::forward<Inner>(inner)}
+\DoxyCodeLine{00294\ \ \ \ \ \};}
+\DoxyCodeLine{00295\ \}\ }
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00305\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
+\DoxyCodeLine{00306\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ outer(First\&\&\ first,\ Second\&\&\ second)\ \{}
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordflow}{return}\ Transformation<Outer,\ First,\ Second>(}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \{\},}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ std::forward<First>(first),}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ std::forward<Second>(second)}
+\DoxyCodeLine{00311\ \ \ \ \ );}
+\DoxyCodeLine{00312\ \}\ \ \ }
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00324\ \textcolor{keyword}{template}<Composable\ Source>}
+\DoxyCodeLine{00325\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ repeat(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ repeats,\ \textcolor{keywordtype}{int}\ axis\ =\ 0)\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordflow}{return}\ Transformation<Repetition,\ Source>(}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \{repeats,\ \mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank())\},}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ std::forward<Source>(source)}
+\DoxyCodeLine{00329\ \ \ \ \ );\ }
+\DoxyCodeLine{00330\ \}}
+\DoxyCodeLine{00331\ }
 \DoxyCodeLine{00332\ }
-\DoxyCodeLine{00338\ \textcolor{keyword}{struct\ }Repetition\ \{}
-\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keywordtype}{int}\ repeats;}
-\DoxyCodeLine{00340\ \ \ \ \ \textcolor{keywordtype}{int}\ axis;}
-\DoxyCodeLine{00341\ \ \ \ \ \ }
-\DoxyCodeLine{00350\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ promote(type\ dtype)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;}
-\DoxyCodeLine{00352\ \ \ \ \ \}}
-\DoxyCodeLine{00353\ }
-\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keyword}{constexpr}\ Shape\ transform(Shape\ shape)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ shape[\mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ shape.rank())]\ *=\ repeats;\ }
-\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape;}
-\DoxyCodeLine{00365\ \ \ \ \ \}}
-\DoxyCodeLine{00366\ }
-\DoxyCodeLine{00367\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00368\ \};}
-\DoxyCodeLine{00369\ }
-\DoxyCodeLine{00370\ }
-\DoxyCodeLine{00376\ \textcolor{keyword}{struct\ }Concatenation\ \{}
-\DoxyCodeLine{00377\ \ \ \ \ \textcolor{keywordtype}{int}\ axis;}
-\DoxyCodeLine{00387\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ promote(type\ first,\ type\ second)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(first\ !=\ second)}
-\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Cannot\ concatenate\ tensors\ of\ different\ dtypes"{}});}
-\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ first;}
-\DoxyCodeLine{00391\ \ \ \ \ \}\ }
-\DoxyCodeLine{00392\ }
-\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keyword}{constexpr}\ Shape\ transform(Shape\ \textcolor{keyword}{const}\&\ first,\ Shape\ \textcolor{keyword}{const}\&\ second)\ \{}
-\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ assert(first.rank()\ ==\ second.rank()\ \&\&\ \textcolor{stringliteral}{"{}Ranks\ must\ match\ for\ concatenation"{}});}
-\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ Shape\ result\ =\ first;}
-\DoxyCodeLine{00406\ }
-\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ dimension\ =\ 0;\ dimension\ <\ first.rank();\ ++dimension)\ \{}
-\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dimension\ ==\ axis)\ \{}
-\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result[dimension]\ =\ first[dimension]\ +\ second[dimension];}
-\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first[dimension]\ !=\ second[dimension])}
-\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}All\ dimensions\ except\ concat\ axis\ must\ match"{}});}
-\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00415\ }
-\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
-\DoxyCodeLine{00417\ \ \ \ \ \}}
-\DoxyCodeLine{00418\ }
-\DoxyCodeLine{00419\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00420\ \};}
-\DoxyCodeLine{00421\ }
-\DoxyCodeLine{00428\ \textcolor{keyword}{struct\ }Repack\ \{}
-\DoxyCodeLine{00434\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ promote(type\ dtype)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dtype;}
-\DoxyCodeLine{00436\ \ \ \ \ \}}
-\DoxyCodeLine{00437\ }
-\DoxyCodeLine{00443\ \ \ \ \ \textcolor{keyword}{constexpr}\ Shape\ transform(Shape\ \textcolor{keyword}{const}\&\ shape)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape;}
-\DoxyCodeLine{00445\ \ \ \ \ \}}
-\DoxyCodeLine{00446\ }
-\DoxyCodeLine{00453\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&\ source,\ Tensor\&\ result)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00454\ \};\ }
-\DoxyCodeLine{00455\ }
-\DoxyCodeLine{00464\ \textcolor{keyword}{template}<Composable\ Outer,\ Composable\ Inner>}
-\DoxyCodeLine{00465\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ composition(Outer\&\&\ outer,\ Inner\&\&\ inner)\ \{}
-\DoxyCodeLine{00466\ \ \ \ \ \textcolor{keywordflow}{return}\ Transformation<Composition,\ Outer,\ Inner>\ \{}
-\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \{\},}
-\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ std::forward<Outer>(outer),\ }
-\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ std::forward<Inner>(inner)}
-\DoxyCodeLine{00470\ \ \ \ \ \};}
-\DoxyCodeLine{00471\ \}\ }
-\DoxyCodeLine{00472\ }
-\DoxyCodeLine{00481\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
-\DoxyCodeLine{00482\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ outer(First\&\&\ first,\ Second\&\&\ second)\ \{}
-\DoxyCodeLine{00483\ \ \ \ \ \textcolor{keywordflow}{return}\ Transformation<Outer,\ First,\ Second>(}
-\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \{\},}
-\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ std::forward<First>(first),}
-\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ std::forward<Second>(second)}
-\DoxyCodeLine{00487\ \ \ \ \ );}
-\DoxyCodeLine{00488\ \}\ \ \ }
-\DoxyCodeLine{00489\ }
-\DoxyCodeLine{00490\ }
-\DoxyCodeLine{00500\ \textcolor{keyword}{template}<Composable\ Source>}
-\DoxyCodeLine{00501\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ repeat(Source\&\&\ source,\ \textcolor{keywordtype}{int}\ repeats,\ \textcolor{keywordtype}{int}\ axis\ =\ 0)\ \{}
-\DoxyCodeLine{00502\ \ \ \ \ \textcolor{keywordflow}{return}\ Transformation<Repetition,\ Source>(}
-\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \{repeats,\ \mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{indexing::normalize}}(axis,\ source.shape().rank())\},}
-\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ std::forward<Source>(source)}
-\DoxyCodeLine{00505\ \ \ \ \ );\ }
-\DoxyCodeLine{00506\ \}}
-\DoxyCodeLine{00507\ }
-\DoxyCodeLine{00508\ }
-\DoxyCodeLine{00519\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
-\DoxyCodeLine{00520\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ concatenate(First\&\&\ first,\ Second\&\&\ second,\ \textcolor{keywordtype}{int}\ axis\ =\ 0)\ \{}
-\DoxyCodeLine{00521\ \ \ \ \ \textcolor{keywordflow}{if}(axis\ <\ 0)\ }
-\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Negative\ index\ not\ supported\ in\ concat"{}});}
-\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00524\ \ \ \ \ \textcolor{keywordflow}{return}\ Transformation<Concatenation,\ First,\ Second>(}
-\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \{axis\},}
-\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ std::forward<First>(first),}
-\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ std::forward<Second>(second)}
-\DoxyCodeLine{00528\ \ \ \ \ );\ }
-\DoxyCodeLine{00529\ \}}
-\DoxyCodeLine{00530\ }
-\DoxyCodeLine{00540\ \textcolor{keyword}{template}<Composable\ Source>}
-\DoxyCodeLine{00541\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ repack(Source\&\&\ source)\ \{}
-\DoxyCodeLine{00542\ \ \ \ \ \textcolor{keywordflow}{return}\ Transformation<Repack,\ Source>(}
-\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \{\},}
-\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ std::forward<Source>(source)}
-\DoxyCodeLine{00545\ \ \ \ \ );\ }
-\DoxyCodeLine{00546\ \}}
-\DoxyCodeLine{00547\ \ }
-\DoxyCodeLine{00556\ \textcolor{keyword}{template}<Composable\ Source,\ Integral\ ...\ Indexes>}
-\DoxyCodeLine{00557\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ reshape(Source\&\&\ source,\ Indexes\ ...\ indexes)\ \{}
-\DoxyCodeLine{00558\ \ \ \ \ \textcolor{keywordflow}{return}\ expression::View<Transformation<Repack,\ Source>>(}
-\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ repack(source),\ indexes...}
-\DoxyCodeLine{00560\ \ \ \ \ );}
-\DoxyCodeLine{00561\ \}\ }
-\DoxyCodeLine{00562\ }
-\DoxyCodeLine{00563\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
-\DoxyCodeLine{00564\ }
-\DoxyCodeLine{00565\ \textcolor{keyword}{using\ }transformation::outer;}
-\DoxyCodeLine{00566\ \textcolor{keyword}{using\ }transformation::repeat;}
-\DoxyCodeLine{00567\ \textcolor{keyword}{using\ }transformation::concatenate;}
-\DoxyCodeLine{00568\ \textcolor{keyword}{using\ }transformation::repack;}
-\DoxyCodeLine{00569\ \textcolor{keyword}{using\ }transformation::reshape;\ }
-\DoxyCodeLine{00570\ }
-\DoxyCodeLine{00579\ \textcolor{keyword}{template}<Composable\ Multiplicand,\ Composable\ Multiplier>}
-\DoxyCodeLine{00580\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(Multiplicand\&\&\ multiplicand,\ Multiplier\&\&\ multiplier)\ \{}
-\DoxyCodeLine{00581\ \ \ \ \ \textcolor{keywordflow}{return}\ transformation::composition(}
-\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ std::forward<Multiplicand>(multiplicand),}
-\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ std::forward<Multiplier>(multiplier)}
-\DoxyCodeLine{00584\ \ \ \ \ );}
-\DoxyCodeLine{00585\ \}}
-\DoxyCodeLine{00586\ }
-\DoxyCodeLine{00587\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00588\ }
-\DoxyCodeLine{00589\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TRANSFORMATIONS\_HPP}}
+\DoxyCodeLine{00343\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
+\DoxyCodeLine{00344\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ concatenate(First\&\&\ first,\ Second\&\&\ second,\ \textcolor{keywordtype}{int}\ axis\ =\ 0)\ \{}
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keywordflow}{if}(axis\ <\ 0)\ }
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ Exception(\textcolor{stringliteral}{"{}Negative\ index\ not\ supported\ in\ concat"{}});}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordflow}{return}\ Transformation<Concatenation,\ First,\ Second>(}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \{axis\},}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ std::forward<First>(first),}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ std::forward<Second>(second)}
+\DoxyCodeLine{00352\ \ \ \ \ );\ }
+\DoxyCodeLine{00353\ \}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00364\ \textcolor{keyword}{template}<Composable\ Source>}
+\DoxyCodeLine{00365\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ repack(Source\&\&\ source)\ \{}
+\DoxyCodeLine{00366\ \ \ \ \ \textcolor{keywordflow}{return}\ Transformation<Repack,\ Source>(}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \{\},}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ std::forward<Source>(source)}
+\DoxyCodeLine{00369\ \ \ \ \ );\ }
+\DoxyCodeLine{00370\ \}}
+\DoxyCodeLine{00371\ \ }
+\DoxyCodeLine{00380\ \textcolor{keyword}{template}<Composable\ Source,\ Integral\ ...\ Indexes>}
+\DoxyCodeLine{00381\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ reshape(Source\&\&\ source,\ Indexes\ ...\ indexes)\ \{}
+\DoxyCodeLine{00382\ \ \ \ \ \textcolor{keywordflow}{return}\ expression::Reshape<Transformation<Repack,\ Source>>(}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ repack(source),\ indexes...}
+\DoxyCodeLine{00384\ \ \ \ \ );}
+\DoxyCodeLine{00385\ \}\ }
+\DoxyCodeLine{00386\ }
+\DoxyCodeLine{00387\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00389\ \textcolor{keyword}{using\ }transformation::outer;}
+\DoxyCodeLine{00390\ \textcolor{keyword}{using\ }transformation::repeat;}
+\DoxyCodeLine{00391\ \textcolor{keyword}{using\ }transformation::concatenate;}
+\DoxyCodeLine{00392\ \textcolor{keyword}{using\ }transformation::repack;}
+\DoxyCodeLine{00393\ \textcolor{keyword}{using\ }transformation::reshape;\ }
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00403\ \textcolor{keyword}{template}<Composable\ Multiplicand,\ Composable\ Multiplier>}
+\DoxyCodeLine{00404\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{matmul}}(Multiplicand\&\&\ multiplicand,\ Multiplier\&\&\ multiplier)\ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \textcolor{keywordflow}{return}\ transformation::composition(}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ std::forward<Multiplicand>(multiplicand),}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ std::forward<Multiplier>(multiplier)}
+\DoxyCodeLine{00408\ \ \ \ \ );}
+\DoxyCodeLine{00409\ \}}
+\DoxyCodeLine{00410\ }
+\DoxyCodeLine{00411\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00413\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TRANSFORMATIONS\_HPP}}
 
 \end{DoxyCode}

@@ -29,7 +29,7 @@ Node::Node(Tensor const& target) {
             .strides = strides,
             .dtype = target.dtype(),
             .environment = {
-                .environment = HOST,
+                .kind = HOST,
                 .resource = {
                     .host = host_t {.traits = resource.pinned() ? PINNED : PAGEABLE }
                 },
@@ -48,7 +48,7 @@ Node::Node(Tensor const& target) {
             .strides = strides,
             .dtype = target.dtype(),
             .environment = {
-                .environment = DEVICE,
+                .kind = DEVICE,
                 .resource = {
                     .device = device_t {
                         .id = resource.id() 

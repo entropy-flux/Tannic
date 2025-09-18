@@ -2,18 +2,13 @@
 \hypertarget{classtannic_1_1expression_1_1Expansion}{}\label{classtannic_1_1expression_1_1Expansion}\index{tannic::expression::Expansion$<$ Source $>$@{tannic::expression::Expansion$<$ Source $>$}}
 
 
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for expanding (broadcasting) singleton dimensions of a tensor.  
-
-
-
-
 {\ttfamily \#include $<$views.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$Integral... Sizes$>$ }\\constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion_a84219829dc2ee73283f61320ea99474f}{Expansion}} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference source, Sizes... sizes)
-\begin{DoxyCompactList}\small\item\em Construct an expansion view. \end{DoxyCompactList}\item 
+\item 
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion_ae27977a493526815a5e03565e11f3f4d}{dtype}} () const
 \item 
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion_ab03b6976ec761c9d25f6d190546539a6}{shape}} () const
@@ -22,29 +17,9 @@ constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyp
 \item 
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion_ad7c5a46e3f9ceb72b7d140025f7f96ba}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion_a42b680e78facefa7626fe7908a06a8a7}{forward}} () const
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion_a9c8c21f880d74b6efba8f7d891ff0abc}{forward}} (\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&context) const
 \end{DoxyCompactItemize}
 
-
-\doxysubsection{Detailed Description}
-\subsubsection*{template$<$Composable Source$>$\newline
-class tannic\+::expression\+::\+Expansion$<$ Source $>$}
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for expanding (broadcasting) singleton dimensions of a tensor. 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Source} & The expression or tensor type being expanded.\\
-\hline
-\end{DoxyTemplParams}
-The {\ttfamily \doxylink{classtannic_1_1expression_1_1Expansion}{Expansion}} view allows a tensor to be broadcast along dimensions where the original size is 1, enabling operations with larger tensors without copying data. Only dimensions with size 1 in the source tensor can be expanded; other dimensions must match the target shape.
-
-Example\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ X(float32,\ \{1,\ 3\});}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a3e153f6fc540062b27409ba60926e869}{expand}}(X,\ 4,\ 3);\ \textcolor{comment}{//\ shape\ becomes\ (4,\ 3)}}
-
-\end{DoxyCode}
- 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Expansion_a84219829dc2ee73283f61320ea99474f}\label{classtannic_1_1expression_1_1Expansion_a84219829dc2ee73283f61320ea99474f} 
@@ -57,24 +32,6 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{tannic\+::exp
 
 
 
-Construct an expansion view. 
-
-Stores reference to the source tensor and the requested target sizes.
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Sizes} & Integral dimension sizes of the target shape. \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em source} & Reference to the source tensor or expression. \\
-\hline
-{\em sizes} & Dimension sizes for the expanded view. \\
-\hline
-\end{DoxyParams}
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Expansion_ae27977a493526815a5e03565e11f3f4d}\label{classtannic_1_1expression_1_1Expansion_ae27977a493526815a5e03565e11f3f4d} 
 \index{tannic::expression::Expansion$<$ Source $>$@{tannic::expression::Expansion$<$ Source $>$}!dtype@{dtype}}
@@ -83,15 +40,12 @@ Stores reference to the source tensor and the requested target sizes.
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{tannic\+::expression\+::\+Expansion}}$<$ Source $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The data type of the tensor elements.
-\end{DoxyReturn}
-Broadcasting does not change the element type, so the dtype is forwarded from the source tensor. \Hypertarget{classtannic_1_1expression_1_1Expansion_a42b680e78facefa7626fe7908a06a8a7}\label{classtannic_1_1expression_1_1Expansion_a42b680e78facefa7626fe7908a06a8a7} 
+\Hypertarget{classtannic_1_1expression_1_1Expansion_a9c8c21f880d74b6efba8f7d891ff0abc}\label{classtannic_1_1expression_1_1Expansion_a9c8c21f880d74b6efba8f7d891ff0abc} 
 \index{tannic::expression::Expansion$<$ Source $>$@{tannic::expression::Expansion$<$ Source $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Expansion$<$ Source $>$@{tannic::expression::Expansion$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{tannic\+::expression\+::\+Expansion}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{tannic\+::expression\+::\+Expansion}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&}]{context }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1Expansion_ad7c5a46e3f9ceb72b7d140025f7f96ba}\label{classtannic_1_1expression_1_1Expansion_ad7c5a46e3f9ceb72b7d140025f7f96ba} 
 \index{tannic::expression::Expansion$<$ Source $>$@{tannic::expression::Expansion$<$ Source $>$}!offset@{offset}}
@@ -100,30 +54,13 @@ Broadcasting does not change the element type, so the dtype is forwarded from th
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{tannic\+::expression\+::\+Expansion}}$<$ Source $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\begin{DoxyReturn}{Returns}
-The byte offset of the expanded view from the start of the storage.
-\end{DoxyReturn}
-The offset is the same as the source tensor, because broadcasting does not change the underlying data location. \Hypertarget{classtannic_1_1expression_1_1Expansion_ab03b6976ec761c9d25f6d190546539a6}\label{classtannic_1_1expression_1_1Expansion_ab03b6976ec761c9d25f6d190546539a6} 
+\Hypertarget{classtannic_1_1expression_1_1Expansion_ab03b6976ec761c9d25f6d190546539a6}\label{classtannic_1_1expression_1_1Expansion_ab03b6976ec761c9d25f6d190546539a6} 
 \index{tannic::expression::Expansion$<$ Source $>$@{tannic::expression::Expansion$<$ Source $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::expression::Expansion$<$ Source $>$@{tannic::expression::Expansion$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{tannic\+::expression\+::\+Expansion}}$<$ Source $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The shape of the expanded view.
-\end{DoxyReturn}
-Calculation\+:
-\begin{DoxyItemize}
-\item Returns the requested target shape stored in the constructor.
-\item Validates that non-\/singleton dimensions of the source match the requested size.
-\end{DoxyItemize}
-
-
-\begin{DoxyExceptions}{Exceptions}
-{\em \doxylink{classtannic_1_1Exception}{Exception}} & if a non-\/singleton dimension in the source does not match the target. \\
-\hline
-\end{DoxyExceptions}
 \Hypertarget{classtannic_1_1expression_1_1Expansion_acffa1425db00a9ce201b5380297f00c3}\label{classtannic_1_1expression_1_1Expansion_acffa1425db00a9ce201b5380297f00c3} 
 \index{tannic::expression::Expansion$<$ Source $>$@{tannic::expression::Expansion$<$ Source $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::expression::Expansion$<$ Source $>$@{tannic::expression::Expansion$<$ Source $>$}}
@@ -131,14 +68,7 @@ Calculation\+:
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Expansion}{tannic\+::expression\+::\+Expansion}}$<$ Source $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The strides of the expanded view.
-\end{DoxyReturn}
-Calculation\+:
-\begin{DoxyItemize}
-\item Copy the source strides.
-\item For each dimension where the source size is 1 and target size \texorpdfstring{$>$}{>} 1, set stride to 0. This ensures the same memory element is repeated along expanded dimensions. 
-\end{DoxyItemize}
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

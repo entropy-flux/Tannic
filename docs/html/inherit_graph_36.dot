@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::expression\l::View\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d2/d9f/classtannic_1_1expression_1_1View.html",tooltip="Expression template for viewing a tensor with a new shape."];
+  Node0 [id="Node000000",label="tannic::Metadata\< Object \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d4/df4/structtannic_1_1Metadata.html",tooltip=" "];
 }

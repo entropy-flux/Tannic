@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['negation_0',['Negation',['../d6/deb/structtannic_1_1operation_1_1Negation.html',1,'tannic::operation']]],
-  ['node_1',['Node',['../df/d85/structtannic_1_1Node.html',1,'tannic']]]
+  ['one_0',['One',['../d2/db0/classtannic_1_1expression_1_1One.html',1,'tannic::expression']]]
 ];

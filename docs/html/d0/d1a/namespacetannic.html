@@ -127,6 +127,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d24/classtannic_1_1Callback.html">Callback</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d73/classtannic_1_1Context.html">Context</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d46/classtannic_1_1Device.html">Device</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d3/d46/classtannic_1_1Device.html" title="Device memory domain.">Device</a> memory domain.  <a href="../../d3/d46/classtannic_1_1Device.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,7 +163,6 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the memory strides associated with a tensor shape.  <a href="../../dc/deb/classtannic_1_1Strides.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A multidimensional, strided tensor data structure.  <a href="../../da/d93/classtannic_1_1Tensor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,31 +172,20 @@ Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d34/concepttannic_1_1Composable.html">Composable</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d6c/concepttannic_1_1Operator.html">Operator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept defining requirements for tensor operation types. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d13/concepttannic_1_1Functional.html">Functional</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for unary mathematical function operations. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/ddb/concepttannic_1_1Iterable.html">Iterable</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires a type to be iterable via <code>std::begin</code> and <code>std::end</code>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d5f/concepttannic_1_1Iterator.html">Iterator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires a type to satisfy the C++20 <code>std::input_iterator</code> concept. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d72/concepttannic_1_1Integral.html">Integral</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Requires a type to be an integral type (e.g., <code>int</code>, <code>std::size_t</code>). <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/daf/concepttannic_1_1Arithmetic.html">Arithmetic</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The arithmetic concept in C++ defines a type constraint that evaluates to true for standard arithmetic types (std::is_arithmetic_v&lt;T&gt;), as well as for float16_t, bfloat16_t, and std::complex&lt;float&gt; or std::complex&lt;double&gt;. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dfb/concepttannic_1_1Assignable.html">Assignable</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for types that can assign values. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d00/concepttannic_1_1Comparable.html">Comparable</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for types that can compare their value. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d3b/concepttannic_1_1Expression.html">Expression</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the core protocol for all expression-like types in the Tannic Tensor Library. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -412,11 +402,11 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Human-readable type name ("none" for invalid types)</dd></dl>
-<h4><a class="anchor" id="autotoc_md63"></a>
+<h4><a class="anchor" id="autotoc_md30"></a>
 Example:</h4>
 <div class="fragment"><div class="line">std::cout &lt;&lt; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(int32) &lt;&lt; std::endl   <span class="comment">// prints &quot;int32&quot;</span></div>
 <div class="line">std::cout &lt;&lt; <a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">dnameof</a>(complex128); <span class="comment">// prints &quot;complex128&quot;</span></div>
-<div class="ttc" id="anamespacetannic_html_a1f6a29013277d9209efa113453cf0b2e"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a></div><div class="ttdeci">constexpr std::string dnameof(type type)</div><div class="ttdoc">Returns the string name of a given tensor data type.</div><div class="ttdef"><b>Definition</b> types.hpp:169</div></div>
+<div class="ttc" id="anamespacetannic_html_a1f6a29013277d9209efa113453cf0b2e"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a1f6a29013277d9209efa113453cf0b2e">tannic::dnameof</a></div><div class="ttdeci">constexpr std::string dnameof(type type)</div><div class="ttdoc">Returns the string name of a given tensor data type.</div><div class="ttdef"><b>Definition</b> types.hpp:168</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -458,11 +448,11 @@ Example:</h4>
 <li><code>complex128</code> returns 16 (2 × float64).</li>
 </ul>
 </dd></dl>
-<h4><a class="anchor" id="autotoc_md61"></a>
+<h4><a class="anchor" id="autotoc_md28"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a>(float32);  <span class="comment">// returns 4</span></div>
 <div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">dsizeof</a>(complex64); <span class="comment">// returns 8</span></div>
-<div class="ttc" id="anamespacetannic_html_aee5ef48cb75e37f65cc11ef67fbb9d25"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a></div><div class="ttdeci">constexpr std::size_t dsizeof(type type)</div><div class="ttdoc">Returns the size in bytes of a given tensor data type.</div><div class="ttdef"><b>Definition</b> types.hpp:114</div></div>
+<div class="ttc" id="anamespacetannic_html_aee5ef48cb75e37f65cc11ef67fbb9d25"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25">tannic::dsizeof</a></div><div class="ttdeci">constexpr std::size_t dsizeof(type type)</div><div class="ttdoc">Returns the size in bytes of a given tensor data type.</div><div class="ttdef"><b>Definition</b> types.hpp:113</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -685,12 +675,12 @@ template&lt;Composable Multiplicand, Composable Multiplier&gt; </div>
 <li>For all other types, result is <code><a class="el" href="../../d0/d1a/namespacetannic.html#aee5ef48cb75e37f65cc11ef67fbb9d25" title="Returns the size in bytes of a given tensor data type.">dsizeof(type)</a> * nelements</code>.</li>
 </ul>
 </dd></dl>
-<h4><a class="anchor" id="autotoc_md62"></a>
+<h4><a class="anchor" id="autotoc_md29"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">nbytesof</a>(float32, 10);   <span class="comment">// returns 40</span></div>
 <div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">nbytesof</a>(complex64, 5);  <span class="comment">// returns 40</span></div>
 <div class="line"><a class="code hl_function" href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">nbytesof</a>(<span class="keywordtype">boolean</span>, 100);  <span class="comment">// returns 13</span></div>
-<div class="ttc" id="anamespacetannic_html_a9e047ef72e50f442b8fd458213bbdc04"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">tannic::nbytesof</a></div><div class="ttdeci">constexpr std::size_t nbytesof(type dtype, std::size_t nelements)</div><div class="ttdoc">Returns the total number of bytes required to store nelements elements of the given data type.</div><div class="ttdef"><b>Definition</b> types.hpp:150</div></div>
+<div class="ttc" id="anamespacetannic_html_a9e047ef72e50f442b8fd458213bbdc04"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#a9e047ef72e50f442b8fd458213bbdc04">tannic::nbytesof</a></div><div class="ttdeci">constexpr std::size_t nbytesof(type dtype, std::size_t nelements)</div><div class="ttdoc">Returns the total number of bytes required to store nelements elements of the given data type.</div><div class="ttdef"><b>Definition</b> types.hpp:149</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -699,9 +689,6 @@ Example:</h4>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::ostream &amp; tannic::operator&lt;&lt; </td>
@@ -721,11 +708,6 @@ Example:</h4>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
@@ -735,9 +717,6 @@ Example:</h4>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::ostream &amp; tannic::operator&lt;&lt; </td>
@@ -757,11 +736,6 @@ Example:</h4>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>

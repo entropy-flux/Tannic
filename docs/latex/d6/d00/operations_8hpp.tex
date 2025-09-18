@@ -1,10 +1,5 @@
 \doxysection{include/tannic/operations.hpp File Reference}
 \hypertarget{operations_8hpp}{}\label{operations_8hpp}\index{include/tannic/operations.hpp@{include/tannic/operations.hpp}}
-
-
-Defines expression templates tensor aritmetic operations.  
-
-
 {\ttfamily \#include $<$utility$>$}\newline
 {\ttfamily \#include $<$type\+\_\+traits$>$}\newline
 {\ttfamily \#include "{}concepts.\+hpp"{}}\newline
@@ -23,21 +18,21 @@ This graph shows which files directly or indirectly include this file\+:
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Unary}{tannic\+::expression\+::\+Unary$<$ Operation, Operand $>$}}
-\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for a unary tensor aritmetic operation. \end{DoxyCompactList}\item 
+\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Binary}{tannic\+::expression\+::\+Binary$<$ Operation, Operand, Cooperand $>$}}
-\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for a binary tensor operation. \end{DoxyCompactList}\item 
+\item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Binary_3_01Operation_00_01Operand_00_01Scalar_01_4}{tannic\+::expression\+::\+Binary$<$ Operation, Operand, Scalar $>$}}
 \item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Negation}{tannic\+::operation\+::\+Negation}}
-\begin{DoxyCompactList}\small\item\em Unary element-\/wise negation of a tensor expression. \end{DoxyCompactList}\item 
+\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Addition}{tannic\+::operation\+::\+Addition}}
-\begin{DoxyCompactList}\small\item\em Binary element-\/wise addition of two tensor expressions. \end{DoxyCompactList}\item 
+\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication}{tannic\+::operation\+::\+Multiplication}}
-\begin{DoxyCompactList}\small\item\em Binary element-\/wise multiplication of two tensor expressions. \end{DoxyCompactList}\item 
+\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction}{tannic\+::operation\+::\+Subtraction}}
-\begin{DoxyCompactList}\small\item\em Binary element-\/wise subtraction of two tensor expressions. \end{DoxyCompactList}\item 
+\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation}{tannic\+::operation\+::\+Exponentiation}}
-\begin{DoxyCompactList}\small\item\em Binary element-\/wise exponentiation of two tensor expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,11 +46,11 @@ namespace \mbox{\hyperlink{namespacetannic_1_1operation}{tannic\+::operation}}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_acf566907df5853e93fe6b49872ed6b01}{tannic\+::operation\+::operator-\/}} (Operand \&\&operand)
-\begin{DoxyCompactList}\small\item\em Element-\/wise negation of a tensor expression. \end{DoxyCompactList}\item 
+\item 
 constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_af5df22702686df93a8c1e83acee04a24}{tannic\+::operation\+::operator-\/}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Infinity}{Infinity}}$<$ Sign\+::\+Positive $>$ \&\&operand)
 \item 
 {\footnotesize template$<$Composable Augend, Composable Addend$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_ac0ecafc7bebd99d7498fd2b815539040}{tannic\+::operation\+::operator+}} (Augend \&\&augend, Addend \&\&addend)
-\begin{DoxyCompactList}\small\item\em Element-\/wise addition of two tensor expressions. \end{DoxyCompactList}\item 
+\item 
 {\footnotesize template$<$Composable Addend$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_a5b1c907daed791c65c10424fb4de80f2}{tannic\+::operation\+::operator+}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Zero}{Zero}} const \&zero, Addend \&\&addend)
 \item 
 {\footnotesize template$<$Composable Augend$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_abdc75ec7c0ab453ada8bb3cd1a3cafee}{tannic\+::operation\+::operator+}} (Augend \&\&augend, \mbox{\hyperlink{classtannic_1_1expression_1_1Zero}{Zero}} const \&zero)
@@ -80,26 +75,3 @@ requires std\+::is\+\_\+arithmetic\+\_\+v$<$std\+::decay\+\_\+t$<$T$>$$>$}\\cons
 \item 
 {\footnotesize template$<$Composable Base, Composable Exponent$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_a22f701767e5ab9dd10789ae8933d25a6}{tannic\+::operation\+::operator\texorpdfstring{$^\wedge$}{\string^}}} (Base \&\&base, Exponent \&\&exponent)
 \begin{DoxyCompactList}\small\item\em Element-\/wise exponentiation of two tensor expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Detailed Description}
-Defines expression templates tensor aritmetic operations. 
-
-\begin{DoxyAuthor}{Author}
-Eric Hermosis 
-\end{DoxyAuthor}
-\begin{DoxyDate}{Date}
-2025 
-\end{DoxyDate}
-This header defines expression templates used to represent lazy evaluation of unary and binary tensor aritmetic operations. The system enables composable arithmetic on tensor-\/like objects while deferring actual computation until evaluation (via {\ttfamily forward()}).
-
-Includes\+:
-\begin{DoxyItemize}
-\item Type promotion utility ({\ttfamily promote})
-\item Shape broadcasting logic ({\ttfamily broadcast})
-\item Unary and binary operation templates ({\ttfamily Unary}, {\ttfamily Binary})
-\item Arithmetic operation structs ({\ttfamily Addition}, {\ttfamily Subtraction}, etc.)
-\item Overloaded operators ({\ttfamily +}, {\ttfamily -\/}, {\ttfamily \texorpdfstring{$\ast$}{*}})
-\end{DoxyItemize}
-
-Part of the Tannic Tensor Library. 

@@ -80,16 +80,16 @@ tensor([[23.2817, 43.2817],
 
 ## Status
 
-Note: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API—used to extend the library—is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.
+Note: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API, used to extend the library, is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.
 
-While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental- too significant to ignore. At some point, it may be requirement for Tannic. 
+While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental, too significant to ignore. At some point, it may be requirement for Tannic. 
 
 
 ## Features
 
 - Dynamic typing: Flexible tensor data types that support runtime type specification, enabling features like easy tensor serialization and deserialization, but that also support compile time specifications thanks to constexpr. 
 
-- Constexpr templated expressions: This allows custom kernel fusion strategies using SFINAE and compile time assertions and shape calculations.
+- Constexpr templated expressions: This allows custom kernel fusion strategies using SFINAE, compile time exceptions and shape calculations.
 
 - Broadcasting: NumPy‑style automatic shape expansion in arithmetic operations, enabling intuitive and efficient tensor computations across dimensions.
 
@@ -129,7 +129,7 @@ This guide is currently in a “works on my machine” state. If you encounter a
 
 - (Optional) CUDA Toolkit 12+: only required for GPU support 
 
-Other optional requirements may be added in the future. Also the arrival of C++26, is shaping up to be a huge and too significant to ignore. At some point, it may be requirement for Tannic. 
+Other optional requirements may be added in the future. Also the arrival of C++26, is shaping up to be too significant to ignore. At some point, it may be requirement for Tannic. 
 
 ### Clone the repository:
 
@@ -220,11 +220,11 @@ int main() {
 }
 ``` 
 
-Functions in Tannic do not immediately compute results. Instead, they build Expression objects, described in detail in the  [concepts](https://entropy-flux.github.io/Tannic/concepts.html) documentation. Basically an `Expression` is any class that follows the pattern:
+Functions in Tannic do not immediately compute results. Instead, they build Composable Expression objects, described in detail in the  [concepts](https://entropy-flux.github.io/Tannic/concepts.html) documentation. Basically an `Composable` expression is any class that follows the pattern:
 
 ```cpp
 template<typename T>
-concept Expression = requires(const T expression) {
+concept Composable = requires(const T expression) {
     { expression.dtype()   } -> std::same_as<type>;
     { expression.shape()   } -> std::same_as<Shape const&>;
     { expression.strides() } -> std::same_as<Strides const&>;
@@ -282,35 +282,16 @@ Whether you’re reporting bugs, proposing features, improving documentation, or
 
 ## Ways to Contribute 
 
-- **Write new test cases to cover code that is not yet tested**. I’m using a test-driven approach to build the library, but some edge cases may still be missing.
-
-- **Refactor existing tests to use built-in features**. Many current tests manipulate tensor pointers directly to verify values because they were written before proper indexing and slicing functionality was implemented. This approach is tedious and can be simplified using tensor accessors. Take as example:
-
-```cpp 
-Tensor x(float32, {2,2}); x.initialize()
-float* data = reinterpret_cast<float*>(x.bytes());
-data[3] = 3;
-ASSERT_EQ(data[3], 3);
-```
-
-can be refactored into: 
-
-```cpp 
-Tensor x(float32, {2,2}); x.initialize() 
-x[1][1] = 3;
-ASSERT_EQ(x[1][1], 3); // GTest support this but not  ASSERT_EQ(x[1,1], 3)
-```
-
-This is especially important in CUDA tests, where manually copying device memory sync to the host hurts test performance.
+- **Write new test cases to cover code that is not yet tested**. I’m using a test-driven approach to build the library, but some edge cases may still be missing. Some operation pass the tests but then when using it after for example a transpose you may get wrong results, so more tests on non contiguous tensors are needed. 
 
 - **Improve installation documentation**. One of the main challenges with C++ adoption is the complexity of building and linking libraries. I plan to create a comprehensive guide on installing and integrating the library into other projects.
 
 - **Optimize builds**. Currently there is a single CMakeLists.txt inside the cmake folder that compiles all the project. Decoupled builds for cpu and cuda backends will be a nice to have.
 
-- **Optimize kernels**. Kernels are currently unoptimized since I'm still focusing on builing necessary features. The kernels can be found on .cpp and .cu files inside src/cpu and src/cuda files.
+- **Optimize kernels**. Kernels are currently unoptimized since I'm still focusing on builing necessary features. The kernels can be found on .cpp and .cu files inside src/cpu and src/cuda files. Performance optimizations should be done only after having a benchmark setup. Optimizations without benchmarking simply a bad idea. 
 
-- **New features**. If you propose new features for the library, please ensure they align with the scope of a tensor library. For example, operations like tensor contractions would be a great addition, but machine learning components —such as neural network activation functions or attention mechanisms— are outside the scope.
-(Don’t worry—I'm building a separate neural networks library on top of this one!) That said, I’m always open to fresh ideas, so don’t hesitate to share your suggestions.
+- **New features**. If you propose new features for the library, please ensure they align with the scope of a tensor library. For example, operations like tensor contractions would be a great addition, but machine learning components —such as neural network activation functions or attention mechanisms are outside the scope.
+(Don’t worry—I'm building a separate neural networks library on top of this one [here](https://github.com/entropy-flux/Tannic-NN)!) That said, I’m always open to fresh ideas, so don’t hesitate to share your suggestions.
 
 ## How to Contribute
 
@@ -327,7 +308,6 @@ Open a pull request describing:
 - Implementation details if needed.
 
 Target branch: PRs for now should just target main till the library matures.
-
 
 ## Project structure
 
@@ -404,7 +384,7 @@ This allows you to:
 
     ```cpp
     template<typename T>
-    concept Expression = requires(const T expression) {
+    concept Composable = requires(const T expression) {
         { expression.dtype()   } -> std::same_as<type>;
         { expression.shape()   } -> std::same_as<Shape const&>;
         { expression.strides() } -> std::same_as<Strides const&>;
@@ -413,7 +393,7 @@ This allows you to:
     }; 
     ```
 
-    Will work with current `Tensor` class and other templated expressions in this library.
+Will work with current `Tensor` class and other templated expressions in this library.
 
 
 - Create new data structures: Again if your data structure follows the prior concept it can be used as well with the library, for example you can create `Scalar`, `Parameter`, `Sequence` classes and plug them into operations like if they were tensors, the resulting expression will be something like this:

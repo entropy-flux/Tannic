@@ -91,9 +91,9 @@ tensor([[ 43.2812,  63.2812],
  
 ## Status
 
-Note: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API—used to extend the library—is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.
+Note: Tannic is currently in an early development stage. It is functional but not fully optimized, and some features may still have bugs. The C backend API, used to extend the library, is under active development and may change significantly. The public API described in the documentation is mostly stable, with only minor breaking changes expected as the library evolves.
 
-While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental- too significant to ignore. At some point, it may be requirement for Tannic. 
+While the library is currently written in C++23, the arrival of C++26, is shaping up to be a monumental, too significant to ignore. At some point, it may be requirement for Tannic. 
 
 
 ## Features
@@ -164,10 +164,13 @@ make -j$(nproc)
 ```
 
 ### Run the example
-You can run the example provided in the main.cpp from the build folder:
+Run the example provided in the main.cpp file. 
+
 ```bash
-cd build
-./main
+set -e
+cmake -S . -B build -DTANNIC_BUILD_MAIN=ON -DCMAKE_BUILD_TYPE=Debug
+cmake --build build --parallel "$(nproc)"
+./build/main
 ```
  
 ### Include Tannic in your project

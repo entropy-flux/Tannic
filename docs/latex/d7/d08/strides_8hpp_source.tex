@@ -152,20 +152,10 @@
 \DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00289\ \}}
 \DoxyCodeLine{00290\ }
-\DoxyCodeLine{00291\ \textcolor{keyword}{inline}\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ os,\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ strides)\ \{}
-\DoxyCodeLine{00292\ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Strides("{}};}
-\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classtannic_1_1Strides_a4c1263c9c5a930cfaca7dbcd0b77305c}{Strides::rank\_type}}\ dimension\ =\ 0;\ dimension\ <\ strides.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}();\ ++dimension)\ \{}
-\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ os\ <<\ static\_cast<unsigned\ int>(strides[dimension]);}
-\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dimension\ +\ 1\ <\ strides.\mbox{\hyperlink{classtannic_1_1Strides_a386cec9cc872d7b8c83f52cc10353843}{rank}}())\ \{}
-\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{},\ "{}};}
-\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00298\ \ \ \ \ \}}
-\DoxyCodeLine{00299\ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{})"{}};}
-\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
-\DoxyCodeLine{00301\ \}\ }
-\DoxyCodeLine{00302\ }
-\DoxyCodeLine{00303\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00304\ }
-\DoxyCodeLine{00305\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ STRIDES\_HPP}}
+\DoxyCodeLine{00291\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ os,\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \textcolor{keyword}{const}\&\ strides);}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ STRIDES\_HPP}}
 
 \end{DoxyCode}

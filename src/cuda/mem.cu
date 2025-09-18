@@ -1,3 +1,5 @@
+#include <array>
+#include "types.hpp"
 #include "cuda/exc.cuh"
 #include "cuda/mem.cuh"
 #include "cuda/streams.cuh"
@@ -61,5 +63,33 @@ bool compareFromHost(const device_t* resource, const void* hst_ptr, const void* 
     free(buffer);   
     return result;
 }
+  
+status copy(const tensor_t* src, tensor_t* dst, size_t nbytes, stream_t stream) {
+    cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address); 
 
+    if (src->environment.kind == HOST && dst->environment.kind == DEVICE) {
+        if (src->environment.resource.host.traits == PINNED) {
+            CUDA_CHECK(cudaMemcpyAsync(dst->address, src->address, nbytes, cudaMemcpyHostToDevice, cudaStream)); 
+        } else {
+            CUDA_CHECK(cudaMemcpy(dst->address, src->address, nbytes, cudaMemcpyHostToDevice));
+        }
+              
+    } 
+    
+    else if (src->environment.kind == DEVICE && dst->environment.kind == HOST) {
+
+        if (dst->environment.resource.host.traits == PINNED) {
+            CUDA_CHECK(cudaMemcpyAsync(dst->address, src->address, nbytes, cudaMemcpyDeviceToHost, cudaStream)); 
+        } else {
+            CUDA_CHECK(cudaMemcpy(dst->address, src->address, nbytes, cudaMemcpyDeviceToHost)); 
+        }
+    }
+    
+    else if (src->environment.kind == DEVICE && dst->environment.kind == DEVICE) {
+        cudaMemcpyAsync(dst->address, src->address, nbytes, cudaMemcpyDeviceToDevice, cudaStream); 
+    }        
+
+    return SUCCESS;
+} 
+ 
 } // namespace cuda  

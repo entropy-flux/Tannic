@@ -22,132 +22,132 @@
 \DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ TYPES\_HPP}}
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ TYPES\_HPP}}
 \DoxyCodeLine{00020\ \ }
-\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#include\ <cstdint>}\ \ }
-\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#include\ <string>}\ \ \ }
-\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#include\ <complex>}}
-\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#include\ "{}runtime/types.h"{}}}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{\ \ }
-\DoxyCodeLine{00075\ \ \ }
-\DoxyCodeLine{00076\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1float16__t}{float16\_t}}\ \{}
-\DoxyCodeLine{00077\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structtannic_1_1float16__t_af09b6ddd58c0db4eca11e589641fd1ae}{bits}}\ =\ 0;\ }
-\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1float16__t_afaf1dbc95aff3331b411f2e12990670f}{float16\_t}}()\ :\ \mbox{\hyperlink{structtannic_1_1float16__t_af09b6ddd58c0db4eca11e589641fd1ae}{bits}}(0)\ \{\}}
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{template}<std::\textcolor{keywordtype}{int}egral\ T>}
-\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1float16__t_ab0a2f9ee0c53ec88676586cf3fa82650}{float16\_t}}(T\ value)\ :\ \mbox{\hyperlink{structtannic_1_1float16__t}{float16\_t}}(static\_cast<float>(value))\ \{\}}
-\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1float16__t_a60cc0955f31343cfd9336d264b00ea67}{float16\_t}}(\textcolor{keywordtype}{double}\ value)\ :\ \mbox{\hyperlink{structtannic_1_1float16__t}{float16\_t}}(static\_cast<float>(value))\ \{\}}
-\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1float16__t_a4d32ced87d7c0ab110fd69563ecb8849}{float16\_t}}(\textcolor{keywordtype}{float});\ }
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{operator}\ float()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00084\ \};\ }
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00086\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1bfloat16__t}{bfloat16\_t}}\ \{}
-\DoxyCodeLine{00087\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structtannic_1_1bfloat16__t_af66f134f573b62177466a42d02395e55}{bits}}\ =\ 0;\ }
-\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1bfloat16__t_ae5e35227bedeb11c234c4609ccab50c0}{bfloat16\_t}}()\ :\ \mbox{\hyperlink{structtannic_1_1bfloat16__t_af66f134f573b62177466a42d02395e55}{bits}}(0)\ \{\}}
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{template}<std::\textcolor{keywordtype}{int}egral\ T>}
-\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1bfloat16__t_a094398b3143659d09252e4b0679d41a0}{bfloat16\_t}}(T\ value)\ :\ \mbox{\hyperlink{structtannic_1_1bfloat16__t}{bfloat16\_t}}(static\_cast<float>(value))\ \{\}}
-\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1bfloat16__t_ad54f7d00bf6e18f7987d86d46351e7de}{bfloat16\_t}}(\textcolor{keywordtype}{double}\ value)\ :\ \mbox{\hyperlink{structtannic_1_1bfloat16__t}{bfloat16\_t}}(static\_cast<float>(value))\ \{\}}
-\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1bfloat16__t_a4c8dd74c52d4e6704f14b32f8c882b11}{bfloat16\_t}}(\textcolor{keywordtype}{float});\ }
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{operator}\ float()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00094\ \};}
-\DoxyCodeLine{00095\ \ \ }
-\DoxyCodeLine{00114\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(type\ type)\ \{}
-\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{\ }
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ boolean:\ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int8\_t);}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int16\_t);}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int32\_t);}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int64\_t);}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float)\ /\ 2;}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ bfloat16:\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float)\ /\ 2;}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float);}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ \ \ \textcolor{keywordflow}{return}\ 2\ *\ \textcolor{keyword}{sizeof}(float);}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex64:\ \textcolor{keywordflow}{return}\ 2\ *\ \textcolor{keyword}{sizeof}(float);\ \ \ \ \ }
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex128:\textcolor{keywordflow}{return}\ 2\ *\ \textcolor{keyword}{sizeof}(double);\ \ }
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00128\ \ \ \ \ \}}
-\DoxyCodeLine{00129\ \}\ }
-\DoxyCodeLine{00130\ }
-\DoxyCodeLine{00150\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04}{nbytesof}}(type\ dtype,\ std::size\_t\ nelements)\ \{}
-\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\ ==\ \textcolor{keywordtype}{boolean})\ \{}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (nelements\ +\ 7)\ /\ 8;\ }
-\DoxyCodeLine{00153\ \ \ \ \ \}}
-\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype)\ *\ nelements;}
-\DoxyCodeLine{00155\ \}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#include\ <cstdint>}\ \ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#include\ <string>}\ \ \ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#include\ <complex>}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#include\ "{}runtime/types.h"{}}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{\ \ }
+\DoxyCodeLine{00074\ \ \ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1float16__t}{float16\_t}}\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structtannic_1_1float16__t_af09b6ddd58c0db4eca11e589641fd1ae}{bits}}\ =\ 0;\ }
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1float16__t_afaf1dbc95aff3331b411f2e12990670f}{float16\_t}}()\ :\ \mbox{\hyperlink{structtannic_1_1float16__t_af09b6ddd58c0db4eca11e589641fd1ae}{bits}}(0)\ \{\}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{template}<std::\textcolor{keywordtype}{int}egral\ T>}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1float16__t_ab0a2f9ee0c53ec88676586cf3fa82650}{float16\_t}}(T\ value)\ :\ \mbox{\hyperlink{structtannic_1_1float16__t}{float16\_t}}(static\_cast<float>(value))\ \{\}}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1float16__t_a60cc0955f31343cfd9336d264b00ea67}{float16\_t}}(\textcolor{keywordtype}{double}\ value)\ :\ \mbox{\hyperlink{structtannic_1_1float16__t}{float16\_t}}(static\_cast<float>(value))\ \{\}}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1float16__t_a4d32ced87d7c0ab110fd69563ecb8849}{float16\_t}}(\textcolor{keywordtype}{float});\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{operator}\ float()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ \};\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtannic_1_1bfloat16__t}{bfloat16\_t}}\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{structtannic_1_1bfloat16__t_af66f134f573b62177466a42d02395e55}{bits}}\ =\ 0;\ }
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1bfloat16__t_ae5e35227bedeb11c234c4609ccab50c0}{bfloat16\_t}}()\ :\ \mbox{\hyperlink{structtannic_1_1bfloat16__t_af66f134f573b62177466a42d02395e55}{bits}}(0)\ \{\}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{template}<std::\textcolor{keywordtype}{int}egral\ T>}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1bfloat16__t_a094398b3143659d09252e4b0679d41a0}{bfloat16\_t}}(T\ value)\ :\ \mbox{\hyperlink{structtannic_1_1bfloat16__t}{bfloat16\_t}}(static\_cast<float>(value))\ \{\}}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1bfloat16__t_ad54f7d00bf6e18f7987d86d46351e7de}{bfloat16\_t}}(\textcolor{keywordtype}{double}\ value)\ :\ \mbox{\hyperlink{structtannic_1_1bfloat16__t}{bfloat16\_t}}(static\_cast<float>(value))\ \{\}}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{structtannic_1_1bfloat16__t_a4c8dd74c52d4e6704f14b32f8c882b11}{bfloat16\_t}}(\textcolor{keywordtype}{float});\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{operator}\ float()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ \};}
+\DoxyCodeLine{00094\ \ \ }
+\DoxyCodeLine{00113\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(type\ type)\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ boolean:\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int8\_t);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int16\_t);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int32\_t);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(int64\_t);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float)\ /\ 2;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ bfloat16:\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float)\ /\ 2;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(float);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ \ \ \textcolor{keywordflow}{return}\ 2\ *\ \textcolor{keyword}{sizeof}(float);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex64:\ \textcolor{keywordflow}{return}\ 2\ *\ \textcolor{keyword}{sizeof}(float);\ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex128:\textcolor{keywordflow}{return}\ 2\ *\ \textcolor{keyword}{sizeof}(double);\ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \}\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00149\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::size\_t\ \mbox{\hyperlink{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04}{nbytesof}}(type\ dtype,\ std::size\_t\ nelements)\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordflow}{if}\ (dtype\ ==\ \textcolor{keywordtype}{boolean})\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (nelements\ +\ 7)\ /\ 8;\ }
+\DoxyCodeLine{00152\ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(dtype)\ *\ nelements;}
+\DoxyCodeLine{00154\ \}}
+\DoxyCodeLine{00155\ }
 \DoxyCodeLine{00156\ }
-\DoxyCodeLine{00157\ }
-\DoxyCodeLine{00169\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(type\ type)\ \{}
-\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{\ }
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ boolean:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}boolean"{}};}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}int8"{}};}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}int16"{}};}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}int32"{}};}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}int64"{}};}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}float16"{}};}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ bfloat16:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}bfloat16"{}};}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}float32"{}};}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}float64"{}};}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex64:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}complex64"{}};}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex128:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}complex128"{}};}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}none"{}};}
-\DoxyCodeLine{00183\ \ \ \ \ \}}
-\DoxyCodeLine{00184\ \}\ }
-\DoxyCodeLine{00185\ }
-\DoxyCodeLine{00207\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ uint8\_t\ \mbox{\hyperlink{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}{dcodeof}}(type\ type)\ \{}
-\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{\ }
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ boolean:\ \ \ \textcolor{keywordflow}{return}\ 1;}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ 12;}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ \ \ \textcolor{keywordflow}{return}\ 13;}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ \ \ \textcolor{keywordflow}{return}\ 14;}
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ \ \ \textcolor{keywordflow}{return}\ 15;}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ \ \ \textcolor{keywordflow}{return}\ 23;}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ bfloat16:\ \ \textcolor{keywordflow}{return}\ 231;}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ \ \ \textcolor{keywordflow}{return}\ 24;}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ \ \ \textcolor{keywordflow}{return}\ 25;}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex64:\ \textcolor{keywordflow}{return}\ 35;\ \ \ \ \ }
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex128:\textcolor{keywordflow}{return}\ 36;\ \ }
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00221\ \ \ \ \ \}}
-\DoxyCodeLine{00222\ \}}
-\DoxyCodeLine{00223\ }
-\DoxyCodeLine{00235\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ type\ \mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}(uint8\_t\ code)\ \{}
-\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{switch}\ (code)\ \{}
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1\ :\ \textcolor{keywordflow}{return}\ boolean;}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 12:\ \textcolor{keywordflow}{return}\ int8;}
-\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 13:\ \textcolor{keywordflow}{return}\ int16;}
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 14:\ \textcolor{keywordflow}{return}\ int32;}
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 15:\ \textcolor{keywordflow}{return}\ int64;}
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 23:\ \textcolor{keywordflow}{return}\ float16;}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 231:\textcolor{keywordflow}{return}\ bfloat16;}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 24:\ \textcolor{keywordflow}{return}\ float32;}
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 25:\ \textcolor{keywordflow}{return}\ float64;}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 35:\ \textcolor{keywordflow}{return}\ complex64;}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 36:\ \textcolor{keywordflow}{return}\ complex128;}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ unknown;}
-\DoxyCodeLine{00249\ \ \ \ \ \}}
-\DoxyCodeLine{00250\ \}\ }
-\DoxyCodeLine{00251\ \ \ }
-\DoxyCodeLine{00252\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{00253\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ type\ \mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}()\ \{}
-\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ bool>)\ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{boolean};}
-\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ int8\_t>)\ \ \textcolor{keywordflow}{return}\ int8;}
-\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ int16\_t>)\ \textcolor{keywordflow}{return}\ int16;}
-\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ int32\_t>)\ \textcolor{keywordflow}{return}\ int32;}
-\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ int64\_t>)\ \textcolor{keywordflow}{return}\ int64;}
-\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ float16\_t>)\ \ \ \textcolor{keywordflow}{return}\ float16;}
-\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ bfloat16\_t>)\ \ \textcolor{keywordflow}{return}\ bfloat16;}
-\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ float>)\ \ \ \textcolor{keywordflow}{return}\ float32;}
-\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ double>)\ \ \textcolor{keywordflow}{return}\ float64;}
-\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::complex<float>>)\ \ \textcolor{keywordflow}{return}\ complex64;}
-\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::complex<double>>)\ \textcolor{keywordflow}{return}\ complex128;}
-\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordflow}{else}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ unknown;}
-\DoxyCodeLine{00266\ \}}
-\DoxyCodeLine{00267\ }
-\DoxyCodeLine{00268\ \textcolor{keyword}{inline}\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ ostream,\ type\ type)\ \{}
-\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordflow}{return}\ ostream\ <<\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(type);}
-\DoxyCodeLine{00270\ \}\ }
-\DoxyCodeLine{00271\ }
-\DoxyCodeLine{00272\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00273\ }
-\DoxyCodeLine{00274\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TYPES\_HPP}}
+\DoxyCodeLine{00168\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(type\ type)\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ boolean:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}boolean"{}};}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}int8"{}};}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}int16"{}};}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}int32"{}};}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}int64"{}};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}float16"{}};}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ bfloat16:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}bfloat16"{}};}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}float32"{}};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}float64"{}};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex64:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}complex64"{}};}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex128:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}complex128"{}};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}none"{}};}
+\DoxyCodeLine{00182\ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \}\ }
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00206\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ uint8\_t\ \mbox{\hyperlink{namespacetannic_a7cc5a20569f733cb88c508ebb9119363}{dcodeof}}(type\ type)\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{\ }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ boolean:\ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int8:\ \ \ \ \ \ \textcolor{keywordflow}{return}\ 12;}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int16:\ \ \ \ \ \textcolor{keywordflow}{return}\ 13;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int32:\ \ \ \ \ \textcolor{keywordflow}{return}\ 14;}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ int64:\ \ \ \ \ \textcolor{keywordflow}{return}\ 15;}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float16:\ \ \ \textcolor{keywordflow}{return}\ 23;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ bfloat16:\ \ \textcolor{keywordflow}{return}\ 231;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float32:\ \ \ \textcolor{keywordflow}{return}\ 24;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ float64:\ \ \ \textcolor{keywordflow}{return}\ 25;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex64:\ \textcolor{keywordflow}{return}\ 35;\ \ \ \ \ }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ complex128:\textcolor{keywordflow}{return}\ 36;\ \ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00220\ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00234\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ type\ \mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}(uint8\_t\ code)\ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordflow}{switch}\ (code)\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1\ :\ \textcolor{keywordflow}{return}\ boolean;}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 12:\ \textcolor{keywordflow}{return}\ int8;}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 13:\ \textcolor{keywordflow}{return}\ int16;}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 14:\ \textcolor{keywordflow}{return}\ int32;}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 15:\ \textcolor{keywordflow}{return}\ int64;}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 23:\ \textcolor{keywordflow}{return}\ float16;}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 231:\textcolor{keywordflow}{return}\ bfloat16;}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 24:\ \textcolor{keywordflow}{return}\ float32;}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 25:\ \textcolor{keywordflow}{return}\ float64;}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 35:\ \textcolor{keywordflow}{return}\ complex64;}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 36:\ \textcolor{keywordflow}{return}\ complex128;}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ unknown;}
+\DoxyCodeLine{00248\ \ \ \ \ \}}
+\DoxyCodeLine{00249\ \}\ }
+\DoxyCodeLine{00250\ \ \ }
+\DoxyCodeLine{00251\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00252\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{inline}\ type\ \mbox{\hyperlink{namespacetannic_a3b772a18c1f497ea579f9e6ece4130f5}{dtypeof}}()\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ bool>)\ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{boolean};}
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ int8\_t>)\ \ \textcolor{keywordflow}{return}\ int8;}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ int16\_t>)\ \textcolor{keywordflow}{return}\ int16;}
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ int32\_t>)\ \textcolor{keywordflow}{return}\ int32;}
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ int64\_t>)\ \textcolor{keywordflow}{return}\ int64;}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ float16\_t>)\ \ \ \textcolor{keywordflow}{return}\ float16;}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ bfloat16\_t>)\ \ \textcolor{keywordflow}{return}\ bfloat16;}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ float>)\ \ \ \textcolor{keywordflow}{return}\ float32;}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ double>)\ \ \textcolor{keywordflow}{return}\ float64;}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::complex<float>>)\ \ \textcolor{keywordflow}{return}\ complex64;}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_same\_v<T,\ std::complex<double>>)\ \textcolor{keywordflow}{return}\ complex128;}
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordflow}{else}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ unknown;}
+\DoxyCodeLine{00265\ \}}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \textcolor{keyword}{inline}\ std::ostream\&\ \mbox{\hyperlink{namespacetannic_a8b7066a546d8d6a8605b695788c479f0}{operator<<}}(std::ostream\&\ ostream,\ type\ type)\ \{}
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keywordflow}{return}\ ostream\ <<\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(type);}
+\DoxyCodeLine{00269\ \}\ }
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TYPES\_HPP}}
 
 \end{DoxyCode}

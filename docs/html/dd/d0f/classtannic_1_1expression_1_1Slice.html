@@ -98,52 +98,42 @@ $(document).ready(function(){initNavTree('dd/d0f/classtannic_1_1expression_1_1Sl
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template representing a tensor slice or subview.  
- <a href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="../../d4/d71/slices_8hpp_source.html">slices.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0c907b6d34d55ff79e61061e839cda11" id="r_a0c907b6d34d55ff79e61061e839cda11"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a0c907b6d34d55ff79e61061e839cda11">Slice</a> (typename <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Source &gt;::Reference source, std::tuple&lt; Indexes... &gt; indexes)</td></tr>
-<tr class="memdesc:a0c907b6d34d55ff79e61061e839cda11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a slice from a source expression and an index tuple.  <br /></td></tr>
 <tr class="separator:a0c907b6d34d55ff79e61061e839cda11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf1d76bb5095e8708b0e4beffc051b97" id="r_aaf1d76bb5095e8708b0e4beffc051b97"><td class="memTemplParams" colspan="2">template&lt;Integral Index&gt; </td></tr>
 <tr class="memitem:aaf1d76bb5095e8708b0e4beffc051b97"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#aaf1d76bb5095e8708b0e4beffc051b97">operator[]</a> (Index index) const</td></tr>
-<tr class="memdesc:aaf1d76bb5095e8708b0e4beffc051b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index into the slice with an integer.  <br /></td></tr>
 <tr class="separator:aaf1d76bb5095e8708b0e4beffc051b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fbfd61857c6b31365fc5875e834899c" id="r_a4fbfd61857c6b31365fc5875e834899c"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a4fbfd61857c6b31365fc5875e834899c">operator[]</a> (<a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html">indexing::Range</a> <a class="el" href="../../d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024">range</a>) const</td></tr>
-<tr class="memdesc:a4fbfd61857c6b31365fc5875e834899c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index into the slice with a range.  <br /></td></tr>
 <tr class="separator:a4fbfd61857c6b31365fc5875e834899c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1363daf8cf6b563ec0f640ee58e1a6dc" id="r_a1363daf8cf6b563ec0f640ee58e1a6dc"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a1363daf8cf6b563ec0f640ee58e1a6dc" id="r_a1363daf8cf6b563ec0f640ee58e1a6dc"><td class="memTemplParams" colspan="2">template&lt;Arithmetic T&gt; </td></tr>
 <tr class="memitem:a1363daf8cf6b563ec0f640ee58e1a6dc"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a1363daf8cf6b563ec0f640ee58e1a6dc">operator=</a> (T value)</td></tr>
-<tr class="memdesc:a1363daf8cf6b563ec0f640ee58e1a6dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a scalar value to all elements in the slice.  <br /></td></tr>
 <tr class="separator:a1363daf8cf6b563ec0f640ee58e1a6dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e653d07b5d7008251b318f05552911a" id="r_a9e653d07b5d7008251b318f05552911a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a34d4aa78487c5c915ff55dbc7ed5bb24" id="r_a34d4aa78487c5c915ff55dbc7ed5bb24"><td class="memTemplParams" colspan="2">template&lt;Composable Expression&gt; </td></tr>
+<tr class="memitem:a34d4aa78487c5c915ff55dbc7ed5bb24"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a34d4aa78487c5c915ff55dbc7ed5bb24">operator=</a> (<a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> expression)</td></tr>
+<tr class="separator:a34d4aa78487c5c915ff55dbc7ed5bb24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e653d07b5d7008251b318f05552911a" id="r_a9e653d07b5d7008251b318f05552911a"><td class="memTemplParams" colspan="2">template&lt;Arithmetic T&gt; </td></tr>
 <tr class="memitem:a9e653d07b5d7008251b318f05552911a"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a9e653d07b5d7008251b318f05552911a">operator==</a> (T value) const</td></tr>
-<tr class="memdesc:a9e653d07b5d7008251b318f05552911a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares a scalar value to the element in a rank-0 slice.  <br /></td></tr>
 <tr class="separator:a9e653d07b5d7008251b318f05552911a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa2df373f05dc00ef730ba208f118cf0" id="r_afa2df373f05dc00ef730ba208f118cf0"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#afa2df373f05dc00ef730ba208f118cf0">dtype</a> () const</td></tr>
-<tr class="memdesc:afa2df373f05dc00ef730ba208f118cf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the runtime data type of elements in this slice.  <br /></td></tr>
 <tr class="separator:afa2df373f05dc00ef730ba208f118cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bb289f510cb0da3d400293a265bd800" id="r_a9bb289f510cb0da3d400293a265bd800"><td class="memItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a9bb289f510cb0da3d400293a265bd800">rank</a> () const</td></tr>
-<tr class="memdesc:a9bb289f510cb0da3d400293a265bd800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of dimensions in this slice.  <br /></td></tr>
 <tr class="separator:a9bb289f510cb0da3d400293a265bd800"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22354e0b8625915115eb4e25a6521773" id="r_a22354e0b8625915115eb4e25a6521773"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a22354e0b8625915115eb4e25a6521773">shape</a> () const</td></tr>
-<tr class="memdesc:a22354e0b8625915115eb4e25a6521773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the shape (size in each dimension) of this slice.  <br /></td></tr>
 <tr class="separator:a22354e0b8625915115eb4e25a6521773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae404ecb0e0b72a642499a387ec2e708b" id="r_ae404ecb0e0b72a642499a387ec2e708b"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#ae404ecb0e0b72a642499a387ec2e708b">strides</a> () const</td></tr>
-<tr class="memdesc:ae404ecb0e0b72a642499a387ec2e708b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the memory strides for this slice.  <br /></td></tr>
 <tr class="separator:ae404ecb0e0b72a642499a387ec2e708b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fb492ca0fdc06c3730561a30c66e251" id="r_a1fb492ca0fdc06c3730561a30c66e251"><td class="memItemLeft" align="right" valign="top">std::ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a1fb492ca0fdc06c3730561a30c66e251">offset</a> () const</td></tr>
-<tr class="memdesc:a1fb492ca0fdc06c3730561a30c66e251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the byte offset from the source tensor's data pointer.  <br /></td></tr>
 <tr class="separator:a1fb492ca0fdc06c3730561a30c66e251"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d11cdc8bf08fd7cbfa7784dec7dadaa" id="r_a5d11cdc8bf08fd7cbfa7784dec7dadaa"><td class="memItemLeft" align="right" valign="top">std::byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a5d11cdc8bf08fd7cbfa7784dec7dadaa">bytes</a> ()</td></tr>
 <tr class="separator:a5d11cdc8bf08fd7cbfa7784dec7dadaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7d760dcd1a9f9e401308400f360427f" id="r_aa7d760dcd1a9f9e401308400f360427f"><td class="memItemLeft" align="right" valign="top">std::byte const *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#aa7d760dcd1a9f9e401308400f360427f">bytes</a> () const</td></tr>
 <tr class="separator:aa7d760dcd1a9f9e401308400f360427f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89d4dcdc63309ba723807d78f2e650d0" id="r_a89d4dcdc63309ba723807d78f2e650d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a89d4dcdc63309ba723807d78f2e650d0">forward</a> () const</td></tr>
-<tr class="separator:a89d4dcdc63309ba723807d78f2e650d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab866fba003b63766c5c034be558d4190" id="r_ab866fba003b63766c5c034be558d4190"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#ab866fba003b63766c5c034be558d4190">forward</a> (<a class="el" href="../../d4/d73/classtannic_1_1Context.html">Context</a> const &amp;context) const</td></tr>
+<tr class="separator:ab866fba003b63766c5c034be558d4190"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af670e5fd637111c77061a76f55b179ff" id="r_af670e5fd637111c77061a76f55b179ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#af670e5fd637111c77061a76f55b179ff">assign</a> (std::byte const *value, std::ptrdiff_t <a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a1fb492ca0fdc06c3730561a30c66e251">offset</a>)</td></tr>
 <tr class="separator:af670e5fd637111c77061a76f55b179ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa451965bd55e53b10b50f21f76f10105" id="r_aa451965bd55e53b10b50f21f76f10105"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#aa451965bd55e53b10b50f21f76f10105">assign</a> (bool const *, std::ptrdiff_t)</td></tr>
@@ -151,24 +141,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abd2d3e77db09d40e48aa8420aae1d84a" id="r_abd2d3e77db09d40e48aa8420aae1d84a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#abd2d3e77db09d40e48aa8420aae1d84a">compare</a> (std::byte const *value, std::ptrdiff_t <a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a1fb492ca0fdc06c3730561a30c66e251">offset</a>) const</td></tr>
 <tr class="separator:abd2d3e77db09d40e48aa8420aae1d84a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;Composable Source, class... Indexes&gt;<br />
-class tannic::expression::Slice&lt; Source, Indexes &gt;</div><p><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template representing a tensor slice or subview. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Source</td><td>The expression type from which the slice is taken (e.g., a <a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a>). </td></tr>
-    <tr><td class="paramname">Indexes</td><td>Variadic list of index types (integer or <code><a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html" title="Represents a half-open interval [start, stop) for slicing.">indexing::Range</a></code>).</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>A <code><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html" title="Expression template representing a tensor slice or subview.">Slice</a></code> stores:</p><ul>
-<li>The source expression reference.</li>
-<li>A tuple of index specifications.</li>
-<li>The computed shape, strides, and offset for the slice.</li>
-</ul>
-<p>It supports further slicing through <code>operator[]</code>, element assignment, and scalar comparison for rank-0 slices.</p>
-<p>This class does not own the underlying data; it merely refers to a subset of it. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0c907b6d34d55ff79e61061e839cda11" name="a0c907b6d34d55ff79e61061e839cda11"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c907b6d34d55ff79e61061e839cda11">&#9670;&#160;</a></span>Slice()</h2>
 
@@ -204,16 +177,6 @@ template&lt;Composable Source, class... Indexes&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Create a slice from a source expression and an index tuple. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">source</td><td>Reference to the source expression. </td></tr>
-    <tr><td class="paramname">indexes</td><td>Tuple containing integer indices or ranges.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>The constructor computes the resulting shape, strides, and byte offset based on the given indexes. </p>
 
 </div>
 </div>
@@ -387,15 +350,10 @@ template&lt;Composable Source, class... Indexes&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the runtime data type of elements in this slice. </p>
-<p>The data type (<code>dtype_</code>) is determined from the source expression or tensor at construction and remains constant for the lifetime of the slice.</p>
-<dl class="section return"><dt>Returns</dt><dd>The data type of the elements as a <code>type</code> enum.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>This is a runtime property, not a compile-time type. </dd></dl>
-
 </div>
 </div>
-<a id="a89d4dcdc63309ba723807d78f2e650d0" name="a89d4dcdc63309ba723807d78f2e650d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89d4dcdc63309ba723807d78f2e650d0">&#9670;&#160;</a></span>forward()</h2>
+<a id="ab866fba003b63766c5c034be558d4190" name="ab866fba003b63766c5c034be558d4190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab866fba003b63766c5c034be558d4190">&#9670;&#160;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -405,7 +363,8 @@ template&lt;Composable Source, class... Indexes&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html">tannic::expression::Slice</a>&lt; Source, Indexes &gt;::forward </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d4/d73/classtannic_1_1Context.html">Context</a> const &amp;&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -438,36 +397,39 @@ template&lt;Composable Source, class... Indexes&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the byte offset from the source tensor's data pointer. </p>
-<p>The offset is calculated as:</p><ol type="1">
-<li>Initialized to 0</li>
-<li>For each index:<ul>
-<li>If it's a range:<ul>
-<li>Add <code><a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80">range.start</a> * source_stride * element_size</code> to offset</li>
-</ul>
-</li>
-<li>If it's an integer index:<ul>
-<li>Add <code>index * source_stride * element_size</code> to offset</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>The offset is relative to the source tensor's data pointer</li>
-</ol>
-<p>This represents the starting memory position of the slice within the original tensor's storage.</p>
-<dl class="section return"><dt>Returns</dt><dd>The byte offset from the source tensor's data pointer. </dd></dl>
-
 </div>
 </div>
-<a id="a1363daf8cf6b563ec0f640ee58e1a6dc" name="a1363daf8cf6b563ec0f640ee58e1a6dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1363daf8cf6b563ec0f640ee58e1a6dc">&#9670;&#160;</a></span>operator=()</h2>
+<a id="a34d4aa78487c5c915ff55dbc7ed5bb24" name="a34d4aa78487c5c915ff55dbc7ed5bb24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34d4aa78487c5c915ff55dbc7ed5bb24">&#9670;&#160;</a></span>operator=() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;Composable Source, class... Indexes&gt; </div>
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;Composable Expression&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html">tannic::expression::Slice</a>&lt; Source, Indexes &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a>&#160;</td>
+          <td class="paramname"><em>expression</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1363daf8cf6b563ec0f640ee58e1a6dc" name="a1363daf8cf6b563ec0f640ee58e1a6dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1363daf8cf6b563ec0f640ee58e1a6dc">&#9670;&#160;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Composable Source, class... Indexes&gt; </div>
+<div class="memtemplate">
+template&lt;Arithmetic T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html">tannic::expression::Slice</a>&lt; Source, Indexes &gt;::operator= </td>
@@ -479,28 +441,6 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Assigns a scalar value to all elements in the slice. </p>
-<p>This method writes the given value into every element referenced by the slice. If the slice has rank 0 (scalar), it directly assigns the value to the single element. If the slice has higher rank, it iterates over all elements in the slice and assigns the value.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">T</td><td>A type convertible to the underlying element type of the tensor. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>The scalar value to assign.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>The value is cast to the slice's runtime <code>dtype_</code> before assignment. </dd>
-<dd>
-This operation modifies the underlying tensor/expression in-place.</dd></dl>
-<div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> tensor({3, 3}); tensor.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
-<div class="line">tensor[{0,2}][1] = 42; <span class="comment">// assign 42 to elements in rows 0..1, column 1</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition</b> tensor.hpp:99</div></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a3158b2d19ac07f894990b5e1014cc67c"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Environment environment=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
-</div><!-- fragment --> 
 </div>
 </div>
 <a id="a9e653d07b5d7008251b318f05552911a" name="a9e653d07b5d7008251b318f05552911a"></a>
@@ -511,7 +451,7 @@ This operation modifies the underlying tensor/expression in-place.</dd></dl>
 <div class="memtemplate">
 template&lt;Composable Source, class... Indexes&gt; </div>
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;Arithmetic T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html">tannic::expression::Slice</a>&lt; Source, Indexes &gt;::operator== </td>
@@ -523,30 +463,6 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Compares a scalar value to the element in a rank-0 slice. </p>
-<p>This method checks if the scalar stored in the slice equals the given value. It only works for rank-0 (scalar) slices; otherwise, an assertion will fail.</p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">T</td><td>A type convertible to the underlying element type of the tensor. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>The scalar value to compare against. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the value matches the element in the slice, <code>false</code> otherwise.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>Will assert if called on a slice with <code><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html#a9bb289f510cb0da3d400293a265bd800" title="Returns the number of dimensions in this slice.">rank()</a> &gt; 0</code>.</dd></dl>
-<div class="fragment"><div class="line"><span class="keywordflow">if</span> (tensor[1][2] == 5) {</div>
-<div class="line">    <span class="comment">// Element at (1, 2) is equal to 5</span></div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="keywordflow">else</span> <span class="keywordflow">if</span>(tensor[1,1] == 3) {</div>
-<div class="line">     <span class="comment">// Element at (1,1) is equal to 3</span></div>
-<div class="line">}</div>
-</div><!-- fragment --> 
 </div>
 </div>
 <a id="aaf1d76bb5095e8708b0e4beffc051b97" name="aaf1d76bb5095e8708b0e4beffc051b97"></a>
@@ -577,15 +493,6 @@ template&lt;Integral Index&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Index into the slice with an integer. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">index</td><td>The index into the current slice's first dimension. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A new <code><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html" title="Expression template representing a tensor slice or subview.">Slice</a></code> object with the updated index tuple. </dd></dl>
-
 </div>
 </div>
 <a id="a4fbfd61857c6b31365fc5875e834899c" name="a4fbfd61857c6b31365fc5875e834899c"></a>
@@ -614,15 +521,6 @@ template&lt;Composable Source, class... Indexes&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Index into the slice with a range. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">range</td><td>The range to select from the current slice's first dimension. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A new <code><a class="el" href="../../dd/d0f/classtannic_1_1expression_1_1Slice.html" title="Expression template representing a tensor slice or subview.">Slice</a></code> object with the updated index tuple. </dd></dl>
-
 </div>
 </div>
 <a id="a9bb289f510cb0da3d400293a265bd800" name="a9bb289f510cb0da3d400293a265bd800"></a>
@@ -649,11 +547,6 @@ template&lt;Composable Source, class... Indexes&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Returns the number of dimensions in this slice. </p>
-<p>The rank is computed after applying all indexing operations (ranges and/or integer indices) to the source tensor. Integral index removes the corresponding dimension from the rank while range based slices may preserve it.</p>
-<dl class="section return"><dt>Returns</dt><dd>The rank (number of dimensions) of the slice.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd><a class="el" href="../../d8/da0/classtannic_1_1Scalar.html">Scalar</a> slices have rank 0. </dd></dl>
 
 </div>
 </div>
@@ -682,28 +575,6 @@ template&lt;Composable Source, class... Indexes&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Returns the shape (size in each dimension) of this slice. </p>
-<p>The shape is derived from the source tensor after applying the given indexes according to these rules:</p><ol type="1">
-<li>For each index in the index tuple:<ul>
-<li>If it's a range (<code><a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html" title="Represents a half-open interval [start, stop) for slicing.">indexing::Range</a></code>):<ul>
-<li>The dimension size becomes <code><a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#ab25842dedc9b4f9987153cd0b4750872">range.stop</a> - <a class="el" href="../../de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80">range.start</a></code></li>
-<li>This dimension is preserved in the output shape</li>
-</ul>
-</li>
-<li>If it's an integer index:<ul>
-<li>The dimension is eliminated (not included in output shape)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Any remaining dimensions from the source tensor (after processing all indices) are preserved with their original sizes</li>
-</ol>
-<p>Example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X({4,3,2});  <span class="comment">// shape [4,3,2]</span></div>
-<div class="line"><span class="keyword">auto</span> slice = X[<a class="code hl_typedef" href="../../d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024">range</a>(1,3)][1]; </div>
-<div class="line"><span class="comment">// Resulting shape: [2, 2] (from range(1,3) and preserving last dimension)</span></div>
-<div class="ttc" id="anamespacetannic_html_affef8090e8f7ba383c67e15135664024"><div class="ttname"><a href="../../d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024">tannic::range</a></div><div class="ttdeci">indexing::Range range</div><div class="ttdoc">Convenience alias for tannic::indexing::Range.</div><div class="ttdef"><b>Definition</b> indexing.hpp:139</div></div>
-</div><!-- fragment --><dl class="section return"><dt>Returns</dt><dd>A constant reference to the <code><a class="el" href="../../db/da7/classtannic_1_1Shape.html" title="Represents the shape (dimensions) of an tensor-like expression.">Shape</a></code> object describing this slice. </dd></dl>
-
 </div>
 </div>
 <a id="ae404ecb0e0b72a642499a387ec2e708b" name="ae404ecb0e0b72a642499a387ec2e708b"></a>
@@ -730,24 +601,6 @@ template&lt;Composable Source, class... Indexes&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Returns the memory strides for this slice. </p>
-<p><a class="el" href="../../dc/deb/classtannic_1_1Strides.html" title="Represents the memory strides associated with a tensor shape.">Strides</a> represent the number of elements to skip in each dimension to move to the next element along that axis. They are computed as:</p><ol type="1">
-<li>For each index in the tuple:<ul>
-<li>If it's a range:<ul>
-<li>The stride for this dimension is copied from the source tensor</li>
-</ul>
-</li>
-<li>If it's an integer index:<ul>
-<li>No stride is recorded (dimension is eliminated)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Remaining dimensions keep their original strides</li>
-</ol>
-<p>The strides are always computed in elements (not bytes) and are relative to the original tensor's memory layout.</p>
-<dl class="section return"><dt>Returns</dt><dd>A constant reference to the <code><a class="el" href="../../dc/deb/classtannic_1_1Strides.html" title="Represents the memory strides associated with a tensor shape.">Strides</a></code> object for this slice. </dd></dl>
 
 </div>
 </div>

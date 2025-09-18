@@ -75,9 +75,61 @@ void Tensor::copy(Tensor const& other) {
     Callback callback(cpu::cpy, cuda::cpy); 
     callback(other, *this);
 }
+  
+/*
+TODO: Refactor this!
+*/
+Tensor Tensor::to(Environment const& environment) const { 
+    if (std::holds_alternative<Host>(this->environment())) {   
+        Tensor output(dtype(), shape(), strides());
+        
+        if (std::holds_alternative<Device>(environment)) { 
+            output.initialize(environment); 
+            const tensor_t* src = reinterpret_cast<node_t*>(this->id())->target;
+            tensor_t* dst = reinterpret_cast<node_t*>(output.id())->target;
+            device_t* dvc = &dst->environment.resource.device;
+            stream_t stream = pop_stream(dvc);
+            cuda::copy(src, dst, nbytes(), stream);
+            put_stream(dvc, stream); 
+            return output;
+        }  
+        
+        else {
+            output.initialize(environment);
+            const tensor_t* src = reinterpret_cast<node_t*>(this->id())->target;
+            tensor_t* dst = reinterpret_cast<node_t*>(output.id())->target;
+            device_t* dvc = &dst->environment.resource.device;
+            stream_t stream = pop_stream(dvc);
+            cuda::copy(src, dst, nbytes(), stream);
+            put_stream(dvc, stream); 
+            return output;
+        }
+    } 
 
-Tensor Tensor::to(Environment const& environment) const {
-    
+    else {
+        Tensor output(dtype(), shape(), strides());
+        if (std::holds_alternative<Host>(environment)) {  
+            output.initialize(environment);
+            const tensor_t* src = reinterpret_cast<node_t*>(id())->target;
+            tensor_t* dst = reinterpret_cast<node_t*>(output.id())->target;
+            device_t* dvc = &dst->environment.resource.device;
+            stream_t stream = pop_stream(dvc);
+            cuda::copy(src, dst, nbytes(), stream);
+            put_stream(dvc, stream); 
+            return output;
+        } 
+        
+        else {  
+            output.initialize(environment);
+            const tensor_t* src = reinterpret_cast<node_t*>(id())->target;
+            tensor_t* dst = reinterpret_cast<node_t*>(output.id())->target;
+            device_t* dvc = &dst->environment.resource.device;
+            stream_t stream = pop_stream(dvc);
+            cuda::copy(src, dst, nbytes(), stream);
+            put_stream(dvc, stream); 
+            return output;
+        }
+    }
 }
 
 } // namespace tannic

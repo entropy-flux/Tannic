@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::function::Tan",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d2/d15/structtannic_1_1function_1_1Tan.html",tooltip="Functor tangent Applies element-wise tangent to tensor elements (radians)"];
+  Node0 [id="Node000000",label="tannic::Trait\< Imaginary \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d1/d96/structtannic_1_1Trait.html",tooltip=" "];
 }

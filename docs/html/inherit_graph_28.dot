@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::expression\l::Permutation\< Source,\l Indexes \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d0/d42/classtannic_1_1expression_1_1Permutation.html",tooltip="Expression template for reordering tensor dimensions according to a specified permutation."];
+  Node0 [id="Node000000",label="tannic::expression\l::Slice\< Source, Indexes \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$dd/d0f/classtannic_1_1expression_1_1Slice.html",tooltip=" "];
 }

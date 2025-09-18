@@ -38,7 +38,7 @@ digraph "include/tannic/limits.hpp"
   Node16 [id="Node000016",label="iterator",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node14 -> Node2 [id="edge17_Node000014_Node000002",color="steelblue1",style="solid",tooltip=" "];
   Node8 -> Node17 [id="edge18_Node000008_Node000017",color="steelblue1",style="solid",tooltip=" "];
-  Node17 [id="Node000017",label="indexing.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/d1d/indexing_8hpp.html",tooltip="Utilities for index normalization and slicing ranges in the Tannic Tensor Library."];
+  Node17 [id="Node000017",label="indexing.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/d1d/indexing_8hpp.html",tooltip=" "];
   Node17 -> Node11 [id="edge19_Node000017_Node000011",color="steelblue1",style="solid",tooltip=" "];
   Node17 -> Node14 [id="edge20_Node000017_Node000014",color="steelblue1",style="solid",tooltip=" "];
   Node17 -> Node18 [id="edge21_Node000017_Node000018",color="steelblue1",style="solid",tooltip=" "];

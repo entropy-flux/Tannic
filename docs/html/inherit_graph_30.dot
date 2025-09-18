@@ -5,5 +5,19 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::expression\l::Realification\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$db/d96/classtannic_1_1expression_1_1Realification.html",tooltip="Creates a real-valued view of complex tensor data."];
+  Node0 [id="Node000000",label="tannic::expression\l::View\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d2/d9f/classtannic_1_1expression_1_1View.html",tooltip=" "];
+  Node0 -> Node1 [id="edge11_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="tannic::expression\l::Expansion\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d0/d10/classtannic_1_1expression_1_1Expansion.html",tooltip=" "];
+  Node0 -> Node2 [id="edge12_Node000000_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="tannic::expression\l::Flatten\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d1/dbe/classtannic_1_1expression_1_1Flatten.html",tooltip=" "];
+  Node0 -> Node3 [id="edge13_Node000000_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="tannic::expression\l::Permutation\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d0/d42/classtannic_1_1expression_1_1Permutation.html",tooltip=" "];
+  Node0 -> Node4 [id="edge14_Node000000_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="tannic::expression\l::Reshape\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d2/dd8/classtannic_1_1expression_1_1Reshape.html",tooltip=" "];
+  Node0 -> Node5 [id="edge15_Node000000_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="tannic::expression\l::Squeeze\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/dca/classtannic_1_1expression_1_1Squeeze.html",tooltip=" "];
+  Node0 -> Node6 [id="edge16_Node000000_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="tannic::expression\l::Transpose\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d0/dd9/classtannic_1_1expression_1_1Transpose.html",tooltip=" "];
+  Node0 -> Node7 [id="edge17_Node000000_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="tannic::expression\l::Unsqueeze\< Source \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html",tooltip=" "];
 }

@@ -95,23 +95,14 @@ $(document).ready(function(){initNavTree('db/d13/concepttannic_1_1Functional.htm
 </div><!--header-->
 <div class="contents">
 
-<p>Concept for unary mathematical function operations.  
-<a href="../../db/d13/concepttannic_1_1Functional.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="../../d7/dd8/concepts_8hpp_source.html">concepts.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Function&gt;</div>
 <div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="../../db/d13/concepttannic_1_1Functional.html">tannic::Functional</a> =  <span class="keyword">requires</span>(Function function, <span class="keyword">const</span> Tensor&amp; input, Tensor&amp; output) {</div>
 <div class="line">    { function(input, output) } -&gt; std::same_as&lt;void&gt;;</div>
 <div class="line">}</div>
-<div class="ttc" id="aconcepttannic_1_1Functional_html"><div class="ttname"><a href="../../db/d13/concepttannic_1_1Functional.html">tannic::Functional</a></div><div class="ttdoc">Concept for unary mathematical function operations.</div><div class="ttdef"><b>Definition</b> concepts.hpp:125</div></div>
-</div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Concept for unary mathematical function operations. </p>
-<p>Specifies requirements for types that represent mathematical function operations:</p><ul>
-<li>Must provide a call operator that performs element-wise transformation</li>
-</ul>
-<p>Used to constrain template parameters for mathematical function operations. </p>
-</div></div><!-- contents -->
+<div class="ttc" id="aconcepttannic_1_1Functional_html"><div class="ttname"><a href="../../db/d13/concepttannic_1_1Functional.html">tannic::Functional</a></div><div class="ttdef"><b>Definition</b> concepts.hpp:62</div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

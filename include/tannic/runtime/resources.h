@@ -39,8 +39,7 @@ enum environment {
 
 enum host {
     PAGEABLE = 1 << 0, 
-    PINNED   = 1 << 1, 
-    MAPPED   = 1 << 2      
+    PINNED   = 1 << 1  
 }; 
  
 struct host_t {
@@ -52,7 +51,7 @@ struct device_t {
 }; 
 
 struct environment_t { 
-    enum environment environment;
+    enum environment kind;
     union {
         struct host_t host;
         struct device_t device;

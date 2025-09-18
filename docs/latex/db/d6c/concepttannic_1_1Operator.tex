@@ -2,11 +2,6 @@
 \hypertarget{concepttannic_1_1Operator}{}\label{concepttannic_1_1Operator}\index{tannic::Operator@{tannic::Operator}}
 
 
-Concept defining requirements for tensor operation types.  
-
-
-
-
 {\ttfamily \#include $<$concepts.\+hpp$>$}
 
 \doxysubsection{Concept definition}
@@ -19,23 +14,3 @@ Concept defining requirements for tensor operation types.
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-
-
-\doxysubsection{Detailed Description}
-Concept defining requirements for tensor operation types. 
-
-This concept specifies the interface that all tensor operators must implement\+:
-\begin{DoxyItemize}
-\item Type promotion rules between operands
-\item Shape broadcasting behavior
-\end{DoxyItemize}
-
-A type satisfies the Operator concept if it provides\+:
-\begin{DoxyEnumerate}
-\item A static {\ttfamily promote} method that determines the result type from two input types
-\item A static {\ttfamily broadcast} method that computes the output shape from two input shapes
-\end{DoxyEnumerate}
-
-\begin{DoxySeeAlso}{See also}
-Operations.\+hpp (tensor operations) 
-\end{DoxySeeAlso}

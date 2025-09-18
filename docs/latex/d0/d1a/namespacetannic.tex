@@ -24,6 +24,8 @@ class \mbox{\hyperlink{classtannic_1_1Buffer}{Buffer}}
 \begin{DoxyCompactList}\small\item\em Managed memory buffer with explicit ownership. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Callback}{Callback}}
 \item 
+class \mbox{\hyperlink{classtannic_1_1Context}{Context}}
+\item 
 class \mbox{\hyperlink{classtannic_1_1Device}{Device}}
 \begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1Device}{Device} memory domain. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Devices}{Devices}}
@@ -51,7 +53,7 @@ class \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}
 class \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}
 \begin{DoxyCompactList}\small\item\em Represents the memory strides associated with a tensor shape. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}
-\begin{DoxyCompactList}\small\item\em A multidimensional, strided tensor data structure. \end{DoxyCompactList}\item 
+\item 
 struct \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Concepts}
@@ -60,23 +62,21 @@ struct \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}
 concept \mbox{\hyperlink{concepttannic_1_1Composable}{Composable}}
 \item 
 concept \mbox{\hyperlink{concepttannic_1_1Operator}{Operator}}
-\begin{DoxyCompactList}\small\item\em Concept defining requirements for tensor operation types. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Functional}{Functional}}
-\begin{DoxyCompactList}\small\item\em Concept for unary mathematical function operations. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Iterable}{Iterable}}
-\begin{DoxyCompactList}\small\item\em Requires a type to be iterable via {\ttfamily std\+::begin} and {\ttfamily std\+::end}. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Iterator}{Iterator}}
-\begin{DoxyCompactList}\small\item\em Requires a type to satisfy the C++20 {\ttfamily std\+::input\+\_\+iterator} concept. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Integral}{Integral}}
-\begin{DoxyCompactList}\small\item\em Requires a type to be an integral type (e.\+g., {\ttfamily int}, {\ttfamily std\+::size\+\_\+t}). \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Arithmetic}{Arithmetic}}
-\begin{DoxyCompactList}\small\item\em The arithmetic concept in C++ defines a type constraint that evaluates to true for standard arithmetic types (std\+::is\+\_\+arithmetic\+\_\+v$<$\+T$>$), as well as for float16\+\_\+t, bfloat16\+\_\+t, and std\+::complex$<$float$>$ or std\+::complex$<$double$>$. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Assignable}{Assignable}}
-\begin{DoxyCompactList}\small\item\em Concept for types that can assign values. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Comparable}{Comparable}}
-\begin{DoxyCompactList}\small\item\em Concept for types that can compare their value. \end{DoxyCompactList}\item 
-concept \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}
-\begin{DoxyCompactList}\small\item\em Defines the core protocol for all expression-\/like types in the Tannic Tensor Library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -233,7 +233,7 @@ Returns the string name of a given tensor data type.
 \begin{DoxyReturn}{Returns}
 Human-\/readable type name ("{}none"{} for invalid types)
 \end{DoxyReturn}
-\hypertarget{namespacetannic_autotoc_md63}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md63}
+\hypertarget{namespacetannic_autotoc_md30}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md30}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{std::cout\ <<\ \mbox{\hyperlink{namespacetannic_a1f6a29013277d9209efa113453cf0b2e}{dnameof}}(int32)\ <<\ std::endl\ \ \ \textcolor{comment}{//\ prints\ "{}int32"{}}}
@@ -266,7 +266,7 @@ Size of the type in bytes (0 for {\ttfamily none})
 \item {\ttfamily complex128} returns 16 (2 × float64).
 \end{DoxyItemize}
 \end{DoxyNote}
-\hypertarget{namespacetannic_autotoc_md61}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md61}
+\hypertarget{namespacetannic_autotoc_md28}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md28}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof}}(float32);\ \ \textcolor{comment}{//\ returns\ 4}}
@@ -371,7 +371,7 @@ Total size in bytes required.
 \item For all other types, result is {\ttfamily \doxylink{namespacetannic_aee5ef48cb75e37f65cc11ef67fbb9d25}{dsizeof(type)} \texorpdfstring{$\ast$}{*} nelements}.
 \end{DoxyItemize}
 \end{DoxyNote}
-\hypertarget{namespacetannic_autotoc_md62}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md62}
+\hypertarget{namespacetannic_autotoc_md29}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_autotoc_md29}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\mbox{\hyperlink{namespacetannic_a9e047ef72e50f442b8fd458213bbdc04}{nbytesof}}(float32,\ 10);\ \ \ \textcolor{comment}{//\ returns\ 40}}
@@ -383,13 +383,13 @@ Total size in bytes required.
 \index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!tannic@{tannic}}
 \doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
-{\footnotesize\ttfamily std\+::ostream \& tannic\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::ostream \& tannic\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&}]{shape }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacetannic_a78e6118242dbf100a05da89b391dedb4}\label{namespacetannic_a78e6118242dbf100a05da89b391dedb4} 
 \index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!tannic@{tannic}}
 \doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
-{\footnotesize\ttfamily std\+::ostream \& tannic\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&}]{strides }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily std\+::ostream \& tannic\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{\mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \&}]{strides }\end{DoxyParamCaption})}
 
 \Hypertarget{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9}\label{namespacetannic_abd01ed73f7e0facffaec36ce3e22cfd9} 
 \index{tannic@{tannic}!operator$<$$<$@{operator$<$$<$}}

@@ -1,8 +1,9 @@
 var views_8hpp =
 [
-    [ "tannic::expression::View< Source >", "d2/d9f/classtannic_1_1expression_1_1View.html", "d2/d9f/classtannic_1_1expression_1_1View" ],
+    [ "tannic::expression::View< Source >", "d2/d9f/classtannic_1_1expression_1_1View.html", null ],
+    [ "tannic::expression::Reshape< Source >", "d2/dd8/classtannic_1_1expression_1_1Reshape.html", "d2/dd8/classtannic_1_1expression_1_1Reshape" ],
     [ "tannic::expression::Transpose< Source >", "d0/dd9/classtannic_1_1expression_1_1Transpose.html", "d0/dd9/classtannic_1_1expression_1_1Transpose" ],
-    [ "tannic::expression::Permutation< Source, Indexes >", "d0/d42/classtannic_1_1expression_1_1Permutation.html", "d0/d42/classtannic_1_1expression_1_1Permutation" ],
+    [ "tannic::expression::Permutation< Source >", "d0/d42/classtannic_1_1expression_1_1Permutation.html", "d0/d42/classtannic_1_1expression_1_1Permutation" ],
     [ "tannic::expression::Expansion< Source >", "d0/d10/classtannic_1_1expression_1_1Expansion.html", "d0/d10/classtannic_1_1expression_1_1Expansion" ],
     [ "tannic::expression::Squeeze< Source >", "d7/dca/classtannic_1_1expression_1_1Squeeze.html", "d7/dca/classtannic_1_1expression_1_1Squeeze" ],
     [ "tannic::expression::Unsqueeze< Source >", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze" ],

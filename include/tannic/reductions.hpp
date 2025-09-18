@@ -272,6 +272,7 @@ constexpr auto sum(Source&& source, int axis, bool keepdim = false) {
 
 /**
  * @brief Creates a mean reduction.
+ * @param source
  * @param axis Axis to reduce.
  * @param keepdim If `true`, keeps reduced axis as size 1.
  *

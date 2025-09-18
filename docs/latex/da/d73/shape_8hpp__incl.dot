@@ -35,7 +35,7 @@ digraph "include/tannic/shape.hpp"
   Node11 -> Node15 [id="edge37_Node000011_Node000015",color="steelblue1",style="solid",tooltip=" "];
   Node15 [id="Node000015",label="runtime/types.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node16 [id="edge38_Node000001_Node000016",color="steelblue1",style="solid",tooltip=" "];
-  Node16 [id="Node000016",label="indexing.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/d1d/indexing_8hpp.html",tooltip="Utilities for index normalization and slicing ranges in the Tannic Tensor Library."];
+  Node16 [id="Node000016",label="indexing.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/d1d/indexing_8hpp.html",tooltip=" "];
   Node16 -> Node5 [id="edge39_Node000016_Node000005",color="steelblue1",style="solid",tooltip=" "];
   Node16 -> Node8 [id="edge40_Node000016_Node000008",color="steelblue1",style="solid",tooltip=" "];
   Node16 -> Node17 [id="edge41_Node000016_Node000017",color="steelblue1",style="solid",tooltip=" "];

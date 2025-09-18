@@ -4,7 +4,7 @@ digraph "include/tannic/convolutions.hpp"
   bgcolor="transparent";
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
-  Node1 [id="Node000001",label="include/tannic/convolutions.hpp",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Defines tensor convolutional operations."];
+  Node1 [id="Node000001",label="include/tannic/convolutions.hpp",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="tuple",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
@@ -49,7 +49,7 @@ digraph "include/tannic/convolutions.hpp"
   Node19 [id="Node000019",label="ostream",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node17 -> Node6 [id="edge25_Node000017_Node000006",color="steelblue1",style="solid",tooltip=" "];
   Node17 -> Node20 [id="edge26_Node000017_Node000020",color="steelblue1",style="solid",tooltip=" "];
-  Node20 [id="Node000020",label="indexing.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/d1d/indexing_8hpp.html",tooltip="Utilities for index normalization and slicing ranges in the Tannic Tensor Library."];
+  Node20 [id="Node000020",label="indexing.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/d1d/indexing_8hpp.html",tooltip=" "];
   Node20 -> Node5 [id="edge27_Node000020_Node000005",color="steelblue1",style="solid",tooltip=" "];
   Node20 -> Node6 [id="edge28_Node000020_Node000006",color="steelblue1",style="solid",tooltip=" "];
   Node20 -> Node21 [id="edge29_Node000020_Node000021",color="steelblue1",style="solid",tooltip=" "];
@@ -59,7 +59,7 @@ digraph "include/tannic/convolutions.hpp"
   Node21 -> Node12 [id="edge31_Node000021_Node000012",color="steelblue1",style="solid",tooltip=" "];
   Node17 -> Node21 [id="edge32_Node000017_Node000021",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node23 [id="edge33_Node000001_Node000023",color="steelblue1",style="solid",tooltip=" "];
-  Node23 [id="Node000023",label="tensor.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d3/d8b/tensor_8hpp.html",tooltip="Core multidimensional tensor class for the Tannic Tensor Library."];
+  Node23 [id="Node000023",label="tensor.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d3/d8b/tensor_8hpp.html",tooltip=" "];
   Node23 -> Node10 [id="edge34_Node000023_Node000010",color="steelblue1",style="solid",tooltip=" "];
   Node23 -> Node24 [id="edge35_Node000023_Node000024",color="steelblue1",style="solid",tooltip=" "];
   Node24 [id="Node000024",label="memory",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
@@ -105,7 +105,7 @@ digraph "include/tannic/convolutions.hpp"
   Node33 -> Node26 [id="edge66_Node000033_Node000026",color="steelblue1",style="solid",tooltip=" "];
   Node33 -> Node20 [id="edge67_Node000033_Node000020",color="steelblue1",style="solid",tooltip=" "];
   Node23 -> Node34 [id="edge68_Node000023_Node000034",color="steelblue1",style="solid",tooltip=" "];
-  Node34 [id="Node000034",label="views.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$de/d49/views_8hpp.html",tooltip="Implements views for tensors in the Tannic Tensor Library."];
+  Node34 [id="Node000034",label="views.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$de/d49/views_8hpp.html",tooltip=" "];
   Node34 -> Node25 [id="edge69_Node000034_Node000025",color="steelblue1",style="solid",tooltip=" "];
   Node34 -> Node35 [id="edge70_Node000034_Node000035",color="steelblue1",style="solid",tooltip=" "];
   Node35 [id="Node000035",label="algorithm",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
@@ -119,7 +119,7 @@ digraph "include/tannic/convolutions.hpp"
   Node34 -> Node6 [id="edge77_Node000034_Node000006",color="steelblue1",style="solid",tooltip=" "];
   Node34 -> Node21 [id="edge78_Node000034_Node000021",color="steelblue1",style="solid",tooltip=" "];
   Node23 -> Node37 [id="edge79_Node000023_Node000037",color="steelblue1",style="solid",tooltip=" "];
-  Node37 [id="Node000037",label="operations.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d6/d00/operations_8hpp.html",tooltip="Defines expression templates tensor aritmetic operations."];
+  Node37 [id="Node000037",label="operations.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d6/d00/operations_8hpp.html",tooltip=" "];
   Node37 -> Node25 [id="edge80_Node000037_Node000025",color="steelblue1",style="solid",tooltip=" "];
   Node37 -> Node16 [id="edge81_Node000037_Node000016",color="steelblue1",style="solid",tooltip=" "];
   Node37 -> Node6 [id="edge82_Node000037_Node000006",color="steelblue1",style="solid",tooltip=" "];
@@ -147,7 +147,7 @@ digraph "include/tannic/convolutions.hpp"
   Node40 -> Node17 [id="edge101_Node000040_Node000017",color="steelblue1",style="solid",tooltip=" "];
   Node40 -> Node26 [id="edge102_Node000040_Node000026",color="steelblue1",style="solid",tooltip=" "];
   Node23 -> Node41 [id="edge103_Node000023_Node000041",color="steelblue1",style="solid",tooltip=" "];
-  Node41 [id="Node000041",label="complex.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$db/dd8/complex_8hpp.html",tooltip="Complex number operations for the Tannic Tensor Library."];
+  Node41 [id="Node000041",label="complex.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$db/dd8/complex_8hpp.html",tooltip=" "];
   Node41 -> Node6 [id="edge104_Node000041_Node000006",color="steelblue1",style="solid",tooltip=" "];
   Node41 -> Node9 [id="edge105_Node000041_Node000009",color="steelblue1",style="solid",tooltip=" "];
   Node41 -> Node17 [id="edge106_Node000041_Node000017",color="steelblue1",style="solid",tooltip=" "];
@@ -157,17 +157,19 @@ digraph "include/tannic/convolutions.hpp"
   Node23 -> Node42 [id="edge110_Node000023_Node000042",color="steelblue1",style="solid",tooltip=" "];
   Node42 [id="Node000042",label="graph.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d9/de9/graph_8hpp.html",tooltip=" "];
   Node42 -> Node11 [id="edge111_Node000042_Node000011",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node21 [id="edge112_Node000001_Node000021",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node43 [id="edge113_Node000001_Node000043",color="steelblue1",style="solid",tooltip=" "];
-  Node43 [id="Node000043",label="transformations.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d8/d71/transformations_8hpp.html",tooltip="Defines tensor transformation operations."];
-  Node43 -> Node2 [id="edge114_Node000043_Node000002",color="steelblue1",style="solid",tooltip=" "];
-  Node43 -> Node3 [id="edge115_Node000043_Node000003",color="steelblue1",style="solid",tooltip=" "];
-  Node43 -> Node4 [id="edge116_Node000043_Node000004",color="steelblue1",style="solid",tooltip=" "];
-  Node43 -> Node5 [id="edge117_Node000043_Node000005",color="steelblue1",style="solid",tooltip=" "];
-  Node43 -> Node6 [id="edge118_Node000043_Node000006",color="steelblue1",style="solid",tooltip=" "];
-  Node43 -> Node9 [id="edge119_Node000043_Node000009",color="steelblue1",style="solid",tooltip=" "];
-  Node43 -> Node15 [id="edge120_Node000043_Node000015",color="steelblue1",style="solid",tooltip=" "];
-  Node43 -> Node17 [id="edge121_Node000043_Node000017",color="steelblue1",style="solid",tooltip=" "];
-  Node43 -> Node23 [id="edge122_Node000043_Node000023",color="steelblue1",style="solid",tooltip=" "];
-  Node43 -> Node21 [id="edge123_Node000043_Node000021",color="steelblue1",style="solid",tooltip=" "];
+  Node23 -> Node43 [id="edge112_Node000023_Node000043",color="steelblue1",style="solid",tooltip=" "];
+  Node43 [id="Node000043",label="context.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d2/da3/context_8hpp.html",tooltip=" "];
+  Node1 -> Node21 [id="edge113_Node000001_Node000021",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node44 [id="edge114_Node000001_Node000044",color="steelblue1",style="solid",tooltip=" "];
+  Node44 [id="Node000044",label="transformations.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d8/d71/transformations_8hpp.html",tooltip=" "];
+  Node44 -> Node2 [id="edge115_Node000044_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node44 -> Node3 [id="edge116_Node000044_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node44 -> Node4 [id="edge117_Node000044_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node44 -> Node5 [id="edge118_Node000044_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node44 -> Node6 [id="edge119_Node000044_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node44 -> Node9 [id="edge120_Node000044_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node44 -> Node15 [id="edge121_Node000044_Node000015",color="steelblue1",style="solid",tooltip=" "];
+  Node44 -> Node17 [id="edge122_Node000044_Node000017",color="steelblue1",style="solid",tooltip=" "];
+  Node44 -> Node23 [id="edge123_Node000044_Node000023",color="steelblue1",style="solid",tooltip=" "];
+  Node44 -> Node21 [id="edge124_Node000044_Node000021",color="steelblue1",style="solid",tooltip=" "];
 }

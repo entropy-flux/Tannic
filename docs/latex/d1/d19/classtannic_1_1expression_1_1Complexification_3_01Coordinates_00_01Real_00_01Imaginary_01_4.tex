@@ -8,16 +8,16 @@
 \begin{DoxyCompactItemize}
 \item 
 constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_ab6247b4de7a0d49d82072b52a3386cb0}{Complexification}} (typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Real $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a765ddfa758f053ed6b199f41369e35dc}{real}}, typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Imaginary $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a0367d23806cd0e74d0c40a39a7834364}{imaginary}})
-\begin{DoxyCompactList}\small\item\em Returns the complex dtype of the combined tensor. \end{DoxyCompactList}\item 
+\item 
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_acff24f7db0995fa5781b69fdfb1987a5}{dtype}} () const
-\begin{DoxyCompactList}\small\item\em Returns the complex dtype of the combined tensor. \end{DoxyCompactList}\item 
+\item 
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a2dabd85ac2d54dcc1d0ea7f5a45b41e3}{shape}} () const
-\begin{DoxyCompactList}\small\item\em Returns the shape of the complex tensor. \end{DoxyCompactList}\item 
+\item 
 constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a3af5b4191d9c7c0188a0d9268b2a5a20}{strides}} () const
-\begin{DoxyCompactList}\small\item\em Returns the strides of the complex tensor. \end{DoxyCompactList}\item 
+\item 
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a1903e8a9f6c09f90b12b5242e94938a7}{offset}} () const
-\begin{DoxyCompactList}\small\item\em Returns the offset of the complex expression. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a81df163d1fe467b3e424897efb940171}{forward}} () const
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a33a3b2e1be6967a9572f369e434e2894}{forward}} (\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&context) const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -38,13 +38,6 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic
 
 
 
-Returns the complex dtype of the combined tensor. 
-
-\begin{DoxyReturn}{Returns}
-complex128 if either input is float64, otherwise complex64 
-\end{DoxyReturn}
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_acff24f7db0995fa5781b69fdfb1987a5}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_acff24f7db0995fa5781b69fdfb1987a5} 
 \index{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$@{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$}!dtype@{dtype}}
@@ -53,19 +46,12 @@ complex128 if either input is float64, otherwise complex64
 {\footnotesize\ttfamily template$<$class Coordinates , Composable Real, Composable Imaginary$>$ \\
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Real, Imaginary $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-
-
-Returns the complex dtype of the combined tensor. 
-
-\begin{DoxyReturn}{Returns}
-complex128 if either input is float64, otherwise complex64 
-\end{DoxyReturn}
-\Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a81df163d1fe467b3e424897efb940171}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a81df163d1fe467b3e424897efb940171} 
+\Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a33a3b2e1be6967a9572f369e434e2894}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a33a3b2e1be6967a9572f369e434e2894} 
 \index{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$@{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$@{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$class Coordinates , Composable Real, Composable Imaginary$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Real, Imaginary $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Real, Imaginary $>$\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&}]{context }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a1903e8a9f6c09f90b12b5242e94938a7}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a1903e8a9f6c09f90b12b5242e94938a7} 
 \index{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$@{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$}!offset@{offset}}
@@ -74,13 +60,6 @@ complex128 if either input is float64, otherwise complex64
 {\footnotesize\ttfamily template$<$class Coordinates , Composable Real, Composable Imaginary$>$ \\
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Real, Imaginary $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-
-
-Returns the offset of the complex expression. 
-
-\begin{DoxyReturn}{Returns}
-Since a new tensor is created the offset is 0. 
-\end{DoxyReturn}
 \Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a2dabd85ac2d54dcc1d0ea7f5a45b41e3}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a2dabd85ac2d54dcc1d0ea7f5a45b41e3} 
 \index{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$@{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$@{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$}}
@@ -88,18 +67,7 @@ Since a new tensor is created the offset is 0.
 {\footnotesize\ttfamily template$<$class Coordinates , Composable Real, Composable Imaginary$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Real, Imaginary $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-
-
-Returns the shape of the complex tensor. 
-
-\begin{DoxyReturn}{Returns}
-Same shape as input tensors
-\end{DoxyReturn}
-\hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_autotoc_md17}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_autotoc_md17}
-
-\begin{DoxyItemize}
-\item Real and imaginary tensors must have identical shapes 
-\end{DoxyItemize}\Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a3af5b4191d9c7c0188a0d9268b2a5a20}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a3af5b4191d9c7c0188a0d9268b2a5a20} 
+\Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a3af5b4191d9c7c0188a0d9268b2a5a20}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a3af5b4191d9c7c0188a0d9268b2a5a20} 
 \index{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$@{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$@{tannic::expression::Complexification$<$ Coordinates, Real, Imaginary $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
@@ -107,17 +75,6 @@ Same shape as input tensors
 constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Real, Imaginary $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
-
-Returns the strides of the complex tensor. 
-
-\begin{DoxyReturn}{Returns}
-Same strides as input tensors
-\end{DoxyReturn}
-\hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_autotoc_md18}{}\doxyparagraph{\texorpdfstring{Requirements\+:}{Requirements:}}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_autotoc_md18}
-
-\begin{DoxyItemize}
-\item Real and imaginary tensors must have identical strides 
-\end{DoxyItemize}
 
 \doxysubsection{Member Data Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a0367d23806cd0e74d0c40a39a7834364}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Real_00_01Imaginary_01_4_a0367d23806cd0e74d0c40a39a7834364} 

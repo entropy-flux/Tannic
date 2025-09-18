@@ -98,15 +98,11 @@ $(document).ready(function(){initNavTree('d0/dd9/classtannic_1_1expression_1_1Tr
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for transposing two dimensions of a tensor.  
- <a href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="../../de/d49/views_8hpp_source.html">views.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8a249c8137fb87b17025731e6315e17a" id="r_a8a249c8137fb87b17025731e6315e17a"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#a8a249c8137fb87b17025731e6315e17a">Transpose</a> (typename <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Source &gt;::Reference source, std::pair&lt; int, int &gt; dimensions)</td></tr>
-<tr class="memdesc:a8a249c8137fb87b17025731e6315e17a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a transposed view of the source tensor.  <br /></td></tr>
 <tr class="separator:a8a249c8137fb87b17025731e6315e17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cb47b2a9524225c53a91827422b0f10" id="r_a9cb47b2a9524225c53a91827422b0f10"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#a9cb47b2a9524225c53a91827422b0f10">dtype</a> () const</td></tr>
 <tr class="separator:a9cb47b2a9524225c53a91827422b0f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,25 +112,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a956cad9ae69fd7e7a4147565d5f3e712"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3784e6c4f79e9fcc21b9941aaac6cd79" id="r_a3784e6c4f79e9fcc21b9941aaac6cd79"><td class="memItemLeft" align="right" valign="top">std::ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#a3784e6c4f79e9fcc21b9941aaac6cd79">offset</a> () const</td></tr>
 <tr class="separator:a3784e6c4f79e9fcc21b9941aaac6cd79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a120a795cc81e1cf1be4e728d7f4c5936" id="r_a120a795cc81e1cf1be4e728d7f4c5936"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#a120a795cc81e1cf1be4e728d7f4c5936">forward</a> () const</td></tr>
-<tr class="separator:a120a795cc81e1cf1be4e728d7f4c5936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab916f366208a89d7bfd42cb5f25da6a3" id="r_ab916f366208a89d7bfd42cb5f25da6a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#ab916f366208a89d7bfd42cb5f25da6a3">forward</a> (<a class="el" href="../../d4/d73/classtannic_1_1Context.html">Context</a> const &amp;context) const</td></tr>
+<tr class="separator:ab916f366208a89d7bfd42cb5f25da6a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;Composable Source&gt;<br />
-class tannic::expression::Transpose&lt; Source &gt;</div><p><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for transposing two dimensions of a tensor. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Source</td><td>The expression or tensor type being transposed.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>The <code><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html" title="Expression template for transposing two dimensions of a tensor.">Transpose</a></code> view swaps the shape and strides of two dimensions without moving data. This is useful for reordering axes for operations like matrix multiplication.</p>
-<p>Example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2, 3});</div>
-<div class="line"><span class="keyword">auto</span> Y = <a class="code hl_function" href="../../d9/dd9/namespacetannic_1_1expression.html#ab43b77ed569cfeb4380abc2e6458aa00">transpose</a>(X, 0, 1); <span class="comment">// shape becomes (3, 2)</span></div>
-<div class="line"><span class="keyword">auto</span> Z = X.transpose(0, 1); <span class="comment">// oop syntax.</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition</b> tensor.hpp:99</div></div>
-<div class="ttc" id="anamespacetannic_1_1expression_html_ab43b77ed569cfeb4380abc2e6458aa00"><div class="ttname"><a href="../../d9/dd9/namespacetannic_1_1expression.html#ab43b77ed569cfeb4380abc2e6458aa00">tannic::expression::transpose</a></div><div class="ttdeci">constexpr auto transpose(Source &amp;&amp;source, int first, int second)</div><div class="ttdoc">Creates a transposed view of a tensor or expression by swapping two dimensions.</div><div class="ttdef"><b>Definition</b> views.hpp:855</div></div>
-</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8a249c8137fb87b17025731e6315e17a" name="a8a249c8137fb87b17025731e6315e17a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8a249c8137fb87b17025731e6315e17a">&#9670;&#160;</a></span>Transpose()</h2>
 
@@ -171,15 +152,6 @@ template&lt;Composable Source&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a transposed view of the source tensor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">source</td><td>Reference to the source expression or tensor. </td></tr>
-    <tr><td class="paramname">dimensions</td><td>A pair of dimension indices to swap. </td></tr>
-  </table>
-  </dd>
-</dl>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -207,13 +179,11 @@ template&lt;Composable Source&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The data type of the tensor elements.</dd></dl>
-<p>Transposing does not change the element type. This value is returned from the source expression's <code><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#a9cb47b2a9524225c53a91827422b0f10">dtype()</a></code>. </p>
 
 </div>
 </div>
-<a id="a120a795cc81e1cf1be4e728d7f4c5936" name="a120a795cc81e1cf1be4e728d7f4c5936"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a120a795cc81e1cf1be4e728d7f4c5936">&#9670;&#160;</a></span>forward()</h2>
+<a id="ab916f366208a89d7bfd42cb5f25da6a3" name="ab916f366208a89d7bfd42cb5f25da6a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab916f366208a89d7bfd42cb5f25da6a3">&#9670;&#160;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -223,7 +193,8 @@ template&lt;Composable Source&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html">tannic::expression::Transpose</a>&lt; Source &gt;::forward </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d4/d73/classtannic_1_1Context.html">Context</a> const &amp;&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -255,8 +226,6 @@ template&lt;Composable Source&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The byte offset of the transposed view from the start of the storage.</dd></dl>
-<p>This is taken directly from the source expression’s <code><a class="el" href="../../d0/dd9/classtannic_1_1expression_1_1Transpose.html#a3784e6c4f79e9fcc21b9941aaac6cd79">offset()</a></code> because transposing only changes how dimensions are indexed, not where the first element is stored. </p>
 
 </div>
 </div>
@@ -284,8 +253,6 @@ template&lt;Composable Source&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The shape of the transposed view.</dd></dl>
-<p>The shape is initially copied from the source tensor, then in the constructor the two specified dimensions are swapped. </p>
 
 </div>
 </div>
@@ -313,8 +280,6 @@ template&lt;Composable Source&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The strides of the transposed view.</dd></dl>
-<p><a class="el" href="../../dc/deb/classtannic_1_1Strides.html" title="Represents the memory strides associated with a tensor shape.">Strides</a> are copied from the source tensor in the constructor, and then the strides for the two swapped dimensions are exchanged to match the new layout in memory. </p>
 
 </div>
 </div>

@@ -8,16 +8,16 @@
 \begin{DoxyCompactItemize}
 \item 
 constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_ac9d1c88b57dd2a9637ee47b9e64c1464}{Complexification}} (\mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Source $>$\+::\+Reference \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_abfa0b7a4f4d84d1f430381fba6c99960}{source}})
-\begin{DoxyCompactList}\small\item\em Constructs complex view from interleaved data. \end{DoxyCompactList}\item 
+\item 
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a2fe6c4fda4d24839fbf8c5dc92ce5d30}{dtype}} () const
-\begin{DoxyCompactList}\small\item\em Returns the complex dtype of the view. \end{DoxyCompactList}\item 
+\item 
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_ad925deacdcee165092dc24996128c912}{shape}} () const
-\begin{DoxyCompactList}\small\item\em Returns the shape of the complex view. \end{DoxyCompactList}\item 
+\item 
 constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a95ab7232204af8292e8433e90ab75f3a}{strides}} () const
-\begin{DoxyCompactList}\small\item\em Returns the strides of the complex view. \end{DoxyCompactList}\item 
+\item 
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_ac479cc0c7f9c9e6fb647b71018cea284}{offset}} () const
-\begin{DoxyCompactList}\small\item\em Returns the offset of the view. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a5cfecbcdb0bcca9205f09709bdca36b0}{forward}} () const
+\item 
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_adf287655d26586afbd58bd4ad5b986e4}{forward}} (\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&context) const
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -36,15 +36,6 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic
 
 
 
-Constructs complex view from interleaved data. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em source} & \doxylink{classtannic_1_1Tensor}{Tensor} with alternating real/imaginary values \\
-\hline
-\end{DoxyParams}
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a2fe6c4fda4d24839fbf8c5dc92ce5d30}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a2fe6c4fda4d24839fbf8c5dc92ce5d30} 
 \index{tannic::expression::Complexification$<$ Coordinates, Source $>$@{tannic::expression::Complexification$<$ Coordinates, Source $>$}!dtype@{dtype}}
@@ -53,21 +44,12 @@ Constructs complex view from interleaved data.
 {\footnotesize\ttfamily template$<$class Coordinates , Composable Source$>$ \\
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Source $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-
-
-Returns the complex dtype of the view. 
-
-\begin{DoxyReturn}{Returns}
-complex64 if source was float32, complex128 if float64
-\end{DoxyReturn}
-\hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_autotoc_md13}{}\doxyparagraph{\texorpdfstring{Transformation Rule\+:}{Transformation Rule:}}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_autotoc_md13}
-float32 → complex64 ~\newline
- float64 → complex128 \Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a5cfecbcdb0bcca9205f09709bdca36b0}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a5cfecbcdb0bcca9205f09709bdca36b0} 
+\Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_adf287655d26586afbd58bd4ad5b986e4}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_adf287655d26586afbd58bd4ad5b986e4} 
 \index{tannic::expression::Complexification$<$ Coordinates, Source $>$@{tannic::expression::Complexification$<$ Coordinates, Source $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Complexification$<$ Coordinates, Source $>$@{tannic::expression::Complexification$<$ Coordinates, Source $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$class Coordinates , Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Source $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Source $>$\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&}]{context }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_ac479cc0c7f9c9e6fb647b71018cea284}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_ac479cc0c7f9c9e6fb647b71018cea284} 
 \index{tannic::expression::Complexification$<$ Coordinates, Source $>$@{tannic::expression::Complexification$<$ Coordinates, Source $>$}!offset@{offset}}
@@ -76,13 +58,6 @@ float32 → complex64 ~\newline
 {\footnotesize\ttfamily template$<$class Coordinates , Composable Source$>$ \\
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Source $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-
-
-Returns the offset of the view. 
-
-\begin{DoxyReturn}{Returns}
-Since the this class represents a view the offset is just the offset of the source. 
-\end{DoxyReturn}
 \Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_ad925deacdcee165092dc24996128c912}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_ad925deacdcee165092dc24996128c912} 
 \index{tannic::expression::Complexification$<$ Coordinates, Source $>$@{tannic::expression::Complexification$<$ Coordinates, Source $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::expression::Complexification$<$ Coordinates, Source $>$@{tannic::expression::Complexification$<$ Coordinates, Source $>$}}
@@ -90,23 +65,7 @@ Since the this class represents a view the offset is just the offset of the sour
 {\footnotesize\ttfamily template$<$class Coordinates , Composable Source$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Source $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-
-
-Returns the shape of the complex view. 
-
-\begin{DoxyReturn}{Returns}
-\doxylink{classtannic_1_1Shape}{Shape} with last dimension halved
-\end{DoxyReturn}
-\hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_autotoc_md14}{}\doxyparagraph{\texorpdfstring{Transformation Rule\+:}{Transformation Rule:}}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_autotoc_md14}
-\mbox{[}...,2N\mbox{]} → \mbox{[}...,N\mbox{]}\hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_autotoc_md15}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_autotoc_md15}
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ real(\{4\});\ \ \ \ \ \ \ \textcolor{comment}{//\ [a,b,c,d]\ (interpreted\ as\ 2\ complex\ numbers)}}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ cplx\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_ab9732ede6a977fed3895bf928a67748f}{complexify}}(real);}
-\DoxyCodeLine{cplx.shape();\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Returns\ [2]}}
-
-\end{DoxyCode}
- \Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a95ab7232204af8292e8433e90ab75f3a}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a95ab7232204af8292e8433e90ab75f3a} 
+\Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a95ab7232204af8292e8433e90ab75f3a}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_a95ab7232204af8292e8433e90ab75f3a} 
 \index{tannic::expression::Complexification$<$ Coordinates, Source $>$@{tannic::expression::Complexification$<$ Coordinates, Source $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::expression::Complexification$<$ Coordinates, Source $>$@{tannic::expression::Complexification$<$ Coordinates, Source $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
@@ -114,18 +73,6 @@ Returns the shape of the complex view.
 constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Complexification}{tannic\+::expression\+::\+Complexification}}$<$ Coordinates, Source $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
-
-Returns the strides of the complex view. 
-
-\begin{DoxyReturn}{Returns}
-\doxylink{classtannic_1_1Strides}{Strides} adjusted for complex elements
-\end{DoxyReturn}
-\hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_autotoc_md16}{}\doxyparagraph{\texorpdfstring{Transformation Rules\+:}{Transformation Rules:}}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_autotoc_md16}
-
-\begin{DoxyItemize}
-\item Last stride becomes 1 (contiguous complex numbers)
-\item Other strides are halved to maintain correct spacing 
-\end{DoxyItemize}
 
 \doxysubsection{Member Data Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_abfa0b7a4f4d84d1f430381fba6c99960}\label{classtannic_1_1expression_1_1Complexification_3_01Coordinates_00_01Source_01_4_abfa0b7a4f4d84d1f430381fba6c99960} 

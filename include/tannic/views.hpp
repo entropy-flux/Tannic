@@ -573,8 +573,8 @@ constexpr auto unsqueeze(Source&& source, Axes... axes) {
  *
  * @tparam Source The expression or tensor type.
  * @param source The source tensor or expression.
- * @param start_dim First dimension to flatten (default = 0).
- * @param end_dim Last dimension to flatten (default = -1, meaning last dim).
+ * @param start First dimension to flatten (default = 0).
+ * @param end Last dimension to flatten (default = -1, meaning last dim).
  * @return A `Flatten` view expression.
  *
  * Example:
@@ -585,7 +585,7 @@ constexpr auto unsqueeze(Source&& source, Axes... axes) {
  * ```
  */
 template<Composable Source>
-constexpr auto flatten(Source&& source, int start = 0, int end   = -1) {
+constexpr auto flatten(Source&& source, int start = 0, int end = -1) {
     return Flatten<Source>(std::forward<Source>(source), start, end);
 }
 

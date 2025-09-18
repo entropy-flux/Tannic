@@ -2,11 +2,6 @@
 \hypertarget{structtannic_1_1operation_1_1Subtraction}{}\label{structtannic_1_1operation_1_1Subtraction}\index{tannic::operation::Subtraction@{tannic::operation::Subtraction}}
 
 
-Binary element-\/wise subtraction of two tensor expressions.  
-
-
-
-
 {\ttfamily \#include $<$operations.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -22,27 +17,6 @@ static constexpr type \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_
 static constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction_ab5950a49b85a9e14ae7a2387fbf970b9}{broadcast}} (\mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&first, \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const \&second)
 \end{DoxyCompactItemize}
 
-
-\doxysubsection{Detailed Description}
-Binary element-\/wise subtraction of two tensor expressions. 
-
-Used to build a lazily evaluated {\ttfamily Binary\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Subtraction}{Subtraction}, Subtrahend, Minuend\texorpdfstring{$>$}{>}} expression. Computation is deferred until {\ttfamily \doxylink{structtannic_1_1operation_1_1Subtraction_afc988b4e53299042435409e149f961d3}{forward()}} is called or assigned to a {\ttfamily \doxylink{classtannic_1_1Tensor}{Tensor}}. Supports broadcasting and type promotion.\hypertarget{structtannic_1_1operation_1_1Subtraction_autotoc_md30}{}\doxyparagraph{\texorpdfstring{Example\+: Subtraction}{Example: Subtraction}}\label{structtannic_1_1operation_1_1Subtraction_autotoc_md30}
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ A(float32,\ \{2,\ 2\});\ A.initialize();}
-\DoxyCodeLine{A[0,\ 0]\ =\ 5;\ A[0,\ 1]\ =\ 7;}
-\DoxyCodeLine{A[1,\ 0]\ =\ 9;\ A[1,\ 1]\ =\ 11;}
-\DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ B(float32,\ \{2,\ 2\});\ B.initialize();}
-\DoxyCodeLine{B[0,\ 0]\ =\ 1;\ B[0,\ 1]\ =\ 2;}
-\DoxyCodeLine{B[1,\ 0]\ =\ 3;\ B[1,\ 1]\ =\ 4;}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ C\ =\ A\ -\/\ B;}
-\DoxyCodeLine{std::cout\ <<\ C.forward();}
-\DoxyCodeLine{\textcolor{comment}{//\ Output:\ [[4,\ 5],\ [6,\ 7]]}}
-
-\end{DoxyCode}
- 
 
 \doxysubsection{Member Function Documentation}
 \Hypertarget{structtannic_1_1operation_1_1Subtraction_ab5950a49b85a9e14ae7a2387fbf970b9}\label{structtannic_1_1operation_1_1Subtraction_ab5950a49b85a9e14ae7a2387fbf970b9} 

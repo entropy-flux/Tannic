@@ -23,23 +23,21 @@ namespace \mbox{\hyperlink{namespacetannic}{tannic}}
 concept \mbox{\hyperlink{concepttannic_1_1Composable}{tannic\+::\+Composable}}
 \item 
 concept \mbox{\hyperlink{concepttannic_1_1Operator}{tannic\+::\+Operator}}
-\begin{DoxyCompactList}\small\item\em Concept defining requirements for tensor operation types. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Functional}{tannic\+::\+Functional}}
-\begin{DoxyCompactList}\small\item\em Concept for unary mathematical function operations. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Iterable}{tannic\+::\+Iterable}}
-\begin{DoxyCompactList}\small\item\em Requires a type to be iterable via {\ttfamily std\+::begin} and {\ttfamily std\+::end}. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Iterator}{tannic\+::\+Iterator}}
-\begin{DoxyCompactList}\small\item\em Requires a type to satisfy the C++20 {\ttfamily std\+::input\+\_\+iterator} concept. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Integral}{tannic\+::\+Integral}}
-\begin{DoxyCompactList}\small\item\em Requires a type to be an integral type (e.\+g., {\ttfamily int}, {\ttfamily std\+::size\+\_\+t}). \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Arithmetic}{tannic\+::\+Arithmetic}}
-\begin{DoxyCompactList}\small\item\em The arithmetic concept in C++ defines a type constraint that evaluates to true for standard arithmetic types (std\+::is\+\_\+arithmetic\+\_\+v$<$\+T$>$), as well as for float16\+\_\+t, bfloat16\+\_\+t, and std\+::complex$<$float$>$ or std\+::complex$<$double$>$. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Assignable}{tannic\+::\+Assignable}}
-\begin{DoxyCompactList}\small\item\em Concept for types that can assign values. \end{DoxyCompactList}\item 
+\item 
 concept \mbox{\hyperlink{concepttannic_1_1Comparable}{tannic\+::\+Comparable}}
-\begin{DoxyCompactList}\small\item\em Concept for types that can compare their value. \end{DoxyCompactList}\item 
-concept \mbox{\hyperlink{concepttannic_1_1Expression}{tannic\+::\+Expression}}
-\begin{DoxyCompactList}\small\item\em Defines the core protocol for all expression-\/like types in the Tannic Tensor Library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -48,7 +46,7 @@ Defines core C++20 concepts used throughout the Tannic Tensor Library.
 \begin{DoxyDate}{Date}
 2025
 \end{DoxyDate}
-This header the {\ttfamily \doxylink{concepttannic_1_1Expression}{tannic\+::\+Expression}} fundamental concept as a compile time interface for all operations defined in this library and a few other concepts used internally to validate template arguments in compile-\/time expressions.
+This header the {\ttfamily tannic\+::\+Expression} fundamental concept as a compile time interface for all operations defined in this library and a few other concepts used internally to validate template arguments in compile-\/time expressions.
 
 \begin{DoxyNote}{Note}
 Unless you are extending the library with your custom expressions you can skip this secction. 

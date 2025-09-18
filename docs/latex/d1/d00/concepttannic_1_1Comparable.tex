@@ -2,11 +2,6 @@
 \hypertarget{concepttannic_1_1Comparable}{}\label{concepttannic_1_1Comparable}\index{tannic::Comparable@{tannic::Comparable}}
 
 
-Concept for types that can compare their value.  
-
-
-
-
 {\ttfamily \#include $<$concepts.\+hpp$>$}
 
 \doxysubsection{Concept definition}
@@ -18,20 +13,3 @@ Concept for types that can compare their value.
 \DoxyCodeLine{\}}
 
 \end{DoxyCode}
-
-
-\doxysubsection{Detailed Description}
-Concept for types that can compare their value. 
-
-A type {\ttfamily T} satisfies this concept if it provides a method\+:
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{bool}\ compare(\textcolor{keyword}{const}\ std::byte*\ ptr,\ std::ptrdiff\_t\ offset)\ \textcolor{keyword}{const};}
-
-\end{DoxyCode}
-
-
-This function must take a pointer to a raw byte buffer and an offset, then return {\ttfamily true} if the object is equal to the value at that memory location, or {\ttfamily false} otherwise.
-
-This concept is mainly used internally when comparing tensor elements, and enables the usage of slices from custom data structures beside the {\ttfamily Tensor} class. 

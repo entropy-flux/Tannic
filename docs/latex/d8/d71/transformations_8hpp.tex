@@ -1,10 +1,5 @@
 \doxysection{include/tannic/transformations.hpp File Reference}
 \hypertarget{transformations_8hpp}{}\label{transformations_8hpp}\index{include/tannic/transformations.hpp@{include/tannic/transformations.hpp}}
-
-
-Defines tensor transformation operations.  
-
-
 {\ttfamily \#include $<$tuple$>$}\newline
 {\ttfamily \#include $<$array$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
@@ -17,13 +12,18 @@ Defines tensor transformation operations.
 {\ttfamily \#include "{}exceptions.\+hpp"{}}\newline
 Include dependency graph for transformations.\+hpp\+:
 % FIG 0
-This graph shows which files directly or indirectly include this file\+:
-% FIG 1
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{d4/dee/transformations_8hpp__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Transformation}{tannic\+::expression\+::\+Transformation$<$ Operation, Operands $>$}}
-\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for tensor transformations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,17 +38,3 @@ namespace \mbox{\hyperlink{namespacetannic_1_1transformation}{tannic\+::transfor
 \item 
 {\footnotesize template$<$Composable Multiplicand, Composable Multiplier$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_a3681656aa208b88dfc79a1806cf669b6}{tannic\+::matmul}} (Multiplicand \&\&multiplicand, Multiplier \&\&multiplier)
 \begin{DoxyCompactList}\small\item\em Matrix multiplication convenience function. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Detailed Description}
-Defines tensor transformation operations. 
-
-\begin{DoxyAuthor}{Author}
-Eric Hermosis 
-\end{DoxyAuthor}
-\begin{DoxyDate}{Date}
-2025 
-\end{DoxyDate}
-This header provides tensor transformation operations implemented as expression templates.
-
-Part of the Tannic Tensor Library. 

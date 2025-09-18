@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Tannic: tannic::expression::Permutation&lt; Source, Indexes &gt; Class Template Reference</title>
+<title>Tannic: tannic::expression::Permutation&lt; Source &gt; Class Template Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -94,61 +94,44 @@ $(document).ready(function(){initNavTree('d0/d42/classtannic_1_1expression_1_1Pe
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../de/d76/classtannic_1_1expression_1_1Permutation-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">tannic::expression::Permutation&lt; Source, Indexes &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">tannic::expression::Permutation&lt; Source &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for reordering tensor dimensions according to a specified permutation.  
- <a href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../de/d49/views_8hpp_source.html">views.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9a5b4f76ae16a397d5c41f5fb7a0eaed" id="r_a9a5b4f76ae16a397d5c41f5fb7a0eaed"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#a9a5b4f76ae16a397d5c41f5fb7a0eaed">Permutation</a> (typename <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Source &gt;::Reference source, std::tuple&lt; Indexes... &gt; indexes)</td></tr>
-<tr class="memdesc:a9a5b4f76ae16a397d5c41f5fb7a0eaed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a permuted view of the source tensor.  <br /></td></tr>
-<tr class="separator:a9a5b4f76ae16a397d5c41f5fb7a0eaed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab78ea700fcfb15159f25a0012fda03cd" id="r_ab78ea700fcfb15159f25a0012fda03cd"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#ab78ea700fcfb15159f25a0012fda03cd">dtype</a> () const</td></tr>
-<tr class="separator:ab78ea700fcfb15159f25a0012fda03cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bccb831073a19713787cc60eedf661f" id="r_a9bccb831073a19713787cc60eedf661f"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#a9bccb831073a19713787cc60eedf661f">shape</a> () const</td></tr>
-<tr class="separator:a9bccb831073a19713787cc60eedf661f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55ad049888c69930b0ed33c14654192c" id="r_a55ad049888c69930b0ed33c14654192c"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#a55ad049888c69930b0ed33c14654192c">strides</a> () const</td></tr>
-<tr class="separator:a55ad049888c69930b0ed33c14654192c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20c79668aa038a3c06de9e22190ee36f" id="r_a20c79668aa038a3c06de9e22190ee36f"><td class="memItemLeft" align="right" valign="top">std::ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#a20c79668aa038a3c06de9e22190ee36f">offset</a> () const</td></tr>
-<tr class="separator:a20c79668aa038a3c06de9e22190ee36f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43662c2291a6a72e55a00a02a6352778" id="r_a43662c2291a6a72e55a00a02a6352778"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#a43662c2291a6a72e55a00a02a6352778">forward</a> () const</td></tr>
-<tr class="separator:a43662c2291a6a72e55a00a02a6352778"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05bcc678db1dbab0a39a4614d9e660ae" id="r_a05bcc678db1dbab0a39a4614d9e660ae"><td class="memTemplParams" colspan="2">template&lt;Integral... Indexes&gt; </td></tr>
+<tr class="memitem:a05bcc678db1dbab0a39a4614d9e660ae"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#a05bcc678db1dbab0a39a4614d9e660ae">Permutation</a> (typename <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Source &gt;::Reference source, Indexes... indexes)</td></tr>
+<tr class="separator:a05bcc678db1dbab0a39a4614d9e660ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3f4c983e43b6df6dd5979c4b5197fc4" id="r_ae3f4c983e43b6df6dd5979c4b5197fc4"><td class="memItemLeft" align="right" valign="top">constexpr type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#ae3f4c983e43b6df6dd5979c4b5197fc4">dtype</a> () const</td></tr>
+<tr class="separator:ae3f4c983e43b6df6dd5979c4b5197fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b319970878c80b9d11c881d969bbfa" id="r_ad6b319970878c80b9d11c881d969bbfa"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#ad6b319970878c80b9d11c881d969bbfa">shape</a> () const</td></tr>
+<tr class="separator:ad6b319970878c80b9d11c881d969bbfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ce475a68b473ea0c0b1a2cce16bf524" id="r_a9ce475a68b473ea0c0b1a2cce16bf524"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#a9ce475a68b473ea0c0b1a2cce16bf524">strides</a> () const</td></tr>
+<tr class="separator:a9ce475a68b473ea0c0b1a2cce16bf524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedda1612a96e796dcad70c7a53443c26" id="r_aedda1612a96e796dcad70c7a53443c26"><td class="memItemLeft" align="right" valign="top">std::ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#aedda1612a96e796dcad70c7a53443c26">offset</a> () const</td></tr>
+<tr class="separator:aedda1612a96e796dcad70c7a53443c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af67aa76b945f679cb5d1bb190acc1d09" id="r_af67aa76b945f679cb5d1bb190acc1d09"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html#af67aa76b945f679cb5d1bb190acc1d09">forward</a> (<a class="el" href="../../d4/d73/classtannic_1_1Context.html">Context</a> const &amp;context) const</td></tr>
+<tr class="separator:af67aa76b945f679cb5d1bb190acc1d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;Composable Source, Integral ... Indexes&gt;<br />
-class tannic::expression::Permutation&lt; Source, Indexes &gt;</div><p><a class="el" href="../../de/ddf/classtannic_1_1expression_1_1Expression.html">Expression</a> template for reordering tensor dimensions according to a specified permutation. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Source</td><td>The expression or tensor type being permuted. </td></tr>
-    <tr><td class="paramname">Indexes</td><td>A parameter pack of integral indices defining the permutation order.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>The <code><a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html" title="Expression template for reordering tensor dimensions according to a specified permutation.">Permutation</a></code> view reorders the dimensions of a tensor according to a user-specified sequence of indices. This changes how elements are accessed along each axis, but does not move the underlying data in memory.</p>
-<p>Example: </p><div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> X(float32, {2, 3, 4});</div>
-<div class="line"><span class="keyword">auto</span> Y = <a class="code hl_function" href="../../d9/dd9/namespacetannic_1_1expression.html#a1f1dde31ec629ed3d6b2b979221cf802">permute</a>(X, 2, 0, 1); <span class="comment">// shape becomes (4, 2, 3)</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition</b> tensor.hpp:99</div></div>
-<div class="ttc" id="anamespacetannic_1_1expression_html_a1f1dde31ec629ed3d6b2b979221cf802"><div class="ttname"><a href="../../d9/dd9/namespacetannic_1_1expression.html#a1f1dde31ec629ed3d6b2b979221cf802">tannic::expression::permute</a></div><div class="ttdeci">constexpr auto permute(Source &amp;&amp;source, Indexes... indexes)</div><div class="ttdoc">Creates a permuted view of a tensor or expression.</div><div class="ttdef"><b>Definition</b> views.hpp:878</div></div>
-</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>The number of indices in the permutation must match the rank of the tensor. Otherwise, an exception is thrown. </dd></dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9a5b4f76ae16a397d5c41f5fb7a0eaed" name="a9a5b4f76ae16a397d5c41f5fb7a0eaed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a5b4f76ae16a397d5c41f5fb7a0eaed">&#9670;&#160;</a></span>Permutation()</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a05bcc678db1dbab0a39a4614d9e660ae" name="a05bcc678db1dbab0a39a4614d9e660ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05bcc678db1dbab0a39a4614d9e660ae">&#9670;&#160;</a></span>Permutation()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;Composable Source, Integral ... Indexes&gt; </div>
+template&lt;Composable Source&gt; </div>
+<div class="memtemplate">
+template&lt;Integral... Indexes&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source, Indexes &gt;::Permutation </td>
+          <td class="memname">constexpr <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source &gt;::Permutation </td>
           <td>(</td>
           <td class="paramtype">typename <a class="el" href="../../d1/d96/structtannic_1_1Trait.html">Trait</a>&lt; Source &gt;::Reference&#160;</td>
           <td class="paramname"><em>source</em>, </td>
@@ -156,7 +139,7 @@ template&lt;Composable Source, Integral ... Indexes&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::tuple&lt; Indexes... &gt;&#160;</td>
+          <td class="paramtype">Indexes...&#160;</td>
           <td class="paramname"><em>indexes</em>&#160;</td>
         </tr>
         <tr>
@@ -172,38 +155,22 @@ template&lt;Composable Source, Integral ... Indexes&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Constructs a permuted view of the source tensor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">source</td><td>Reference to the source expression or tensor. </td></tr>
-    <tr><td class="paramname">indexes</td><td>A tuple of dimension indices specifying the new order.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="../../d9/d87/classtannic_1_1Exception.html" title="Base class for recoverable runtime anomalies in the framework.">Exception</a></td><td>if the number of indices does not match the source tensor's rank.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This constructor normalizes the indices to ensure they are valid for the tensor's rank, and then expands the <code>shape_</code> and <code>strides_</code> of the permuted view accordingly. </p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab78ea700fcfb15159f25a0012fda03cd" name="ab78ea700fcfb15159f25a0012fda03cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab78ea700fcfb15159f25a0012fda03cd">&#9670;&#160;</a></span>dtype()</h2>
+<a id="ae3f4c983e43b6df6dd5979c4b5197fc4" name="ae3f4c983e43b6df6dd5979c4b5197fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3f4c983e43b6df6dd5979c4b5197fc4">&#9670;&#160;</a></span>dtype()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;Composable Source, Integral ... Indexes&gt; </div>
+template&lt;Composable Source&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr type <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source, Indexes &gt;::dtype </td>
+          <td class="memname">constexpr type <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source &gt;::dtype </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -215,23 +182,22 @@ template&lt;Composable Source, Integral ... Indexes&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The data type of the tensor elements.</dd></dl>
-<p>The element type remains the same as the source tensor. </p>
 
 </div>
 </div>
-<a id="a43662c2291a6a72e55a00a02a6352778" name="a43662c2291a6a72e55a00a02a6352778"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43662c2291a6a72e55a00a02a6352778">&#9670;&#160;</a></span>forward()</h2>
+<a id="af67aa76b945f679cb5d1bb190acc1d09" name="af67aa76b945f679cb5d1bb190acc1d09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af67aa76b945f679cb5d1bb190acc1d09">&#9670;&#160;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;Composable Source, Integral... Indexes&gt; </div>
+template&lt;Composable Source&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source, Indexes &gt;::forward </td>
+          <td class="memname"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source &gt;::forward </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d4/d73/classtannic_1_1Context.html">Context</a> const &amp;&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -239,19 +205,19 @@ template&lt;Composable Source, Integral... Indexes&gt; </div>
 
 </div>
 </div>
-<a id="a20c79668aa038a3c06de9e22190ee36f" name="a20c79668aa038a3c06de9e22190ee36f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20c79668aa038a3c06de9e22190ee36f">&#9670;&#160;</a></span>offset()</h2>
+<a id="aedda1612a96e796dcad70c7a53443c26" name="aedda1612a96e796dcad70c7a53443c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedda1612a96e796dcad70c7a53443c26">&#9670;&#160;</a></span>offset()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;Composable Source, Integral ... Indexes&gt; </div>
+template&lt;Composable Source&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::ptrdiff_t <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source, Indexes &gt;::offset </td>
+          <td class="memname">std::ptrdiff_t <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source &gt;::offset </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -263,24 +229,22 @@ template&lt;Composable Source, Integral ... Indexes&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The byte offset of the permuted view from the start of the storage.</dd></dl>
-<p>This forwards directly from the source tensor. The data buffer is not moved, so the offset remains the same. </p>
 
 </div>
 </div>
-<a id="a9bccb831073a19713787cc60eedf661f" name="a9bccb831073a19713787cc60eedf661f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bccb831073a19713787cc60eedf661f">&#9670;&#160;</a></span>shape()</h2>
+<a id="ad6b319970878c80b9d11c881d969bbfa" name="ad6b319970878c80b9d11c881d969bbfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6b319970878c80b9d11c881d969bbfa">&#9670;&#160;</a></span>shape()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;Composable Source, Integral ... Indexes&gt; </div>
+template&lt;Composable Source&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const  &amp; <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source, Indexes &gt;::shape </td>
+          <td class="memname">constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const  &amp; <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source &gt;::shape </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -292,24 +256,22 @@ template&lt;Composable Source, Integral ... Indexes&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The shape of the permuted view.</dd></dl>
-<p>The shape is reordered according to the permutation indices provided in the constructor. </p>
 
 </div>
 </div>
-<a id="a55ad049888c69930b0ed33c14654192c" name="a55ad049888c69930b0ed33c14654192c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55ad049888c69930b0ed33c14654192c">&#9670;&#160;</a></span>strides()</h2>
+<a id="a9ce475a68b473ea0c0b1a2cce16bf524" name="a9ce475a68b473ea0c0b1a2cce16bf524"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ce475a68b473ea0c0b1a2cce16bf524">&#9670;&#160;</a></span>strides()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;Composable Source, Integral ... Indexes&gt; </div>
+template&lt;Composable Source&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const  &amp; <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source, Indexes &gt;::strides </td>
+          <td class="memname">constexpr <a class="el" href="../../dc/deb/classtannic_1_1Strides.html">Strides</a> const  &amp; <a class="el" href="../../d0/d42/classtannic_1_1expression_1_1Permutation.html">tannic::expression::Permutation</a>&lt; Source &gt;::strides </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -321,8 +283,6 @@ template&lt;Composable Source, Integral ... Indexes&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The strides of the permuted view.</dd></dl>
-<p><a class="el" href="../../dc/deb/classtannic_1_1Strides.html" title="Represents the memory strides associated with a tensor shape.">Strides</a> are reordered to match the permuted axes, ensuring that element access corresponds to the new dimension order. </p>
 
 </div>
 </div>

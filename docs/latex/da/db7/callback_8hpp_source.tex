@@ -30,156 +30,161 @@
 \DoxyCodeLine{00026\ }
 \DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{comment}{//\ WARNING:\ THIS\ FILE\ IS\ UNDER\ ACTIVE\ DEVELOPMENT!.}}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ tensor\_t*\ get\_tensor(uintptr\_t\ \textcolor{keywordtype}{id})\ \{}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{reinterpret\_cast<}node\_t*\textcolor{keyword}{>}(id)-\/>target;}
-\DoxyCodeLine{00033\ \}\ \ }
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ H,\ \textcolor{keyword}{class}\ D>}
-\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Callback}{Callback}}\ \{}
-\DoxyCodeLine{00037\ \ \ \ \ H\ host\_fn;}
-\DoxyCodeLine{00038\ \ \ \ \ D\ device\_fn;}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Callback_ab65d59ce6a82174c639a6c248528665a}{Callback}}(H\ host,\ D\ device)}
-\DoxyCodeLine{00042\ \ \ \ \ :\ \ \ host\_fn(host)}
-\DoxyCodeLine{00043\ \ \ \ \ ,\ \ \ device\_fn(device)\ \{\}}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Callback_a11b3a50124210b2d313c9044474287ae}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ input,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ output)\textcolor{keyword}{\ const\ }\{\ \ \ \ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(input.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}());\ \ }
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::holds\_alternative<Host>(output.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}()))\ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ src\ =\ get\_tensor(input.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ host\_fn(src,\ dst);}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ !=\ SUCCESS)\ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \ }
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Device}{Device}}\ \textcolor{keyword}{const}\&\ resource\ =\ std::get<Device>(output.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}());}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ device\_t\ dvc\{resource.\mbox{\hyperlink{classtannic_1_1Device_a30fa398c0cec1af2dd802fb3c5002ff0}{id}}(),\ resource.\mbox{\hyperlink{classtannic_1_1Device_a0b7fbf3b87b59800b7f6689070aa92cc}{blocking}}()\ ?\ SYNC\ :\ ASYNC\};}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ src\ =\ get\_tensor(input.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ stream\_t\ stream\ =\ pop\_stream(\&dvc);}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ device\_fn(src,\ dst,\ stream);}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ put\_stream(\&dvc,\ stream);}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ !=\ SUCCESS)\ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00069\ \ \ \ \ \}}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Callback_ad10527a928af2c083d7e7ae3235efe25}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ tensor,\ \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}}\ \textcolor{keyword}{const}\&\ scalar,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ output)\ \{}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ tensor\_t*\ src0\ =\ get\_tensor(tensor.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ scalar\_t\ \ sc1\{scalar.\mbox{\hyperlink{classtannic_1_1Scalar_a6193d612173f75e9acb11ff6c6f5711d}{address}}(),\ scalar.\mbox{\hyperlink{classtannic_1_1Scalar_a46c9c53513d749817e0327a892ed18b7}{dtype}}()\ \};}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(tensor.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}());\ \ }
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::holds\_alternative<Host>(output.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}()))\ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ host\_fn(src0,\ \&sc1,\ dst);}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ !=\ SUCCESS)\ \{}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \ }
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Device}{Device}}\ \textcolor{keyword}{const}\&\ resource\ =\ std::get<Device>(output.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}());}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ device\_t\ dvc\{resource.\mbox{\hyperlink{classtannic_1_1Device_a30fa398c0cec1af2dd802fb3c5002ff0}{id}}(),\ resource.\mbox{\hyperlink{classtannic_1_1Device_a0b7fbf3b87b59800b7f6689070aa92cc}{blocking}}()\ ?\ SYNC\ :\ ASYNC\};}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ stream\_t\ stream\ =\ pop\_stream(\&dvc);}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ device\_fn(src0,\ \&sc1,\ dst,\ stream);}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ put\_stream(\&dvc,\ stream);}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ !=\ SUCCESS)\ \{}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00093\ \ \ \ \ \}}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Callback_a6e20d6c9ec9fcffd5cfcc546d439825c}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ first,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ second,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ output)\ \{\ \ \ }
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ tensor\_t*\ src0\ =\ get\_tensor(first.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ tensor\_t*\ src1\ =\ get\_tensor(second.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ environment\_t\ environment;}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ resolve\_two\_environment(\&src0-\/>environment,\ \&src1-\/>environment,\ \&environment);}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Environment\ issue!"{}});}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (environment.environment)\ \{}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HOST:\ \{}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ host\_t\ resource\ =\ environment.resource.host;}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Host}{Host}}());\ \ }
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ host\_fn(src0,\ src1,\ dst);\ \ \ \ }
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ }
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DEVICE:\ \{\ }
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ device\_t\ dvc\ =\ environment.resource.device;\ }
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Device}{Device}}(dvc.id));\ \ }
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stream\_t\ stream\ =\ pop\_stream(\&dvc);}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ device\_fn(src0,\ src1,\ dst,\ stream);}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ put\_stream(\&dvc,\ stream);}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ }
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00132\ \ \ \ \ \}}
-\DoxyCodeLine{00133\ }
-\DoxyCodeLine{00134\ }
-\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Callback_a5363de21050327b1d3f79b0e899a09d8}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ first,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ second,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ third,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ output)\ \{\ \ \ }
-\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ tensor\_t*\ src0\ =\ get\_tensor(first.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ tensor\_t*\ src1\ =\ get\_tensor(second.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ tensor\_t*\ src2\ =\ get\_tensor(third.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ WARNING:\ THIS\ FILE\ IS\ UNDER\ ACTIVE\ DEVELOPMENT!.\ WILL\ BE\ HEAVILY\ REFACTORED}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ AND\ SOME\ FUNCTIONALITIES\ MOVED\ TO\ OTHER\ FILES\ LIKE\ THE\ NEW\ context.hpp}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ tensor\_t*\ get\_tensor(uintptr\_t\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{reinterpret\_cast<}node\_t*\textcolor{keyword}{>}(id)-\/>target;}
+\DoxyCodeLine{00034\ \}\ \ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ H,\ \textcolor{keyword}{class}\ D>}
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1Callback}{Callback}}\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ H\ host\_fn;}
+\DoxyCodeLine{00039\ \ \ \ \ D\ device\_fn;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Callback_ab65d59ce6a82174c639a6c248528665a}{Callback}}(H\ host,\ D\ device)}
+\DoxyCodeLine{00043\ \ \ \ \ :\ \ \ host\_fn(host)}
+\DoxyCodeLine{00044\ \ \ \ \ ,\ \ \ device\_fn(device)\ \{\}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Callback_a11b3a50124210b2d313c9044474287ae}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ input,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ output)\textcolor{keyword}{\ const\ }\{\ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!output.\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(input.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}());\ \ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::holds\_alternative<Host>(output.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}()))\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ src\ =\ get\_tensor(input.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ host\_fn(src,\ dst);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ !=\ SUCCESS)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Device}{Device}}\ \textcolor{keyword}{const}\&\ resource\ =\ std::get<Device>(output.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}());}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ device\_t\ dvc\{resource.\mbox{\hyperlink{classtannic_1_1Device_a30fa398c0cec1af2dd802fb3c5002ff0}{id}}()\ \};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ src\ =\ get\_tensor(input.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ stream\_t\ stream\ =\ pop\_stream(\&dvc);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ device\_fn(src,\ dst,\ stream);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ put\_stream(\&dvc,\ stream);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ !=\ SUCCESS)\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Callback_ad10527a928af2c083d7e7ae3235efe25}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ tensor,\ \mbox{\hyperlink{classtannic_1_1Scalar}{Scalar}}\ \textcolor{keyword}{const}\&\ scalar,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ output)\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!output.\mbox{\hyperlink{classtannic_1_1Tensor_a608af294e14a31a695a727931d236f2f}{is\_initialized}}())}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(tensor.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}());\ \ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ tensor\_t*\ src0\ =\ get\_tensor(tensor.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ scalar\_t\ \ sc1\{scalar.\mbox{\hyperlink{classtannic_1_1Scalar_a6193d612173f75e9acb11ff6c6f5711d}{address}}(),\ scalar.\mbox{\hyperlink{classtannic_1_1Scalar_a46c9c53513d749817e0327a892ed18b7}{dtype}}()\ \};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(tensor.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}());\ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::holds\_alternative<Host>(output.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}()))\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ host\_fn(src0,\ \&sc1,\ dst);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ !=\ SUCCESS)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Device}{Device}}\ \textcolor{keyword}{const}\&\ resource\ =\ std::get<Device>(output.\mbox{\hyperlink{classtannic_1_1Tensor_a1eb90f9f03cc3f775f1bf22f4282101e}{environment}}());}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ device\_t\ dvc\{resource.\mbox{\hyperlink{classtannic_1_1Device_a30fa398c0cec1af2dd802fb3c5002ff0}{id}}()\ \};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ stream\_t\ stream\ =\ pop\_stream(\&dvc);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ device\_fn(src0,\ \&sc1,\ dst,\ stream);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ put\_stream(\&dvc,\ stream);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (status\ !=\ SUCCESS)\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Callback_a6e20d6c9ec9fcffd5cfcc546d439825c}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ first,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ second,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ output)\ \{\ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ tensor\_t*\ src0\ =\ get\_tensor(first.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ tensor\_t*\ src1\ =\ get\_tensor(second.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ environment\_t\ environment;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ resolve\_two\_environment(\&src0-\/>environment,\ \&src1-\/>environment,\ \&environment);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Environment\ issue!"{}});}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (environment.environment)\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HOST:\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ host\_t\ resource\ =\ environment.resource.host;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Host}{Host}}());\ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ host\_fn(src0,\ src1,\ dst);\ \ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DEVICE:\ \{\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ device\_t\ dvc\ =\ environment.resource.device;\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Device}{Device}}(dvc.id));\ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stream\_t\ stream\ =\ pop\_stream(\&dvc);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ device\_fn(src0,\ src1,\ dst,\ stream);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ put\_stream(\&dvc,\ stream);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
 \DoxyCodeLine{00139\ }
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ environment\_t\ environment;}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ resolve\_three\_environment(\&src0-\/>environment,\ \&src1-\/>environment,\ \ \&src2-\/>environment,\ \&environment);}
-\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Environment\ issue\ !"{}});}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00145\ }
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (environment.environment)\ \{}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HOST:\ \{}
-\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Host}{Host}}());\ \ }
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ host\_fn(src0,\ src1,\ src2,\ dst);\ \ \ \ }
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ }
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00156\ }
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DEVICE:\ \{\ }
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ device\_t\ dvc\ =\ environment.resource.device;\ }
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Device}{Device}}(dvc.id));\ \ }
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stream\_t\ stream\ =\ pop\_stream(\&dvc);}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ device\_fn(src0,\ src1,\ src2,\ dst,\ stream);}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ put\_stream(\&dvc,\ stream);}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ }
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ environment"{}});}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \}\ \ }
-\DoxyCodeLine{00173\ \ \ \ \ \}\ }
-\DoxyCodeLine{00174\ \ }
-\DoxyCodeLine{00175\ \};\ }
-\DoxyCodeLine{00176\ }
-\DoxyCodeLine{00177\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00178\ }
-\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classtannic_1_1Callback_a5363de21050327b1d3f79b0e899a09d8}{operator()}}(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ first,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ second,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&\ third,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&\ output)\ \{\ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ tensor\_t*\ src0\ =\ get\_tensor(first.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ tensor\_t*\ src1\ =\ get\_tensor(second.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ tensor\_t*\ src2\ =\ get\_tensor(third.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ environment\_t\ environment;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ resolve\_three\_environment(\&src0-\/>environment,\ \&src1-\/>environment,\ \ \&src2-\/>environment,\ \&environment);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Environment\ issue\ !"{}});}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (environment.environment)\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HOST:\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Host}{Host}}());\ \ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ host\_fn(src0,\ src1,\ src2,\ dst);\ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DEVICE:\ \{\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ device\_t\ dvc\ =\ environment.resource.device;\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output.\mbox{\hyperlink{classtannic_1_1Tensor_a3158b2d19ac07f894990b5e1014cc67c}{initialize}}(\mbox{\hyperlink{classtannic_1_1Device}{Device}}(dvc.id));\ \ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stream\_t\ stream\ =\ pop\_stream(\&dvc);}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tensor\_t*\ dst\ =\ get\_tensor(output.\mbox{\hyperlink{classtannic_1_1Tensor_a6094dfc0c4ae70a26bacd898de6a3215}{id}}());}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ status\ =\ device\_fn(src0,\ src1,\ src2,\ dst,\ stream);}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ put\_stream(\&dvc,\ stream);}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status\ !=\ SUCCESS)\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ dtype"{}});}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Unsupported\ environment"{}});}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{00178\ \ \ \ \ \}\ }
+\DoxyCodeLine{00179\ \ }
+\DoxyCodeLine{00180\ \};\ }
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

@@ -2,11 +2,6 @@
 \hypertarget{classtannic_1_1expression_1_1Reduction}{}\label{classtannic_1_1expression_1_1Reduction}\index{tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}}
 
 
-Lazy reduction expression.  
-
-
-
-
 {\ttfamily \#include $<$reductions.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -22,7 +17,7 @@ constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyp
 \item 
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a5fccaa5f3c597ec6caab4ec846c2a84a}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}{forward}} () const
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction_ab6e634d7f91e5224d402d4c5af6a7065}{forward}} (\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&context) const
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{tannic\+::expression\+::\+Expression$<$ Reducer, Operand $>$}}}
 \begin{DoxyCompactItemize}
@@ -37,22 +32,6 @@ Reducer \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd
 \item 
 std\+::tuple$<$ typename \mbox{\hyperlink{structtannic_1_1Trait}{Trait}}$<$ Operands $>$\+::\+Reference... $>$ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}
 \end{DoxyCompactItemize}
-
-
-\doxysubsection{Detailed Description}
-\subsubsection*{template$<$class Reducer, Composable Operand$>$\newline
-class tannic\+::expression\+::\+Reduction$<$ Reducer, Operand $>$}
-Lazy reduction expression. 
-
-Represents reductions like {\ttfamily sum}, {\ttfamily max}, or {\ttfamily mean} that collapse tensors along an axis. Output shape/dtype are determined by the {\ttfamily Reducer}\textquotesingle{}s rules.
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Reducer} & Policy defining the reduction (e.\+g., {\ttfamily \doxylink{structtannic_1_1expression_1_1Argmax}{Argmax}}). \\
-\hline
-{\em Operand} & Input satisfying the {\ttfamily \doxylink{classtannic_1_1expression_1_1Expression}{Expression}} concept.. \\
-\hline
-\end{DoxyTemplParams}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -73,12 +52,12 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::exp
 {\footnotesize\ttfamily template$<$class Reducer , Composable Operand$>$ \\
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::expression\+::\+Reduction}}$<$ Reducer, Operand $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\Hypertarget{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67}\label{classtannic_1_1expression_1_1Reduction_a7e1590a909e8eefe012f6f84c7fe2c67} 
+\Hypertarget{classtannic_1_1expression_1_1Reduction_ab6e634d7f91e5224d402d4c5af6a7065}\label{classtannic_1_1expression_1_1Reduction_ab6e634d7f91e5224d402d4c5af6a7065} 
 \index{tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$class Reducer , Composable Operand$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::expression\+::\+Reduction}}$<$ Reducer, Operand $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Reduction}{tannic\+::expression\+::\+Reduction}}$<$ Reducer, Operand $>$\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&}]{context }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
 \Hypertarget{classtannic_1_1expression_1_1Reduction_a5fccaa5f3c597ec6caab4ec846c2a84a}\label{classtannic_1_1expression_1_1Reduction_a5fccaa5f3c597ec6caab4ec846c2a84a} 
 \index{tannic::expression::Reduction$<$ Reducer, Operand $>$@{tannic::expression::Reduction$<$ Reducer, Operand $>$}!offset@{offset}}

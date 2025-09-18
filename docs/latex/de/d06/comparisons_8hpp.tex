@@ -1,21 +1,17 @@
 \doxysection{include/tannic/comparisons.hpp File Reference}
 \hypertarget{comparisons_8hpp}{}\label{comparisons_8hpp}\index{include/tannic/comparisons.hpp@{include/tannic/comparisons.hpp}}
-
-
-Defines element-\/wise comparison operations for tensor expressions.  
-
-
 {\ttfamily \#include "{}concepts.\+hpp"{}}\newline
 {\ttfamily \#include "{}expressions.\+hpp"{}}\newline
 {\ttfamily \#include "{}shape.\+hpp"{}}\newline
 {\ttfamily \#include "{}tensor.\+hpp"{}}\newline
+{\ttfamily \#include "{}context.\+hpp"{}}\newline
 Include dependency graph for comparisons.\+hpp\+:
 % FIG 0
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{tannic\+::expression\+::\+Comparison$<$ Criteria, First, Second $>$}}
-\begin{DoxyCompactList}\small\item\em \doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for element-\/wise tensor comparisons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -25,56 +21,3 @@ namespace \mbox{\hyperlink{namespacetannic_1_1expression}{tannic\+::expression}}
 \item 
 namespace \mbox{\hyperlink{namespacetannic_1_1comparison}{tannic\+::comparison}}
 \end{DoxyCompactItemize}
-
-
-\doxysubsection{Detailed Description}
-Defines element-\/wise comparison operations for tensor expressions. 
-
-\begin{DoxyAuthor}{Author}
-Eric Hermosis 
-\end{DoxyAuthor}
-\begin{DoxyDate}{Date}
-2025 
-\end{DoxyDate}
-This header provides {\bfseries{lazy-\/evaluated comparison operators}} for {\ttfamily Tensor} and expression types. All comparisons are element-\/wise and produce boolean tensors of the same shape as the operands. ~\newline
-
-
-Supported operators\+:
-\begin{DoxyItemize}
-\item Equality and inequality\+:
-\begin{DoxyItemize}
-\item {\ttfamily ==} (equal)
-\item {\ttfamily !=} (not equal)
-\end{DoxyItemize}
-\item Relational comparisons\+:
-\begin{DoxyItemize}
-\item {\ttfamily \texorpdfstring{$<$}{<}} (less than)
-\item {\ttfamily \texorpdfstring{$<$}{<}=} (less than or equal)
-\item {\ttfamily \texorpdfstring{$>$}{>}} (greater than)
-\item {\ttfamily \texorpdfstring{$>$}{>}=} (greater than or equal)
-\end{DoxyItemize}
-\end{DoxyItemize}\hypertarget{comparisons_8hpp_autotoc_md0}{}\doxysubsubsection{\texorpdfstring{Example}{Example}}\label{comparisons_8hpp_autotoc_md0}
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <tannic.hpp>}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{comparisons_8hpp}{tannic/comparisons.hpp}}>}}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ A\ =\ \{1,\ 2,\ 3,\ 4,\ 5\};}
-\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ B\ =\ \{5,\ 4,\ 3,\ 2,\ 1\};}
-\DoxyCodeLine{}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ ==\ B:\ "{}}\ <<\ (A\ ==\ B)\ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ !=\ B:\ "{}}\ <<\ (A\ !=\ B)\ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ >\ \ B:\ "{}}\ <<\ (A\ >\ \ B)\ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ >=\ B:\ "{}}\ <<\ (A\ >=\ B)\ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ <\ \ B:\ "{}}\ <<\ (A\ <\ \ B)\ <<\ std::endl;}
-\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}A\ <=\ B:\ "{}}\ <<\ (A\ <=\ B)\ <<\ std::endl;}
-\DoxyCodeLine{\}}
-
-\end{DoxyCode}
-
-
-Part of the Tannic Tensor Library. 

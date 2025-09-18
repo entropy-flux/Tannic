@@ -99,9 +99,6 @@ $(document).ready(function(){initNavTree('d3/d8b/tensor_8hpp.html','../../'); in
   <div class="headertitle"><div class="title">tensor.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Core multidimensional tensor class for the Tannic Tensor Library.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
@@ -116,6 +113,7 @@ $(document).ready(function(){initNavTree('d3/d8b/tensor_8hpp.html','../../'); in
 <code>#include &quot;<a class="el" href="../../d6/d00/operations_8hpp_source.html">operations.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../db/dd8/complex_8hpp_source.html">complex.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d9/de9/graph_8hpp_source.html">graph.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/da3/context_8hpp_source.html">context.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for tensor.hpp:</div>
 <div class="dyncontent">
@@ -274,7 +272,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A multidimensional, strided tensor data structure.  <a href="../../da/d93/classtannic_1_1Tensor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -299,22 +296,7 @@ Functions</h2></td></tr>
 <tr class="memitem:abd01ed73f7e0facffaec36ce3e22cfd9"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d0/d1a/namespacetannic.html#abd01ed73f7e0facffaec36ce3e22cfd9">tannic::operator&lt;&lt;</a> (std::ostream &amp;ostream, Source source)</td></tr>
 <tr class="separator:abd01ed73f7e0facffaec36ce3e22cfd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Core multidimensional tensor class for the Tannic Tensor Library. </p>
-<dl class="section author"><dt>Author</dt><dd>Eric Hermosis </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
-<p>Defines <code><a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">tannic::Tensor</a></code>, the primary data structure of the library, supporting:</p>
-<ul>
-<li><b>Dynamic dtypes</b>: No need for templates, data types can be passed to tensors as arguments to simplify serialization and IO operations.</li>
-<li><b>Memory management</b>: Host(CPU)/Device(eg. CUDA) allocation support.</li>
-<li><b>Math operators and functions</b>: Math operators like +,*,- and matmul supported, for both CPU and CUDA tensors.</li>
-<li><b>Slicing/views</b>: Python-like indexing (<code>operator[]</code>, <code>range</code>, <code>transpose</code>) with negative index.</li>
-<li><b>Eager evaluation</b>: Eager execution but allowing compile time optimizations like expression fusion using templates.</li>
-<li><b>Strided storage</b>: Non-contiguous layouts via <code>Shape</code> and <code>Strides</code>. <br  />
-</li>
-</ul>
-<dl class="section see"><dt>See also</dt><dd>Types.hpp(data types), Resources.hpp (Memory Managment), Functions.hpp (Supported functions) </dd></dl>
-</div></div><!-- contents -->
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::expression\l::Argmean",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d8/d27/structtannic_1_1expression_1_1Argmean.html",tooltip="Computes the mean along an axis."];
+  Node0 [id="Node000000",label="tannic::expression\l::Argmean",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d8/d27/structtannic_1_1expression_1_1Argmean.html",tooltip=" "];
 }

@@ -48,7 +48,7 @@ Normalized non-\/negative index
 {\em Assertion} & failure if the normalized index is out of bounds\\
 \hline
 \end{DoxyExceptions}
-This function is used {\bfseries{internally}} by the tensor library when processing indexing operations. It allows Python-\/like negative indices, where {\ttfamily -\/1} refers to the last element of a dimension, {\ttfamily -\/2} the second-\/to-\/last, etc.\hypertarget{namespacetannic_1_1indexing_autotoc_md24}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1indexing_autotoc_md24}
+This function is used {\bfseries{internally}} by the tensor library when processing indexing operations. It allows Python-\/like negative indices, where {\ttfamily -\/1} refers to the last element of a dimension, {\ttfamily -\/2} the second-\/to-\/last, etc.\hypertarget{namespacetannic_1_1indexing_autotoc_md9}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1indexing_autotoc_md9}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ i\ =\ \mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{tannic::indexing::normalize}}(-\/1,\ 5);\ \textcolor{comment}{//\ →\ 4}}
@@ -90,7 +90,7 @@ This function is used {\bfseries{internally}} by the tensor library when convert
 \begin{DoxyItemize}
 \item {\ttfamily start = -\/1} → last element
 \item {\ttfamily stop = -\/1} → one-\/past-\/the-\/end
-\end{DoxyItemize}\hypertarget{namespacetannic_1_1indexing_autotoc_md25}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1indexing_autotoc_md25}
+\end{DoxyItemize}\hypertarget{namespacetannic_1_1indexing_autotoc_md10}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1indexing_autotoc_md10}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{auto}\ r1\ =\ \mbox{\hyperlink{namespacetannic_1_1indexing_ace9349c1e3b97c3df8283cde013aee85}{tannic::indexing::normalize}}(\{-\/3,\ -\/1\},\ 10);}

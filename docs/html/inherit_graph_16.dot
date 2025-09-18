@@ -5,7 +5,7 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="tannic::expression\l::Expression\< Criteria,\l First, Second \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$de/ddf/classtannic_1_1expression_1_1Expression.html",tooltip=" "];
-  Node0 -> Node1 [id="edge3_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node1 [id="Node000001",label="tannic::expression\l::Comparison\< Criteria,\l First, Second \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$dc/dc3/classtannic_1_1expression_1_1Comparison.html",tooltip="Expression template for element-wise tensor comparisons."];
+  Node0 [id="Node000000",label="tannic::expression\l::Expression\< Functor,\l Argument \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$de/ddf/classtannic_1_1expression_1_1Expression.html",tooltip=" "];
+  Node0 -> Node1 [id="edge4_Node000000_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 [id="Node000001",label="tannic::expression\l::Function\< Functor,\l Argument \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d4/db5/classtannic_1_1expression_1_1Function.html",tooltip=" "];
 }

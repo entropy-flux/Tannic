@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_3a_0',[':',['../dc/deb/classtannic_1_1Strides.html#autotoc_md45',1,'Example (Contiguous Layout):'],['../dc/deb/classtannic_1_1Strides.html#autotoc_md46',1,'Example (Custom Strides):'],['../df/d20/structtannic_1_1expression_1_1Argsum.html#autotoc_md35',1,'Example (NumPy/PyTorch behavior):']]]
+  ['1_20implicit_20initialization_0',['1. Implicit Initialization',['../d8/d44/md_docs_21_8Tensors.html#autotoc_md55',1,'']]],
+  ['1_2etensors_2emd_1',['1.Tensors.md',['../d0/d88/1_8Tensors_8md.html',1,'']]]
 ];

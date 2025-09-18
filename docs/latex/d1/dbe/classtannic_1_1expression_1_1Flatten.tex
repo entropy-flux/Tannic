@@ -2,11 +2,6 @@
 \hypertarget{classtannic_1_1expression_1_1Flatten}{}\label{classtannic_1_1expression_1_1Flatten}\index{tannic::expression::Flatten$<$ Source $>$@{tannic::expression::Flatten$<$ Source $>$}}
 
 
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for flattening a contiguous range of dimensions.  
-
-
-
-
 {\ttfamily \#include $<$views.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -22,30 +17,9 @@ constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const \& \mbox{\hyp
 \item 
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten_aca516088e1cf52f6bf4dcb63a96414f4}{offset}} () const
 \item 
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten_a4204391399bab2401f3e8dad1b32cb6e}{forward}} () const
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten_ad98f7268bdee9b87d78835c5befc6fb6}{forward}} (\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&context) const
 \end{DoxyCompactItemize}
 
-
-\doxysubsection{Detailed Description}
-\subsubsection*{template$<$Composable Source$>$\newline
-class tannic\+::expression\+::\+Flatten$<$ Source $>$}
-\doxylink{classtannic_1_1expression_1_1Expression}{Expression} template for flattening a contiguous range of dimensions. 
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Source} & The expression or tensor type being flattened.\\
-\hline
-\end{DoxyTemplParams}
-The {\ttfamily \doxylink{classtannic_1_1expression_1_1Flatten}{Flatten}} view collapses dimensions between {\ttfamily start\+\_\+dim} and {\ttfamily end\+\_\+dim} into a single dimension. This operation only modifies tensor metadata (shape and strides) and does not move data.
-
-Example\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ X(float32,\ \{2,\ 3,\ 4\});}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_ae0573425cb00a0c994323d6453efa3ff}{flatten}}(X,\ 1,\ -\/1);\ \textcolor{comment}{//\ shape\ becomes\ (2,\ 12)}}
-\DoxyCodeLine{\textcolor{keyword}{auto}\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_ae0573425cb00a0c994323d6453efa3ff}{flatten}}(X);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ shape\ becomes\ (24)}}
-
-\end{DoxyCode}
- 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{classtannic_1_1expression_1_1Flatten_ae3a7934d1afb7d929497df32d7db815a}\label{classtannic_1_1expression_1_1Flatten_ae3a7934d1afb7d929497df32d7db815a} 
@@ -65,15 +39,12 @@ constexpr \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{tannic\+::expre
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 constexpr type \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{tannic\+::expression\+::\+Flatten}}$<$ Source $>$\+::dtype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The runtime data type of the tensor elements.
-\end{DoxyReturn}
-This is forwarded directly from the source expression. \doxylink{classtannic_1_1expression_1_1Flatten}{Flatten} does not alter the tensor’s dtype. \Hypertarget{classtannic_1_1expression_1_1Flatten_a4204391399bab2401f3e8dad1b32cb6e}\label{classtannic_1_1expression_1_1Flatten_a4204391399bab2401f3e8dad1b32cb6e} 
+\Hypertarget{classtannic_1_1expression_1_1Flatten_ad98f7268bdee9b87d78835c5befc6fb6}\label{classtannic_1_1expression_1_1Flatten_ad98f7268bdee9b87d78835c5befc6fb6} 
 \index{tannic::expression::Flatten$<$ Source $>$@{tannic::expression::Flatten$<$ Source $>$}!forward@{forward}}
 \index{forward@{forward}!tannic::expression::Flatten$<$ Source $>$@{tannic::expression::Flatten$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{forward()}{forward()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
-\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{tannic\+::expression\+::\+Flatten}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}} \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{tannic\+::expression\+::\+Flatten}}$<$ Source $>$\+::forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classtannic_1_1Context}{Context}} const \&}]{context }\end{DoxyParamCaption}) const}
 
 \Hypertarget{classtannic_1_1expression_1_1Flatten_aca516088e1cf52f6bf4dcb63a96414f4}\label{classtannic_1_1expression_1_1Flatten_aca516088e1cf52f6bf4dcb63a96414f4} 
 \index{tannic::expression::Flatten$<$ Source $>$@{tannic::expression::Flatten$<$ Source $>$}!offset@{offset}}
@@ -82,53 +53,21 @@ This is forwarded directly from the source expression. \doxylink{classtannic_1_1
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 std\+::ptrdiff\+\_\+t \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{tannic\+::expression\+::\+Flatten}}$<$ Source $>$\+::offset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-\begin{DoxyReturn}{Returns}
-The byte offset of the unsqueezed tensor from the start of storage.
-\end{DoxyReturn}
-This is forwarded from the source tensor since flatten does not change the starting position of the data. \Hypertarget{classtannic_1_1expression_1_1Flatten_aa1931f085a6e155e6939f72b210abfa3}\label{classtannic_1_1expression_1_1Flatten_aa1931f085a6e155e6939f72b210abfa3} 
+\Hypertarget{classtannic_1_1expression_1_1Flatten_aa1931f085a6e155e6939f72b210abfa3}\label{classtannic_1_1expression_1_1Flatten_aa1931f085a6e155e6939f72b210abfa3} 
 \index{tannic::expression::Flatten$<$ Source $>$@{tannic::expression::Flatten$<$ Source $>$}!shape@{shape}}
 \index{shape@{shape}!tannic::expression::Flatten$<$ Source $>$@{tannic::expression::Flatten$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{shape()}{shape()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Shape}{Shape}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{tannic\+::expression\+::\+Flatten}}$<$ Source $>$\+::shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The shape of the flattened tensor.
-\end{DoxyReturn}
-Calculation\+:
-\begin{DoxyItemize}
-\item Dimensions before {\ttfamily start} are copied unchanged.
-\item Dimensions between {\ttfamily start} and {\ttfamily end} (inclusive) are collapsed into a single dimension equal to the product of their sizes.
-\item Dimensions after {\ttfamily end} are copied unchanged.
-\end{DoxyItemize}
-
-Example\+:
-\begin{DoxyItemize}
-\item Source shape\+: (2, 3, 4), start\+\_\+dim = 1, end\+\_\+dim = -\/1
-\item Flattened shape\+: (2, 12) 
-\end{DoxyItemize}\Hypertarget{classtannic_1_1expression_1_1Flatten_a1f7ce464b62ca61432f9a278dd2289f9}\label{classtannic_1_1expression_1_1Flatten_a1f7ce464b62ca61432f9a278dd2289f9} 
+\Hypertarget{classtannic_1_1expression_1_1Flatten_a1f7ce464b62ca61432f9a278dd2289f9}\label{classtannic_1_1expression_1_1Flatten_a1f7ce464b62ca61432f9a278dd2289f9} 
 \index{tannic::expression::Flatten$<$ Source $>$@{tannic::expression::Flatten$<$ Source $>$}!strides@{strides}}
 \index{strides@{strides}!tannic::expression::Flatten$<$ Source $>$@{tannic::expression::Flatten$<$ Source $>$}}
 \doxysubsubsection{\texorpdfstring{strides()}{strides()}}
 {\footnotesize\ttfamily template$<$Composable Source$>$ \\
 constexpr \mbox{\hyperlink{classtannic_1_1Strides}{Strides}} const  \& \mbox{\hyperlink{classtannic_1_1expression_1_1Flatten}{tannic\+::expression\+::\+Flatten}}$<$ Source $>$\+::strides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
-\begin{DoxyReturn}{Returns}
-The strides of the flattened tensor.
-\end{DoxyReturn}
-Calculation\+:
-\begin{DoxyItemize}
-\item \doxylink{classtannic_1_1Strides}{Strides} before {\ttfamily start} are copied unchanged.
-\item The collapsed dimension is assigned the stride of the {\itshape last} flattened dimension ({\ttfamily end}). ~\newline
- This ensures contiguous indexing across the merged block.
-\item \doxylink{classtannic_1_1Strides}{Strides} after {\ttfamily end\+\_\+dim} are copied unchanged.
-\end{DoxyItemize}
 
-Example\+:
-\begin{DoxyItemize}
-\item Source strides\+: (12, 4, 1) with shape (2, 3, 4)
-\item Flattened (start=1, end=-\/1) → strides\+: (12, 1) with shape (2, 12) 
-\end{DoxyItemize}
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -60,7 +60,7 @@ template<typename S0, typename S1, typename D, class Op>
 status launchBinaryOpKernel(const tensor_t* src0, const tensor_t* src1, tensor_t* dst, stream_t stream) {
     cudaStream_t cudaStream = reinterpret_cast<cudaStream_t>(stream.address);
     const size_t ne = dst->size;
-
+    std::cout << "Launching binary op kernel" << std::endl;
     if (dst->rank == 0) {
         singletonBinaryOpKernel<S0, S1, D, Op><<<1, 1, 0, cudaStream>>>(
             (const S0*)src0->address,

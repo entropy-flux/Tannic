@@ -95,9 +95,6 @@ $(document).ready(function(){initNavTree('db/d6c/concepttannic_1_1Operator.html'
 </div><!--header-->
 <div class="contents">
 
-<p>Concept defining requirements for tensor operation types.  
-<a href="../../db/d6c/concepttannic_1_1Operator.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="../../d7/dd8/concepts_8hpp_source.html">concepts.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
@@ -105,19 +102,8 @@ $(document).ready(function(){initNavTree('db/d6c/concepttannic_1_1Operator.html'
 <div class="line">    { T::promote(type{}, type{}) } -&gt; std::same_as&lt;type&gt;;</div>
 <div class="line">    { T::broadcast(first, second) } -&gt; std::same_as&lt;Shape&gt;; </div>
 <div class="line">}</div>
-<div class="ttc" id="aconcepttannic_1_1Operator_html"><div class="ttname"><a href="../../db/d6c/concepttannic_1_1Operator.html">tannic::Operator</a></div><div class="ttdoc">Concept defining requirements for tensor operation types.</div><div class="ttdef"><b>Definition</b> concepts.hpp:111</div></div>
-</div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Concept defining requirements for tensor operation types. </p>
-<p>This concept specifies the interface that all tensor operators must implement:</p><ul>
-<li>Type promotion rules between operands</li>
-<li>Shape broadcasting behavior</li>
-</ul>
-<p>A type satisfies the Operator concept if it provides:</p><ol type="1">
-<li>A static <code>promote</code> method that determines the result type from two input types</li>
-<li>A static <code>broadcast</code> method that computes the output shape from two input shapes</li>
-</ol>
-<dl class="section see"><dt>See also</dt><dd>Operations.hpp (tensor operations) </dd></dl>
-</div></div><!-- contents -->
+<div class="ttc" id="aconcepttannic_1_1Operator_html"><div class="ttname"><a href="../../db/d6c/concepttannic_1_1Operator.html">tannic::Operator</a></div><div class="ttdef"><b>Definition</b> concepts.hpp:56</div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

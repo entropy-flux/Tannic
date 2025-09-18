@@ -25,27 +25,44 @@
 var NAVTREE =
 [
   [ "Tannic", "index.html", [
-    [ "Introduction", "index.html#autotoc_md65", null ],
-    [ "What is Tannic?", "index.html#autotoc_md66", null ],
-    [ "Status", "index.html#autotoc_md67", null ],
-    [ "Features", "index.html#autotoc_md68", null ],
-    [ "What is comming...", "index.html#autotoc_md69", null ],
-    [ "Installation", "index.html#autotoc_md70", [
-      [ "Requirements", "index.html#autotoc_md71", null ],
-      [ "Clone the repository:", "index.html#autotoc_md72", null ],
-      [ "Debug build:", "index.html#autotoc_md73", null ],
-      [ "Release build", "index.html#autotoc_md74", null ],
-      [ "Run the example", "index.html#autotoc_md75", null ],
-      [ "Include Tannic in your project", "index.html#autotoc_md76", null ],
-      [ "CUDA support", "index.html#autotoc_md77", null ]
+    [ "Introduction", "index.html#autotoc_md32", null ],
+    [ "What is Tannic?", "index.html#autotoc_md33", null ],
+    [ "Status", "index.html#autotoc_md34", null ],
+    [ "Features", "index.html#autotoc_md35", null ],
+    [ "What is comming...", "index.html#autotoc_md36", null ],
+    [ "Installation", "index.html#autotoc_md37", [
+      [ "Requirements", "index.html#autotoc_md38", null ],
+      [ "Clone the repository:", "index.html#autotoc_md39", null ],
+      [ "Debug build:", "index.html#autotoc_md40", null ],
+      [ "Release build", "index.html#autotoc_md41", null ],
+      [ "Run the example", "index.html#autotoc_md42", null ],
+      [ "Include Tannic in your project", "index.html#autotoc_md43", null ],
+      [ "CUDA support", "index.html#autotoc_md44", null ]
     ] ],
-    [ "Usage", "index.html#autotoc_md78", null ],
-    [ "Contributing", "index.html#autotoc_md79", null ],
-    [ "Ways to Contribute", "index.html#autotoc_md80", null ],
-    [ "How to Contribute", "index.html#autotoc_md81", null ],
-    [ "Project structure", "index.html#autotoc_md82", null ],
-    [ "Creating new features.", "index.html#autotoc_md83", [
-      [ "License & Attribution", "index.html#autotoc_md84", null ]
+    [ "Usage", "index.html#autotoc_md45", null ],
+    [ "Contributing", "index.html#autotoc_md46", null ],
+    [ "Ways to Contribute", "index.html#autotoc_md47", null ],
+    [ "How to Contribute", "index.html#autotoc_md48", null ],
+    [ "Project structure", "index.html#autotoc_md49", null ],
+    [ "Creating new features.", "index.html#autotoc_md50", [
+      [ "License & Attribution", "index.html#autotoc_md51", null ]
+    ] ],
+    [ "Tensors", "d8/d44/md_docs_21_8Tensors.html", [
+      [ "Introduction", "d8/d44/md_docs_21_8Tensors.html#autotoc_md53", null ],
+      [ "Tensor initialization", "d8/d44/md_docs_21_8Tensors.html#autotoc_md54", [
+        [ "1. Implicit Initialization", "d8/d44/md_docs_21_8Tensors.html#autotoc_md55", [
+          [ "Example", "d8/d44/md_docs_21_8Tensors.html#autotoc_md56", null ],
+          [ "2. Explicit initialization", "d8/d44/md_docs_21_8Tensors.html#autotoc_md57", null ],
+          [ "Example", "d8/d44/md_docs_21_8Tensors.html#autotoc_md58", null ],
+          [ "Example", "d8/d44/md_docs_21_8Tensors.html#autotoc_md59", null ]
+        ] ],
+        [ "Other initialization methods.", "d8/d44/md_docs_21_8Tensors.html#autotoc_md60", null ],
+        [ "3. Assignment", "d8/d44/md_docs_21_8Tensors.html#autotoc_md61", null ],
+        [ "4. Supported dtypes.", "d8/d44/md_docs_21_8Tensors.html#autotoc_md62", null ],
+        [ "5. Copy semantics", "d8/d44/md_docs_21_8Tensors.html#autotoc_md63", [
+          [ "Example", "d8/d44/md_docs_21_8Tensors.html#autotoc_md64", null ]
+        ] ]
+      ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -79,10 +96,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d3/d8b/tensor_8hpp_source.html",
-"d8/d27/structtannic_1_1expression_1_1Argmean.html#a7944f517159156416c133ccefbf3e0b7",
-"db/d13/concepttannic_1_1Functional.html",
-"dd/de3/types_8hpp.html"
+"d4/d0a/classtannic_1_1Error.html#a39e5f5ff62fe0f88ce92843a4e3e5b23",
+"d8/da0/classtannic_1_1Scalar.html",
+"db/d6c/concepttannic_1_1Operator.html",
+"de/dea/structtannic_1_1indexing_1_1Range.html#aa31ebd72934a95f17531758183f6ce80"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -2,11 +2,6 @@
 \hypertarget{structtannic_1_1expression_1_1Argmax}{}\label{structtannic_1_1expression_1_1Argmax}\index{tannic::expression::Argmax@{tannic::expression::Argmax}}
 
 
-Finds the {\bfseries{indices of maximum values}} along an axis.  
-
-
-
-
 {\ttfamily \#include $<$reductions.\+hpp$>$}
 
 \doxysubsubsection*{Public Member Functions}
@@ -26,27 +21,6 @@ int \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_ac0d3c29f8fb068d08676c
 bool \mbox{\hyperlink{structtannic_1_1expression_1_1Argmax_a7877a8168a1c81b602ef1b4090b5a744}{keepdim}}
 \end{DoxyCompactItemize}
 
-
-\doxysubsection{Detailed Description}
-Finds the {\bfseries{indices of maximum values}} along an axis. 
-
-Output dtype is always {\ttfamily int64}. The reduced axis is removed by default ({\ttfamily keepdim=false}).\hypertarget{structtannic_1_1expression_1_1Argmax_autotoc_md33}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{structtannic_1_1expression_1_1Argmax_autotoc_md33}
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Tensor\ X\ =\ \{\{3,\ 1,\ 4\},\ }
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{1,\ 5,\ 9\}\};\ \ \textcolor{comment}{//\ shape(2,\ 3)}}
-\DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Y\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a0cee5a6cd1bfafa984d9de0c89548424}{argmax}}(X,\ 0);\ \ \textcolor{comment}{//\ Reduce\ axis\ 0\ (rows)}}
-\DoxyCodeLine{std::cout\ <<\ Y\ <<\ std::endl;}
-\DoxyCodeLine{\textcolor{comment}{//\ Y\ =\ [0,\ 1,\ 1]\ \ \ \ \ \ \ \ \ \ //\ Indexes\ of\ max\ values\ per\ column}}
-\DoxyCodeLine{}
-\DoxyCodeLine{Tensor\ Z\ =\ \mbox{\hyperlink{namespacetannic_1_1expression_a0cee5a6cd1bfafa984d9de0c89548424}{argmax}}(X,\ 1,\ \textcolor{comment}{/*keepdim=*\ /true);\ \ //\ Reduce\ axis\ 1\ (columns),\ keep\ dims}}
-\DoxyCodeLine{\textcolor{comment}{std::cout\ <<\ Z\ <<\ std::endl;}}
-\DoxyCodeLine{\textcolor{comment}{//\ Z\ =\ [[2],}}
-\DoxyCodeLine{\textcolor{comment}{//\ \ \ \ \ \ [2]]\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Indexes\ of\ max\ values\ per\ row}}
-
-\end{DoxyCode}
- 
 
 \doxysubsection{Member Function Documentation}
 \Hypertarget{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a}\label{structtannic_1_1expression_1_1Argmax_ad0777e72003105a3371a471c1beb683a} 

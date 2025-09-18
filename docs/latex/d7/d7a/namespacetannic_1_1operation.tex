@@ -4,24 +4,24 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Addition}{Addition}}
-\begin{DoxyCompactList}\small\item\em Binary element-\/wise addition of two tensor expressions. \end{DoxyCompactList}\item 
+\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Exponentiation}{Exponentiation}}
-\begin{DoxyCompactList}\small\item\em Binary element-\/wise exponentiation of two tensor expressions. \end{DoxyCompactList}\item 
+\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Multiplication}{Multiplication}}
-\begin{DoxyCompactList}\small\item\em Binary element-\/wise multiplication of two tensor expressions. \end{DoxyCompactList}\item 
+\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Negation}{Negation}}
-\begin{DoxyCompactList}\small\item\em Unary element-\/wise negation of a tensor expression. \end{DoxyCompactList}\item 
+\item 
 struct \mbox{\hyperlink{structtannic_1_1operation_1_1Subtraction}{Subtraction}}
-\begin{DoxyCompactList}\small\item\em Binary element-\/wise subtraction of two tensor expressions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$Composable Operand$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_acf566907df5853e93fe6b49872ed6b01}{operator-\/}} (Operand \&\&operand)
-\begin{DoxyCompactList}\small\item\em Element-\/wise negation of a tensor expression. \end{DoxyCompactList}\item 
+\item 
 constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_af5df22702686df93a8c1e83acee04a24}{operator-\/}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Infinity}{Infinity}}$<$ Sign\+::\+Positive $>$ \&\&operand)
 \item 
 {\footnotesize template$<$Composable Augend, Composable Addend$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_ac0ecafc7bebd99d7498fd2b815539040}{operator+}} (Augend \&\&augend, Addend \&\&addend)
-\begin{DoxyCompactList}\small\item\em Element-\/wise addition of two tensor expressions. \end{DoxyCompactList}\item 
+\item 
 {\footnotesize template$<$Composable Addend$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_a5b1c907daed791c65c10424fb4de80f2}{operator+}} (\mbox{\hyperlink{classtannic_1_1expression_1_1Zero}{Zero}} const \&zero, Addend \&\&addend)
 \item 
 {\footnotesize template$<$Composable Augend$>$ }\\constexpr auto \mbox{\hyperlink{namespacetannic_1_1operation_abdc75ec7c0ab453ada8bb3cd1a3cafee}{operator+}} (Augend \&\&augend, \mbox{\hyperlink{classtannic_1_1expression_1_1Zero}{Zero}} const \&zero)
@@ -130,29 +130,6 @@ constexpr auto tannic\+::operation\+::operator\texorpdfstring{$\ast$}{*} (\begin
 {\footnotesize\ttfamily template$<$Composable Augend, Composable Addend$>$ \\
 constexpr auto tannic\+::operation\+::operator+ (\begin{DoxyParamCaption}\item[{Augend \&\&}]{augend,  }\item[{Addend \&\&}]{addend }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
-
-
-Element-\/wise addition of two tensor expressions. 
-
-Constructs a lazily evaluated {\ttfamily Binary\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Addition}{Addition}, Augend, Addend\texorpdfstring{$>$}{>}} expression. The result\textquotesingle{}s shape is determined via broadcasting rules, and the resulting data type is the promoted type of the two operands. The computation on the elements is not performed immediately, but is deferred until forward() is called or the expression is assigned to a \doxylink{classtannic_1_1Tensor}{Tensor} object.
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Augend} & Left-\/hand-\/side operand (expression). \\
-\hline
-{\em Addend} & Right-\/hand-\/side operand (expression). \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em augend} & First operand. \\
-\hline
-{\em addend} & Second operand. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A binary expression representing element-\/wise addition. 
-\end{DoxyReturn}
 \Hypertarget{namespacetannic_1_1operation_abdc75ec7c0ab453ada8bb3cd1a3cafee}\label{namespacetannic_1_1operation_abdc75ec7c0ab453ada8bb3cd1a3cafee} 
 \index{tannic::operation@{tannic::operation}!operator+@{operator+}}
 \index{operator+@{operator+}!tannic::operation@{tannic::operation}}
@@ -180,25 +157,6 @@ constexpr auto tannic\+::operation\+::operator+ (\begin{DoxyParamCaption}\item[{
 {\footnotesize\ttfamily template$<$Composable Operand$>$ \\
 constexpr auto tannic\+::operation\+::operator-\/ (\begin{DoxyParamCaption}\item[{Operand \&\&}]{operand }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
 
-
-
-Element-\/wise negation of a tensor expression. 
-
-Constructs a lazily evaluated {\ttfamily Unary\texorpdfstring{$<$}{<}\doxylink{structtannic_1_1operation_1_1Negation}{Negation}, Operand\texorpdfstring{$>$}{>}} expression. This operation does not perform immediate computation; it represents a node in the expression graph and will be evaluated upon calling {\ttfamily forward()}.
-
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Operand} & A type satisfying the {\ttfamily Expression} concept. \\
-\hline
-\end{DoxyTemplParams}
-
-\begin{DoxyParams}{Parameters}
-{\em operand} & The input expression to negate. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A unary expression representing element-\/wise negation. 
-\end{DoxyReturn}
 \Hypertarget{namespacetannic_1_1operation_a179b2c13fdccd0a5c6ec02d3800abfb6}\label{namespacetannic_1_1operation_a179b2c13fdccd0a5c6ec02d3800abfb6} 
 \index{tannic::operation@{tannic::operation}!operator-\/@{operator-\/}}
 \index{operator-\/@{operator-\/}!tannic::operation@{tannic::operation}}
@@ -259,7 +217,7 @@ Constructs a lazily evaluated {\ttfamily Binary\texorpdfstring{$<$}{<}\doxylink{
 \begin{DoxyReturn}{Returns}
 A binary expression representing element-\/wise exponentiation.
 \end{DoxyReturn}
-\hypertarget{namespacetannic_1_1operation_autotoc_md32}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1operation_autotoc_md32}
+\hypertarget{namespacetannic_1_1operation_autotoc_md11}{}\doxyparagraph{\texorpdfstring{Example\+:}{Example:}}\label{namespacetannic_1_1operation_autotoc_md11}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keyword}{auto}\ result\ =\ A\ \string^\ B;}

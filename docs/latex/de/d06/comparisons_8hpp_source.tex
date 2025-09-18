@@ -22,126 +22,127 @@
 \DoxyCodeLine{00018\ \textcolor{preprocessor}{\#ifndef\ COMPARISONS\_HPP}}
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ COMPARISONS\_HPP}}
 \DoxyCodeLine{00020\ }
-\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{concepts_8hpp}{concepts.hpp}}"{}}}
-\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{expressions_8hpp}{expressions.hpp}}"{}}}
-\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shape_8hpp}{shape.hpp}}"{}}}
-\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tensor_8hpp}{tensor.hpp}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{concepts_8hpp}{concepts.hpp}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{expressions_8hpp}{expressions.hpp}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shape_8hpp}{shape.hpp}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tensor_8hpp}{tensor.hpp}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{context_8hpp}{context.hpp}}"{}}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1expression}{tannic::expression}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Criteria,\ Composable\ First,\ Composable\ Second>}
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Comparison}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{Expression}}<Criteria,\ First,\ Second>\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:\ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7df77d427763ca71419898742d1e44e6}{Comparison}}(Criteria\ criteria,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<First>::Reference}}\ first,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Second>::Reference}}\ second)\ }
+\DoxyCodeLine{00033\ \ \ \ \ :\ \ \ \mbox{\hyperlink{classtannic_1_1expression_1_1Expression}{Expression}}<Criteria,\ First,\ Second>(criteria,\ first,\ second)}
+\DoxyCodeLine{00034\ \ \ \ \ ,\ \ \ shape\_(first.\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7d7526a84f620fa1ee0b73a51ce2137f}{shape}}())}
+\DoxyCodeLine{00035\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(first.shape()\ !=\ second.shape())\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Cannot\ compare\ tensors\ of\ different\ shape"{}});\ }
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a2cd31d96cb96ce4cb785e7d36343b8ea}{dtype}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ boolean;}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7d7526a84f620fa1ee0b73a51ce2137f}{shape}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a0bb211f808eb0d002a079df08e7e305d}{strides}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{constexpr}\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a404621de31ee27352f6c6180d2019f77}{offset}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a703bd77fb91fce440b2df95085a9d84e}{forward}}(\mbox{\hyperlink{classtannic_1_1Context}{Context}}\ \textcolor{keyword}{const}\&\ context)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(\textcolor{keywordtype}{boolean},\ shape\_,\ strides\_,\ 0);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}.forward(std::get<0>(this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}),\ std::get<1>(this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}),\ result);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \};}
 \DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1expression}{tannic::expression}}\ \{}
-\DoxyCodeLine{00071\ \ }
-\DoxyCodeLine{00083\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ Criteria,\ Composable\ First,\ Composable\ Second>}
-\DoxyCodeLine{00084\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{Comparison}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}<Criteria,\ First,\ Second>\ \{}
-\DoxyCodeLine{00085\ \textcolor{keyword}{public}:\ \ \ }
-\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7df77d427763ca71419898742d1e44e6}{Comparison}}(Criteria\ criteria,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<First>::Reference}}\ first,\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{structtannic_1_1Trait_a9129038f382bd1ddae5bc8d9d4c255d5}{Trait<Second>::Reference}}\ second)\ }
-\DoxyCodeLine{00091\ \ \ \ \ :\ \ \ \mbox{\hyperlink{concepttannic_1_1Expression}{Expression}}<Criteria,\ First,\ Second>(criteria,\ first,\ second)}
-\DoxyCodeLine{00092\ \ \ \ \ ,\ \ \ shape\_(first.\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7d7526a84f620fa1ee0b73a51ce2137f}{shape}}())}
-\DoxyCodeLine{00093\ \ \ \ \ ,\ \ \ strides\_(shape\_)}
-\DoxyCodeLine{00094\ \ \ \ \ \{}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(first.shape()\ !=\ second.shape())\ }
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{classtannic_1_1Exception}{Exception}}(\textcolor{stringliteral}{"{}Cannot\ compare\ tensors\ of\ different\ shape"{}});\ }
-\DoxyCodeLine{00097\ \ \ \ \ \}}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{constexpr}\ type\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a2cd31d96cb96ce4cb785e7d36343b8ea}{dtype}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ boolean;}
-\DoxyCodeLine{00101\ \ \ \ \ \}}
-\DoxyCodeLine{00102\ \ \ \ \ }
-\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a7d7526a84f620fa1ee0b73a51ce2137f}{shape}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shape\_;}
-\DoxyCodeLine{00105\ \ \ \ \ \}}
-\DoxyCodeLine{00106\ }
-\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ \ \textcolor{keyword}{const}\&\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a0bb211f808eb0d002a079df08e7e305d}{strides}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strides\_;}
-\DoxyCodeLine{00109\ \ \ \ \ \}}
-\DoxyCodeLine{00110\ }
-\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{constexpr}\ std::ptrdiff\_t\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a404621de31ee27352f6c6180d2019f77}{offset}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00113\ \ \ \ \ \}}
-\DoxyCodeLine{00114\ \ \ \ \ }
-\DoxyCodeLine{00115\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \mbox{\hyperlink{classtannic_1_1expression_1_1Comparison_a230e1b46f74c72862ff8d1d9cb52872e}{forward}}()\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ result(\textcolor{keywordtype}{boolean},\ shape\_,\ strides\_,\ 0);}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a85272ddff07cdd719224aaacd9a4589a}{operation}}.forward(std::get<0>(this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}),\ std::get<1>(this-\/>\mbox{\hyperlink{classtannic_1_1expression_1_1Expression_a9cd4a5da73e546d8eaf2a31041df758a}{operands}}),\ result);}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
-\DoxyCodeLine{00119\ \ \ \ \ \}}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00122\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Shape}{Shape}}\ shape\_;}
-\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{classtannic_1_1Strides}{Strides}}\ strides\_;}
-\DoxyCodeLine{00125\ }
-\DoxyCodeLine{00126\ \};}
+\DoxyCodeLine{00070\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1comparison}{tannic::comparison}}\ \{}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{expression::Comparison}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{struct\ }EQ\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{struct\ }NE\ \{\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{struct\ }GT\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ \};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{struct\ }GE\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{struct\ }LT\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{struct\ }LE\ \{\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00096\ \};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
+\DoxyCodeLine{00099\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator==(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<EQ,\ First,\ Second>(\{\},\ lhs,\ rhs);}
+\DoxyCodeLine{00101\ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
+\DoxyCodeLine{00104\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator!=(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<NE,\ First,\ Second>(\{\},\ lhs,\ rhs);}
+\DoxyCodeLine{00106\ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
+\DoxyCodeLine{00109\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator<(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<LT,\ First,\ Second>(\{\},\ lhs,\ rhs);}
+\DoxyCodeLine{00111\ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
+\DoxyCodeLine{00114\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator<=(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<LE,\ First,\ Second>(\{\},\ lhs,\ rhs);}
+\DoxyCodeLine{00116\ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
+\DoxyCodeLine{00119\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator>(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<GT,\ First,\ Second>(\{\},\ lhs,\ rhs);}
+\DoxyCodeLine{00121\ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
+\DoxyCodeLine{00124\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator>=(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<GE,\ First,\ Second>(\{\},\ lhs,\ rhs);}
+\DoxyCodeLine{00126\ \}}
 \DoxyCodeLine{00127\ }
-\DoxyCodeLine{00128\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic_1_1comparison}{tannic::comparison}}\ \{}
+\DoxyCodeLine{00128\ \textcolor{keywordtype}{bool}\ allclose(Tensor\ \textcolor{keyword}{const}\&\ first,\ Tensor\ \textcolor{keyword}{const}\&\ second,\ \textcolor{keywordtype}{double}\ rtol\ =\ 1e-\/5f,\ \textcolor{keywordtype}{double}\ atol\ =\ 1e-\/8f);}
 \DoxyCodeLine{00129\ }
-\DoxyCodeLine{00130\ \textcolor{keyword}{using\ }\mbox{\hyperlink{classtannic_1_1expression_1_1Comparison}{expression::Comparison}};}
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00132\ \textcolor{keyword}{struct\ }EQ\ \{}
-\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(\mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\ \textcolor{keyword}{const}\&,\ \mbox{\hyperlink{classtannic_1_1Tensor}{Tensor}}\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00134\ \};}
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00136\ \textcolor{keyword}{struct\ }NE\ \{\ }
-\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00138\ \};}
+\DoxyCodeLine{00130\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ }
+\DoxyCodeLine{00132\ \textcolor{keyword}{using\ }comparison::operator==;}
+\DoxyCodeLine{00133\ \textcolor{keyword}{using\ }comparison::operator!=;}
+\DoxyCodeLine{00134\ \textcolor{keyword}{using\ }comparison::operator<\ ;}
+\DoxyCodeLine{00135\ \textcolor{keyword}{using\ }comparison::operator<=;}
+\DoxyCodeLine{00136\ \textcolor{keyword}{using\ }comparison::operator>\ ;}
+\DoxyCodeLine{00137\ \textcolor{keyword}{using\ }comparison::operator>=;}
+\DoxyCodeLine{00138\ \textcolor{keyword}{using\ }comparison::allclose\ \ ;}
 \DoxyCodeLine{00139\ }
-\DoxyCodeLine{00140\ \textcolor{keyword}{struct\ }GT\ \{}
-\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00142\ \};}
-\DoxyCodeLine{00143\ }
-\DoxyCodeLine{00144\ \textcolor{keyword}{struct\ }GE\ \{}
-\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00146\ \};}
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00148\ \textcolor{keyword}{struct\ }LT\ \{}
-\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00150\ \};}
-\DoxyCodeLine{00151\ }
-\DoxyCodeLine{00152\ \textcolor{keyword}{struct\ }LE\ \{\ }
-\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ forward(Tensor\ \textcolor{keyword}{const}\&,\ Tensor\ \textcolor{keyword}{const}\&,\ Tensor\&)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00154\ \};}
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00156\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
-\DoxyCodeLine{00157\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator==(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
-\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<EQ,\ First,\ Second>(\{\},\ lhs,\ rhs);}
-\DoxyCodeLine{00159\ \}}
-\DoxyCodeLine{00160\ }
-\DoxyCodeLine{00161\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
-\DoxyCodeLine{00162\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator!=(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
-\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<NE,\ First,\ Second>(\{\},\ lhs,\ rhs);}
-\DoxyCodeLine{00164\ \}}
-\DoxyCodeLine{00165\ }
-\DoxyCodeLine{00166\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
-\DoxyCodeLine{00167\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator<(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
-\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<LT,\ First,\ Second>(\{\},\ lhs,\ rhs);}
-\DoxyCodeLine{00169\ \}}
-\DoxyCodeLine{00170\ }
-\DoxyCodeLine{00171\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
-\DoxyCodeLine{00172\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator<=(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
-\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<LE,\ First,\ Second>(\{\},\ lhs,\ rhs);}
-\DoxyCodeLine{00174\ \}}
-\DoxyCodeLine{00175\ }
-\DoxyCodeLine{00176\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
-\DoxyCodeLine{00177\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator>(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
-\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<GT,\ First,\ Second>(\{\},\ lhs,\ rhs);}
-\DoxyCodeLine{00179\ \}}
-\DoxyCodeLine{00180\ }
-\DoxyCodeLine{00181\ \textcolor{keyword}{template}<Composable\ First,\ Composable\ Second>}
-\DoxyCodeLine{00182\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ operator>=(First\&\&\ lhs,\ Second\&\&\ rhs)\ \{}
-\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{return}\ Comparison<GE,\ First,\ Second>(\{\},\ lhs,\ rhs);}
-\DoxyCodeLine{00184\ \}}
-\DoxyCodeLine{00185\ }
-\DoxyCodeLine{00207\ \textcolor{keywordtype}{bool}\ allclose(Tensor\ \textcolor{keyword}{const}\&\ first,\ Tensor\ \textcolor{keyword}{const}\&\ second,\ \textcolor{keywordtype}{double}\ rtol\ =\ 1e-\/5f,\ \textcolor{keywordtype}{double}\ atol\ =\ 1e-\/8f);}
-\DoxyCodeLine{00208\ }
-\DoxyCodeLine{00209\ \}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacetannic}{tannic}}\ \{}
-\DoxyCodeLine{00210\ \ \ \ \ }
-\DoxyCodeLine{00211\ \textcolor{keyword}{using\ }comparison::operator==;}
-\DoxyCodeLine{00212\ \textcolor{keyword}{using\ }comparison::operator!=;}
-\DoxyCodeLine{00213\ \textcolor{keyword}{using\ }comparison::operator<\ ;}
-\DoxyCodeLine{00214\ \textcolor{keyword}{using\ }comparison::operator<=;}
-\DoxyCodeLine{00215\ \textcolor{keyword}{using\ }comparison::operator>\ ;}
-\DoxyCodeLine{00216\ \textcolor{keyword}{using\ }comparison::operator>=;}
-\DoxyCodeLine{00217\ \textcolor{keyword}{using\ }comparison::allclose\ \ ;}
-\DoxyCodeLine{00218\ }
-\DoxyCodeLine{00219\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
-\DoxyCodeLine{00220\ \ }
-\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ COMPARISONS\_HPP}}
+\DoxyCodeLine{00140\ \}\ \textcolor{comment}{//\ namespace\ tannic}}
+\DoxyCodeLine{00141\ \ }
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ COMPARISONS\_HPP}}
 
 \end{DoxyCode}

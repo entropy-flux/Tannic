@@ -175,11 +175,11 @@ template&lt;Integral Index, Integral Size&gt; </div>
   </dd>
 </dl>
 <p>This function is used <b>internally</b> by the tensor library when processing indexing operations. It allows Python-like negative indices, where <code>-1</code> refers to the last element of a dimension, <code>-2</code> the second-to-last, etc.</p>
-<h4><a class="anchor" id="autotoc_md24"></a>
+<h4><a class="anchor" id="autotoc_md9"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> i = <a class="code hl_function" href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">tannic::indexing::normalize</a>(-1, 5); <span class="comment">// → 4</span></div>
 <div class="line"><span class="keywordtype">int</span> j = <a class="code hl_function" href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">tannic::indexing::normalize</a>(2, 5);  <span class="comment">// → 2</span></div>
-<div class="ttc" id="anamespacetannic_1_1indexing_html_ace9349c1e3b97c3df8283cde013aee85"><div class="ttname"><a href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">tannic::indexing::normalize</a></div><div class="ttdeci">constexpr Index normalize(Index index, Size bound)</div><div class="ttdoc">Normalize a possibly-negative index into the valid range [0, bound).</div><div class="ttdef"><b>Definition</b> indexing.hpp:87</div></div>
+<div class="ttc" id="anamespacetannic_1_1indexing_html_ace9349c1e3b97c3df8283cde013aee85"><div class="ttname"><a href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">tannic::indexing::normalize</a></div><div class="ttdeci">constexpr Index normalize(Index index, Size bound)</div><div class="ttdoc">Normalize a possibly-negative index into the valid range [0, bound).</div><div class="ttdef"><b>Definition</b> indexing.hpp:75</div></div>
 </div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>End-users typically don’t call this directly; it underpins higher-level indexing (<code>tensor[i]</code>) and slicing operations. </dd></dl>
 
 </div>
@@ -239,7 +239,7 @@ template&lt;Integral Size&gt; </div>
 <li><code>start = -1</code> → last element</li>
 <li><code>stop = -1</code> → one-past-the-end</li>
 </ul>
-<h4><a class="anchor" id="autotoc_md25"></a>
+<h4><a class="anchor" id="autotoc_md10"></a>
 Example:</h4>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> r1 = <a class="code hl_function" href="../../d1/d17/namespacetannic_1_1indexing.html#ace9349c1e3b97c3df8283cde013aee85">tannic::indexing::normalize</a>({-3, -1}, 10);</div>
 <div class="line"><span class="comment">// r1.start = 7, r1.stop = 10</span></div>

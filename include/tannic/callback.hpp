@@ -106,7 +106,7 @@ public:
         if(status != SUCCESS) {
             throw std::runtime_error("Environment issue!");
         }
-        switch (environment.environment) {
+        switch (environment.kind) {
             case HOST: {
                 host_t resource = environment.resource.host;
                 output.initialize(Host());  
@@ -148,7 +148,7 @@ public:
             throw std::runtime_error("Environment issue !");
         }
 
-        switch (environment.environment) {
+        switch (environment.kind) {
             case HOST: {
                 output.initialize(Host());  
                 tensor_t* dst = get_tensor(output.id());

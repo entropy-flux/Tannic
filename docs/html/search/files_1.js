@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['callback_2ehpp_0',['callback.hpp',['../da/db7/callback_8hpp.html',1,'']]],
-  ['comparisons_2ehpp_1',['comparisons.hpp',['../de/d06/comparisons_8hpp.html',1,'']]],
-  ['complex_2ehpp_2',['complex.hpp',['../db/dd8/complex_8hpp.html',1,'']]],
-  ['concepts_2ehpp_3',['concepts.hpp',['../d7/dd8/concepts_8hpp.html',1,'']]],
-  ['convolutions_2ehpp_4',['convolutions.hpp',['../d6/dba/convolutions_8hpp.html',1,'']]]
+  ['buffer_2ehpp_0',['buffer.hpp',['../da/d1d/buffer_8hpp.html',1,'']]]
 ];

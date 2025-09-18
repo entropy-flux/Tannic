@@ -24,6 +24,7 @@ var annotated_dup =
         [ "Polar", "d3/dd3/structtannic_1_1expression_1_1Polar.html", null ],
         [ "Realification", "db/d96/classtannic_1_1expression_1_1Realification.html", "db/d96/classtannic_1_1expression_1_1Realification" ],
         [ "Reduction", "da/dc5/classtannic_1_1expression_1_1Reduction.html", "da/dc5/classtannic_1_1expression_1_1Reduction" ],
+        [ "Reshape", "d2/dd8/classtannic_1_1expression_1_1Reshape.html", "d2/dd8/classtannic_1_1expression_1_1Reshape" ],
         [ "Slice", "dd/d0f/classtannic_1_1expression_1_1Slice.html", "dd/d0f/classtannic_1_1expression_1_1Slice" ],
         [ "Squeeze", "d7/dca/classtannic_1_1expression_1_1Squeeze.html", "d7/dca/classtannic_1_1expression_1_1Squeeze" ],
         [ "Transformation", "dc/dd5/classtannic_1_1expression_1_1Transformation.html", "dc/dd5/classtannic_1_1expression_1_1Transformation" ],
@@ -31,21 +32,8 @@ var annotated_dup =
         [ "Triangular", "da/dc6/structtannic_1_1expression_1_1Triangular.html", "da/dc6/structtannic_1_1expression_1_1Triangular" ],
         [ "Unary", "d3/d73/classtannic_1_1expression_1_1Unary.html", "d3/d73/classtannic_1_1expression_1_1Unary" ],
         [ "Unsqueeze", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze.html", "dd/d7d/classtannic_1_1expression_1_1Unsqueeze" ],
-        [ "View", "d2/d9f/classtannic_1_1expression_1_1View.html", "d2/d9f/classtannic_1_1expression_1_1View" ],
+        [ "View", "d2/d9f/classtannic_1_1expression_1_1View.html", null ],
         [ "Zero", "d8/dc7/classtannic_1_1expression_1_1Zero.html", "d8/dc7/classtannic_1_1expression_1_1Zero" ]
-      ] ],
-      [ "function", "dd/d74/namespacetannic_1_1function.html", [
-        [ "Abs", "da/de6/structtannic_1_1function_1_1Abs.html", "da/de6/structtannic_1_1function_1_1Abs" ],
-        [ "Cos", "d1/dd6/structtannic_1_1function_1_1Cos.html", "d1/dd6/structtannic_1_1function_1_1Cos" ],
-        [ "Cosh", "df/dc5/structtannic_1_1function_1_1Cosh.html", "df/dc5/structtannic_1_1function_1_1Cosh" ],
-        [ "Exp", "dc/da3/structtannic_1_1function_1_1Exp.html", "dc/da3/structtannic_1_1function_1_1Exp" ],
-        [ "Log", "d9/d67/structtannic_1_1function_1_1Log.html", "d9/d67/structtannic_1_1function_1_1Log" ],
-        [ "Rsqrt", "dc/db8/structtannic_1_1function_1_1Rsqrt.html", "dc/db8/structtannic_1_1function_1_1Rsqrt" ],
-        [ "Sin", "d5/d31/structtannic_1_1function_1_1Sin.html", "d5/d31/structtannic_1_1function_1_1Sin" ],
-        [ "Sinh", "de/d64/structtannic_1_1function_1_1Sinh.html", "de/d64/structtannic_1_1function_1_1Sinh" ],
-        [ "Sqrt", "d7/df8/structtannic_1_1function_1_1Sqrt.html", "d7/df8/structtannic_1_1function_1_1Sqrt" ],
-        [ "Tan", "d2/d15/structtannic_1_1function_1_1Tan.html", "d2/d15/structtannic_1_1function_1_1Tan" ],
-        [ "Tanh", "d6/d39/structtannic_1_1function_1_1Tanh.html", "d6/d39/structtannic_1_1function_1_1Tanh" ]
       ] ],
       [ "indexing", "d1/d17/namespacetannic_1_1indexing.html", [
         [ "Range", "de/dea/structtannic_1_1indexing_1_1Range.html", "de/dea/structtannic_1_1indexing_1_1Range" ]
@@ -64,6 +52,7 @@ var annotated_dup =
       [ "bfloat16_t", "d0/d17/structtannic_1_1bfloat16__t.html", "d0/d17/structtannic_1_1bfloat16__t" ],
       [ "Buffer", "d4/d50/classtannic_1_1Buffer.html", "d4/d50/classtannic_1_1Buffer" ],
       [ "Callback", "d2/d24/classtannic_1_1Callback.html", "d2/d24/classtannic_1_1Callback" ],
+      [ "Context", "d4/d73/classtannic_1_1Context.html", null ],
       [ "Device", "d3/d46/classtannic_1_1Device.html", "d3/d46/classtannic_1_1Device" ],
       [ "Devices", "d9/dd4/classtannic_1_1Devices.html", "d9/dd4/classtannic_1_1Devices" ],
       [ "Error", "d4/d0a/classtannic_1_1Error.html", "d4/d0a/classtannic_1_1Error" ],
@@ -79,6 +68,5 @@ var annotated_dup =
       [ "Strides", "dc/deb/classtannic_1_1Strides.html", "dc/deb/classtannic_1_1Strides" ],
       [ "Tensor", "da/d93/classtannic_1_1Tensor.html", "da/d93/classtannic_1_1Tensor" ],
       [ "Trait", "d1/d96/structtannic_1_1Trait.html", "d1/d96/structtannic_1_1Trait" ]
-    ] ],
-    [ "Realification", "d6/d98/classRealification.html", null ]
+    ] ]
 ];

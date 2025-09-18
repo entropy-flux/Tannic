@@ -99,9 +99,6 @@ $(document).ready(function(){initNavTree('d6/de5/structtannic_1_1operation_1_1Su
 </div><!--header-->
 <div class="contents">
 
-<p>Binary element-wise subtraction of two tensor expressions.  
- <a href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="../../d6/d00/operations_8hpp_source.html">operations.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -116,25 +113,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ab5950a49b85a9e14ae7a2387fbf970b9" id="r_ab5950a49b85a9e14ae7a2387fbf970b9"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html#ab5950a49b85a9e14ae7a2387fbf970b9">broadcast</a> (<a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;first, <a class="el" href="../../db/da7/classtannic_1_1Shape.html">Shape</a> const &amp;second)</td></tr>
 <tr class="separator:ab5950a49b85a9e14ae7a2387fbf970b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Binary element-wise subtraction of two tensor expressions. </p>
-<p>Used to build a lazily evaluated <code>Binary&lt;<a class="el" href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html" title="Binary element-wise subtraction of two tensor expressions.">Subtraction</a>, Subtrahend, Minuend&gt;</code> expression. Computation is deferred until <code><a class="el" href="../../d6/de5/structtannic_1_1operation_1_1Subtraction.html#afc988b4e53299042435409e149f961d3">forward()</a></code> is called or assigned to a <code><a class="el" href="../../da/d93/classtannic_1_1Tensor.html" title="A multidimensional, strided tensor data structure.">Tensor</a></code>. Supports broadcasting and type promotion.</p>
-<h4><a class="anchor" id="autotoc_md30"></a>
-Example: Subtraction</h4>
-<div class="fragment"><div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> A(float32, {2, 2}); A.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
-<div class="line">A[0, 0] = 5; A[0, 1] = 7;</div>
-<div class="line">A[1, 0] = 9; A[1, 1] = 11;</div>
-<div class="line"> </div>
-<div class="line"><a class="code hl_class" href="../../da/d93/classtannic_1_1Tensor.html">Tensor</a> B(float32, {2, 2}); B.<a class="code hl_function" href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">initialize</a>();</div>
-<div class="line">B[0, 0] = 1; B[0, 1] = 2;</div>
-<div class="line">B[1, 0] = 3; B[1, 1] = 4;</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">auto</span> C = A - B;</div>
-<div class="line">std::cout &lt;&lt; C.forward();</div>
-<div class="line"><span class="comment">// Output: [[4, 5], [6, 7]]</span></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html">tannic::Tensor</a></div><div class="ttdoc">A multidimensional, strided tensor data structure.</div><div class="ttdef"><b>Definition</b> tensor.hpp:99</div></div>
-<div class="ttc" id="aclasstannic_1_1Tensor_html_a3158b2d19ac07f894990b5e1014cc67c"><div class="ttname"><a href="../../da/d93/classtannic_1_1Tensor.html#a3158b2d19ac07f894990b5e1014cc67c">tannic::Tensor::initialize</a></div><div class="ttdeci">void initialize(Environment environment=Host{}) const</div><div class="ttdoc">Allocates the memory buffer for the tensor.</div></div>
-</div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab5950a49b85a9e14ae7a2387fbf970b9" name="ab5950a49b85a9e14ae7a2387fbf970b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5950a49b85a9e14ae7a2387fbf970b9">&#9670;&#160;</a></span>broadcast()</h2>
 

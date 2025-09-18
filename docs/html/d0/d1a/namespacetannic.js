@@ -2,13 +2,14 @@ var namespacetannic =
 [
     [ "comparison", "d0/dc3/namespacetannic_1_1comparison.html", null ],
     [ "expression", "d9/dd9/namespacetannic_1_1expression.html", "d9/dd9/namespacetannic_1_1expression" ],
-    [ "function", "dd/d74/namespacetannic_1_1function.html", "dd/d74/namespacetannic_1_1function" ],
+    [ "function", "dd/d74/namespacetannic_1_1function.html", null ],
     [ "indexing", "d1/d17/namespacetannic_1_1indexing.html", "d1/d17/namespacetannic_1_1indexing" ],
     [ "operation", "d7/d7a/namespacetannic_1_1operation.html", "d7/d7a/namespacetannic_1_1operation" ],
     [ "transformation", "de/d75/namespacetannic_1_1transformation.html", "de/d75/namespacetannic_1_1transformation" ],
     [ "bfloat16_t", "d0/d17/structtannic_1_1bfloat16__t.html", "d0/d17/structtannic_1_1bfloat16__t" ],
     [ "Buffer", "d4/d50/classtannic_1_1Buffer.html", "d4/d50/classtannic_1_1Buffer" ],
     [ "Callback", "d2/d24/classtannic_1_1Callback.html", "d2/d24/classtannic_1_1Callback" ],
+    [ "Context", "d4/d73/classtannic_1_1Context.html", null ],
     [ "Device", "d3/d46/classtannic_1_1Device.html", "d3/d46/classtannic_1_1Device" ],
     [ "Devices", "d9/dd4/classtannic_1_1Devices.html", "d9/dd4/classtannic_1_1Devices" ],
     [ "Error", "d4/d0a/classtannic_1_1Error.html", "d4/d0a/classtannic_1_1Error" ],
@@ -33,7 +34,6 @@ var namespacetannic =
     [ "Arithmetic", "d5/daf/concepttannic_1_1Arithmetic.html", null ],
     [ "Assignable", "d1/dfb/concepttannic_1_1Assignable.html", null ],
     [ "Comparable", "d1/d00/concepttannic_1_1Comparable.html", null ],
-    [ "Expression", "d7/d3b/concepttannic_1_1Expression.html", null ],
     [ "Environment", "d0/d1a/namespacetannic.html#ab25d9deb845a2f968f245cc13c4a1f43", null ],
     [ "range", "d0/d1a/namespacetannic.html#affef8090e8f7ba383c67e15135664024", null ],
     [ "IOStyle", "d0/d1a/namespacetannic.html#a22253ce740114e2dcc7042ce55e5cc66", [

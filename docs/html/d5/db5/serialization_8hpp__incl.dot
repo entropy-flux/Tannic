@@ -8,7 +8,7 @@ digraph "include/tannic/serialization.hpp"
   Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
   Node2 [id="Node000002",label="cstdint",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
-  Node3 [id="Node000003",label="tensor.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d3/d8b/tensor_8hpp.html",tooltip="Core multidimensional tensor class for the Tannic Tensor Library."];
+  Node3 [id="Node000003",label="tensor.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d3/d8b/tensor_8hpp.html",tooltip=" "];
   Node3 -> Node4 [id="edge3_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
   Node4 [id="Node000004",label="iostream",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node3 -> Node5 [id="edge4_Node000003_Node000005",color="steelblue1",style="solid",tooltip=" "];
@@ -48,7 +48,7 @@ digraph "include/tannic/serialization.hpp"
   Node19 [id="Node000019",label="iterator",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node17 -> Node9 [id="edge24_Node000017_Node000009",color="steelblue1",style="solid",tooltip=" "];
   Node13 -> Node20 [id="edge25_Node000013_Node000020",color="steelblue1",style="solid",tooltip=" "];
-  Node20 [id="Node000020",label="indexing.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/d1d/indexing_8hpp.html",tooltip="Utilities for index normalization and slicing ranges in the Tannic Tensor Library."];
+  Node20 [id="Node000020",label="indexing.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/d1d/indexing_8hpp.html",tooltip=" "];
   Node20 -> Node6 [id="edge26_Node000020_Node000006",color="steelblue1",style="solid",tooltip=" "];
   Node20 -> Node17 [id="edge27_Node000020_Node000017",color="steelblue1",style="solid",tooltip=" "];
   Node20 -> Node21 [id="edge28_Node000020_Node000021",color="steelblue1",style="solid",tooltip=" "];
@@ -98,7 +98,7 @@ digraph "include/tannic/serialization.hpp"
   Node31 -> Node23 [id="edge59_Node000031_Node000023",color="steelblue1",style="solid",tooltip=" "];
   Node31 -> Node20 [id="edge60_Node000031_Node000020",color="steelblue1",style="solid",tooltip=" "];
   Node3 -> Node34 [id="edge61_Node000003_Node000034",color="steelblue1",style="solid",tooltip=" "];
-  Node34 [id="Node000034",label="views.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$de/d49/views_8hpp.html",tooltip="Implements views for tensors in the Tannic Tensor Library."];
+  Node34 [id="Node000034",label="views.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$de/d49/views_8hpp.html",tooltip=" "];
   Node34 -> Node7 [id="edge62_Node000034_Node000007",color="steelblue1",style="solid",tooltip=" "];
   Node34 -> Node35 [id="edge63_Node000034_Node000035",color="steelblue1",style="solid",tooltip=" "];
   Node35 [id="Node000035",label="algorithm",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
@@ -112,7 +112,7 @@ digraph "include/tannic/serialization.hpp"
   Node34 -> Node17 [id="edge70_Node000034_Node000017",color="steelblue1",style="solid",tooltip=" "];
   Node34 -> Node21 [id="edge71_Node000034_Node000021",color="steelblue1",style="solid",tooltip=" "];
   Node3 -> Node37 [id="edge72_Node000003_Node000037",color="steelblue1",style="solid",tooltip=" "];
-  Node37 [id="Node000037",label="operations.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d6/d00/operations_8hpp.html",tooltip="Defines expression templates tensor aritmetic operations."];
+  Node37 [id="Node000037",label="operations.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d6/d00/operations_8hpp.html",tooltip=" "];
   Node37 -> Node7 [id="edge73_Node000037_Node000007",color="steelblue1",style="solid",tooltip=" "];
   Node37 -> Node14 [id="edge74_Node000037_Node000014",color="steelblue1",style="solid",tooltip=" "];
   Node37 -> Node17 [id="edge75_Node000037_Node000017",color="steelblue1",style="solid",tooltip=" "];
@@ -140,7 +140,7 @@ digraph "include/tannic/serialization.hpp"
   Node40 -> Node13 [id="edge94_Node000040_Node000013",color="steelblue1",style="solid",tooltip=" "];
   Node40 -> Node23 [id="edge95_Node000040_Node000023",color="steelblue1",style="solid",tooltip=" "];
   Node3 -> Node41 [id="edge96_Node000003_Node000041",color="steelblue1",style="solid",tooltip=" "];
-  Node41 [id="Node000041",label="complex.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$db/dd8/complex_8hpp.html",tooltip="Complex number operations for the Tannic Tensor Library."];
+  Node41 [id="Node000041",label="complex.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$db/dd8/complex_8hpp.html",tooltip=" "];
   Node41 -> Node17 [id="edge97_Node000041_Node000017",color="steelblue1",style="solid",tooltip=" "];
   Node41 -> Node9 [id="edge98_Node000041_Node000009",color="steelblue1",style="solid",tooltip=" "];
   Node41 -> Node13 [id="edge99_Node000041_Node000013",color="steelblue1",style="solid",tooltip=" "];
@@ -150,4 +150,6 @@ digraph "include/tannic/serialization.hpp"
   Node3 -> Node42 [id="edge103_Node000003_Node000042",color="steelblue1",style="solid",tooltip=" "];
   Node42 [id="Node000042",label="graph.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d9/de9/graph_8hpp.html",tooltip=" "];
   Node42 -> Node2 [id="edge104_Node000042_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node3 -> Node43 [id="edge105_Node000003_Node000043",color="steelblue1",style="solid",tooltip=" "];
+  Node43 [id="Node000043",label="context.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d2/da3/context_8hpp.html",tooltip=" "];
 }
