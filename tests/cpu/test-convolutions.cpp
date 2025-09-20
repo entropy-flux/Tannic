@@ -254,7 +254,7 @@ TEST(TestConvolution, Kernel1x1) {
 
 TEST(TestConvolution, BigConv) {
 
-    Tensor X = {{
+    Tensor X = {
         { // batch 0
             { // channel 0
                 {1.0f,  2.0f,  3.0f,  4.0f},
@@ -295,10 +295,10 @@ TEST(TestConvolution, BigConv) {
                 {93.0f, 94.0f, 95.0f, 96.0f}
             }
         }
-    }};
+    };
     
     
-    Tensor K = {{
+    Tensor K = {
         { // out_channel 0
             { // in channel 0
                 {1.0f,  0.0f, -1.0f},
@@ -316,7 +316,7 @@ TEST(TestConvolution, BigConv) {
                 {1.0f,  0.0f, -1.0f}
             }
         }
-    }};
+    };
 
     Tensor Y = convolve2D(X, K, /*stride=*/1, /*padding=*/1) ; 
 

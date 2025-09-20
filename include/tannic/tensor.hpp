@@ -42,7 +42,6 @@ public:
     using rank_type = uint8_t;     
     using size_type = std::size_t;   
 
-
     Tensor() = default;
  
     Tensor(type dtype, Shape shape)
@@ -157,500 +156,36 @@ public:
 public: 
 
     template<Arithmetic T>
-    Tensor(std::initializer_list<T> const& values)
-    :   dtype_(dtypeof<T>())
-    ,   shape_({values.size()})
-    ,   strides_(shape_)
-    ,   offset_(0)
-    ,   nelements_(shape_[0]) {
-        if (dtype_ == boolean) { 
-            initialize();
-            std::ptrdiff_t index = 0; 
-            for (auto const& value : values) {
-                assign((bool const*)(&value), index);
-                ++index;
-            }
-        }
-
-        else { 
-            initialize();
-            size_t index = 0;
-            for (auto const& value : values) {
-                assign((std::byte const*)(&value), index * dsizeof(dtype_));
-                ++index;
-            }
-        } 
-    }
+    Tensor(std::initializer_list<T> const& values);
 
     template<Arithmetic T>
-    Tensor(std::initializer_list<std::initializer_list<T>> const& values)
-    :   dtype_(dtypeof<T>())
-    ,   shape_({values.size(), values.begin()->size()})
-    ,   strides_(shape_)
-    ,   offset_(0) 
-    ,   nelements_(shape_[0] * shape_[1])
-    {
-
-        if (dtype_ == boolean) { 
-            initialize();
-            std::ptrdiff_t index = 0;   
-            for (auto const& row : values) {
-                if (row.size() != shape_[1])
-                    throw Exception("All rows must have the same number of columns");
-                for (auto const& value : row) {
-                    assign((bool const*)(&value), index);
-                    ++index;
-                }
-            }
-        } 
-
-        else { 
-            initialize(); 
-            size_t index = 0;   
-            for (auto row : values) {
-                if (row.size() != shape_[1])
-                    throw Exception("All rows must have the same number of columns");
-                for (auto const& value : row) {
-                    assign((std::byte const*)(&value), index * dsizeof(dtype_));
-                    ++index;
-                }
-            }
-        } 
-    }
+    Tensor(std::initializer_list<std::initializer_list<T>> const& values);
 
     template<Arithmetic T>
-    Tensor(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values)
-    :   dtype_(dtypeof<T>())
-    ,   shape_({values.size(), values.begin()->size(), values.begin()->begin()->size()})
-    ,   strides_(shape_)
-    ,   offset_(0)
-    ,   nelements_(shape_[0] * shape_[1] * shape_[2])
-        
-    {
-        if (dtype_ == boolean) { 
-            initialize();
-            std::ptrdiff_t index = 0;   
-            for (auto const& matrix : values) {
-                if (matrix.size() != shape_[1])
-                    throw Exception("All matrices must have the same number of rows");
-                for (auto const& row : matrix) {
-                    if (row.size() != shape_[2])
-                        throw Exception("All rows must have the same number of columns");
-                    for (auto const& value : row) {
-                        assign((bool const*)(&value), index);
-                        ++index;
-                    }
-                }
-            }
-        }
-
-        else { 
-            initialize(); 
-            size_t index = 0;   
-            for (auto const& matrix : values) {
-                if (matrix.size() != shape_[1])
-                    throw Exception("All matrices must have the same number of rows");
-                for (auto const& row : matrix) {
-                    if (row.size() != shape_[2])
-                        throw Exception("All rows must have the same number of columns");
-                    for (auto const& value : row) {
-                        assign((std::byte const*)(&value), index * dsizeof(dtype_));
-                        ++index;
-                    }
-                }
-            }
-        } 
-    }   
- 
+    Tensor(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values);
 
     template<Arithmetic T>
-    Tensor(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const& values)
-    :    dtype_(dtypeof<T>())
-    ,    shape_({
-            values.size(),
-            values.begin()->size(),
-            values.begin()->begin()->size(),
-            values.begin()->begin()->begin()->size()
-        })
-    ,   strides_(shape_)
-    ,   offset_(0)
-    ,   nelements_(shape_[0] * shape_[1] * shape_[2] * shape_[3])
-    {
-        
-        if (dtype_ == boolean) { 
-            initialize();
-            std::ptrdiff_t index = 0;
-            for (auto const& tensor3D : values) {
-                if (tensor3D.size() != shape_[1])
-                    throw Exception("All 3D tensors must have the same number of matrices");
-                for (auto const& matrix : tensor3D) {
-                    if (matrix.size() != shape_[2])
-                        throw Exception("All matrices must have the same number of rows");
-                    for (auto const& row : matrix) {
-                        if (row.size() != shape_[3])
-                            throw Exception("All rows must have the same number of columns");
-                        for (auto const& value : row) {
-                            assign((bool const*)(&value), index);
-                            ++index;
-                        }
-                    }
-                }
-            }
-        }
+    Tensor(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const& values);
 
-        else {  
-            initialize();
-
-            size_t index = 0;
-            for (auto const& tensor3D : values) {
-                if (tensor3D.size() != shape_[1])
-                    throw Exception("All 3D tensors must have the same number of matrices");
-                for (auto const& matrix : tensor3D) {
-                    if (matrix.size() != shape_[2])
-                        throw Exception("All matrices must have the same number of rows");
-                    for (auto const& row : matrix) {
-                        if (row.size() != shape_[3])
-                            throw Exception("All rows must have the same number of columns");
-                        for (auto const& value : row) {
-                            assign((std::byte const*)(&value), index * dsizeof(dtype_));
-                            ++index;
-                        }
-                    }
-                }
-            } 
-        } 
-    }
-
+    template<Arithmetic T>
+    Tensor(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>>> const& values);
 
 public: 
 
     template<Arithmetic T>
-    void initialize(std::initializer_list<T> values, Environment environment = Host{}) {
-        if (!is_contiguous())
-            throw Exception("Assign to initializer list supported only for contiguous tensors");
-      
-        if (rank() != 1 || shape_[0] != values.size())
-            throw Exception("Shape mismatch in assignment from initializer_list");
- 
-        if (!is_initialized()) 
-            initialize(environment);
-
-        if (dtype_ == boolean) {
-            std::ptrdiff_t index = 0;
-            for (auto const& value : values) {
-                assign((bool const*)(&value), index);
-                ++index;
-            }
-        } 
-        
-        else { 
-            auto fill = [this, &values](auto cast) { 
-                using Cast = decltype(cast);
-                size_t index = 0;
-                for (auto value : values) { 
-                    Cast casted(value);
-                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                    ++index;
-                }
-            }; 
-
-            switch (dtype_) {
-                case int8:    fill(int8_t{});    break;
-                case int16:   fill(int16_t{});   break;
-                case int32:   fill(int32_t{});   break;
-                case int64:   fill(int64_t{});   break;
-                case float16:  fill(float16_t{}) ; break;   
-                case bfloat16: fill(bfloat16_t{}); break;   
-                case float32: fill(float{});     break;
-                case float64: fill(double{});    break;
-                default: throw Exception("Unsupported dtype in assignment");
-            } 
-        } 
-    }
- 
+    void initialize(std::initializer_list<T> values, Environment environment = Host{});
     
     template<Arithmetic T>
-    void initialize(std::initializer_list<std::initializer_list<T>> const & values, Environment environment = Host{}) {
-        if (!is_contiguous())
-            throw Exception("Assign to initializer list supported only for contiguous tensors"); 
- 
-        if (rank() != 2 || shape_[0] != values.size() || shape_[1] != values.begin()->size())
-            throw Exception("Shape mismatch in assignment from nested initializer_list"); 
-
-        if (!is_initialized()) 
-            initialize(environment);
-
-        if (dtype_ == boolean) {
-            std::ptrdiff_t index = 0;
-            for (auto const& row : values) {
-                if (row.size() != shape_[1])
-                    throw Exception("Row length mismatch in assignment from initializer_list");
-                for (auto const& value : row) {
-                    assign((bool const*)(&value), index);
-                    ++index;
-                }
-            } 
-        }
-
-        else { 
-            auto fill = [this, &values](auto cast) { 
-                using Cast = decltype(cast);
-                size_t index = 0;
-                for (auto const& row : values) {
-                    if (row.size() != shape_[1])
-                        throw Exception("Row length mismatch in assignment from initializer_list");
-
-                    for (auto value : row) { 
-                        Cast casted(value);
-                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                        ++index;
-                    }
-                }
-            };
-
-            switch (dtype_) {
-                case int8:    fill(int8_t{});    break;
-                case int16:   fill(int16_t{});   break;
-                case int32:   fill(int32_t{});   break;
-                case int64:   fill(int64_t{});   break;
-                case float16:  fill(float16_t{}) ; break;   
-                case bfloat16: fill(bfloat16_t{}); break;   
-                case float32: fill(float{});     break;
-                case float64: fill(double{});    break;
-                default: throw Exception("Unsupported dtype in assignment");
-            } 
-        }  
-    }
+    void initialize(std::initializer_list<std::initializer_list<T>> const & values, Environment environment = Host{});
  
     template<Arithmetic T>
-    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values, Environment environment = Host{}) {
-        if (!is_contiguous())
-            throw Exception("Assign to initializer list supported only for contiguous tensors");
-
-        if (rank() != 3 
-            || shape_[0] != values.size() 
-            || shape_[1] != values.begin()->size() 
-            || shape_[2] != values.begin()->begin()->size())
-            throw Exception("Shape mismatch in assignment from triple-nested initializer_list");
-
-        if (!is_initialized()) 
-            initialize(environment);
-
-        if (dtype_ == boolean) {
-            std::ptrdiff_t index = 0;
-            for (auto const& matrix : values) {
-                if (matrix.size() != shape_[1])
-                    throw Exception("Matrix row count mismatch");
-                for (auto const& row : matrix) {
-                    if (row.size() != shape_[2])
-                        throw Exception("Row length mismatch");
-                    for (auto const& value : row) {
-                        assign((bool const*)(&value), index);
-                        ++index;
-                    }
-                }
-            }
-        }
-
-        else { 
-            auto fill = [this, &values](auto cast) { 
-                using Cast = decltype(cast);
-                size_t index = 0;
-                for (auto const& matrix : values) {
-                    if (matrix.size() != shape_[1])
-                        throw Exception("Matrix row count mismatch");
-                    for (auto const& row : matrix) {
-                        if (row.size() != shape_[2])
-                            throw Exception("Row length mismatch");
-                        for (auto value : row) { 
-                            Cast casted(value);
-                            assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                            ++index;
-                        }
-                    }
-                }
-            };
-
-            switch (dtype_) {
-                case int8:    fill(int8_t{});    break;
-                case int16:   fill(int16_t{});   break;
-                case int32:   fill(int32_t{});   break;
-                case int64:   fill(int64_t{});   break;
-                case float16:  fill(float16_t{}) ; break;   
-                case bfloat16: fill(bfloat16_t{}); break;   
-                case float32: fill(float{});     break;
-                case float64: fill(double{});    break;
-                default: throw Exception("Unsupported dtype in assignment");
-            } 
-        } 
-} 
+    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values, Environment environment = Host{});
 
     template<Arithmetic T>
-    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> values, Environment environment = Host{}) {
-        if (!is_contiguous())
-            throw Exception("Assign to initializer list supported only for contiguous tensors");
-
-        if (rank() != 4 
-            || shape_[0] != values.size() 
-            || shape_[1] != values.begin()->size() 
-            || shape_[2] != values.begin()->begin()->size() 
-            || shape_[3] != values.begin()->begin()->begin()->size())
-            throw Exception("Shape mismatch in assignment from quadruple-nested initializer_list");
-
-        if (!is_initialized()) 
-            initialize(environment);
-
-        if (dtype_ == boolean) {
-            std::ptrdiff_t index = 0;
-            for (auto const& tensor3D : values) {
-                if (tensor3D.size() != shape_[1])
-                    throw Exception("3D tensor count mismatch");
-
-                for (auto const& matrix : tensor3D) {
-                    if (matrix.size() != shape_[2])
-                        throw Exception("Matrix row count mismatch");
-
-                    for (auto const& row : matrix) {
-                        if (row.size() != shape_[3])
-                            throw Exception("Row length mismatch");
-
-                        for (auto const& value : row) {
-                            assign((bool const*)(&value), index);
-                            ++index;
-                        }
-                    }
-                }
-            } 
-        }  
-        
-        else { 
-            auto fill = [this, &values](auto cast) { 
-                using Cast = decltype(cast);
-                size_t index = 0;
-                for (auto const& tensor3D : values) {
-                    if (tensor3D.size() != shape_[1])
-                        throw Exception("3D tensor count mismatch");
-
-                    for (auto const& matrix : tensor3D) {
-                        if (matrix.size() != shape_[2])
-                            throw Exception("Matrix row count mismatch");
-
-                        for (auto const& row : matrix) {
-                            if (row.size() != shape_[3]) 
-                                throw Exception("Row length mismatch");
-
-                            for (auto value : row) {
-                                Cast casted(value);
-                                assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                                ++index;
-                            }
-                        }
-                    }
-                }
-            };
-
-            switch (dtype_) {
-                case int8:    fill(int8_t{});    break;
-                case int16:   fill(int16_t{});   break;
-                case int32:   fill(int32_t{});   break;
-                case int64:   fill(int64_t{});   break;
-                case float16:  fill(float16_t{}) ; break;   
-                case bfloat16: fill(bfloat16_t{}); break;   
-                case float32: fill(float{});     break;
-                case float64: fill(double{});    break;
-                default: throw Exception("Unsupported dtype in assignment");
-            } 
-        }  
-    } 
-
+    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> values, Environment environment = Host{});
 
     template<Arithmetic T>
-    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>>> values, Environment environment = Host{}) {
-        if (!is_contiguous())
-            throw Exception("Assign to initializer list supported only for contiguous tensors");
-
-        if (rank() != 5 
-            || shape_[0] != values.size() 
-            || shape_[1] != values.begin()->size() 
-            || shape_[2] != values.begin()->begin()->size() 
-            || shape_[3] != values.begin()->begin()->begin()->size()
-            || shape_[4] != values.begin()->begin()->begin()->begin()->size())
-            throw Exception("Shape mismatch in assignment from quintuple-nested initializer_list");
-
-        if (!is_initialized()) 
-            initialize(environment);
-
-        if (dtype_ == boolean) {
-            std::ptrdiff_t index = 0;
-            for (auto const& tensor4D : values) {
-                if (tensor4D.size() != shape_[1])
-                    throw Exception("4D tensor count mismatch");
-
-                for (auto const& tensor3D : tensor4D) {
-                    if (tensor3D.size() != shape_[2])
-                        throw Exception("3D tensor count mismatch");
-
-                    for (auto const& matrix : tensor3D) {
-                        if (matrix.size() != shape_[3])
-                            throw Exception("Matrix row count mismatch");
-
-                        for (auto const& row : matrix) {
-                            if (row.size() != shape_[4])
-                                throw Exception("Row length mismatch");
-
-                            for (auto const& value : row) {
-                                assign((bool const*)(&value), index);
-                                ++index;
-                            }
-                        }
-                    }
-                }
-            } 
-        }  
-        else { 
-            auto fill = [this, &values](auto cast) { 
-                using Cast = decltype(cast);
-                size_t index = 0;
-                for (auto const& tensor4D : values) {
-                    if (tensor4D.size() != shape_[1])
-                        throw Exception("4D tensor count mismatch");
-
-                    for (auto const& tensor3D : tensor4D) {
-                        if (tensor3D.size() != shape_[2])
-                            throw Exception("3D tensor count mismatch");
-
-                        for (auto const& matrix : tensor3D) {
-                            if (matrix.size() != shape_[3]) 
-                                throw Exception("Matrix row count mismatch");
-
-                            for (auto const& row : matrix) {
-                                if (row.size() != shape_[4])
-                                    throw Exception("Row length mismatch");
-
-                                for (auto value : row) {
-                                    Cast casted(value);
-                                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
-                                    ++index;
-                                }
-                            }
-                        }
-                    }
-                }
-            };
-
-            switch (dtype_) {
-                case int8:    fill(int8_t{});    break;
-                case int16:   fill(int16_t{});   break;
-                case int32:   fill(int32_t{});   break;
-                case int64:   fill(int64_t{});   break;
-                case float16:  fill(float16_t{}); break;   
-                case bfloat16: fill(bfloat16_t{}); break;   
-                case float32: fill(float{});     break;
-                case float64: fill(double{});    break;
-                default: throw Exception("Unsupported dtype in assignment");
-            } 
-        }  
-    }
+    void initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>>> values, Environment environment = Host{});
 
     
 public: 
@@ -954,6 +489,592 @@ Tensor expression::Realification<Source>::forward(Context const& context) const 
     return real; 
 }
 
+
+/**************************************************************************************************** */
+
+
+/*
+Currently don't really know how to clean up this mess with initializer lists. Tried with
+recursion but the compiler don't recognize nested initializer lists. If someone can give me a hand
+here I will really appreciate, since is a lot of code. 
+*/
+
+
+template<Arithmetic T>
+Tensor::Tensor(std::initializer_list<T> const& values)
+:   dtype_(dtypeof<T>())
+,   shape_({values.size()})
+,   strides_(shape_)
+,   offset_(0)
+,   nelements_(shape_[0]) {
+    if (dtype_ == boolean) { 
+        initialize();
+        std::ptrdiff_t index = 0; 
+        for (auto const& value : values) {
+            assign((bool const*)(&value), index);
+            ++index;
+        }
+    }
+
+    else { 
+        initialize();
+        size_t index = 0;
+        for (auto const& value : values) {
+            assign((std::byte const*)(&value), index * dsizeof(dtype_));
+            ++index;
+        }
+    } 
+}
+
+
+
+
+
+template<Arithmetic T>
+Tensor::Tensor(std::initializer_list<std::initializer_list<T>> const& values)
+:   dtype_(dtypeof<T>())
+,   shape_({values.size(), values.begin()->size()})
+,   strides_(shape_)
+,   offset_(0) 
+,   nelements_(shape_[0] * shape_[1])
+{
+
+    if (dtype_ == boolean) { 
+        initialize();
+        std::ptrdiff_t index = 0;   
+        for (auto const& row : values) {
+            if (row.size() != shape_[1])
+                throw Exception("All rows must have the same number of columns");
+            for (auto const& value : row) {
+                assign((bool const*)(&value), index);
+                ++index;
+            }
+        }
+    } 
+
+    else { 
+        initialize(); 
+        size_t index = 0;   
+        for (auto row : values) {
+            if (row.size() != shape_[1])
+                throw Exception("All rows must have the same number of columns");
+            for (auto const& value : row) {
+                assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                ++index;
+            }
+        }
+    } 
+}
+
+template<Arithmetic T>
+Tensor::Tensor(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values)
+:   dtype_(dtypeof<T>())
+,   shape_({values.size(), values.begin()->size(), values.begin()->begin()->size()})
+,   strides_(shape_)
+,   offset_(0)
+,   nelements_(shape_[0] * shape_[1] * shape_[2])
+    
+{
+    if (dtype_ == boolean) { 
+        initialize();
+        std::ptrdiff_t index = 0;   
+        for (auto const& matrix : values) {
+            if (matrix.size() != shape_[1])
+                throw Exception("All matrices must have the same number of rows");
+            for (auto const& row : matrix) {
+                if (row.size() != shape_[2])
+                    throw Exception("All rows must have the same number of columns");
+                for (auto const& value : row) {
+                    assign((bool const*)(&value), index);
+                    ++index;
+                }
+            }
+        }
+    }
+
+    else { 
+        initialize(); 
+        size_t index = 0;   
+        for (auto const& matrix : values) {
+            if (matrix.size() != shape_[1])
+                throw Exception("All matrices must have the same number of rows");
+            for (auto const& row : matrix) {
+                if (row.size() != shape_[2])
+                    throw Exception("All rows must have the same number of columns");
+                for (auto const& value : row) {
+                    assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                    ++index;
+                }
+            }
+        }
+    } 
+}   
+
+
+template<Arithmetic T>
+Tensor::Tensor(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> const& values)
+:    dtype_(dtypeof<T>())
+,    shape_({
+        values.size(),
+        values.begin()->size(),
+        values.begin()->begin()->size(),
+        values.begin()->begin()->begin()->size()
+    })
+,   strides_(shape_)
+,   offset_(0)
+,   nelements_(shape_[0] * shape_[1] * shape_[2] * shape_[3])
+{
+    
+    if (dtype_ == boolean) { 
+        initialize();
+        std::ptrdiff_t index = 0;
+        for (auto const& tensor3D : values) {
+            if (tensor3D.size() != shape_[1])
+                throw Exception("All 3D tensors must have the same number of matrices");
+            for (auto const& matrix : tensor3D) {
+                if (matrix.size() != shape_[2])
+                    throw Exception("All matrices must have the same number of rows");
+                for (auto const& row : matrix) {
+                    if (row.size() != shape_[3])
+                        throw Exception("All rows must have the same number of columns");
+                    for (auto const& value : row) {
+                        assign((bool const*)(&value), index);
+                        ++index;
+                    }
+                }
+            }
+        }
+    }
+
+    else {  
+        initialize();
+
+        size_t index = 0;
+        for (auto const& tensor3D : values) {
+            if (tensor3D.size() != shape_[1])
+                throw Exception("All 3D tensors must have the same number of matrices");
+            for (auto const& matrix : tensor3D) {
+                if (matrix.size() != shape_[2])
+                    throw Exception("All matrices must have the same number of rows");
+                for (auto const& row : matrix) {
+                    if (row.size() != shape_[3])
+                        throw Exception("All rows must have the same number of columns");
+                    for (auto const& value : row) {
+                        assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                        ++index;
+                    }
+                }
+            }
+        } 
+    } 
+}
+
+template<Arithmetic T>
+Tensor::Tensor(
+    std::initializer_list<
+        std::initializer_list<
+            std::initializer_list<
+                std::initializer_list<
+                    std::initializer_list<T>
+                >
+            >
+        >
+    > const& values
+)
+:   dtype_(dtypeof<T>())
+,   shape_({
+        values.size(),
+        values.begin()->size(),
+        values.begin()->begin()->size(),
+        values.begin()->begin()->begin()->size(),
+        values.begin()->begin()->begin()->begin()->size()
+    })
+,   strides_(shape_)
+,   offset_(0)
+,   nelements_(shape_[0] * shape_[1] * shape_[2] * shape_[3] * shape_[4])
+{
+    if (dtype_ == boolean) { 
+        initialize();
+        std::ptrdiff_t index = 0;
+        for (auto const& tensor4D : values) {
+            if (tensor4D.size() != shape_[1])
+                throw Exception("All 4D tensors must have the same number of 3D tensors");
+            for (auto const& tensor3D : tensor4D) {
+                if (tensor3D.size() != shape_[2])
+                    throw Exception("All 3D tensors must have the same number of matrices");
+                for (auto const& matrix : tensor3D) {
+                    if (matrix.size() != shape_[3])
+                        throw Exception("All matrices must have the same number of rows");
+                    for (auto const& row : matrix) {
+                        if (row.size() != shape_[4])
+                            throw Exception("All rows must have the same number of columns");
+                        for (auto const& value : row) {
+                            assign((bool const*)(&value), index);
+                            ++index;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    else {  
+        initialize();
+        size_t index = 0;
+        for (auto const& tensor4D : values) {
+            if (tensor4D.size() != shape_[1])
+                throw Exception("All 4D tensors must have the same number of 3D tensors");
+            for (auto const& tensor3D : tensor4D) {
+                if (tensor3D.size() != shape_[2])
+                    throw Exception("All 3D tensors must have the same number of matrices");
+                for (auto const& matrix : tensor3D) {
+                    if (matrix.size() != shape_[3])
+                        throw Exception("All matrices must have the same number of rows");
+                    for (auto const& row : matrix) {
+                        if (row.size() != shape_[4])
+                            throw Exception("All rows must have the same number of columns");
+                        for (auto const& value : row) {
+                            assign((std::byte const*)(&value), index * dsizeof(dtype_));
+                            ++index;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+template<Arithmetic T>
+void Tensor::initialize(std::initializer_list<T> values, Environment environment) {
+    if (!is_contiguous())
+        throw Exception("Assign to initializer list supported only for contiguous tensors");
+    
+    if (rank() != 1 || shape_[0] != values.size())
+        throw Exception("Shape mismatch in assignment from initializer_list");
+
+    if (!is_initialized()) 
+        initialize(environment);
+
+    if (dtype_ == boolean) {
+        std::ptrdiff_t index = 0;
+        for (auto const& value : values) {
+            assign((bool const*)(&value), index);
+            ++index;
+        }
+    } 
+    
+    else { 
+        auto fill = [this, &values](auto cast) { 
+            using Cast = decltype(cast);
+            size_t index = 0;
+            for (auto value : values) { 
+                Cast casted(value);
+                assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                ++index;
+            }
+        }; 
+
+        switch (dtype_) {
+            case int8:    fill(int8_t{});    break;
+            case int16:   fill(int16_t{});   break;
+            case int32:   fill(int32_t{});   break;
+            case int64:   fill(int64_t{});   break;
+            case float16:  fill(float16_t{}) ; break;   
+            case bfloat16: fill(bfloat16_t{}); break;   
+            case float32: fill(float{});     break;
+            case float64: fill(double{});    break;
+            default: throw Exception("Unsupported dtype in assignment");
+        } 
+    } 
+}
+
+
+template<Arithmetic T>
+void Tensor::initialize(std::initializer_list<std::initializer_list<T>> const & values, Environment environment) {
+    if (!is_contiguous())
+        throw Exception("Assign to initializer list supported only for contiguous tensors"); 
+
+    if (rank() != 2 || shape_[0] != values.size() || shape_[1] != values.begin()->size())
+        throw Exception("Shape mismatch in assignment from nested initializer_list"); 
+
+    if (!is_initialized()) 
+        initialize(environment);
+
+    if (dtype_ == boolean) {
+        std::ptrdiff_t index = 0;
+        for (auto const& row : values) {
+            if (row.size() != shape_[1])
+                throw Exception("Row length mismatch in assignment from initializer_list");
+            for (auto const& value : row) {
+                assign((bool const*)(&value), index);
+                ++index;
+            }
+        } 
+    }
+
+    else { 
+        auto fill = [this, &values](auto cast) { 
+            using Cast = decltype(cast);
+            size_t index = 0;
+            for (auto const& row : values) {
+                if (row.size() != shape_[1])
+                    throw Exception("Row length mismatch in assignment from initializer_list");
+
+                for (auto value : row) { 
+                    Cast casted(value);
+                    assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                    ++index;
+                }
+            }
+        };
+
+        switch (dtype_) {
+            case int8:    fill(int8_t{});    break;
+            case int16:   fill(int16_t{});   break;
+            case int32:   fill(int32_t{});   break;
+            case int64:   fill(int64_t{});   break;
+            case float16:  fill(float16_t{}) ; break;   
+            case bfloat16: fill(bfloat16_t{}); break;   
+            case float32: fill(float{});     break;
+            case float64: fill(double{});    break;
+            default: throw Exception("Unsupported dtype in assignment");
+        } 
+    }  
+}
+
+template<Arithmetic T>
+void Tensor::initialize(std::initializer_list<std::initializer_list<std::initializer_list<T>>> const& values, Environment environment) {
+    if (!is_contiguous())
+        throw Exception("Assign to initializer list supported only for contiguous tensors");
+
+    if (rank() != 3 
+        || shape_[0] != values.size() 
+        || shape_[1] != values.begin()->size() 
+        || shape_[2] != values.begin()->begin()->size())
+        throw Exception("Shape mismatch in assignment from triple-nested initializer_list");
+
+    if (!is_initialized()) 
+        initialize(environment);
+
+    if (dtype_ == boolean) {
+        std::ptrdiff_t index = 0;
+        for (auto const& matrix : values) {
+            if (matrix.size() != shape_[1])
+                throw Exception("Matrix row count mismatch");
+            for (auto const& row : matrix) {
+                if (row.size() != shape_[2])
+                    throw Exception("Row length mismatch");
+                for (auto const& value : row) {
+                    assign((bool const*)(&value), index);
+                    ++index;
+                }
+            }
+        }
+    }
+
+    else { 
+        auto fill = [this, &values](auto cast) { 
+            using Cast = decltype(cast);
+            size_t index = 0;
+            for (auto const& matrix : values) {
+                if (matrix.size() != shape_[1])
+                    throw Exception("Matrix row count mismatch");
+                for (auto const& row : matrix) {
+                    if (row.size() != shape_[2])
+                        throw Exception("Row length mismatch");
+                    for (auto value : row) { 
+                        Cast casted(value);
+                        assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                        ++index;
+                    }
+                }
+            }
+        };
+
+        switch (dtype_) {
+            case int8:    fill(int8_t{});    break;
+            case int16:   fill(int16_t{});   break;
+            case int32:   fill(int32_t{});   break;
+            case int64:   fill(int64_t{});   break;
+            case float16:  fill(float16_t{}) ; break;   
+            case bfloat16: fill(bfloat16_t{}); break;   
+            case float32: fill(float{});     break;
+            case float64: fill(double{});    break;
+            default: throw Exception("Unsupported dtype in assignment");
+        } 
+    } 
+} 
+
+template<Arithmetic T>
+void Tensor::initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>> values, Environment environment) {
+    if (!is_contiguous())
+        throw Exception("Assign to initializer list supported only for contiguous tensors");
+
+    if (rank() != 4 
+        || shape_[0] != values.size() 
+        || shape_[1] != values.begin()->size() 
+        || shape_[2] != values.begin()->begin()->size() 
+        || shape_[3] != values.begin()->begin()->begin()->size())
+        throw Exception("Shape mismatch in assignment from quadruple-nested initializer_list");
+
+    if (!is_initialized()) 
+        initialize(environment);
+
+    if (dtype_ == boolean) {
+        std::ptrdiff_t index = 0;
+        for (auto const& tensor3D : values) {
+            if (tensor3D.size() != shape_[1])
+                throw Exception("3D tensor count mismatch");
+
+            for (auto const& matrix : tensor3D) {
+                if (matrix.size() != shape_[2])
+                    throw Exception("Matrix row count mismatch");
+
+                for (auto const& row : matrix) {
+                    if (row.size() != shape_[3])
+                        throw Exception("Row length mismatch");
+
+                    for (auto const& value : row) {
+                        assign((bool const*)(&value), index);
+                        ++index;
+                    }
+                }
+            }
+        } 
+    }  
+    
+    else { 
+        auto fill = [this, &values](auto cast) { 
+            using Cast = decltype(cast);
+            size_t index = 0;
+            for (auto const& tensor3D : values) {
+                if (tensor3D.size() != shape_[1])
+                    throw Exception("3D tensor count mismatch");
+
+                for (auto const& matrix : tensor3D) {
+                    if (matrix.size() != shape_[2])
+                        throw Exception("Matrix row count mismatch");
+
+                    for (auto const& row : matrix) {
+                        if (row.size() != shape_[3]) 
+                            throw Exception("Row length mismatch");
+
+                        for (auto value : row) {
+                            Cast casted(value);
+                            assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                            ++index;
+                        }
+                    }
+                }
+            }
+        };
+
+        switch (dtype_) {
+            case int8:    fill(int8_t{});    break;
+            case int16:   fill(int16_t{});   break;
+            case int32:   fill(int32_t{});   break;
+            case int64:   fill(int64_t{});   break;
+            case float16:  fill(float16_t{}) ; break;   
+            case bfloat16: fill(bfloat16_t{}); break;   
+            case float32: fill(float{});     break;
+            case float64: fill(double{});    break;
+            default: throw Exception("Unsupported dtype in assignment");
+        } 
+    }  
+} 
+
+
+template<Arithmetic T>
+void Tensor::initialize(std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<std::initializer_list<T>>>>> values, Environment environment) {
+    if (!is_contiguous())
+        throw Exception("Assign to initializer list supported only for contiguous tensors");
+
+    if (rank() != 5 
+        || shape_[0] != values.size() 
+        || shape_[1] != values.begin()->size() 
+        || shape_[2] != values.begin()->begin()->size() 
+        || shape_[3] != values.begin()->begin()->begin()->size()
+        || shape_[4] != values.begin()->begin()->begin()->begin()->size())
+        throw Exception("Shape mismatch in assignment from quintuple-nested initializer_list");
+
+    if (!is_initialized()) 
+        initialize(environment);
+
+    if (dtype_ == boolean) {
+        std::ptrdiff_t index = 0;
+        for (auto const& tensor4D : values) {
+            if (tensor4D.size() != shape_[1])
+                throw Exception("4D tensor count mismatch");
+
+            for (auto const& tensor3D : tensor4D) {
+                if (tensor3D.size() != shape_[2])
+                    throw Exception("3D tensor count mismatch");
+
+                for (auto const& matrix : tensor3D) {
+                    if (matrix.size() != shape_[3])
+                        throw Exception("Matrix row count mismatch");
+
+                    for (auto const& row : matrix) {
+                        if (row.size() != shape_[4])
+                            throw Exception("Row length mismatch");
+
+                        for (auto const& value : row) {
+                            assign((bool const*)(&value), index);
+                            ++index;
+                        }
+                    }
+                }
+            }
+        } 
+    }  
+
+    else { 
+        auto fill = [this, &values](auto cast) { 
+            using Cast = decltype(cast);
+            size_t index = 0;
+            for (auto const& tensor4D : values) {
+                if (tensor4D.size() != shape_[1])
+                    throw Exception("4D tensor count mismatch");
+
+                for (auto const& tensor3D : tensor4D) {
+                    if (tensor3D.size() != shape_[2])
+                        throw Exception("3D tensor count mismatch");
+
+                    for (auto const& matrix : tensor3D) {
+                        if (matrix.size() != shape_[3]) 
+                            throw Exception("Matrix row count mismatch");
+
+                        for (auto const& row : matrix) {
+                            if (row.size() != shape_[4])
+                                throw Exception("Row length mismatch");
+
+                            for (auto value : row) {
+                                Cast casted(value);
+                                assign(expression::tobytes(casted), index * dsizeof(dtype_));
+                                ++index;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        switch (dtype_) {
+            case int8:    fill(int8_t{});    break;
+            case int16:   fill(int16_t{});   break;
+            case int32:   fill(int32_t{});   break;
+            case int64:   fill(int64_t{});   break;
+            case float16:  fill(float16_t{}); break;   
+            case bfloat16: fill(bfloat16_t{}); break;   
+            case float32: fill(float{});     break;
+            case float64: fill(double{});    break;
+            default: throw Exception("Unsupported dtype in assignment");
+        } 
+    }  
+}
+ 
 } // namespace tannic
 
 #endif // TENSOR_HPP
